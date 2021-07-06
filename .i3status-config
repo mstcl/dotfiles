@@ -1,0 +1,32 @@
+general {
+        output_format = "i3bar"
+        colors = false
+        interval = 5
+}
+
+order += "disk /"
+order += "disk /media"
+order += "ethernet enp5s0"
+order += "cpu_usage"
+order += "memory"
+
+disk "/" {
+        format = "%free / %total"
+}
+
+disk "/media" {
+        format = "%free / %total"
+}
+
+ethernet enp5s0 {
+        format_up = "%ip"
+        format_down = "N/A"
+}
+
+cpu_usage {
+        format = "%usage"
+}
+
+memory {
+        format = "%used / %total  "
+}
