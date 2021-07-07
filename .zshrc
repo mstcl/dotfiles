@@ -59,20 +59,20 @@ export LANG=en_US.UTF-8
 
 alias gnomesettings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias ll='ls -al'
-alias scrshot='bash ~/scripts/scrshot'
+alias scrshot='bash ~/scripts/other/scrshot'
 alias fetch='neofetch --backend ascii --source ~/scripts/ascii/cactus'
-alias protonmail='hydroxide serve &'
-alias todo='cat ~/scripts/todo | cowsay | lolcat'
-alias wally='bash ~/scripts/wal/changewal > /dev/null 2>&1'
+# alias protonmail='hydroxide serve &'
+# alias todo='cat ~/scripts/todo | cowsay | lolcat'
+# alias wally='bash ~/scripts/wal/changewal > /dev/null 2>&1'
 alias polylaunch='bash ~/scripts/polybar/launch.sh'
 alias zshconf='nvim ~/dotfiles/.zshrc'
 alias i3conf='nvim ~/dotfiles/.i3-config'
 alias kittyconf='nvim ~/dotfiles/.kitty.conf'
 alias vimconf='nvim ~/dotfiles/.init.vim'
 alias polyconf='nvim ~/scripts/polybar/bar'
-alias top='sudo -E wal-vtop > /dev/null 2>&1 && vtop --theme wal'
-alias media='sudo mount /dev/sda2 /media'
-alias ipfslaunch='bash ~/scripts/web/ipfs &'
+# alias top='sudo -E wal-vtop > /dev/null 2>&1 && vtop --theme wal'
+# alias media='sudo mount /dev/sda2 /media'
+# alias ipfslaunch='bash ~/scripts/web/ipfs &'
 alias fv='nvim $(fzf --height 40%)'
 
 
