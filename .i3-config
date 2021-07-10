@@ -16,7 +16,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- sh ~/scripts/i3lock/locke
 exec --no-startup-id picom &
 exec --no-startup-id redshift &
 exec --no-startup-id bash ~/scripts/polybar/launch.sh &
-exec --no-startup-id xmodmap ~/dotfiles/.xmodmap
+exec --no-startup-id xmodmap ~/dotfiles/.xmodmap &
 exec --no-startup-id unclutter &
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -44,7 +44,8 @@ bar {
     mode hide
     hidden_state hide
     modifier $mod
-    separator_symbol " "
+    binding_mode_indicator no
+    separator_symbol "|"
     font pango:JetBrainsMono Nerd Font Mono 10
     colors {
         background $bg
@@ -108,6 +109,8 @@ bindsym $mod+e  exec --no-startup-id pcmanfm
 bindsym $mod+period exec --no-startup-id bash ~/scripts/rofi/emojipick/emojipick
 bindsym $mod+Tab exec --no-startup-id bash ~/scripts/rofi/i3-resurrect
 bindsym $mod+n exec --no-startup-id dbus-send --session --print-reply --dest=org.freedesktop.Notifications /org/freedesktop/Notifications org.freedesktop.Notifications.ShowNotifications &
+bindsym $mod+g exec bash ~/scripts/other/text-scratchpad
+bindsym $mod+Shift+Return exec kitty -e -T floatingKitty
 
 bindsym $alt+b [class="Brave"] focus
 bindsym $alt+Tab exec rofi -show window
@@ -121,14 +124,14 @@ bindsym $alt+d [class="discord"] focus
 
 # Window rules
 for_window [class="steam_app_1182480"] floating enable
+for_window [class="^kitty$" title="^textScratchpad$"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set 940 680
 for_window [class="Pcmanfm"] floating enable
 for_window [class="Pcmanfm"] resize set 940 680
-#for_window [class="Brave"] resize set 1500 800; move absolute position center
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Qalculate-gtk"] resize set 640 480
-bindsym $mod+Shift+Return exec kitty -e -T floatingKitty
+
 for_window [class="^kitty$" title="^floatingKitty$"] floating enable; 
 for_window [class="^kitty$" title="^floatingKitty$"] resize set 640 480; move absolute position center
 for_window [class="Wpg"] floating enable

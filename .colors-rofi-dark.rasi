@@ -28,18 +28,18 @@
 
 #message {
     border: 2px 0px 0px;
-    border-color: #7a8985;
+    border-color: #aec795;
     padding: 0px;
 }
 
 #textbox {
-    text-color: #c1c1c1;
+    text-color: #c7ccd1;
 }
 
 #inputbar {
     children:   [ textbox-prompt-colon, prompt, entry ];
-    background-color: #619292;
-    text-color: #c1c1c1;
+    background-color: #95c7ae;
+    text-color: #c7ccd1;
     expand: false;
     border: 0px;
     spacing: 0px;
@@ -50,7 +50,7 @@
     str: "異";
     font: "JetBrainsMono Nerd Font Mono 14";
     padding: 7px 15px 10px 15px;
-    background-color: #c1c1c1;
+    background-color: #c7ccd1;
     text-color: #222222;
 }
 
@@ -70,7 +70,7 @@
     border-radius: 0px;
     orientation: horizontal;
     background-color: #222222;
-    text-color: #c1c1c1;
+    text-color: #c7ccd1;
 }
 
 #element-icon {
@@ -87,7 +87,7 @@
 
 #element.selected {
     background-color: #222222;
-    text-color: #974b46;
+    text-color: #c7ae95;
 }
 
 #entry {
@@ -99,7 +99,7 @@
     padding: 12px 10px 10px 10px;
     margin: 0px 250px 0px 0px;
     border-radius: 0px 50px 50px 0px;
-    background-color: #c1c1c1;
+    background-color: #c7ccd1;
     text-color: #222222;
     blink: true;
 }
@@ -109,5 +109,5 @@
     padding: 12px 10px 10px 10px;
     text-color: #222222;
     spacing: 0;
-    background-color: #c1c1c1;
+    background-color: #c7ccd1;
 }
