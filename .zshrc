@@ -31,7 +31,8 @@ plugins=(
 )
 
 ###### ENVIRONMENTAL VARIABLES #####
-
+export TERMINAL="/usr/bin/kitty"
+##---##
 export ZSH="/home/lckdscl/.oh-my-zsh"
 ##---##
 export UPDATE_ZSH_DAYS=5
@@ -74,6 +75,7 @@ alias polyconf='nvim ~/scripts/polybar/bar'
 # alias media='sudo mount /dev/sda2 /media'
 # alias ipfslaunch='bash ~/scripts/web/ipfs &'
 alias fv='nvim $(fzf --height 40%)'
+alias tilewall='feh --bg-tile ~/.config/wpg/.current'
 
 
 ###### CONDA ######
