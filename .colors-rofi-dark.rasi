@@ -2,7 +2,7 @@
     background-color: #222222;
     spacing: 2;
     show-icons: true;
-    icon-theme: "Flat-Remix-Grey-Dark";
+    icon-theme: "Fluent-dark";
     hide-scrollbar: true;
     font: "JetBrainsMono Nerd Font Mono 10";
     disable-history: false;

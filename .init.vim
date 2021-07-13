@@ -1,5 +1,10 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
+Plug 'bfrg/vim-cpp-modern'
+Plug 'bfrg/vim-cpp-modern'
+Plug 'puremourning/vimspector', {
+  \ 'do': 'python3 install_gadget.py --enable-vscode-cpptools'
+  \ }
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/indentpython.vim'
@@ -64,6 +69,8 @@ set textwidth=0
 set spell spelllang=en_gb
 set nospell
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
+set list
+set listchars=tab:›\ ,eol:¬
 
 colorscheme maniac
 "highlight EndOfBuffer ctermfg=black ctermbg=black
@@ -75,7 +82,6 @@ let g:indentLine_char = '│'
 let g:indentLine_enabled = 0
 "let g:indentLine_setConceal = 0
 let g:indentLine_leadingSpaceChar = '.'
-
 
 let g:startify_custom_header =
           \ 'startify#center(startify#fortune#cowsay())'
@@ -172,6 +178,7 @@ let g:rainbow_conf = {
 let g:colorizer_auto_color = 1
 
 let mapleader = ","
+let maplocalleader = ",,"
 
 nnoremap ; :
 nnoremap <C-J> <C-W><C-J>
@@ -202,6 +209,7 @@ nnoremap <Leader>c :Commands<CR>
 nnoremap <Leader>nn :set invnumber<CR>
 nnoremap <Leader>nt :tabnew<CR>
 nnoremap <Leader>rr :registers<CR>
+nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 function! s:goyo_enter()
     Limelight
@@ -321,3 +329,27 @@ let g:nvim_tree_icons = {
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
+function! s:JbzCppMan()
+    let old_isk = &iskeyword
+    setl iskeyword+=:
+    let str = expand("<cword>")
+    let &l:iskeyword = old_isk
+    execute 'Man ' . str
+endfunction
+command! JbzCppMan :call s:JbzCppMan()
+
+au FileType cpp nnoremap <buffer>K :JbzCppMan<CR>
+
+command! -nargs=+ Vfb call vimspector#AddFunctionBreakpoint(<f-args>)
+
+nnoremap <localleader>gd :call vimspector#Launch()<cr>
+nnoremap <localleader>gc :call vimspector#Continue()<cr>
+nnoremap <localleader>gs :call vimspector#Stop()<cr>
+nnoremap <localleader>gR :call vimspector#Restart()<cr>
+nnoremap <localleader>gp :call vimspector#Pause()<cr>
+nnoremap <localleader>gb :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <localleader>gB :call vimspector#ToggleConditionalBreakpoint()<cr>
+nnoremap <localleader>gn :call vimspector#StepOver()<cr>
+nnoremap <localleader>gi :call vimspector#StepInto()<cr>
+nnoremap <localleader>go :call vimspector#StepOut()<cr>
+nnoremap <localleader>gr :call vimspector#RunToCursor()<cr>

@@ -2,7 +2,7 @@ configuration {
     theme: "~/dotfiles/.colors-rofi-dark.rasi";
     modi: "window,run,drun";
     show-icons: true;
-    icon-theme: "Flat-Remix-Grey-Dark"; 
+    icon-theme: "Fluent-dark"; 
     location: 0;
     hide-scrollbar: true;
     font: "JetBrainsMono Nerd Font Mono 10";
