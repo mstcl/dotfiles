@@ -23,5 +23,6 @@ ln -s ~/dotfiles/.zathurarc ~/.config/zathura/zathurarc
 ln -s ~/dotfiles/.maniac.vim ~/.config/nvim/colors/maniac.vim
 ln -s ~/dotfiles/.gotcha.vim ~/.local/share/nvim/plugged/vim-airline/autoload/airline/themes/gotcha.vim
 ln -s ~/dotfiles/.color.ini ~/.config/spicetify/Themes/SpicetifyDefault/color.ini
+ln -s ~/dotfiles/.conf.hjson ~/.config/broot/conf.hjson 
 # if using wal
 # ln -s ~/dotfiles/.colors-rofi-dark.rasi ~/.config/wal/templates/colors-rofi-dark.rasi

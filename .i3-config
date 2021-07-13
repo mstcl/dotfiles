@@ -14,11 +14,13 @@ exec --no-startup-id bash ~/.config/wpg/wp_init.sh &
 exec --no-startup-id xrdb ~/.Xresources &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh ~/scripts/i3lock/lockerfancy
 exec --no-startup-id picom &
+exec --no-startup-id bash ~/.fehbg &
 exec --no-startup-id redshift &
 exec --no-startup-id bash ~/scripts/polybar/launch.sh &
 exec --no-startup-id xmodmap ~/dotfiles/.xmodmap &
 exec --no-startup-id unclutter &
-exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /home/lckdscl/.local/bin/i3-notifier &
 
 ######### COLORS ##########
 #Set colors from Xresources
@@ -114,11 +116,11 @@ bindsym $mod+Shift+Return exec kitty -e -T floatingKitty
 
 bindsym $alt+b [class="Brave"] focus
 bindsym $alt+Tab exec rofi -show window
-bindsym $alt+v [class="Pulseeffects"] focus
+bindsym $alt+v [class="Easyeffects"] focus
 bindsym $alt+t [class="kitty"] focus
 bindsym $alt+p exec maim ~/screenshots/$(date +%s).png && notify-send "screenshot saved!"
-bindsym $alt+Shift+p exec maim -s | xclip -selection clipboard -t image/png
-bindsym $alt+slash exec sp play
+bindsym $alt+Shift+p exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym $alt+slash exec --no-startup-id sp play
 bindsym $alt+s [class="Spotify"] focus
 bindsym $alt+d [class="discord"] focus
 

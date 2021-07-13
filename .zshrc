@@ -49,10 +49,6 @@ export FZF_CTRL_R_OPTS="--height 40% --layout=reverse --border --preview 'echo {
 ##---##
 export XCURSOR_THEME=Bibata-Modern-Classic
 ##---##
-__GL_THREADED_OPTIMIZATION=1
-__GL_SHADER_DISK_CACHE=1
-__GL_SHADER_DISK_CACHE_PATH=/home/lckdscl/shader-cache
-##---##
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 
