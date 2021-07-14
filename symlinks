@@ -15,12 +15,9 @@ ln -s $DIR/.init.vim $HOME/.config/nvim/init.vim
 ln -s $DIR/.picom.conf $HOME/.config/picom/picom.conf
 ln -s $DIR/.redshift.conf $HOME/.config/redshift/redshift.conf
 ln -s $DIR/.config.rasi $HOME/.config/rofi/config.rasi
-ln -s $DIR/.rc.conf $HOME/.config/ranger/rc.conf
-ln -s $DIR/.commands.py $HOME/.config/ranger/commands.py
-ln -s $DIR/.scope.sh $HOME/.config/ranger/scope.sh
 ln -s $DIR/.spotifyd.conf $HOME/.config/spotifyd/spotifyd.conf
 ln -s $DIR/.spotify-tui-config.yml $HOME/.config/spotify-tui/config.yml
-ln -s $DIR/.Xresources $HOME/.Xresources 
+ln -s $DIR/.Xresources $HOME/.Xresources
 ln -s $DIR/.zathurarc $HOME/.config/zathura/zathurarc
 ln -s $DIR/.maniac.vim $HOME/.config/nvim/colors/maniac.vim
 ln -s $DIR/.gotcha.vim $HOME/.local/share/nvim/plugged/vim-airline/autoload/airline/themes/gotcha.vim
