@@ -1,6 +1,4 @@
-
 ###### ZSH CONFIG #######
-
 ZSH_THEME="zhann"
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="true"
@@ -13,24 +11,50 @@ ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
 HIST_STAMPS="mm/dd/yyyy"
 
-###### PLUGINS ######
+###### SAUCE #####
+source /usr/share/zsh/share/antigen.zsh
+##---##
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+##---##
+source /home/lckdscl/.config/broot/launcher/bash/br
 
-plugins=(
-	git
-	alias-finder
-	archlinux
-	colorize
-	copyfile
-	copydir
-	fancy-ctrl-z
-	colored-man-pages
-	command-not-found
-	zsh_reload
-	themes
-	sudo
-)
+###### PLUGINS ######
+antigen use oh-my-zsh
+antigen bundles <<EOBUNDLES
+    redxtech/zsh-fzf-utils
+    zpm-zsh/colors
+    git
+    archlinux
+    alias-finder
+    colorize
+    copydir
+    fancy-ctrl-z
+    colored-man-pages
+    command-not-found
+    zsh_reload
+    themes
+    sudo
+    autojump
+
+    Aloxaf/fzf-tab
+    hlissner/zsh-autopair
+    zsh-users/zsh-syntax-highlighting
+    zsh-users/zsh-autosuggestions
+    gretzky/auto-color-ls
+    MichaelAquilina/zsh-auto-notify
+EOBUNDLES
+
+antigen theme zhann
+
+antigen apply
+
+# workaround for fzf
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 ###### ENVIRONMENTAL VARIABLES #####
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
+##---##
 export TERMINAL="/usr/bin/kitty"
 ##---##
 export ZSH="/home/lckdscl/.oh-my-zsh"
@@ -44,7 +68,13 @@ export PATH="$HOME/.local/bin:$HOME/.local/share/applications:$HOME/.local/share
 export QT_QPA_PLATFORMTHEME=qt5ct
 ##---##
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir=/home/lckdscl/.wine/drive_c --ignore-dir=/home/lckdscl/.local/share/Steam --ignore-dir=/home/lckdscl/.steam --ignore="dosdevices" -g ""'
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_DEFAULT_OPTS="
+    --color fg:-1,bg:-1,hl:1,fg+:-1,bg+:237,hl+:9
+    --color info:5,prompt:2,spinner:3,pointer:2,marker:4
+    --height 40%
+    --layout=reverse 
+    --border 
+    --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--height 40% --layout=reverse --border --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 ##---##
 export XCURSOR_THEME=Bibata-Modern-Classic
@@ -55,7 +85,7 @@ export LANG=en_US.UTF-8
 ###### ALIAS ######
 
 alias gnomesettings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
-alias ll='ls -al'
+alias lc='colorls --gs -a --sd'
 alias scrshot='bash ~/scripts/other/scrshot'
 alias fetch='neofetch --backend ascii --source ~/scripts/ascii/cactus'
 # alias protonmail='hydroxide serve &'
@@ -99,16 +129,3 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
-
-###### SAUCE #####
-
-source $ZSH/oh-my-zsh.sh
-##---##
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
-##---##
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-##---##
-source /home/lckdscl/.config/broot/launcher/bash/br
