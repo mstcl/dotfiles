@@ -1,30 +1,31 @@
-#!/usr/bin/bash
+#!/bin/bash
 DIR="$HOME/dotfiles"
 
-ln -s $DIR/.kitty.conf .config/kitty/kitty.conf
-ln -s $DIR/.i3_notifier_config.py .config/i3/i3_notifier_config.py
-ln -s $DIR/.i3-config .config/i3/config
-ln -s $DIR/.gtk3-settings.ini gtk-3.0/settings.ini
-ln -s $DIR/.78-Reject.conf .config/fontconfig/conf.d/78-Reject.conf
-ln -s $DIR/.60-latin.conf .config/fontconfig/conf.d/60-latin.conf
-ln -s $DIR/.fonts.conf .config/fontconfig/fonts.conf
-ln -s $DIR/.i3status-config .config/i3status/config
-ln -s $DIR/.zshrc ~/.zshrc
-ln -s $DIR/.neofetch-config.conf ~/.config/neofetch/config.conf
-ln -s $DIR/.init.vim ~/.config/nvim/init.vim
-ln -s $DIR/.picom.conf ~/.config/picom/picom.conf
-ln -s $DIR/.redshift.conf ~/.config/redshift/redshift.conf
-ln -s $DIR/.config.rasi ~/.config/rofi/config.rasi
-ln -s $DIR/.rc.conf ~/.config/ranger/rc.conf
-ln -s $DIR/.commands.py ~/.config/ranger/commands.py
-ln -s $DIR/.scope.sh ~/.config/ranger/scope.sh
-ln -s $DIR/.spotifyd.conf ~/.config/spotifyd/spotifyd.conf
-ln -s $DIR/.spotify-tui-config.yml ~/.config/spotify-tui/config.yml
-ln -s $DIR/.Xresources 
-ln -s $DIR/.zathurarc ~/.config/zathura/zathurarc
-ln -s $DIR/.maniac.vim ~/.config/nvim/colors/maniac.vim
-ln -s $DIR/.gotcha.vim ~/.local/share/nvim/plugged/vim-airline/autoload/airline/themes/gotcha.vim
-ln -s $DIR/.color.ini ~/.config/spicetify/Themes/SpicetifyDefault/color.ini
-ln -s $DIR/.conf.hjson ~/.config/broot/conf.hjson 
+ln -s $DIR/.kitty.conf $HOME/.config/kitty/kitty.conf
+ln -s $DIR/.i3_notifier_config.py $HOME/.config/i3/i3_notifier_config.py
+ln -s $DIR/.i3-config $HOME/.config/i3/config
+ln -s $DIR/.gtk3-settings.ini $HOME/.config/gtk-3.0/settings.ini
+ln -s $DIR/.78-Reject.conf $HOME/.config/fontconfig/conf.d/78-Reject.conf
+ln -s $DIR/.60-latin.conf $HOME/.config/fontconfig/conf.d/60-latin.conf
+ln -s $DIR/.fonts.conf $HOME/.config/fontconfig/fonts.conf
+ln -s $DIR/.i3status-config $HOME/.config/i3status/config
+ln -s $DIR/.zshrc $HOME/.zshrc
+ln -s $DIR/.neofetch-config.conf $HOME/.config/neofetch/config.conf
+ln -s $DIR/.init.vim $HOME/.config/nvim/init.vim
+ln -s $DIR/.picom.conf $HOME/.config/picom/picom.conf
+ln -s $DIR/.redshift.conf $HOME/.config/redshift/redshift.conf
+ln -s $DIR/.config.rasi $HOME/.config/rofi/config.rasi
+ln -s $DIR/.rc.conf $HOME/.config/ranger/rc.conf
+ln -s $DIR/.commands.py $HOME/.config/ranger/commands.py
+ln -s $DIR/.scope.sh $HOME/.config/ranger/scope.sh
+ln -s $DIR/.spotifyd.conf $HOME/.config/spotifyd/spotifyd.conf
+ln -s $DIR/.spotify-tui-config.yml $HOME/.config/spotify-tui/config.yml
+ln -s $DIR/.Xresources $HOME/.Xresources 
+ln -s $DIR/.zathurarc $HOME/.config/zathura/zathurarc
+ln -s $DIR/.maniac.vim $HOME/.config/nvim/colors/maniac.vim
+ln -s $DIR/.gotcha.vim $HOME/.local/share/nvim/plugged/vim-airline/autoload/airline/themes/gotcha.vim
+ln -s $DIR/.color.ini $HOME/.config/spicetify/Themes/SpicetifyDefault/color.ini
+ln -s $DIR/.conf.hjson $HOME/.config/broot/conf.hjson 
+ln -s $DIR/.dark_colors.yaml $HOME/.config/colorls/dark_colors/yaml
 # if using wal
-# ln -s $DIR/.colors-rofi-dark.rasi ~/.config/wal/templates/colors-rofi-dark.rasi
+# ln -s $DIR/.colors-rofi-dark.rasi $HOME/.config/wal/templates/colors-rofi-dark.rasi
