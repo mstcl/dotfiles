@@ -22,7 +22,7 @@ ln -s $DIR/.zathurarc $HOME/.config/zathura/zathurarc
 ln -s $DIR/.maniac.vim $HOME/.config/nvim/colors/maniac.vim
 ln -s $DIR/.gotcha.vim $HOME/.local/share/nvim/plugged/vim-airline/autoload/airline/themes/gotcha.vim
 ln -s $DIR/.color.ini $HOME/.config/spicetify/Themes/SpicetifyDefault/color.ini
-ln -s $DIR/.conf.hjson $HOME/.config/broot/conf.hjson 
+ln -s $DIR/.conf.hjson $HOME/.config/broot/conf.hjson
 ln -s $DIR/.dark_colors.yaml $HOME/.config/colorls/dark_colors/yaml
 # if using wal
 # ln -s $DIR/.colors-rofi-dark.rasi $HOME/.config/wal/templates/colors-rofi-dark.rasi
