@@ -62,6 +62,7 @@ export ZSH="/home/lckdscl/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=5
 export EDITOR=nvim
 export PATH="$HOME/scripts/bin:$HOME/.local/bin:$HOME/.local/share/applications:$HOME/.local/share/hydroxide:$HOME/.cargo/bin:$PATH"
+export TESSDATA_PREFIX="/usr/share/tessdata"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir=/home/lckdscl/.wine/drive_c --ignore-dir=/home/lckdscl/.local/share/Steam --ignore-dir=/home/lckdscl/.steam --ignore="dosdevices" -g ""'
 export FZF_DEFAULT_OPTS="
@@ -96,7 +97,6 @@ alias fv='nvim $(fzf --height 40%)'
 alias tilewall='feh --bg-tile ~/.config/wpg/.current'
 alias :q='exit'
 alias :Q=':q'
-alias mkcd='mkdir $1; cd $1'
 alias sunv='sudo -E nvim $1'
 alias sue='sudo -E $1'
 

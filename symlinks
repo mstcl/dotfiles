@@ -26,3 +26,5 @@ ln -s $DIR/.conf.hjson $HOME/.config/broot/conf.hjson
 ln -s $DIR/.dark_colors.yaml $HOME/.config/colorls/dark_colors/yaml
 # if using wal
 # ln -s $DIR/.colors-rofi-dark.rasi $HOME/.config/wal/templates/colors-rofi-dark.rasi
+ln -s $DIR/dotfiles/.mirage-settings.py $HOME/.config/mirage/settings.py
+ln -s /.vimwiki.snippets /home/lckdscl/.config/nvim/utilsnips/vimwiki.snippets
