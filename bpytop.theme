@@ -1,0 +1,78 @@
+# :.config/bpytop/themes/bpytop.theme
+theme[main_bg]="#c7ae95"
+
+# Main text color
+theme[main_fg]="#c7ccd1"
+
+# Title color for boxes
+theme[title]="#c7ae95"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="#aec795"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#c7ccd1"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#c7ccd1"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#272727"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#c7ae95"
+
+# Cpu box outline color
+theme[cpu_box]="#95c7ae"
+
+# Memory/disks box outline color
+theme[mem_box]="#95c7ae"
+
+# Net up/down box outline color
+theme[net_box]="#95c7ae"
+
+# Processes box outline color
+theme[proc_box]="#95c7ae"
+
+# Box divider line and small boxes line color
+theme[div_line]="#95c7ae"
+
+# Temperature graph colors
+theme[temp_start]="#ae95c7"
+theme[temp_mid]="#c5a9e0"
+theme[temp_end]="#f8f9fa"
+
+# CPU graph colors
+theme[cpu_start]="#ae95c7"
+theme[cpu_mid]="#c5a9e0"
+theme[cpu_end]="#f8f9fa"
+
+# Mem/Disk free meter
+theme[free_start]="#ae95c7"
+theme[free_mid]="#c5a9e0"
+theme[free_end]="#f8f9fa"
+
+# Mem/Disk cached meter
+theme[cached_start]="#ae95c7"
+theme[cached_mid]="#c5a9e0"
+theme[cached_end]="#f8f9fa"
+
+# Mem/Disk available meter
+theme[available_start]="#ae95c7"
+theme[available_mid]="#c5a9e0"
+theme[available_end]="#f8f9fa"
+
+# Mem/Disk used meter
+theme[used_start]="#ae95c7"
+theme[used_mid]="#c5a9e0"
+theme[used_end]="#f8f9fa"
+
+# Download graph colors
+theme[download_start]="#ae95c7"
+theme[download_mid]="#c5a9e0"
+theme[download_end]="#f8f9fa"
+
+# Upload graph colors
+theme[upload_start]="#ae95c7"
+theme[upload_mid]="#c5a9e0"
+theme[upload_end]="#f8f9fa"

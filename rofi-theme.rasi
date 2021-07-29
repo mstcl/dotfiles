@@ -1,0 +1,116 @@
+/* :.config/rofi/rofi-theme.rasi
+ */
+
+* {
+    background-color: #222222;
+    spacing: 2;
+    show-icons: true;
+    icon-theme: "Fluent-dark";
+    hide-scrollbar: true;
+    font: "JetBrainsMono Nerd Font Mono 10";
+    disable-history: false;
+}
+
+#window {
+    background-color: #222222;
+    border: 0px;
+    transparency: "real";
+    width: 550px;
+    x-offset: 0;
+    y-offset: 0;
+    location: center;
+}
+
+#mainbox {
+    border: 0;
+    padding: 0px;
+    children: [inputbar,listview ];
+    spacing: 0px;
+    padding: 0px;
+}
+
+#message {
+    border: 2px 0px 0px;
+    border-color: #aec795;
+    padding: 0px;
+}
+
+#textbox {
+    text-color: #c7ccd1;
+}
+
+#inputbar {
+    children:   [ textbox-prompt-colon, prompt, entry ];
+    background-color: #95c7ae;
+    text-color: #c7ccd1;
+    expand: false;
+    border: 0px;
+    spacing: 0px;
+}
+
+#textbox-prompt-colon {
+    expand: false;
+    str: "異";
+    font: "JetBrainsMono Nerd Font Mono 14";
+    padding: 7px 15px 10px 15px;
+    background-color: #c7ccd1;
+    text-color: #222222;
+}
+
+#listview {
+    lines: 7;
+    columns: 2;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+    spacing: 5px;
+    padding: 10px 10px 10px 10px;
+}
+
+#element {
+    border: 0;
+    padding: 6px;
+    border-radius: 0px;
+    orientation: horizontal;
+    background-color: #222222;
+    text-color: #c7ccd1;
+}
+
+#element-icon {
+    size: 24px;
+    border: 0px;
+}
+
+#element-text {
+    expand: true;
+    horizontal-align: 0;
+    vertica-align: 0.5;
+    margin: 0px 2.5px 0px 2.5px;
+}
+
+#element.selected {
+    background-color: #222222;
+    text-color: #c7ae95;
+}
+
+#entry {
+    spacing: 0;
+    expand: true;
+    horizontal-align: 0;
+    placeholder: "...";
+    placeholder-color: #222222;
+    padding: 12px 10px 10px 10px;
+    margin: 0px 250px 0px 0px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: #c7ccd1;
+    text-color: #222222;
+    blink: true;
+}
+
+#prompt {
+    enabled: true;
+    padding: 12px 10px 10px 10px;
+    text-color: #222222;
+    spacing: 0;
+    background-color: #c7ccd1;
+}

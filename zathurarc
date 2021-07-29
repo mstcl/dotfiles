@@ -1,0 +1,34 @@
+# :.config/zathura/zathurarc
+
+set guioptions ""
+set adjust-open "best-fit"
+set recolor "true"
+set recolor-keephue
+set completion-bg "#222222"
+set completion-fg "#c7ccd1"
+set completion-group-bg "#222222"
+set completion-group-fg "#c7ccd1"
+set completion-highlight-bg "#222222"
+set completion-highlight-fg "#c7ccd1"
+set recolor-lightcolor "#222222"
+set recolor-darkcolor "#c7ccd1"
+set default-bg "#222222"
+set inputbar-bg "#222222"
+set inputbar-fg "#c7ccd1"
+set notification-bg "#222222"
+set notification-fg "#c7ccd1"
+set notification-error-bg "#c7ae95"
+set notification-error-fg "#c7ccd1"
+set notification-warning-bg "#c7ae95"
+set notification-warning-fg "#c7ccd1"
+set statusbar-bg "#222222"
+set statusbar-fg "#c7ccd1"
+set index-bg "#222222"
+set index-fg "#c7ccd1"
+set index-active-bg "#c7ccd1"
+set index-active-fg "#222222"
+set render-loading-bg "#222222"
+set render-loading-fg "#c7ccd1"
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
