@@ -1,5 +1,5 @@
 # :.config/bpytop/themes/bpytop.theme
-theme[main_bg]="#c7ae95"
+theme[main_bg]="#222222"
 
 # Main text color
 theme[main_fg]="#c7ccd1"
@@ -11,7 +11,7 @@ theme[title]="#c7ae95"
 theme[hi_fg]="#aec795"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#c7ccd1"
+theme[selected_bg]="#272727"
 
 # Foreground color of selected item in processes box
 theme[selected_fg]="#c7ccd1"

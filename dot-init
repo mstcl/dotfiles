@@ -25,12 +25,20 @@ function get_dest {
     read -r line<$1
     echo $line | cut -d: -f2
 }
+function get_dest_alt {
+    echo $(sed -n '2p'<$1) | cut -d: -f2
+}
 
 for FILE in $DOT_DIR/*
 do
     if [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push" ] && [ "${FILE}" != "$DOT_DIR/dot-init" ]
     then
-        DEST="$HOME/$(get_dest "$FILE")"
+        if [[ "${FILE}" == "$DOT_DIR"/fontconfig* ]]
+        then
+            DEST="$HOME/$(get_dest_alt "$FILE")"
+        else
+            DEST="$HOME/$(get_dest "$FILE")"
+        fi
         echo -e "${LIGHTGRAY}-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-${NOCOLOR}"
         echo -e "${BLUE}[SOURCE] ${LIGHTBLUE}$FILE${NOCOLOR}"
         echo -e "${CYAN}[DESTINATION] ${LIGHTCYAN}$DEST${NOCOLOR}"

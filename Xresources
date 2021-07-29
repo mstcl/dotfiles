@@ -1,6 +1,4 @@
 ! :.Xresources
-! vi:syntax=xdefaults
-
 ! X colors.
 *foreground:        #c7ccd1
 *background:        #222222
