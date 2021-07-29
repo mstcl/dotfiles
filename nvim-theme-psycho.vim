@@ -1,5 +1,4 @@
 " :.config/nvim/colors/psycho.vim
-
 " Default GUI Colours
 let s:foreground = "c7ccd1"
 let s:background = "222222"
