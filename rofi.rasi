@@ -1,0 +1,13 @@
+/* :.config/rofi/config.rasi
+*/
+configuration {
+    theme: "rofi-theme.rasi";
+    modi: "window,run,drun";
+    show-icons: true;
+    icon-theme: "Fluent-dark";
+    location: 0;
+    hide-scrollbar: true;
+    font: "JetBrainsMono Nerd Font Mono 10";
+    disable-history: false;
+    window-format: " {w}   {c}   {t}";
+}
