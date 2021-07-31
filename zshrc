@@ -54,8 +54,25 @@ antigen theme zhann
 antigen apply
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+source /home/lckdscl/.config/broot/launcher/bash/br
 
 ###### ENVIRONMENTAL VARIABLES #####
+export VIMINIT='source "$XDG_CONFIG_HOME/nvim/init.vim"'
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export ENABLE_VKBASALT=1
+export MANGOHUD=1
+export HISTFILE="$XDG_DATA_HOME"/bash/history
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export IPFS_PATH="$XDG_DATA_HOME"/ipfs
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export CONDARC="$XDG_CONFIG_HOME"/conda/condarc
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
 export TERMINAL="/usr/bin/kitty"
 export ZSH="/home/lckdscl/.oh-my-zsh"
@@ -83,6 +100,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 
 ###### ALIAS ######
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias condact="conda activate"
 alias gnomesettings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias lc='colorls --gs -l -a --sd'
@@ -112,14 +130,14 @@ alias rmv='trash-put'
 ###### CONDA ######
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lckdscl/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/lckdscl/.local/share/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/lckdscl/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lckdscl/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/lckdscl/.local/share/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lckdscl/.local/share/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/lckdscl/miniconda3/bin:$PATH"
+        export PATH="/home/lckdscl/.local/share/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -132,3 +150,5 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
+
+

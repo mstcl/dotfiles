@@ -1,5 +1,5 @@
 ! :.Xmodmap
-keycode 108 = Mode_switch
+keycode 66 = Mode_switch
 keysym h = h H Left
 keysym l = l L Right
 keysym k = k K Up
@@ -10,3 +10,5 @@ keysym o = o O End
 keysym p = p P Next
 keysym bracketright = bracketright braceright Delete
 keysym equal = equal plus Caps_Lock
+
+keycode 135 = Super_R
