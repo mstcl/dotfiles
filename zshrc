@@ -39,11 +39,11 @@ antigen bundles <<EOBUNDLES
     copydir
     fancy-ctrl-z
     colored-man-pages
-    zsh_reload
     themes
     sudo
     autojump
     command-not-found
+    aubreypwd/zsh-plugin-reload@1.0.0
     Aloxaf/fzf-tab
     hlissner/zsh-autopair
     zsh-users/zsh-syntax-highlighting
@@ -57,30 +57,8 @@ source /usr/share/fzf/key-bindings.zsh
 source /home/lckdscl/.config/broot/launcher/bash/br
 
 ###### ENVIRONMENTAL VARIABLES #####
-export VIMINIT='source "$XDG_CONFIG_HOME/nvim/init.vim"'
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export ENABLE_VKBASALT=1
-export MANGOHUD=1
-export HISTFILE="$XDG_DATA_HOME"/bash/history
-export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
-export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
-export IPFS_PATH="$XDG_DATA_HOME"/ipfs
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
-export XDG_CONFIG_HOME="$HOME"/.config
-export XDG_CACHE_HOME="$HOME"/.cache
-export XDG_DATA_HOME="$HOME"/.local/share
-export CONDARC="$XDG_CONFIG_HOME"/conda/condarc
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
-export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
-export TERMINAL="/usr/bin/kitty"
-export ZSH="/home/lckdscl/.oh-my-zsh"
-export UPDATE_ZSH_DAYS=5
-export EDITOR=nvim
-export PATH="$HOME/scripts/bin:$HOME/.local/bin:$HOME/.local/share/applications:$HOME/.local/share/hydroxide:$HOME/.cargo/bin:$PATH"
-export TESSDATA_PREFIX="/usr/share/tessdata"
-export QT_QPA_PLATFORMTHEME=qt5ct
+export PATH="$HOME/scripts/bin:$PATH"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir=/home/lckdscl/.wine/drive_c --ignore-dir=/home/lckdscl/.local/share/Steam --ignore-dir=/home/lckdscl/.steam --ignore="dosdevices" -g ""'
 export FZF_DEFAULT_OPTS="
     --color fg:-1,bg:-1,hl:1,fg+:-1,bg+:237,hl+:9
@@ -97,7 +75,6 @@ export FZF_CTRL_R_OPTS="
     --border"
 export XCURSOR_THEME=Bibata-Modern-Classic
 export MANPATH="/usr/local/man:$MANPATH"
-export LANG=en_US.UTF-8
 
 ###### ALIAS ######
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
@@ -150,5 +127,3 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
-
-
