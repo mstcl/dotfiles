@@ -56,7 +56,7 @@ call plug#end()
 
 "---GENERAL AUTOCOMMANDS---
 autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sh | set filetype=sh | endif
-autocmd BufNewFile,BufReadPost *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough
+autocmd BufNewFile,BufReadPost *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
 autocmd BufReadPost *.rasi set filetype=css
 function! ShowTrailingWhitespace()
     if &filetype == 'dashboard'
@@ -117,7 +117,6 @@ let maplocalleader = ",.."
 nnoremap <C-j> :m+<CR>
 nnoremap <C-k> :m-<CR>
 nnoremap <space> :
-inoremap <Leader>z <esc>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <leader>sv :source $MYVIMRC<CR>

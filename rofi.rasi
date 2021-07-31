@@ -3,7 +3,8 @@
 configuration {
     theme: "rofi-theme.rasi";
     modi: "window,run,drun";
-    show-icons: true;
+    columns: 1;
+    show-icons: false;
     icon-theme: "Fluent-dark";
     location: 0;
     hide-scrollbar: true;
