@@ -26,9 +26,9 @@ let g:airline#themes#gotcha#palette.accents = {
     \ 'red': [ '#c7ae95', '', s:term_red, 0 ]
         \ }
 
-let s:N1 = [ '#222222', '#95c7ae', s:term_black, s:term_green ]
+let s:N1 = [ '#222222', '#94c5ad', s:term_black, s:term_green ]
 let s:N2 = [ '#c7ccd1', '#272727', s:term_white, s:term_grey ]
-let s:N3 = [ '#95c7ae', '#222222', s:term_green, '' ]
+let s:N3 = [ '#94c5ad', '#222222', s:term_green, '' ]
 let g:airline#themes#gotcha#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
 let group = airline#themes#get_highlight('vimCommand')

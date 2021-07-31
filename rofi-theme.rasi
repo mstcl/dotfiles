@@ -41,7 +41,7 @@
 
 #inputbar {
     children:   [ textbox-prompt-colon, prompt, entry ];
-    background-color: #95c7ae;
+    background-color: #94c5ad;
     text-color: #c7ccd1;
     expand: false;
     border: 0px;

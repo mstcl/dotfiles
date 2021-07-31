@@ -1,6 +1,7 @@
 # :.zshenv
-
 ###### ENVIRONMENTAL VARIABLES #####
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export ZDOTDIR="$HOME"/.config/zsh
 export LANG=en_GB.UTF-8
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
@@ -14,8 +15,11 @@ export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export CONDARC="$XDG_CONFIG_HOME"/conda/condarc
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
-export HISTFILE="$XDG_DATA_HOME"/bash/history
+export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export EDITOR=nvim
+export XCURSOR_THEME=Bibata-Modern-Classic
 export TERMINAL="/usr/bin/kitty"
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export ADOTDIR="$XDG_DATA_HOME"/antigen
