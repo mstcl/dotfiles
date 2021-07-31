@@ -1,4 +1,4 @@
-! :.Xresources
+! :.config/X11/Xresources
 ! X colors.
 *foreground:        #c7ccd1
 *background:        #222222
@@ -22,8 +22,8 @@ URxvt*borderColor:  [100]#222222
 *color0:  #222222
 *.color1: #c7ae95
 *color1:  #c7ae95
-*.color2: #95c7ae
-*color2:  #95c7ae
+*.color2: #94c5ad
+*color2:  #94c5ad
 *.color3: #aec795
 *color3:  #aec795
 *.color4: #ae95c7
@@ -66,3 +66,4 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
 
 Xcursor.theme: Bibata-Modern-Classic
+Xcursor.size: 22

@@ -1,4 +1,4 @@
-# :.zshrc
+# :.config/zsh/.zshrc
 #+----------------------------+
 #|            _               |
 #|    _______| |__  _ __ ___  |
@@ -54,11 +54,12 @@ antigen theme zhann
 antigen apply
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source /home/lckdscl/.config/broot/launcher/bash/br
+
 
 ###### ENVIRONMENTAL VARIABLES #####
+export ADOTDIR="$XDG_DATA_HOME"/antigen
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
-export PATH="$HOME/scripts/bin:$PATH"
+export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir=/home/lckdscl/.wine/drive_c --ignore-dir=/home/lckdscl/.local/share/Steam --ignore-dir=/home/lckdscl/.steam --ignore="dosdevices" -g ""'
 export FZF_DEFAULT_OPTS="
     --color fg:-1,bg:-1,hl:1,fg+:-1,bg+:237,hl+:9
@@ -73,27 +74,22 @@ export FZF_CTRL_R_OPTS="
     --height 40%
     --layout=reverse
     --border"
-export XCURSOR_THEME=Bibata-Modern-Classic
 export MANPATH="/usr/local/man:$MANPATH"
 
 ###### ALIAS ######
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias condact="conda activate"
 alias gnomesettings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
-alias lc='colorls --gs -l -a --sd'
+alias lc='colorls --gs -l -o --sd'
+alias la='colorls --gs -l -o -a --sd'
 alias fetch='neofetch --backend ascii --source ~/scripts/ascii/cactus'
-# alias protonmail='hydroxide serve &'
-# alias todo='cat ~/scripts/todo | cowsay | lolcat'
-# alias wally='bash ~/scripts/wal/changewal > /dev/null 2>&1'
 alias polylaunch='bash ~/scripts/polybar/launch.sh'
 alias zshconf='nvim ~/dotfiles/zshrc'
 alias i3conf='nvim ~/dotfiles/i3-config.conf'
 alias kittyconf='nvim ~/dotfiles/kitty.conf'
 alias vimconf='nvim ~/dotfiles/nvim-init.vim'
 alias polyconf='nvim ~/scripts/polybar/bar'
-# alias top='sudo -E wal-vtop > /dev/null 2>&1 && vtop --theme wal'
-# alias media='sudo mount /dev/sda2 /media'
-# alias ipfslaunch='bash ~/scripts/web/ipfs &'
 alias fv='nvim $(fzf --height 40%)'
 alias tilewall='feh --bg-tile ~/.config/wpg/.current'
 alias :q='exit'
