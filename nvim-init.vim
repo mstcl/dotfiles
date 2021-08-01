@@ -37,7 +37,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'michal-h21/vim-zettel'
     Plug 'goerz/jupytext.vim'
     Plug 'vim-airline/vim-airline'
-    "Plug 'mhinz/vim-startify'
     Plug 'tpope/vim-fugitive'
     Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -107,7 +106,7 @@ set spell spelllang=en_gb
 set nospell
 set encoding=utf-8
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
-set list
+set nolist
 set listchars=tab:›\ ,eol:¬
 set completeopt=menuone,noselect
 
@@ -130,8 +129,9 @@ nnoremap <Leader>rr :registers<CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <Leader>sc :set conceallevel=0<CR>
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+nnoremap <Leader>sco :set conceallevel=0<CR>
+nnoremap <Leader>sci :set conceallevel=2<CR>
+nnoremap pp p
 nnoremap pa O<esc>"0p
 nnoremap pb o<esc>"0p
 
@@ -258,13 +258,13 @@ let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]
 inoremap <c-x><c-k> <c-x><c-k>
 
 "---INDENTLINE---
-let g:indentLine_fileTypeExclude = ['startify', 'nerdtree', 'NvimTree', 'man', 'Scratch', 'help', 'vimwiki', 'dashboard']
-let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_fileTypeExclude = ['FZF', 'Terminal', 'startify', 'nerdtree', 'NvimTree', 'man', 'Scratch', 'help', 'vimwiki', 'dashboard']
+let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_char = '│'
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceChar = '·'
 
-nnoremap <F9> :LeadingSpaceToggle<CR>
+nnoremap <F9> :LeadingSpaceToggle<CR> :set list!<CR>
 
 "---STARTIFY---
 let g:startify_custom_header =
@@ -355,7 +355,7 @@ nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>fc :Commands<CR>
 nnoremap <Leader>fw :Windows<CR>
 nnoremap <leader>fm :Maps<CR>
-nnoremap <leader>fa :Ag<CR>
+nnoremap <leader>fa :Rg<CR>
 nnoremap <leader>fp :Marks<CR>
 nnoremap <leader>tc :Colors<CR>
 
@@ -466,7 +466,7 @@ let g:airline_filetype_overrides = {
 function! MyLineNumber()
     return substitute(line('.'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g'). '/'.
         \    substitute(line('$'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g')
-endfunction 
+endfunction
 call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bold'})
 let g:airline_section_z = airline#section#create(['%3p%% |  ', 'linenr', ' | %3v'])
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
