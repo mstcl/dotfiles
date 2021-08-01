@@ -50,7 +50,9 @@ antigen bundles <<EOBUNDLES
     zsh-users/zsh-autosuggestions
     gretzky/auto-color-ls
 EOBUNDLES
-antigen theme zhann
+#antigen theme zhann
+#antigen theme jackharrisonsherlock/common
+antigen theme gozilla
 antigen apply
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
