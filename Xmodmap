@@ -1,4 +1,5 @@
 ! :.Xmodmap
+clear Lock
 keycode 66 = Mode_switch
 keysym h = h H Left
 keysym l = l L Right
@@ -11,4 +12,17 @@ keysym p = p P Next
 keysym bracketright = bracketright braceright Delete
 keysym equal = equal plus Caps_Lock
 
-keycode 135 = Super_R
+clear mod1
+clear mod2
+clear mod3
+clear mod4
+clear mod5
+
+keycode 135 = Hyper_L
+keycode 108 = Alt_R
+
+add mod1 = Alt_L Alt_R
+!add mod2 = Meta_L Meta_R
+add mod3 = Hyper_L
+add mod4 = Super_L Super_R
+!add mod5 = Num_Lock
