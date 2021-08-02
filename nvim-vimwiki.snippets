@@ -44,9 +44,9 @@ snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
-endsnippet
+#snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+#\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+#endsnippet
 
 priority 100
 snippet "([a-zA-Z])bar" "bar" riA

@@ -54,7 +54,6 @@ antigen apply
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
-
 ###### ENVIRONMENTAL VARIABLES #####
 export MANPATH="/usr/share/man"
 export SCRIPTS="$HOME"/scripts
@@ -76,7 +75,7 @@ export FZF_DEFAULT_OPTS="
     --multi --bind 'ctrl-a:select-all'
     --border=sharp
     --preview-window=right,hidden,wrap,border-none
-    --padding 3%,0%,3%,0%
+    --padding 2%,0%,2%,0%
     --bind '?:toggle-preview'
     --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 export FZF_CTRL_R_OPTS="
@@ -119,18 +118,20 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias rmv='trash-put'
 
-alias paupg='paru -Syu'
-alias pasu='paru -Syu --noconfirm'
-alias pachk='paru -Ps'
-alias painl='paru -U'
-alias paidl='paru -Qi'
-alias paidr='paru -Si'
-alias pase='paru -Ss'
-alias pafi='paru -Qs'
-alias palst='paru -Qe'
-alias paindep='paru -S --asdeps'
-alias pamir='paru -Syy'
-alias paupd="paru -Sy"
+alias pu='paru -Syu'
+alias pusu='paru -Syu --noconfirm'
+alias pfetch='paru -Ps'
+alias pcom='paru -Gc'
+alias pnews='paru -Pw'
+alias pid='paru -U'
+alias pir='paru -S'
+alias pnd='paru -Qi'
+alias pnr='paru -Si'
+alias pfd='paru -Ss'
+alias pfr='paru -Qs'
+alias pls='paru -Q'
+alias plsa='paru -Qe'
+alias porf='paru -Qdt'
 
 ###### CONDA ######
 # >>> conda initialize >>>
@@ -157,11 +158,11 @@ function j {
     cd "$(autojump -s | sort -k1gr | awk '$1 ~ /[0-9]:/ && $2 ~ /^\// { for (i=2; i<=NF; i++) { print $(i) } }' |  fzf --height 40% --reverse --inline-info)"
 }
 
-function pains {
+function ins {
     paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
-function parem() {
+function rem() {
     paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
@@ -187,8 +188,10 @@ function drmi() {
 }
 
 function cheat() {
-    if [ $# -gt 0 ]; then
-        fzf_args="-q $*"
+    if [[ "$#" -ne 0 ]]; then
+        tldr $@
+        return
+        #fzf_args="-q $*"
     fi
-    tldr --list | fzf $fzf_args --preview-window nohidden --preview "echo {} | xargs tldr --color always" | xargs -r tldr
+    tldr --list | fzf -q "$1" --preview-window nohidden --preview "echo {} | xargs tldr --color always" | xargs -r tldr
 }
