@@ -1,18 +1,18 @@
 " :.config/nvim/colors/psycho.vim
 " Default GUI Colours
-let s:foreground = "c7ccd1"
-let s:background = "222222"
+let s:foreground = "b9b9b9"
+let s:background = "101010"
 let s:selection = "525252"
 let s:line = "525252"
 let s:comment = "7c7c7c"
-let s:red = "c7ae95"
-let s:orange = "94c5ad"
-let s:yellow = "aec795"
-let s:green = "ae95c7"
-let s:aqua = "c795ae"
-let s:blue = "95aec7"
-let s:purple = "c7ccd1"
-let s:window = "272727"
+let s:red = "7c7c7c"
+let s:orange = "8e8e8e"
+let s:yellow = "a0a0a0"
+let s:green = "686868"
+let s:aqua = "747474"
+let s:blue = "868686"
+let s:purple = "b9b9b9"
+let s:window = "151515"
 
 hi clear
 syntax reset

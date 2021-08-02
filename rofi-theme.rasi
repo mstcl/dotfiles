@@ -2,7 +2,7 @@
  */
 
 * {
-    background-color: #222222;
+    background-color: #101010;
     spacing: 2;
     show-icons: false;
     icon-theme: "Fluent-dark";
@@ -12,7 +12,7 @@
 }
 
 #window {
-    background-color: #222222;
+    background-color: #101010;
     border: 0px;
     transparency: "real";
     width: 450px;
@@ -31,18 +31,18 @@
 
 #message {
     border: 2px 0px 0px;
-    border-color: #aec795;
+    border-color: #b9b9b9;
     padding: 0px;
 }
 
 #textbox {
-    text-color: #c7ccd1;
+    text-color: #b9b9b9;
 }
 
 #inputbar {
     children:   [ textbox-prompt-colon, prompt, entry ];
-    background-color: #94c5ad;
-    text-color: #c7ccd1;
+    background-color: #b9b9b9;
+    text-color: #b9b9b9;
     expand: false;
     border: 0px;
     spacing: 0px;
@@ -53,8 +53,8 @@
     str: "異";
     font: "JetBrainsMono Nerd Font Mono 14";
     padding: 7px 15px 10px 15px;
-    background-color: #c7ccd1;
-    text-color: #222222;
+    background-color: #b9b9b9;
+    text-color: #101010;
 }
 
 #listview {
@@ -72,8 +72,8 @@
     padding: 6px;
     border-radius: 0px;
     orientation: horizontal;
-    background-color: #222222;
-    text-color: #c7ccd1;
+    background-color: #101010;
+    text-color: #b9b9b9;
 }
 
 #element-icon {
@@ -89,8 +89,9 @@
 }
 
 #element.selected {
-    background-color: #222222;
-    text-color: #c7ae95;
+    background-color: #151515;
+    border-radius: 2px;
+    text-color: #7c7c7c;
 }
 
 #entry {
@@ -98,19 +99,19 @@
     expand: true;
     horizontal-align: 0;
     placeholder: "...";
-    placeholder-color: #222222;
+    placeholder-color: #101010;
     padding: 12px 10px 10px 10px;
     margin: 0px 250px 0px 0px;
-    border-radius: 0px 50px 50px 0px;
-    background-color: #c7ccd1;
-    text-color: #222222;
+    border-radius: 0px 0px 0px 0px;
+    background-color: #b9b9b9;
+    text-color: #101010;
     blink: true;
 }
 
 #prompt {
     enabled: true;
     padding: 12px 10px 10px 10px;
-    text-color: #222222;
+    text-color: #101010;
     spacing: 0;
-    background-color: #c7ccd1;
+    background-color: #b9b9b9;
 }
