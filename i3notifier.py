@@ -70,6 +70,7 @@ def Discord(title, icon=None):
 
 
 config_list = [
+    ChromeAppFactory("Matrix", "fluffychat.im"),
     ChromeAppFactory("Discord", "discord.com"),
     ChromeAppFactory("WhatsApp", "web.whatsapp.com"),
     Spotify("Spotify"),

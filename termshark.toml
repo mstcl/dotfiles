@@ -1,0 +1,9 @@
+# :.config/termshark/termshark.toml
+
+[main]
+  color-tsharks = ["/usr/bin/tshark"]
+  dark-mode = true
+  last-used-tshark = "/usr/bin/tshark"
+  packet-colors = false
+  theme-truecolor = "wal"
+  validated-tsharks = ["/usr/bin/tshark"]
