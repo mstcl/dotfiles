@@ -10,7 +10,6 @@
 
 
 ###### ZSH CONFIG #######
-ZSH_THEME="zhann"
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_UPDATE="false"
@@ -25,7 +24,7 @@ HIST_STAMPS="mm/dd/yyyy"
 ###### SAUCE #####
 source /usr/share/zsh/share/antigen.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /home/lckdscl/.config/broot/launcher/bash/br
+#source /home/lckdscl/.config/broot/launcher/bash/br
 
 ###### PLUGINS ######
 antigen use oh-my-zsh
@@ -43,18 +42,68 @@ antigen bundles <<EOBUNDLES
     aubreypwd/zsh-plugin-reload@1.0.0
     Aloxaf/fzf-tab
     hlissner/zsh-autopair
-    zsh-users/zsh-syntax-highlighting
     zsh-users/zsh-autosuggestions
+    zsh-users/zsh-syntax-highlighting
+    #jeffreytse/zsh-vi-mode
     gretzky/auto-color-ls
 EOBUNDLES
 #antigen theme zhann
 #antigen theme jackharrisonsherlock/common
-antigen theme gozilla
+#antigen theme gozilla
+#antigen theme eendroroy/alien-minimal alien-minimal
+antigen theme spaceship-prompt/spaceship-prompt
 antigen apply
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
+###### SPACESHIP PROMPT ######
+SPACESHIP_PROMPT_ORDER=(
+    user
+    dir
+    host
+    char
+)
+SPACESHIP_RPROMPT_ORDER=(
+    conda
+    git
+    hg
+    package
+    gradle
+    maven
+    node
+    ruby
+    elixir
+    xcode
+    swift
+    golang
+    php
+    rust
+    haskell
+    julia
+    docker
+    aws
+    gcloud
+    venv
+    pyenv
+    dotnet
+    ember
+    kubectl
+    terraform
+    jobs
+)
+
+SPACESHIP_TIME_SHOW=false
+SPACESHIP_CHAR_SYMBOL=""
+SPACESHIP_CHAR_PREFIX=""
+SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_CHAR_SYMBOL_SECONDARY=" "
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
+
 ###### ENVIRONMENTAL VARIABLES #####
+export CONF="$XDG_CONFIG_HOME"
+export DOTS="$HOME"/dotfiles
+export TRASH="$XDG_DATA_HOME"/Trash/files
 export MANPATH="/usr/share/man"
 export SCRIPTS="$HOME"/scripts
 export ADOTDIR="$XDG_DATA_HOME"/antigen
@@ -75,13 +124,13 @@ export FZF_DEFAULT_OPTS="
     --multi --bind 'ctrl-a:select-all'
     --border=sharp
     --preview-window=right,hidden,wrap,border-none
-    --padding 2%,0%,2%,0%
+    --padding 0%,0%,0%,0%
     --bind '?:toggle-preview'
     --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 export FZF_CTRL_R_OPTS="
     --height 90%
     --margin 5%
-    --padding 3%,0%,3%,0%
+    --padding 0%,0%,0%,0%
     --info=hidden
     --preview-window hidden"
 export FZF_CTRL_T_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
@@ -91,14 +140,19 @@ export FZF_CTRL_T_OPTS="
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 ###### ALIAS ######
-eval $(thefuck --alias)
-
+alias storage='lsblk -ao NAME,FSTYPE,FSSIZE,FSUSED,FSUSE%'
+alias pr='protonvpn'
+alias k='kill -9'
+alias view='feh -Z -. -X -g 1280x720'
+alias .!='cd $HOME'
+alias get-mirror='systemctl start reflector'
+alias q='exit'
 alias nv='nvim'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias condact="conda activate"
-alias gnomesettings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
-alias l='colorls --gs -l -o --sd'
+alias fsvg="feh --conversion-timeout 4"
+alias l='colorls --gs --sd'
 alias lt='colorls --sd --tree=2 --gs'
 alias la='colorls --gs -l -o -a --sd'
 alias fetch='neofetch --backend ascii --source ~/scripts/ascii/cactus'
@@ -110,16 +164,14 @@ alias vimconf='nvim ~/dotfiles/nvim-init.vim'
 alias polyconf='nvim ~/scripts/polybar/bar'
 alias fv='nvim $(fzf --height 40%)'
 alias tilewall='feh --bg-tile ~/.config/wpg/.current'
-alias :q='exit'
-alias :Q=':q'
 alias sunv='sudo -E nvim $1'
 alias sue='sudo -E $1'
 alias mv='mv -i'
 alias rm='rm -i'
 alias rmv='trash-put'
-
-alias pu='paru -Syu'
-alias pusu='paru -Syu --noconfirm'
+alias wth='_weather() { curl -s wttr.in/“${1:-bristol}” | head -n 7 ;}; _weather'
+alias pu='paru -Syu --removemake'
+alias pusu='paru -Syu --noconfirm --removemake'
 alias pfetch='paru -Ps'
 alias pcom='paru -Gc'
 alias pnews='paru -Pw'
@@ -132,6 +184,7 @@ alias pfr='paru -Qs'
 alias pls='paru -Q'
 alias plsa='paru -Qe'
 alias porf='paru -Qdt'
+alias pcc='paru -Scd'
 
 ###### CONDA ######
 # >>> conda initialize >>>
@@ -149,7 +202,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-###### FZF ######
+###### FUNCTIONS ######
 function j {
     if [[ "$#" -ne 0 ]]; then
         cd $(autojump $@)
@@ -159,11 +212,11 @@ function j {
 }
 
 function ins {
-    paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+    paru -Slq | fzf --multi --preview-window nohidden --preview 'paru -Si {1}' | xargs -ro paru -S --removemake --cleanafter
 }
 
 function rem() {
-    paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+    paru -Qq | fzf -q "$1" -m --preview-window nohidden --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
 function da() {
@@ -195,3 +248,19 @@ function cheat() {
     fi
     tldr --list | fzf -q "$1" --preview-window nohidden --preview "echo {} | xargs tldr --color always" | xargs -r tldr
 }
+
+function jd() {
+    find -L -path "./.local/share/Steam" -prune -o -path "./.local/share/lutris/runners" -prune -o -path "./.local/share/wineprefixes" -prune -o -path "./.steam" -prune -o -name .git -prune -o -name .hg -prune -o -name .svn -prune -o -type d -a -not -print 2> /dev/null | sed 's@^\./@@' | fzf
+}
+
+function vm {
+    if [[ "$#" -ne 0 ]]; then
+        vifm $@
+        return
+    fi
+    vifm $(jd)
+}
+
+###### VI MODE ######
+zvm_after_init_commands+=('source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh')
+

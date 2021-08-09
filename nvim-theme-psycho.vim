@@ -1,17 +1,18 @@
 " :.config/nvim/colors/psycho.vim
 " Default GUI Colours
-let s:foreground = "b9b9b9"
+" vim:ft=vim:syntax=vim
+let s:foreground = "f6f6f6"
 let s:background = "101010"
-let s:selection = "525252"
-let s:line = "525252"
+let s:selection = "252525"
+let s:line = "252525"
 let s:comment = "7c7c7c"
-let s:red = "7c7c7c"
-let s:orange = "8e8e8e"
-let s:yellow = "a0a0a0"
-let s:green = "686868"
-let s:aqua = "747474"
-let s:blue = "868686"
-let s:purple = "b9b9b9"
+let s:red = "b67262"
+let s:orange = "8a9273"
+let s:yellow = "c0a474"
+let s:green = "78859e"
+let s:aqua = "9b859d"
+let s:blue = "a8d2db"
+let s:purple = "f6f6f6"
 let s:window = "151515"
 
 hi clear
@@ -244,12 +245,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("MoreMsg", s:green, "", "")
 	call <SID>X("Question", s:green, "", "")
 	call <SID>X("WarningMsg", s:red, "", "")
-	call <SID>X("MatchParen", "", s:selection, "")
-	call <SID>X("Folded", s:comment, s:background, "")
-	call <SID>X("FoldColumn", "", s:background, "")
+	call <SID>X("MatchParen", "", s:selection, "bold")
+	call <SID>X("Folded", s:comment, s:selection, "")
+	call <SID>X("FoldColumn", s:comment, s:selection, "")
 	if version >= 700
-		call <SID>X("CursorLine", "", s:line, "none")
-		call <SID>X("CursorColumn", "", s:line, "none")
+		call <SID>X("CursorLine", "", s:window, "none")
+        call <SID>X("CursorLineNr", s:red, s:background, "none")
+		call <SID>X("CursorColumn", "", s:window, "none")
 		call <SID>X("PMenu", s:foreground, s:selection, "none")
 		call <SID>X("PMenuSel", s:foreground, s:selection, "reverse")
 		call <SID>X("SignColumn", "", s:background, "none")
@@ -259,10 +261,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	end
 
 	" Standard Highlighting
-	call <SID>X("Comment", s:comment, "", "")
-	call <SID>X("Todo", s:comment, s:background, "")
-	call <SID>X("Title", s:comment, "", "")
+    call <SID>X("Cursor", "", s:foreground, "none")
+    call <SID>X("Comment", s:comment, "", "italic")
+	call <SID>X("Todo", s:comment, s:background, "italic,bold")
+	call <SID>X("Title", s:comment, "", "underline")
 	call <SID>X("Identifier", s:red, "", "none")
+    call <SID>X("Underlined", s:aqua, "", "underline")
 	call <SID>X("Statement", s:foreground, "", "")
 	call <SID>X("Conditional", s:foreground, "", "")
 	call <SID>X("Repeat", s:foreground, "", "")
@@ -274,7 +278,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Special", s:foreground, "", "")
 	call <SID>X("PreProc", s:purple, "", "")
 	call <SID>X("Operator", s:aqua, "", "none")
-	call <SID>X("Type", s:blue, "", "none")
+	call <SID>X("Type", s:blue, "", "italic")
 	call <SID>X("Define", s:purple, "", "none")
 	call <SID>X("Include", s:blue, "", "")
 	"call <SID>X("Ignore", "666666", "", "")

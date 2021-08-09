@@ -33,7 +33,7 @@ for FILE in $DOT_DIR/*
 do
     if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push" ] && [ "${FILE}" != "$DOT_DIR/dot-init" ]
     then
-        if [[ "${FILE}" == "$DOT_DIR"/fontconfig* ]]
+        if [[ "${FILE}" == "$DOT_DIR"/fontconfig* ]] || [[ "${FILE}" == "$DOT_DIR"/*.tmTheme ]]
         then
             DEST="$HOME/$(get_dest_alt "$FILE")"
         else

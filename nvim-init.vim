@@ -10,7 +10,10 @@
 
 "---PLUGINS---
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+    Plug 'rmagatti/auto-session'
+    Plug 'folke/which-key.nvim'
     Plug 'Konfekt/FastFold'
+    Plug 'lambdalisue/suda.vim'
     Plug 'glepnir/dashboard-nvim'
     Plug 'gauteh/vim-cppman'
     Plug 'neovim/nvim-lspconfig'
@@ -26,6 +29,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'jupyter-vim/jupyter-vim'
     Plug 'yggdroot/indentline'
     Plug 'vimwiki/vimwiki'
+    " Plug 'simrat39/symbols-outline.nvim'
+    Plug 'b3nj5m1n/kommentary'
     Plug 'preservim/tagbar'
     Plug 'junegunn/goyo.vim'
     Plug 'vim-python/python-syntax'
@@ -36,6 +41,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'michal-h21/vim-zettel'
     Plug 'goerz/jupytext.vim'
+    " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-fugitive'
     Plug 'ryanoasis/vim-devicons'
@@ -44,10 +50,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'dylanaraps/wal.vim'
     Plug 'machakann/vim-highlightedyank'
+    Plug 'vifm/vifm.vim'
     Plug 'morhetz/gruvbox'
     Plug 'flazz/vim-colorschemes'
     Plug 'deviantfero/wpgtk.vim'
-    Plug 'vim-airline/vim-airline-themes'
+    " Plug 'vim-airline/vim-airline-themes'
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'hrsh7th/nvim-compe'
     Plug 'zhimsel/vim-stay'
@@ -65,9 +72,7 @@ function! ShowTrailingWhitespace()
     match RedundantSpaces /\s\+$/
 endfunction
 autocmd BufNewFile,BufWritePre,BufReadPost * call ShowTrailingWhitespace()
-if has("autocmd")
-    autocmd! BufWritePost .vimrc,init.vim nested so $MYVIMRC
-endif
+autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | echom "Reloaded $NVIMRC"
 autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
 autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
 
@@ -98,16 +103,19 @@ set incsearch
 set smartcase
 set complete+=kspell
 set scrolloff=1
+set clipboard=unnamedplus
 set sidescrolloff=5
+set cursorline
 set history=1000
 set wrapmargin=0
 set textwidth=0
 set spell spelllang=en_gb
+set timeoutlen=500
 set nospell
 set encoding=utf-8
-set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
+set fillchars=eob:\ 
 set nolist
-set listchars=tab:›\ ,eol:¬
+set listchars=tab:›_,eol:¬,trail:·
 set completeopt=menuone,noselect
 
 "---GENERAL BINDINGS---
@@ -115,16 +123,14 @@ let mapleader = ",."
 let maplocalleader = ",.."
 nnoremap <C-j> :m+<CR>
 nnoremap <C-k> :m-<CR>
+nnoremap <F6> :set list!<CR>
 nnoremap <space> :
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>sh :setlocal spell! spelllang=en_gb<CR>
-nnoremap <Leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <Leader>to :tabe <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <Leader>sp :split <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <Leader>nn :set invnumber<CR>
-nnoremap <Leader>nt :tabnew<CR>
+nnoremap <Leader>tt :tabnew<CR>
 nnoremap <Leader>rr :registers<CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <C-L> <C-W><C-L>
@@ -132,12 +138,78 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>sco :set conceallevel=0<CR>
 nnoremap <Leader>sci :set conceallevel=2<CR>
 nnoremap pp p
-nnoremap pa O<esc>"0p
-nnoremap pb o<esc>"0p
+nnoremap pa O<esc>p
+nnoremap pb o<esc>p
+nnoremap <Leader>bn :bn<CR>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 "---COLORSCHEME---
 colorscheme psycho
 highlight RedundantSpaces ctermbg=red guibg=red
+"highlight WhichKeyFloat ctermbg=8 ctermfg=8
+
+"---VIFM---
+let g:loaded_netrw = 1
+let g:vifm_replace_netrw=1
+nnoremap <Leader>ee :Vifm<CR>
+nnoremap <Leader>et :TabVifm<CR>
+nnoremap <Leader>esv :VsplitVifm<CR>
+nnoremap <Leader>esh :SplitVifm<CR>
+nnoremap <Leader>ed :DiffVifm<CR>
+
+"---WHICH-KEY--
+lua << EOF
+  require("which-key").setup {
+    plugins = {
+        marks = true,
+        registers = true,
+        spelling = {
+        enabled = true,
+        suggestions = 20,
+        },
+        presets = {
+            operators = true,
+            motions = true,
+            text_objects = true,
+            windows = true,
+            nav = true,
+            z = true,
+            g = true,
+            },
+    },
+    operators = { gc = "Comments" },
+    key_labels = {
+    },
+    icons = {
+        breadcrumb = "»",
+        separator = "➜",
+        group = "+",
+    },
+    window = {
+        border = "none",
+        position = "bottom",
+        margin = { 1, 0, 1, 0 },
+        padding = { 2, 2, 2, 2 },
+    },
+    layout = {
+        height = { min = 4, max = 25 },
+        width = { min = 20, max = 50 },
+        spacing = 3,
+        align = "left",
+    },
+    ignore_missing = false,
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "},
+    show_help = true,
+    triggers = "auto",
+    triggers_blacklist = {
+        i = { "j", "k" },
+        v = { "j", "k" },
+    },
+}
+EOF
 
 "---VIM-STAY---
 set viewoptions=cursor,folds,slash,unix
@@ -200,27 +272,27 @@ EOF
 lua << EOF
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<Leader>ba', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<Leader>bl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<Leader>bd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<Leader>bc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<Leader>dl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<Leader>dq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    buf_set_keymap("n", "<Leader>bf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+local opts = { noremap=true, silent=true }
+buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+buf_set_keymap('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+buf_set_keymap('n', '<Leader>ba', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+buf_set_keymap('n', '<Leader>bl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+buf_set_keymap('n', '<Leader>bd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+buf_set_keymap('n', '<Leader>bc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+buf_set_keymap('n', '<Leader>dl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+buf_set_keymap('n', '<Leader>dq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+buf_set_keymap("n", "<Leader>bf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 local servers = { "clangd", "pyright" }
 for _, lsp in ipairs(servers) do
@@ -233,16 +305,7 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
-"---TREESITTER---
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    ensure_installed= {"python","json","scss","html","cpp","css"},
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = true,
-    },
-}
-EOF
+
 
 "---AUTOPAIRS---
 let g:AutoPairsShortcutFastWrap = '<C-s>'
@@ -261,10 +324,10 @@ inoremap <c-x><c-k> <c-x><c-k>
 let g:indentLine_fileTypeExclude = ['FZF', 'Terminal', 'startify', 'nerdtree', 'NvimTree', 'man', 'Scratch', 'help', 'vimwiki', 'dashboard']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_char = '│'
-let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 let g:indentLine_leadingSpaceChar = '·'
-
-nnoremap <F9> :LeadingSpaceToggle<CR> :set list!<CR>
+autocmd TermOpen * IndentLinesDisable
+nnoremap <F9> :IndentLinesToggle<CR>
 
 "---STARTIFY---
 let g:startify_custom_header =
@@ -301,7 +364,7 @@ nnoremap <Leader>wa :VimwikiGenerateLinks<CR>
 nmap <C-O> <Plug>VimwikiToggleListItem
 inoremap <s-CR> <ESC>:VimwikiReturn 1 5<CR>
 let g:vimwiki_listsyms = '    X'
-let g:vimwiki_listsym_rejected = ' '
+"let g:vimwiki_listsym_rejected = ' '
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_links_header = 'List of pages'
 let g:vimwiki_links_header_level = 2
@@ -397,7 +460,6 @@ let g:rainbow_conf = {
         \'nerdtree': 0,
     \}
 \}
-nnoremap <F6> :RainbowToggle<CR>
 
 "---COLORIZER---
 let g:colorizer_auto_color = 1
@@ -407,6 +469,7 @@ lua require'colorizer'.setup()
 function! s:goyo_enter()
     Limelight
     LeadingSpaceDisable
+    set nolist
     NvimTreeClose
     let b:quitting = 0
     let b:quitting_bang = 0
@@ -422,7 +485,6 @@ function! s:goyo_leave()
         endif
     endif
     Limelight!
-    LeadingSpaceEnable
 endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
@@ -559,3 +621,14 @@ nnoremap <localleader>gn :call vimspector#StepOver()<cr>
 nnoremap <localleader>gi :call vimspector#StepInto()<cr>
 nnoremap <localleader>go :call vimspector#StepOut()<cr>
 nnoremap <localleader>gr :call vimspector#RunToCursor()<cr>
+
+"---TREESITTER---
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+   ensure_installed= {"python","json","scss","html","cpp","css"},
+        highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+        },
+    }
+EOF
