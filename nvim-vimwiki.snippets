@@ -1,6 +1,6 @@
 # :.config/nvim/ultisnips/vimwiki.snippets
 
-snippet mk "Math" wA
+snippet mk "math inline" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
     snip.rv = ' '
@@ -9,14 +9,16 @@ else:
 `$2
 endsnippet
 
-snippet hpl "Hyperlink" iA
+snippet hpl "hyperlink" iA
 [$1]($2)$0
 endsnippet
 
-snippet dm "Math" wA
+snippet dm "math block" wA
+
 $$
 $1
 $$
+
 $0
 endsnippet
 
@@ -40,8 +42,20 @@ snippet td "superscript" iA
 ^{$1}$0
 endsnippet
 
-snippet // "Fraction" iA
+snippet // "fraction" iA
 \\frac{$1}{$2}$0
+endsnippet
+
+snippet ilcd "code inline" iA
+\`#!$1 $2\`$0
+endsnippet
+
+snippet blcd "code block" iA
+
+\`\`\`$1 linenums="$2"
+$3
+\`\`\`
+$0
 endsnippet
 
 #snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
