@@ -18,7 +18,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'gauteh/vim-cppman'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'jiangmiao/auto-pairs'
     Plug 'sirver/ultisnips'
     Plug 'bfrg/vim-cpp-modern'
     Plug 'puremourning/vimspector', {
@@ -36,7 +35,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'vim-python/python-syntax'
     Plug 'tmhedberg/SimpylFold'
     Plug 'junegunn/limelight.vim'
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'michal-h21/vim-zettel'
@@ -89,9 +88,10 @@ set foldmethod=syntax
 set termguicolors
 set linebreak
 set nocompatible
-set nonumber
+set number
 set mouse=a
 set hlsearch
+set relativenumber
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -125,16 +125,12 @@ nnoremap <C-j> :m+<CR>
 nnoremap <C-k> :m-<CR>
 nnoremap <F6> :set list!<CR>
 nnoremap <space> :
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>sh :setlocal spell! spelllang=en_gb<CR>
-nnoremap <Leader>nn :set invnumber<CR>
+nnoremap <Leader>nn :set number!<CR> <bar> :set relativenumber!<CR>
 nnoremap <Leader>tt :tabnew<CR>
 nnoremap <Leader>rr :registers<CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>sco :set conceallevel=0<CR>
 nnoremap <Leader>sci :set conceallevel=2<CR>
 nnoremap pp p
@@ -305,12 +301,29 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
-
-
 "---AUTOPAIRS---
-let g:AutoPairsShortcutFastWrap = '<C-s>'
-autocmd Filetype vimwiki let b:AutoPairs = AutoPairsDefine({'**':'**','*':'*','_':'_','(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`','~~':'~~', '++':'++'})
-autocmd Filetype markdown let b:AutoPairs = AutoPairsDefine({'**':'**','*':'*','_':'_','(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`','~~':'~~'})
+let g:AutoPairsShortcutFastWrap = '<M-e>'
+let g:AutoPairsMapBS = "1"
+let g:AutoPairsShortcutToggle='<M-p>'
+let g:AutoPairsShortcutJump='<M-n>'
+let g:AutoPairsShortcutBackInsert='<M-b>'
+let g:AutopairsMultilineBackspace = "1"
+let g:AutoPairsMultilineClose = 1
+let g:AutoPairs = autopairs#AutoPairsDefine([
+    \{"open": '\w\zs<', "close": '>'},
+    \{"open": "$", "close": "$", "filetype": "tex"},
+    \{"open": '\\left(', 'close': '\right)', "filetype": "tex"},
+    \{"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},
+    \{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'},
+    \{"open": "*", "close": "*", "filetype": ["help"]},
+    \{"open": "*", "close": "*", "filetype": ["vimwiki"]},
+    \{"open": "**", "close": "**", "filetype": ["vimwiki"]},
+    \{"open": "_", "close": "_", "filetype": ["vimwiki"]},
+    \{"open": "~~", "close": "~~", "filetype": ["vimwiki"]},
+    \{"open": "++", "close": "++", "filetype": ["vimwiki"]},
+    \{"open": "|", "close": "|", "filetype": "help"}
+\])
+"let g:AutoPairsFlyMode = "1"
 
 "---ULTISNIPS---
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -385,7 +398,7 @@ nnoremap <F8> :TagbarToggle<CR>
 
 "---VIMZETTEL---
 let g:zettel_format = "%raw_title"
-let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""]]}]
+let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]
 let g:zettel_default_mappings = 0
 augroup filetype_vimwiki
      autocmd!
@@ -396,6 +409,7 @@ augroup filetype_vimwiki
    augroup END
 nnoremap <Leader>zo :ZettelOpen<CR>
 nnoremap <Leader>zb :ZettelBackLinks<CR>
+nnoremap <Leader>zn :ZettelNew
 
 "---FZF.VIM---
 let g:fzf_layout = {'window': 'enew'}

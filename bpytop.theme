@@ -8,16 +8,16 @@ theme[main_fg]="#f6f6f6"
 theme[title]="#b67262"
 
 # Higlight color for keyboard shortcuts
-theme[hi_fg]="#c0a474"
+theme[hi_fg]="#bc8778"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#151515"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#f6f6f6"
+theme[selected_fg]="#8f9cae"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#151515"
+theme[inactive_fg]="#e6e6e6"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
 theme[proc_misc]="#b67262"
