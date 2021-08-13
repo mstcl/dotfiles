@@ -1,0 +1,31 @@
+#!/bin/bash
+method=$1
+theme=$2
+colorscheme=$3
+
+if [ $method == '-c' ]
+then
+    wal -f $theme
+    bash ~/.config/polybar/shades/scripts/pywal.sh
+fi
+
+if [ $method = '-i' ]
+then
+    reTheme ~/wallpapers/$theme
+    bash ~/.config/polybar/shades/scripts/pywal.sh
+    slick-pywal
+fi
+
+if [ $method = '-b' ]
+then
+    reTheme ~/wallpapers/$theme
+    feh --bg-fill ~/wallpapers/$theme &
+    . "$HOME/.cache/wal/colors.sh"
+    bg=`printf "%s\n" "$background"`
+    wal -b $bg -f $colorscheme
+    echo "/home/lckdscl/wallpapers/$theme" > ~/.cache/wal/wal
+    bash ~/.config/polybar/shades/scripts/pywal.sh
+    slick-pywal
+fi
+bash ~/scripts/wal/i3-notifier-pywal
+bash ~/scripts/wal/walthura > ~/.config/zathura/zathurarc &

@@ -1,0 +1,98 @@
+# :.config/kitty/kitty.conf
+#+---------------------------------------------+
+#|  _    _ _   _                           __  |
+#| | | _(_) |_| |_ _   _   ___ ___  _ __  / _| |
+#| | |/ / | __| __| | | | / __/ _ \| '_ \| |_  |
+#| |   <| | |_| |_| |_| || (_| (_) | | | |  _| |
+#| |_|\_\_|\__|\__|\__, (_)___\___/|_| |_|_|   |
+#|                 |___/                       |
+#+---------------------------------------------+
+
+
+# Fonts
+
+font_family {font0}
+font_size {font-size}
+# symbol_map U+100000-U+100363 Untitled1
+
+# Cursor
+
+cursor_shape underline
+cursor_beam_thickness 1.5
+cursor_underline_thickness 1.5
+cursor_blink_interval -1
+
+# Scrollback
+scrollback_lines 2000
+
+# Mouse
+mouse_hide_wait 3.0
+
+# URLs
+url_color {color1}
+url_style curly
+
+# Performance tuning
+sync_to_monitor yes
+
+# Terminal bell
+enable_audio_bell no
+
+# Window layout
+window_padding_width 20
+active_border_color {color2}
+
+inactive_border_color {color8}
+
+bell_border_color {color3}
+
+# Tab bar
+tab_bar_style hidden
+
+# Color scheme
+include kitty-theme.conf
+
+# Advanced
+allow_remote_control yes
+
+# OS specific tweaks
+linux_display_server auto
+
+# Keyboard shortcuts
+kitty_mod ctrl+shift
+map kitty_mod+p select_tab
+
+# Clipboard
+
+map kitty_mod+c copy_to_clipboard
+# Scrolling
+
+map kitty_mod+up        scroll_line_up
+map kitty_mod+down      scroll_line_down
+
+# Window management
+map kitty_mod+enter new_window
+map ctrl+alt+enter    launch --cwd=current
+map kitty_mod+n new_os_window
+
+# Tab management
+
+map kitty_mod+right next_tab
+map kitty_mod+left  previous_tab
+map kitty_mod+t     new_tab
+map kitty_mod+q     close_tab
+map kitty_mod+.     move_tab_forward
+map kitty_mod+,     move_tab_backward
+map kitty_mod+alt+t set_tab_title
+
+# Font sizes
+
+map kitty_mod+equal       change_font_size all +2.0
+map kitty_mod+minus       change_font_size all -2.0
+map kitty_mod+backspace   change_font_size all 0
+
+# Select and act on visible text
+map kitty_mod+e kitten hints
+
+# Miscellaneous
+map kitty_mod+f2     clear_terminal reset active

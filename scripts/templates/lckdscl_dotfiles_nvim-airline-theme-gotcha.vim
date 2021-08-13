@@ -1,0 +1,1 @@
+/home/lckdscl/dotfiles/nvim-airline-theme-gotcha.vim

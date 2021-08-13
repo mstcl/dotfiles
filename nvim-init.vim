@@ -19,44 +19,46 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'sirver/ultisnips'
-    Plug 'bfrg/vim-cpp-modern'
     Plug 'puremourning/vimspector', {
         \ 'do': 'python3 install_gadget.py --enable-vscode-cpptools'
         \ }
-    Plug 'luochen1990/rainbow'
-    Plug 'vim-scripts/indentpython.vim'
     Plug 'jupyter-vim/jupyter-vim'
     Plug 'yggdroot/indentline'
     Plug 'vimwiki/vimwiki'
-    " Plug 'simrat39/symbols-outline.nvim'
     Plug 'b3nj5m1n/kommentary'
     Plug 'preservim/tagbar'
     Plug 'junegunn/goyo.vim'
-    Plug 'vim-python/python-syntax'
     Plug 'tmhedberg/SimpylFold'
     Plug 'junegunn/limelight.vim'
     Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
+    Plug 'tpope/vim-surround'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'michal-h21/vim-zettel'
     Plug 'goerz/jupytext.vim'
-    " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-fugitive'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'kyazdani42/nvim-tree.lua'
-    Plug 'dylanaraps/wal.vim'
     Plug 'machakann/vim-highlightedyank'
     Plug 'vifm/vifm.vim'
-    Plug 'morhetz/gruvbox'
     Plug 'flazz/vim-colorschemes'
     Plug 'deviantfero/wpgtk.vim'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'hrsh7th/nvim-compe'
     Plug 'zhimsel/vim-stay'
+    Plug 'luochen1990/rainbow'
+    Plug 'p00f/nvim-ts-rainbow'
+    " Plug 'bfrg/vim-cpp-modern'
+    " Plug 'vim-scripts/indentpython.vim'
+    " Plug 'simrat39/symbols-outline.nvim'
+    " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+    " Plug 'vim-python/python-syntax'
+    " Plug 'junegunn/fzf.vim'
+    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " Plug 'kyazdani42/nvim-tree.lua'
+    " Plug 'dylanaraps/wal.vim'
+    " Plug 'morhetz/gruvbox'
+    " Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "---GENERAL AUTOCOMMANDS---
@@ -65,13 +67,14 @@ autocmd BufNewFile,BufReadPost *.md setlocal spell! spelllang=en_gb | highlight 
 autocmd BufReadPost *.rasi set filetype=css
 function! ShowTrailingWhitespace()
     if &filetype == 'dashboard'
+        highlight RedundantSpaces cterm=none guibg=none
         return
     endif
     highlight RedundantSpaces ctermbg=red guibg=red
     match RedundantSpaces /\s\+$/
 endfunction
-autocmd BufNewFile,BufWritePre,BufReadPost * call ShowTrailingWhitespace()
-autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | echom "Reloaded $NVIMRC"
+autocmd WinEnter,BufEnter,BufNewFile,BufWritePre,BufReadPost * call ShowTrailingWhitespace()
+autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | echom "Reloaded neovim"
 autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
 autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
 
@@ -80,8 +83,9 @@ set omnifunc=syntaxcomplete#Complete
 filetype plugin on
 syntax on
 set hidden
-set noshowcmd
+set showcmd
 set path+=**
+set timeoutlen=200
 set wrap
 set lazyredraw
 set foldmethod=syntax
@@ -121,21 +125,27 @@ set completeopt=menuone,noselect
 "---GENERAL BINDINGS---
 let mapleader = ",."
 let maplocalleader = ",.."
-nnoremap <C-j> :m+<CR>
-nnoremap <C-k> :m-<CR>
-nnoremap <F6> :set list!<CR>
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <silent> <Leader>p :set paste!<CR>
+nnoremap <Leader>ll :set list!<CR>
 nnoremap <space> :
-nnoremap <Leader>sv :source $MYVIMRC<CR>
-nnoremap <Leader>sh :setlocal spell! spelllang=en_gb<CR>
-nnoremap <Leader>nn :set number!<CR> <bar> :set relativenumber!<CR>
-nnoremap <Leader>tt :tabnew<CR>
-nnoremap <Leader>rr :registers<CR>
+nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
+nnoremap <silent> <Leader>sh :setlocal spell! spelllang=en_gb<CR>
+nnoremap <silent> <Leader>nn :set number!<CR> <bar> :set relativenumber!<CR>
+nnoremap <silent> <Leader>tn :tabnew<CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <Leader>sco :set conceallevel=0<CR>
 nnoremap <Leader>sci :set conceallevel=2<CR>
-nnoremap pp p
-nnoremap pa O<esc>p
-nnoremap pb o<esc>p
+" nnoremap pp p
+" nnoremap pa O<esc>p
+" nnoremap pb o<esc>p
+nmap mo o<esc>
+nmap mO O<esc>
 nnoremap <Leader>bn :bn<CR>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -144,8 +154,6 @@ noremap <Right> <Nop>
 
 "---COLORSCHEME---
 colorscheme psycho
-highlight RedundantSpaces ctermbg=red guibg=red
-"highlight WhichKeyFloat ctermbg=8 ctermfg=8
 
 "---VIFM---
 let g:loaded_netrw = 1
@@ -156,62 +164,79 @@ nnoremap <Leader>esv :VsplitVifm<CR>
 nnoremap <Leader>esh :SplitVifm<CR>
 nnoremap <Leader>ed :DiffVifm<CR>
 
+"---RAINBOW---
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+    \'parentheses': ['start=/(/ end=/)/ fold','start=/\[/ end=/\]/ fold','start=/{/ end=/}/ fold','start=/\(\(\<operator\>\)\@<!<\)\&[a-zA-Z0-9_]\@<=<\ze[^<]/ end=/>/'],
+\}
+
+"---TS-RAINBOW---
+lua << EOF
+    require'nvim-treesitter.configs'.setup {
+      rainbow = {
+        enable = true,
+        extended_mode = true,
+        max_file_lines = 1400,
+      }
+    }
+EOF
+
 "---WHICH-KEY--
 lua << EOF
-  require("which-key").setup {
-    plugins = {
-        marks = true,
-        registers = true,
-        spelling = {
-        enabled = true,
-        suggestions = 20,
-        },
-        presets = {
-            operators = true,
-            motions = true,
-            text_objects = true,
-            windows = true,
-            nav = true,
-            z = true,
-            g = true,
+    require("which-key").setup {
+        plugins = {
+            marks = true,
+            registers = true,
+            spelling = {
+            enabled = true,
+            suggestions = 20,
             },
-    },
-    operators = { gc = "Comments" },
-    key_labels = {
-    },
-    icons = {
-        breadcrumb = "»",
-        separator = "➜",
-        group = "+",
-    },
-    window = {
-        border = "none",
-        position = "bottom",
-        margin = { 1, 0, 1, 0 },
-        padding = { 2, 2, 2, 2 },
-    },
-    layout = {
-        height = { min = 4, max = 25 },
-        width = { min = 20, max = 50 },
-        spacing = 3,
-        align = "left",
-    },
-    ignore_missing = false,
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "},
-    show_help = true,
-    triggers = "auto",
-    triggers_blacklist = {
-        i = { "j", "k" },
-        v = { "j", "k" },
-    },
-}
+            presets = {
+                operators = true,
+                motions = true,
+                text_objects = true,
+                windows = true,
+                nav = true,
+                z = true,
+                g = true,
+                },
+        },
+        operators = { gc = "Comments" },
+        key_labels = {
+        },
+        icons = {
+            breadcrumb = "»",
+            separator = "➜",
+            group = "+",
+        },
+        window = {
+            border = "none",
+            position = "bottom",
+            margin = { 1, 0, 1, 0 },
+            padding = { 2, 2, 2, 2 },
+        },
+        layout = {
+            height = { min = 4, max = 25 },
+            width = { min = 20, max = 50 },
+            spacing = 3,
+            align = "left",
+        },
+        ignore_missing = false,
+        hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "},
+        show_help = true,
+        triggers = "auto",
+        triggers_blacklist = {
+            i = { "j", "k" },
+            v = { "j", "k" },
+        },
+    }
 EOF
 
 "---VIM-STAY---
 set viewoptions=cursor,folds,slash,unix
 
 "---FASTFOLD---
-nnoremap <F5> <Plug>(FastFoldUpate)
+nnoremap zuz <Plug>(FastFoldUpate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes = ['x','X','a','A','o','O','c','C']
 let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
@@ -232,33 +257,34 @@ let g:php_folding = 1
 let g:dashboard_default_executive='fzf'
 let g:dashboard_fzf_engine='ag'
 let g:dashboard_custom_shortcut={
-\ 'last_session'       : 'SPC s l',
-\ 'find_history'       : 'SPC f h',
-\ 'find_file'          : 'SPC f f',
-\ 'new_file'           : 'SPC c n',
-\ 'change_colorscheme' : 'SPC t c',
-\ 'find_word'          : 'SPC f a',
-\ 'book_marks'         : 'SPC f b',
-\ }
+    \ 'last_session'       : 'SPC s l',
+    \ 'find_history'       : 'SPC f h',
+    \ 'find_file'          : 'SPC f f',
+    \ 'new_file'           : 'SPC c n',
+    \ 'change_colorscheme' : 'SPC f c',
+    \ 'find_word'          : 'SPC f a',
+    \ 'book_marks'         : 'SPC f b',
+    \}
 let g:dashboard_custom_header = [
-\ '                                                       ',
-\ '                                                       ',
-\ '                                                       ',
-\ '                                                       ',
-\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-\ '                                                       ',
-\ '                                                       ',
-\ '                                                       ',
-\ '                                                       ',
-\]
+    \ '                                                       ',
+    \ '                                                       ',
+    \ '                                                       ',
+    \ '                                                       ',
+    \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+    \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+    \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+    \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+    \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+    \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+    \ '                                                       ',
+    \ '                                                       ',
+    \ '                                                       ',
+    \ '                                                       ',
+    \]
 nnoremap <Leader>ss :<C-u>SessionSave<CR>
 nnoremap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>s
+nnoremap <Leader>db :highlight RedundantSpaces ctermbg=none guibg=none <CR> <bar> :Dashboard<CR>
 
 "---LSPCONFIG---
 lua << EOF
@@ -266,39 +292,39 @@ lua << EOF
     require'lspconfig'.pyright.setup{}
 EOF
 lua << EOF
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-local opts = { noremap=true, silent=true }
-buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-buf_set_keymap('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-buf_set_keymap('n', '<Leader>ba', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-buf_set_keymap('n', '<Leader>bl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-buf_set_keymap('n', '<Leader>bd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-buf_set_keymap('n', '<Leader>bc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-buf_set_keymap('n', '<Leader>dl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-buf_set_keymap('n', '<Leader>dq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-buf_set_keymap("n", "<Leader>bf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-end
-local servers = { "clangd", "pyright" }
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        flags = {
-        debounce_text_changes = 150,
+    local nvim_lsp = require('lspconfig')
+    local on_attach = function(client, bufnr)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local opts = { noremap=true, silent=true }
+    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    buf_set_keymap('n', '<Leader>ba', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<Leader>bl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    buf_set_keymap('n', '<Leader>bd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', '<Leader>br', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<Leader>bc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', '<Leader>dl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<Leader>dq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap("n", "<Leader>bf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    end
+    local servers = { "clangd", "pyright" }
+    for _, lsp in ipairs(servers) do
+        nvim_lsp[lsp].setup {
+            on_attach = on_attach,
+            flags = {
+            debounce_text_changes = 150,
+            }
         }
-    }
-end
+    end
 EOF
 
 "---AUTOPAIRS---
@@ -340,7 +366,7 @@ let g:indentLine_char = '│'
 let g:indentLine_enabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 autocmd TermOpen * IndentLinesDisable
-nnoremap <F9> :IndentLinesToggle<CR>
+nnoremap <Leader>il :IndentLinesToggle<CR>
 
 "---STARTIFY---
 let g:startify_custom_header =
@@ -376,7 +402,7 @@ autocmd InsertLeave *.{vimwiki,wiki,md} set conceallevel=2
 nnoremap <Leader>wa :VimwikiGenerateLinks<CR>
 nmap <C-O> <Plug>VimwikiToggleListItem
 inoremap <s-CR> <ESC>:VimwikiReturn 1 5<CR>
-let g:vimwiki_listsyms = '    X'
+let g:vimwiki_listsyms = '    x'
 "let g:vimwiki_listsym_rejected = ' '
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_links_header = 'List of pages'
@@ -394,18 +420,18 @@ let g:tagbar_type_vimwiki = {
     \'ctagsbin': 'python3',
     \'ctagsargs': '~/scripts/vim/vwtags.py default'
 \}
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <leader>tb :TagbarToggle<CR>
 
 "---VIMZETTEL---
 let g:zettel_format = "%raw_title"
 let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]
 let g:zettel_default_mappings = 0
 augroup filetype_vimwiki
-     autocmd!
-     autocmd FileType vimwiki imap <silent> [[ [[<esc><Plug>ZettelSearchMap
-     autocmd FileType vimwiki nmap T <Plug>ZettelYankNameMap
-     autocmd FileType vimwiki xmap zN <Plug>ZettelNewSelectedMap
-     autocmd FileType vimwiki nmap gZ <Plug>ZettelReplaceFileWithLink
+    autocmd!
+    autocmd FileType vimwiki imap <silent> [[ [[<esc><Plug>ZettelSearchMap
+    autocmd FileType vimwiki nmap T <Plug>ZettelYankNameMap
+    autocmd FileType vimwiki xmap zN <Plug>ZettelNewSelectedMap
+    autocmd FileType vimwiki nmap gZ <Plug>ZettelReplaceFileWithLink
    augroup END
 nnoremap <Leader>zo :ZettelOpen<CR>
 nnoremap <Leader>zb :ZettelBackLinks<CR>
@@ -434,7 +460,7 @@ nnoremap <Leader>fw :Windows<CR>
 nnoremap <leader>fm :Maps<CR>
 nnoremap <leader>fa :Rg<CR>
 nnoremap <leader>fp :Marks<CR>
-nnoremap <leader>tc :Colors<CR>
+nnoremap <leader>fc :Colors<CR>
 
 "---COMPE---
 lua << EOF
@@ -467,14 +493,6 @@ EOF
 "---JUPYTEXT---
 let g:jupytext_fmt = 'py:percent'
 
-"---RAINBOW---
-let g:rainbow_active = 0
-let g:rainbow_conf = {
-    \'separately': {
-        \'nerdtree': 0,
-    \}
-\}
-
 "---COLORIZER---
 let g:colorizer_auto_color = 1
 lua require'colorizer'.setup()
@@ -484,7 +502,7 @@ function! s:goyo_enter()
     Limelight
     LeadingSpaceDisable
     set nolist
-    NvimTreeClose
+    "NvimTreeClose
     let b:quitting = 0
     let b:quitting_bang = 0
     autocmd QuitPre <buffer> let b:quitting = 1
@@ -548,79 +566,79 @@ let g:airline_section_z = airline#section#create(['%3p%% |  ', 'linenr', '
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 "---NVIMTREE---
-let g:nvim_tree_side = 'left'
-let g:nvim_tree_width = '20%'
-let g:nvim_tree_ignore = ['node_modules']
-let g:nvim_tree_gitignore = 0
-let g:nvim_tree_auto_open = 1
-let g:nvim_tree_auto_close = 1
-let g:nvim_tree_auto_ignore_ft = ['startify', 'dashboard']
-let g:nvim_tree_quit_on_open = 0
-let g:nvim_tree_follow = 1
-let g:nvim_tree_indent_markers = 0
-let g:nvim_tree_hide_dotfiles = 0
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_root_folder_modifier = ':~'
-let g:nvim_tree_tab_open = 1
-let g:nvim_tree_auto_resize = 1
-let g:nvim_tree_disable_netrw = 0
-let g:nvim_tree_hijack_netrw = 0
-let g:nvim_tree_add_trailing = 0
-let g:nvim_tree_group_empty = 0
-let g:nvim_tree_lsp_diagnostics = 0
-let g:nvim_tree_disable_window_picker = 0
-let g:nvim_tree_hijack_cursor = 1
-let g:nvim_tree_icon_padding = ' '
-let g:nvim_tree_update_cwd = 1
-let g:nvim_tree_window_picker_exclude = {
-    \'filetype': [
-        \'packer',
-        \'qf'
-    \],
-    \'buftype': [
-        \'terminal'
-    \]
-\}
-let g:nvim_tree_special_files = {'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1}
-let g:nvim_tree_show_icons = {
-    \'git': 1,
-    \'folders': 1,
-    \'files': 1,
-    \'folder_arrows': 1,
-\}
-let g:nvim_tree_icons = {
-    \'default': '',
-    \'symlink': '',
-    \'git': {
-        \'unstaged': "✗",
-        \'staged': "✓",
-        \'unmerged': "",
-        \'renamed': "➜",
-        \'untracked': "★",
-        \'deleted': "",
-        \'ignored': "◌"
-    \},
-    \'folder': {
-        \'arrow_open': "",
-        \'arrow_closed': "",
-        \'default': "",
-        \'open': "",
-        \'empty': "",
-        \'empty_open': "",
-        \'symlink': "",
-        \'symlink_open': "",
-    \},
-    \'lsp': {
-        \'hint': "",
-        \'info': "",
-        \'warning': "",
-        \'error': "",
-    \}
-\}
-nnoremap <leader>ntr :NvimTreeRefresh<CR>
-nnoremap <leader>ntf :NvimTreeFindFile<CR>
-nnoremap <F7> :NvimTreeToggle<CR>
+" let g:nvim_tree_side = 'left'
+" let g:nvim_tree_width = '20%'
+" let g:nvim_tree_ignore = ['node_modules']
+" let g:nvim_tree_gitignore = 0
+" let g:nvim_tree_auto_open = 1
+" let g:nvim_tree_auto_close = 1
+" let g:nvim_tree_auto_ignore_ft = ['startify', 'dashboard']
+" let g:nvim_tree_quit_on_open = 0
+" let g:nvim_tree_follow = 1
+" let g:nvim_tree_indent_markers = 0
+" let g:nvim_tree_hide_dotfiles = 0
+" let g:nvim_tree_git_hl = 1
+" let g:nvim_tree_highlight_opened_files = 1
+" let g:nvim_tree_root_folder_modifier = ':~'
+" let g:nvim_tree_tab_open = 1
+" let g:nvim_tree_auto_resize = 1
+" let g:nvim_tree_disable_netrw = 0
+" let g:nvim_tree_hijack_netrw = 0
+" let g:nvim_tree_add_trailing = 0
+" let g:nvim_tree_group_empty = 0
+" let g:nvim_tree_lsp_diagnostics = 0
+" let g:nvim_tree_disable_window_picker = 0
+" let g:nvim_tree_hijack_cursor = 1
+" let g:nvim_tree_icon_padding = ' '
+" let g:nvim_tree_update_cwd = 1
+" let g:nvim_tree_window_picker_exclude = {
+"     \'filetype': [
+"         \'packer',
+"         \'qf'
+"     \],
+"     \'buftype': [
+"         \'terminal'
+"     \]
+" \}
+" let g:nvim_tree_special_files = {'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1}
+" let g:nvim_tree_show_icons = {
+"     \'git': 1,
+"     \'folders': 1,
+"     \'files': 1,
+"     \'folder_arrows': 1,
+" \}
+" let g:nvim_tree_icons = {
+"     \'default': '',
+"     \'symlink': '',
+"     \'git': {
+"         \'unstaged': "✗",
+"         \'staged': "✓",
+"         \'unmerged': "",
+"         \'renamed': "➜",
+"         \'untracked': "★",
+"         \'deleted': "",
+"         \'ignored': "◌"
+"     \},
+"     \'folder': {
+"         \'arrow_open': "",
+"         \'arrow_closed': "",
+"         \'default': "",
+"         \'open': "",
+"         \'empty': "",
+"         \'empty_open': "",
+"         \'symlink': "",
+"         \'symlink_open': "",
+"     \},
+"     \'lsp': {
+"         \'hint': "",
+"         \'info': "",
+"         \'warning': "",
+"         \'error': "",
+"     \}
+" \}
+" nnoremap <leader>ntr :NvimTreeRefresh<CR>
+" nnoremap <leader>ntf :NvimTreeFindFile
+" nnoremap <Leader>ntt :NvimTreeToggle<CR>
 
 "---VIMSPECTOR---
 command! -nargs=+ Vfb call vimspector#AddFunctionBreakpoint(<f-args>)

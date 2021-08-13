@@ -1,0 +1,12 @@
+/* colors */
+
+* {{
+    al:    {color8};
+    bg:    {color0};
+    bg1:   {color1};
+    bg2:   {color2};
+    bg3:   {color3};
+    fg:    {color7};
+    font: "{font0} {font-size}";
+    icon-theme: "{icons}";
+}}

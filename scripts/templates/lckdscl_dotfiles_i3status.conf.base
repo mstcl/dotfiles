@@ -1,0 +1,44 @@
+# :.config/i3status/config
+# vi:syntax=conf
+
+general {{
+        output_format = "i3bar"
+        colors = true
+        interval = 5
+        color_good = "{color3}"
+        color_bad = "{color5}"
+        color_degraded = "{color1}"
+}}
+
+#order += "disk /"
+#order += "disk /home"
+#order += "disk /media"
+order += "ethernet enp5s0"
+
+disk "/home" {{
+    format = " %free"
+    prefix_type = "custom"
+    low_threshold = "20"
+    threshold_type = "gbytes_avail"
+}}
+
+disk "/" {{
+    format = " %free"
+    prefix_type = "custom"
+    low_threshold = "20"
+    threshold_type = "gbytes_avail"
+}}
+
+disk "/media" {{
+    format = " %free"
+    prefix_type = "custom"
+    low_threshold = "20"
+    threshold_type = "gbytes_avail"
+}}
+
+ethernet enp5s0 {{
+    format_up = "[IP] %ip "
+    format_down = "IP n/a "
+}}
+
+
