@@ -1,0 +1,32 @@
+#!/bin/sh -e
+
+screenW=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1 | head -n 1)
+screenH=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2 | head -n 1)
+
+wallpaper=mktemp
+cp ~/Downloads/amber.jpg $wallpaper
+convert $wallpaper -gravity center -resize ${screenW}x${screenH}\! $wallpaper
+green=00ff99c0
+red=ff5050c0
+cyan=66ffffa0
+transparent=00000000
+slighttransparent=e0e0e0e0
+semitrans=e0e0e040
+timecolor=ffffffff
+
+timeposx=50
+timeposy=$((screenH-100))
+dateposy=$((timeposy+50))
+sleep 1
+i3lock \
+    --inside-color=$semitrans --ring-color=$slighttransparent --line-uses-inside \
+    --keyhl-color=$green --bshl-color=$red --separator-color=$transparent \
+    --insidever-color=$semitrans --insidewrong-color=$semitrans \
+    --ringver-color=$cyan --ringwrong-color=$red \
+    --radius=120 --ring-width=7 \
+    --verif-text="" --wrong-text="" --noinput-text="_" \
+    --wrong-color=$red \
+    --clock \
+    --time-str="%H:%M" --time-pos="x+$timeposx:y+$timeposy" --time-color=$timecolor --time-align=1 --time-size=72 \
+    --date-str="%a, %b %d" --date-pos="x+$timeposx:y+$dateposy" --date-color=$timecolor --date-align=1 --date-size=24 \
+    --tiling --image $wallpaper

@@ -1,0 +1,12 @@
+/* colors */
+
+* {
+    al:    #151515;
+    bg:    #101010;
+    bg1:   #b67262;
+    bg2:   #8a9273;
+    bg3:   #c0a474;
+    fg:    #f6f6f6;
+    font: "JetBrainsMono Nerd Font Mono 10";
+    icon-theme: "Fluent-dark";
+}

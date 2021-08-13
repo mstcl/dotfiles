@@ -56,6 +56,13 @@ antigen apply
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
+###### HISTORY ######
+HISTSIZE=500000
+SAVEHIST=500000
+setopt appendhistory
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
 ###### SPACESHIP PROMPT ######
 SPACESHIP_PROMPT_ORDER=(
     user

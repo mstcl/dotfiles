@@ -1,0 +1,78 @@
+# :.config/bpytop/themes/bpytop.theme
+theme[main_bg]="{color0}"
+
+# Main text color
+theme[main_fg]="{color7}"
+
+# Title color for boxes
+theme[title]="{color1}"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="{color9}"
+
+# Background color of selected item in processes box
+theme[selected_bg]="{color8}"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="{color12}"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="{color15}"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="{color1}"
+
+# Cpu box outline color
+theme[cpu_box]="{color2}"
+
+# Memory/disks box outline color
+theme[mem_box]="{color2}"
+
+# Net up/down box outline color
+theme[net_box]="{color2}"
+
+# Processes box outline color
+theme[proc_box]="{color2}"
+
+# Box divider line and small boxes line color
+theme[div_line]="{color2}"
+
+# Temperature graph colors
+theme[temp_start]="{color4}"
+theme[temp_mid]="{color12}"
+theme[temp_end]="{color15}"
+
+# CPU graph colors
+theme[cpu_start]="{color4}"
+theme[cpu_mid]="{color12}"
+theme[cpu_end]="{color15}"
+
+# Mem/Disk free meter
+theme[free_start]="{color4}"
+theme[free_mid]="{color12}"
+theme[free_end]="{color15}"
+
+# Mem/Disk cached meter
+theme[cached_start]="{color4}"
+theme[cached_mid]="{color12}"
+theme[cached_end]="{color15}"
+
+# Mem/Disk available meter
+theme[available_start]="{color4}"
+theme[available_mid]="{color12}"
+theme[available_end]="{color15}"
+
+# Mem/Disk used meter
+theme[used_start]="{color4}"
+theme[used_mid]="{color12}"
+theme[used_end]="{color15}"
+
+# Download graph colors
+theme[download_start]="{color4}"
+theme[download_mid]="{color12}"
+theme[download_end]="{color15}"
+
+# Upload graph colors
+theme[upload_start]="{color4}"
+theme[upload_mid]="{color12}"
+theme[upload_end]="{color15}"

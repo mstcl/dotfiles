@@ -26,10 +26,3 @@ export ADOTDIR="$XDG_DATA_HOME"/antigen
 export BROWSER="/usr/bin/brave"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
-
-###### HISTORY ######
-HISTSIZE=500000
-SAVEHIST=500000
-setopt appendhistory
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY

@@ -1,0 +1,10 @@
+
+@-moz-document url("discord.com") {
+/* ==UserStyle==
+@name         pywal-discord
+@namespace    https://github.com/hhn-pham
+@version      1.0.0
+==/UserStyle== */
+}
+
+@-moz-document domain("discord.com") {

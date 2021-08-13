@@ -1,0 +1,74 @@
+configuration {{
+    columns: 1;
+    eh: 2;
+    kb-accept-entry: "Control+j,Control+m,Return,KP_Enter,space";
+    kb-custom-1: "Delete,d";
+    kb-remove-char-forward: "";
+    kb-row-down: "Down,Control+n,j";
+    kb-row-up: "Up,Control+p,k";
+    me-accept-entry: "MousePrimary";
+    me-select-entry: "";
+    show-icons: true;
+    font: "{font0} {font-size}";
+    icon-theme: "{icons}";
+
+}}
+@import "~/scripts/rofi/i3-notifier-colors.rasi"
+* {{
+    background-color: @bg;
+    border-radius: {border-radius}px;
+}}
+
+#window {{
+    height: 30%;
+    width: 20em;
+    text-color: @fg;
+    children: [listview];
+    border-radius: {border-radius}px;
+}}
+
+#listview {{
+    dynamic: false;
+    padding: 10px;
+    lines: 0;
+    spacing: 10px;
+}}
+
+#element {{
+    padding: 10px;
+    border-radius: {border-radius}px;
+    background-color: @bg;
+    text-color: @fg;
+}}
+
+#element.active {{
+    background-color: @bg;
+}}
+
+#element.urgent {{
+    background-color: @bg;
+    text-color: @bg3;
+}}
+
+#element.selected {{
+    background-color: @al;
+    text-color: @fg;
+}}
+
+#element.selected.active {{
+    background-color: @al;
+    text-color: @fg;
+}}
+
+#element.selected.urgent {{
+    background-color: @al;
+    text-color: @bg3;
+}}
+
+#element-icon {{
+    size: 2em;
+    horizontal-align: 0;
+    vertical-align: 0;
+    padding: 0 0 0 0;
+    border-radius: {border-radius}px;
+}}

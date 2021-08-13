@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$(pgrep -x redshift)" ]; then
+    temp=$(redshift -p 2> /dev/null | grep temp | cut -d ":" -f 2 | tr -dc "[:digit:]")
+#echo "$temp"
+    if [ -z "$temp" ]; then
+        echo "$temp"
+    elif [ "$temp" -ge 6000 ]; then
+        echo "$temp"
+    elif [ "$temp" -ge 5000 ]; then
+        echo "$temp"
+    elif [ "$temp" -ge 4000 ]; then
+        echo "$temp"
+    else
+        echo "$temp"
+    fi
+fi

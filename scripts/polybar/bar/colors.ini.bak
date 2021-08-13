@@ -1,0 +1,18 @@
+[color]
+
+;; main colors
+background = #232326
+foreground = #c1c1c1
+foreground-alt = #c1c1c1
+
+;; shades
+shade1 = #5f8787
+shade2 = #eceee3
+shade3 = #5f8787
+shade4 = #eceee3
+shade5 = #5f8787
+shade6 = #eceee3
+shade7 = #5f8787
+shade8 = #c1c1c1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
