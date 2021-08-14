@@ -26,3 +26,5 @@ export ADOTDIR="$XDG_DATA_HOME"/antigen
 export BROWSER="/usr/bin/brave"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
+export VDPAU_DRIVER=nvidia
+export LIBVA_DRIVER_NAME=vdpau

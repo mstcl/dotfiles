@@ -23,8 +23,8 @@
 
     /* Special */
     --background: #101010;
-    --foreground: #e6e6e6;
-    --cursor: #e6e6e6;
+    --foreground: #e3e3e3;
+    --cursor: #e3e3e3;
 
     /* Colors */
     --color0: #101010;
@@ -35,14 +35,14 @@
     --color5: #9b859d;
     --color6: #a8d2db;
     --color7: #f6f6f6;
-    --color8: #151515;
+    --color8: #353535;
     --color9: #bc8778;
     --color10: #a0ac82;
     --color11: #c3ae8b;
     --color12: #8f9cae;
     --color13: #a392a5;
     --color14: #b9d8df;
-    --color15: #e6e6e6;
+    --color15: #e3e3e3;
 }
 /**  colors will come from .cache/wal/colors.css as variables defined in :root
  *  see: cat $HOME/.cache/wal/colors.css

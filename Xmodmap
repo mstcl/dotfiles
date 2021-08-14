@@ -1,4 +1,4 @@
-! :.Xmodmap
+! :.config/X11/Xmodmap
 clear Lock
 keycode 66 = Mode_switch
 keysym h = h H Left

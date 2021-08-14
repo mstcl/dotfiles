@@ -1,4 +1,3 @@
-# :.config/termshark/termshark.toml
 
 [main]
   color-tsharks = ["/usr/bin/tshark"]

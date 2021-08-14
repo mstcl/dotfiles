@@ -30,5 +30,7 @@ set index-active-fg "#ffffff"
 set render-loading-bg "#ffffff"
 set render-loading-fg "#000000"
 set window-title-home-tilde true
-set statusbar-basename false
+set statusbar-basename true
 set selection-clipboard clipboard
+set scroll-page-aware true
+set statusbar-home-tilde true

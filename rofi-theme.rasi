@@ -89,7 +89,7 @@
 }
 
 #element.selected {
-    background-color: #151515;
+    background-color: #353535;
     border-radius: 2px;
     text-color: #b67262;
 }

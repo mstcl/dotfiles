@@ -8,7 +8,7 @@
 "|                                   |
 "+-----------------------------------+
 
-"---PLUGINS---
+" SET PLUGINS {{{
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'rmagatti/auto-session'
     Plug 'folke/which-key.nvim'
@@ -26,13 +26,13 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'yggdroot/indentline'
     Plug 'vimwiki/vimwiki'
     Plug 'b3nj5m1n/kommentary'
-    Plug 'preservim/tagbar'
     Plug 'junegunn/goyo.vim'
     Plug 'tmhedberg/SimpylFold'
     Plug 'junegunn/limelight.vim'
     Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
     Plug 'tpope/vim-surround'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'michal-h21/vim-zettel'
     Plug 'goerz/jupytext.vim'
     Plug 'vim-airline/vim-airline'
@@ -48,7 +48,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'zhimsel/vim-stay'
     Plug 'luochen1990/rainbow'
     Plug 'p00f/nvim-ts-rainbow'
+    Plug 'liuchengxu/vista.vim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
     " Plug 'bfrg/vim-cpp-modern'
+    " Plug 'preservim/tagbar'
     " Plug 'vim-scripts/indentpython.vim'
     " Plug 'simrat39/symbols-outline.nvim'
     " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
@@ -60,25 +64,28 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     " Plug 'morhetz/gruvbox'
     " Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+" }}}
 
-"---GENERAL AUTOCOMMANDS---
+" GENERAL AUTOCOMMANDS {{{
 autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sh | set filetype=sh | endif
 autocmd BufNewFile,BufReadPost *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
 autocmd BufReadPost *.rasi set filetype=css
 function! ShowTrailingWhitespace()
     if &filetype == 'dashboard'
         highlight RedundantSpaces cterm=none guibg=none
+        match RedundantSpaces /\s\+$/
         return
     endif
     highlight RedundantSpaces ctermbg=red guibg=red
     match RedundantSpaces /\s\+$/
 endfunction
-autocmd WinEnter,BufEnter,BufNewFile,BufWritePre,BufReadPost * call ShowTrailingWhitespace()
-autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | echom "Reloaded neovim"
+autocmd BufNewFile,BufWritePre,BufReadPost * call ShowTrailingWhitespace()
+autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echom "Reloaded neovim"
 autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
 autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
+" }}}
 
-"---GENERAL OPTIONS---
+" GENERAL OPTIONS {{{
 set omnifunc=syntaxcomplete#Complete
 filetype plugin on
 syntax on
@@ -89,6 +96,7 @@ set timeoutlen=200
 set wrap
 set lazyredraw
 set foldmethod=syntax
+set foldenable
 set termguicolors
 set linebreak
 set nocompatible
@@ -121,8 +129,9 @@ set fillchars=eob:\
 set nolist
 set listchars=tab:›_,eol:¬,trail:·
 set completeopt=menuone,noselect
+" }}}
 
-"---GENERAL BINDINGS---
+" GENERAL BINDINGS {{{
 let mapleader = ",."
 let maplocalleader = ",.."
 nnoremap <A-j> :m .+1<CR>==
@@ -141,21 +150,23 @@ nnoremap <silent> <Leader>tn :tabnew<CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <Leader>sco :set conceallevel=0<CR>
 nnoremap <Leader>sci :set conceallevel=2<CR>
-" nnoremap pp p
-" nnoremap pa O<esc>p
-" nnoremap pb o<esc>p
 nmap mo o<esc>
 nmap mO O<esc>
 nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bp :bp<CR>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+nnoremap <silent> <Leader>nh :noh <CR>
+" }}}
 
-"---COLORSCHEME---
+" COLORSCHEME {{{
 colorscheme psycho
+" }}}
 
-"---VIFM---
+" VIFM {{{
 let g:loaded_netrw = 1
 let g:vifm_replace_netrw=1
 nnoremap <Leader>ee :Vifm<CR>
@@ -163,14 +174,16 @@ nnoremap <Leader>et :TabVifm<CR>
 nnoremap <Leader>esv :VsplitVifm<CR>
 nnoremap <Leader>esh :SplitVifm<CR>
 nnoremap <Leader>ed :DiffVifm<CR>
+" }}}
 
-"---RAINBOW---
+" RAINBOW {{{
 let g:rainbow_active = 1
 let g:rainbow_conf = {
     \'parentheses': ['start=/(/ end=/)/ fold','start=/\[/ end=/\]/ fold','start=/{/ end=/}/ fold','start=/\(\(\<operator\>\)\@<!<\)\&[a-zA-Z0-9_]\@<=<\ze[^<]/ end=/>/'],
 \}
+" }}}
 
-"---TS-RAINBOW---
+" TS-RAINBOW {{{
 lua << EOF
     require'nvim-treesitter.configs'.setup {
       rainbow = {
@@ -180,8 +193,9 @@ lua << EOF
       }
     }
 EOF
+" }}}
 
-"---WHICH-KEY--
+" WHICH-KEY {{{
 lua << EOF
     require("which-key").setup {
         plugins = {
@@ -231,11 +245,13 @@ lua << EOF
         },
     }
 EOF
+"}}}
 
-"---VIM-STAY---
+" VIM-STAY {{{
 set viewoptions=cursor,folds,slash,unix
+" }}}
 
-"---FASTFOLD---
+" FASTFOLD {{{
 nnoremap zuz <Plug>(FastFoldUpate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes = ['x','X','a','A','o','O','c','C']
@@ -252,8 +268,9 @@ let g:perl_fold_blocks = 1
 let g:r_syntax_folding = 1
 let g:rust_fold = 1
 let g:php_folding = 1
+" }}}
 
-"---DASHBOARD---
+" DASHBOARD {{{
 let g:dashboard_default_executive='fzf'
 let g:dashboard_fzf_engine='ag'
 let g:dashboard_custom_shortcut={
@@ -285,8 +302,9 @@ nnoremap <Leader>ss :<C-u>SessionSave<CR>
 nnoremap <Leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>s
 nnoremap <Leader>db :highlight RedundantSpaces ctermbg=none guibg=none <CR> <bar> :Dashboard<CR>
+" }}}
 
-"---LSPCONFIG---
+" LSPCONFIG {{{
 lua << EOF
     require'lspconfig'.clangd.setup{}
     require'lspconfig'.pyright.setup{}
@@ -326,8 +344,9 @@ lua << EOF
         }
     end
 EOF
+" }}}
 
-"---AUTOPAIRS---
+" AUTOPAIRS {{{
 let g:AutoPairsShortcutFastWrap = '<M-e>'
 let g:AutoPairsMapBS = "1"
 let g:AutoPairsShortcutToggle='<M-p>'
@@ -349,17 +368,19 @@ let g:AutoPairs = autopairs#AutoPairsDefine([
     \{"open": "++", "close": "++", "filetype": ["vimwiki"]},
     \{"open": "|", "close": "|", "filetype": "help"}
 \])
-"let g:AutoPairsFlyMode = "1"
+let g:AutoPairsFlyMode = "0"
+" }}}
 
-"---ULTISNIPS---
+" ULTISNIPS {{{
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsListSnippets = '<leader>ul'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]
 inoremap <c-x><c-k> <c-x><c-k>
+" }}}
 
-"---INDENTLINE---
+" INDENTLINE {{{
 let g:indentLine_fileTypeExclude = ['FZF', 'Terminal', 'startify', 'nerdtree', 'NvimTree', 'man', 'Scratch', 'help', 'vimwiki', 'dashboard']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_char = '│'
@@ -367,18 +388,21 @@ let g:indentLine_enabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 autocmd TermOpen * IndentLinesDisable
 nnoremap <Leader>il :IndentLinesToggle<CR>
+" }}}
 
-"---STARTIFY---
-let g:startify_custom_header =
-    \ 'startify#center(startify#fortune#cowsay())'
+" STARTIFY (unused) {{{
+" let g:startify_custom_header =
+"     \ 'startify#center(startify#fortune#cowsay())'
+"}}}
 
-"---WEBDEVICONS---
+" WEBDEVICONS {{{
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_startify = 1
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable = 1
+" }}}
 
-"---VIMWIKI---
+" VIMWIKI {{{
 let g:vimwiki_list = [{
     \'path': '$HOME/wiki/docs',
     \'ext':'.md',
@@ -403,26 +427,27 @@ nnoremap <Leader>wa :VimwikiGenerateLinks<CR>
 nmap <C-O> <Plug>VimwikiToggleListItem
 inoremap <s-CR> <ESC>:VimwikiReturn 1 5<CR>
 let g:vimwiki_listsyms = '    x'
-"let g:vimwiki_listsym_rejected = ' '
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_links_header = 'List of pages'
 let g:vimwiki_links_header_level = 2
 let g:vimwiki_tags_header = 'Tags'
+" }}}
 
-"---TAGBAR---
-let g:tagbar_type_vimwiki = {
-    \'ctagstype':'vimwiki',
-    \'kinds':['h:header'],
-    \'sro':'&&&',
-    \'kind2scope':{'h':' '},
-    \'scope2kind':{'header':'h'},
-    \'sort':0,
-    \'ctagsbin': 'python3',
-    \'ctagsargs': '~/scripts/vim/vwtags.py default'
-\}
-nnoremap <leader>tb :TagbarToggle<CR>
+" TAGBAR (unused) {{{
+" let g:tagbar_type_vimwiki = {
+"     \'ctagstype':'vimwiki',
+"     \'kinds':['h:header'],
+"     \'sro':'&&&',
+"     \'kind2scope':{'h':' '},
+"     \'scope2kind':{'header':'h'},
+"     \'sort':0,
+"     \'ctagsbin': 'python3',
+"     \'ctagsargs': '~/scripts/vim/vwtags.py default'
+" \}
+" nnoremap <leader>tb :TagbarToggle<CR>
+" }}}
 
-"---VIMZETTEL---
+" VIMZETTEL {{{
 let g:zettel_format = "%raw_title"
 let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]
 let g:zettel_default_mappings = 0
@@ -436,8 +461,9 @@ augroup filetype_vimwiki
 nnoremap <Leader>zo :ZettelOpen<CR>
 nnoremap <Leader>zb :ZettelBackLinks<CR>
 nnoremap <Leader>zn :ZettelNew
+" }}}
 
-"---FZF.VIM---
+" FZF.VIM {{{
 let g:fzf_layout = {'window': 'enew'}
 let g:fzf_colors = {
     \'fg':         ['fg', 'Normal'],
@@ -449,7 +475,7 @@ let g:fzf_colors = {
     \'pointer':    ['fg', 'Exception'],
     \'spinner':    ['fg', 'Label'],
     \'header':     ['fg', 'Comment']}
-let g:nv_search_paths = ['~/.config']
+let g:nv_search_paths = ['~/']
 let g:fzf_preview_window = []
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>fg :BCommits<CR>
@@ -461,8 +487,9 @@ nnoremap <leader>fm :Maps<CR>
 nnoremap <leader>fa :Rg<CR>
 nnoremap <leader>fp :Marks<CR>
 nnoremap <leader>fc :Colors<CR>
+" }}}
 
-"---COMPE---
+" COMPE {{{
 lua << EOF
 require'compe'.setup {
     enabled = true;
@@ -489,20 +516,22 @@ require'compe'.setup {
 }
 vim.api.nvim_set_keymap("i", "<c-Space>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 EOF
+" }}}
 
-"---JUPYTEXT---
+" JUPYTEXT {{{
 let g:jupytext_fmt = 'py:percent'
+" }}}
 
-"---COLORIZER---
+" COLORIZER {{{
 let g:colorizer_auto_color = 1
 lua require'colorizer'.setup()
+" }}}
 
-"---GOYO---
+" GOYO {{{
 function! s:goyo_enter()
     Limelight
     LeadingSpaceDisable
     set nolist
-    "NvimTreeClose
     let b:quitting = 0
     let b:quitting_bang = 0
     autocmd QuitPre <buffer> let b:quitting = 1
@@ -522,8 +551,9 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>gg :Goyo<CR>
 nnoremap <Leader>gx :Goyo!<CR>
+" }}}
 
-"---AIRLINE---
+" AIRLINE {{{
 let g:airline_statusline_ontop = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -564,8 +594,9 @@ endfunction
 call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bold'})
 let g:airline_section_z = airline#section#create(['%3p%% |  ', 'linenr', ' | %3v'])
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+" }}}
 
-"---NVIMTREE---
+" NVIMTREE (unused) {{{
 " let g:nvim_tree_side = 'left'
 " let g:nvim_tree_width = '20%'
 " let g:nvim_tree_ignore = ['node_modules']
@@ -639,8 +670,9 @@ let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " nnoremap <leader>ntr :NvimTreeRefresh<CR>
 " nnoremap <leader>ntf :NvimTreeFindFile
 " nnoremap <Leader>ntt :NvimTreeToggle<CR>
+" }}}
 
-"---VIMSPECTOR---
+" VIMSPECTOR {{{
 command! -nargs=+ Vfb call vimspector#AddFunctionBreakpoint(<f-args>)
 nnoremap <localleader>gd :call vimspector#Launch()<cr>
 nnoremap <localleader>gc :call vimspector#Continue()<cr>
@@ -653,8 +685,9 @@ nnoremap <localleader>gn :call vimspector#StepOver()<cr>
 nnoremap <localleader>gi :call vimspector#StepInto()<cr>
 nnoremap <localleader>go :call vimspector#StepOut()<cr>
 nnoremap <localleader>gr :call vimspector#RunToCursor()<cr>
+" }}}
 
-"---TREESITTER---
+" TREESITTER {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
    ensure_installed= {"python","json","scss","html","cpp","css"},
@@ -664,3 +697,73 @@ require'nvim-treesitter.configs'.setup {
         },
     }
 EOF
+" }}}
+
+" GITSIGNS {{{
+lua << EOF
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  numhl = false,
+  linehl = false,
+  keymaps = {
+    noremap = true,
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+    ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+    ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+    ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+    ['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+    ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+    ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+  },
+  watch_index = {
+    interval = 1000,
+    follow_files = true
+  },
+  current_line_blame = false,
+  current_line_blame_delay = 1000,
+  current_line_blame_position = 'eol',
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  word_diff = false,
+  use_internal_diff = true,  -- If luajit is present
+}
+EOF
+" }}}
+
+" VISTA {{{
+let g:vista_default_executive = 'ctags'
+let g:vista_icon_indent = [" ➤ ", "│ "]
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_executive_for = {
+    \'cpp': 'nvim_lsp',
+    \'python': 'nvim_lsp',
+    \'vimwiki': 'markdown'
+\}
+let g:vista_vimwiki_executive = 'markdown'
+let g:vista_enable_markdown_extension = 1
+let g:vista#renderer#icons = {
+    \"function": "\uf794",
+    \"variable": "\uf71b",
+\}
+let g:vista_fold_toggle_icons = [' ▼ ', ' ▶ ']
+let g:vista_echo_cursor = 0
+let g:vista_echo_cursor_strategy="scroll"
+let g:vista_stay_on_open = 0
+let g:vista_blink = [0, 0]
+let g:vista_top_level_blink = [0, 0]
+nnoremap <silent> <Leader>vt :Vista!! <CR>
+nnoremap <silent> <Leader>vs :Vista focus <CR>
+nnoremap <silent> <Leader>vf :Vista finder <CR>
+" }}}

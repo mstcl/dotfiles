@@ -15,8 +15,8 @@
   green = "#8f9cae"
   cyan = "#a392a5"
   blue = "#b9d8df"
-  purple = "#e6e6e6"
-  brown = "#151515"
+  purple = "#e3e3e3"
+  brown = "#353535"
 
 [dark]
   button = ["wal.black","wal.base04"]
