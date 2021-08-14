@@ -27,7 +27,7 @@ let g:airline#themes#gotcha#palette.accents = {
         \ }
 
 let s:N1 = [ '#101010', '#8a9273', s:term_black, s:term_green ]
-let s:N2 = [ '#f6f6f6', '#151515', s:term_white, s:term_grey ]
+let s:N2 = [ '#f6f6f6', '#353535', s:term_white, s:term_grey ]
 let s:N3 = [ '#8a9273', '#101010', s:term_green, '' ]
 let g:airline#themes#gotcha#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
@@ -55,7 +55,7 @@ let g:airline#themes#gotcha#palette.visual = airline#themes#generate_color_map(s
 let g:airline#themes#gotcha#palette.visual_modified = g:airline#themes#gotcha#palette.normal_modified
 
 let s:IA1 = [ '#101010', '#f6f6f6', s:term_black, s:term_white ]
-let s:IA2 = [ '#f6f6f6', '#151515', s:term_white, s:term_grey ]
+let s:IA2 = [ '#f6f6f6', '#353535', s:term_white, s:term_grey ]
 let s:IA3 = s:N2
 let g:airline#themes#gotcha#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
 let g:airline#themes#gotcha#palette.inactive_modified = {

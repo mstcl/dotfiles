@@ -1,78 +1,38 @@
 # :.config/bpytop/themes/bpytop.theme
 theme[main_bg]="#101010"
-
-# Main text color
 theme[main_fg]="#f6f6f6"
-
-# Title color for boxes
-theme[title]="#b67262"
-
-# Higlight color for keyboard shortcuts
+theme[title]="#f6f6f6"
 theme[hi_fg]="#bc8778"
-
-# Background color of selected item in processes box
-theme[selected_bg]="#151515"
-
-# Foreground color of selected item in processes box
+theme[selected_bg]="#353535"
 theme[selected_fg]="#8f9cae"
-
-# Color of inactive/disabled text
-theme[inactive_fg]="#e6e6e6"
-
-# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#b67262"
-
-# Cpu box outline color
-theme[cpu_box]="#8a9273"
-
-# Memory/disks box outline color
-theme[mem_box]="#8a9273"
-
-# Net up/down box outline color
-theme[net_box]="#8a9273"
-
-# Processes box outline color
-theme[proc_box]="#8a9273"
-
-# Box divider line and small boxes line color
-theme[div_line]="#8a9273"
-
-# Temperature graph colors
-theme[temp_start]="#78859e"
-theme[temp_mid]="#8f9cae"
-theme[temp_end]="#e6e6e6"
-
-# CPU graph colors
-theme[cpu_start]="#78859e"
-theme[cpu_mid]="#8f9cae"
-theme[cpu_end]="#e6e6e6"
-
-# Mem/Disk free meter
+theme[inactive_fg]="#353535"
+theme[proc_misc]="#e3e3e3"
+theme[cpu_box]="#353535"
+theme[mem_box]="#353535"
+theme[net_box]="#353535"
+theme[proc_box]="#353535"
+theme[div_line]="#353535"
+theme[temp_start]="#b67262"
+theme[temp_mid]="#bc8778"
+theme[temp_end]="#e3e3e3"
+theme[cpu_start]="#b67262"
+theme[cpu_mid]="#bc8778"
+theme[cpu_end]="#e3e3e3"
 theme[free_start]="#78859e"
 theme[free_mid]="#8f9cae"
-theme[free_end]="#e6e6e6"
-
-# Mem/Disk cached meter
-theme[cached_start]="#78859e"
-theme[cached_mid]="#8f9cae"
-theme[cached_end]="#e6e6e6"
-
-# Mem/Disk available meter
-theme[available_start]="#78859e"
-theme[available_mid]="#8f9cae"
-theme[available_end]="#e6e6e6"
-
-# Mem/Disk used meter
-theme[used_start]="#78859e"
-theme[used_mid]="#8f9cae"
-theme[used_end]="#e6e6e6"
-
-# Download graph colors
-theme[download_start]="#78859e"
-theme[download_mid]="#8f9cae"
-theme[download_end]="#e6e6e6"
-
-# Upload graph colors
-theme[upload_start]="#78859e"
-theme[upload_mid]="#8f9cae"
-theme[upload_end]="#e6e6e6"
+theme[free_end]="#e3e3e3"
+theme[cached_start]="#c0a474"
+theme[cached_mid]="#c3ae8b"
+theme[cached_end]="#e3e3e3"
+theme[available_start]="#b67262"
+theme[available_mid]="#bc8778"
+theme[available_end]="#e3e3e3"
+theme[used_start]="#8a9273"
+theme[used_mid]="#a0ac82"
+theme[used_end]="#e3e3e3"
+theme[download_start]="#9b859d"
+theme[download_mid]="#a392a5"
+theme[download_end]="#e3e3e3"
+theme[upload_start]="#a8d2db"
+theme[upload_mid]="#b9d8df"
+theme[upload_end]="#e3e3e3"

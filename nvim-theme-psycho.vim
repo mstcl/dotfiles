@@ -13,7 +13,7 @@ let s:green = "78859e"
 let s:aqua = "9b859d"
 let s:blue = "a8d2db"
 let s:purple = "f6f6f6"
-let s:window = "151515"
+let s:window = "353535"
 
 hi clear
 syntax reset
@@ -281,7 +281,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Type", s:blue, "", "italic")
 	call <SID>X("Define", s:purple, "", "none")
 	call <SID>X("Include", s:blue, "", "")
-	"call <SID>X("Ignore", "666666", "", "")
+	call <SID>X("Ignore", "666666", "", "")
 
 	" Vim Highlighting
 	call <SID>X("vimCommand", s:red, "", "none")
@@ -473,6 +473,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("diffAdded", s:green, "", "")
 	call <SID>X("diffRemoved", s:red, "", "")
 	call <SID>X("gitcommitSummary", "", "", "bold")
+    call <SID>X("GitSignsAdd", s:green, "", "")
+    call <SID>X("GitSignsChange", s:aqua, "", "")
+    call <SID>X("GitSignsDelete", s:red, "", "")
 
 	" Delete Functions
 	delf <SID>X
