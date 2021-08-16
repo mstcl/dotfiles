@@ -3,9 +3,9 @@
 
 " Normal mode
 "          [ guifg, guibg, ctermfg, ctermbg, opts ]
-let s:N1 = [ '#101010' , '#8a9273' ,  232 , 'green' ] " mode
-let s:N2 = [ '#8a9273' , '#353535' , 'green' , 235 ]  " info
-let s:N3 = [ '#8a9273' , '#242424' , 'green' , 234 ]  " statusline
+let s:N1 = [ '#101010' , '#b67262' ,  232 , 'green' ] " mode
+let s:N2 = [ '#b67262' , '#353535' , 'green' , 235 ]  " info
+let s:N3 = [ '#b67262' , '#242424' , 'green' , 234 ]  " statusline
 let s:N4 = [ '#a0ac82' , 'DarkGreen' ]                " mode modified
 
 " Insert mode

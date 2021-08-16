@@ -98,6 +98,7 @@ set foldenable
 set noshowmode
 set modeline
 set termguicolors
+set formatoptions-=cro
 set linebreak
 set nocompatible
 set number
@@ -187,6 +188,9 @@ nnoremap <Leader>ed :DiffVifm<CR>
 let g:rainbow_active = 1
 let g:rainbow_conf = {
     \'parentheses': ['start=/(/ end=/)/ fold','start=/\[/ end=/\]/ fold','start=/{/ end=/}/ fold','start=/\(\(\<operator\>\)\@<!<\)\&[a-zA-Z0-9_]\@<=<\ze[^<]/ end=/>/'],
+    \'separately': {
+        \'fzf': 0,
+    \}
 \}
 " }}}
 
@@ -603,7 +607,7 @@ let g:airline_mode_map = {
     \'i'      : '',
     \'ic'     : 'IC',
     \'ix'     : 'IX',
-    \'n'      : '',
+    \'n'      : '',
     \'multi'  : 'M',
     \'ni'     : 'NI',
     \'no'     : 'NO',
@@ -633,10 +637,10 @@ call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bol
 let g:airline_section_z = airline#section#create([' ','linenr', 'colnr'])
 let g:airline_symbols.colnr = '   '
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_se =''
 let g:airline_symbols.whitespace = ''
 let g:airline_symbols.dirty = ' '
 let g:airline_symbols.branch = ''

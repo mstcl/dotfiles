@@ -50,9 +50,9 @@
 
 #textbox-prompt-colon {{
     expand: false;
-    str: "異";
+    str: " ";
     font: "{font0} {font-size-icon}";
-    padding: 7px 15px 10px 15px;
+    padding: 9px 3px 8px 18px;
     background-color: {color7};
     text-color: {color0};
 }}

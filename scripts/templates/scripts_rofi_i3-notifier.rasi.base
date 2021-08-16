@@ -23,7 +23,7 @@ configuration {{
     height: 30%;
     width: 20em;
     text-color: @fg;
-    children: [listview];
+    children: [inputbar,listview];
     border-radius: {border-radius}px;
 }}
 
@@ -71,4 +71,22 @@ configuration {{
     vertical-align: 0;
     padding: 0 0 0 0;
     border-radius: {border-radius}px;
+}}
+
+#inputbar {{
+    children: [textbox-prompt-colon];
+    background-color: {color7};
+    text-color: {color7};
+    expand: false;
+    border: 0px;
+    spacing: 0px;
+}}
+
+#textbox-prompt-colon {{
+    expand: false;
+    str: "Notifications";
+    font: "{font0} {font-size}";
+    padding: 9px 3px 8px 18px;
+    background-color: {color7};
+    text-color: {color0};
 }}

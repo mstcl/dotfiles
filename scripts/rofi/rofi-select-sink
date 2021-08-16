@@ -18,12 +18,12 @@ list_sinks() {
 }
 
 select_sink() {
-    sink="$(list_sinks | dmenu -p sinks)" || return 1
+    sink="$(list_sinks | dmenu -p Pipewire)" || return 1
     sink="$(echo "$sink" | cut -f 1 -d " ")"
     [ -n "$sink" ] || return 1
 
     pactl set-default-sink $sink || return 1
-    move_sink_inputs $sink || return 1
+    # move_sink_inputs $sink || return 1
 }
 
 case "$1" in

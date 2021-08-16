@@ -26,7 +26,8 @@ include-file = ~/scripts/polybar/bar/modules.ini
 monitor =
 monitor-fallback =
 monitor-strict = false
-override-redirect = false
+override-redirect = true
+wm-restack = i3
 bottom = false
 fixed-center = true
 width = 100%
@@ -57,7 +58,7 @@ font-1 = "{font0}:pixelsize={font-size-icon};4"
 ;; Modules
 modules-left = i3 player
 modules-center =
-modules-right = lang ip-tail updates redshift notifications pulseaudio date picom
+modules-right = trash lang ip-tail updates redshift notifications pulseaudio date picom
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
