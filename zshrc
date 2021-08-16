@@ -1,4 +1,5 @@
 # :.config/zsh/.zshrc
+# vim:set fdm=marker:
 #+----------------------------+
 #|            _               |
 #|    _______| |__  _ __ ___  |
@@ -8,25 +9,12 @@
 #|                            |
 #+----------------------------+
 
-
-###### ZSH CONFIG #######
-CASE_SENSITIVE="false"
-HYPHEN_INSENSITIVE="true"
-DISABLE_AUTO_UPDATE="false"
-DISABLE_UPDATE_PROMPT="false"
-DISABLE_MAGIC_FUNCTIONS="false"
-DISABLE_LS_COLORS="false"
-DISABLE_AUTO_TITLE="false"
-ENABLE_CORRECTION="false"
-COMPLETION_WAITING_DOTS="false"
-HIST_STAMPS="mm/dd/yyyy"
-
-###### SAUCE #####
+# SAUCE 1.0 {{{
 source /usr/share/zsh/share/antigen.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-#source /home/lckdscl/.config/broot/launcher/bash/br
+# }}}
 
-###### PLUGINS ######
+# ANTIGEN {{{
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
     redxtech/zsh-fzf-utils
@@ -44,33 +32,35 @@ antigen bundles <<EOBUNDLES
     hlissner/zsh-autopair
     zsh-users/zsh-autosuggestions
     zsh-users/zsh-syntax-highlighting
-    #jeffreytse/zsh-vi-mode
-    gretzky/auto-color-ls
 EOBUNDLES
-#antigen theme zhann
-#antigen theme jackharrisonsherlock/common
-#antigen theme gozilla
-#antigen theme eendroroy/alien-minimal alien-minimal
 antigen theme spaceship-prompt/spaceship-prompt
 antigen apply
+# }}}
+
+# SAUCE 2.0 {{{
+source /usr/share/zsh/share/antigen.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+# }}}
 
-###### HISTORY ######
-HISTSIZE=500000
-SAVEHIST=500000
+# HISTORY VARIABLES {{{
+export HISTSIZE=500000
+export SAVEHIST=500000
+export HIST_STAMPS="mm/dd/yyyy"
 setopt appendhistory
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+# }}}
 
-###### SPACESHIP PROMPT ######
-SPACESHIP_PROMPT_ORDER=(
+# SPACESHIP PROMPT VARIABLES {{{
+export SPACESHIP_PROMPT_ORDER=(
     user
     dir
     host
     char
 )
-SPACESHIP_RPROMPT_ORDER=(
+export SPACESHIP_RPROMPT_ORDER=(
     conda
     git
     hg
@@ -98,28 +88,49 @@ SPACESHIP_RPROMPT_ORDER=(
     terraform
     jobs
 )
+export SPACESHIP_TIME_SHOW=false
+export SPACESHIP_CHAR_SYMBOL="%F{red}%F{green}%F{blue}%F{green}"
+export SPACESHIP_CHAR_PREFIX=""
+export SPACESHIP_CHAR_SUFFIX=" "
+export SPACESHIP_CHAR_SYMBOL_SECONDARY="%F{red} "
+export SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_PROMPT_SEPARATE_LINE=false
+export SPACESHIP_GIT_BRANCH_COLOR="yellow"
+export SPACESHIP_GIT_STATUS_COLOR="yellow"
+export SPACESHIP_GIT_STATUS_ADDED="%F{yellow}+"
+export SPACESHIP_GIT_STATUS_UNTRACKED="%F{blue}?"
+export SPACESHIP_GIT_STATUS_DELETED="%F{red}"
+export SPACESHIP_GIT_STATUS_MODIFIED="%F{green}!%F{yellow}"
+# }}}
 
-SPACESHIP_TIME_SHOW=false
-SPACESHIP_CHAR_SYMBOL=""
-SPACESHIP_CHAR_PREFIX=""
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_CHAR_SYMBOL_SECONDARY=" "
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
+# ZSH VARIABLES {{{
+export CASE_SENSITIVE="false"
+export HYPHEN_INSENSITIVE="true"
+export DISABLE_AUTO_UPDATE="false"
+export DISABLE_UPDATE_PROMPT="false"
+export DISABLE_MAGIC_FUNCTIONS="false"
+export DISABLE_LS_COLORS="false"
+export DISABLE_AUTO_TITLE="false"
+export ENABLE_CORRECTION="false"
+export COMPLETION_WAITING_DOTS="false"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
+# }}}
 
-###### ENVIRONMENTAL VARIABLES #####
+# DIR OPTIONS {{{
 export CONF="$XDG_CONFIG_HOME"
 export DOTS="$HOME"/dotfiles
 export TRASH="$XDG_DATA_HOME"/Trash/files
 export MANPATH="/usr/share/man"
 export SCRIPTS="$HOME"/scripts
 export ADOTDIR="$XDG_DATA_HOME"/antigen
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
 export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
+# }}}
+
+# FZF VARIABLES {{{
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
 export FZF_DEFAULT_OPTS="
-    --color fg:-1,bg:-1,hl:1,fg+:-1,bg+:237,hl+:9
-    --color info:5,prompt:2,spinner:3,pointer:2,marker:4
+    --color fg:7,bg:0,hl:1,fg+:1,bg+:8,hl+:9,gutter:0
+    --color border:9,info:5,prompt:2,spinner:3,pointer:2,marker:4
     --height 90%
     --info=default
     --layout=reverse
@@ -127,16 +138,16 @@ export FZF_DEFAULT_OPTS="
     --marker=' '
     --pointer=' '
     --prompt=' '
-    --margin 5%
+    --margin 5%,7%
     --multi --bind 'ctrl-a:select-all'
     --border=sharp
     --preview-window=right,hidden,wrap,border-none
-    --padding 0%,0%,0%,0%
+    --padding 0%,0%
     --bind '?:toggle-preview'
     --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 export FZF_CTRL_R_OPTS="
     --height 90%
-    --margin 5%
+    --margin 2%
     --padding 0%,0%,0%,0%
     --info=hidden
     --preview-window hidden"
@@ -145,11 +156,13 @@ export FZF_CTRL_T_OPTS="
     --preview-window nohidden
 "
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# }}}
 
-###### ALIAS ######
+# ALIASES {{{
 alias storage='lsblk -ao NAME,FSTYPE,FSSIZE,FSUSED,FSUSE%'
-alias pr='protonvpn'
+alias vpn='sudo protonvpn'
 alias k='kill -9'
+alias fsvg="feh --conversion-timeout 4"
 alias view='feh -Z -. -X -g 1280x720'
 alias .!='cd $HOME'
 alias get-mirror='systemctl start reflector'
@@ -158,12 +171,10 @@ alias nv='nvim'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias condact="conda activate"
-alias fsvg="feh --conversion-timeout 4"
-alias l='colorls --gs --sd'
-alias lt='colorls --sd --tree=2 --gs'
-alias la='colorls --gs -l -o -a --sd'
-alias fetch='neofetch --backend ascii --source ~/scripts/ascii/cactus'
-alias polylaunch='bash ~/scripts/polybar/launch.sh'
+alias l='colorls --gs --sd -C'
+alias lt='colorls --sd --tree=2'
+alias la='colorls --gs -loa --sd'
+alias fetch='neofetch --backend $1'
 alias zshconf='nvim ~/dotfiles/zshrc'
 alias i3conf='nvim ~/dotfiles/i3-config.conf'
 alias kittyconf='nvim ~/dotfiles/kitty.conf'
@@ -192,8 +203,9 @@ alias pls='paru -Q'
 alias plsa='paru -Qe'
 alias porf='paru -Qdt'
 alias pcc='paru -Scd'
+# }}}
 
-###### CONDA ######
+# CONDA {{{
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/lckdscl/.local/share/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -208,8 +220,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+# }}}
 
-###### FUNCTIONS ######
+# FUNCTIONS {{{
 function j {
     if [[ "$#" -ne 0 ]]; then
         cd $(autojump $@)
@@ -267,7 +280,4 @@ function vm {
     fi
     vifm $(jd)
 }
-
-###### VI MODE ######
-zvm_after_init_commands+=('source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh')
-
+# }}}
