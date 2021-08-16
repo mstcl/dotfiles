@@ -23,7 +23,7 @@ configuration {
     height: 30%;
     width: 20em;
     text-color: @fg;
-    children: [listview];
+    children: [inputbar,listview];
     border-radius: 2px;
 }
 
@@ -71,4 +71,22 @@ configuration {
     vertical-align: 0;
     padding: 0 0 0 0;
     border-radius: 2px;
+}
+
+#inputbar {
+    children: [textbox-prompt-colon];
+    background-color: #f6f6f6;
+    text-color: #f6f6f6;
+    expand: false;
+    border: 0px;
+    spacing: 0px;
+}
+
+#textbox-prompt-colon {
+    expand: false;
+    str: "Notifications";
+    font: "JetBrainsMono Nerd Font Mono 10";
+    padding: 9px 3px 8px 18px;
+    background-color: #f6f6f6;
+    text-color: #101010;
 }

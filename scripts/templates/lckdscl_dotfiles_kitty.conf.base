@@ -33,20 +33,65 @@ url_style curly
 # Performance tuning
 sync_to_monitor yes
 
+# Window Layout
+enabled_layouts horizontal,splits,grid,fat
+
+# Window resize
+window_resize_step_cells 1
+window_resize_step_lines 1
+resize_in_steps yes
+
 # Terminal bell
 enable_audio_bell no
 
 # Window layout
-window_padding_width 20
-active_border_color {color2}
-inactive_border_color {color8}
+window_padding_width 0 20 20 20
+window_margin_width 20 0 0 0
+placement_strategy center
+active_border_color {color0}
+window_border_width 1.0
+inactive_border_color {color0}
 bell_border_color {color3}
 
 # Tab bar
-tab_bar_style hidden
+tab_bar_edge top
+tab_bar_margin_width 20.0
+tab_bar_margin_height 20.0 0.0
+tab_bar_style separator
+tab_separator " "
+
+# Template to render the tab title.
+active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}{{fmt.fg._{color0.strip}}}{{fmt.bg._{color1.strip}}} {{index}} {{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color8.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{title}} {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}
+
+tab_title_template {{fmt.fg._{color0.strip}}}{{fmt.bg.default}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color0.strip}}} {{title}} {{fmt.fg._{color0.strip}}}{{fmt.bg.default}}
+
+# Tab bar colors and styles.
+active_tab_font_style   bold
+inactive_tab_background {color0}
+inactive_tab_font_style normal
+tab_bar_background      {color0}
 
 # Color scheme
-include kitty-theme.conf
+foreground   {color7}
+background   {color0}
+cursor       {color15}
+
+color0       {color0}
+color8       {color8}
+color1       {color1}
+color9       {color9}
+color2       {color2}
+color10      {color10}
+color3       {color3}
+color11      {color11}
+color4       {color4}
+color12      {color12}
+color5       {color5}
+color13      {color13}
+color6       {color6}
+color14      {color14}
+color7       {color7}
+color15      {color15}
 
 # Advanced
 allow_remote_control yes
@@ -56,7 +101,11 @@ linux_display_server auto
 
 # Keyboard shortcuts
 kitty_mod ctrl+shift
+
+# Tab controls
 map kitty_mod+p select_tab
+map kitty_mod+right next_tab
+map kitty_mod+left  previous_tab
 
 # Clipboard
 map kitty_mod+c copy_to_clipboard
@@ -67,8 +116,10 @@ map kitty_mod+down      scroll_line_down
 
 # Window management
 map kitty_mod+enter new_window
-map ctrl+alt+enter    launch --cwd=current
-map kitty_mod+n new_os_window
+map ctrl+alt+enter  launch --cwd=current
+map kitty_mod+n     new_os_window
+map kitty_mod+] next_window
+map kitty_mod+[ previous_window
 
 # Tab management
 map kitty_mod+right next_tab
@@ -80,12 +131,12 @@ map kitty_mod+,     move_tab_backward
 map kitty_mod+alt+t set_tab_title
 
 # Font sizes
-map kitty_mod+equal       change_font_size all +2.0
-map kitty_mod+minus       change_font_size all -2.0
-map kitty_mod+backspace   change_font_size all 0
+map kitty_mod+equal     change_font_size all +2.0
+map kitty_mod+minus     change_font_size all -2.0
+map kitty_mod+backspace change_font_size all 0
 
 # Select and act on visible text
 map kitty_mod+e kitten hints
 
 # Miscellaneous
-map kitty_mod+f2     clear_terminal reset active
+map kitty_mod+f2 clear_terminal reset active

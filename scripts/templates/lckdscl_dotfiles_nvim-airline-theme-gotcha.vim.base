@@ -3,9 +3,9 @@
 
 " Normal mode
 "          [ guifg, guibg, ctermfg, ctermbg, opts ]
-let s:N1 = [ '{color0}' , '{color2}' ,  232 , 'green' ] " mode
-let s:N2 = [ '{color2}' , '{color8}' , 'green' , 235 ]  " info
-let s:N3 = [ '{color2}' , '#242424' , 'green' , 234 ]  " statusline
+let s:N1 = [ '{color0}' , '{color1}' ,  232 , 'green' ] " mode
+let s:N2 = [ '{color1}' , '{color8}' , 'green' , 235 ]  " info
+let s:N3 = [ '{color1}' , '#242424' , 'green' , 234 ]  " statusline
 let s:N4 = [ '{color10}' , 'DarkGreen' ]                " mode modified
 
 " Insert mode
