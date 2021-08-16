@@ -33,7 +33,7 @@ file_small:  peachpuff
 # Random
 report: white
 user:   cyan
-tree:   cyan
+tree:   dimgray
 empty:  yellow
 error:  red
 normal: darkkhaki

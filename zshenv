@@ -1,5 +1,5 @@
 # :.zshenv
-###### ENVIRONMENTAL VARIABLES #####
+# ENVIRONMENTAL VARIABLES
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export ZDOTDIR="$HOME"/.config/zsh
 export LANG=en_GB.UTF-8
@@ -28,3 +28,9 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 export VDPAU_DRIVER=nvidia
 export LIBVA_DRIVER_NAME=vdpau
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT4_IM_MODULE=ibus
+export CLUTTER_IM_MODULE=ibus
+export GLFW_IM_MODULE=ibus

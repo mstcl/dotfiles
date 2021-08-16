@@ -1,4 +1,5 @@
 " :.config/nvim/init.vim
+" vim:set fdm=marker:
 "+-----------------------------------+
 "|  _       _ _         _            |
 "| (_)_ __ (_) |___   _(_)_ __ ___   |
@@ -12,9 +13,11 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'rmagatti/auto-session'
     Plug 'folke/which-key.nvim'
+    Plug 'mbbill/undotree'
     Plug 'Konfekt/FastFold'
     Plug 'lambdalisue/suda.vim'
     Plug 'glepnir/dashboard-nvim'
+    Plug 'mattn/emmet-vim'
     Plug 'gauteh/vim-cppman'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -25,7 +28,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'jupyter-vim/jupyter-vim'
     Plug 'yggdroot/indentline'
     Plug 'vimwiki/vimwiki'
-    Plug 'b3nj5m1n/kommentary'
+    Plug 'preservim/nerdcommenter'
     Plug 'junegunn/goyo.vim'
     Plug 'tmhedberg/SimpylFold'
     Plug 'junegunn/limelight.vim'
@@ -43,7 +46,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'vifm/vifm.vim'
     Plug 'flazz/vim-colorschemes'
     Plug 'deviantfero/wpgtk.vim'
-    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     Plug 'hrsh7th/nvim-compe'
     Plug 'zhimsel/vim-stay'
     Plug 'luochen1990/rainbow'
@@ -51,7 +54,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'liuchengxu/vista.vim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'lewis6991/gitsigns.nvim'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'psliwka/vim-smoothie'
     " Plug 'bfrg/vim-cpp-modern'
+    " Plug 'b3nj5m1n/kommentary'
+    " Plug 'norcalli/nvim-colorizer.lua'
     " Plug 'preservim/tagbar'
     " Plug 'vim-scripts/indentpython.vim'
     " Plug 'simrat39/symbols-outline.nvim'
@@ -70,19 +77,10 @@ call plug#end()
 autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sh | set filetype=sh | endif
 autocmd BufNewFile,BufReadPost *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
 autocmd BufReadPost *.rasi set filetype=css
-function! ShowTrailingWhitespace()
-    if &filetype == 'dashboard'
-        highlight RedundantSpaces cterm=none guibg=none
-        match RedundantSpaces /\s\+$/
-        return
-    endif
-    highlight RedundantSpaces ctermbg=red guibg=red
-    match RedundantSpaces /\s\+$/
-endfunction
-autocmd BufNewFile,BufWritePre,BufReadPost * call ShowTrailingWhitespace()
-autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echom "Reloaded neovim"
-autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
-autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
+autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echo "Reloaded neovim"
+autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler | highlight RedundantSpaces ctermbg=none guibg=none
+autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | highlight RedundantSpaces ctermbg=red guibg=red | set showtabline=2 | set laststatus=2 | endif
+autocmd FileType fzf set nonumber norelativenumber
 " }}}
 
 " GENERAL OPTIONS {{{
@@ -97,6 +95,8 @@ set wrap
 set lazyredraw
 set foldmethod=syntax
 set foldenable
+set noshowmode
+set modeline
 set termguicolors
 set linebreak
 set nocompatible
@@ -108,6 +108,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smarttab
 set backspace=indent,eol,start
 set autoindent
 set ignorecase
@@ -118,6 +119,7 @@ set scrolloff=1
 set clipboard=unnamedplus
 set sidescrolloff=5
 set cursorline
+set scrolloff=3
 set history=1000
 set wrapmargin=0
 set textwidth=0
@@ -125,10 +127,11 @@ set spell spelllang=en_gb
 set timeoutlen=500
 set nospell
 set encoding=utf-8
-set fillchars=eob:\ 
+set fillchars=eob:\ ,vert:│
 set nolist
 set listchars=tab:›_,eol:¬,trail:·
 set completeopt=menuone,noselect
+set shortmess+=Ssatq
 " }}}
 
 " GENERAL BINDINGS {{{
@@ -145,25 +148,29 @@ nnoremap <Leader>ll :set list!<CR>
 nnoremap <space> :
 nnoremap <silent> <Leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <Leader>sh :setlocal spell! spelllang=en_gb<CR>
-nnoremap <silent> <Leader>nn :set number!<CR> <bar> :set relativenumber!<CR>
+nnoremap <silent> <Leader>nr :set relativenumber!<CR>
+nnoremap <silent> <Leader>nn :set number!<CR> <bar> :set norelativenumber<CR>
 nnoremap <silent> <Leader>tn :tabnew<CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <Leader>sco :set conceallevel=0<CR>
 nnoremap <Leader>sci :set conceallevel=2<CR>
 nmap mo o<esc>
 nmap mO O<esc>
-nnoremap <Leader>bn :bn<CR>
-nnoremap <Leader>bd :bd<CR>
-nnoremap <Leader>bp :bp<CR>
+nnoremap <silent> <Leader>bn :bn<CR>
+nnoremap <silent> <Leader>bd :bd<CR>
+nnoremap <silent> <Leader>bp :bp<CR>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 nnoremap <silent> <Leader>nh :noh <CR>
+inoremap ,, ,
 " }}}
 
 " COLORSCHEME {{{
 colorscheme psycho
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$/
 " }}}
 
 " VIFM {{{
@@ -202,22 +209,25 @@ lua << EOF
             marks = true,
             registers = true,
             spelling = {
-            enabled = true,
+            enabled = false,
             suggestions = 20,
             },
             presets = {
-                operators = true,
-                motions = true,
-                text_objects = true,
+                operators = false,
+                motions = false,
+                text_objects = false,
                 windows = true,
                 nav = true,
                 z = true,
                 g = true,
                 },
         },
-        operators = { gc = "Comments" },
+        operators = {},
         key_labels = {
-        },
+            ["<space>"] = "SPC",
+            ["<cr>"] = "RET",
+            ["<tab>"] = "TAB",
+            },
         icons = {
             breadcrumb = "»",
             separator = "➜",
@@ -225,19 +235,19 @@ lua << EOF
         },
         window = {
             border = "none",
-            position = "bottom",
-            margin = { 1, 0, 1, 0 },
-            padding = { 2, 2, 2, 2 },
+            position = "top",
+            margin = {0,0,0,0},
+            padding = {1,0,1,0},
         },
         layout = {
             height = { min = 4, max = 25 },
-            width = { min = 20, max = 50 },
-            spacing = 3,
-            align = "left",
+            width = { min = 10, max = 50 },
+            spacing = 2,
+            align = "center",
         },
         ignore_missing = false,
         hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "},
-        show_help = true,
+        show_help = false,
         triggers = "auto",
         triggers_blacklist = {
             i = { "j", "k" },
@@ -254,6 +264,7 @@ set viewoptions=cursor,folds,slash,unix
 " FASTFOLD {{{
 nnoremap zuz <Plug>(FastFoldUpate)
 let g:fastfold_savehook = 1
+let g:fastfold_minlines = 400
 let g:fastfold_fold_command_suffixes = ['x','X','a','A','o','O','c','C']
 let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 let g:markdown_folding = 1
@@ -273,15 +284,34 @@ let g:php_folding = 1
 " DASHBOARD {{{
 let g:dashboard_default_executive='fzf'
 let g:dashboard_fzf_engine='ag'
-let g:dashboard_custom_shortcut={
-    \ 'last_session'       : 'SPC s l',
-    \ 'find_history'       : 'SPC f h',
-    \ 'find_file'          : 'SPC f f',
-    \ 'new_file'           : 'SPC c n',
-    \ 'change_colorscheme' : 'SPC f c',
-    \ 'find_word'          : 'SPC f a',
-    \ 'book_marks'         : 'SPC f b',
-    \}
+" let g:dashboard_custom_section = {
+    " \ 'last_session'       : 's l',
+    " \ 'find_history'       : 'f h',
+    " \ 'find_file'          : 'f f',
+    " \ 'new_file'           : 'c n',
+    " \ 'change_colorscheme' : 'f c',
+    " \ 'find_word'          : 'f a',
+    " \ 'book_marks'         : 'f b',
+    " \'buffer_list': {
+    "     \'description': [' Recently lase session                 SPC b b'],
+    "     \'command': 'Some Command' or function('your funciton name')
+    " \}
+" \}
+let g:dashboard_custom_section={
+\ 'history_list': {
+  \ 'description': [' History                 f h'],
+  \ 'command': ':History<CR>' },
+\ 'buffer_list': {
+  \ 'description': ['﬘ Buffer                  f b'],
+  \ 'command': ':Buffers<CR>' },
+\ 'find_files': {
+  \ 'description': [' Files                   f f'],
+  \ 'command': ':Files<CR>' },
+\ 'explorer': {
+  \ 'description': [' Browse                  e e'],
+  \ 'command': ':Vifm<CR>' }
+\ }
+" header {{{
 let g:dashboard_custom_header = [
     \ '                                                       ',
     \ '                                                       ',
@@ -298,10 +328,8 @@ let g:dashboard_custom_header = [
     \ '                                                       ',
     \ '                                                       ',
     \]
-nnoremap <Leader>ss :<C-u>SessionSave<CR>
-nnoremap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>s
-nnoremap <Leader>db :highlight RedundantSpaces ctermbg=none guibg=none <CR> <bar> :Dashboard<CR>
+nnoremap <silent> <Leader>db :highlight RedundantSpaces ctermbg=none guibg=none <CR> <bar> :Dashboard<CR>
+" }}}
 " }}}
 
 " LSPCONFIG {{{
@@ -369,6 +397,7 @@ let g:AutoPairs = autopairs#AutoPairsDefine([
     \{"open": "|", "close": "|", "filetype": "help"}
 \])
 let g:AutoPairsFlyMode = "0"
+nnoremap <Leader>ap :AutoPairsToggle<CR>
 " }}}
 
 " ULTISNIPS {{{
@@ -381,7 +410,7 @@ inoremap <c-x><c-k> <c-x><c-k>
 " }}}
 
 " INDENTLINE {{{
-let g:indentLine_fileTypeExclude = ['FZF', 'Terminal', 'startify', 'nerdtree', 'NvimTree', 'man', 'Scratch', 'help', 'vimwiki', 'dashboard']
+let g:indentLine_fileTypeExclude = ['FZF', 'Terminal', 'startify', 'nerdtree', 'NvimTree', 'man', 'Scratch', 'help', 'vimwiki', 'dashboard', 'WhichKey']
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_char = '│'
 let g:indentLine_enabled = 1
@@ -464,19 +493,8 @@ nnoremap <Leader>zn :ZettelNew
 " }}}
 
 " FZF.VIM {{{
-let g:fzf_layout = {'window': 'enew'}
-let g:fzf_colors = {
-    \'fg':         ['fg', 'Normal'],
-    \'bg':         ['bg', 'Normal'],
-    \'preview-bg': ['bg', 'Normal'],
-    \'hl+':        ['fg', 'Statement'],
-    \'info':       ['fg', 'PreProc'],
-    \'prompt':     ['fg', 'Conditional'],
-    \'pointer':    ['fg', 'Exception'],
-    \'spinner':    ['fg', 'Label'],
-    \'header':     ['fg', 'Comment']}
+let g:fzf_layout = { 'window': 'enew' }
 let g:nv_search_paths = ['~/']
-let g:fzf_preview_window = []
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>fg :BCommits<CR>
 nnoremap <Leader>fb :Buffers<CR>
@@ -522,9 +540,9 @@ EOF
 let g:jupytext_fmt = 'py:percent'
 " }}}
 
-" COLORIZER {{{
-let g:colorizer_auto_color = 1
-lua require'colorizer'.setup()
+" COLORIZER (unused) {{{
+" let g:colorizer_auto_color = 1
+" lua require'colorizer'.setup()
 " }}}
 
 " GOYO {{{
@@ -556,44 +574,80 @@ nnoremap <Leader>gx :Goyo!<CR>
 " AIRLINE {{{
 let g:airline_statusline_ontop = 0
 let g:airline_powerline_fonts = 1
+let g:airline_disable_statusline = 0
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#exclude_preview = 0
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#keymap_ignored_filetypes =
+        \ ['dashboard','vista']
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#buffer_nr_format = '%s '
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buf_label_first = 0
+let g:airline#extensions#tabline#buffers_label = ''
+let airline#extensions#tabline#middle_click_preserves_windows = 1
+let g:airline#extensions#tabline#tabs_label = ''
 let g:airline_theme='gotcha'
 let g:airline_section_c_only_filename = 1
+let g:airline_stl_path_style = 'short'
+let g:airline_highlighting_cache = 1
+let g:airline_skip_empty_sections = 1
+ " mode map {{{
 let g:airline_mode_map = {
     \'__'     : '-',
-    \'c'      : 'C',
-    \'i'      : 'I',
-    \'ic'     : 'I',
-    \'ix'     : 'I',
-    \'n'      : 'N',
+    \'c'      : '',
+    \'i'      : '',
+    \'ic'     : 'IC',
+    \'ix'     : 'IX',
+    \'n'      : '',
     \'multi'  : 'M',
-    \'ni'     : 'N',
-    \'no'     : 'N',
-    \'R'      : 'R',
-    \'Rv'     : 'R',
+    \'ni'     : 'NI',
+    \'no'     : 'NO',
+    \'R'      : '',
+    \'Rv'     : 'RV',
     \'s'      : 'S',
     \'S'      : 'S',
     \''     : 'S',
     \'t'      : 'T',
-    \'v'      : 'V',
-    \'V'      : 'V',
-    \''     : 'V'
+    \'v'      : '',
+    \'V'      : '',
+    \''     : ''
 \}
+" }}}
+" filetype overrides {{{q
 let g:airline_filetype_overrides = {
-    \'startify': ['', ''],
-    \'NvimTree': ['', ''],
-    \'help': ['H', ''],
-    \'vim-plug': ['P', ''],
+    \'help': ['', ''],
+    \'vim-plug': ['', ''],
     \'Tagbar': ['', ''],
 \}
+" }}}
 function! MyLineNumber()
     return substitute(line('.'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g'). '/'.
         \    substitute(line('$'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g')
 endfunction
 call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bold'})
-let g:airline_section_z = airline#section#create(['%3p%% |  ', 'linenr', ' | %3v'])
+let g:airline_section_z = airline#section#create([' ','linenr', 'colnr'])
+let g:airline_symbols.colnr = '   '
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.whitespace = ''
+let g:airline_symbols.dirty = ' '
+let g:airline_symbols.branch = ''
+let g:airline#extensions#whitespace#trailing_format = 'TR %s'
+let g:airline#extensions#whitespace#mixed_indent_format =
+ \ 'MI [%s]'
+let g:airline#extensions#whitespace#long_format = 'LG %s'
+let g:airline#extensions#whitespace#mixed_indent_file_format =
+ \ 'MF [%s]'
+let g:airline#extensions#whitespace#conflicts_format = 'CF %s'
+let g:airline#extensions#scrollbar#enabled = 0
 " }}}
 
 " NVIMTREE (unused) {{{
@@ -763,7 +817,50 @@ let g:vista_echo_cursor_strategy="scroll"
 let g:vista_stay_on_open = 0
 let g:vista_blink = [0, 0]
 let g:vista_top_level_blink = [0, 0]
+autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
 nnoremap <silent> <Leader>vt :Vista!! <CR>
 nnoremap <silent> <Leader>vs :Vista focus <CR>
 nnoremap <silent> <Leader>vf :Vista finder <CR>
+" }}}
+
+" AUTO-SESSION {{{
+lua << EOF
+    local opts = {
+        log_level = 'error',
+        auto_session_enable_last_session = false,
+        auto_session_enabled = true,
+        auto_save_enabled = nil,
+        auto_restore_enabled = nil,
+        auto_session_suppress_dirs = nil
+    }
+    require('auto-session').setup(opts)
+EOF
+" }}}
+
+" UNDOTREE {{{
+nnoremap <Leader>ut :UndotreeToggle<CR>
+let g:undotree_ShortIndicators = 1
+let g:undotree_TreeNodeShape = ""
+" }}}
+
+" HEXOKINASE {{{
+let g:Hexokinase_highlighters = [ 'virtual' ]
+let g:Hexokinase_optInPatterns = 'triple_hex,full_hex,rgb,rgba,hsl,hsla,colour_names'
+" }}}
+
+" NERDCOMMENTER {{{
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+nnoremap <silent> <leader>c} V}:call nerdcommenter#Comment('x', 'toggle')<CR>
+nnoremap <silent> <leader>c{ V{:call nerdcommenter#Comment('x', 'toggle')<CR>
+" }}}
+
+" EASY ALIGN {{{
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 " }}}
