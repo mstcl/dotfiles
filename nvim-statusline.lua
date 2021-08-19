@@ -5,6 +5,13 @@ local gls = gl.section
 local condition = require('galaxyline.condition')
 local whitespace = require('galaxyline.provider_whitespace')
 local search = require('galaxyline.provider_search')
+local function has_file_type()
+    local f_type = vim.bo.filetype
+    if not f_type or f_type == '' then
+        return false
+    end
+    return true
+end
 
 gl.short_line_list = {
     'LuaTree',
@@ -22,7 +29,7 @@ gl.short_line_list = {
 
 local colors = {
     bg       = '#353535',
-    line_bg  = '#101010',
+    line_bg  = '#151515',
     fg       = '#e3e3e3',
     fg_green = '#a0ac82',
     yellow   = '#c0a474',
@@ -40,7 +47,7 @@ gls.left[1] = {
     RainbowRed = {
         provider = function() return '' end,
         highlight = {colors.orange,colors.line_bg},
-        separator = ' ',
+        separator = '',
         separator_highlight = {colors.bg,colors.line_bg},
     },
 }
@@ -50,38 +57,57 @@ gls.left[2] = {
     ViMode = {
         icon = function()
             local icons = {
-                n      = '  ',
-                i      = '  ',
-                c      = '  ',
-                V      = '  ',
-                [''] = '  ',
-                v      = '  ',
-                C      = '  ',
-                R      = ' ﯒ ',
-                t      = '  ',
+                n      = '  ',
+                i      = '  ',
+                c      = '  ',
+                V      = '  ',
+                [''] = '  ',
+                v      = '  ',
+                C      = '  ',
+                R      = '  ﯒',
+                t      = '  ',
             }
             return icons[vim.fn.mode()]
         end,
 
         provider = function()
             local alias = {
-                n      = 'NORMAL ',
-                i      = 'INSERT ',
-                c      = 'COMMAND ',
-                V      = 'VISUAL-L ',
-                [''] = 'VISUAL-B ',
-                v      = 'VISUAL ',
-                C      = 'COMMAND ',
+                n      = 'N ',
+                i      = 'I ',
+                c      = 'C ',
+                V      = 'VL ',
+                [''] = 'VB ',
+                v      = 'V ',
+                C      = 'C ',
                 ['r?'] = ':CONFIRM ',
                 rm     = '--MORE ',
-                R      = 'REPLACE ',
-                Rv     = 'REPLACE-V ',
+                R      = 'R ',
+                Rv     = 'RV ',
                 s      = 'S ',
                 S      = 'S ',
                 ['r']  = 'HIT-ENTER ',
                 [''] = 'SELECT ',
-                t      = 'TERMINAL ',
+                t      = 'T ',
                 ['!']  = 'SH ',
+            }
+            local alias = {
+                n      = ' ',
+                i      = ' ',
+                c      = ' ',
+                V      = ' ',
+                [''] = ' ',
+                v      = ' ',
+                C      = ' ',
+                ['r?'] = ':CONFIRM ',
+                rm     = '--MORE ',
+                R      = ' ',
+                Rv     = ' ',
+                s      = ' ',
+                S      = ' ',
+                ['r']  = 'HIT-ENTER ',
+                [''] = 'SELECT ',
+                t      = ' ',
+                ['!']  = ' ',
             }
             local mode_color = {n = colors.yellow, i = colors.green,v=colors.blue,
             [''] = colors.blue,V=colors.blue,
@@ -115,19 +141,9 @@ gls.left[4] = {
     FileName = {
         provider = 'FileName',
         condition = condition.buffer_not_empty,
-        separator = ' ',
+        separator = '',
         separator_highlight = {colors.bg,colors.line_bg},
         highlight = {colors.fg,colors.line_bg,'bold'}
-    }
-}
-
-gls.left[5] = {
-    GitIcon = {
-        provider = function() return ' ' end,
-        condition = condition.check_git_workspace,
-        separator = ' ',
-        separator_highlight = {'NONE',colors.line_bg},
-        highlight = {colors.purple,colors.line_bg,'bold'},
     }
 }
 
@@ -135,6 +151,7 @@ gls.left[6] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = condition.check_git_workspace,
+        icon = '   ',
         separator = ' ',
         separator_highlight = {colors.bg,colors.line_bg},
         highlight = {colors.magenta,colors.line_bg,'bold'},
@@ -171,6 +188,7 @@ gls.left[9] = {
 gls.left[10] = {
     DiagnosticError = {
         provider = 'DiagnosticError',
+        condition = condition.hide_in_width,
         icon = '  ',
         highlight = {colors.red,colors.line_bg}
     }
@@ -179,6 +197,7 @@ gls.left[10] = {
 gls.left[11] = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
+        condition = condition.hide_in_width,
         icon = '  ',
         highlight = {colors.yellow,colors.line_bg},
     }
@@ -187,7 +206,8 @@ gls.left[11] = {
 gls.left[12] = {
     DiagnosticInfo = {
         provider = 'DiagnosticInfo',
-        icon = '  ',
+        condition = condition.hide_in_width,
+        icon = '  ',
         highlight = {colors.green,colors.line_bg},
     }
 }
@@ -195,83 +215,113 @@ gls.left[12] = {
 gls.left[13] = {
     DiagnosticHint = {
         provider = 'DiagnosticHint',
+        condition = condition.hide_in_width,
         highlight = {colors.white,colors.line_bg},
-        icon = '  ',
+        icon = '  ',
     }
 }
 
 gls.right[1] = {
+  ShowLspClient = {
+    provider = 'GetLspClient',
+    condition = condition.hide_in_width,
+    icon = ' ',
+    separator_highlight = {colors.cyan,colors.line_bg},
+    highlight = {colors.purple,colors.line_bg,'bold'}
+  }
+}
+
+gls.right[2] = {
+    FTpre = {
+        provider = function() return '' end,
+        highlight = {colors.orange,colors.orange},
+        condition = condition.has_file_type,
+        separator = ' ',
+        separator_highlight = {'NONE',colors.line_bg},
+    },
+}
+
+gls.right[3] = {
     Search = {
         provider = search,
-        highlight = {colors.orange,colors.line_bg},
-        separator = ' ',
+        -- condition = condition.hide_in_width,
+        highlight = {colors.orange,colors.line_bg,'bold'},
+        -- separator = ' ',
         separator_highlight = {'NONE',colors.line_bg},
     }
 }
 
-gls.right[2] = {
+gls.right[4] = {
     LineInfo = {
         provider = 'LineColumn',
-        separator = '   ',
+        -- condition = condition.hide_in_width,
+        -- separator = ' ',
         separator_highlight = {colors.green, colors.line_bg},
         highlight = {colors.green,colors.line_bg,'bold'},
     },
 }
 
-gls.right[3] = {
+gls.right[5] = {
     PerCent = {
         provider = 'LinePercent',
-        separator = ' ',
+        -- condition = condition.hide_in_width,
+        icon = ' ' ,
         separator_highlight = {colors.cyan,colors.line_bg},
         highlight = {colors.cyan, colors.line_bg,'bold'},
     }
 }
 
-gls.right[4] = {
+gls.right[6] = {
     TrailingWhiteSpace = {
         provider = whitespace,
+        -- condition = condition.hide_in_width,
         icon = '  ',
         highlight = {colors.darkblue,colors.line_bg},
     }
 }
 
-gls.right[5] = {
+
+gls.right[7] = {
     FTpre = {
         provider = function() return '' end,
         highlight = {colors.orange,colors.orange},
-        separator = ' ',
-        separator_highlight = {'NONE',colors.line_bg},
-    },
-}
-
-gls.right[6] = {
-    FTbegin = {
-        provider = function() return '▊' end,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,require('galaxyline.provider_fileinfo').get_file_icon_color},
+        condition = condition.has_file_type,
         separator = '',
         separator_highlight = {'NONE',colors.line_bg},
     },
-}
-
-gls.right[7] = {
-    Filetype = {
-        provider = 'FileTypeName',
-        highlight = {colors.line_bg,require('galaxyline.provider_fileinfo').get_file_icon_color},
-        separator = '',
-        separator_highlight = {'NONE',colors.orange},
-    }
 }
 
 gls.right[8] = {
-    FTend = {
+    FTbegin = {
         provider = function() return '▊' end,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,require('galaxyline.provider_fileinfo').get_file_icon_color},
+        condition = condition.has_file_type,
         separator = '',
         separator_highlight = {'NONE',colors.line_bg},
     },
 }
 
 gls.right[9] = {
+    Filetype = {
+        provider = 'FileTypeName',
+        highlight = {colors.line_bg,require('galaxyline.provider_fileinfo').get_file_icon_color},
+        condition = condition.has_file_type,
+        separator = '',
+        separator_highlight = {'NONE',colors.orange},
+    }
+}
+
+gls.right[10] = {
+    FTend = {
+        provider = function() return '▊' end,
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+        condition = condition.has_file_type,
+        separator = '',
+        separator_highlight = {'NONE',colors.line_bg},
+    },
+}
+
+gls.right[11] = {
     RightEnd = {
         provider = function() return '' end,
         highlight = {colors.orange,colors.line_bg},
