@@ -1,5 +1,5 @@
 # :.config/zsh/.zshrc
-# vim:set fdm=marker:
+# vim:set ft=bash syntax=sh fdm=marker:
 #+----------------------------+
 #|            _               |
 #|    _______| |__  _ __ ___  |

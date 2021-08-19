@@ -1,0 +1,48 @@
+-- :.config/nvim/lua/colors.lua
+local Color = require('colorbuddy.color').Color
+
+Color.new('white', '#f6f6f6')
+Color.new('black', '#101010')
+Color.new('lightblack', '#353535')
+Color.new('very_pale_yellow', '#c3ae8b')
+Color.new('darkblack', '#0b0b0b')
+Color.new('grey', '#505050')
+Color.new('lightgrey', '#999999')
+Color.new('darkgrey', '#151515')
+Color.new('warmgrey', '#7d7d7d')
+
+Color.new('pink', '#a392a5') -- bright pink
+Color.new('green', '#8a9273') -- strong green
+Color.new('springgreen', '#8a9273')
+Color.new('aqua', '#a8d2db')
+Color.new('yellow', '#c0a474')
+Color.new('orange', '#c0a474')
+Color.new('lightorange', '#c3ae8b')
+Color.new('tomato', '#b67262')
+Color.new('purple', '#a392a5')
+Color.new('chartreuse', '#8a9273')
+Color.new('red', '#b67262')
+Color.new('blue', '#78859e') -- deep sky blue
+Color.new('vivid_blue', '#78859e')
+Color.new('light_blue', '#8f9cae')
+Color.new('darkred', '#b67262')
+Color.new('darkturquoise', '#a8d2db')
+Color.new('coral', '#b67262')
+Color.new('softred', '#bc8778')
+Color.new('vivid_yellow', '#8a9273')
+Color.new('light_yellow', '#c3ae8b')
+Color.new('very_light_orange', '#8a9273')
+Color.new('very_soft_orange', '#c3ae8b')
+Color.new('vivid_orange', '#b67262')
+Color.new('lime_green', '#a0ac82')
+Color.new('camel', '#c0a474')
+Color.new('crimson', '#b67262')
+Color.new('very_soft_yellow', '#8a9273')
+Color.new('very_soft_red', '#b67262')
+Color.new('pure_pink', '#9b859d')
+
+Color.new('addfg', '#8a9273')
+Color.new('addbg', '#353535')
+Color.new('delbg', '#b67262')
+Color.new('changefg', '#9b859d')
+Color.new('changebg', '#353535')

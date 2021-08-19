@@ -5,7 +5,7 @@ configuration {
     fullscreen:                     false;
 	hide-scrollbar: 				true;
 	sidebar-mode: 					false;
-    font: "JetBrainsMono Nerd Font Mono 10";
+    font: "JetBrainsMono Nerd Font Mono 12";
 }
 
 @import "colors.rasi"
