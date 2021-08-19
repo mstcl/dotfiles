@@ -7,7 +7,7 @@
     show-icons: false;
     icon-theme: "Fluent-dark";
     hide-scrollbar: true;
-    font: "JetBrainsMono Nerd Font Mono 10";
+    font: "JetBrainsMono Nerd Font Mono 12";
     disable-history: false;
 }
 

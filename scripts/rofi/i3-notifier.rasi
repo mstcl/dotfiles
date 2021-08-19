@@ -9,7 +9,7 @@ configuration {
     me-accept-entry: "MousePrimary";
     me-select-entry: "";
     show-icons: true;
-    font: "JetBrainsMono Nerd Font Mono 10";
+    font: "JetBrainsMono Nerd Font Mono 12";
     icon-theme: "Fluent-dark";
 
 }
@@ -85,7 +85,7 @@ configuration {
 #textbox-prompt-colon {
     expand: false;
     str: "Notifications";
-    font: "JetBrainsMono Nerd Font Mono 10";
+    font: "JetBrainsMono Nerd Font Mono 12";
     padding: 9px 3px 8px 18px;
     background-color: #f6f6f6;
     text-color: #101010;
