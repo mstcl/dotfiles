@@ -1,3 +1,10 @@
 push
 .bpytop-replace.conf
 .*
+.amrc
+.broot.hjson
+.i3status.conf
+.kitty-theme.conf
+.mirage-settings.py
+.nvim-airline-theme-gotcha.vim
+.nvim-nit.vim
