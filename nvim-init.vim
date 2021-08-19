@@ -1,5 +1,5 @@
 " :.config/nvim/init.vim
-" vim:set fdm=marker foldenable:
+" vim:set fdm=marker nofoldenable:
 "+-----------------------------------+
 "|  _       _ _         _            |
 "| (_)_ __ (_) |___   _(_)_ __ ___   |
@@ -10,10 +10,10 @@
 "+-----------------------------------+
 
 " SET PLUGINS {{{
-" require plugins.lua
+" Require plugins.lua
 lua require('plugins')
 
-" remove these built-in plugins
+" Remove these built-in plugins
 lua << EOF
 local disabled_built_ins = {
     --netrw",
@@ -43,23 +43,23 @@ EOF
 " }}}
 
 " GENERAL AUTOCOMMANDS {{{
-" autocompile packer on saving of plugins.lua
+" Autocompile packer on saving of plugins.lua
 autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 
-" default non-extension filetype is bash
+" Default non-extension filetype is bash
 autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sh | set filetype=sh | endif
 
-" rasi extension is css-based
+" Rasi extension is css-based
 autocmd BufReadPost *.rasi set filetype=css
 
-" autosource init.vim upon saving
+" Autosource init.vim upon saving
 autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echo "Reloaded neovim"
 
-" hide things for nvim-dashboard
+" Hide things for nvim-dashboard
 autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
 autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
 
-" vimwiki settings
+" Vimwiki settings
 augroup vimwiki
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
@@ -68,18 +68,18 @@ augroup END
 " }}}
 
 " GENERAL OPTIONS {{{
-" terminal title
+" Terminal title
 let &titlestring = "nvim " . expand("%:t")
 set title
 
-" use document modeline
+" Use document modeline
 set modeline
 
-" vimstay/auto-session option to restore session
+" Vimstay/auto-session option to restore session
 set viewoptions=cursor,folds,slash,unix
 set sessionoptions+=options,resize,winpos,terminal
 
-" visual settings
+" Visual settings
 set cursorline
 set hidden
 set noshowmode
@@ -87,36 +87,37 @@ set showcmd
 set lazyredraw
 set termguicolors
 
-" folding
+" Folding
 set foldmethod=indent
 set nofoldenable
 
-" editing
+" Editing
 set wrap
 set formatoptions-=cro
 set wrapmargin=0
 set textwidth=0
 set linebreak
 set mouse=a
+let g:vimsyn_embed= 'l'
 
-" rule
+" Rule
 set number
 set relativenumber
 
-" change default split
+" Change default split
 set splitbelow
 set splitright
 
-" for fast as fuck typers
+" For fast as fuck typers
 set timeoutlen=400
 
-" search options
+" Search options
 set hlsearch
 set ignorecase
 set incsearch
 set smartcase
 
-" indentation
+" Indentation
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -124,54 +125,58 @@ set expandtab
 set smarttab
 set autoindent
 
-" normal backspace
+" Normal backspace
 set backspace=indent,eol,start
 
-" systemwide clipboard
+" Systemwide clipboard
 set clipboard=unnamedplus
 
-" scrolloff
+" Scrolloff
 set sidescrolloff=5
 set scrolloff=1
 
-" set history
+" Set history
 set history=1000
 
-" spelling
+" Spelling
 set spell spelllang=en_gb
 set nospell
 set encoding=utf-8
 
-" funky characters
+" Funky characters
 set fillchars=eob:\ ,vert:│
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,eol:¶,trail:·
 
-" nvim-compe completion
+" Nvim-compe completion
 set completeopt=menuone,noselect
 
-" no-obnoxious nvim
+" No-obnoxious nvim
 set shortmess+=Ssatqc
 
-" huh I don't know if this should be here
+" Huh I don't know if this should be here
 set path+=**
 
-" detect extraneous filetype
+" Detect extraneous filetype
 filetype plugin on
 " }}}
 
 " KEY BINDINGS {{{
-" set leaders
+" Set leaders
 let mapleader = ",."
 let maplocalleader = ",.."
 
-" type comma easily
+" Type comma easily
 inoremap ,, ,
 
-" access command with space
+" Better indentation
+xnoremap < <gv
+xnoremap > >gv
+
+" Access command with space
 nnoremap <space> :
 
-" move lines
+" Move lines
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -179,150 +184,172 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <a-j> :m '>+1<cr>gv=gv
 vnoremap <a-k> :m '<-2<cr>gv=gv
 
-" new line above/below in normal mode
+" New line above/below in normal mode
 nmap     mo o<esc>
 nmap     mO O<esc>
 
-" unbind arrow keys in normal mode
+" Unbind arrow keys in normal mode
 noremap  <Up> <Nop>
 noremap  <Down> <Nop>
 noremap  <Left> <Nop>
 noremap  <Right> <Nop>
 
-" easy align
+" Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 "
 
-" control keymaps {{{
-" vimwiki todo toggle
+" Barbar buffer motions {{{
+" Move to previous/next
+nnoremap <silent>    <A-,>     :BufferPrevious<CR>
+nnoremap <silent>    <A-.>     :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<>     :BufferMovePrevious<CR>
+nnoremap <silent>    <A->>     :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-1>     :BufferGoto 1<CR>
+nnoremap <silent>    <A-2>     :BufferGoto 2<CR>
+nnoremap <silent>    <A-3>     :BufferGoto 3<CR>
+nnoremap <silent>    <A-4>     :BufferGoto 4<CR>
+nnoremap <silent>    <A-5>     :BufferGoto 5<CR>
+nnoremap <silent>    <A-6>     :BufferGoto 6<CR>
+nnoremap <silent>    <A-7>     :BufferGoto 7<CR>
+nnoremap <silent>    <A-8>     :BufferGoto 8<CR>
+nnoremap <silent>    <A-9>     :BufferLast<CR>
+" Pin/unpin buffer
+nnoremap <silent>    <A-s>     :BufferPin<CR>
+" Close buffer
+nnoremap <silent>    <A-c>     :BufferClose<CR>
+" Magic buffer-picking mode
+nnoremap <silent>    <C-s>     :BufferPick<CR>
+" }}}
+" Vimwiki todo toggle
 nmap <C-O> <Plug>VimwikiToggleListItem
-" }}}
 
-" leader a {{{
-nnoremap <silent> <Leader>ap  :AutoPairsToggle<CR>
-" }}}
-
-" leader b {{{
-" buffer motions
-nnoremap <silent> <Leader>bn  :bn<CR>
-nnoremap <silent> <Leader>bd  :bd<CR>
-nnoremap <silent> <Leader>bp  :bp<CR>
-" }}}
-
-" leader c {{{
-" toggle colour highlighting
+" Leader c {{{
+" Toggle colour highlighting
 nnoremap <silent> <Leader>ch  :HexokinaseToggle<CR>
-" comment chunk
+" Comment chunk
 nnoremap <silent> <leader>c}  V}:call nerdcommenter#Comment('x', 'toggle')<CR>
 nnoremap <silent> <leader>c{  V{:call nerdcommenter#Comment('x', 'toggle')<CR>
 
 " }}}
 
-" leader d {{{
-" goto dashboard
+" Leader d {{{
+" Goto dashboard
 nnoremap <silent> <Leader>db  :Dashboard<CR>
 "}}}
 
-" leader f {{{
-" telescope
-nnoremap <silent> <Leader>ff  :Telescope find_files<CR>
-nnoremap <silent> <Leader>fe  :Telescope file_browser<CR>
-nnoremap <silent> <Leader>fgc :Telescope git_commits<CR>
-nnoremap <silent> <Leader>fgs :Telescope git_status<CR>
-nnoremap <silent> <Leader>fb  :Telescope buffers<CR>
-nnoremap <silent> <Leader>fh  :Telescope oldfiles<CR>
-nnoremap <silent> <Leader>fc  :Telescope commands<CR>
-nnoremap <silent> <Leader>fr  :Telescope registers<CR>
-nnoremap <silent> <leader>fv  :Telescope vim_options<CR>
-nnoremap <silent> <leader>fmr :Telescope marks<CR>
-nnoremap <silent> <leader>fl  :Telescope colorscheme<CR>
-nnoremap <silent> <leader>fs  :Telescope spell_suggest<CR>
-nnoremap <silent> <leader>fk  :Telescope keymaps<CR>
-nnoremap <silent> <leader>fft :Telescope filetypes<CR>
-nnoremap <silent> <leader>ffh :Telescope highlights<CR>
-nnoremap <silent> <leader>fz  :Telescope live_grep<CR>
-nnoremap <silent> <leader>fy  :Telescope current_buffer_fuzzy_find<CR>
-nnoremap <silent> <leader>fmp :Telescope man_pages<CR>
+" Leader f {{{
+" Fzflua
+nnoremap <silent> <Leader>ff              :FzfLua files<CR>
+nnoremap <silent> <Leader>fgc             :FzfLua git_commits<CR>
+nnoremap <silent> <Leader>fgb             :FzfLua git_bbcommits<CR>
+nnoremap <silent> <Leader>fgs             :FzfLua git_status<CR>
+nnoremap <silent> <Leader>fgf             :FzfLua git_files<CR>
+nnoremap <silent> <Leader>fb              :FzfLua buffers<CR>
+nnoremap <silent> <Leader>fh              :FzfLua oldfiles<CR>
+nnoremap <silent> <Leader>f<space><space> :FzfLua commands<CR>
+nnoremap <silent> <Leader>f<space>h       :FzfLua command_history<CR>
+nnoremap <silent> <Leader>f/              :FzfLua search_history<CR>
+nnoremap <silent> <Leader>f"              :FzfLua registers<CR>
+nnoremap <silent> <leader>f'              :FzfLua marks<CR>
+nnoremap <silent> <leader>fcs             :FzfLua colorschemes<CR>
+nnoremap <silent> <leader>fz=             :FzfLua spell_suggest<CR>
+nnoremap <silent> <leader>f,              :FzfLua keymaps<CR>
+nnoremap <silent> <leader>fzz             :FzfLua live_grep<CR>
+nnoremap <silent> <leader>fy              :FzfLua grep<CR>
+nnoremap <silent> <leader>ftc             :FzfLua grep_curbuf<CR>
+nnoremap <silent> <leader>ftw             :FzfLua grep_cword<CR>
+nnoremap <silent> <leader>ftv             :FzfLua grep_visual<CR>
+nnoremap <silent> <leader>ftl             :FzfLua grep_last<CR>
+nnoremap <silent> <leader>fmp             :FzfLua man_pages<CR>
+" Fzflua LSP
+nnoremap <silent> <leader>flr             :FzfLua lsp_references<CR>
+nnoremap <silent> <leader>fld             :FzfLua lsp_definitions<CR>
+nnoremap <silent> <leader>flD             :FzfLua lsp_declarations<CR>
+nnoremap <silent> <leader>flt             :FzfLua lsp_typedefs<CR>
+nnoremap <silent> <leader>fli             :FzfLua lsp_implementations<CR>
+nnoremap <silent> <leader>flq             :FzfLua lsp_document_diagnostics<CR>
 " }}}
 
-" leader i {{{
-" indent line toggle
+" Leader i {{{
+" Indent line toggle
 nnoremap <silent> <Leader>il  :IndentBlanklineToggle<CR>
 " }}}
 
-" leader l  {{{
-" toggle listchars
+" Leader l  {{{
+" Toggle listchars
 nnoremap <silent> <Leader>ll  :set list!<CR>
 " }}}
 
-" leader p {{{
-" enter paste mode
-nnoremap <silent> <Leader>pt  :set paste!<CR>
+" Leader p {{{
+" Enter paste mode
+nnoremap <silent> <Leader>pt  :set paste!<CR> <bar> :echo "PASTE MODE TOGGLE" <CR>
 nnoremap <silent> <Leader>ps  :PackerStatus <CR>
 " }}}
 
-" leader n {{{
-" disasble search highlighting
+" Leader n {{{
+" Disasble search highlighting
 nnoremap <silent> <Leader>nh  :noh <CR>
-" set number/relativenumber
+" Set number/relativenumber
 nnoremap <silent> <Leader>nr  :set relativenumber!<CR>
 nnoremap <silent> <Leader>nn  :set number!<CR> <bar> :set norelativenumber<CR>
 " }}}
 
-" leader r {{{
-" restore session
-nnoremap <silent> <leader>rs :RestoreSession<CR>
+" Leader r {{{
+" Restore session
+nnoremap <silent> <leader>rr :SessionLoad<CR>
+nnoremap <silent> <leader>rs :SessionSave<CR>
 " }}}
 
-" leader s {{{
-" new split
+" Leader s {{{
+" New split
 nnoremap <silent> <Leader>spv :vs<CR>
 nnoremap <silent> <Leader>sph :sp<CR>
-" source nvim config
+" Source nvim config
 nnoremap <silent> <Leader>sv  :source $MYVIMRC<CR>
-" set spell
+" Set spell
 nnoremap <silent> <Leader>sh  :setlocal spell! spelllang=en_gb<CR>
-" change conceal level on the fly
+" Change conceal level on the fly
 nnoremap <silent> <Leader>sco :set conceallevel=0<CR>
 nnoremap <silent> <Leader>sci :set conceallevel=2<CR>
 " }}}
 
-" leader t {{{
-" new tab
+" Leader t {{{
+" New tab
 nnoremap <silent> <Leader>tn  :tabnew<CR>
-" treesitter toggles
+" Treesitter toggles
 nnoremap <silent> <Leader>tsr :TSBufToggle rainbow<CR>
 nnoremap <silent> <Leader>tsh :TSBufToggle highlight<CR>
 " }}}
 
-" leader v {{{
+" Leader v {{{
 nnoremap <silent> <Leader>vt :Vista!! <CR>
 nnoremap <silent> <Leader>vs :Vista focus <CR>
-nnoremap <silent> <Leader>vf :Vista finder <CR>
 " }}}
 
-" leader w {{{
-" delete whitespace
-" delete whitespace
+" Leader w {{{
+" Delete whitespace
+" Delete whitespace
 nnoremap <silent> <leader>wp  :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-" vimwiki generate links
+" Vimwiki generate links
 nnoremap <silent> <Leader>wa :VimwikiGenerateLinks<CR>
 " }}}
 
-" leader z {{{
-" zenmode toggle
+" Leader z {{{
+" Zenmode toggle
 nnoremap <silent> <Leader>zm :ZenMode<CR>
-" vim-zettel new document
+" Vim-zettel new document
 nnoremap <silent> <Leader>zn :ZettelNew
 " }}}
 
-" leader space {{{
+" Leader space {{{
 " switch between prev/next buffer
 nnoremap <silent> <Leader><space> <C-^>
 " }}}
 
-" fold with indent-blankline {{{
+" Fold with indent-blankline {{{
 nnoremap <silent> zA zA:IndentBlanklineRefresh<CR>
 nnoremap <silent> za za:IndentBlanklineRefresh<CR>
 nnoremap <silent> zm zm:IndentBlanklineRefresh<CR>
@@ -333,12 +360,12 @@ nnoremap <silent> zr zr:IndentBlanklineRefresh<CR>
 nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
 " }}}
 
-" compe autocompletion and navigation {{{
+" Compe atocompletion and navigation {{{
 lua << EOF
 vim.api.nvim_set_keymap("i", "<C-space>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 EOF
 
-" popup menu scroll {{{
+" Popup menu scroll {{{
 function! s:s(delta) abort
 if pumvisible()
   let l:i = complete_info(['selected']).selected
@@ -360,43 +387,67 @@ let g:Hexokinase_optInPatterns = 'triple_hex,full_hex,rgb,rgba,hsl,hsla,colour_n
 
 " DASHBOARD {{{
 let g:dashboard_default_executive = 'telescope'
-let g:dashboard_enable_session = 0
 let g:dashboard_custom_section={
 \ 'history_list': {
     \ 'description': [' History                 LDR fh'],
-    \ 'command': ':Telescope oldfiles<CR>' },
+    \ 'command': ':FzfLua oldfiles' },
 \ 'buffer_list': {
     \ 'description': ['﬘ Buffer                  LDR fb'],
-    \ 'command': ':Telescope buffers<CR>' },
+    \ 'command': ':FzfLua buffers' },
 \ 'find_files': {
     \ 'description': [' Files                   LDR ff'],
-    \ 'command': ':Telescope find_files<CR>' },
-\ 'explorer': {
-    \ 'description': [' Browse                  LDR fe'],
-    \ 'command': ':Telescope file_browser<CR>' },
-\ 'fuzzy': {
-    \ 'description': [' Fuzzy                   LDR fz'],
-    \ 'command': ':Telescope live_grep' },
+    \ 'command': ':FzfLua files' },
 \ 'session': {
-    \ 'description': [' Restore                 LDR rs'],
-    \ 'command': ':RestoreSession' }
+    \ 'description': [' Restore                 LDR rr'],
+    \ 'command': ':SessionLoad' }
 \ }
+" let g:dashboard_custom_header = [
+"     \ '                                                       ',
+"     \ '                                                       ',
+"     \ '                                                       ',
+"     \ '                                                       ',
+"     \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+"     \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+"     \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+"     \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+"     \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+"     \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+"     \ '                                                       ',
+"     \ '                                                       ',
+"     \ '                                                       ',
+"     \ '                                                       ',
+"     \]
+
 let g:dashboard_custom_header = [
-    \ '                                                       ',
-    \ '                                                       ',
-    \ '                                                       ',
-    \ '                                                       ',
-    \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-    \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-    \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-    \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-    \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-    \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-    \ '                                                       ',
-    \ '                                                       ',
-    \ '                                                       ',
-    \ '                                                       ',
-    \]
+\'                                             ',
+\'                ..ooo.                       ',
+\'            .888888888.                      ',
+\'             88"P""T"T888 8o                 ',
+\'         o8o 8.8"8 88o."8o 8o                ',
+\'        88 . o88o8 8 88."8 88P"o             ',
+\'       88 o8 88 oo.8 888 8 888 88            ',
+\'       88 88 88o888" 88"  o888 88            ',
+\'       88."8o."T88P.88". 88888 88            ',
+\'       888."888."88P".o8 8888 888            ',
+\'       "888o"8888oo8888 o888 o8P"            ',
+\'        "8888.""888P"P.888".88P              ',
+\'         "88888ooo  888P".o888               ',
+\'           ""8P"".oooooo8888P                ',
+\'  .oo888ooo.    8888NICK8P8                  ',
+\'o88888"888"88o.  "8888"".88   .oo888oo..     ',
+\' 8888" "88 88888.       88".o88888888"888.   ',
+\' "8888o.""o 88"88o.    o8".888"888"88 "88P   ',
+\'  T888C.oo. "8."8"8   o8"o888 o88" ".=888"   ',
+\'   88888888o "8 8 8  .8 .8"88 8"".o888o8P    ',
+\'    "8888C.o8o  8 8  8" 8 o" ...o"""8888     ',
+\'      "88888888 " 8 .8  8   88888888888"     ',
+\'        "8888888o  .8o=" o8o..o(8oo88"       ',
+\'            "888" 88"    888888888""         ',
+\'                o8P       "888"""            ',
+\'          ...oo88                            ',
+\' "8oo...oo888""                              ',
+\]
+
 let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
 let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
 " }}}
@@ -415,7 +466,9 @@ let g:vista_fzf_preview = ['right:50%']
 let g:vista_executive_for = {
     \ 'cpp': 'nvim_lsp',
     \ 'python': 'nvim_lsp',
-    \ 'vimwiki': 'markdown'
+    \ 'vimwiki': 'markdown',
+    \ 'vim': 'nvim_lsp',
+    \ 'sh': 'nvim_lsp',
 \ }
 let g:vista_vimwiki_executive = 'markdown'
 let g:vista_enable_markdown_extension = 1
@@ -509,5 +562,76 @@ let g:zettel_default_mappings = 0
 nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 let g:undotree_ShortIndicators = 1
 let g:undotree_TreeNodeShape = ""
+" }}}
+
+" BARBAR {{{
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.add_in_buffer_number_order = v:false
+let bufferline.animation = v:true
+let bufferline.auto_hide = v:false
+let bufferline.tabpages = v:true
+let bufferline.closable = v:true
+let bufferline.clickable = v:true
+let bufferline.icons = v:true
+let bufferline.icon_custom_colors = v:false
+let bufferline.icon_separator_active = ''
+let bufferline.icon_separator_inactive = ''
+let bufferline.icon_close_tab = ''
+let bufferline.icon_close_tab_modified = ''
+let bufferline.icon_pinned = ''
+let bufferline.insert_at_end = v:false
+let bufferline.maximum_padding = 4
+let bufferline.maximum_length = 30
+let bufferline.semantic_letters = v:true
+let bufferline.letters =
+  \ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
+let bufferline.no_name_title = v:null
+" }}}
+
+" WILDER {{{
+call wilder#setup({
+    \ 'modes': [':', '/', '?'],
+    \ 'next_key': '<Tab>',
+    \ 'previous_key': '<S-Tab>',
+    \ 'accept_key': '<Down>',
+    \ 'reject_key': '<Up>',
+\ })
+
+autocmd CmdlineEnter * ++once call s:wilder_init()
+function! s:wilder_init() abort
+    call wilder#set_option('pipeline', [
+        \ wilder#debounce(10),
+        \ wilder#branch(
+        \ [
+            \ wilder#check({_, x -> empty(x)}),
+            \ wilder#history(),
+            \ wilder#result({
+                \ 'draw': [{_, x -> ' ' . x}],
+            \ }),
+        \ ],
+            \ wilder#cmdline_pipeline({
+                \ 'use_python': 0,
+                \ 'fuzzy': 1,
+                \ 'fuzzy_filter': wilder#vim_fuzzy_filter(),
+            \ }),
+            \ wilder#search_pipeline({
+                \ 'pattern': wilder#python_fuzzy_pattern(),
+                \ 'sorter': wilder#python_difflib_sorter(),
+                \ 'engine': 're',
+            \ }),
+        \ ),
+    \ ])
+
+    call wilder#set_option('renderer', wilder#popupmenu_renderer({
+        \ 'highlighter': wilder#basic_highlighter(),
+        \ 'left': [
+            \ wilder#popupmenu_devicons(),
+        \ ],
+        \ 'right': [
+            \ ' ',
+            \ wilder#popupmenu_scrollbar(),
+        \ ],
+    \ }))
+endfunction
 " }}}
 " }}}

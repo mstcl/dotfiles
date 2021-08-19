@@ -1,5 +1,5 @@
 # :.config/zsh/.zshrc
-# vim:set ft=bash syntax=sh fdm=marker:
+# vim:set ft=sh syntax=sh fdm=marker:
 #+----------------------------+
 #|            _               |
 #|    _______| |__  _ __ ___  |
@@ -127,28 +127,26 @@ export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:
 # }}}
 
 # FZF VARIABLES {{{
+export BAT_CONFIG_PATH="$XDG_CONFIG_HOME"/bat/config
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
 export FZF_DEFAULT_OPTS="
     --color fg:7,bg:0,hl:1,fg+:1,bg+:8,hl+:9,gutter:0
-    --color border:9,info:5,prompt:2,spinner:3,pointer:2,marker:4
+    --color border:8,info:5,prompt:2,spinner:3,pointer:2,marker:4
     --height 90%
     --info=default
     --layout=reverse
-    --border
     --marker=' '
     --pointer=' '
     --prompt=' '
     --margin 5%,7%
     --multi --bind 'ctrl-a:select-all'
-    --border=sharp
+    --border=none
     --preview-window=right,hidden,wrap,border-none
-    --padding 0%,0%
     --bind '?:toggle-preview'
-    --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+    --preview 'bat --line-range :500 {}'"
 export FZF_CTRL_R_OPTS="
     --height 90%
-    --margin 2%
-    --padding 0%,0%,0%,0%
+    --margin 5%,7%
     --info=hidden
     --preview-window hidden"
 export FZF_CTRL_T_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
