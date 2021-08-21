@@ -20,11 +20,12 @@ gl.short_line_list = {{
     'startify',
     'term',
     'nerdtree',
-    'fugitive',
-    'fugitiveblame',
     'Packer',
     'Help',
-    'plug'
+    'diff',
+    'undotree',
+    'plug',
+    'Outline',
 }}
 
 local colors = {{
@@ -225,7 +226,7 @@ gls.right[1] = {{
   ShowLspClient = {{
     provider = 'GetLspClient',
     condition = condition.hide_in_width,
-    icon = ' ',
+    icon = '漣',
     separator_highlight = {{colors.cyan,colors.line_bg}},
     highlight = {{colors.purple,colors.line_bg,'bold'}}
   }}
@@ -284,40 +285,40 @@ gls.right[6] = {{
 gls.right[7] = {{
     FTpre = {{
         provider = function() return '' end,
+        condition = function() return has_file_type() end,
         highlight = {{colors.orange,colors.orange}},
-        condition = condition.has_file_type,
         separator = '',
         separator_highlight = {{'NONE',colors.line_bg}},
     }},
 }}
 
-gls.right[8] = {{
-    FTbegin = {{
-        provider = function() return '▊' end,
-        highlight = {{require('galaxyline.provider_fileinfo').get_file_icon_color,require('galaxyline.provider_fileinfo').get_file_icon_color}},
-        condition = condition.has_file_type,
-        separator = '',
-        separator_highlight = {{'NONE',colors.line_bg}},
-    }},
-}}
+-- gls.right[8] = {{
+--     FTbegin = {{
+--         provider = function() return '▊' end,
+--         condition = condition.has_file_type,
+--         highlight = {{require('galaxyline.provider_fileinfo').get_file_icon_color,require('galaxyline.provider_fileinfo').get_file_icon_color}},
+--         separator = '',
+--         separator_highlight = {{'NONE',colors.line_bg}},
+--     }},
+-- }}
 
 gls.right[9] = {{
     Filetype = {{
+        condition = function() return has_file_type() end,
         provider = 'FileTypeName',
         highlight = {{colors.line_bg,require('galaxyline.provider_fileinfo').get_file_icon_color}},
-        condition = condition.has_file_type,
-        separator = '',
-        separator_highlight = {{'NONE',colors.orange}},
+        separator = ' ',
+        separator_highlight = {{'NONE',require('galaxyline.provider_fileinfo').get_file_icon_color}},
     }}
 }}
 
 gls.right[10] = {{
     FTend = {{
-        provider = function() return '▊' end,
+        provider = function() return '' end,
+        condition = function() return has_file_type() end,
         highlight = {{require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg}},
-        condition = condition.has_file_type,
-        separator = '',
-        separator_highlight = {{'NONE',colors.line_bg}},
+        separator = ' ',
+        separator_highlight = {{'NONE',require('galaxyline.provider_fileinfo').get_file_icon_color}},
     }},
 }}
 

@@ -1,5 +1,5 @@
 " :.config/nvim/init.vim
-" vim:set fdm=marker nofoldenable:
+" vim:set fdm=marker foldenable:
 "+-----------------------------------+
 "|  _       _ _         _            |
 "| (_)_ __ (_) |___   _(_)_ __ ___   |
@@ -9,7 +9,7 @@
 "|                                   |
 "+-----------------------------------+
 
-" SET PLUGINS {{{
+" PLUGINS {{{
 " Require plugins.lua
 lua require('plugins')
 
@@ -33,7 +33,6 @@ local disabled_built_ins = {
     "logipat",
     "rrhelper",
     "spellfile_plugin",
-    "matchit"
     }
 
     for _, plugin in pairs(disabled_built_ins) do
@@ -42,9 +41,15 @@ local disabled_built_ins = {
 EOF
 " }}}
 
-" GENERAL AUTOCOMMANDS {{{
-" Autocompile packer on saving of plugins.lua
-autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+" AUTOCOMMANDS {{{
+" Close Outline if it's the only window left
+autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
+
+" highlight yanked
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{"IncSearch", 1000}
+augroup END
 
 " Default non-extension filetype is bash
 autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sh | set filetype=sh | endif
@@ -60,14 +65,68 @@ autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
 autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
 
 " Vimwiki settings
-augroup vimwiki
+augroup VimwikiSettings
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
     autocmd Filetype vimwiki set fdm=expr
+    autocmd InsertEnter *.{vimwiki,wiki,md} set conceallevel=0
+    autocmd InsertLeave *.{vimwiki,wiki,md} set conceallevel=2
 augroup END
+
+" Vimwiki remaps
+augroup VimwikiRemaps
+    autocmd!
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <cr> pumvisible() ? compe#confirm({'keys': '<CR>', 'select': v:true})
+                              \: "<C-]><Esc>:VimwikiReturn 1 5<CR>"
+augroup end
+
+" Wilder autocommand and setup
+autocmd CmdlineEnter * ++once call s:wilder_init()
+function! s:wilder_init() abort
+    call wilder#setup({
+        \ 'modes': [':', '/', '?'],
+        \ 'next_key': '<Tab>',
+        \ 'previous_key': '<S-Tab>',
+        \ 'accept_key': '<Down>',
+        \ 'reject_key': '<Up>',
+    \ })
+    call wilder#set_option('pipeline', [
+        \ wilder#debounce(10),
+        \ wilder#branch(
+        \ [
+            \ wilder#check({_, x -> empty(x)}),
+            \ wilder#history(),
+            \ wilder#result({
+                \ 'draw': [{_, x -> ' ' . x}],
+            \ }),
+        \ ],
+            \ wilder#cmdline_pipeline({
+                \ 'use_python': 0,
+                \ 'fuzzy': 1,
+                \ 'fuzzy_filter': wilder#vim_fuzzy_filter(),
+            \ }),
+            \ wilder#search_pipeline({
+                \ 'pattern': wilder#python_fuzzy_pattern(),
+                \ 'sorter': wilder#python_difflib_sorter(),
+                \ 'engine': 're',
+            \ }),
+        \ ),
+    \ ])
+
+    call wilder#set_option('renderer', wilder#popupmenu_renderer({
+        \ 'highlighter': wilder#basic_highlighter(),
+        \ 'left': [
+            \ wilder#popupmenu_devicons(),
+        \ ],
+        \ 'right': [
+            \ ' ',
+            \ wilder#popupmenu_scrollbar(),
+        \ ],
+    \ }))
+endfunction
 " }}}
 
-" GENERAL OPTIONS {{{
+" OPTIONS {{{
 " Terminal title
 let &titlestring = "nvim " . expand("%:t")
 set title
@@ -161,13 +220,17 @@ set path+=**
 filetype plugin on
 " }}}
 
-" KEY BINDINGS {{{
+" MAPPINGS {{{
 " Set leaders
 let mapleader = ",."
 let maplocalleader = ",.."
 
 " Type comma easily
 inoremap ,, ,
+
+" append a letter before or after then return to normal mode
+nnoremap <silent> s :exec "normal i".nr2char(getchar())."\e"<CR>
+nnoremap <silent> S :exec "normal a".nr2char(getchar())."\e"<CR>
 
 " Better indentation
 xnoremap < <gv
@@ -176,23 +239,25 @@ xnoremap > >gv
 " Access command with space
 nnoremap <space> :
 
-" Move lines
+" Move lines {{{
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <a-j> :m '>+1<cr>gv=gv
 vnoremap <a-k> :m '<-2<cr>gv=gv
+" }}}
 
 " New line above/below in normal mode
 nmap     mo o<esc>
 nmap     mO O<esc>
 
-" Unbind arrow keys in normal mode
+" Unbind arrow keys in normal mode {{{
 noremap  <Up> <Nop>
 noremap  <Down> <Nop>
 noremap  <Left> <Nop>
 noremap  <Right> <Nop>
+" }}}
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
@@ -201,8 +266,8 @@ nmap ga <Plug>(EasyAlign)
 
 " Barbar buffer motions {{{
 " Move to previous/next
-nnoremap <silent>    <A-,>     :BufferPrevious<CR>
-nnoremap <silent>    <A-.>     :BufferNext<CR>
+nnoremap <silent>    <Left>    :BufferPrevious<CR>
+nnoremap <silent>    <Right>   :BufferNext<CR>
 " Re-order to previous/next
 nnoremap <silent>    <A-<>     :BufferMovePrevious<CR>
 nnoremap <silent>    <A->>     :BufferMoveNext<CR>
@@ -223,22 +288,19 @@ nnoremap <silent>    <A-c>     :BufferClose<CR>
 " Magic buffer-picking mode
 nnoremap <silent>    <C-s>     :BufferPick<CR>
 " }}}
+
 " Vimwiki todo toggle
 nmap <C-O> <Plug>VimwikiToggleListItem
+
+" Leader b {{{
+" Goto dashboard
+nnoremap <silent> <Leader>b  :Dashboard<CR>
+"}}}
 
 " Leader c {{{
 " Toggle colour highlighting
 nnoremap <silent> <Leader>ch  :HexokinaseToggle<CR>
-" Comment chunk
-nnoremap <silent> <leader>c}  V}:call nerdcommenter#Comment('x', 'toggle')<CR>
-nnoremap <silent> <leader>c{  V{:call nerdcommenter#Comment('x', 'toggle')<CR>
-
 " }}}
-
-" Leader d {{{
-" Goto dashboard
-nnoremap <silent> <Leader>db  :Dashboard<CR>
-"}}}
 
 " Leader f {{{
 " Fzflua
@@ -283,10 +345,15 @@ nnoremap <silent> <Leader>il  :IndentBlanklineToggle<CR>
 nnoremap <silent> <Leader>ll  :set list!<CR>
 " }}}
 
+" Leader o {{{
+nnoremap <Leader>oo :SymbolsOutline<CR>
+" }}}
+
 " Leader p {{{
 " Enter paste mode
 nnoremap <silent> <Leader>pt  :set paste!<CR> <bar> :echo "PASTE MODE TOGGLE" <CR>
 nnoremap <silent> <Leader>ps  :PackerStatus <CR>
+nnoremap <silent> <Leader>pi  :wa <CR> <bar> :so % <CR> <bar> :PackerCompile <CR> <bar> :PackerInstall <CR> <bar> :echo "Recompiled Packer" <CR>
 " }}}
 
 " Leader n {{{
@@ -322,6 +389,11 @@ nnoremap <silent> <Leader>tn  :tabnew<CR>
 " Treesitter toggles
 nnoremap <silent> <Leader>tsr :TSBufToggle rainbow<CR>
 nnoremap <silent> <Leader>tsh :TSBufToggle highlight<CR>
+" }}}
+
+" Leader u {{{
+" Undotree toggle
+nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
 " }}}
 
 " Leader v {{{
@@ -362,7 +434,7 @@ nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
 
 " Compe atocompletion and navigation {{{
 lua << EOF
-vim.api.nvim_set_keymap("i", "<C-space>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 EOF
 
 " Popup menu scroll {{{
@@ -379,28 +451,8 @@ inoremap <silent><expr><C-k>     <SID>s(-4)
 " }}}
 " }}}
 
-" PLUGIN OPTIONS {{{
-" HEXOKINASE {{{
-let g:Hexokinase_highlighters = [ 'virtual' ]
-let g:Hexokinase_optInPatterns = 'triple_hex,full_hex,rgb,rgba,hsl,hsla,colour_names'
-" }}}
-
-" DASHBOARD {{{
-let g:dashboard_default_executive = 'telescope'
-let g:dashboard_custom_section={
-\ 'history_list': {
-    \ 'description': [' History                 LDR fh'],
-    \ 'command': ':FzfLua oldfiles' },
-\ 'buffer_list': {
-    \ 'description': ['﬘ Buffer                  LDR fb'],
-    \ 'command': ':FzfLua buffers' },
-\ 'find_files': {
-    \ 'description': [' Files                   LDR ff'],
-    \ 'command': ':FzfLua files' },
-\ 'session': {
-    \ 'description': [' Restore                 LDR rr'],
-    \ 'command': ':SessionLoad' }
-\ }
+" DASHBOARD ASCII {{{
+" NEOVIM {{{
 " let g:dashboard_custom_header = [
 "     \ '                                                       ',
 "     \ '                                                       ',
@@ -417,7 +469,8 @@ let g:dashboard_custom_section={
 "     \ '                                                       ',
 "     \ '                                                       ',
 "     \]
-
+" }}}
+" ROSE {{{
 let g:dashboard_custom_header = [
 \'                                             ',
 \'                ..ooo.                       ',
@@ -447,191 +500,5 @@ let g:dashboard_custom_header = [
 \'          ...oo88                            ',
 \' "8oo...oo888""                              ',
 \]
-
-let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
-let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
-" }}}
-
-" ULTISNIPS {{{
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]
-" }}}
-
-" VISTA {{{
-let g:vista_default_executive = 'ctags'
-let g:vista_icon_indent = [" ➤ ", "│ "]
-let g:vista_fzf_preview = ['right:50%']
-let g:vista_executive_for = {
-    \ 'cpp': 'nvim_lsp',
-    \ 'python': 'nvim_lsp',
-    \ 'vimwiki': 'markdown',
-    \ 'vim': 'nvim_lsp',
-    \ 'sh': 'nvim_lsp',
-\ }
-let g:vista_vimwiki_executive = 'markdown'
-let g:vista_enable_markdown_extension = 1
-let g:vista#renderer#icons = {
-    \ "function": "\uf794",
-    \ "variable": "\uf71b",
-\ }
-let g:vista_fold_toggle_icons = [' ▼ ', ' ▶ ']
-let g:vista_echo_cursor = 0
-let g:vista_echo_cursor_strategy="scroll"
-let g:vista_stay_on_open = 0
-let g:vista_blink = [0, 0]
-let g:vista_top_level_blink = [0, 0]
-autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
-" }}}
-
-" JUPYTEXT {{{
-let g:jupytext_fmt = 'py:percent'
-" }}}
-
-" NERDCOMMENTER {{{
-let g:NERDCreateDefaultMappings = 1
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDToggleCheckAllLines = 1
-" }}}
-
-" AUTOPAIRS {{{
-let g:AutoPairsShortcutFastWrap = '<M-e>'
-let g:AutoPairsMapBS = "1"
-let g:AutoPairsShortcutToggle='<M-p>'
-let g:AutoPairsShortcutJump='<M-n>'
-let g:AutoPairsShortcutBackInsert='<M-b>'
-let g:AutopairsMultilineBackspace = "1"
-let g:AutoPairsMultilineClose = 1
-let g:AutoPairs = autopairs#AutoPairsDefine([
-    \ {"open": '\w\zs<', "close": '>'},
-    \ {"open": "$", "close": "$", "filetype": "tex"},
-    \ {"open": '\\left(', 'close': '\right)', "filetype": "tex"},
-    \ {"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},
-    \ {"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'},
-    \ {"open": "*", "close": "*", "filetype": ["help"]},
-    \ {"open": "*", "close": "*", "filetype": ["vimwiki"]},
-    \ {"open": "**", "close": "**", "filetype": ["vimwiki"]},
-    \ {"open": "_", "close": "_", "filetype": ["vimwiki"]},
-    \ {"open": "~~", "close": "~~", "filetype": ["vimwiki"]},
-    \ {"open": "++", "close": "++", "filetype": ["vimwiki"]},
-    \ {"open": "|", "close": "|", "filetype": "help"}
-\ ])
-let g:AutoPairsFlyMode = "0"
-" }}}
-
-" VIMWIKI {{{
-let g:vimwiki_list = [{
-    \ 'path': '$HOME/wiki/docs',
-    \ 'ext':'.md',
-    \ 'syntax':'markdown',
-    \ 'path_html': '$HOME/vimwiki.old/site_html/',
-    \ 'template_path': '$HOME/vimwiki.old/templates',
-    \ 'template_default': 'def_template',
-    \ 'template_ext': '.html',
-\}]
-let g:vimwiki_key_mappings = {
-    \ 'table_mappings': 0,
-\}
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_folding = 'expr'
-let g:vimwiki_auto_chdir = 1
-let g:vimwiki_toc_header = 'Contents'
-let g:vimwiki_global_ext = 0
-let g:vimwiki_markdown_link_ext = 1
-autocmd InsertEnter *.{vimwiki,wiki,md} set conceallevel=0
-autocmd InsertLeave *.{vimwiki,wiki,md} set conceallevel=2
-let g:vimwiki_listsyms = '    x'
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_links_header = 'List of pages'
-let g:vimwiki_links_header_level = 2
-let g:vimwiki_tags_header = 'Tags'
-" }}}
-
-" VIMZETTEL {{{
-let g:zettel_format = "%raw_title"
-let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]
-let g:zettel_default_mappings = 0
-" }}}
-
-" UNDOTREE {{{
-nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
-let g:undotree_ShortIndicators = 1
-let g:undotree_TreeNodeShape = ""
-" }}}
-
-" BARBAR {{{
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.add_in_buffer_number_order = v:false
-let bufferline.animation = v:true
-let bufferline.auto_hide = v:false
-let bufferline.tabpages = v:true
-let bufferline.closable = v:true
-let bufferline.clickable = v:true
-let bufferline.icons = v:true
-let bufferline.icon_custom_colors = v:false
-let bufferline.icon_separator_active = ''
-let bufferline.icon_separator_inactive = ''
-let bufferline.icon_close_tab = ''
-let bufferline.icon_close_tab_modified = ''
-let bufferline.icon_pinned = ''
-let bufferline.insert_at_end = v:false
-let bufferline.maximum_padding = 4
-let bufferline.maximum_length = 30
-let bufferline.semantic_letters = v:true
-let bufferline.letters =
-  \ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
-let bufferline.no_name_title = v:null
-" }}}
-
-" WILDER {{{
-call wilder#setup({
-    \ 'modes': [':', '/', '?'],
-    \ 'next_key': '<Tab>',
-    \ 'previous_key': '<S-Tab>',
-    \ 'accept_key': '<Down>',
-    \ 'reject_key': '<Up>',
-\ })
-
-autocmd CmdlineEnter * ++once call s:wilder_init()
-function! s:wilder_init() abort
-    call wilder#set_option('pipeline', [
-        \ wilder#debounce(10),
-        \ wilder#branch(
-        \ [
-            \ wilder#check({_, x -> empty(x)}),
-            \ wilder#history(),
-            \ wilder#result({
-                \ 'draw': [{_, x -> ' ' . x}],
-            \ }),
-        \ ],
-            \ wilder#cmdline_pipeline({
-                \ 'use_python': 0,
-                \ 'fuzzy': 1,
-                \ 'fuzzy_filter': wilder#vim_fuzzy_filter(),
-            \ }),
-            \ wilder#search_pipeline({
-                \ 'pattern': wilder#python_fuzzy_pattern(),
-                \ 'sorter': wilder#python_difflib_sorter(),
-                \ 'engine': 're',
-            \ }),
-        \ ),
-    \ ])
-
-    call wilder#set_option('renderer', wilder#popupmenu_renderer({
-        \ 'highlighter': wilder#basic_highlighter(),
-        \ 'left': [
-            \ wilder#popupmenu_devicons(),
-        \ ],
-        \ 'right': [
-            \ ' ',
-            \ wilder#popupmenu_scrollbar(),
-        \ ],
-    \ }))
-endfunction
 " }}}
 " }}}
