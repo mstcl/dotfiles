@@ -42,6 +42,12 @@ EOF
 " }}}
 
 " AUTOCOMMANDS {{{
+" Open a file where it was left off
+if has("autocmd")
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
 " Close Outline if it's the only window left
 autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
 
@@ -67,7 +73,7 @@ autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | se
 " Vimwiki settings
 augroup VimwikiSettings
     autocmd!
-    autocmd BufNewFile,BufRead *.md setlocal spell! spelllang=en_gb | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
+    autocmd BufNewFile,BufRead *.md setlocal spell | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
     autocmd Filetype vimwiki set fdm=expr
     autocmd InsertEnter *.{vimwiki,wiki,md} set conceallevel=0
     autocmd InsertLeave *.{vimwiki,wiki,md} set conceallevel=2
@@ -76,6 +82,9 @@ augroup END
 " Vimwiki remaps
 augroup VimwikiRemaps
     autocmd!
+    autocmd Filetype vimwiki silent! iunmap <buffer> <Tab>
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-]> vimwiki#tbl#kbd_tab()
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-[> vimwiki#tbl#kbd_shift_tab()
     autocmd Filetype vimwiki inoremap <silent><expr><buffer> <cr> pumvisible() ? compe#confirm({'keys': '<CR>', 'select': v:true})
                               \: "<C-]><Esc>:VimwikiReturn 1 5<CR>"
 augroup end
@@ -228,10 +237,6 @@ let maplocalleader = ",.."
 " Type comma easily
 inoremap ,, ,
 
-" append a letter before or after then return to normal mode
-nnoremap <silent> s :exec "normal i".nr2char(getchar())."\e"<CR>
-nnoremap <silent> S :exec "normal a".nr2char(getchar())."\e"<CR>
-
 " Better indentation
 xnoremap < <gv
 xnoremap > >gv
@@ -249,8 +254,8 @@ vnoremap <a-k> :m '<-2<cr>gv=gv
 " }}}
 
 " New line above/below in normal mode
-nmap     mo o<esc>
-nmap     mO O<esc>
+nmap mo o<esc>
+nmap mO O<esc>
 
 " Unbind arrow keys in normal mode {{{
 noremap  <Up> <Nop>
@@ -500,5 +505,30 @@ let g:dashboard_custom_header = [
 \'          ...oo88                            ',
 \' "8oo...oo888""                              ',
 \]
+" }}}
+" }}}
+
+" OTHER PLUGIN SETTINGS (that don't work with packer) {{{
+" Vimwiki stuff {{{
+let g:vimwiki_listsyms = '    x'
+let g:vimwiki_global_ext = 0
+let g:vimwiki_list = [{'path': '$HOME/wiki/docs','ext':'.md','syntax':'markdown','path_html': '$HOME/vimwiki.old/site_html/','template_path': '$HOME/vimwiki.old/templates','template_default': 'def_template','template_ext': '.html',}]
+let g:vimwiki_key_mappings = {'all_maps': 1,'global': 1,'headers': 1,'text_objs': 1,'table_format': 0,'table_mappings': 0,'lists': 1,'links': 1,'html': 1,'mouse': 1,}
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_folding = 'expr'
+let g:vimwiki_auto_chdir = 1
+let g:vimwiki_toc_header = 'Contents'
+let g:vimwiki_global_ext = 0
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_links_header = 'List of pages'
+let g:vimwiki_links_header_level = 2
+let g:vimwiki_tags_header = 'Tags'
+" }}}
+
+" Ultisnips tabstop {{{
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " }}}
 " }}}
