@@ -136,6 +136,7 @@ export FZF_DEFAULT_OPTS="
     --height 100%
     --preview-window hidden
     --pointer='->'
+    --marker='++'
     --prompt=' '
     --info=default
     --multi --bind 'ctrl-a:select-all'
@@ -157,7 +158,6 @@ export FZF_CTRL_T_OPTS="
     --border=sharp
     --margin 5%,7%
     --layout=reverse
-    --marker='++'
     --prompt=' '
     --preview 'bat --line-range :500 {}'"
 # Alt-C
@@ -167,7 +167,6 @@ export FZF_ALT_C_OPTS="
     --border=sharp
     --margin 5%,7%
     --layout=reverse
-    --marker='++'
     --preview 'tree -C {} | head -200'
     --preview-window nohidden"
 # Completion.zsh
@@ -177,7 +176,6 @@ export FZF_COMPLETION_OPTS="
     --border=sharp
     --margin 5%,7%
     --layout=reverse
-    --marker='++'
     --preview-window nohidden"
 
 # Fzf-tab-completion options
@@ -192,6 +190,9 @@ done'
 # }}}
 
 # ALIASES {{{
+# Nicer sudo prompt
+alias sudo='sudo -p " Password: "'
+
 # Check storage when I don't have patience for gdu
 alias storage='lsblk -ao NAME,FSTYPE,FSSIZE,FSUSED,FSUSE%'
 
