@@ -24,13 +24,14 @@ gl.short_line_list = {
     'Help',
     'diff',
     'undotree',
+    'netrw',
     'plug',
     'Outline',
 }
 
 local colors = {
     bg       = '#353535',
-    line_bg  = '#151515',
+    line_bg  = '#101010',
     fg       = '#e3e3e3',
     fg_green = '#a0ac82',
     yellow   = '#c0a474',
@@ -48,29 +49,41 @@ gls.left[1] = {
     RainbowRed = {
         provider = function() return '' end,
         highlight = {colors.orange,colors.line_bg},
-        separator = '',
+        separator = ' ',
         separator_highlight = {colors.bg,colors.line_bg},
     },
 }
 
 gls.left[2] = {
-
     ViMode = {
+        -- icon = function()
+        --     local icons = {
+        --         n      = '  ',
+        --         i      = '  ',
+        --         c      = '  ',
+        --         V      = '  ',
+        --         [''] = '  ',
+        --         v      = '  ',
+        --         C      = '  ',
+        --         R      = '  ﯒',
+        --         t      = '  ',
+        --     }
+        --     return icons[vim.fn.mode()]
+        -- end,
         icon = function()
             local icons = {
-                n      = '  ',
-                i      = '  ',
-                c      = '  ',
-                V      = '  ',
-                [''] = '  ',
-                v      = '  ',
-                C      = '  ',
-                R      = '  ﯒',
-                t      = '  ',
+                n      = '',
+                i      = '',
+                c      = '',
+                V      = '',
+                [''] = '',
+                v      = '',
+                C      = '',
+                R      = '',
+                t      = '',
             }
             return icons[vim.fn.mode()]
         end,
-
         provider = function()
             local alias = {
                 n      = 'N ',
@@ -91,25 +104,25 @@ gls.left[2] = {
                 t      = 'T ',
                 ['!']  = 'SH ',
             }
-            local alias = {
-                n      = ' ',
-                i      = ' ',
-                c      = ' ',
-                V      = ' ',
-                [''] = ' ',
-                v      = ' ',
-                C      = ' ',
-                ['r?'] = ':CONFIRM ',
-                rm     = '--MORE ',
-                R      = ' ',
-                Rv     = ' ',
-                s      = ' ',
-                S      = ' ',
-                ['r']  = 'HIT-ENTER ',
-                [''] = 'SELECT ',
-                t      = ' ',
-                ['!']  = ' ',
-            }
+            -- local alias = {
+            --     n      = ' ',
+            --     i      = ' ',
+            --     c      = ' ',
+            --     V      = ' ',
+            --     [''] = ' ',
+            --     v      = ' ',
+            --     C      = ' ',
+            --     ['r?'] = ':CONFIRM ',
+            --     rm     = '--MORE ',
+            --     R      = ' ',
+            --     Rv     = ' ',
+            --     s      = ' ',
+            --     S      = ' ',
+            --     ['r']  = 'HIT-ENTER ',
+            --     [''] = 'SELECT ',
+            --     t      = ' ',
+            --     ['!']  = ' ',
+            -- }
             local mode_color = {n = colors.yellow, i = colors.green,v=colors.blue,
             [''] = colors.blue,V=colors.blue,
             c = colors.magenta,no = colors.red,s = colors.orange,
@@ -119,24 +132,16 @@ gls.left[2] = {
             rm = colors.cyan, ['r?'] = colors.cyan,
             ['!']  = colors.red,t = colors.red}
             local vim_mode = vim.fn.mode()
-            vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim_mode])
+            vim.api.nvim_command('hi GalaxyViMode gui=bold guifg='..mode_color[vim_mode])
             return alias[vim_mode]
         end,
         highlight = {colors.line_bg, colors.line_bg},
-        separator = '  ',
+        separator = '',
         separator_highlight = {colors.bg,colors.line_bg},
     },
 }
 
-gls.left[3] ={
-    FileIcon = {
-        provider = 'FileIcon',
-        separator = '',
-        condition = condition.buffer_not_empty,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
-        separator_highlight = {'NONE',colors.line_bg},
-    },
-}
+
 
 gls.left[4] = {
     FileName = {
@@ -217,12 +222,23 @@ gls.left[13] = {
     DiagnosticHint = {
         provider = 'DiagnosticHint',
         condition = condition.hide_in_width,
-        highlight = {colors.white,colors.line_bg},
+        highlight = {colors.cyan,colors.line_bg},
         icon = '  ',
     }
 }
 
 gls.right[1] = {
+    Search = {
+        provider = search,
+        icon = ' ',
+        -- condition = condition.hide_in_width,
+        highlight = {colors.orange,colors.line_bg,'bold'},
+        -- separator = ' ',
+        separator_highlight = {'NONE',colors.line_bg},
+    }
+}
+
+gls.right[2] = {
   ShowLspClient = {
     provider = 'GetLspClient',
     condition = condition.hide_in_width,
@@ -232,51 +248,42 @@ gls.right[1] = {
   }
 }
 
-gls.right[2] = {
-    FTpre = {
+gls.right[3] = {
+    Sep = {
         provider = function() return '' end,
         highlight = {colors.orange,colors.orange},
-        condition = condition.has_file_type,
         separator = ' ',
         separator_highlight = {'NONE',colors.line_bg},
     },
 }
 
-gls.right[3] = {
-    Search = {
-        provider = search,
-        -- condition = condition.hide_in_width,
-        highlight = {colors.orange,colors.line_bg,'bold'},
-        -- separator = ' ',
-        separator_highlight = {'NONE',colors.line_bg},
-    }
-}
 
-gls.right[4] = {
-    LineInfo = {
-        provider = 'LineColumn',
-        -- condition = condition.hide_in_width,
-        -- separator = ' ',
-        separator_highlight = {colors.green, colors.line_bg},
-        highlight = {colors.green,colors.line_bg,'bold'},
-    },
-}
 
-gls.right[5] = {
-    PerCent = {
-        provider = 'LinePercent',
-        -- condition = condition.hide_in_width,
-        icon = ' ' ,
-        separator_highlight = {colors.cyan,colors.line_bg},
-        highlight = {colors.cyan, colors.line_bg,'bold'},
-    }
-}
+-- gls.right[4] = {
+--     LineInfo = {
+--         provider = 'LineColumn',
+--         -- condition = condition.hide_in_width,
+--         -- separator = ' ',
+--         separator_highlight = {colors.green, colors.line_bg},
+--         highlight = {colors.green,colors.line_bg,'bold'},
+--     },
+-- }
+-- 
+-- gls.right[5] = {
+--     PerCent = {
+--         provider = 'LinePercent',
+--         -- condition = condition.hide_in_width,
+--         icon = ' ' ,
+--         separator_highlight = {colors.cyan,colors.line_bg},
+--         highlight = {colors.cyan, colors.line_bg,'bold'},
+--     }
+-- }
 
 gls.right[6] = {
     TrailingWhiteSpace = {
         provider = whitespace,
         -- condition = condition.hide_in_width,
-        icon = '  ',
+        icon = ' ',
         highlight = {colors.darkblue,colors.line_bg},
     }
 }
@@ -301,14 +308,23 @@ gls.right[7] = {
 --         separator_highlight = {'NONE',colors.line_bg},
 --     },
 -- }
+gls.right[8] ={
+    FileIcon = {
+        provider = 'FileIcon',
+        separator = '',
+        condition = function() return has_file_type() end,
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+        separator_highlight = {'NONE',colors.line_bg},
+    },
+}
 
 gls.right[9] = {
     Filetype = {
         condition = function() return has_file_type() end,
         provider = 'FileTypeName',
-        highlight = {colors.line_bg,require('galaxyline.provider_fileinfo').get_file_icon_color},
-        separator = ' ',
-        separator_highlight = {'NONE',require('galaxyline.provider_fileinfo').get_file_icon_color},
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg,'bold'},
+        separator = '',
+        separator_highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg,'bold'},
     }
 }
 
@@ -318,7 +334,7 @@ gls.right[10] = {
         condition = function() return has_file_type() end,
         highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
         separator = ' ',
-        separator_highlight = {'NONE',require('galaxyline.provider_fileinfo').get_file_icon_color},
+        separator_highlight = {'NONE',colors.line_bg},
     },
 }
 

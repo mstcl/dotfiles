@@ -65,14 +65,8 @@ return require('packer').startup(function()
                 let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
                 let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
                 let g:dashboard_custom_section={'history_list': {'description': [' History                 LDR fh'],'command': ':FzfLua oldfiles' },'buffer_list': {'description': ['﬘ Buffer                  LDR fb'],'command': ':FzfLua buffers' },'find_files': {'description': [' Files                   LDR ff'],'command': ':FzfLua files' },'session': {'description': [' Restore                 LDR rr'],'command': ':SessionLoad' }}
-            ]]) 
+            ]])
         end
-    }
-    -- }}}
-
-    -- VIM-STAY {{{
-    use {
-        'zhimsel/vim-stay',
     }
     -- }}}
 
@@ -130,7 +124,7 @@ return require('packer').startup(function()
                 -- placeholder characters substituted for concealed text (see 'conceallevel')
                 Group.new('Conceal', c.none, c.none, no)
                 -- the character under the cursor
-                Group.new('Cursor', c.none, c.none, no)
+                Group.new('Cursor', c.black, c.white, no)
                 -- like Cursor, but used when in IME mode
                 Group.new('CursorIM', c.none, c.none, no)
                 -- the screen column that the cursor is in when 'cursorcolumn' is set
@@ -496,9 +490,6 @@ return require('packer').startup(function()
         'sirver/ultisnips',
         event = "InsertEnter",
         config = function()
-            vim.g.UltiSnipsExpandTrigger = '<tab>'
-            vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-            vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
             vim.cmd('let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]')
         end
     }
@@ -526,7 +517,7 @@ return require('packer').startup(function()
                 word_diff = false,
                 use_internal_diff = true,
             }
-        end,
+end,
     }
     -- }}}
 
@@ -690,20 +681,20 @@ return require('packer').startup(function()
         event = "BufEnter",
         config = function ()
             vim.cmd([[
-            let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"},{"open": '\w\zs<', "close": '>'},{"open": '\\left(', 'close': '\right)', "filetype": "tex"},{"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},{"open": "*", "close": "*", "filetype": ["help"]},{"open": "*", "close": "*", "filetype": ["vimwiki"]},{"open": "**", "close": "**", "filetype": ["vimwiki"]},{"open": "_", "close": "_", "filetype": ["vimwiki"]},{"open": "~~", "close": "~~", "filetype": ["vimwiki"]},{"open": "++", "close": "++", "filetype": ["vimwiki"]},{"open": "|", "close": "|", "filetype": "help"},{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}])
+            let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"},{"open": '\w\zs<', "close": '>'},{"open": '\\left(', 'close': '\right)', "filetype": "tex"},{"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},{"open": "*", "close": "*", "filetype": ["help"]},{"open": "*", "close": "*", "filetype": ["vimwiki"]},{"open": "**", "close": "**", "filetype": ["vimwiki"]},{"open": "_", "close": "_", "filetype": ["vimwiki"]},{"open": "__", "close": "__", "filetype": ["vimwiki"]},{"open": "~~", "close": "~~", "filetype": ["vimwiki"]},{"open": "++", "close": "++", "filetype": ["vimwiki"]},{"open": "|", "close": "|", "filetype": "help"},{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}])
             ]])
             vim.g.AutoPairsShortcutFastWrap = '<M-e>'
             vim.g.AutoPairsMapBS = "1"
             vim.g.AutoPairsShortcutToggle='<M-p>'
             vim.g.AutoPairsShortcutJump='<M-n>'
             vim.g.AutoPairsShortcutBackInsert='<M-b>'
-            vim.g.AutopairsMultilineBackspace = "1"
+            vim.g.AutoPairsMultilineBackspace = 1
             vim.g.AutoPairsMultilineClose = 1
             vim.g.AutoPairsFlyMode = "0"
         end,
     }
     -- }}}
-
+    
     -- EASYALIGN {{{
     use {
         'junegunn/vim-easy-align',
@@ -731,21 +722,6 @@ return require('packer').startup(function()
             "VimwikiIndex",
         },
         ft = {'markdown','vimwiki'},
-        config = function ()
-            vim.cmd([[ let g:vimwiki_list = [{'path': '$HOME/wiki/docs','ext':'.md','syntax':'markdown','path_html': '$HOME/vimwiki.old/site_html/','template_path': '$HOME/vimwiki.old/templates','template_default': 'def_template','template_ext': '.html',}] ]])
-            vim.cmd([[ let g:vimwiki_key_mappings = {'all_maps': 1,'global': 1,'headers': 1,'text_objs': 1,'table_format': 1,'table_mappings': 1,'lists': 1,'links': 1,'html': 1,'mouse': 1,} ]])
-            vim.g.vimwiki_use_mouse = 1
-            vim.g.vimwiki_folding = 'expr'
-            vim.g.vimwiki_auto_chdir = 1
-            vim.g.vimwiki_toc_header = 'Contents'
-            vim.g.vimwiki_global_ext = 0
-            vim.g.vimwiki_markdown_link_ext = 1
-            vim.g.vimwiki_listsyms = '    x'
-            vim.g.vimwiki_hl_headers = 1
-            vim.g.vimwiki_links_header = 'List of pages'
-            vim.g.vimwiki_links_header_level = 2
-            vim.g.vimwiki_tags_header = 'Tags'
-        end
     }
     -- }}}
 
@@ -765,7 +741,9 @@ return require('packer').startup(function()
         "blackCauldron7/surround.nvim",
         event = "BufRead",
         config = function()
-            require "surround".setup {}
+            require "surround".setup {
+                mappings_style = "surround",
+            }
         end
     }
     -- }}}
@@ -973,5 +951,48 @@ return require('packer').startup(function()
         cmd = { "SymbolsOutline" },
     }
     -- }}}
--- }}}
+
+    -- LIGHTSPEED {{{
+    use {
+        'ggandor/lightspeed.nvim',
+        event = 'BufEnter',
+    }
+    -- }}}
+
+    -- SPELLSITTER {{{
+    use {
+    'lewis6991/spellsitter.nvim',
+
+    config = function()
+        require('spellsitter').setup {
+            hl = 'SpellBad',
+            captures = {'comment'},
+        }
+        end
+    }
+    -- }}}
+    use {
+        'edluffy/specs.nvim',
+        event = 'CursorMoved',
+        config = function ()
+            require('specs').setup{ 
+                show_jumps  = true,
+                min_jump = 10,
+                popup = {
+                    delay_ms = 0,
+                    inc_ms = 10,
+                    blend = 10,
+                    width = 10,
+                    winhl = "DiffChange",
+                    fader = require('specs').pulse_fader,
+                    resizer = require('specs').slide_resizer
+                },
+                ignore_filetypes = {},
+                ignore_buftypes = {
+                    nofile = true,
+                },
+            }
+        end
+    }
+    -- }}}
 end)
