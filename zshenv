@@ -15,7 +15,6 @@ export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export CONDARC="$XDG_CONFIG_HOME"/conda/condarc
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
-export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export EDITOR=nvim
@@ -34,3 +33,4 @@ export XMODIFIERS=@im=ibus
 export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 export GLFW_IM_MODULE=ibus
+export BAT_CONFIG_PATH="$XDG_CONFIG_HOME"/bat/config
