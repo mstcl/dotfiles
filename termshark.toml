@@ -1,4 +1,4 @@
-# :.config/termshark.toml
+# :.config/termshark/termshark.toml
 [main]
   color-tsharks = ["/usr/bin/tshark"]
   dark-mode = true
