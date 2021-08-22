@@ -322,7 +322,7 @@ nnoremap <silent> <Leader>f/              :FzfLua search_history<CR>
 nnoremap <silent> <Leader>f"              :FzfLua registers<CR>
 nnoremap <silent> <leader>f'              :FzfLua marks<CR>
 nnoremap <silent> <leader>fcs             :FzfLua colorschemes<CR>
-nnoremap <silent> <leader>fz=             :FzfLua spell_suggest<CR>
+nnoremap <silent> <leader>f=             :FzfLua spell_suggest<CR>
 nnoremap <silent> <leader>f,              :FzfLua keymaps<CR>
 nnoremap <silent> <leader>fzz             :FzfLua live_grep<CR>
 nnoremap <silent> <leader>fy              :FzfLua grep<CR>

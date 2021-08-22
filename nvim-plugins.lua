@@ -425,6 +425,8 @@ return require('packer').startup(function()
                 Group.new("BufferTabpages", c.lightgrey, c.none, b)
                 Group.new("BufferTabpagesFill", c.lightgrey, c.none, b)
                 Group.new("FocusedSymbol", c.black, c.yellow, b)
+                Group.new("markdownCode", c.blue, c.none, no)
+
                 -- }}}
         end
     }
@@ -681,7 +683,7 @@ end,
         event = "BufEnter",
         config = function ()
             vim.cmd([[
-            let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"},{"open": '\w\zs<', "close": '>'},{"open": '\\left(', 'close': '\right)', "filetype": "tex"},{"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},{"open": "*", "close": "*", "filetype": ["help"]},{"open": "*", "close": "*", "filetype": ["vimwiki"]},{"open": "**", "close": "**", "filetype": ["vimwiki"]},{"open": "_", "close": "_", "filetype": ["vimwiki"]},{"open": "__", "close": "__", "filetype": ["vimwiki"]},{"open": "~~", "close": "~~", "filetype": ["vimwiki"]},{"open": "++", "close": "++", "filetype": ["vimwiki"]},{"open": "|", "close": "|", "filetype": "help"},{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}])
+            let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"},{"open": '\w\zs<', "close": '>'},{"open": '\\left(', 'close': '\right)', "filetype": "tex"},{"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},{"open": "_", "close": "_", "filetype": ["vimwiki"]},{"open": "_", "close": "_", "filetype": ["markdown"]},{"open": "__", "close": "__", "filetype": ["vimwiki"]},{"open": "__", "close": "__", "filetype": ["markdown"]},{"open": "~~", "close": "~~", "filetype": ["vimwiki"]},{"open": "~~", "close": "~~", "filetype": ["markdown"]},{"open": "++", "close": "++", "filetype": ["vimwiki"]},{"open": "|", "close": "|", "filetype": "help"},{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}])
             ]])
             vim.g.AutoPairsShortcutFastWrap = '<M-e>'
             vim.g.AutoPairsMapBS = "1"
@@ -739,7 +741,7 @@ end,
     -- SURROUND.NVIM {{{
     use {
         "blackCauldron7/surround.nvim",
-        event = "BufRead",
+        event = "BufEnter",
         config = function()
             require "surround".setup {
                 mappings_style = "surround",
@@ -769,7 +771,7 @@ end,
                         vim.cmd("set winhl=Normal:Normal")
                     end,
                 },
-                fzf_args = '--margin 3%',
+                fzf_args = '--margin=3% --border=none',
                 fzf_binds = {
                     '?:toggle-preview',
                     'f3:toggle-preview-wrap',
@@ -971,6 +973,8 @@ end,
         end
     }
     -- }}}
+
+    -- SPECS {{{
     use {
         'edluffy/specs.nvim',
         event = 'CursorMoved',
@@ -994,5 +998,12 @@ end,
             }
         end
     }
+    -- }}}
+
+    -- HILINK TRACE {{{
+    -- use {
+    --     'gerw/vim-HiLinkTrace'
+    -- }
+    -- }}}
     -- }}}
 end)
