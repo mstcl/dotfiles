@@ -18,7 +18,7 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
-cat .bpytop-replace.conf > bpytop.conf
+
 
 # Main
 export HOME
@@ -30,6 +30,9 @@ function get_dest {
 function get_dest_alt {
     echo $(sed -n '2p'<$1) | cut -d: -f2
 }
+
+cat .bpytop-replace.conf > bpytop.conf
+cat .termshark-replace.toml > termshark.toml
 
 for FILE in $DOT_DIR/*
 do
