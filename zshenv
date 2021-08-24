@@ -1,5 +1,6 @@
 # :.zshenv
 # ENVIRONMENTAL VARIABLES
+export DIFFPROG=nvim
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export ZDOTDIR="$HOME"/.config/zsh
 export LANG=en_GB.UTF-8
