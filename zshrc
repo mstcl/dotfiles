@@ -21,6 +21,8 @@ bindkey -e
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^[e' edit-command-line
+bindkey '^b' backward-word
+bindkey '^f' forward-word
 # }}}
 
 # GENERAL OPTIONS {{{
@@ -38,22 +40,6 @@ setopt nonomatch
 
 # Sort filenames numerically
 setopt numericglobsort
-
-# New line if not first line
-new_line_before_prompt=yes
-precmd() {
-    # Print the previously configured title
-    print -Pnr -- "$TERM_TITLE"
-
-    # Print a new line before the prompt, but only if it is not the first line
-    if [ "$new_line_before_prompt" = yes ]; then
-        if [ -z "$_NEW_LINE_BEFORE_PROMPT" ]; then
-            _NEW_LINE_BEFORE_PROMPT=1
-        else
-            print ""
-        fi
-    fi
-}
 
 # Don't consider as parts of word
 export WORDCHARS=${WORDCHARS//\/}
@@ -118,25 +104,22 @@ export SPACESHIP_PROMPT_ORDER=(
 
 # Right prompt
 export SPACESHIP_RPROMPT_ORDER=(
-    exec_time
-    conda
     git
-    package
-    jobs
     docker
+    exec_time
+    jobs
 )
 
-# export SPACESHIP_CHAR_SYMBOL="%F{red}%F{green}%F{blue}%F{green}"
-export SPACESHIP_CHAR_SYMBOL="%F{red}$"
+export SPACESHIP_CHAR_SYMBOL="%F{red}%F{green}%F{blue}%F{green}"
+# export SPACESHIP_CHAR_SYMBOL="%F{red}$"
 export SPACESHIP_CHAR_SUFFIX=" "
 export SPACESHIP_GIT_BRANCH_PREFIX=" "
 export SPACESHIP_GIT_STATUS_AHEAD=""
 export SPACESHIP_GIT_STATUS_BEHIND=""
-export SPACESHIP_CHAR_SYMBOL_SECONDARY="%F{red} "
+export SPACESHIP_CHAR_SYMBOL_SECONDARY="%F{red} "
 export SPACESHIP_PROMPT_ADD_NEWLINE=false
 export SPACESHIP_PROMPT_SEPARATE_LINE=false
 export SPACESHIP_GIT_BRANCH_COLOR="yellow"
-export SPACESHIP_GIT_STATUS_PREFIX=" ["
 export SPACESHIP_GIT_STATUS_COLOR="yellow"
 export SPACESHIP_GIT_STATUS_ADDED="%F{yellow}+%F{yellow}"
 export SPACESHIP_GIT_STATUS_UNTRACKED="%F{blue}?%F{yellow}"
@@ -265,6 +248,12 @@ alias get-mirror='systemctl start reflector'
 # Vim habits
 alias q='exit'
 
+# Quick reload wpg
+alias wpgr='wpg -s $(wpg -c)'
+
+# Time zsh startup
+alias ztime='time zsh -i -c exit'
+
 # Nvim aliases
 alias nv='nvim'
 alias vim='nvim'
@@ -297,7 +286,7 @@ alias zshconf='nvim ~/dotfiles/zshrc'
 alias i3conf='nvim ~/dotfiles/i3-config.conf'
 alias kittyconf='nvim ~/dotfiles/kitty.conf'
 alias vimconf='nvim ~/dotfiles/nvim-init.vim'
-alias polyconf='nvim ~/scripts/polybar/bar'
+alias polyconf='nvim ~/scripts/polybar/bar/modules.ini'
 
 # Find files to edit
 alias fv='nvim $(fzf --height 40% --preview-window=nohidden --height=50% --border=sharp --margin=5%,7% --layout=reverse --marker="++" --prompt=" " --preview="bat --line-range :500 {}")'
@@ -334,23 +323,6 @@ alias pls='paru -Q'
 alias plsa='paru -Qe'
 alias porf='paru -Qdt'
 alias pcc='paru -Scd'
-# }}}
-
-# CONDA {{{
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lckdscl/.local/share/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lckdscl/.local/share/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lckdscl/.local/share/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/lckdscl/.local/share/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 # }}}
 
 # FUNCTIONS {{{
