@@ -45,8 +45,8 @@ resize_in_steps yes
 enable_audio_bell no
 
 # Window layout
-window_padding_width 0 20 20 20
-window_margin_width 20 0 0 0
+window_padding_width 20 20 0 20
+window_margin_width 0 0 0 0
 placement_strategy center
 active_border_color {color0}
 window_border_width 1.0
@@ -54,19 +54,20 @@ inactive_border_color {color0}
 bell_border_color {color3}
 
 # Tab bar
-tab_bar_edge top
-tab_bar_margin_width 20.0
+tab_bar_edge bottom
+tab_bar_margin_width 15.0
 tab_bar_margin_height 20.0 0.0
 tab_bar_style fade
 # tab_fade 0.25 0.5 0.75 1
 tab_fade 0
+tab_bar_min_tabs 0
 # tab_separator " "
 
 # Template to render the tab title.
 tab_title_template " {{index}} {{title}} "
-# active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}{{fmt.fg._{color0.strip}}}{{fmt.bg._{color1.strip}}}{{index}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color8.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{title}}{{fmt.fg._{color8.strip}}}{{fmt.bg.default}}
+active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}{{fmt.fg._{color0.strip}}}{{fmt.bg._{color1.strip}}}{{index}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color8.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{title}}{{fmt.fg._{color8.strip}}}{{fmt.bg.default}}
 
-# tab_title_template {{fmt.fg._{color0.strip}}}{{fmt.bg.default}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color0.strip}}} {{title}} {{fmt.fg._{color0.strip}}}{{fmt.bg.default}}
+tab_title_template {{fmt.fg._{color0.strip}}}{{fmt.bg.default}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color0.strip}}} {{title}} {{fmt.fg._{color0.strip}}}{{fmt.bg.default}}
 
 # Tab bar colors and styles.
 active_tab_font_style   bold
@@ -74,7 +75,7 @@ active_tab_foreground   {color15}
 active_tab_background   {color0}
 inactive_tab_background {color0}
 inactive_tab_foreground {color8}
-inactive_tab_font_style normal
+inactive_tab_font_style bold
 
 # Color scheme
 foreground   {color7}
