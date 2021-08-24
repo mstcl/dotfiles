@@ -323,6 +323,9 @@ alias pls='paru -Q'
 alias plsa='paru -Qe'
 alias porf='paru -Qdt'
 alias pcc='paru -Scd'
+
+# kmon
+alias kmon="sudo -E kmon -u"
 # }}}
 
 # FUNCTIONS {{{
@@ -343,12 +346,12 @@ _fzf_compgen_dir() {
 
 # Paru fuzzy install
 function ins {
-    paru -Slq | fzf --height 40% --prompt=" " --preview-window=hidden --preview 'paru -Si {1}' | xargs -ro paru -S --removemake --cleanafter
+    paru -Slq | fzf --height=80% --prompt=" " --preview-window=hidden --preview 'paru -Si {1}' | xargs -ro paru -S --removemake --cleanafter
 }
 
 # Paru fuzzy remove
 function rem() {
-    paru -Qq | fzf -q "$1" --height=40% --prompt=" " --preview-window=hidden --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+    paru -Qq | fzf -q "$1" --height=80% --prompt=" " --preview-window=hidden --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
 # Tldr fuzzy
