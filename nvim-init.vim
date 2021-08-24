@@ -16,28 +16,28 @@ lua require('plugins')
 " Remove these built-in plugins
 lua << EOF
 local disabled_built_ins = {
-    --netrw",
-    --netrwPlugin",
-    --"netrwSettings",
-    --"netrwFileHandlers",
+    --"netrw",
     "gzip",
     "zip",
-    "zipPlugin",
+    --"netrwPlugin",
+    --"netrwSettings",
     "tar",
     "tarPlugin",
+    "netrwFileHandlers",
+    "zipPlugin",
     "getscript",
     "getscriptPlugin",
     "vimball",
     "vimballPlugin",
     "2html_plugin",
     "logipat",
-    "rrhelper",
     "spellfile_plugin",
-    }
+    --"matchit",
+}
 
-    for _, plugin in pairs(disabled_built_ins) do
-        vim.g["loaded_" .. plugin] = 1
-    end
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end
 EOF
 " }}}
 
@@ -48,8 +48,12 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
 
+" Stop autocommenting!
+autocmd BufReadPost * set formatoptions-=cro
+
+
 " Close Outline if it's the only window left
-autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
 
 " highlight yanked
 augroup highlight_yank
@@ -63,6 +67,9 @@ autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sh | set file
 " Rasi extension is css-based
 autocmd BufReadPost *.rasi set filetype=css
 
+" Jupyter Notebook
+autocmd BufReadPost *.ipynb set filetype=python
+
 " Autosource init.vim upon saving
 autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echo "Reloaded neovim"
 
@@ -73,7 +80,7 @@ autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | se
 " Vimwiki settings
 augroup VimwikiSettings
     autocmd!
-    autocmd BufNewFile,BufRead *.md setlocal spell | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
+    autocmd BufNewFile,BufRead *.md set nolist | setlocal spell | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
     autocmd Filetype vimwiki set fdm=expr
     autocmd InsertEnter *.{vimwiki,wiki,md} set conceallevel=0
     autocmd InsertLeave *.{vimwiki,wiki,md} set conceallevel=2
@@ -137,15 +144,11 @@ endfunction
 
 " OPTIONS {{{
 " Terminal title
-let &titlestring = "nvim " . expand("%:t")
+let &titlestring = "nvim " ". expand("%:t")
 set title
 
 " Use document modeline
 set modeline
-
-" Vimstay/auto-session option to restore session
-set viewoptions=cursor,folds,slash,unix
-set sessionoptions+=options,resize,winpos,terminal
 
 " Visual settings
 set cursorline
@@ -154,6 +157,7 @@ set noshowmode
 set showcmd
 set lazyredraw
 set termguicolors
+set foldcolumn=auto
 
 " Folding
 set foldmethod=indent
@@ -212,9 +216,9 @@ set nospell
 set encoding=utf-8
 
 " Funky characters
-set fillchars=eob:\ ,vert:│
+set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│
 set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,eol:¶,trail:·
+set listchars=tab:»·,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:·,space:·
 
 " Nvim-compe completion
 set completeopt=menuone,noselect
@@ -225,11 +229,12 @@ set shortmess+=Ssatqc
 " Huh I don't know if this should be here
 set path+=**
 
-" Detect extraneous filetype
+" Detect other filetypes off by default
 filetype plugin on
 " }}}
 
 " MAPPINGS {{{
+" GENERAL {{{
 " Set leaders
 let mapleader = ",."
 let maplocalleader = ",.."
@@ -244,30 +249,46 @@ xnoremap > >gv
 " Access command with space
 nnoremap <space> :
 
-" Move lines {{{
+" Move lines
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <a-j> :m '>+1<cr>gv=gv
 vnoremap <a-k> :m '<-2<cr>gv=gv
-" }}}
 
 " New line above/below in normal mode
 nmap mo o<esc>
 nmap mO O<esc>
 
-" Unbind arrow keys in normal mode {{{
+" Unbind arrow keys in normal mode
 noremap  <Up> <Nop>
 noremap  <Down> <Nop>
 noremap  <Left> <Nop>
 noremap  <Right> <Nop>
-" }}}
+
+" Vimwiki todo toggle
+nmap <C-O> <Plug>VimwikiToggleListItem
+
+" Compe atocompletion and navigation
+lua << EOF
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
+EOF
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-"
+
+" Fold with indent-blankline {{{
+nnoremap <silent> zA zA:IndentBlanklineRefresh<CR>
+nnoremap <silent> za za:IndentBlanklineRefresh<CR>
+nnoremap <silent> zm zm:IndentBlanklineRefresh<CR>
+nnoremap <silent> zM zM:IndentBlanklineRefresh<CR>
+nnoremap <silent> zc zc:IndentBlanklineRefresh<CR>
+nnoremap <silent> zC zC:IndentBlanklineRefresh<CR>
+nnoremap <silent> zr zr:IndentBlanklineRefresh<CR>
+nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
+" }}}
 
 " Barbar buffer motions {{{
 " Move to previous/next
@@ -294,9 +315,20 @@ nnoremap <silent>    <A-c>     :BufferClose<CR>
 nnoremap <silent>    <C-s>     :BufferPick<CR>
 " }}}
 
-" Vimwiki todo toggle
-nmap <C-O> <Plug>VimwikiToggleListItem
+" Popup menu scroll {{{
+function! s:s(delta) abort
+if pumvisible()
+  let l:i = complete_info(['selected']).selected
+  call timer_start(0, { -> nvim_select_popupmenu_item(l:i + a:delta, v:true, v:false, {}) })
+endif
+return "\<Ignore>"
+endfunction
+inoremap <silent><expr><C-j> <SID>s(+4)
+inoremap <silent><expr><C-k> <SID>s(-4)
+" }}}
+" }}}
 
+" LEADER KEYS {{{
 " Leader b {{{
 " Goto dashboard
 nnoremap <silent> <Leader>b  :Dashboard<CR>
@@ -304,7 +336,17 @@ nnoremap <silent> <Leader>b  :Dashboard<CR>
 
 " Leader c {{{
 " Toggle colour highlighting
-nnoremap <silent> <Leader>ch  :HexokinaseToggle<CR>
+nnoremap <silent> <Leader>ch  :ColorizerToggle<CR>
+
+" Toggle foldcolumn
+nnoremap <silent> <leader>cf  :call FoldColumnToggle()<cr>
+function! FoldColumnToggle()
+    if &foldcolumn
+        setlocal foldcolumn=0
+    else
+        setlocal foldcolumn=4
+    endif
+endfunction
 " }}}
 
 " Leader f {{{
@@ -331,6 +373,7 @@ nnoremap <silent> <leader>ftw             :FzfLua grep_cword<CR>
 nnoremap <silent> <leader>ftv             :FzfLua grep_visual<CR>
 nnoremap <silent> <leader>ftl             :FzfLua grep_last<CR>
 nnoremap <silent> <leader>fmp             :FzfLua man_pages<CR>
+
 " Fzflua LSP
 nnoremap <silent> <leader>flr             :FzfLua lsp_references<CR>
 nnoremap <silent> <leader>fld             :FzfLua lsp_definitions<CR>
@@ -362,7 +405,7 @@ nnoremap <silent> <Leader>pi  :wa <CR> <bar> :so % <CR> <bar> :PackerCompile <CR
 " }}}
 
 " Leader n {{{
-" Disasble search highlighting
+" Disable search highlighting
 nnoremap <silent> <Leader>nh  :noh <CR>
 " Set number/relativenumber
 nnoremap <silent> <Leader>nr  :set relativenumber!<CR>
@@ -379,10 +422,13 @@ nnoremap <silent> <leader>rs :SessionSave<CR>
 " New split
 nnoremap <silent> <Leader>spv :vs<CR>
 nnoremap <silent> <Leader>sph :sp<CR>
+
 " Source nvim config
 nnoremap <silent> <Leader>sv  :source $MYVIMRC<CR>
+
 " Set spell
 nnoremap <silent> <Leader>sh  :setlocal spell! spelllang=en_gb<CR>
+
 " Change conceal level on the fly
 nnoremap <silent> <Leader>sco :set conceallevel=0<CR>
 nnoremap <silent> <Leader>sci :set conceallevel=2<CR>
@@ -425,39 +471,11 @@ nnoremap <silent> <Leader>zn :ZettelNew
 " switch between prev/next buffer
 nnoremap <silent> <Leader><space> <C-^>
 " }}}
-
-" Fold with indent-blankline {{{
-nnoremap <silent> zA zA:IndentBlanklineRefresh<CR>
-nnoremap <silent> za za:IndentBlanklineRefresh<CR>
-nnoremap <silent> zm zm:IndentBlanklineRefresh<CR>
-nnoremap <silent> zM zM:IndentBlanklineRefresh<CR>
-nnoremap <silent> zc zc:IndentBlanklineRefresh<CR>
-nnoremap <silent> zC zC:IndentBlanklineRefresh<CR>
-nnoremap <silent> zr zr:IndentBlanklineRefresh<CR>
-nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
-" }}}
-
-" Compe atocompletion and navigation {{{
-lua << EOF
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
-EOF
-
-" Popup menu scroll {{{
-function! s:s(delta) abort
-if pumvisible()
-  let l:i = complete_info(['selected']).selected
-  call timer_start(0, { -> nvim_select_popupmenu_item(l:i + a:delta, v:true, v:false, {}) })
-endif
-return "\<Ignore>"
-endfunction
-" }}}
-inoremap <silent><expr><C-j>     <SID>s(+4)
-inoremap <silent><expr><C-k>     <SID>s(-4)
 " }}}
 " }}}
 
 " DASHBOARD ASCII {{{
-" NEOVIM {{{
+" LAYERS {{{
 " let g:dashboard_custom_header = [
 "     \ '                                                       ',
 "     \ '                                                       ',
@@ -506,29 +524,42 @@ let g:dashboard_custom_header = [
 \' "8oo...oo888""                              ',
 \]
 " }}}
+" BLOODY {{{
+let g:dashboard_custom_header = [
+\'',
+\'',
+\'',
+\'',
+\'   ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓',
+\'   ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒',
+\'  ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░',
+\'  ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ',
+\'  ▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒',
+\'  ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░',
+\'  ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░',
+\'     ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ',
+\'           ░    ░  ░    ░ ░        ░   ░         ░   ',
+\'                                  ░                  ',
+\'                       v0.5.0                        ',
+\'',
+\]
 " }}}
-
-" OTHER PLUGIN SETTINGS (that don't work with packer) {{{
-" Vimwiki stuff {{{
-let g:vimwiki_listsyms = '    x'
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list = [{'path': '$HOME/wiki/docs','ext':'.md','syntax':'markdown','path_html': '$HOME/vimwiki.old/site_html/','template_path': '$HOME/vimwiki.old/templates','template_default': 'def_template','template_ext': '.html',}]
-let g:vimwiki_key_mappings = {'all_maps': 1,'global': 1,'headers': 1,'text_objs': 1,'table_format': 0,'table_mappings': 0,'lists': 1,'links': 1,'html': 1,'mouse': 1,}
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_folding = 'expr'
-let g:vimwiki_auto_chdir = 1
-let g:vimwiki_toc_header = 'Contents'
-let g:vimwiki_global_ext = 0
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_links_header = 'List of pages'
-let g:vimwiki_links_header_level = 2
-let g:vimwiki_tags_header = 'Tags'
-" }}}
-
-" Ultisnips tabstop {{{
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" PRIEST {{{
+" let g:dashboard_custom_header = [
+" \'',
+" \'',
+" \'',
+" \'',
+" \'  ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄  ',
+" \'  ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄',
+" \'  ███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███',
+" \'  ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███',
+" \'  ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███',
+" \'  ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███',
+" \'  ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███',
+" \'   ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀ ',
+" \'                                                                   ',
+" \'',
+" \]
 " }}}
 " }}}
