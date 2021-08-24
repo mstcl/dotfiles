@@ -1,11 +1,11 @@
 -- :.config/nvim/lua/plugins.lua
--- vim: set foldmethod=marker:
+-- vim: set foldmethod=marker foldenable:
 
 return require('packer').startup(function()
-    -- NOT LAZYLOADED {{{
-    -- GALAXYLINE {{{
+    -- GALAXYLINE: fancy status line {{{
     use {
         "hhn-pham/galaxyline.nvim",
+        event = 'BufWinEnter',
         branch = 'main',
         config = function()
             require("statusline")
@@ -13,21 +13,77 @@ return require('packer').startup(function()
     }
     -- }}}
 
-    -- WEB-DEVICONS {{{
+    -- WEB-DEVICONS: icons everywhere {{{
     use {
         'kyazdani42/nvim-web-devicons',
+        config = function ()
+            require'nvim-web-devicons'.setup {}
+        end
     }
     -- }}}
 
-    -- BARBAR {{{
+    -- JUPYTEXT: convert jupyter notebook formats into other formats {{{
+    use {
+        'goerz/jupytext.vim',
+        setup = function()
+            vim.g.jupytext_fmt = 'py:percent'
+            vim.cmd([[let g:jupytext_filetype_map = {'py': 'python'}]])
+        end
+    }
+    -- }}}
+
+    -- NVIM COLORIZER: add a colored background for color codes {{{
+    use {
+        "norcalli/nvim-colorizer.lua",
+        event = 'BufRead',
+        config = function()
+            require("colorizer").setup()
+            vim.cmd("ColorizerAttachToBuffer")
+        end,
+    }
+    -- }}}
+
+    -- DASHBOARD: a neovim start screen {{{
+    use {
+        "glepnir/dashboard-nvim",
+        event = 'BufWinEnter',
+        setup = function ()
+            vim.cmd([[
+                let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
+                let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
+            ]])
+            vim.g.dashboard_custom_section = {
+                history_list = {
+                    description = {' History                 LDR fh'},
+                    command = ':FzfLua oldfiles'
+                },
+                buffer_list = {
+                    description = {'﬘ Buffer                  LDR fb'},
+                    command = ':FzfLua buffers'
+                },
+                find_files = {
+                    description = {' Files                   LDR ff'},
+                    command = ':FzfLua files'
+                },
+                session = {
+                    description = {' Restore                 LDR rr'},
+                    command = ':SessionLoad'
+                }
+            }
+        end
+    }
+    -- }}}
+
+    -- BARBAR: fancy buffer bar {{{
     use {
         'romgrk/barbar.nvim',
+        event = 'BufEnter',
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
             vim.g.bufferline = {
                 animation = true,
                 auto_hide = false,
-                tabpages = true,
+                tabpages = false,
                 closable = true,
                 clickable = true,
                 icons = true,
@@ -38,8 +94,8 @@ return require('packer').startup(function()
                 icon_close_tab_modified = '',
                 icon_pinned = '',
                 insert_at_end = false,
-                maximum_padding = 4,
-                maximum_length = 30,
+                maximum_padding = 1,
+                maximum_length = 50,
                 semantic_letters = true,
                 letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
                 no_name_title = nil,
@@ -48,47 +104,14 @@ return require('packer').startup(function()
     }
     -- }}}
 
-    -- JUPYTEXT {{{
-    use {
-        'goerz/jupytext.vim',
-        config = function ()
-            vim.g.jupytext_fmt = 'py:percent'
-        end
-    }
-    -- }}}
-
-    -- DASHBOARD {{{
-    use {
-        "glepnir/dashboard-nvim",
-        config = function ()
-            vim.cmd([[
-                let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
-                let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
-                let g:dashboard_custom_section={'history_list': {'description': [' History                 LDR fh'],'command': ':FzfLua oldfiles' },'buffer_list': {'description': ['﬘ Buffer                  LDR fb'],'command': ':FzfLua buffers' },'find_files': {'description': [' Files                   LDR ff'],'command': ':FzfLua files' },'session': {'description': [' Restore                 LDR rr'],'command': ':SessionLoad' }}
-            ]])
-        end
-    }
-    -- }}}
-
-    -- NVIM COLORIZER {{{
-    use {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-    }
-    -- }}}
-    -- }}}
-
--- LAZYLOADED {{{
-    -- PACKER {{{
+    -- PACKER: package manager {{{
     use {
         'wbthomason/packer.nvim',
         event = "VimEnter",
     }
     -- }}}
 
-    -- BETTER-ESCAPE {{{
+    -- BETTER-ESCAPE: use alphanumeric escape mappings without delay {{{
         use {
             "jdhao/better-escape.vim",
             event = "InsertEnter",
@@ -99,7 +122,7 @@ return require('packer').startup(function()
         }
     -- }}}
 
-    -- COLORBUDDY {{{
+    -- COLORBUDDY: neovim themer in lua {{{
     use {
         'tjdevries/colorbuddy.nvim',
         after = "packer.nvim",
@@ -144,16 +167,12 @@ return require('packer').startup(function()
                 -- filler lines (~) after the last line in the buffer
                 Group.new('EndOfBuffer', c.black, c.none.no)
                 -- error messages on the command line
-                Group.new('ErrorMsg', c.black, c.red, no)
+                Group.new('ErrorMsg', c.red, c.black, no)
                 -- the column separating vertically split windows
                 Group.new('VertSplit', c.lightblack, c.none, no)
-                -- line used for closed folds
                 Group.new('Folded', c.grey, c.none, no)
-                -- 'foldcolumn'
-                Group.new('FoldColumn', c.none, c.darkgrey, no)
-                -- column where signs are displayed
+                Group.new('FoldColumn', c.grey, c.none, no)
                 Group.new('SignColumn', c.none, c.lightblack, no)
-                -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
                 Group.new('IncSearch', c.none, c.none, r)
                 -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
                 Group.new('LineNr', c.lightblack, c.black, no)
@@ -186,11 +205,8 @@ return require('packer').startup(function()
                 Group.new('QuickFixLine', c.none, c.none, no)
                 -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
                 Group.new('Search', c.black, c.yellow, no)
-                -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'
-                -- Generally: text that is displayed differently from what it really is.
-                Group.new('SpecialKey', c.lightblack, c.none, no)
-                Group.new('NonText', c.lightblack, c.none, no)
-                -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
+                Group.new('SpecialKey', c.darkgrey, c.none, no)
+                Group.new('NonText', c.darkgrey, c.none, no)
                 Group.new('SpellBad', c.very_soft_red, c.none, uc)
                 -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
                 Group.new('SpellCap', c.very_soft_yellow, c.none, uc)
@@ -384,6 +400,8 @@ return require('packer').startup(function()
                 Group.new('GitSignsDeleteLn', c.red, c.black, no)
                 Group.new('SignColumn', c.black, c.black, no)
                 Group.new('IndentBlanklineChar', c.darkgrey, none, no)
+                Group.new('IndentBlanklineSpaceChar', c.darkgrey, none, no)
+                Group.new('IndentBlanklineSpaceCharBlankline', c.darkgrey, none, no)
                 Group.new("LspDiagnosticsUnderlineError", c.red, c.none, ul)
                 Group.new("LspDiagnosticsUnderlineHint", c.pink, c.none, ul)
                 Group.new("LspDiagnosticsUnderlineWarning", c.orange, c.none, ul)
@@ -414,8 +432,8 @@ return require('packer').startup(function()
                 Group.new("BufferVisible", c.lightgrey, c.none, b)
                 Group.new("BufferCurrentMod", c.red, c.none, i + b)
                 Group.new("BufferVisibleMod", c.red, c.none, i + b)
-                Group.new("BufferCurrentSign", c.lightgrey, c.none, no)
-                Group.new("BufferVisibleSign", c.lightgrey, c.none, no)
+                Group.new("BufferCurrentSign", c.black, c.none, no)
+                Group.new("BufferVisibleSign", c.black, c.none, no)
                 Group.new("BufferCurrentTarget", c.blue, c.none, b)
                 Group.new("BufferVisibleTarget", c.blue, c.none, b)
                 Group.new("BufferInactive", c.lightblack, c.none, no)
@@ -426,22 +444,38 @@ return require('packer').startup(function()
                 Group.new("BufferTabpagesFill", c.lightgrey, c.none, b)
                 Group.new("FocusedSymbol", c.black, c.yellow, b)
                 Group.new("markdownCode", c.blue, c.none, no)
-
+                Group.new("DevIconLua", c.blue, c.none, no)
+                Group.new("DevIconPy", c.blue, c.none, no)
+                Group.new("DevIconMarkdown", c.lightblue, c.none, no)
+                Group.new("DevIconMd", c.lightblue, c.none, no)
+                Group.new("DevIconVim", c.lime_green, c.none, no)
+                Group.new("DevIconVimrc", c.lime_green, c.none, no)
+                Group.new("DevIconTerminal", c.lime_green, c.none, no)
+                Group.new("DevIconConf", c.yellow, c.none, no)
+                Group.new("DevIconBash", c.pink, c.none, no)
+                Group.new("DevIconZshrc", c.aqua, c.none, no)
+                Group.new("DevIconZsh", c.aqua, c.none, no)
+                Group.new("DevIconZshenv", c.aqua, c.none, no)
+                Group.new("DevIconZshprofile", c.aqua, c.none, no)
+                Group.new("DevIconSh", c.pink, c.none, no)
+                Group.new("DevIconDefault", c.lightgrey, c.none, no)
+                Group.new("DashboardHeader", c.red, c.none, no)
                 -- }}}
         end
     }
     -- }}}
 
-    -- WILDER {{{
+    -- WILDER: vim command fuzzy popup completion {{{
     use {
         'gelguy/wilder.nvim',
         event = "BufEnter",
     }
     -- }}}
 
-    -- TREESITTER {{{
+    -- TREESITTER: syntax aware utilities {{{
     use {
         "nvim-treesitter/nvim-treesitter",
+        run = "TSUpdate",
         event = "BufRead",
         config = function()
             require'nvim-treesitter.configs'.setup {
@@ -450,12 +484,15 @@ return require('packer').startup(function()
                     enable = true,
                     additional_vim_regex_highlighting = false,
                 },
+                autopairs = {
+                    enable = true
+                }
             }
         end
     }
     -- }}}
 
-    -- COMPE & SNIPPETS {{{
+    -- COMPE: popup completion {{{
     use {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
@@ -487,17 +524,22 @@ return require('packer').startup(function()
     }
     -- }}}
 
-    -- ULTISNIPS {{{
+    -- ULTISNIPS: snippets utility {{{
     use {
         'sirver/ultisnips',
         event = "InsertEnter",
+        setup = function()
+            vim.g.UltiSnipsExpandTrigger = '<tab>'
+            vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
+            vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+        end,
         config = function()
             vim.cmd('let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]')
         end
     }
     -- }}}
 
-    -- GITSIGNS {{{
+    -- GITSIGNS: display git diffs in sign column {{{
     use {
         'lewis6991/gitsigns.nvim',
         event = "BufRead",
@@ -523,7 +565,7 @@ end,
     }
     -- }}}
 
-    -- NEOSCROLL {{{
+    -- NEOSCROLL: smooth scrolling {{{
     use {
         "karb94/neoscroll.nvim",
         event = "WinScrolled",
@@ -540,7 +582,7 @@ end,
     }
     --- }}}
 
-    -- ZEN MODE {{{
+    -- ZEN MODE: lightweight goyo replacement {{{
     use {
         "folke/zen-mode.nvim",
         wants = "twilight.nvim",
@@ -549,13 +591,13 @@ end,
             require("zen-mode").setup {
                 window = {
                     options = {
-                        signcolumn = "no", -- disable signcolumn
-                        number = true, -- disable number column
-                        relativenumber = true, -- disable relative numbers
-                        cursorline = true, -- disable cursorline
-                        cursorcolumn = false, -- disable cursor column
-                        foldcolumn = "0", -- disable fold column
-                        list = false, -- disable whitespace characters
+                        signcolumn = "yes",
+                        number = false,
+                        relativenumber = false,
+                        cursorline = false,
+                        cursorcolumn = false,
+                        foldcolumn = "0",
+                        list = false,
                     },
                 },
                 plugins = {
@@ -570,7 +612,7 @@ end,
     }
     -- }}}
 
-    -- TWILIGHT {{{
+    -- TWILIGHT: limelight replacement {{{
     use {
         "folke/twilight.nvim",
         cmd = "Twilight",
@@ -580,7 +622,7 @@ end,
     }
     --}}}
 
-    -- INDENT-BLANKLINE {{{
+    -- INDENT-BLANKLINE: display indent lines (even on blank lines) {{{
     use {
         "lukas-reineke/indent-blankline.nvim",
         event = "BufRead",
@@ -593,15 +635,11 @@ end,
     }
     -- }}}
 
-    -- NVIM-LSP-CONFIG {{{
+    -- NVIM-LSPCONFIG: native lsp configuration {{{
     use {
         "neovim/nvim-lspconfig",
         event = "BufRead",
         config = function()
-            require'lspconfig'.clangd.setup{}
-            require'lspconfig'.pyright.setup{}
-            require'lspconfig'.vimls.setup{}
-            require'lspconfig'.bashls.setup{}
             local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
             for type, icon in pairs(signs) do
                 local hl = "LspDiagnosticsSign" .. type
@@ -641,7 +679,7 @@ end,
     }
     --- }}}
 
-    -- TS-RAINBOW {{{
+    -- TS-RAINBOW: treesitter rainbow parentheses {{{
     use {
         'p00f/nvim-ts-rainbow',
         event = "BufRead",
@@ -660,14 +698,14 @@ end,
     }
     -- }}}
 
-    -- JUPYTERVIM {{{
+    -- JUPYTERVIM: connect to a jupyter console and run cells {{{
     use {
         'jupyter-vim/jupyter-vim',
         ft = {'python'}
     }
     -- }}}
 
-    -- NVIM-COMMENTER {{{
+    -- NVIM-COMMENTER: syntax-aware comment keymaps {{{
     use {
         "terrortylor/nvim-comment",
         after = 'packer.nvim',
@@ -677,7 +715,7 @@ end,
     }
     -- }}}
 
-    -- AUTOPAIRS {{{
+    -- AUTOPAIRS: auto insert pairs {{{
     use {
         'LunarWatcher/auto-pairs',
         event = "BufEnter",
@@ -696,15 +734,15 @@ end,
         end,
     }
     -- }}}
-    
-    -- EASYALIGN {{{
+
+    -- EASYALIGN: auto align by delimiters {{{
     use {
         'junegunn/vim-easy-align',
         keys = "<Plug>(EasyAlign)",
     }
     -- }}}
 
-    -- VIM ZETTEL {{{
+    -- VIM ZETTEL: vim-helper, currently using only to insert front-matter automatically {{{
     use {
         'michal-h21/vim-zettel',
         event = "BufRead",
@@ -717,20 +755,54 @@ end,
     }
     -- }}}
 
-    -- VIMWIKI {{{
+    -- VIMWIKI: write a wiki in vim with markdown {{{
     use {
         'vimwiki/vimwiki',
         cmd = {
             "VimwikiIndex",
         },
         ft = {'markdown','vimwiki'},
+        setup = function()
+            vim.g.vimwiki_listsyms = '    x'
+            vim.g.vimwiki_global_ext = 0
+            vim.g.vimwiki_list = {
+                {
+                    path = '$HOME/wiki/docs',
+                    ext = '.md',
+                    syntax = 'markdown',
+                    path_html = '$HOME/vimwiki.old/site_html/',
+                }
+            }
+            vim.g.vimwiki_key_mappings = {
+                all_maps = 1,
+                global = 1,
+                headers = 1,
+                text_objs = 1,
+                table_format = 0,
+                table_mappings = 0,
+                lists = 1,
+                links = 1,
+                html = 1,
+                mouse = 1,
+            }
+            vim.g.vimwiki_use_mouse = 1
+            vim.g.vimwiki_folding = 'expr'
+            vim.g.vimwiki_auto_chdir = 1
+            vim.g.vimwiki_toc_header = 'Contents'
+            vim.g.vimwiki_global_ext = 0
+            vim.g.vimwiki_markdown_link_ext = 1
+            vim.g.vimwiki_hl_headers = 1
+            vim.g.vimwiki_links_header = 'List of pages'
+            vim.g.vimwiki_links_header_level = 2
+            vim.g.vimwiki_tags_header = 'Tags'
+        end
     }
     -- }}}
 
-    -- UNDOTREE {{{
+    -- UNDOTREE: display a panel with non-linear undo branches {{{
     use {
         'mbbill/undotree',
-        event = "BufEnter",
+        cmd = "UndotreeToggle",
         config = function ()
             vim.g.undotree_ShortIndicators = 1
             vim.g.undotree_TreeNodeShape = ""
@@ -738,7 +810,7 @@ end,
     }
     -- }}}
 
-    -- SURROUND.NVIM {{{
+    -- SURROUND: lua surround with brackets and co. {{{
     use {
         "blackCauldron7/surround.nvim",
         event = "BufEnter",
@@ -750,7 +822,7 @@ end,
     }
     -- }}}
 
-    -- FZF {{{
+    -- FZF-LUA: fuzzy-finder fzf integration in lua {{{
     use {
         'ibhagwan/fzf-lua',
         event = "BufEnter",
@@ -940,28 +1012,32 @@ end,
     }
     ----}}}
 
-    -- NEOFORMAT {{{
+    -- NEOFORMAT: autoformat code {{{
     use {
         "sbdchd/neoformat",
         cmd = "Neoformat",
     }
     -- }}}
 
-    -- SYMBOLS OUTLINE {{{
+    -- SYMBOLS OUTLINE: vista replacement; displays code outline panel {{{
     use {
         'simrat39/symbols-outline.nvim',
-        cmd = { "SymbolsOutline" },
+        cmd = { 
+            "SymbolsOutline",
+            "SymbolsOutlineOpen",
+            "SymbolsOutlineClose",
+        },
     }
     -- }}}
 
-    -- LIGHTSPEED {{{
+    -- LIGHTSPEED: navigate through a buffer quickly {{{
     use {
         'ggandor/lightspeed.nvim',
-        event = 'BufEnter',
+        event = 'CursorMoved',
     }
     -- }}}
 
-    -- SPELLSITTER {{{
+    -- SPELLSITTER: spellcheck comments with treesitter {{{
     use {
     'lewis6991/spellsitter.nvim',
 
@@ -974,12 +1050,12 @@ end,
     }
     -- }}}
 
-    -- SPECS {{{
+    -- SPECS: fancy cursor animation when skipping big lines {{{
     use {
         'edluffy/specs.nvim',
         event = 'CursorMoved',
         config = function ()
-            require('specs').setup{ 
+            require('specs').setup{
                 show_jumps  = true,
                 min_jump = 10,
                 popup = {
@@ -998,12 +1074,5 @@ end,
             }
         end
     }
-    -- }}}
-
-    -- HILINK TRACE {{{
-    -- use {
-    --     'gerw/vim-HiLinkTrace'
-    -- }
-    -- }}}
     -- }}}
 end)
