@@ -10,7 +10,7 @@ configuration {
     me-select-entry: "";
     show-icons: true;
     font: "JetBrainsMono Nerd Font Mono 12";
-    icon-theme: "Fluent-dark";
+    icon-theme: "Fluent-grey-dark";
 
 }
 @import "~/scripts/rofi/i3-notifier-colors.rasi"
@@ -75,8 +75,8 @@ configuration {
 
 #inputbar {
     children: [textbox-prompt-colon];
-    background-color: #f6f6f6;
-    text-color: #f6f6f6;
+    background-color: #e6e6e6;
+    text-color: #e6e6e6;
     expand: false;
     border: 0px;
     spacing: 0px;
@@ -87,6 +87,6 @@ configuration {
     str: "Notifications";
     font: "JetBrainsMono Nerd Font Mono 12";
     padding: 9px 3px 8px 18px;
-    background-color: #f6f6f6;
+    background-color: #e6e6e6;
     text-color: #101010;
 }

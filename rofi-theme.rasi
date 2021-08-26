@@ -5,7 +5,7 @@
     background-color: #101010;
     spacing: 2;
     show-icons: false;
-    icon-theme: "Fluent-dark";
+    icon-theme: "Fluent-grey-dark";
     hide-scrollbar: true;
     font: "JetBrainsMono Nerd Font Mono 12";
     disable-history: false;
@@ -31,18 +31,18 @@
 
 #message {
     border: 2px 0px 0px;
-    border-color: #f6f6f6;
+    border-color: #e6e6e6;
     padding: 0px;
 }
 
 #textbox {
-    text-color: #f6f6f6;
+    text-color: #e6e6e6;
 }
 
 #inputbar {
     children:   [ textbox-prompt-colon, prompt, entry ];
-    background-color: #f6f6f6;
-    text-color: #f6f6f6;
+    background-color: #e6e6e6;
+    text-color: #e6e6e6;
     expand: false;
     border: 0px;
     spacing: 0px;
@@ -53,7 +53,7 @@
     str: " ";
     font: "JetBrainsMono Nerd Font Mono 14";
     padding: 9px 3px 8px 18px;
-    background-color: #f6f6f6;
+    background-color: #e6e6e6;
     text-color: #101010;
 }
 
@@ -73,7 +73,7 @@
     border-radius: 0px;
     orientation: horizontal;
     background-color: #101010;
-    text-color: #f6f6f6;
+    text-color: #e6e6e6;
 }
 
 #element-icon {
@@ -103,7 +103,7 @@
     padding: 12px 10px 10px 10px;
     margin: 0px 250px 0px 0px;
     border-radius: 0px 0px 0px 0px;
-    background-color: #f6f6f6;
+    background-color: #e6e6e6;
     text-color: #101010;
     blink: true;
 }
@@ -113,5 +113,5 @@
     padding: 12px 10px 10px 10px;
     text-color: #101010;
     spacing: 0;
-    background-color: #f6f6f6;
+    background-color: #e6e6e6;
 }

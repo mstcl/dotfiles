@@ -1,7 +1,7 @@
 # :.config/bpytop/themes/bpytop.theme
 theme[main_bg]="#101010"
-theme[main_fg]="#f6f6f6"
-theme[title]="#f6f6f6"
+theme[main_fg]="#e6e6e6"
+theme[title]="#e6e6e6"
 theme[hi_fg]="#bc8778"
 theme[selected_bg]="#353535"
 theme[selected_fg]="#8f9cae"
