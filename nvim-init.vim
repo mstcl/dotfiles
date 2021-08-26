@@ -16,11 +16,11 @@ lua require('plugins')
 " Remove these built-in plugins
 lua << EOF
 local disabled_built_ins = {
-    --"netrw",
+    "netrw",
     "gzip",
     "zip",
-    --"netrwPlugin",
-    --"netrwSettings",
+    "netrwPlugin",
+    "netrwSettings",
     "tar",
     "tarPlugin",
     "netrwFileHandlers",
@@ -48,9 +48,17 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
 
-" Stop autocommenting!
-autocmd BufReadPost * set formatoptions-=cro
+" function! GitDir ()
+"     silent! !git rev-parse --is-inside-work-tree
+"     if v:shell_error == 0
+"         echo "true"
+"     else
+"         echo "false"
+"     endif
+" endfunction
 
+" Stop autocommenting!
+autocmd Filetype * setlocal formatoptions-=cro
 
 " Close Outline if it's the only window left
 autocmd BufEnter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
@@ -74,29 +82,39 @@ autocmd BufReadPost *.ipynb set filetype=python
 autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echo "Reloaded neovim"
 
 " Hide things for nvim-dashboard
-autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler
-autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
+" autocmd FileType TelescopePrompt set nolist
+autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler | autocmd WinLeave <buffer> set showtabline=2 | set laststatus=2
 
-" Vimwiki settings
-augroup VimwikiSettings
+" Markdown options
+augroup MDoptions
     autocmd!
-    autocmd BufNewFile,BufRead *.md set nolist | setlocal spell | highlight VimwikiDelText term=strikethrough cterm=strikethrough gui=strikethrough | highlight VimwikiCode guifg=lightblue
-    autocmd Filetype vimwiki set fdm=expr
-    autocmd InsertEnter *.{vimwiki,wiki,md} set conceallevel=0
-    autocmd InsertLeave *.{vimwiki,wiki,md} set conceallevel=2
+    autocmd BufNewFile,BufRead *.md set nolist | setlocal spell
+    autocmd Filetype markdown nnoremap g= :HeaderIncrease<CR>
+    autocmd Filetype markdown nnoremap g- :HeaderDecrease<CR>
 augroup END
 
-" Vimwiki remaps
-augroup VimwikiRemaps
+" Enable indent-blankline for some filetypes only
+augroup IndentFT
     autocmd!
-    autocmd Filetype vimwiki silent! iunmap <buffer> <Tab>
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-]> vimwiki#tbl#kbd_tab()
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-[> vimwiki#tbl#kbd_shift_tab()
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <cr> pumvisible() ? compe#confirm({'keys': '<CR>', 'select': v:true})
-                              \: "<C-]><Esc>:VimwikiReturn 1 5<CR>"
+    autocmd BufNewFile,BufRead *.{vim,python,lua,cpp,css,sh,ini,conf,html,json,toml,yaml,xml} silent! IndentBlanklineEnable
 augroup end
 
-" Wilder autocommand and setup
+" Autochdir
+autocmd BufEnter * silent! lcd %:p:h
+
+" Highlight current matched search
+augroup procsearch
+  autocmd!
+  au CmdLineLeave * let b:cmdtype = expand('<afile>') | if (b:cmdtype == '/' || b:cmdtype == '?') | call timer_start(200, 'ProcessSearch') | endif
+augroup END
+
+function! ProcessSearch(timerid)
+    let l:patt = '\%#' . @/
+    if &ic | let l:patt = '\c' . l:patt | endif
+    exe 'match IncSearch /' . l:patt . '/'
+endfunc
+
+" Wilder autocommand and setup {{{
 autocmd CmdlineEnter * ++once call s:wilder_init()
 function! s:wilder_init() abort
     call wilder#setup({
@@ -141,6 +159,7 @@ function! s:wilder_init() abort
     \ }))
 endfunction
 " }}}
+" }}}
 
 " OPTIONS {{{
 " Terminal title
@@ -156,8 +175,9 @@ set hidden
 set noshowmode
 set showcmd
 set lazyredraw
+set conceallevel=2
 set termguicolors
-set foldcolumn=auto
+set foldcolumn=4
 
 " Folding
 set foldmethod=indent
@@ -165,9 +185,9 @@ set nofoldenable
 
 " Editing
 set wrap
-set formatoptions-=cro
 set wrapmargin=0
 set textwidth=0
+set formatoptions-=cro
 set linebreak
 set mouse=a
 let g:vimsyn_embed= 'l'
@@ -216,15 +236,15 @@ set nospell
 set encoding=utf-8
 
 " Funky characters
-set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│
+set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│,fold:─,diff:╱
 set list
-set listchars=tab:»·,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:·,space:·
+set listchars=tab:»·,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:·
 
 " Nvim-compe completion
 set completeopt=menuone,noselect
 
 " No-obnoxious nvim
-set shortmess+=Ssatqc
+set shortmess+=OoSsatqc
 
 " Huh I don't know if this should be here
 set path+=**
@@ -236,11 +256,31 @@ filetype plugin on
 " MAPPINGS {{{
 " GENERAL {{{
 " Set leaders
-let mapleader = ",."
-let maplocalleader = ",.."
+let mapleader = ","
+let maplocalleader = ",."
+
+" Center search results
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Type comma easily
 inoremap ,, ,
+
+" Toggle paste mode
+set pastetoggle=<F2>
+function! ShowPaste()
+    if &paste
+        set showmode
+    else
+        set noshowmode
+    endif
+endfunction
+autocmd InsertLeave,InsertEnter * call ShowPaste()
+
 
 " Better indentation
 xnoremap < <gv
@@ -267,9 +307,6 @@ noremap  <Down> <Nop>
 noremap  <Left> <Nop>
 noremap  <Right> <Nop>
 
-" Vimwiki todo toggle
-nmap <C-O> <Plug>VimwikiToggleListItem
-
 " Compe atocompletion and navigation
 lua << EOF
 vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
@@ -278,6 +315,10 @@ EOF
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Move between hunks
+nnoremap ]p :Gitsigns next_hunk<CR>
+nnoremap [p :Gitsigns prev_hunk<CR>
 
 " Fold with indent-blankline {{{
 nnoremap <silent> zA zA:IndentBlanklineRefresh<CR>
@@ -294,9 +335,11 @@ nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
 " Move to previous/next
 nnoremap <silent>    <Left>    :BufferPrevious<CR>
 nnoremap <silent>    <Right>   :BufferNext<CR>
+
 " Re-order to previous/next
 nnoremap <silent>    <A-<>     :BufferMovePrevious<CR>
 nnoremap <silent>    <A->>     :BufferMoveNext<CR>
+
 " Goto buffer in position...
 nnoremap <silent>    <A-1>     :BufferGoto 1<CR>
 nnoremap <silent>    <A-2>     :BufferGoto 2<CR>
@@ -307,10 +350,13 @@ nnoremap <silent>    <A-6>     :BufferGoto 6<CR>
 nnoremap <silent>    <A-7>     :BufferGoto 7<CR>
 nnoremap <silent>    <A-8>     :BufferGoto 8<CR>
 nnoremap <silent>    <A-9>     :BufferLast<CR>
+
 " Pin/unpin buffer
 nnoremap <silent>    <A-s>     :BufferPin<CR>
+
 " Close buffer
 nnoremap <silent>    <A-c>     :BufferClose<CR>
+
 " Magic buffer-picking mode
 nnoremap <silent>    <C-s>     :BufferPick<CR>
 " }}}
@@ -329,17 +375,10 @@ inoremap <silent><expr><C-k> <SID>s(-4)
 " }}}
 
 " LEADER KEYS {{{
-" Leader b {{{
-" Goto dashboard
-nnoremap <silent> <Leader>b  :Dashboard<CR>
-"}}}
 
-" Leader c {{{
-" Toggle colour highlighting
-nnoremap <silent> <Leader>ch  :ColorizerToggle<CR>
-
+" Leader a {{{
 " Toggle foldcolumn
-nnoremap <silent> <leader>cf  :call FoldColumnToggle()<cr>
+nnoremap <silent> <leader>a  :call FoldColumnToggle()<cr>
 function! FoldColumnToggle()
     if &foldcolumn
         setlocal foldcolumn=0
@@ -349,128 +388,158 @@ function! FoldColumnToggle()
 endfunction
 " }}}
 
-" Leader f {{{
-" Fzflua
-nnoremap <silent> <Leader>ff              :FzfLua files<CR>
-nnoremap <silent> <Leader>fgc             :FzfLua git_commits<CR>
-nnoremap <silent> <Leader>fgb             :FzfLua git_bbcommits<CR>
-nnoremap <silent> <Leader>fgs             :FzfLua git_status<CR>
-nnoremap <silent> <Leader>fgf             :FzfLua git_files<CR>
-nnoremap <silent> <Leader>fb              :FzfLua buffers<CR>
-nnoremap <silent> <Leader>fh              :FzfLua oldfiles<CR>
-nnoremap <silent> <Leader>f<space><space> :FzfLua commands<CR>
-nnoremap <silent> <Leader>f<space>h       :FzfLua command_history<CR>
-nnoremap <silent> <Leader>f/              :FzfLua search_history<CR>
-nnoremap <silent> <Leader>f"              :FzfLua registers<CR>
-nnoremap <silent> <leader>f'              :FzfLua marks<CR>
-nnoremap <silent> <leader>fcs             :FzfLua colorschemes<CR>
-nnoremap <silent> <leader>f=             :FzfLua spell_suggest<CR>
-nnoremap <silent> <leader>f,              :FzfLua keymaps<CR>
-nnoremap <silent> <leader>fzz             :FzfLua live_grep<CR>
-nnoremap <silent> <leader>fy              :FzfLua grep<CR>
-nnoremap <silent> <leader>ftc             :FzfLua grep_curbuf<CR>
-nnoremap <silent> <leader>ftw             :FzfLua grep_cword<CR>
-nnoremap <silent> <leader>ftv             :FzfLua grep_visual<CR>
-nnoremap <silent> <leader>ftl             :FzfLua grep_last<CR>
-nnoremap <silent> <leader>fmp             :FzfLua man_pages<CR>
+" Leader b {{{
+nnoremap <silent> <Leader>b  :Telescope buffers<CR>
+" }}}
 
-" Fzflua LSP
-nnoremap <silent> <leader>flr             :FzfLua lsp_references<CR>
-nnoremap <silent> <leader>fld             :FzfLua lsp_definitions<CR>
-nnoremap <silent> <leader>flD             :FzfLua lsp_declarations<CR>
-nnoremap <silent> <leader>flt             :FzfLua lsp_typedefs<CR>
-nnoremap <silent> <leader>fli             :FzfLua lsp_implementations<CR>
-nnoremap <silent> <leader>flq             :FzfLua lsp_document_diagnostics<CR>
+" Leader c {{{
+" Toggle colour highlighting
+nnoremap <silent> <Leader>c  :ColorizerToggle<CR>
+" }}}
+
+" Leader d {{{
+" Goto dashboard
+nnoremap <silent> <Leader>d  :Dashboard<CR>
+"}}}
+
+" Leader e {{{
+" Telescope pickers
+nnoremap <silent> <leader>e  :Telescope builtin<CR>
+" }}}
+
+" Leader f {{{
+" Some telescope maps
+nnoremap <silent> <Leader>f  :Telescope find_files<CR>
+" }}}
+
+" Leader g {{{
+" Toggle git signs
+nnoremap <silent> <Leader>gl :Gitsigns toggle_signs<CR>
+
+" Telescope git stuff
+nnoremap <silent> <Leader>gb :Telescope git_commits<CR>
+nnoremap <silent> <Leader>gc :Telescope git_bcommits<CR>
+nnoremap <silent> <Leader>gs :Telescope git_status<CR>
+
+" Preview hunks
+nnoremap <silent> <Leader>gh :Gitsigns preview_hunk<CR>
+" }}}
+
+" Leader h {{{
+" Telescope history
+nnoremap <silent> <Leader>h  :Telescope oldfiles<CR>
 " }}}
 
 " Leader i {{{
 " Indent line toggle
-nnoremap <silent> <Leader>il  :IndentBlanklineToggle<CR>
+nnoremap <silent> <Leader>i  :IndentBlanklineToggle<CR>
+" }}}
+
+" Leader j {{{
+
 " }}}
 
 " Leader l  {{{
 " Toggle listchars
-nnoremap <silent> <Leader>ll  :set list!<CR>
+nnoremap <silent> <Leader>l  :set list!<CR>
 " }}}
 
-" Leader o {{{
-nnoremap <Leader>oo :SymbolsOutline<CR>
-" }}}
-
-" Leader p {{{
-" Enter paste mode
-nnoremap <silent> <Leader>pt  :set paste!<CR> <bar> :echo "PASTE MODE TOGGLE" <CR>
-nnoremap <silent> <Leader>ps  :PackerStatus <CR>
-nnoremap <silent> <Leader>pi  :wa <CR> <bar> :so % <CR> <bar> :PackerCompile <CR> <bar> :PackerInstall <CR> <bar> :echo "Recompiled Packer" <CR>
+" Leader m {{{
+" Telescope man page
+nnoremap <silent> <leader>m  :Telescope man_pages<CR>
 " }}}
 
 " Leader n {{{
-" Disable search highlighting
-nnoremap <silent> <Leader>nh  :noh <CR>
 " Set number/relativenumber
-nnoremap <silent> <Leader>nr  :set relativenumber!<CR>
-nnoremap <silent> <Leader>nn  :set number!<CR> <bar> :set norelativenumber<CR>
+nnoremap <silent> <Leader>nr :set relativenumber!<CR>
+nnoremap <silent> <Leader>nn :set number!<CR>
+" }}}
+
+" Leader o {{{
+" Symbols outline panel
+nnoremap <silent> <Leader>o  :SymbolsOutline<CR>
+" }}}
+
+" Leader p {{{
+" Packer stuff
+nnoremap <silent> <Leader>ps :PackerStatus<CR>
+nnoremap <silent> <Leader>pr :wa<CR> <bar> :source %<CR> <bar> :PackerCompile<CR> <bar> :PackerInstall<CR> <bar> :echo "Recompiled Packer"<CR>
+nnoremap <silent> <Leader>pi :PackerInstall<CR>
+nnoremap <silent> <Leader>pc :PackerCompile<CR>
+" }}}
+
+" Leader q {{{
+" Telescope LSP
+nnoremap <silent> <leader>qr :Telescope lsp_references<CR>
+nnoremap <silent> <leader>qd :Telescope lsp_definitions<CR>
+nnoremap <silent> <leader>qq :Telescope lsp_document_diagnostics<CR>
 " }}}
 
 " Leader r {{{
 " Restore session
-nnoremap <silent> <leader>rr :SessionLoad<CR>
-nnoremap <silent> <leader>rs :SessionSave<CR>
+nnoremap <silent> <leader>r  :SessionLoad<CR>
 " }}}
 
 " Leader s {{{
 " New split
-nnoremap <silent> <Leader>spv :vs<CR>
-nnoremap <silent> <Leader>sph :sp<CR>
-
-" Source nvim config
-nnoremap <silent> <Leader>sv  :source $MYVIMRC<CR>
+nnoremap <silent> <Leader>sv :vs<CR>
+nnoremap <silent> <Leader>sx :sp<CR>
 
 " Set spell
-nnoremap <silent> <Leader>sh  :setlocal spell! spelllang=en_gb<CR>
-
-" Change conceal level on the fly
-nnoremap <silent> <Leader>sco :set conceallevel=0<CR>
-nnoremap <silent> <Leader>sci :set conceallevel=2<CR>
+nnoremap <silent> <Leader>sp :setlocal spell! spelllang=en_gb<CR>
 " }}}
 
 " Leader t {{{
-" New tab
-nnoremap <silent> <Leader>tn  :tabnew<CR>
-" Treesitter toggles
-nnoremap <silent> <Leader>tsr :TSBufToggle rainbow<CR>
-nnoremap <silent> <Leader>tsh :TSBufToggle highlight<CR>
+" Open sidebar
+nnoremap <silent> <Leader>t  :lua require'tree'.toggle()<CR>
 " }}}
 
 " Leader u {{{
 " Undotree toggle
-nnoremap <silent> <Leader>ut :UndotreeToggle<CR>
+nnoremap <silent> <Leader>u  :UndotreeToggle<CR>
 " }}}
 
 " Leader v {{{
-nnoremap <silent> <Leader>vt :Vista!! <CR>
-nnoremap <silent> <Leader>vs :Vista focus <CR>
+" Treesitter toggles
+nnoremap <silent> <Leader>vr :TSBufToggle rainbow<CR>
+nnoremap <silent> <Leader>vh :TSBufToggle highlight<CR>
 " }}}
 
 " Leader w {{{
 " Delete whitespace
-" Delete whitespace
-nnoremap <silent> <leader>wp  :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-" Vimwiki generate links
-nnoremap <silent> <Leader>wa :VimwikiGenerateLinks<CR>
+nnoremap <silent> <leader>w  :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" }}}
+
+" Leader y {{{
+nnoremap <silent> <Leader>y  :Telescope file_browser<CR>
 " }}}
 
 " Leader z {{{
 " Zenmode toggle
-nnoremap <silent> <Leader>zm :ZenMode<CR>
-" Vim-zettel new document
-nnoremap <silent> <Leader>zn :ZettelNew
+nnoremap <silent> <Leader>z  :ZenMode<CR>
 " }}}
 
 " Leader space {{{
 " switch between prev/next buffer
 nnoremap <silent> <Leader><space> <C-^>
 " }}}
+
+" Leader slash {{{
+" Disable search highlighting
+nnoremap <silent> <Leader>\  :noh<cr>
+
+" Telescope grep
+nnoremap <silent> <leader>/  :Telescope live_grep<CR>
+" }}}
+
+" Leader dot {{{
+nnoremap <silent> <leader>.  :Telescope keymaps<CR>
+" }}}
+
+" Leader apostrophe {{{
+nnoremap <silent> <Leader>'  :Telescope registers<CR>
+" }}}
+
 " }}}
 " }}}
 
