@@ -2,7 +2,7 @@
 -- vim: set foldmethod=marker foldenable:
 
 return require('packer').startup(function()
-    -- GALAXYLINE: fancy status line {{{
+-- GALAXYLINE: fancy status line {{{
     use {
         "hhn-pham/galaxyline.nvim",
         event = 'BufWinEnter',
@@ -11,18 +11,18 @@ return require('packer').startup(function()
             require("statusline")
         end,
     }
-    -- }}}
+-- }}}
 
-    -- WEB-DEVICONS: icons everywhere {{{
+-- WEB DEVICONS: icons everywhere {{{
     use {
         'kyazdani42/nvim-web-devicons',
         config = function ()
             require'nvim-web-devicons'.setup {}
         end
     }
-    -- }}}
+-- }}}
 
-    -- JUPYTEXT: convert jupyter notebook formats into other formats {{{
+-- JUPYTEXT: convert jupyter notebook formats into other formats {{{
     use {
         'goerz/jupytext.vim',
         setup = function()
@@ -30,9 +30,9 @@ return require('packer').startup(function()
             vim.cmd([[let g:jupytext_filetype_map = {'py': 'python'}]])
         end
     }
-    -- }}}
+-- }}}
 
-    -- NVIM COLORIZER: add a colored background for color codes {{{
+-- COLORIZER: add a colored background for color codes {{{
     use {
         "norcalli/nvim-colorizer.lua",
         event = 'BufRead',
@@ -41,40 +41,44 @@ return require('packer').startup(function()
             vim.cmd("ColorizerAttachToBuffer")
         end,
     }
-    -- }}}
+-- }}}
 
-    -- DASHBOARD: a neovim start screen {{{
+-- DASHBOARD: a neovim start screen {{{
     use {
         "glepnir/dashboard-nvim",
         event = 'BufWinEnter',
         setup = function ()
             vim.cmd([[
-                let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
-                let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
+            let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
+            let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
             ]])
             vim.g.dashboard_custom_section = {
                 history_list = {
-                    description = {' History                 LDR fh'},
-                    command = ':FzfLua oldfiles'
+                    description = {' History                 LDR h'},
+                    command = ':Telescope oldfiles'
                 },
                 buffer_list = {
-                    description = {'﬘ Buffer                  LDR fb'},
-                    command = ':FzfLua buffers'
+                    description = {'﬘ Buffer                  LDR b'},
+                    command = ':Telescope buffers'
                 },
                 find_files = {
-                    description = {' Files                   LDR ff'},
-                    command = ':FzfLua files'
+                    description = {' Files                   LDR f'},
+                    command = ':Telescope find_files'
+                },
+                browse = {
+                    description = {' Browse                  LDR y'},
+                    command = ':Telescope file_browser'
                 },
                 session = {
-                    description = {' Restore                 LDR rr'},
+                    description = {' Restore                 LDR r'},
                     command = ':SessionLoad'
                 }
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- BARBAR: fancy buffer bar {{{
+-- BARBAR: fancy buffer bar {{{
     use {
         'romgrk/barbar.nvim',
         event = 'BufEnter',
@@ -83,52 +87,52 @@ return require('packer').startup(function()
             vim.g.bufferline = {
                 animation = true,
                 auto_hide = false,
-                tabpages = false,
+                tabpages = true,
                 closable = true,
                 clickable = true,
                 icons = true,
                 icon_custom_colors = false,
-                icon_separator_active = '',
-                icon_separator_inactive = '',
+                icon_separator_active = '▎',
+                icon_separator_inactive = ' ',
                 icon_close_tab = '',
                 icon_close_tab_modified = '',
                 icon_pinned = '',
                 insert_at_end = false,
-                maximum_padding = 1,
-                maximum_length = 50,
+                maximum_padding = 2,
+                maximum_length = 30,
                 semantic_letters = true,
                 letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
                 no_name_title = nil,
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- PACKER: package manager {{{
+-- PACKER: package manager {{{
     use {
         'wbthomason/packer.nvim',
         event = "VimEnter",
     }
-    -- }}}
+-- }}}
 
-    -- BETTER-ESCAPE: use alphanumeric escape mappings without delay {{{
-        use {
-            "jdhao/better-escape.vim",
-            event = "InsertEnter",
-            config = function()
-                vim.g.better_escape_interval = 300
-                vim.g.better_escape_shortcut = {"jk"}
-            end,
-        }
-    -- }}}
+-- BETTER ESCAPE: use alphanumeric escape mappings without delay {{{
+    use {
+        "jdhao/better-escape.vim",
+        event = "InsertEnter",
+        config = function()
+            vim.g.better_escape_interval = 300
+            vim.g.better_escape_shortcut = {"jk"}
+        end,
+    }
+-- }}}
 
-    -- COLORBUDDY: neovim themer in lua {{{
+-- COLORBUDDY: neovim themer in lua {{{
     use {
         'tjdevries/colorbuddy.nvim',
         after = "packer.nvim",
         config = function()
             require("colorbuddy").setup()
-                -- THEME {{{
+            -- THEME {{{
                 local Group = require('colorbuddy.group').Group
                 local c = require('colorbuddy.color').colors
                 local g = require('colorbuddy.group').groups
@@ -140,173 +144,93 @@ return require('packer').startup(function()
                 local st = s.strikethrough
                 local r = s.reverse
                 local no = s.NONE
-                -- local global = vim.g
                 require('colors')
-                -- used for the columns set with 'colorcolumn'
                 Group.new('ColorColumn', c.none, c.lightblack, no)
-                -- placeholder characters substituted for concealed text (see 'conceallevel')
                 Group.new('Conceal', c.none, c.none, no)
-                -- the character under the cursor
-                Group.new('Cursor', c.black, c.white, no)
-                -- like Cursor, but used when in IME mode
-                Group.new('CursorIM', c.none, c.none, no)
-                -- the screen column that the cursor is in when 'cursorcolumn' is set
+                Group.new('Cursor', c.none, c.warmgrey, r)
+                Group.new('CursorIM', c.none, c.warmgrey, r)
                 Group.new('CursorColumn', c.black, c.very_pale_yellow, no)
-                -- the screen line that the cursor is in when 'cursorline' is set
                 Group.new('CursorLine', c.none, c.darkgrey, no)
-                -- directory names (and other special names in listings)
                 Group.new('Directory', c.orange, c.none, no)
-                -- diff mode: Added line
                 Group.new('DiffAdd', c.addfg, c.addbg, no)
-                -- diff mode: Changed line
                 Group.new('DiffChange', c.changefg, c.changebg, no)
-                -- diff mode: Deleted line
-                Group.new('DiffDelete', c.black, c.delbg, no)
-                -- diff mode: Changed text within a changed line
-                Group.new('DiffText', c.black, c.aqua, no)
-                -- filler lines (~) after the last line in the buffer
+                Group.new('DiffDelete', c.delfg, c.delbg, no)
+                Group.new('DiffText', c.none, c.none, no)
                 Group.new('EndOfBuffer', c.black, c.none.no)
-                -- error messages on the command line
                 Group.new('ErrorMsg', c.red, c.black, no)
-                -- the column separating vertically split windows
-                Group.new('VertSplit', c.lightblack, c.none, no)
-                Group.new('Folded', c.grey, c.none, no)
-                Group.new('FoldColumn', c.grey, c.none, no)
+                Group.new('VertSplit', c.darkgrey, c.darkgrey, no)
+                Group.new('Folded', c.lightblack, c.none, no)
+                Group.new('FoldColumn', c.darkgrey, c.none, no)
                 Group.new('SignColumn', c.none, c.lightblack, no)
                 Group.new('IncSearch', c.none, c.none, r)
-                -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-                Group.new('LineNr', c.lightblack, c.black, no)
-                -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-                Group.new('CursorLineNr', c.red, c.none, no)
-                -- The character under the cursor or just before it, if it is a paired bracket, and its match.
+                Group.new('LineNr', c.lightblack, c.black, b)
+                Group.new('CursorLineNr', c.red, c.darkgrey, no)
                 Group.new('MatchParen', c.black, c.lightgrey, no)
-                -- 'showmode' message (e.g., "-- INSERT --")
                 Group.new('ModeMsg', c.yellow, c.none, no)
-                -- more-prompt
                 Group.new('MoreMsg', c.yellow, c.none, no)
-                -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not
-                -- really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
-                Group.new('NonText', c.lightgrey, c.none, no)
-                -- normal text
                 Group.new('Normal', c.white, c.black, no)
-                -- normal floating window
-                Group.new("NormalFloat", c.white, c.darkgrey)
-                -- Popup menu: normal item.
-                Group.new('Pmenu', c.orange, c.darkgrey, no)
-                -- Popup menu: selected item.
+                Group.new("NormalFloat", c.white, c.lightblack)
+                Group.new('Pmenu', c.orange, c.lightblack, no)
                 Group.new('PmenuSel', c.orange, c.black, r + b)
-                -- Popup menu: scrollbar.
-                Group.new('PmenuSbar', c.none, c.none, no)
-                -- Popup menu: Thumb of the scrollbar.
-                Group.new('PmenuThumb', c.lightblack, c.grey, no)
-                -- hit-enter prompt and yes/no questions
+                Group.new('PmenuSbar', c.lightblack, c.lightblack, no)
+                Group.new('PmenuThumb', c.warmgrey, c.warmgrey, no)
                 Group.new('Question', c.yellow, c.none, no)
-                -- Current quickfix item in the quickfix window.
                 Group.new('QuickFixLine', c.none, c.none, no)
-                -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
                 Group.new('Search', c.black, c.yellow, no)
-                Group.new('SpecialKey', c.darkgrey, c.none, no)
-                Group.new('NonText', c.darkgrey, c.none, no)
+                Group.new('SpecialKey', c.lightblack, c.none, b)
+                Group.new('NonText', c.lightblack, c.none, b)
                 Group.new('SpellBad', c.very_soft_red, c.none, uc)
-                -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
                 Group.new('SpellCap', c.very_soft_yellow, c.none, uc)
                 Group.new('SpellLocal', c.very_soft_yellow, c.none, uc)
                 Group.new('SpellRare', c.very_soft_yellow, c.none, uc)
-                Group.new('StatusLine', c.none, c.none, no)
+                Group.new('StatusLine', c.none, c.darkgrey, no)
                 Group.new('StatusLineNC', c.warmgrey, c.none, no)
-                -- status line of current :terminal window
                 Group.new('StatusLineTerm', c.none, c.none, no)
-                -- status line of non-current :terminal window
                 Group.new('StatusLineTermNC', c.none, c.none, no)
-                -- tab pages line, not active tab page label
-                Group.new('TabLine', c.none, c.black, no)
-                -- tab pages line, where there are no labels
-                Group.new('TabLineFill', c.none, c.black, no)
-                -- tab pages line, active tab page label
-                Group.new('TabLineSel', c.white, c.black, b)
-                -- terminal window (see terminal-size-color)
+                Group.new('TabLine', c.darkgrey, c.darkgrey, no)
+                Group.new('TabLineFill', c.none, c.darkgrey, no)
+                Group.new('TabLineSel', c.white, c.none, b)
                 Group.new('Terminal', c.white, c.black, no)
-                -- titles for output from ":set all", ":autocmd" etc.
                 Group.new('Title', c.yellow, c.none, no)
-                -- Visual mode selection when vim is "Not Owning the Selection".
-                -- Only X11 Gui's gui-x11 and xterm-clipboard supports this.
                 Group.new('VisualNOS', c.none, c.none, no)
-                -- Visual mode selection
                 Group.new('Visual', c.none, c.lightblack, no)
-                -- warning messages
                 Group.new('WarningMsg', c.orange, c.none, no)
-                -- current match in 'wildmenu' completion
                 Group.new('WildMenu', c.none, c.none, no)
-                -- any comment
                 Group.new('Comment', c.grey, c.none, i)
                 vim.cmd([[highlight Comment ctermfg=grey guifg=#505050 guibg=none gui=italic term=italic cterm=italic]])
-                -- any constant
                 Group.new('Constant', c.purple, c.none, no)
-                -- string constant: "this is a string"
                 Group.new('String', c.chartreuse, c.none, no)
-                -- a character constant: 'c', '\n'
                 Group.new('Character', c.yellow, c.none, no)
-                -- a number constant: 234, 0xff
                 Group.new('Number', c.tomato, c.none, no)
-                -- a boolean constant: TRUE, false
                 Group.new('Boolean', c.purple, c.none, no)
-                -- a floating point constant: 2.3e10
                 Group.new('Float', c.tomato, c.none, no)
-                -- any variable name
                 Group.new('Identifier', c.orange, c.none, no)
-                -- function name (also: methods for classes)
                 Group.new('Function', c.blue, c.none, no)
-                -- any statement
                 Group.new('Statement', c.pink, c.none, no)
-                -- if, then, else, endif, switch, etc.
                 Group.new('Conditional', c.lightorange, c.none, no)
-                -- for, do, while, etc.
                 Group.new('Repeat', c.lightorange, c.none, no)
-                -- case, default, etc.
                 Group.new('Label', c.very_soft_orange, c.none, no)
-                -- sizeof", "+", "*", etc.
                 Group.new('Operator', c.aqua, c.none, no)
-                -- any other keyword
-                Group.new('Keyword', c.aqua, c.none, no)
-                -- try, catch, throw
+                Group.new('Keyword', c.yellow, c.none, b)
                 Group.new('Exception', c.none, c.none, no)
-                -- generic Preprocessor
                 Group.new('PreProc', c.coral, c.none, no)
-                -- preprocessor #include
                 Group.new('Include', c.pink, c.none, no)
-                -- preprocessor #define
                 Group.new('Define', c.pink, c.none, no)
-                -- same as Define
                 Group.new('Macro', c.green, c.none, no)
-                -- preprocessor #if, #else, #endif, etc.
                 Group.new('PreCondit', c.green, c.none, no)
-                -- int, long, char, etc.
                 Group.new('Type', c.lime_green, c.none, i)
-                -- static, register, volatile, etc.
                 Group.new('StorageClass', c.darkturquoise, c.none, no)
-                -- struct, union, enum, etc.
                 Group.new('Structure', c.aqua, c.none, no)
-                -- A typedef
                 Group.new('Typedef', c.aqua, c.none, no)
-                -- any special symbol
                 Group.new('Special', c.purple, c.none, no)
-                -- special character in a constant
                 Group.new('SpecialChar', c.pink, c.none, no)
-                -- you can use CTRL-] on this
                 Group.new('Tag', c.pink, c.none, no)
-                -- character that needs attention
                 Group.new('Delimiter', c.pink, c.none, no)
-                -- special things inside a comment
                 Group.new('SpecialComment', c.aqua, c.none, no)
-                -- debugging statements
                 Group.new('Debug', c.none, c.none, no)
-                -- text that stands out, HTML links
                 Group.new('Underlined', c.aqua, c.none, ul)
-                -- left blank, hidden
                 Group.new('Ignore', c.none, c.none, no)
-                -- any erroneous construct
                 Group.new('Error', c.red, c.darkgrey, ul)
-                -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
                 Group.new('Todo', c.orange, c.none, b + i)
                 Group.new('goDirective', c.purple, c.none, no)
                 Group.new('goConstants', c.orange, c.none, no)
@@ -352,7 +276,7 @@ return require('packer').startup(function()
                 Group.new('TSKeywordFunction', c.light_blue, c.none, no)
                 Group.new('TSKeywordOperator', c.coral, c.none, no)
                 Group.new('TSLabel', g.Label, g.Label, g.Label)
-                Group.new("TSMethod", g.Function, g.Function, g.Function)
+                Group.new('TSMethod', g.Function, g.Function, g.Function)
                 Group.new('TSNamespace', c.light_yellow, c.none, no)
                 Group.new('TSNone', c.none, c.none, no)
                 Group.new('TSNumber', g.Number, g.Number, g.Number)
@@ -390,89 +314,132 @@ return require('packer').startup(function()
                 Group.new('TSVariable', c.vivid_orange, c.none, no)
                 Group.new('TSVariableBuiltin', c.camel, c.none, b)
                 Group.new('GitSignsChange', c.changefg, c.black, no)
-                Group.new('GitSignsChangeNr', c.changefg, c.black, no)
-                Group.new('GitSignsChangeLn', c.changefg, c.black, no)
+                Group.new('GitSignsChangeNr', c.changefg, c.changebg, no)
+                Group.new('GitSignsChangeLn', c.changefg, c.changebg, no)
                 Group.new('GitSignsAdd', c.addfg, c.black, no)
-                Group.new('GitSignsAddNr', c.addfg, c.black, no)
-                Group.new('GitSignsAddLn', c.addfg, c.black, no)
+                Group.new('GitSignsAddNr', c.addfg, c.addbg, no)
+                Group.new('GitSignsAddLn', c.addfg, c.addbg, no)
                 Group.new('GitSignsDelete', c.red, c.black, no)
-                Group.new('GitSignsDeleteNr', c.red, c.black, no)
-                Group.new('GitSignsDeleteLn', c.red, c.black, no)
+                Group.new('GitSignsDeleteNr', c.red, c.delbg, no)
+                Group.new('GitSignsDeleteLn', c.red, c.delbg, no)
                 Group.new('SignColumn', c.black, c.black, no)
                 Group.new('IndentBlanklineChar', c.darkgrey, none, no)
                 Group.new('IndentBlanklineSpaceChar', c.darkgrey, none, no)
                 Group.new('IndentBlanklineSpaceCharBlankline', c.darkgrey, none, no)
-                Group.new("LspDiagnosticsUnderlineError", c.red, c.none, ul)
-                Group.new("LspDiagnosticsUnderlineHint", c.pink, c.none, ul)
-                Group.new("LspDiagnosticsUnderlineWarning", c.orange, c.none, ul)
-                Group.new("LspDiagnosticsUnderlineInformation", c.blue, c.none, ul)
-                Group.new("LsPDiagnosticsDefaultError", c.red, c.none, ul)
-                Group.new("LsPDiagnosticsDefaultHint", c.pink, c.none, no)
-                Group.new("LsPDiagnosticsDefaultWarning", c.orange, c.none, no)
-                Group.new("LsPDiagnosticsDefaultInformation", c.blue, c.none, no)
-                Group.new("LsPDiagnosticsFloatingError", c.red, c.none, no)
-                Group.new("LsPDiagnosticsFloatingHint", c.pink, c.none, no)
-                Group.new("LsPDiagnosticsFloatingInformation", c.blue, c.none, no)
-                Group.new("LsPDiagnosticsFloatingWarning", c.orange, c.none, no)
-                Group.new("LsPDiagnosticsSignError", c.red, c.none, no)
-                Group.new("LsPDiagnosticsSignHint", c.pink, c.none, no)
-                Group.new("LsPDiagnosticsSignWarning", c.orange, c.none, no)
-                Group.new("LsPDiagnosticsSignInformation", c.blue, c.none, no)
-                Group.new("LsPDiagnosticsSignInformation", c.blue, c.none, no)
-                Group.new("LsPDiagnosticsVirtualTextError", c.red, c.none, i)
-                Group.new("LsPDiagnosticsVirtualTextHint", c.pink, c.none, i)
-                Group.new("LsPDiagnosticsVirtualTextWarning", c.orange, c.none, i)
-                Group.new("LsPDiagnosticsVirtualTextInformation", c.blue, c.none, i)
-                Group.new("LspDiagnosticsUnderlineHint", c.green, c.none, ul)
-                Group.new("LspDiagnosticsUnderlineInformation", c.blue, c.none, ul)
-                Group.new("LspDiagnosticsUnderlineHint", c.pink, c.none, ul)
-                Group.new("LspDiagnosticsUnderlineWarning", c.orange, c.none, ul)
-                Group.new("MsgArea", c.lightgrey, c.black, no)
-                Group.new("BufferCurrent", c.lightgrey, c.none, b)
-                Group.new("BufferVisible", c.lightgrey, c.none, b)
-                Group.new("BufferCurrentMod", c.red, c.none, i + b)
-                Group.new("BufferVisibleMod", c.red, c.none, i + b)
-                Group.new("BufferCurrentSign", c.black, c.none, no)
-                Group.new("BufferVisibleSign", c.black, c.none, no)
-                Group.new("BufferCurrentTarget", c.blue, c.none, b)
-                Group.new("BufferVisibleTarget", c.blue, c.none, b)
-                Group.new("BufferInactive", c.lightblack, c.none, no)
-                Group.new("BufferInactiveMod", c.lightblack, c.none, i)
-                Group.new("BufferInactiveTarget", c.blue, c.none, b)
-                Group.new("BufferInactiveSign", c.black, c.none, no)
-                Group.new("BufferTabpages", c.lightgrey, c.none, b)
-                Group.new("BufferTabpagesFill", c.lightgrey, c.none, b)
-                Group.new("FocusedSymbol", c.black, c.yellow, b)
-                Group.new("markdownCode", c.blue, c.none, no)
-                Group.new("DevIconLua", c.blue, c.none, no)
-                Group.new("DevIconPy", c.blue, c.none, no)
-                Group.new("DevIconMarkdown", c.lightblue, c.none, no)
-                Group.new("DevIconMd", c.lightblue, c.none, no)
-                Group.new("DevIconVim", c.lime_green, c.none, no)
-                Group.new("DevIconVimrc", c.lime_green, c.none, no)
-                Group.new("DevIconTerminal", c.lime_green, c.none, no)
-                Group.new("DevIconConf", c.yellow, c.none, no)
-                Group.new("DevIconBash", c.pink, c.none, no)
-                Group.new("DevIconZshrc", c.aqua, c.none, no)
-                Group.new("DevIconZsh", c.aqua, c.none, no)
-                Group.new("DevIconZshenv", c.aqua, c.none, no)
-                Group.new("DevIconZshprofile", c.aqua, c.none, no)
-                Group.new("DevIconSh", c.pink, c.none, no)
-                Group.new("DevIconDefault", c.lightgrey, c.none, no)
-                Group.new("DashboardHeader", c.red, c.none, no)
+                Group.new('IndentBlanklineContextChar', c.lightblack, none, no)
+                Group.new('LspDiagnosticsUnderlineError', c.red, c.none, ul)
+                Group.new('LspDiagnosticsUnderlineHint', c.pink, c.none, ul)
+                Group.new('LspDiagnosticsUnderlineWarning', c.orange, c.none, ul)
+                Group.new('LspDiagnosticsUnderlineInformation', c.blue, c.none, ul)
+                Group.new('LspDiagnosticsDefaultError', c.red, c.none, ul)
+                Group.new('LspDiagnosticsDefaultHint', c.pink, c.none, no)
+                Group.new('LspDiagnosticsDefaultWarning', c.orange, c.none, no)
+                Group.new('LspDiagnosticsDefaultInformation', c.blue, c.none, no)
+                Group.new('LspDiagnosticsFloatingError', c.red, c.none, no)
+                Group.new('LspDiagnosticsFloatingHint', c.pink, c.none, no)
+                Group.new('LspDiagnosticsFloatingInformation', c.blue, c.none, no)
+                Group.new('LspDiagnosticsFloatingWarning', c.orange, c.none, no)
+                Group.new('LspDiagnosticsSignError', c.red, c.none, no)
+                Group.new('LspDiagnosticsSignHint', c.pink, c.none, no)
+                Group.new('LspDiagnosticsSignWarning', c.orange, c.none, no)
+                Group.new('LspDiagnosticsSignInformation', c.blue, c.none, no)
+                Group.new('LspDiagnosticsSignInformation', c.blue, c.none, no)
+                Group.new('LspDiagnosticsVirtualTextError', c.red, c.none, i)
+                Group.new('LspDiagnosticsVirtualTextHint', c.pink, c.none, i)
+                Group.new('LspDiagnosticsVirtualTextWarning', c.orange, c.none, i)
+                Group.new('LspDiagnosticsVirtualTextInformation', c.blue, c.none, i)
+                Group.new('LspDiagnosticsUnderlineHint', c.green, c.none, ul)
+                Group.new('LspDiagnosticsUnderlineInformation', c.blue, c.none, ul)
+                Group.new('LspDiagnosticsUnderlineHint', c.pink, c.none, ul)
+                Group.new('LspDiagnosticsUnderlineWarning', c.orange, c.none, ul)
+                Group.new('MsgArea', c.lightgrey, c.black, no)
+                Group.new('BufferCurrent', c.lightgrey, c.none, b)
+                Group.new('BufferVisible', c.lightgrey, c.none, b)
+                Group.new('BufferCurrentMod', c.red, c.none, i + b)
+                Group.new('BufferVisibleMod', c.red, c.none, i + b)
+                Group.new('BufferCurrentSign', c.lightblack, c.none, no)
+                Group.new('BufferVisibleSign', c.lightblack, c.none, no)
+                Group.new('BufferCurrentTarget', c.blue, c.none, b)
+                Group.new('BufferVisibleTarget', c.blue, c.none, b)
+                Group.new('BufferInactive', c.lightblack, c.darkgrey, no)
+                Group.new('BufferInactiveMod', c.lightblack, c.darkgrey, i)
+                Group.new('BufferInactiveTarget', c.blue, c.darkgrey, b)
+                Group.new('BufferInactiveSign', c.darkgrey, c.darkgrey, no)
+                Group.new('BufferTabpages', c.lightgrey, c.darkgrey, b)
+                Group.new('BufferTabpageFill', c.lightgrey, c.darkgrey, b)
+                Group.new('BufferOffset', c.lightgrey, c.darkgrey, b)
+                Group.new('FocusedSymbol', c.black, c.yellow, b)
+                Group.new('markdownCode', c.blue, c.none, no)
+                Group.new('DevIconLua', c.blue, c.none, no)
+                Group.new('DevIconPy', c.blue, c.none, no)
+                Group.new('DevIconMarkdown', c.lightblue, c.none, no)
+                Group.new('DevIconMd', c.lightblue, c.none, no)
+                Group.new('DevIconVim', c.lime_green, c.none, no)
+                Group.new('DevIconVimrc', c.lime_green, c.none, no)
+                Group.new('DevIconTerminal', c.lime_green, c.none, no)
+                Group.new('DevIconConf', c.yellow, c.none, no)
+                Group.new('DevIconBash', c.pink, c.none, no)
+                Group.new('DevIconZshrc', c.aqua, c.none, no)
+                Group.new('DevIconZsh', c.aqua, c.none, no)
+                Group.new('DevIconZshenv', c.aqua, c.none, no)
+                Group.new('DevIconZshprofile', c.aqua, c.none, no)
+                Group.new('DevIconSh', c.pink, c.none, no)
+                Group.new('DevIconDefault', c.lightgrey, c.none, no)
+                Group.new('DashboardHeader', c.red, c.none, no)
+                Group.new('TelescopeSelection', c.white, c.none, b)
+                Group.new('TelescopeSelectionCaret', c.red, c.none, no)
+                Group.new('TelescopeMultiSelection', c.white, c.none, b)
+                Group.new('TelescopeNormal', c.lightgrey, c.none, b)
+                Group.new('TelescopeBorder', c.lightblack, c.none, no)
+                Group.new('TelescopePromptBorder', c.lightblack, c.none, no)
+                Group.new('TelescopeResultsBorder', c.lightblack, c.none, no)
+                Group.new('TelescopePreviewBorder', c.lightblack, c.none, no)
+                Group.new('TelescopeMatching', c.red, c.none, b)
+                Group.new('TelescopePromptPrefix', c.red, c.none, b)
+                Group.new('mkdStrike', c.green, c.none, st)
+                Group.new('NvimTreeNormal', c.lightgrey, c.darkgrey, no)
+                Group.new('NvimTreeRootFolder', c.purple, c.none, no)
+                Group.new('NvimTreeOpenedFolderName', c.yellow, c.none, b)
+                Group.new('NvimTreeEmptyFolderName', c.yellow, c.none, b)
+                Group.new('NvimTreeFolderName', c.yellow, c.none, no)
+                Group.new('NvimTreeGitDirty', c.red, c.none, no)
+                Group.new('NvimTreeGitStaged', c.green, c.none, no)
+                Group.new('NvimTreeGitMerge', c.purple, c.none, no)
+                Group.new('NvimTreeGitRenamed', c.yellow, c.none, no)
+                Group.new('NvimTreeGitNew', c.blue, c.none, no)
+                Group.new('NvimTreeGitDeleted', c.red, c.none, no)
+                Group.new('NvimTreeOpenedFile', c.white, c.none, b)
+                Group.new('NvimTreeSpecialFile', c.pink, c.none, ul)
+                Group.new('NvimTreeSymlink', c.aqua, c.none, ul)
+                Group.new('NvimTreeExecFile', c.green, c.none, b)
+                Group.new('NvimTreeVertSplit', c.darkgrey, c.darkgrey, b)
                 -- }}}
-        end
-    }
-    -- }}}
+            end
+        }
+ -- }}}
 
-    -- WILDER: vim command fuzzy popup completion {{{
+-- FUGITIVE: Git inside vim {{{
+     use {
+        'tpope/vim-fugitive',
+        cmd = {
+            "Git",
+            "Gdiff",
+            "Gdiffsplit",
+            "Gvdiffsplit",
+            "Gwrite",
+            "Gw",
+        },
+    }
+-- }}}
+
+ -- WILDER: vim command fuzzy popup completion {{{
     use {
         'gelguy/wilder.nvim',
         event = "BufEnter",
     }
-    -- }}}
+ -- }}}
 
-    -- TREESITTER: syntax aware utilities {{{
+-- TREESITTER: syntax aware utilities {{{
     use {
         "nvim-treesitter/nvim-treesitter",
         run = "TSUpdate",
@@ -490,9 +457,9 @@ return require('packer').startup(function()
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- COMPE: popup completion {{{
+-- COMPE: popup completion {{{
     use {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
@@ -522,9 +489,9 @@ return require('packer').startup(function()
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- ULTISNIPS: snippets utility {{{
+-- ULTISNIPS: snippets utility {{{
     use {
         'sirver/ultisnips',
         event = "InsertEnter",
@@ -537,12 +504,28 @@ return require('packer').startup(function()
             vim.cmd('let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]')
         end
     }
-    -- }}}
+-- }}}
 
-    -- GITSIGNS: display git diffs in sign column {{{
+-- GITSIGNS: display git diffs in sign column {{{
     use {
         'lewis6991/gitsigns.nvim',
-        event = "BufRead",
+        cond = function()
+            local result = vim.api.nvim_exec (
+            [[
+                function! GitDir ()
+                    silent! !git rev-parse --is-inside-work-tree
+                    if v:shell_error == 0
+                        echo "true"
+                    else
+                        echo "false"
+                    endif
+                endfunction
+
+                call GitDir()
+            ]],
+            true)
+            return result
+        end,
         requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('gitsigns').setup {
@@ -553,19 +536,18 @@ return require('packer').startup(function()
                     follow_files = true
                 },
                 current_line_blame = false,
-                current_line_blame_delay = 1000,
-                current_line_blame_position = 'eol',
                 sign_priority = 6,
                 update_debounce = 100,
                 status_formatter = nil,
                 word_diff = false,
                 use_internal_diff = true,
+                keymaps = {},
             }
-end,
+        end,
     }
-    -- }}}
+-- }}}
 
-    -- NEOSCROLL: smooth scrolling {{{
+-- NEOSCROLL: smooth scrolling {{{
     use {
         "karb94/neoscroll.nvim",
         event = "WinScrolled",
@@ -580,9 +562,9 @@ end,
             }
         end,
     }
-    --- }}}
+-- }}}
 
-    -- ZEN MODE: lightweight goyo replacement {{{
+-- ZEN MODE: lightweight goyo replacement {{{
     use {
         "folke/zen-mode.nvim",
         wants = "twilight.nvim",
@@ -610,9 +592,9 @@ end,
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- TWILIGHT: limelight replacement {{{
+-- TWILIGHT: limelight replacement {{{
     use {
         "folke/twilight.nvim",
         cmd = "Twilight",
@@ -620,22 +602,27 @@ end,
             require("twilight").setup {}
         end
     }
-    --}}}
+--}}}
 
-    -- INDENT-BLANKLINE: display indent lines (even on blank lines) {{{
+-- INDENT-BLANKLINE: display indent lines (even on blank lines) {{{
     use {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
+        cmd = {
+            "IndentBlanklineEnable",
+        },
         config = function()
             require("indent_blankline").setup {
                 buftype_exclude = {"terminal"},
-                filetype_exclude = {'TelescopePrompt','packer','FZF', 'man', 'help', 'vimwiki', 'dashboard', 'WhichKey'},
+                bufnameExclude = {'README.md'},
+                show_current_context = true,
+                filetype_exclude = {""},
+                enabled = 'true',
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- NVIM-LSPCONFIG: native lsp configuration {{{
+-- LSPCONFIG: native lsp configuration {{{
     use {
         "neovim/nvim-lspconfig",
         event = "BufRead",
@@ -662,7 +649,7 @@ end,
                 buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
                 buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
                 buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-                buf_set_keymap('n', '<Leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+                buf_set_keymap('n', '<Leader>x', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
                 buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
                 buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
             end
@@ -677,9 +664,9 @@ end,
             end
         end
     }
-    --- }}}
+--- }}}
 
-    -- TS-RAINBOW: treesitter rainbow parentheses {{{
+-- TS-RAINBOW: treesitter rainbow parentheses {{{
     use {
         'p00f/nvim-ts-rainbow',
         event = "BufRead",
@@ -696,16 +683,16 @@ end,
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- JUPYTERVIM: connect to a jupyter console and run cells {{{
+-- JUPYTERVIM: connect to a jupyter console and run cells {{{
     use {
         'jupyter-vim/jupyter-vim',
         ft = {'python'}
     }
-    -- }}}
+-- }}}
 
-    -- NVIM-COMMENTER: syntax-aware comment keymaps {{{
+-- COMMENT: syntax-aware comment keymaps {{{
     use {
         "terrortylor/nvim-comment",
         after = 'packer.nvim',
@@ -713,9 +700,9 @@ end,
             require('nvim_comment').setup()
         end
     }
-    -- }}}
+-- }}}
 
-    -- AUTOPAIRS: auto insert pairs {{{
+-- AUTOPAIRS: auto insert pairs {{{
     use {
         'LunarWatcher/auto-pairs',
         event = "BufEnter",
@@ -733,84 +720,87 @@ end,
             vim.g.AutoPairsFlyMode = "0"
         end,
     }
-    -- }}}
+-- }}}
 
-    -- EASYALIGN: auto align by delimiters {{{
+-- EASYALIGN: auto align by delimiters {{{
     use {
         'junegunn/vim-easy-align',
         keys = "<Plug>(EasyAlign)",
     }
-    -- }}}
+-- }}}
 
-    -- VIM ZETTEL: vim-helper, currently using only to insert front-matter automatically {{{
-    use {
-        'michal-h21/vim-zettel',
-        event = "BufRead",
-        ft = {"markdown","vimwiki"},
-        config = function ()
-            vim.g.zettel_format = "%raw_title"
-            vim.cmd('let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]')
-            vim.g.zettel_default_mappings = 0
-        end
-    }
-    -- }}}
+-- ZETTEL: vimwiki-helper, currently using only to insert front-matter automatically (unused) {{{
+    -- use {
+    --     'michal-h21/vim-zettel',
+    --     event = "BufRead",
+    --     ft = {"markdown","vimwiki"},
+    --     config = function ()
+    --         vim.g.zettel_format = "%raw_title"
+    --         vim.cmd('let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]')
+    --         vim.g.zettel_default_mappings = 0
+    --     end
+    -- }
+-- }}}
 
-    -- VIMWIKI: write a wiki in vim with markdown {{{
-    use {
-        'vimwiki/vimwiki',
-        cmd = {
-            "VimwikiIndex",
-        },
-        ft = {'markdown','vimwiki'},
-        setup = function()
-            vim.g.vimwiki_listsyms = '    x'
-            vim.g.vimwiki_global_ext = 0
-            vim.g.vimwiki_list = {
-                {
-                    path = '$HOME/wiki/docs',
-                    ext = '.md',
-                    syntax = 'markdown',
-                    path_html = '$HOME/vimwiki.old/site_html/',
-                }
-            }
-            vim.g.vimwiki_key_mappings = {
-                all_maps = 1,
-                global = 1,
-                headers = 1,
-                text_objs = 1,
-                table_format = 0,
-                table_mappings = 0,
-                lists = 1,
-                links = 1,
-                html = 1,
-                mouse = 1,
-            }
-            vim.g.vimwiki_use_mouse = 1
-            vim.g.vimwiki_folding = 'expr'
-            vim.g.vimwiki_auto_chdir = 1
-            vim.g.vimwiki_toc_header = 'Contents'
-            vim.g.vimwiki_global_ext = 0
-            vim.g.vimwiki_markdown_link_ext = 1
-            vim.g.vimwiki_hl_headers = 1
-            vim.g.vimwiki_links_header = 'List of pages'
-            vim.g.vimwiki_links_header_level = 2
-            vim.g.vimwiki_tags_header = 'Tags'
-        end
-    }
-    -- }}}
+-- VIMWIKI: write a wiki in vim with markdown (unused) {{{
+    -- use {
+    --     'vimwiki/vimwiki',
+    --     cmd = {
+    --         "VimwikiIndex",
+    --     },
+    --     ft = {'markdown','vimwiki'},
+    --     setup = function()
+    --         vim.g.vimwiki_listsyms = '    x'
+    --         vim.g.vimwiki_global_ext = 0
+    --         vim.g.vimwiki_list = {
+    --             {
+    --                 path = '$HOME/pkb/content',
+    --                 ext = '.md',
+    --                 syntax = 'markdown',
+    --                 path_html = '$HOME/vimwiki.old/site_html/',
+    --             }
+    --         }
+    --         vim.g.vimwiki_key_mappings = {
+    --             all_maps = 1,
+    --             global = 1,
+    --             headers = 1,
+    --             text_objs = 1,
+    --             table_format = 0,
+    --             table_mappings = 0,
+    --             lists = 1,
+    --             links = 1,
+    --             html = 1,
+    --             mouse = 1,
+    --         }
+    --         vim.g.vimwiki_use_mouse = 1
+    --         vim.g.vimwiki_folding = 'expr'
+    --         vim.g.vimwiki_auto_chdir = 1
+    --         vim.g.vimwiki_toc_header = 'Contents'
+    --         vim.g.vimwiki_global_ext = 0
+    --         vim.g.vimwiki_markdown_link_ext = 1
+    --         vim.g.vimwiki_hl_headers = 1
+    --         vim.g.vimwiki_links_header = 'List of pages'
+    --         vim.g.vimwiki_links_header_level = 2
+    --         vim.g.vimwiki_tags_header = 'Tags'
+    --     end
+    -- }
+-- }}}
 
-    -- UNDOTREE: display a panel with non-linear undo branches {{{
+-- UNDOTREE: display a panel with non-linear undo branches {{{
     use {
         'mbbill/undotree',
         cmd = "UndotreeToggle",
         config = function ()
             vim.g.undotree_ShortIndicators = 1
-            vim.g.undotree_TreeNodeShape = ""
+            vim.g.undotree_TreeNodeShape = "●"
+            vim.g.undotree_WindowLayout = 4
+            vim.g.undotree_TreeVertShape = '│'
+            vim.g.undotree_HelpLine = 0
         end
     }
-    -- }}}
+-- }}}
 
-    -- SURROUND: lua surround with brackets and co. {{{
+-- SURROUND: lua surround with brackets and co. {{{
     use {
         "blackCauldron7/surround.nvim",
         event = "BufEnter",
@@ -820,237 +810,56 @@ end,
             }
         end
     }
-    -- }}}
+-- }}}
 
-    -- FZF-LUA: fuzzy-finder fzf integration in lua {{{
-    use {
-        'ibhagwan/fzf-lua',
-        event = "BufEnter",
-        requires = {
-            'vijaymarupudi/nvim-fzf',
-            'kyazdani42/nvim-web-devicons'
-        },
-        config = function ()
-            local actions = require "fzf-lua.actions"
-            require'fzf-lua'.setup {
-                winopts = {
-                    win_height       = 0.85,
-                    win_width        = 0.80,
-                    win_row          = 0.30,
-                    win_col          = 0.50,
-                    win_border       = true,
-                    window_on_create = function()
-                        vim.cmd("set winhl=Normal:Normal")
-                    end,
-                },
-                fzf_args = '--margin=3% --border=none',
-                fzf_binds = {
-                    '?:toggle-preview',
-                    'f3:toggle-preview-wrap',
-                    'shift-down:preview-page-down',
-                    'shift-up:preview-page-up',
-                    'ctrl-d:half-page-down',
-                    'ctrl-u:half-page-up',
-                    'ctrl-f:page-down',
-                    'ctrl-b:page-up',
-                    'ctrl-a:toggle-all',
-                    'ctrl-l:clear-query',
-                },
-                preview_border      = 'border',
-                preview_wrap        = 'nowrap',
-                preview_opts        = 'hidden',
-                preview_vertical    = 'down:45%',
-                preview_horizontal  = 'right:60%',
-                preview_layout      = 'flex',
-                flip_columns        = 120,
-                previewers = {
-                    bat = {
-                        cmd    = "bat",
-                        args   = "",
-                        config = nil,
-                        theme  = 'wal',
-                    }
-                },
-                files = {
-                    prompt      = " FILES ",
-                    cmd         = "rg --files --no-ignore --hidden --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null",
-                    git_icons   = true,
-                    file_icons  = true,
-                    color_icons = true,
-                    actions = {
-                        ["default"]     = actions.file_edit,
-                        ["ctrl-s"]      = actions.file_split,
-                        ["ctrl-v"]      = actions.file_vsplit,
-                        ["ctrl-t"]      = actions.file_tabedit,
-                        ["ctrl-q"]      = actions.file_sel_to_qf,
-                        ["ctrl-y"]      = function(selected) print(selected[2]) end,
-                    }
-                },
-                git = {
-                    files = {
-                        prompt          = ' GITFILES ',
-                        cmd             = 'git ls-files --exclude-standard',
-                        git_icons       = true,           -- show git icons?
-                        file_icons      = true,           -- show file icons?
-                        color_icons     = true,           -- colorize file|git icons
-                    },
-                    status = {
-                        prompt        = ' GITSTATUS ',
-                        cmd           = "git status -s",
-                        previewer     = "git_diff",
-                        file_icons    = true,
-                        git_icons     = true,
-                        color_icons   = true,
-                    },
-                    commits = {
-                        prompt          = ' GITCOMMITS ',
-                        cmd             = "git log --pretty=oneline --abbrev-commit --color",
-                        preview         = "git show --pretty='%Cred%H%n%Cblue%an%n%Cgreen%s' --color {1}",
-                        actions = {
-                            ["default"] = nil,
-                        },
-                    },
-                    bcommits = {
-                        prompt          = ' GITBCOMMITS ',
-                        cmd             = "git log --pretty=oneline --abbrev-commit --color --",
-                        preview         = "git show --pretty='%Cred%H%n%Cblue%an%n%Cgreen%s' --color {1}",
-                        actions = {
-                            ["default"] = nil,
-                        },
-                    },
-                    branches = {
-                        prompt          = ' GITBRANCHES ',
-                        cmd             = "git branch --all --color",
-                        preview         = "git log --graph --pretty=oneline --abbrev-commit --color {1}",
-                        actions = {
-                            ["default"] = actions.git_switch,
-                        },
-                    },
-                    icons = {
-                        ["M"]           = { icon = "!", color = "green" },
-                        ["D"]           = { icon = "", color = "red" },
-                        ["A"]           = { icon = "+", color = "yellow" },
-                        ["?"]           = { icon = "?", color = "blue" },
-                    },
-                },
-                grep = {
-                    prompt            = ' RG ',
-                    input_prompt      = ' GREP ',
-                    rg_opts           = "--hidden --column --line-number --no-heading --color=always --smart-case -g '!{.git,node_modules}/*'",
-                    git_icons         = true,           -- show git icons?
-                    file_icons        = true,           -- show file icons?
-                    color_icons       = true,           -- colorize file|git icons
-                    actions = {
-                        ["default"]     = actions.file_edit,
-                        ["ctrl-s"]      = actions.file_split,
-                        ["ctrl-v"]      = actions.file_vsplit,
-                        ["ctrl-t"]      = actions.file_tabedit,
-                        ["ctrl-q"]      = actions.file_sel_to_qf,
-                        ["ctrl-y"]      = function(selected) print(selected[2]) end,
-                    }
-                },
-                oldfiles = {
-                    prompt            = ' HISTORY ',
-                    cwd_only          = false,
-                },
-                buffers = {
-                    prompt            = '﬘ BUFFERS ',
-                    file_icons        = true,         -- show file icons?
-                    color_icons       = true,         -- colorize file|git icons
-                    sort_lastused     = true,         -- sort buffers() by last used
-                    actions = {
-                        ["default"]     = actions.buf_edit,
-                        ["ctrl-s"]      = actions.buf_split,
-                        ["ctrl-v"]      = actions.buf_vsplit,
-                        ["ctrl-t"]      = actions.buf_tabedit,
-                        ["ctrl-x"]      = actions.buf_del,
-                    }
-                },
-                colorschemes = {
-                    prompt            = ' COLORSCHEMES ',
-                    live_preview      = true,
-                    actions = {
-                        ["default"]     = actions.colorscheme,
-                        ["ctrl-y"]      = function(selected) print(selected[2]) end,
-                    },
-                    winopts = {
-                        win_height        = 0.55,
-                        win_width         = 0.30,
-                        window_on_create  = function()
-                            vim.cmd("set winhl=Normal:Normal")
-                        end,
-                    },
-                    post_reset_cb     = function()
-                    end,
-                },
-                quickfix = {
-                    file_icons        = true,
-                    git_icons         = true,
-                },
-                lsp = {
-                    prompt            = '漣LSP ',
-                    cwd_only          = false,
-                    async_or_timeout  = true,
-                    file_icons        = true,
-                    git_icons         = false,
-                    lsp_icons         = true,
-                    severity          = "hint",
-                    icons = {
-                        ["Error"]       = { icon = "", color = "red" },       -- error
-                        ["Warning"]     = { icon = "", color = "yellow" },    -- warning
-                        ["Information"] = { icon = "", color = "blue" },      -- info
-                        ["Hint"]        = { icon = "", color = "magenta" },   -- hint
-                    },
-                },
-                loclist = {},
-                helptags = {},
-                manpages = {
-                    prompt = ' ',
-                },
-            }
-        end
-    }
-    ----}}}
-
-    -- NEOFORMAT: autoformat code {{{
+-- NEOFORMAT: autoformat code {{{
     use {
         "sbdchd/neoformat",
         cmd = "Neoformat",
     }
-    -- }}}
+-- }}}
 
-    -- SYMBOLS OUTLINE: vista replacement; displays code outline panel {{{
+-- SYMBOLS OUTLINE: vista replacement; displays code outline panel {{{
     use {
         'simrat39/symbols-outline.nvim',
-        cmd = { 
+        cmd = {
             "SymbolsOutline",
             "SymbolsOutlineOpen",
             "SymbolsOutlineClose",
         },
+        setup = function ()
+            vim.g.symbols_outline = {
+                position = 'right',
+                auto_preview = false,
+                highlight_hovered_item = true,
+                show_guides = true,
+                width = 25,
+            }
+        end
     }
-    -- }}}
+-- }}}
 
-    -- LIGHTSPEED: navigate through a buffer quickly {{{
+-- LIGHTSPEED: navigate tnvim-hrough a buffer quickly {{{
     use {
         'ggandor/lightspeed.nvim',
         event = 'CursorMoved',
     }
-    -- }}}
+-- }}}
 
-    -- SPELLSITTER: spellcheck comments with treesitter {{{
+-- SPELLSITTER: spellcheck comments with treesitter {{{
     use {
-    'lewis6991/spellsitter.nvim',
+        'lewis6991/spellsitter.nvim',
 
-    config = function()
-        require('spellsitter').setup {
-            hl = 'SpellBad',
-            captures = {'comment'},
-        }
+        config = function()
+            require('spellsitter').setup {
+                hl = 'SpellBad',
+                captures = {'comment'},
+            }
         end
     }
-    -- }}}
+-- }}}
 
-    -- SPECS: fancy cursor animation when skipping big lines {{{
+-- SPECS: fancy cursor animation when skipping big lines {{{
     use {
         'edluffy/specs.nvim',
         event = 'CursorMoved',
@@ -1074,5 +883,203 @@ end,
             }
         end
     }
-    -- }}}
+-- }}}
+
+-- TELESCOPE: fuzzy searcher {{{
+    use {
+        'nvim-telescope/telescope.nvim',
+        cmd = {"Telescope"},
+        config = function()
+        require('telescope').setup {
+            defaults = {
+                use_less = false,
+                borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt_prefix = "  ",
+                selection_caret = "  ",
+                entry_prefix = "  ",
+                sorting_strategy = "ascending",
+                layout_strategy = "horizontal",
+                layout_config = {
+                    prompt_position = 'top',
+                    horizontal = {
+                        preview_width = 0.55,
+                        results_width = 0.8,
+                    },
+                    vertical = {
+                        mirror = false,
+                    },
+                width = 0.87,
+                height = 0.80,
+                },
+                file_ignore_patterns = {
+                    'steam',
+                    'dosdevices',
+                    'drive_c',
+                    'compatdata',
+                    'cargo',
+                    '.conan',
+                    'gem',
+                    'Brave',
+                    '.paradox-launcher',
+                },
+            },
+            pickers = {
+                buffers = {
+                    sort_lastused = true,
+                    prompt_prefix = ' ﬘ ',
+                    previewer = false,
+                    layout_config = {
+                        width = 0.37,
+                        height = 0.50,
+                    },
+                    mappings = {
+                        i = {
+                            ["<c-d>"] = "delete_buffer",
+                        },
+                        n = {
+                            ["<c-d>"] = require("telescope.actions").delete_buffer,
+                        }
+                    }
+                },
+                file_browser = {
+                    prompt_prefix = '  ',
+                    hidden = true,
+                },
+                find_files = {
+                    find_command= {
+                        'rg',
+                        '--no-ignore',
+                        '--hidden',
+                        '--files',
+                    },
+                    prompt_prefix = '  ',
+                },
+                oldfiles = {
+                    prompt_prefix = '  ',
+                },
+                colorscheme = {
+                    prompt_prefix = '  ',
+                },
+                highlights = {
+                    prompt_prefix = '  ',
+                },
+                live_grep = {
+                    prompt_prefix = '  ',
+                },
+                git_commits = {
+                    prompt_prefix = '  ',
+                },
+                git_bcommits = {
+                    prompt_prefix = '  ',
+                },
+                git_branch = {
+                    prompt_prefix = '  ',
+                },
+                git_status = {
+                    prompt_prefix = '  ',
+                },
+                git_files = {
+                    prompt_prefix = ' ﯙ ',
+                },
+                commands = {
+                    prompt_prefix = '  ',
+                },
+                registers = {
+                    prompt_prefix = '  ',
+                },
+                spell_suggests = {
+                    prompt_prefix = '  ',
+                },
+                keymaps = {
+                    prompt_prefix = '  ',
+                },
+            extensions = {
+                fzf = {
+                    fuzzy = true,
+                    override_generic_sorter = true,
+                    override_file_sorter = true,
+                    case_mode = "smart_case",
+                },
+            },
+        },
+    }
+        require('telescope').load_extension('fzf')
+        end,
+        requires = {
+            {
+                'nvim-lua/plenary.nvim'
+            },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                run = "make",
+            },
+        }
+    }
+-- }}}
+
+-- MARKDOWN: syntax for better markdown editing {{{
+    use {
+        'plasticboy/vim-markdown',
+        ft = {"markdown"},
+        setup = function ()
+            vim.g.vim_markdown_strikethrough = 1
+            vim.g.vim_markdown_new_list_item_indent = 4
+            vim.g.vim_markdown_folding_level = 2
+            vim.g.vim_markdown_frontmatter = 1
+            vim.g.vim_markdown_math = 1
+            vim.g.vim_markdown_no_extensions_in_markdown = 1
+            vim.g.vim_markdown_autowrite = 1
+            vim.g.vim_markdown_auto_extension_ext = 'txt'
+            vim.g.vim_markdown_auto_insert_bullets = 1
+        end,
+        requires = {
+            "godlygeek/tabular",
+            cmd = {"TableFormat"},
+            ft = {"markdown"},
+        }
+    }
+
+    use {
+        'gerw/vim-HiLinkTrace',
+        cmd = {
+            "HLT",
+            "HLT!",
+            "HLTm"
+        }
+    }
+-- }}}
+
+-- TREE: sidebar to navigate files {{{
+    use {
+        'kyazdani42/nvim-tree.lua',
+        event = 'BufWinEnter',
+        setup = function()
+            vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' }
+            vim.g.nvim_tree_follow = 1
+            vim.g.nvim_tree_highlight_opened_files = 1
+            vim.g.nvim_tree_auto_open = 1
+            vim.g.nvim_tree_auto_close = 1
+            vim.g.nvim_tree_hijack_netrw = 1
+            vim.g.nvim_tree_auto_resize = 1
+            vim.g.nvim_tree_disable_netrw = 1
+            vim.g.nvim_tree_symlink_arrow = '  '
+            vim.g.nvim_tree_respect_buf_cwd = 1
+            vim.g.nvim_tree_window_picker_exclude = {
+                filetype = {
+                    'packer',
+                    'qf'
+                },
+                buftype = {
+                    'terminal'
+                }
+            }
+        end,
+    }
+--}}}
+
+config = {
+    display = {
+        open_fn = require('packer.util').float,
+    }
+}
 end)
