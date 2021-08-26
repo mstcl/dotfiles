@@ -6,7 +6,7 @@
     bg1:   #b67262;
     bg2:   #8a9273;
     bg3:   #c0a474;
-    fg:    #f6f6f6;
+    fg:    #e6e6e6;
     font: "JetBrainsMono Nerd Font Mono 12";
-    icon-theme: "Fluent-dark";
+    icon-theme: "Fluent-grey-dark";
 }

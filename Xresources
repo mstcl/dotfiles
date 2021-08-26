@@ -1,14 +1,14 @@
 ! :.config/X11/Xresources
 ! X colors.
-*foreground:        #f6f6f6
+*foreground:        #e6e6e6
 *background:        #101010
-*.foreground:       #f6f6f6
+*.foreground:       #e6e6e6
 *.background:       #101010
-emacs*foreground:   #f6f6f6
+emacs*foreground:   #e6e6e6
 emacs*background:   #101010
-URxvt*foreground:   #f6f6f6
-XTerm*foreground:   #f6f6f6
-UXTerm*foreground:  #f6f6f6
+URxvt*foreground:   #e6e6e6
+XTerm*foreground:   #e6e6e6
+UXTerm*foreground:  #e6e6e6
 URxvt*background:   [100]#101010
 XTerm*background:   #101010
 UXTerm*background:  #101010
@@ -32,8 +32,8 @@ URxvt*borderColor:  [100]#101010
 *color5:  #9b859d
 *.color6: #a8d2db
 *color6:  #a8d2db
-*.color7: #f6f6f6
-*color7:  #f6f6f6
+*.color7: #e6e6e6
+*color7:  #e6e6e6
 *.color8: #353535
 *color8:  #353535
 *.color9: #bc8778

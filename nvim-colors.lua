@@ -1,7 +1,7 @@
 -- :.config/nvim/lua/colors.lua
 local Color = require('colorbuddy.color').Color
 
-Color.new('white', '#f6f6f6')
+Color.new('white', '#e6e6e6')
 Color.new('black', '#101010')
 Color.new('lightblack', '#353535')
 Color.new('very_pale_yellow', '#c3ae8b')
@@ -42,7 +42,8 @@ Color.new('very_soft_red', '#b67262')
 Color.new('pure_pink', '#9b859d')
 
 Color.new('addfg', '#8a9273')
-Color.new('addbg', '#353535')
-Color.new('delbg', '#b67262')
+Color.new('addbg', '#263747')
+Color.new('delfg', '#473447')
+Color.new('delbg', '#382A38')
 Color.new('changefg', '#9b859d')
-Color.new('changebg', '#353535')
+Color.new('changebg', '#272B3D')
