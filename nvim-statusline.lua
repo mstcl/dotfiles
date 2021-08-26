@@ -20,18 +20,23 @@ gl.short_line_list = {
     'startify',
     'term',
     'nerdtree',
+    'dashboard',
     'Packer',
+    'NvimTree',
     'Help',
     'diff',
     'undotree',
     'netrw',
     'plug',
     'Outline',
+    'quickfix',
+    'toggleterm'
 }
 
 local colors = {
     bg       = '#353535',
     bg2      = '#454545',
+    bg3      = '#151515',
     line_bg  = '#101010',
     fg       = '#e3e3e3',
     fg_green = '#a0ac82',
@@ -48,7 +53,7 @@ local colors = {
 
 gls.left[1] = {
     ViModeIn = {
-        provider = function() return '' end,
+        provider = function() return '  ' end,
         highlight = {colors.bg,colors.line_bg},
         separator = '',
         separator_highlight = {colors.bg,colors.line_bg},
@@ -144,9 +149,9 @@ gls.left[2] = {
 
 gls.left[3] = {
     ViModeOut = {
-        provider = function() return '' end,
+        provider = function() return ' ' end,
         highlight = {colors.bg,colors.bg2},
-        separator = ' ',
+        separator = '',
         separator_highlight = {colors.bg,colors.bg2},
     },
 }
@@ -155,9 +160,19 @@ gls.left[4] = {
     FileName = {
         provider = 'FileName',
         condition = condition.buffer_not_empty,
-        separator = ' ',
+        separator = '',
         separator_highlight = {colors.bg2,colors.line_bg},
         highlight = {colors.fg,colors.bg2,'bold'}
+    }
+}
+
+gls.left[5] = {
+    FilenamePost = {
+        provider = function() return ' ' end,
+        -- condition = condition.buffer_not_empty,
+        separator = '',
+        separator_highlight = {colors.bg2,colors.line_bg},
+        highlight = {colors.bg2,colors.line_bg,'bold'}
     }
 }
 
@@ -165,7 +180,7 @@ gls.left[6] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = condition.check_git_workspace,
-        icon = ' ',
+        icon = '  ',
         separator = ' ',
         separator_highlight = {colors.bg,colors.line_bg},
         highlight = {colors.magenta,colors.line_bg,'bold'},
@@ -348,7 +363,7 @@ gls.right[10] = {
 
 gls.right[11] = {
     RightEnd = {
-        provider = function() return '' end,
+        provider = function() return ' ' end,
         highlight = {colors.orange,colors.line_bg},
         separator = '',
         separator_highlight = {'NONE',colors.line_bg},
@@ -356,10 +371,10 @@ gls.right[11] = {
 }
 
 gls.short_line_left[1] = {
-    RainbowRed = {
-        provider = function() return '' end,
+    RainbowReFd = {
+        provider = function() return ' ' end,
         highlight = {colors.orange,colors.line_bg},
-        separator = ' ',
+        separator = '',
         separator_highlight = {'NONE',colors.line_bg},
     },
 }
@@ -367,32 +382,32 @@ gls.short_line_left[1] = {
 gls.short_line_left[2] = {
     BufferType = {
         provider = 'FileTypeName',
-        separator = ' ',
+        separator = '',
         separator_highlight = {'NONE',colors.line_bg},
-        highlight = {colors.blue,colors.line_bg,'bold'}
+        highlight = {colors.bg2,colors.line_bg,'bold'}
     }
 }
 
-gls.short_line_left[3] = {
-    SFileName = {
-        provider =  'SFileName',
-        condition = condition.buffer_not_empty,
-        highlight = {colors.fg,colors.line_bg,'bold'}
-    }
-}
+-- gls.short_line_left[3] = {
+--      SFileName = {
+--         provider =  'SFileName',
+--         condition = condition.buffer_not_empty,
+--         highlight = {colors.bg2,colors.line_bg,'bold'}
+--     }
+-- }
 
-gls.short_line_right[1] = {
-    BufferIcon = {
-        provider= 'BufferIcon',
-        highlight = {colors.fg,colors.line_bg}
-    }
-}
-
-gls.short_line_left[1] = {
-    RainbowRed = {
-        provider = function() return '' end,
-        highlight = {colors.orange,colors.line_bg},
-        separator = ' ',
-        separator_highlight = {'NONE',colors.line_bg},
-    },
-}
+-- gls.short_line_right[1] = {
+--     BufferIcon = {
+--         provider= 'BufferIcon',
+--         highlight = {colors.bg2,colors.line_bg}
+--     }
+-- }
+--
+-- gls.short_line_right[1] = {
+--     RainbowRedE = {
+--         provider = function() return ' ' end,
+--         highlight = {colors.orange,colors.bg3},
+--         separator = '',
+--         separator_highlight = {'NONE',colors.bg3},
+--     },
+-- }
