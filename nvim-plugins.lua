@@ -481,28 +481,30 @@ return require('packer').startup(function()
                     path = true;
                     ultisnips = true;
                     nvim_lsp = true;
-                    ultisnip = true;
+                    nvim_lua = true;
                     buffer = true;
                     spell = true;
                     treesitter = true;
                 };
             }
-        end
-    }
--- }}}
-
--- ULTISNIPS: snippets utility {{{
-    use {
-        'sirver/ultisnips',
-        event = "InsertEnter",
-        setup = function()
-            vim.g.UltiSnipsExpandTrigger = '<tab>'
-            vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-            vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
         end,
-        config = function()
-            vim.cmd('let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]')
-        end
+        wants = "ultisnips",
+        requires = {
+            {
+                -- ULTISNIPS: snippets utility {{{
+                'sirver/ultisnips',
+                event = "InsertEnter",
+                setup = function()
+                    vim.g.UltiSnipsExpandTrigger = '<tab>'
+                    vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
+                    vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+                end,
+                config = function()
+                    vim.cmd('let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/ultisnips"]')
+                end
+                -- }}}
+            }
+        }
     }
 -- }}}
 
@@ -1033,12 +1035,16 @@ return require('packer').startup(function()
             vim.g.vim_markdown_auto_insert_bullets = 1
         end,
         requires = {
+            -- TABULAR: Format pretty tables {{{
             "godlygeek/tabular",
             cmd = {"TableFormat"},
             ft = {"markdown"},
+            -- }}}
         }
     }
+-- }}}
 
+-- HILINKTRACE: get highlight group under cursor live {{{
     use {
         'gerw/vim-HiLinkTrace',
         cmd = {
