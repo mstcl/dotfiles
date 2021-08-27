@@ -34,7 +34,7 @@ function get_dest_alt {
 
 for FILE in $DOT_DIR/*
 do
-    if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push" ] && [ "${FILE}" != "$DOT_DIR/dot-init" ]
+    if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push.sh" ] && [ "${FILE}" != "$DOT_DIR/dot-init.sh" ] && [ "${FILE}" != "$DOT_DIR/ultisnips" ] && [ "${FILE}" != "$DOT_DIR/scripts" ] && [ "${FILE}" != "$DOT_DIR/screenshots" ]
     then
         if [[ "${FILE}" == "$DOT_DIR"/fontconfig* ]] || [[ "${FILE}" == "$DOT_DIR"/*.tmTheme ]]
         then
