@@ -16,7 +16,7 @@ To quickly deploy my setup on any machine, and also to backup many, many hours o
 * Kernel: TKG-PDS
 
 ## Requirements
-See the table of programs below to see what needs to be installed.
+See the table of programs below to see what's needed to be installed.
 
 ### Programs and tools
 Program         | Name
@@ -45,4 +45,4 @@ Downloads       | Aria2
 Image viewer    | feh
 
 ## Installation
-Run `bash dot-init.sh` inside the root directory. Then move the folder `scripts` to `~/scripts`
+Run `bash dot-init.sh` inside the root directory. Then move the folder `scripts` to `~/scripts`.
