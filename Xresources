@@ -12,9 +12,9 @@ UXTerm*foreground:  #e6e6e6
 URxvt*background:   [100]#101010
 XTerm*background:   #101010
 UXTerm*background:  #101010
-URxvt*cursorColor:  #e3e3e3
-XTerm*cursorColor:  #e3e3e3
-UXTerm*cursorColor: #e3e3e3
+URxvt*cursorColor:  #c7c7c7
+XTerm*cursorColor:  #c7c7c7
+UXTerm*cursorColor: #c7c7c7
 URxvt*borderColor:  [100]#101010
 
 ! Colors 0-15.
@@ -48,8 +48,8 @@ URxvt*borderColor:  [100]#101010
 *color13:  #a392a5
 *.color14: #b9d8df
 *color14:  #b9d8df
-*.color15: #e3e3e3
-*color15:  #e3e3e3
+*.color15: #c7c7c7
+*color15:  #c7c7c7
 
 ! Black color that will not be affected by bold highlighting.
 *.color66: #101010
