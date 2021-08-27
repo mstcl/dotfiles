@@ -1,6 +1,6 @@
-<p align="center">
+<h1 align="center">
     Dotfiles
-</p>
+</h1>
 
 ## Why?
 To quickly deploy my setup on any machine, and also to backup many, many hours of effort.
