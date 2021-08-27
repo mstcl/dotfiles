@@ -1,0 +1,27 @@
+# :.config/ncspot/config.toml
+
+use_nerdfont = true
+shuffle = false
+notify = false
+repeat = "off"
+flip_status_indicators = true
+command_key = " "
+
+[theme]
+background = "black"
+primary = "light black"
+secondary = "light yellow"
+title = "red"
+playing = "red"
+playing_selected = "light yellow"
+playing_bg = "black"
+highlight = "white"
+highlight_bg = "black"
+error = "light white"
+error_bg = "red"
+statusbar = "light red"
+statusbar_progress = "red"
+statusbar_bg = "black"
+cmdline = "light white"
+cmdline_bg = "black"
+search_match = "yellow"
