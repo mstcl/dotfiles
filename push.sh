@@ -4,8 +4,13 @@ DOTDIR=$HOME/dotfiles
 USERSTYLEDIR=$HOME/scripts/userstyles
 SCRIPTDIR=$HOME/scripts
 CSS=$HOME/.config/BetterDiscord/themes/pywal-discord-default.theme.css
+SNIPS=$HOME/.config/nvim/ultisnips
+
 cat .bpytop-replace.conf > bpytop.conf
 cat .termshark-replace.toml > termshark.toml
+
+echo "==> Copying nvim snippets... "
+cp -R $SNIPS/ $DOTDIR/
 echo "==> Copying Discord userstyles... "
 cp $USERSTYLEDIR/template.user.css $USERSTYLEDIR/pywal.user.css
 cat "$CSS" >> "$USERSTYLEDIR/pywal.user.css" && echo "}" >> $USERSTYLEDIR/pywal.user.css
