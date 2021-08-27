@@ -1,0 +1,81 @@
+# :.config/nvim/ultisnips/markdown.snippets
+snippet img "Image"
+![${1:pic alt}](${2:path}${3/.+/ "/}${3:opt title}${3/.+/"/})$0
+endsnippet
+
+snippet mi "Math inline"
+$${1:${VISUAL:math}}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet mb "Math block"
+
+$$
+${1:${VISUAL:Math}}
+$$
+
+$0
+endsnippet
+
+snippet crl "Cross-reference link" iA
+[${1:${VISUAL:text}}]({{< relref ${2:id} >}})$0
+endsnippet
+
+snippet hpl "Hyperlink" iA
+[${1:${VISUAL:text}}](${2:url})$0
+endsnippet
+
+snippet su2 "Square" iA
+^2
+endsnippet
+
+snippet su3 "Cubic" iA
+^3
+endsnippet
+
+snippet suN "Superscript" iA
+^{${1:${VISUAL:superscript}}}$0
+endsnippet
+
+snippet subN "Subscript" iA
+_{${1:${VISUAL:subscript}}}$0
+endsnippet
+
+snippet // "Fraction" iA
+\\frac{${1:${VISUAL:nom}}}{${2:${VISUAL:denom}}}$0
+endsnippet
+
+snippet ci "Code inline"
+\`${1:${VISUAL:code}}\` $0
+endsnippet
+
+snippet cb "Code block"
+
+\`\`\`${1:${VISUAL:lang}}
+${2:${VISUAL:code}}
+\`\`\`
+$0
+endsnippet
+
+#snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+#\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+#endsnippet
+
+priority 100
+snippet "([a-zA-Z])barr" "Bar" riA
+\overline{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 10
+snippet "hatt" "Hat" riA
+\hat{$1}$0
+endsnippet
+
+priority 10
+snippet "vecc" "Vector" riA
+\vect{$1}$0
+endsnippet
