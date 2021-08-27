@@ -58,7 +58,7 @@ endif
 " endfunction
 
 " Stop autocommenting!
-autocmd Filetype * setlocal formatoptions-=cro
+autocmd BufEnter * setlocal formatoptions-=cro
 
 " Close Outline if it's the only window left
 autocmd BufEnter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
@@ -83,7 +83,8 @@ autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldme
 
 " Hide things for nvim-dashboard
 " autocmd FileType TelescopePrompt set nolist
-autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler | autocmd WinLeave <buffer> set showtabline=2 | set laststatus=2
+autocmd Filetype dashboard set showtabline=0 | set laststatus=0 | set noruler | 
+autocmd WinEnter,BufEnter * if &filetype != 'dashboard' | set showtabline=2 | set laststatus=2 | endif
 
 " Markdown options
 augroup MDoptions
@@ -102,6 +103,9 @@ augroup end
 " Autochdir
 autocmd BufEnter * silent! lcd %:p:h
 
+" Terminal no number
+autocmd Filetype floaterm set nonumber | set norelativenumber
+
 " Highlight current matched search
 augroup procsearch
   autocmd!
@@ -113,6 +117,12 @@ function! ProcessSearch(timerid)
     if &ic | let l:patt = '\c' . l:patt | endif
     exe 'match IncSearch /' . l:patt . '/'
 endfunc
+
+function! Synctex()
+        " remove 'silent' for debugging
+        execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
+endfunction
+map <C-enter> :call Synctex()<cr>
 
 " Wilder autocommand and setup {{{
 autocmd CmdlineEnter * ++once call s:wilder_init()
@@ -191,6 +201,7 @@ set formatoptions-=cro
 set linebreak
 set mouse=a
 let g:vimsyn_embed= 'l'
+set showbreak = "↳"
 
 " Rule
 set number
@@ -281,6 +292,19 @@ function! ShowPaste()
 endfunction
 autocmd InsertLeave,InsertEnter * call ShowPaste()
 
+" Floaterm
+nnoremap <silent> <F1>  :FloatermNew<CR>
+tnoremap <silent> <F1>  <C-\><C-n>:FloatermNew<CR>
+nnoremap <silent> <F2>  :FloatermPrev<CR>
+tnoremap <silent> <F2>  <C-\><C-n>:FloatermPrev<CR>
+nnoremap <silent> <F3>  :FloatermNext<CR>
+tnoremap <silent> <F3>  <C-\><C-n>:FloatermNext<CR>
+nnoremap <silent> <F4>  :FloatermToggle<CR>
+tnoremap <silent> <F4>  <C-\><C-n>:FloatermToggle<CR>
+nnoremap <silent> <F10> :FloatermKill<CR>
+tnoremap <silent> <F10> <C-\><C-n>:FloatermKill<CR>
+vnoremap <silent> <F8>  :'<,'>FloatermSend<CR>
+nnoremap <silent> <F5>  :FloatermNew --width=0.5 --wintype=vsplit --name=repl --position=botright ipython3<CR>
 
 " Better indentation
 xnoremap < <gv
@@ -469,10 +493,7 @@ nnoremap <silent> <Leader>pc :PackerCompile<CR>
 " }}}
 
 " Leader q {{{
-" Telescope LSP
-nnoremap <silent> <leader>qr :Telescope lsp_references<CR>
-nnoremap <silent> <leader>qd :Telescope lsp_definitions<CR>
-nnoremap <silent> <leader>qq :Telescope lsp_document_diagnostics<CR>
+
 " }}}
 
 " Leader r {{{
@@ -532,8 +553,8 @@ nnoremap <silent> <Leader>\  :noh<cr>
 nnoremap <silent> <leader>/  :Telescope live_grep<CR>
 " }}}
 
-" Leader dot {{{
-nnoremap <silent> <leader>.  :Telescope keymaps<CR>
+" Leader semicolon {{{
+nnoremap <silent> <Leader>;  :Telescope keymaps<CR>
 " }}}
 
 " Leader apostrophe {{{
@@ -541,6 +562,17 @@ nnoremap <silent> <Leader>'  :Telescope registers<CR>
 " }}}
 
 " }}}
+
+" LOCAL LEADER {{{
+" Telescope LSP
+nnoremap <silent> <LocalLeader>d :Telescope lsp_definitions<CR>
+nnoremap <silent> <LocalLeader>q :Telescope lsp_document_diagnostics<CR>
+nnoremap <silent> <LocalLeader>r :Telescope lsp_references<CR>
+
+" Toggle python3
+nnoremap <silent> <Leader>j  :<CR>i
+" }}}
+
 " }}}
 
 " DASHBOARD ASCII {{{
