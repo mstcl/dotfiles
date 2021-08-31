@@ -6,7 +6,6 @@ SCRIPTDIR=$HOME/scripts
 CSS=$HOME/.config/BetterDiscord/themes/pywal-discord-default.theme.css
 SNIPS=$HOME/.config/nvim/ultisnips
 
-cat .bpytop-replace.conf > bpytop.conf
 cat .termshark-replace.toml > termshark.toml
 
 echo "==> Copying nvim snippets... "
