@@ -3,10 +3,10 @@ KM=$(ibus engine)
 
 if [ "$KM" = "Unikey" ]
 then
-    echo "VN"
+    echo "vn"
 else
     if [ "$KM" = "xkb:us::eng" ]
     then
-        echo "EN"
+        echo "en"
     fi
 fi

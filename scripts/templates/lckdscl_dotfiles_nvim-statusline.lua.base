@@ -65,34 +65,34 @@ gls.left[1] = {{
 
 gls.left[2] = {{
     ViMode = {{
-        -- icon = function()
-        --     local icons = {{
-        --         n      = '  ',
-        --         i      = '  ',
-        --         c      = '  ',
-        --         V      = '  ',
-        --         [''] = '  ',
-        --         v      = '  ',
-        --         C      = '  ',
-        --         R      = '  ﯒',
-        --         t      = '  ',
-        --     }}
-        --     return icons[vim.fn.mode()]
-        -- end,
         icon = function()
             local icons = {{
-                n      = '',
-                i      = '',
-                c      = '',
-                V      = '',
-                [''] = '',
-                v      = '',
-                C      = '',
-                R      = '',
-                t      = '',
+                n      = ' ',
+                i      = ' ',
+                c      = ' ',
+                V      = ' ',
+                [''] = ' ',
+                v      = ' ',
+                C      = ' ',
+                R      = ' ',
+                t      = ' ',
             }}
             return icons[vim.fn.mode()]
         end,
+        -- icon = function()
+        --     local icons = {{
+        --         n      = '',
+        --         i      = '',
+        --         c      = '',
+        --         V      = '',
+        --         [''] = '',
+        --         v      = '',
+        --         C      = '',
+        --         R      = '',
+        --         t      = '',
+        --     }}
+        --     return icons[vim.fn.mode()]
+        -- end,
         provider = function()
             local alias = {{
                 n      = 'NORMAL',

@@ -11,12 +11,14 @@ configuration {
     show-icons: true;
     font: "JetBrainsMono Nerd Font Mono 12";
     icon-theme: "Fluent-grey-dark";
+    background-color: @bg;
 
 }
-@import "~/scripts/rofi/i3-notifier-colors.rasi"
+@import "~/scripts/rofi/colors.rasi"
 * {
-    background-color: @bg;
+    background-color: rgba(0,0,0,0);
     border-radius: 2px;
+    text-color: @fg;
 }
 
 #window {
@@ -25,6 +27,8 @@ configuration {
     text-color: @fg;
     children: [inputbar,listview];
     border-radius: 2px;
+    background-color: @bg;
+    text-color: @fg;
 }
 
 #listview {
@@ -32,17 +36,20 @@ configuration {
     padding: 10px;
     lines: 0;
     spacing: 10px;
+    background-color: @bg;
+    text-color: @fg;
 }
 
 #element {
     padding: 10px;
     border-radius: 2px;
     background-color: @bg;
-    text-color: @fg;
+    text-color: @al;
 }
 
 #element.active {
     background-color: @bg;
+    text-color: @al;
 }
 
 #element.urgent {
@@ -66,6 +73,8 @@ configuration {
 }
 
 #element-icon {
+    background-color: inherit;
+    text-color: inherit;
     size: 0em;
     horizontal-align: 0;
     vertical-align: 0;
@@ -75,8 +84,8 @@ configuration {
 
 #inputbar {
     children: [textbox-prompt-colon];
-    background-color: #e6e6e6;
-    text-color: #e6e6e6;
+    background-color: @fg;
+    text-color: @fg;
     expand: false;
     border: 0px;
     spacing: 0px;
@@ -87,6 +96,6 @@ configuration {
     str: "Notifications";
     font: "JetBrainsMono Nerd Font Mono 12";
     padding: 9px 3px 8px 18px;
-    background-color: #e6e6e6;
-    text-color: #101010;
+    background-color: @fg;
+    text-color: @bg;
 }
