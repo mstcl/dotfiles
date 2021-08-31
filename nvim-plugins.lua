@@ -1,28 +1,25 @@
 -- :.config/nvim/lua/plugins.lua
 -- vim: set foldmethod=marker foldenable:
-
 return require('packer').startup {
     function()
+    -- IMPATIENT: faster startup time (unused) {{{
+        -- use {
+        --     'lewis6991/impatient.nvim',
+        --     rocks = 'mpack'
+        -- }
+    -- }}}
     -- GALAXYLINE: fancy status line {{{
         use {
             "hhn-pham/galaxyline.nvim",
             event = 'BufWinEnter',
             branch = 'main',
+            wants = 'nvim-web-devicons',
+            -- requires = {'kyazdani42/nvim-web-devicons', event = "VimEnter"},
             config = function()
                 require("statusline")
             end,
         }
     -- }}}
-
-    -- WEB DEVICONS: icons everywhere {{{
-        use {
-            'kyazdani42/nvim-web-devicons',
-            config = function ()
-                require'nvim-web-devicons'.setup {}
-            end
-        }
-    -- }}}
-
     -- JUPYTEXT: convert jupyter notebook formats into other formats {{{
         use {
             'goerz/jupytext.vim',
@@ -32,11 +29,10 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- COLORIZER: add a colored background for color codes {{{
         use {
             "norcalli/nvim-colorizer.lua",
-            ft = {"html", "css", "sass", "vim", "lua", "javascript", "typescript"},
+            ft = {"html", "css", "sass", "vim", "lua", "javascript", "typescript" ,"dosini" , "ini", "conf", "json", "cfg"},
             cmd = {"ColorizerToggle"},
             config = function()
                 require("colorizer").setup()
@@ -44,7 +40,6 @@ return require('packer').startup {
             end,
         }
     -- }}}
-
     -- DASHBOARD: a neovim start screen {{{
         use {
             "glepnir/dashboard-nvim",
@@ -52,51 +47,69 @@ return require('packer').startup {
             setup = function ()
                 vim.cmd([[
                 let g:total_plugins = trim(system("fd -d 2 . $HOME'/.local/share/nvim/site/pack/packer' | head -n -2 | wc -l"))
-                let g:dashboard_custom_footer = [' neovim loaded '. g:total_plugins .' plugins']
+                let g:dashboard_custom_footer = [' packer detected '. g:total_plugins .' plugins']
                 ]])
+                vim.g.dashboard_enable_session = 0
+                vim.g.dashboard_default_executive ='telescope'
+                vim.g.dashboard_disable_statusline = 1
                 vim.g.dashboard_custom_section = {
                     history_list = {
-                        description = {' Recents                 LDR h'},
+                        description = {'  Recents                 LDR h'},
                         command = ':Telescope oldfiles'
                     },
                     buffer_list = {
-                        description = {'﬘ Buffer                  LDR b'},
+                        description = {'  Buffer                  LDR b'},
                         command = ':Telescope buffers'
                     },
                     find_files = {
-                        description = {' Files                   LDR f'},
+                        description = {'  Files                   LDR f'},
                         command = ':Telescope find_files'
                     },
                     browse = {
-                        description = {' Browse                  LDR y'},
+                        description = {'  Browse                  LDR y'},
                         command = ':Telescope file_browser'
                     },
-                    session = {
-                        description = {' Restore                 LDR r'},
-                        command = ':SessionLoad'
-                    },
                     settings = {
-                        description = {'漣Settings                MRK v'},
+                        description = {'漣 Settings                MRK v'},
                         command = ':e $HOME/dotfiles/nvim-init.vim'
                     },
                     plugins = {
-                        description = {'率Plugins                 MRK p'},
+                        description = {'  Plugins                 MRK p'},
                         command = ':e $HOME/dotfiles/nvim-plugins.lua'
                     }
                 }
             end
         }
     -- }}}
-
     -- BARBAR: fancy buffer bar {{{
         use {
             'romgrk/barbar.nvim',
             event = 'BufEnter',
-            requires = {'kyazdani42/nvim-web-devicons'},
+            wants = 'nvim-web-devicons',
+            requires = {
+                {
+                    -- WEB-DEVICONS: icons for bars {{{
+                    'kyazdani42/nvim-web-devicons',
+                    event = "VimEnter",
+                    config = function ()
+                        require'nvim-web-devicons'.setup {
+                            default = true,
+                            override = {
+                                ["default_icon"] = {
+                                    icon = "",
+                                    color = "#6d8086",
+                                    name = "Default",
+                                }
+                            }
+                        }
+                    end
+                    -- }}}
+                }
+            },
             config = function()
                 vim.g.bufferline = {
                     animation = true,
-                    auto_hide = false,
+                    auto_hide = true,
                     tabpages = true,
                     closable = true,
                     clickable = true,
@@ -117,14 +130,12 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- PACKER: package manager {{{
         use {
             'wbthomason/packer.nvim',
             event = "VimEnter",
         }
     -- }}}
-
     -- BETTER ESCAPE: use alphanumeric escape mappings without delay {{{
         use {
             "jdhao/better-escape.vim",
@@ -135,7 +146,6 @@ return require('packer').startup {
             end,
         }
     -- }}}
-
     -- COLORBUDDY: neovim themer in lua {{{
         use {
             'tjdevries/colorbuddy.nvim',
@@ -408,7 +418,7 @@ return require('packer').startup {
                     Group.new('TelescopePreviewBorder', c.lightblack, c.darkblack, no)
                     Group.new('TelescopeMatching', c.red, c.none, b)
                     Group.new('TelescopePromptPrefix', c.red, c.none, b)
-                    Group.new('mkdStrike', c.green, c.none, st)
+                    Group.new('markdownStrike', c.lightblack, c.none, st)
                     Group.new('NvimTreeNormal', c.lightgrey, c.darkgrey, no)
                     Group.new('NvimTreeRootFolder', c.purple, c.none, no)
                     Group.new('NvimTreeOpenedFolderName', c.yellow, c.none, b)
@@ -432,7 +442,6 @@ return require('packer').startup {
                 end
             }
      -- }}}
-
     -- FUGITIVE: Git inside vim {{{
         use {
             'tpope/vim-fugitive',
@@ -446,14 +455,12 @@ return require('packer').startup {
             },
         }
     -- }}}
-
      -- WILDER: vim command fuzzy popup completion {{{
         use {
             'gelguy/wilder.nvim',
             event = "BufEnter",
         }
      -- }}}
-
     -- TREESITTER: syntax aware utilities {{{
         use {
             "nvim-treesitter/nvim-treesitter",
@@ -465,6 +472,7 @@ return require('packer').startup {
                     highlight = {
                         enable = true,
                         additional_vim_regex_highlighting = false,
+                        disable = { "latex" },
                     },
                     autopairs = {
                         enable = true
@@ -473,7 +481,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- COMPE: popup completion {{{
         use {
             "hrsh7th/nvim-compe",
@@ -529,7 +536,7 @@ return require('packer').startup {
                 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
                 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
                 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-                vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}) 
+                vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
             end,
             wants = "ultisnips",
             requires = {
@@ -550,27 +557,10 @@ return require('packer').startup {
             }
         }
     -- }}}
-
     -- GITSIGNS: display git diffs in sign column {{{
         use {
             'lewis6991/gitsigns.nvim',
-            cond = function()
-                local result = vim.api.nvim_exec (
-                [[
-                    function! GitDir ()
-                        silent! !git rev-parse --is-inside-work-tree
-                        if v:shell_error == 0
-                            echo "true"
-                        else
-                            echo "false"
-                        endif
-                    endfunction
-
-                    call GitDir()
-                ]],
-                true)
-                return result
-            end,
+            event = 'BufRead',
             requires = { 'nvim-lua/plenary.nvim' },
             config = function()
                 require('gitsigns').setup {
@@ -591,7 +581,6 @@ return require('packer').startup {
             end,
         }
     -- }}}
-
     -- NEOSCROLL: smooth scrolling {{{
         use {
             "karb94/neoscroll.nvim",
@@ -608,7 +597,6 @@ return require('packer').startup {
             end,
         }
     -- }}}
-
     -- ZEN MODE: lightweight goyo replacement {{{
         use {
             "folke/zen-mode.nvim",
@@ -638,7 +626,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- TWILIGHT: limelight replacement {{{
         use {
             "folke/twilight.nvim",
@@ -648,7 +635,6 @@ return require('packer').startup {
             end
         }
     --}}}
-
     -- INDENT-BLANKLINE: display indent lines (even on blank lines) {{{
         use {
             "lukas-reineke/indent-blankline.nvim",
@@ -666,7 +652,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- LSPCONFIG: native lsp configuration {{{
         use {
             "neovim/nvim-lspconfig",
@@ -781,7 +766,6 @@ return require('packer').startup {
             end
         }
     --- }}}
-
     -- TS-RAINBOW: treesitter rainbow parentheses {{{
         use {
             'p00f/nvim-ts-rainbow',
@@ -800,7 +784,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- COMMENT: syntax-aware comment keymaps {{{
         use {
             "terrortylor/nvim-comment",
@@ -810,14 +793,13 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- AUTOPAIRS: auto insert pairs {{{
         use {
             'LunarWatcher/auto-pairs',
             event = "BufEnter",
             config = function ()
                 vim.cmd([[
-                let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"},{"open": '\w\zs<', "close": '>'},{"open": '\\left(', 'close': '\right)', "filetype": "tex"},{"open": '\\left(', 'close': '\right)', "filetype": "vimwiki"},{"open": "_", "close": "_", "filetype": ["vimwiki"]},{"open": "_", "close": "_", "filetype": ["markdown"]},{"open": "__", "close": "__", "filetype": ["vimwiki"]},{"open": "__", "close": "__", "filetype": ["markdown"]},{"open": "~~", "close": "~~", "filetype": ["vimwiki"]},{"open": "~~", "close": "~~", "filetype": ["markdown"]},{"open": "++", "close": "++", "filetype": ["vimwiki"]},{"open": "|", "close": "|", "filetype": "help"},{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}])
+                let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"},{"open": '\w\zs<', "close": '>'},{"open": '\\left(', 'close': '\right)', "filetype": "tex"},{"open": '\\left(', 'close': '\right)', "filetype": "markdown"},{"open": "_", "close": "_", "filetype": ["markdown"]},{"open": "__", "close": "__", "filetype": ["markdown"]},{"open": "~~", "close": "~~", "filetype": ["markdown"]},{"open": "|", "close": "|", "filetype": "help"},{"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}])
                 ]])
                 vim.g.AutoPairsShortcutFastWrap = '<M-e>'
                 vim.g.AutoPairsMapBS = "1"
@@ -830,71 +812,12 @@ return require('packer').startup {
             end,
         }
     -- }}}
-
     -- EASYALIGN: auto align by delimiters {{{
         use {
             'junegunn/vim-easy-align',
             keys = "<Plug>(EasyAlign)",
         }
     -- }}}
-
-    -- ZETTEL: vimwiki-helper, currently using only to insert front-matter automatically (unused) {{{
-        -- use {
-        --     'michal-h21/vim-zettel',
-        --     event = "BufRead",
-        --     ft = {"markdown","vimwiki"},
-        --     config = function ()
-        --         vim.g.zettel_format = "%raw_title"
-        --         vim.cmd('let g:zettel_options = [{"template":"/home/lckdscl/wiki/docs/templates/md.tpl", "front_matter": [["tags",""], ["hide","navigation"]]}]')
-        --         vim.g.zettel_default_mappings = 0
-        --     end
-        -- }
-    -- }}}
-
-    -- VIMWIKI: write a wiki in vim with markdown (unused) {{{
-        -- use {
-        --     'vimwiki/vimwiki',
-        --     cmd = {
-        --         "VimwikiIndex",
-        --     },
-        --     ft = {'markdown','vimwiki'},
-        --     setup = function()
-        --         vim.g.vimwiki_listsyms = '    x'
-        --         vim.g.vimwiki_global_ext = 0
-        --         vim.g.vimwiki_list = {
-        --             {
-        --                 path = '$HOME/pkb/content',
-        --                 ext = '.md',
-        --                 syntax = 'markdown',
-        --                 path_html = '$HOME/vimwiki.old/site_html/',
-        --             }
-        --         }
-        --         vim.g.vimwiki_key_mappings = {
-        --             all_maps = 1,
-        --             global = 1,
-        --             headers = 1,
-        --             text_objs = 1,
-        --             table_format = 0,
-        --             table_mappings = 0,
-        --             lists = 1,
-        --             links = 1,
-        --             html = 1,
-        --             mouse = 1,
-        --         }
-        --         vim.g.vimwiki_use_mouse = 1
-        --         vim.g.vimwiki_folding = 'expr'
-        --         vim.g.vimwiki_auto_chdir = 1
-        --         vim.g.vimwiki_toc_header = 'Contents'
-        --         vim.g.vimwiki_global_ext = 0
-        --         vim.g.vimwiki_markdown_link_ext = 1
-        --         vim.g.vimwiki_hl_headers = 1
-        --         vim.g.vimwiki_links_header = 'List of pages'
-        --         vim.g.vimwiki_links_header_level = 2
-        --         vim.g.vimwiki_tags_header = 'Tags'
-        --     end
-        -- }
-    -- }}}
-
     -- UNDOTREE: display a panel with non-linear undo branches {{{
         use {
             'mbbill/undotree',
@@ -908,7 +831,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- SURROUND: lua surround with brackets and co. {{{
         use {
             "blackCauldron7/surround.nvim",
@@ -920,14 +842,12 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- NEOFORMAT: autoformat code {{{
         use {
             "sbdchd/neoformat",
             cmd = "Neoformat",
         }
     -- }}}
-
     -- SYMBOLS OUTLINE: vista replacement; displays code outline panel {{{
         use {
             'simrat39/symbols-outline.nvim',
@@ -947,18 +867,16 @@ return require('packer').startup {
             end
         }
     -- }}}
-
-    -- LIGHTSPEED: navigate tnvim-hrough a buffer quickly {{{
+    -- LIGHTSPEED: navigate inside a buffer quickly {{{
         use {
             'ggandor/lightspeed.nvim',
             event = 'CursorMoved',
         }
     -- }}}
-
     -- SPELLSITTER: spellcheck comments with treesitter {{{
         use {
             'lewis6991/spellsitter.nvim',
-
+            after = 'nvim-treesitter',
             config = function()
                 require('spellsitter').setup {
                     hl = 'SpellBad',
@@ -967,7 +885,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- SPECS: fancy cursor animation when skipping big lines {{{
         use {
             'edluffy/specs.nvim',
@@ -993,7 +910,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-
     -- TELESCOPE: fuzzy searcher {{{
         use {
             'nvim-telescope/telescope.nvim',
@@ -1030,12 +946,24 @@ return require('packer').startup {
                         'gem',
                         'Brave',
                         '.paradox-launcher',
+                        '.cache',
+                        'Trash',
+                        'discord',
+                        'BetterDiscord',
+                        'lutris',
+                        'secrets',
+                        '.var',
+                        'go',
+                        '.android',
+                        '.cmake',
+                        '.dotnet',
+                        '.nuget',
                     },
                 },
                 pickers = {
                     buffers = {
                         sort_lastused = true,
-                        prompt_prefix = ' ﬘ ',
+                        prompt_prefix = ' ﬘  ',
                         previewer = false,
                         layout_config = {
                             width = 0.37,
@@ -1051,7 +979,7 @@ return require('packer').startup {
                         }
                     },
                     file_browser = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '    ',
                         hidden = true,
                     },
                     find_files = {
@@ -1061,50 +989,49 @@ return require('packer').startup {
                             '--hidden',
                             '--files',
                         },
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     oldfiles = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     colorscheme = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     highlights = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     live_grep = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     git_commits = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     git_bcommits = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
-                    git_branch = {
-                        prompt_prefix = '  ',
+                    git_branches = {
+                        prompt_prefix = '   ',
                     },
                     git_status = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     git_files = {
-                        prompt_prefix = ' ﯙ ',
+                        prompt_prefix = ' ﯙ  ',
                     },
                     commands = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     registers = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     spell_suggests = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                     keymaps = {
-                        prompt_prefix = '  ',
+                        prompt_prefix = '   ',
                     },
                 extensions = {
                     fzf = {
-                        fuzzy = true,
                         override_generic_sorter = true,
                         override_file_sorter = true,
                         case_mode = "smart_case",
@@ -1113,6 +1040,7 @@ return require('packer').startup {
             },
         }
             require('telescope').load_extension('fzf')
+            require'telescope'.load_extension('zoxide')
             end,
             requires = {
                 {
@@ -1120,48 +1048,16 @@ return require('packer').startup {
                 },
                 {
                     "nvim-telescope/telescope-fzf-native.nvim",
+                    cmd = "Telescope",
                     run = "make",
                 },
+                {
+                    'jvgrootveld/telescope-zoxide',
+                    cmd = "Telescope",
+                }
             }
         }
     -- }}}
-
-    -- MARKDOWN: syntax for better markdown editing {{{
-        use {
-            'plasticboy/vim-markdown',
-            ft = {"markdown"},
-            setup = function ()
-                vim.g.vim_markdown_strikethrough = 1
-                vim.g.vim_markdown_new_list_item_indent = 4
-                vim.g.vim_markdown_folding_level = 2
-                vim.g.vim_markdown_frontmatter = 1
-                vim.g.vim_markdown_math = 1
-                vim.g.vim_markdown_no_extensions_in_markdown = 1
-                vim.g.vim_markdown_autowrite = 1
-                vim.g.vim_markdown_auto_extension_ext = 'txt'
-                vim.g.vim_markdown_auto_insert_bullets = 1
-            end,
-            requires = {
-                -- TABULAR: Format pretty tables {{{
-                "godlygeek/tabular",
-                cmd = {"TableFormat"},
-                ft = {"markdown"},
-                -- }}}
-            }
-        }
-    -- }}}
-
-    -- HILINKTRACE: get highlight group under cursor live {{{
-        use {
-            'gerw/vim-HiLinkTrace',
-            cmd = {
-                "HLT",
-                "HLT!",
-                "HLTm"
-            }
-        }
-    -- }}}
-
     -- TREE: sidebar to navigate files {{{
         use {
             'kyazdani42/nvim-tree.lua',
@@ -1189,8 +1085,7 @@ return require('packer').startup {
             end,
         }
     --}}}
-
-    -- FLOATERM {{{
+    -- FLOATERM: floating terminal using built-in term {{{
         use {
             'voldikss/vim-floaterm',
             cmd = {"FloatermNew", "FloatermToggle", "FloatermNext", "FloatermPrev", "FloatermKill"},
@@ -1203,13 +1098,54 @@ return require('packer').startup {
             end
         }
     -- }}}
-    end,
-
+    -- TEX CONCEAL: Further concealment of MathZone for tex files {{{
+        use {
+            'KeitaNakamura/tex-conceal.vim',
+            ft = {"tex"},
+        }
+    -- }}}
+    -- CLEANFOLD: Minimal foldtext {{{
+        use {
+            'lewis6991/cleanfold.nvim',
+            event = 'BufRead',
+            config = function ()
+                require('cleanfold').setup()
+            end
+        }
+    -- }}}
+    -- MARKDOWN: better markdown syntax {{{
+        use {
+            'gabrielelana/vim-markdown',
+            ft = {'markdown'},
+            setup = function ()
+                vim.g.markdown_enable_mappings = 1
+                vim.g.markdown_enable_insert_mode_leader_mappings = 0
+                vim.g.markdown_enable_insert_mode_mappings = 0
+                vim.g.markdown_mapping_switch_status = '<C-space>'
+                vim.g.markdown_enable_conceal = 1
+                vim.g.markdown_enable_folding = 0
+            end,
+            requires = {
+                -- TABULAR: Format pretty tables {{{
+                "godlygeek/tabular",
+                cmd = {"TableFormat"},
+                ft = {"markdown"},
+                -- }}}
+            }
+        }
+    -- }}}
+        end,
+    -- PACKER OPTIONS {{{
     config = {
         display = {
             open_fn = function()
                 return require('packer.util').float({ border = 'single' })
             end
+        },
+        profile = {
+            enable = true,
+            threshold = 0.2,
         }
     }
+    -- }}}
 }
