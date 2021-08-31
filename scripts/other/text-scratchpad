@@ -1,4 +1,0 @@
-#!/bin/bash
-
-tmp_file=$(mktemp)
-kitty -T textScratchpad -e $SHELL -lc "sleep 0.1 && nvim -c startinsert -c 'setlocal spell' -c 'set ft=markdown' ${tmp_file}" && xclip -selection clipboard < $tmp_file
