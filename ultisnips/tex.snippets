@@ -44,7 +44,32 @@ def add_row(snip):
 
 endglobal
 
-snippet "\\?b(egin)?" "begin{} / end{}" br
+snippet documentclass "Document class"
+\documentclass{${1:class}}
+$0
+endsnippet
+
+snippet title "Title"
+\title{${1:title}}
+$0
+endsnippet
+
+snippet author "Author"
+\author{${1:someone}}
+$0
+endsnippet
+
+snippet date "Date"
+\date{\today}
+$0
+endsnippet
+
+snippet maketitle "Make title"
+\maketitle
+$0
+endsnippet
+
+snippet begin "begin{} / end{}" b
 \begin{${1:something}}
 	${0:${VISUAL}}
 \end{$1}

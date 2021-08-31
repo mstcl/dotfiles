@@ -1,12 +1,15 @@
 /* colors */
 
 * {
-    al:    #353535;
-    bg:    #101010;
-    bg1:   #b67262;
-    bg2:   #8a9273;
-    bg3:   #c0a474;
-    fg:    #e6e6e6;
-    font: "JetBrainsMono Nerd Font Mono 12";
+    al: #353535;
+    bg: #101010;
+    bg1: #b67262;
+    bg2: #8a9273;
+    bg3: #c0a474;
+    fg: #e6e6e6;
+    hi-bold: bold #b67262;
+    font: "JetBrainsMono Nerd Font 12";
+    font-icon: "JetBrainsMono Nerd Font 12";
     icon-theme: "Fluent-grey-dark";
+    show-icons: true;
 }

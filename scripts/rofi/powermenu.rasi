@@ -1,112 +1,115 @@
 
 configuration {
-    show-icons:                     true;
-    disable-history:                false;
-    fullscreen:                     false;
-	hide-scrollbar: 				true;
-	sidebar-mode: 					false;
-    font: "JetBrainsMono Nerd Font Mono 12";
+    show-icons: true;
+    disable-history: false;
+    fullscreen: false;
+    hide-scrollbar: true;
+    sidebar-mode: false;
 }
 
 @import "colors.rasi"
 
 window {
-    transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
-	border:							0px;
-	border-color:					@ac;
-    border-radius:                  0px;
-	width:							300px;
-    location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
+    transparency: "real";
+    background-color: @bg;
+    text-color: @fg;
+    border: 0px;
+    border-color: @ac;
+    border-radius: 0px;
+    width: 300px;
+    location: center;
+    x-offset: 0;
+    y-offset: 0;
 }
 
 prompt {
-    enabled: 						true;
-	padding: 						10px 15px 10px 15px;
-	background-color: 				@fg;
-	text-color: 					@bg;
+    enabled: true;
+    padding: 10px 15px 10px 15px;
+    background-color: @fg;
+    text-color: @bg;
 }
 
 textbox-prompt-colon {
-	padding: 						7px 15px 10px 15px;
-	font:							"JetBrainsMono Nerd Font Mono 14";
-	background-color: 				@fg;
-	text-color: 					@bg;
-	expand: false;
-	str: "";
+    padding: 10px 5px 10px 15px;
+    font: @font-icon;
+    background-color: @fg;
+    text-color: @bg;
+    expand: false;
+    str: "神";
 }
 
 entry {
-    background-color:               @bg2;
-    text-color:                     #FFFFFF;
-    placeholder-color:              #FFFFFF;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search...";
-    padding:                        10px;
-    border-radius:                  0px 0px 0px 0px;
-    blink:                          true;
+    background-color: @bg2;
+    text-color: #FFFFFF;
+    placeholder-color: #FFFFFF;
+    expand: true;
+    horizontal-align: 0;
+    placeholder: "Search...";
+    padding: 10px;
+    border-radius: 0px 0px 0px 0px;
+    blink: true;
 }
 
 inputbar {
-	children: 						[ textbox-prompt-colon, prompt ];
-    background-color:               @fg;
-    text-color:                     @bg;
-    expand:                         false;
-	border:							0px;
-    border-radius:                  0px 0px 2px 2px;
-	border-color:					@ac;
-    spacing:                        0px;
+    children: [ textbox-prompt-colon, prompt ];
+    background-color: @fg;
+    text-color: @bg;
+    expand: false;
+    border: 0px;
+    border-radius: 0px 0px 2px 2px;
+    border-color: @ac;
+    spacing: 0px;
 }
 
 listview {
-    background-color:               @bg;
-    padding:                        10px 10px 10px 10px;
-    columns:                        1;
-    lines:                          5;
-    spacing:                        5px;
-    cycle:                          true;
-    dynamic:                        true;
-    layout:                         vertical;
+    background-color: @bg;
+    padding: 10px 10px 10px 10px;
+    columns: 1;
+    lines: 5;
+    spacing: 5px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
 }
 
 mainbox {
-    background-color:               @bg;
-	border:							0px;
-    border-radius:                  0px;
-	border-color:					@bg4;
-    children:                       [ inputbar, listview ];
-    spacing:                       	0px;
-    padding:                        0px;
+    background-color: @bg;
+    border: 0px;
+    border-radius: 0px;
+    border-color: @bg4;
+    children: [ inputbar, listview ];
+    spacing: 0px;
+    padding: 0px;
 }
 
 element {
-    background-color:               @bg;
-    text-color:                     @fg;
-    orientation:                    horizontal;
-    border-radius:                  0px;
-    padding:                        6px 6px 6px -20px;
+    background-color: @bg;
+    text-color: @fg;
+    orientation: horizontal;
+    border-radius: 0px;
+    padding: 6px 6px 6px -20px;
 }
 
 element-icon {
-    size:                           24px;
-    border:                         0px;
+    background-color: inherit;
+    text-color: inherit;
+    size: 24px;
+    border: 0px;
 }
 
 element-text {
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0.5;
-    margin:                         0px 2.5px 0px 2.5px;
+    background-color: inherit;
+    text-color: inherit;
+    expand: true;
+    horizontal-align: 0;
+    vertical-align: 0.5;
+    margin: 0px 2.5px 0px 2.5px;
 }
 
 element selected {
-    background-color:               @al;
-    text-color:                     @bg1;
-	border:							0px 0px 0px 0px;
-    border-radius:                  2px;
-    border-color:                  	@bg1;
+    background-color: @al;
+    text-color: @bg1;
+    border: 0px 0px 0px 0px;
+    border-radius: 2px;
+    border-color: @bg1;
 }
