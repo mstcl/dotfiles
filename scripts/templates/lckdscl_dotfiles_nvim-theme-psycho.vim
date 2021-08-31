@@ -1,1 +1,0 @@
-/home/lckdscl/dotfiles/nvim-theme-psycho.vim

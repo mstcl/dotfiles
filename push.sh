@@ -15,9 +15,11 @@ cp $USERSTYLEDIR/template.user.css $USERSTYLEDIR/pywal.user.css
 cat "$CSS" >> "$USERSTYLEDIR/pywal.user.css" && echo "}" >> $USERSTYLEDIR/pywal.user.css
 echo "  -> Done."
 echo "==> Copying wpgtk templates..."
+mv $SCRIPTDIR/templates $HOME/.local/share/Trash/files/
 cp -R $HOME/.config/wpg/templates $SCRIPTDIR
 echo "  -> Done."
 echo "==> Copying scripts to repository"
+mv $DOTDIR/scripts $HOME/.local/share/Trash/files/
 cp -R $SCRIPTDIR $DOTDIR
 echo "  -> Done."
 echo "==> Changing working directory and performing git actions..."

@@ -1,5 +1,0 @@
-#!/bin/bash
-current_dir=$PWD
-cd $HOME/wiki
-$HOME/.local/bin/mkdocs serve &>/dev/null &
-cd $current_dir

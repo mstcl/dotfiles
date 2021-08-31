@@ -1,9 +1,0 @@
-#!/usr/bin/sh
-if (($(ps -aux | grep picom | wc -l) > 1))
-then
-    polybar-msg hook picom 1
-    pkill -9 picom
-else
-    polybar-msg hook picom 2
-    picom -b
-fi
