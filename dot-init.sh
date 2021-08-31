@@ -9,7 +9,7 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHTGRAY='\033[0;37m'
-DARKGRAY='\033[1;30m'
+DARKGRAY='\033[1;90m'
 LIGHTRED='\033[1;31m'
 LIGHTGREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -18,7 +18,6 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
-cat .bpytop-replace.conf > bpytop.conf
 cat .termshark-replace.toml > termshark.toml
 
 # Main
@@ -42,29 +41,21 @@ do
         else
             DEST="$HOME/$(get_dest "$FILE")"
         fi
-        echo -e "${LIGHTGRAY}-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-${NOCOLOR}"
-        echo -e "${BLUE}[SOURCE] ${LIGHTBLUE}$FILE${NOCOLOR}"
-        echo -e "${CYAN}[DESTINATION] ${LIGHTCYAN}$DEST${NOCOLOR}"
-        echo -e "${LIGHTGRAY}==-==-==-==-==-==-==-==-==-==-==-==${NOCOLOR}"
+        FOLDER=$( echo "$DEST" | grep -o '^.*\/')
+        FILENAME=$( echo "$DEST" | grep -o '[^\/]*$')
+        echo -e ""
         if [[ -f "$DEST" ]];
         then
-            echo -e "${WHITE}--> ${YELLOW}File exists, moving to ${LIGHTRED}$DEST.old${NOCOLOR}"
-            mv "$DEST" "$DEST.old"
-            echo -e "${WHITE}--> ${LIGHTGREEN}Creating symlink${NOCOLOR}"
+            echo -e "${DARKGRAY}--> ${YELLOW}File exists, moving to ${LIGHTRED}$DEST.old${NOCOLOR}"
+            mv "$DEST" "$FOLDER/.$FILENAME.old"
+            echo -e "${DARKGRAY}--> ${LIGHTGREEN}Creating symlink${NOCOLOR}"
             ln -s $FILE $DEST
-            echo -e "${WHITE}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
+            echo -e "${DARKGRAY}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
         else
-            echo -e "${WHITE}--> ${LIGHTGREEN}File doesn't exist, creating symlink...${NOCOLOR}"
+            echo -e "${DARKGRAY}--> ${LIGHTGREEN}File doesn't exist, creating symlink...${NOCOLOR}"
+            mkdir -p $FOLDER
             ln -s $FILE $DEST
-            echo -e "${WHITE}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
+            echo -e "${DARKGRAY}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
         fi
     fi
 done
-
-#for FILE in $DOT_DIR/*
-#do
-#    if [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push" ] && [ "${FILE}" != "$DOT_DIR/dot-init" ]
-#    then
-#        echo "$FILE"
-#    fi
-#done
