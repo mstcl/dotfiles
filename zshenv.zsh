@@ -14,6 +14,7 @@ export IPFS_PATH="$XDG_DATA_HOME"/ipfs
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export STACK_ROOT="$XDG_DATA_HOME"/stack
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
