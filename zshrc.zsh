@@ -192,27 +192,30 @@ done'
 alias edir='rm -rfvi'
 alias etrash='rm -rfv $TRASH/*'
 # Auto color
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias diff='diff --color=auto'
-alias ip='ip --color=auto'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=always'
+alias diff='diff --color=always'
+alias ip='ip --color=always'
 # Create new directory
 alias md="mkdir -p"
 # Protonvpn with sudo
 alias protonvpn='sudo protonvpn'
-# Kill pid
+# Kill pid and killall
 alias k='kill -9'
+alias ka='killall'
 # View svg with feh
 alias fsvg="feh --conversion-timeout 4"
 # View image with feh
 alias view='feh -Z -. -X -g 1280x720'
-# Quickly return home
-alias .!='cd $HOME'
 # Update mirror
 alias get-mirror='systemctl start reflector'
 # Vim habits
 alias q='exit'
+# Other one letter aliases
+alias t='touch'
+alias l='lsblk'
+alias b='bat'
 # Time zsh startup
 alias ztime='time zsh -i -c exit'
 # Stop fucking cluttering my home
@@ -228,8 +231,20 @@ alias lla='exa -l --icons --color=always --group-directories-first -h --git -a'
 # Git commands
 alias gs='git status'
 alias gr='git remote -v'
+alias gd='git diff'
+alias gi='git init'
+alias gp='git push'
+alias ga='git add'
+alias gf='git fetch'
+alias gra='git remote add origin git@github.com:hhn-pham/"$1".git'
+alias gcm='git commit -m "$1"'
+alias gl='git log'
+alias gaa='git add --all'
+alias gpl='git pull'
+alias gpu='git push -u origin main'
+alias gc='git clone'
 # Find files to edit
-alias fv='nvim $(fzf --height 40% --preview-window=nohidden --height=50% --border=sharp --margin=5%,7% --layout=reverse --marker="++" --prompt=" " --preview="bat --line-range :500 {}")'
+alias fv='nv $(fzf --height 40% --preview-window=nohidden --height=50% --border=sharp --margin=5%,7% --layout=reverse --marker="++" --prompt=" " --preview="bat --line-range :500 {}")'
 # Tile current wallpaper
 alias tilewall='feh --bg-tile ~/.config/wpg/.current'
 # Sudo commands
@@ -238,8 +253,14 @@ alias sue='sudo -E $1'
 # I don't want to fuck my system up
 alias mv='mv -iv'
 alias rm='rm -iv'
+alias cp='cp -iv'
+alias ln='ln -iv'
 alias rmf='rm -rfvi'
 alias rmv='trash-put'
+# Preserve root
+chown='chown --preserve-root'
+chmod='chmod --preserve-root'
+chgrp='chgrp --preserve-root'
 # Weather
 alias wth='_weather() { curl -s wttr.in/“${1:-bristol}” | head -n 7 ;}; _weather'
 # Paru helper
