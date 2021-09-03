@@ -72,7 +72,7 @@ autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldme
 augroup MDoptions
     autocmd!
     autocmd BufNewFile,BufRead *.md set nolist
-    autocmd BufNewFile,BufRead *.md nnoremap <silent> <buffer> <C-K> :execute 'syn region markdownStrike matchgroup=markdownStrikeDelimiter start="\%(\~\~\)" end="\%(\~\~\)"' . ' concealends'<CR>
+    autocmd BufNewFile,BufRead *.md nnoremap <silent> <buffer> <C-M> :execute 'syn region markdownStrike matchgroup=markdownStrikeDelimiter start="\%(\~\~\)" end="\%(\~\~\)"' . ' concealends'<CR>
 augroup END
 " }}}
 " Tex options {{{
@@ -178,7 +178,7 @@ set noruler
 " Folding {{{
 set foldmethod=indent
 set nofoldenable
-set foldcolumn=4
+set foldcolumn=0
 " }}}
 " Editing {{{
 set wrap
