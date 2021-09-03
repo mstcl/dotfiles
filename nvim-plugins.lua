@@ -83,7 +83,7 @@ return require('packer').startup {
     -- }}}
     -- BARBAR: fancy buffer bar {{{
         use {
-            'romgrk/barbar.nvim',
+            'JA-Bar/barbar.nvim',
             event = 'BufEnter',
             wants = 'nvim-web-devicons',
             requires = {
@@ -666,7 +666,7 @@ return require('packer').startup {
                     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
                     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
                     buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-                    buf_set_keymap('n', '<LocalLeader>x', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+                    buf_set_keymap('n', '<Leader>x', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
                     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
                     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
                 end
@@ -752,7 +752,30 @@ return require('packer').startup {
                         },
                     }
                 }
-                local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+                require("grammar-guard").init()
+                require("lspconfig").grammar_guard.setup({
+                    on_attach = on_attach,
+                    flags = {
+                        debounce_text_changes = 150,
+                    },
+                    settings = {
+                        ltex = {
+                            enabled = { "latex", "tex", "bib", "markdown" },
+                            language = "en-GB",
+                            diagnosticSeverity = "information",
+                            setenceCacheSize = 2000,
+                            additionalRules = {
+                                enablePickyRules = true,
+                                motherTongue = "en-GB",
+                            },
+                            trace = { server = "verbose" },
+                            dictionary = {},
+                            disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S'}},
+                            hiddenFalsePositives = {},
+                        },
+                    },
+                })
+                local signs = { Error = "  ", Warning = "  ", Hint = "  ", Information = "  " }
                 for type, icon in pairs(signs) do
                     local hl = "LspDiagnosticsSign" .. type
                     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -766,6 +789,12 @@ return require('packer').startup {
             end
         }
     --- }}}
+    -- GRAMMAR GUARD: lsp for latex and markdown {{{
+        use {
+            "brymer-meneses/grammar-guard.nvim",
+            wants = "nvim-lspconfig",
+        }
+    -- }}}
     -- TS-RAINBOW: treesitter rainbow parentheses {{{
         use {
             'p00f/nvim-ts-rainbow',
@@ -881,31 +910,6 @@ return require('packer').startup {
                 require('spellsitter').setup {
                     hl = 'SpellBad',
                     captures = {'comment'},
-                }
-            end
-        }
-    -- }}}
-    -- SPECS: fancy cursor animation when skipping big lines {{{
-        use {
-            'edluffy/specs.nvim',
-            event = 'CursorMoved',
-            config = function ()
-                require('specs').setup{
-                    show_jumps  = true,
-                    min_jump = 30,
-                    popup = {
-                        delay_ms = 0,
-                        inc_ms = 5,
-                        blend = 10,
-                        width = 16,
-                        winhl = "ColorColumn",
-                        fader = require('specs').pulse_fader,
-                        resizer = require('specs').shrink_resizer
-                    },
-                    ignore_filetypes = {},
-                    ignore_buftypes = {
-                        nofile = true,
-                    },
                 }
             end
         }
@@ -1134,6 +1138,16 @@ return require('packer').startup {
             }
         }
     -- }}}
+    -- FOLDSIGNS: LSP signs for folded code {{{
+        use {
+            'lewis6991/foldsigns.nvim',
+            event='BufRead',
+            config = function()
+                require('foldsigns').setup {
+                exclude = {'LspDiagnosticsSignWarning'},
+            }
+            end
+        }
         end,
     -- PACKER OPTIONS {{{
     config = {
