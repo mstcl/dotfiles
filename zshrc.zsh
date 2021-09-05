@@ -14,47 +14,57 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 # }}}
 # BINDKEY {{{
-# Emacs style keybindings because I want speed in cmdline
+# Emacs style keybindings because I want speed in cmdline {{{
 bindkey -e
-# Edit line in vim with ctrl-e:
+# }}}
+# Edit line in vim with ctrl-e {{{
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^[e' edit-command-line
 bindkey '^b' backward-word
 bindkey '^f' forward-word
 # }}}
+# }}}
 # GENERAL OPTIONS {{{
-# Change directory with name
+# Change directory with name {{{
 setopt autocd
-# Allow comments in interactive mode
+# }}}
+# Allow comments in interactive mode {{{
 setopt interactivecomments
-# Enable filename expansion for 'x=y'
+# }}}
+# Enable filename expansion for 'x=y' {{{
 setopt magicequalsubst
-# Hide error message when there is no match
+# }}}
+# Hide error message when there is no match {{{
 setopt nonomatch
-# Sort filenames numerically
+# }}}
+# Sort filenames numerically {{{
 setopt numericglobsort
-# Don't consider as parts of word
+# }}}
+# Don't consider as parts of word {{{
 export WORDCHARS=${WORDCHARS//\/}
-# Hide EOL character
+# }}}
+# Hide EOL character {{{
 PROMPT_EOL_MARK=""
-# Change sudo prompt
+# }}}
+# Change sudo prompt {{{
 export SUDO_PROMPT=" Password: "
-# Man pages
+# }}}
+# Man pages {{{
 export PAGER="nvim -R"
 export MANPAGER="nvim -c 'set ft=man' -"
-# Auto-title naming
+# }}}
+# Auto-title naming {{{
 ZSH_TAB_TITLE_ONLY_FOLDER=true
 ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
 ZSH_TAB_TITLE_ENABLE_FULL_COMMAND=false
 # }}}
+# }}}
 # ANTIGEN {{{
-# Get plugins and themes
 source /usr/share/zsh/share/antigen.zsh
 antigen bundles <<EOBUNDLES
     trystan2k/zsh-tab-title
 EOBUNDLES
-# antigen theme spaceship-prompt/spaceship-prompt
 antigen apply
 # }}}
 # SAUCE {{{
@@ -67,6 +77,7 @@ source $HOME/scripts/other/fzf-tab-completion.zsh
 source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 # }}}
 # ZOXIDE SETUP {{{
 eval "$(zoxide init zsh)"
@@ -83,37 +94,6 @@ setopt hist_ignore_space
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 # }}}
-# SPACESHIP PROMPT {{{
-# Left prompt
-# export SPACESHIP_PROMPT_ORDER=(
-#     user
-#     dir
-#     host
-#     char
-# )
-# # Right prompt
-# export SPACESHIP_RPROMPT_ORDER=(
-#     git
-#     docker
-#     exec_time
-#     jobs
-# )
-# export SPACESHIP_CHAR_SYMBOL="%F{red}$"
-# # export SPACESHIP_CHAR_SYMBOL="%F{red}$"
-# export SPACESHIP_CHAR_SUFFIX=" "
-# export SPACESHIP_GIT_BRANCH_PREFIX=" "
-# export SPACESHIP_GIT_STATUS_AHEAD=""
-# export SPACESHIP_GIT_STATUS_BEHIND=""
-# export SPACESHIP_CHAR_SYMBOL_SECONDARY="%F{red} "
-# export SPACESHIP_PROMPT_ADD_NEWLINE=false
-# export SPACESHIP_PROMPT_SEPARATE_LINE=false
-# export SPACESHIP_GIT_BRANCH_COLOR="yellow"
-# export SPACESHIP_GIT_STATUS_COLOR="yellow"
-# export SPACESHIP_GIT_STATUS_ADDED="%F{yellow}+%F{yellow}"
-# export SPACESHIP_GIT_STATUS_UNTRACKED="%F{blue}?%F{yellow}"
-# export SPACESHIP_GIT_STATUS_DELETED="%F{red}%F{yellow}"
-# export SPACESHIP_GIT_STATUS_MODIFIED="%F{green}!%F{yellow}"
-# }}}
 # AUTOSUGGESTION {{{
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
 export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
@@ -125,7 +105,6 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 )
 # }}}
 # DIR VARIABLES {{{
-# Custom directories I use often
 export CONF="$XDG_CONFIG_HOME"
 export DOTS="$HOME"/dotfiles
 export TRASH="$XDG_DATA_HOME"/Trash/files
@@ -159,7 +138,7 @@ export LS_COLORS="BLK=38;5;68:CAPABILITY=38;5;17:CHR=38;5;113;1:DIR=38;5;30:DOOR
 # }}}
 # }}}
 # FZF VARIABLES {{{
-# Default command
+# Default command {{{
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' -g '!{BraveSoftware}' -g '!{discord}' -g '!{BetterDiscord}' 2> /dev/null'
 export FZF_DEFAULT_OPTS="
     --color fg:8,bg:0,hl:1,fg+:7,bg+:0,hl+:9,gutter:0
@@ -175,32 +154,36 @@ export FZF_DEFAULT_OPTS="
     --info=default
     --multi --bind 'ctrl-a:select-all'
     --bind '?:toggle-preview'"
-# Ctrl-R
+# }}}
+# Ctrl-R {{{
 export FZF_CTRL_R_OPTS="
     --height 50%
     --info=hidden
     --prompt=' '
     --preview-window hidden"
-# Ctrl-T
+# }}}
+# Ctrl-T {{{
 export FZF_CTRL_T_COMMAND='rg --files --no-ignore --follow -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' -g '!{BraveSoftware}' -g '!{discord}' -g '!{BetterDiscord}' 2> /dev/null'
 export FZF_CTRL_T_OPTS="
     --preview-window nohidden
     --height 80%
     --prompt=' '
     --preview 'bat --line-range :500 {}'"
-# Alt-C
+# }}}
+# Alt-C {{{
 export FZF_ALT_C_OPTS="
     --prompt='נּ '
     --height 80%
     --preview 'tree -C {} | head -200'
     --preview-window nohidden"
-# Completion.zsh
+# }}}
+# Completion.zsh {{{
 export FZF_COMPLETION_OPTS="
     --info=default
     --height 80%
     --preview-window hidden"
-
-# Fzf-tab-completion options
+# }}}
+# Fzf-tab-completion options {{{
 zstyle ':completion::*:nvim::*' fzf-completion-opts --preview='eval bat {1}'
 zstyle ':completion::*:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-completion-opts --preview='eval eval echo {1}'
 zstyle ':completion::*:git::git,add,*' fzf-completion-opts --preview='git -c color.status=always status --short'
@@ -209,6 +192,7 @@ eval set -- {+1}
 for arg in "$@"; do
     { git diff --color=always -- "$arg" | git log --color=always "$arg" } 2>/dev/null
 done'
+# }}}
 # }}}
 # ALIASES {{{
 # Empty directory but keep directory (need /*) {{{
@@ -377,7 +361,7 @@ function mkcd
 # Git commit {{{
 gcm() {
     echo -e "Enter commit message:"
-    messages=""
+    message=""
     while [ -z "$message" ]
     do
         IFS= read -r message
@@ -385,6 +369,7 @@ gcm() {
         sleep 1
     done
     git commit -m "$message"
+    message=""
 }
 # }}}
 # Change fzf-completion commands {{{
@@ -416,6 +401,3 @@ function cheat() {
 }
 # }}}
 # }}}
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
