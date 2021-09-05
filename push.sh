@@ -44,7 +44,7 @@ if [[ "$prompt" == "y" ]]
 then
     echo -e "${DARKGRAY}==>${YELLOW} Changing working directory and performing git actions..."
     cd $DOTDIR
-    echo -e "${DARKGRAY}==>${YELLOW} Printing git status..."
+    echo -e "${DARKGRAY}==>${YELLOW} Printing git status...${NOCOLOR}"
     git status
     message=""
     echo -e "${DARKGRAY}==>${YELLOW} Enter commit message...${WHITE}"
@@ -54,6 +54,7 @@ then
         wait
         sleep 1
     done
+    echo -e "${NOCOLOR}"
     git add . && git commit -m "$message"
     git push -u origin main
     git push backup main
