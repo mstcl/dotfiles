@@ -1,12 +1,16 @@
 # :.zshenv
 # ENVIRONMENTAL VARIABLES
-export DIFFPROG=nvim
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-export ZDOTDIR="$HOME"/.config/zsh
 export LANG=en_GB.UTF-8
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
+# ------------------------------------
+export VIT_DIR="$XDG_CONFIG_HOME"/vit
+export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
+export TASKDATA="$HOME"/task
+export DIFFPROG=nvim
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export ENABLE_VKBASALT=0
 export MANGOHUD=0
