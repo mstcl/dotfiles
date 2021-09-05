@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Colors
 NOCOLOR='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -20,7 +19,6 @@ WHITE='\033[1;37m'
 
 cat .termshark-replace.toml > termshark.toml
 
-# Main
 export HOME
 DOT_DIR="$HOME/dotfiles"
 function get_dest {
@@ -33,7 +31,7 @@ function get_dest_alt {
 
 for FILE in $DOT_DIR/*
 do
-    if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push.sh" ] && [ "${FILE}" != "$DOT_DIR/dot-init.sh" ] && [ "${FILE}" != "$DOT_DIR/ultisnips" ] && [ "${FILE}" != "$DOT_DIR/scripts" ] && [ "${FILE}" != "$DOT_DIR/screenshots" ]
+    if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push.sh" ] && [ "${FILE}" != "$DOT_DIR/dot-init.sh" ] && [ "${FILE}" != "$DOT_DIR/ultisnips" ] && [ "${FILE}" != "$DOT_DIR/scripts" ] && [ "${FILE}" != "$DOT_DIR/screenshots" ] && [ "${FILE}" != "$DOT_DIR/taskwarrior-redacted.taskrc" ] && [ "${FILE}" != "$DOT_DIR/vdirsyncer-redacted.ini" ]
     then
         if [[ "${FILE}" == "$DOT_DIR"/fontconfig* ]] || [[ "${FILE}" == "$DOT_DIR"/*.tmTheme ]]
         then
@@ -43,16 +41,16 @@ do
         fi
         FOLDER=$( echo "$DEST" | grep -o '^.*\/')
         FILENAME=$( echo "$DEST" | grep -o '[^\/]*$')
-        echo -e ""
+        # echo -e ""
         if [[ -f "$DEST" ]];
         then
-            echo -e "${DARKGRAY}--> ${YELLOW}File exists, moving to ${LIGHTRED}$DEST.old${NOCOLOR}"
+            echo -e "${DARKGRAY}--> ${YELLOW}File exists, backing up as ${LIGHTRED}$FOLDER.$FILENAME.old${YELLOW} before symlinking${NOCOLOR}."
             mv "$DEST" "$FOLDER/.$FILENAME.old"
-            echo -e "${DARKGRAY}--> ${LIGHTGREEN}Creating symlink${NOCOLOR}"
+            # echo -e "${DARKGRAY}--> ${LIGHTGREEN}Creating symlink${NOCOLOR}"
             ln -s $FILE $DEST
-            echo -e "${DARKGRAY}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
+            # echo -e "${DARKGRAY}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
         else
-            echo -e "${DARKGRAY}--> ${LIGHTGREEN}File doesn't exist, creating symlink...${NOCOLOR}"
+            echo -e "${DARKGRAY}--> ${LIGHTGREEN}File doesn't exist, creating symlink to ${LIGHTRED}$DEST${NOCOLOR}."
             mkdir -p $FOLDER
             ln -s $FILE $DEST
             echo -e "${DARKGRAY}--> ${GREEN}Done ✓${NOCOLOR}${NOCOLOR}"
