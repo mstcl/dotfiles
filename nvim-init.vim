@@ -396,6 +396,7 @@ function! FoldColumnToggle()
 endfunction
 " }}}
 " Leader b {{{
+" Telescope buffer
 nnoremap <silent> <Leader>b  :Telescope buffers<CR>
 " }}}
 " Leader c {{{
@@ -407,21 +408,18 @@ nnoremap <silent> <Leader>c  :ColorizerToggle<CR>
 nnoremap <silent> <Leader>d  :Dashboard<CR>
 "}}}
 " Leader e (empty) {{{
-
 " }}}
 " Leader f {{{
-" Some telescope maps
+" Telescope find files
 nnoremap <silent> <Leader>f  :Telescope find_files<CR>
 " }}}
 " Leader g {{{
 " Toggle git signs
 nnoremap <silent> <Leader>gl :Gitsigns toggle_signs<CR>
-
 " Telescope git stuff
 nnoremap <silent> <Leader>gb :Telescope git_commits<CR>
 nnoremap <silent> <Leader>gc :Telescope git_bcommits<CR>
 nnoremap <silent> <Leader>gs :Telescope git_status<CR>
-
 " Preview hunks
 nnoremap <silent> <Leader>gh :Gitsigns preview_hunk<CR>
 " }}}
@@ -437,6 +435,7 @@ nnoremap <silent> <Leader>i  :IndentBlanklineToggle<CR>
 
 " }}}
 " Leader k {{{
+" Telescope chdir using zoxide
 nnoremap <silent> <Leader>k :Telescope zoxide list<CR>
 " }}}
 " Leader l  {{{
@@ -465,6 +464,8 @@ nnoremap <silent> <Leader>pc :PackerCompile<CR>
 " Leader q {{{
 " }}}
 " Leader r (empty) {{{
+" Resume last picker
+nnoremap <silent> <Leader>e  :Telescope resume<CR>
 " }}}
 " Leader s {{{
 " New split
@@ -491,6 +492,7 @@ nnoremap <silent> <Leader>vh :TSBufToggle highlight<CR>
 nnoremap <silent> <leader>w  :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " }}}
 " Leader y {{{
+" Telescope browse files
 nnoremap <silent> <Leader>y  :Telescope file_browser<CR>
 " }}}
 " Leader z {{{
@@ -504,7 +506,6 @@ nnoremap <silent> <Leader><space> <C-^>
 " Leader slash {{{
 " Disable search highlighting, update diffs and redraw the screen (from vim-galore)
 nnoremap <silent> <Leader>\  :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
-
 " Telescope grep
 nnoremap <silent> <leader>/  :Telescope live_grep<CR>
 " }}}
