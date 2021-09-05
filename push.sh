@@ -38,7 +38,7 @@ cp -R $SCRIPTDIR $DOTDIR
 echo -e "${DARKGRAY}  ->${GREEN} Done."
 echo -e "${DARKGRAY}==>${YELLOW} Would you like to perform git actions now? [y/n]${WHITE}"
 sleep 1
-read -p "Answer: " $prompt
+read -p "Answer: " prompt
 sleep 1
 if [[ "$prompt" == "y" ]]
 then
