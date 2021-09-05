@@ -7,6 +7,12 @@ repeat = "off"
 flip_status_indicators = true
 command_key = " "
 
+[keybindings]
+"Ctrl+u" = "move up 5"
+"Ctrl+d" = "move down 5"
+"g" = "move top"
+"G" = "move bottom"
+
 [theme]
 background = "black"
 primary = "light black"
