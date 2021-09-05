@@ -137,30 +137,30 @@
     if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
       local branch=${(V)VCS_STATUS_LOCAL_BRANCH}
       (( $#branch > 32 )) && branch[13,-13]="…"  # <-- this line
-      res+="${clean}${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%} "
+      res+="${clean}${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%}"
     fi
     if [[ -n $VCS_STATUS_TAG
           && -z $VCS_STATUS_LOCAL_BRANCH  # <-- this line
         ]]; then
       local tag=${(V)VCS_STATUS_TAG}
       (( $#tag > 32 )) && tag[13,-13]="…"  # <-- this line
-      res+="${meta}#${clean}${tag//\%/%%} "
+      res+="${meta}#${clean}${tag//\%/%%}"
     fi
     [[ -z $VCS_STATUS_LOCAL_BRANCH && -z $VCS_STATUS_TAG ]] &&  # <-- this line
-      res+="${meta}@${clean}${VCS_STATUS_COMMIT[1,8]} "
+      res+="${meta}@${clean}${VCS_STATUS_COMMIT[1,8]}"
     if [[ -n ${VCS_STATUS_REMOTE_BRANCH:#$VCS_STATUS_LOCAL_BRANCH} ]]; then
-      res+="${meta}:${clean}${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%} "
+      res+="${meta}:${clean}${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
     fi
     if [[ $VCS_STATUS_COMMIT_SUMMARY == (|*[^[:alnum:]])(wip|WIP)(|[^[:alnum:]]*) ]]; then
       res+="${modified}❋ "
     fi
-    (( VCS_STATUS_STASHES        )) && res+="${clean}*"
-    [[ -n $VCS_STATUS_ACTION     ]] && res+="${conflicted}${VCS_STATUS_ACTION}"
-    (( VCS_STATUS_NUM_CONFLICTED )) && res+="${conflicted}•"
-    (( VCS_STATUS_NUM_STAGED     )) && res+="${clean}•"
-    (( VCS_STATUS_NUM_UNSTAGED   )) && res+="${modified}•"
-    (( VCS_STATUS_NUM_UNTRACKED  )) && res+="${untracked}${(g::)POWERLEVEL9K_VCS_UNTRACKED_ICON}"
-    (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+="${modified}─"
+    (( VCS_STATUS_STASHES        )) && res+=" ${clean}*"
+    [[ -n $VCS_STATUS_ACTION     ]] && res+=" ${conflicted}${VCS_STATUS_ACTION}"
+    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted}•"
+    (( VCS_STATUS_NUM_STAGED     )) && res+=" ${clean}•"
+    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}•"
+    (( VCS_STATUS_NUM_UNTRACKED  )) && res+=" ${untracked}${(g::)POWERLEVEL9K_VCS_UNTRACKED_ICON}"
+    (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}─"
     typeset -g my_git_format=$res
   }
   functions -M my_git_formatter 2>/dev/null
