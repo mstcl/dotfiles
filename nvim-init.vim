@@ -84,8 +84,8 @@ augroup END
 " Enable indent-blankline for some filetypes only {{{
 augroup IndentFT
     autocmd!
-    autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,yaml,xml,cfg,dosini} silent! IndentBlanklineEnable
-    autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,yaml,xml,cfg,dosini} nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm zm:IndentBlanklineRefresh<CR> | nnoremap <silent> zM zM:IndentBlanklineRefresh<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr zr:IndentBlanklineRefresh<CR> | nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
+    autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,yaml,xml,cfg,dosini} silent! IndentBlanklineEnable
+    autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,yaml,xml,cfg,dosini} nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm zm:IndentBlanklineRefresh<CR> | nnoremap <silent> zM zM:IndentBlanklineRefresh<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr zr:IndentBlanklineRefresh<CR> | nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
 augroup end
 " }}}
 " Autochdir {{{
@@ -105,9 +105,15 @@ function! ProcessSearch(timerid)
     exe 'match IncSearch /' . l:patt . '/'
 endfunc
 " }}}
-" Insert only settings {{{
-" autocmd InsertLeave,WinEnter * set cursorline
-" autocmd InsertEnter,WinLeave * set nocursorline
+" Insert only {{{
+autocmd InsertLeave,WinEnter *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,latex,yaml,xml,cfg,dosini} set cursorline
+autocmd InsertEnter,WinLeave *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,latex,yaml,xml,cfg,dosini} set nocursorline
+" }}}
+" For bash files {{{
+augroup ZSHoptions
+    autocmd!
+    autocmd InsertLeave,BufNew,WinEnter,BufNewFile,BufEnter *.zsh TSBufDisable highlight
+augroup END
 " }}}
 " Wilder autocommand and setup {{{
 autocmd CmdlineEnter * ++once call s:wilder_init()
