@@ -21,7 +21,6 @@ LIGHTBLUE='\033[1;34m'
 LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
-cat .bpytop-replace.conf > bpytop.conf
 cat .termshark-replace.toml > termshark.toml
 
 echo -e "${DARKGRAY}==>${YELLOW} Copying nvim snippets... "
