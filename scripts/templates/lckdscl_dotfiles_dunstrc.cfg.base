@@ -1,4 +1,4 @@
-# .config/dunst/dunstrc
+# :.config/dunst/dunstrc
 
 [global]
     ### Display ###
@@ -37,7 +37,7 @@
     ignore_newline = no
     stack_duplicates = true
     hide_duplicate_count = false
-    show_indicators = false
+    show_indicators = true
 
     ### Icons ###
     icon_position = off
@@ -58,7 +58,7 @@
     startup_notification = false
     verbosity = crit
     corner_radius = 2
-    ignore_dbusclose = true
+    ignore_dbusclose = false
 
     ### Wayland ###
     force_xwayland = false

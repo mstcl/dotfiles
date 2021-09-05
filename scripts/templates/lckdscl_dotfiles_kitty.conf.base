@@ -99,7 +99,7 @@ color15      {color15}
 # ]]]
 # Advanced [[[
 allow_remote_control yes
-listen_on unix:/tmp/kitty
+scrollback_pager nvim -R -c "set norelativenumber nonumber nolist signcolumn=no showtabline=0 foldcolumn=0" -c "autocmd TermOpen * normal G" -c "autocmd TermClose * :!rm /tmp/kitty_scrollback_buffer" -c "silent! write /tmp/kitty_scrollback_buffer | terminal cat /tmp/kitty_scrollback_buffer -"
 # ]]]
 # OS specific tweaks [[[
 linux_display_server auto

@@ -44,11 +44,13 @@ module-margin-right = 1
 ;; Fonts
 font-0 = "{font0}:style=Medium:pixelsize={font-size};3"
 font-1 = "{font0}:pixelsize={font-size-icon};3"
+font-2 = "Noto Sans:pixelsize=12;3"
+font-3 = "WenQuanYi Zen Hei Mono:pixelsize=12;3"
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; Modules
 modules-left = date player
 modules-center = i3
-modules-right = lang notifications picom updates pulseaudio
+modules-right = lang notifications picom taskwarrior updates pulseaudio
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; General
 separator =
