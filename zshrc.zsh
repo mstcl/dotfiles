@@ -365,7 +365,7 @@ function mkcd
 # Git commit {{{
 gcm() {
     echo -e "Enter commit message:"
-    messages=""
+    message=""
     while [ -z "$message" ]
     do
         IFS= read -r message
@@ -373,7 +373,7 @@ gcm() {
         sleep 1
     done
     git commit -m "$message"
-    messages=""
+    message=""
 }
 # }}}
 # Change fzf-completion commands {{{
