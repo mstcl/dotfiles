@@ -468,7 +468,7 @@ return require('packer').startup {
             event = "BufRead",
             config = function()
                 require'nvim-treesitter.configs'.setup {
-                    ensure_installed= {"python","html","cpp","css","vim","latex",'lua'},
+                    ensure_installed= { "python", "html", "cpp", "css", "vim", "latex", "lua", "bash", "toml" },
                     highlight = {
                         enable = true,
                         additional_vim_regex_highlighting = false,
@@ -775,7 +775,7 @@ return require('packer').startup {
                         },
                     },
                 })
-                local signs = { Error = "  ", Warning = "  ", Hint = "  ", Information = "  " }
+                local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
                 for type, icon in pairs(signs) do
                     local hl = "LspDiagnosticsSign" .. type
                     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -1132,7 +1132,6 @@ return require('packer').startup {
             requires = {
                 -- TABULAR: Format pretty tables {{{
                 "godlygeek/tabular",
-                cmd = {"TableFormat"},
                 ft = {"markdown"},
                 -- }}}
             }
