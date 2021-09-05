@@ -37,8 +37,9 @@ echo -e "${DARKGRAY}==>${YELLOW} Copying scripts to repository"
 cp -R $SCRIPTDIR $DOTDIR
 echo -e "${DARKGRAY}  ->${GREEN} Done."
 echo -e "${DARKGRAY}==>${YELLOW} Would you like to perform git actions now? [y/n]${WHITE}"
-prompt=""
+sleep 1
 read -p "Answer: " $prompt
+sleep 1
 if [[ "$prompt" == "y" ]]
 then
     echo -e "${DARKGRAY}==>${YELLOW} Changing working directory and performing git actions..."
