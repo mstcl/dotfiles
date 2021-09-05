@@ -3,9 +3,10 @@
 configuration {
     theme: "~/scripts/rofi/rofi-theme.rasi";
     modi: "window,run,drun";
-    columns: 1;
     location: 0;
-    hide-scrollbar: true;
     disable-history: false;
     window-format: " {w}   {c}   {t}";
+    window {
+        display-name: "Windows";
+    }
 }
