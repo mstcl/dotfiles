@@ -1,7 +1,7 @@
 # :.config/termshark/themes/wal-truecolor.toml
 
 [wal]
-  black = "#101010"
+  black = "#121212"
   base01 = "#b67262"
   base02 = "#8a9273"
   base03 = "#c0a474"
