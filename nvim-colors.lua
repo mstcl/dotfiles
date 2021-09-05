@@ -2,7 +2,7 @@
 local Color = require('colorbuddy.color').Color
 
 Color.new('white', '#e6e6e6')
-Color.new('black', '#101010')
+Color.new('black', '#121212')
 Color.new('lightblack', '#353535')
 Color.new('very_pale_yellow', '#c3ae8b')
 Color.new('darkblack', '#0d0d0d')
