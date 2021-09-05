@@ -317,6 +317,10 @@ alias plse='paru -Qe'
 alias orf='paru -Qdt'
 alias pcc='paru -Scd'
 # }}}
+# Systemd {{{
+alias sc='sudo systemctl'
+alias scu='sudo systemctl --user'
+# }}}
 # }}}
 # FUNCTIONS {{{
 # Double Escape to sudo current line {{{
@@ -361,7 +365,7 @@ function mkcd
 # Git commit {{{
 gcm() {
     echo -e "Enter commit message:"
-    message=""
+    messages=""
     while [ -z "$message" ]
     do
         IFS= read -r message
@@ -369,7 +373,7 @@ gcm() {
         sleep 1
     done
     git commit -m "$message"
-    message=""
+    messages=""
 }
 # }}}
 # Change fzf-completion commands {{{
