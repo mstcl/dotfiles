@@ -2,8 +2,7 @@
 
 * {
     background-color: @bg;
-    spacing: 2;
-    hide-scrollbar: true;
+    spacing: 1;
     disable-history: false;
 }
 
@@ -97,8 +96,8 @@
     spacing: 0;
     expand: true;
     horizontal-align: 0;
-    placeholder: "...";
-    placeholder-color: @bg;
+    placeholder: "Search...";
+    placeholder-color: @al;
     padding: 12px 10px 10px 10px;
     margin: 0px 250px 0px 0px;
     border-radius: 0px 0px 0px 0px;

@@ -111,7 +111,7 @@
 
   #####################################[ vcs: git status ]######################################
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' '
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='•'
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='▦'
   function my_git_formatter() {
     emulate -L zsh
     if [[ -n $P9K_CONTENT ]]; then
@@ -152,13 +152,13 @@
       res+="${meta}:${clean}${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
     fi
     if [[ $VCS_STATUS_COMMIT_SUMMARY == (|*[^[:alnum:]])(wip|WIP)(|[^[:alnum:]]*) ]]; then
-      res+="${modified}❋ "
+      res+=" ${modified}❋"
     fi
-    (( VCS_STATUS_STASHES        )) && res+=" ${clean}*"
+    (( VCS_STATUS_STASHES        )) && res+=" ${clean}▣"
     [[ -n $VCS_STATUS_ACTION     ]] && res+=" ${conflicted}${VCS_STATUS_ACTION}"
-    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted}•"
-    (( VCS_STATUS_NUM_STAGED     )) && res+=" ${clean}•"
-    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}•"
+    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted}▩"
+    (( VCS_STATUS_NUM_STAGED     )) && res+=" ${clean}▦"
+    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}▦"
     (( VCS_STATUS_NUM_UNTRACKED  )) && res+=" ${untracked}${(g::)POWERLEVEL9K_VCS_UNTRACKED_ICON}"
     (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}─"
     typeset -g my_git_format=$res
