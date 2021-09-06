@@ -31,7 +31,7 @@ function get_dest_alt {
 
 for FILE in $DOT_DIR/*
 do
-    if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push.sh" ] && [ "${FILE}" != "$DOT_DIR/dot-init.sh" ] && [ "${FILE}" != "$DOT_DIR/ultisnips" ] && [ "${FILE}" != "$DOT_DIR/scripts" ] && [ "${FILE}" != "$DOT_DIR/screenshots" ] && [ "${FILE}" != "$DOT_DIR/taskwarrior-redacted.taskrc" ] && [ "${FILE}" != "$DOT_DIR/vdirsyncer-redacted.ini" ]
+    if [ "${FILE}" != "$DOT_DIR/README.md" ] && [ "${FILE}" != "$DOT_DIR/symlinks" ] && [ "${FILE}" != "$DOT_DIR/push.sh" ] && [ "${FILE}" != "$DOT_DIR/dot-init.sh" ] && [ "${FILE}" != "$DOT_DIR/ultisnips" ] && [ "${FILE}" != "$DOT_DIR/scripts" ] && [ "${FILE}" != "$DOT_DIR/screenshots" ] && [ "${FILE}" != "$DOT_DIR/taskwarrior-redacted.taskrc" ] && [ "${FILE}" != "$DOT_DIR/vdirsyncer-redacted.ini" ] && [ "${FILE}" != "$DOT_DIR/redshift-redacted.conf" ]
     then
         if [[ "${FILE}" == "$DOT_DIR"/fontconfig* ]] || [[ "${FILE}" == "$DOT_DIR"/*.tmTheme ]]
         then
