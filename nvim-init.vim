@@ -109,12 +109,6 @@ endfunc
 autocmd InsertLeave,WinEnter *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,latex,yaml,xml,cfg,dosini} set cursorline
 autocmd InsertEnter,WinLeave *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,latex,yaml,xml,cfg,dosini} set nocursorline
 " }}}
-" For bash files {{{
-augroup ZSHoptions
-    autocmd!
-    autocmd InsertLeave,BufNew,WinEnter,BufNewFile,BufEnter *.zsh TSBufDisable highlight
-augroup END
-" }}}
 " Wilder autocommand and setup {{{
 autocmd CmdlineEnter * ++once call s:wilder_init()
 function! s:wilder_init() abort
