@@ -1,16 +1,9 @@
 " :.config/nvim/init.vim
 " vim:set fdm=marker foldenable:
-"+-----------------------------------+
-"|  _       _ _         _            |
-"| (_)_ __ (_) |___   _(_)_ __ ___   |
-"| | | '_ \| | __\ \ / / | '_ ` _ \  |
-"| | | | | | | |_ \ V /| | | | | | | |
-"| |_|_| |_|_|\__(_)_/ |_|_| |_| |_| |
-"|                                   |
-"+-----------------------------------+
+
 " PLUGINS {{{
 " Require plugins.lua {{{
-" lua require('impatient')
+lua require('impatient')
 lua require('plugins')
 " }}}
 " Remove these built-in plugins {{{
@@ -32,7 +25,7 @@ local disabled_built_ins = {
     "2html_plugin",
     "logipat",
     "spellfile_plugin",
-    --"matchit",
+    "matchit",
 }
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
@@ -41,6 +34,14 @@ EOF
 " }}}
 " }}}
 " AUTO-COMMANDS {{{
+function! CleanEmptyBuffers()
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
+    if !empty(buffers)
+        exe 'bw ' . join(buffers, ' ')
+    endif
+endfunction
+autocmd FileType alpha set showtabline=0 | set ft= | autocmd WinLeave <buffer> set showtabline=2
+autocmd WinEnter,BufEnter,BufRead,BufNewFile,VimEnter * if &ft != 'alpha' | set showtabline=2 | call CleanEmptyBuffers() | endif
 " Open a file where it was left off {{{
 if has("autocmd")
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -474,11 +475,10 @@ nnoremap <silent> <Leader>sx :sp<CR>
 " Set spell
 nnoremap <silent> <Leader>sp :setlocal spell! spelllang=en_gb<CR>
 " }}}
-" Leader t {{{
-" Open sidebar
+" Leader t: open sidebar {{{
 nnoremap <silent> <Leader>t  :lua require'tree'.toggle()<CR>
 " }}}
-" Leader u {{{
+" Leader u: undo tree {{{
 " Undotree toggle
 nnoremap <silent> <Leader>u  :UndotreeToggle<CR>
 " }}}
@@ -525,27 +525,5 @@ nnoremap <silent> <LocalLeader>r :Telescope lsp_references<CR>
 " Toggle python3 {{{
 nnoremap <silent> <Leader>j  :<CR>i
 " }}}
-" }}}
-" }}}
-" DASHBOARD ASCII {{{
-" BLOODY {{{
-let g:dashboard_custom_header = [
-\'',
-\'',
-\'',
-\'',
-\'   ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓',
-\'   ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒',
-\'  ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░',
-\'  ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ',
-\'  ▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒',
-\'  ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░',
-\'  ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░',
-\'     ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ',
-\'           ░    ░  ░    ░ ░        ░   ░         ░   ',
-\'                                  ░                  ',
-\'                       v0.5.0                        ',
-\'',
-\]
 " }}}
 " }}}
