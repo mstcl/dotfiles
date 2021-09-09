@@ -1,0 +1,12 @@
+/* :.config/rofi/config.rasi
+*/
+configuration {
+    theme: "~/scripts/rofi/rofi-theme.rasi";
+    modi: "window,drun";
+    fixed-num-lines: false;
+    disable-history: false;
+    window-format: " {w}   {c}   {t}";
+    window {
+        display-name: "Windows";
+    }
+}

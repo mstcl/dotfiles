@@ -1,0 +1,70 @@
+! :.config/X11/Xresources
+! vim:set ft=xdefaults:
+! X colors.
+*foreground:        #e6e6e6
+*background:        #121212
+*.foreground:       #e6e6e6
+*.background:       #121212
+emacs*foreground:   #e6e6e6
+emacs*background:   #121212
+URxvt*foreground:   #e6e6e6
+XTerm*foreground:   #e6e6e6
+UXTerm*foreground:  #e6e6e6
+URxvt*background:   [100]#121212
+XTerm*background:   #121212
+UXTerm*background:  #121212
+URxvt*cursorColor:  #c7c7c7
+XTerm*cursorColor:  #c7c7c7
+UXTerm*cursorColor: #c7c7c7
+URxvt*borderColor:  [100]#121212
+
+! Colors 0-15.
+*.color0: #121212
+*color0:  #121212
+*.color1: #b67262
+*color1:  #b67262
+*.color2: #8a9273
+*color2:  #8a9273
+*.color3: #c0a474
+*color3:  #c0a474
+*.color4: #78859e
+*color4:  #9b859d
+*.color5: #9b859d
+*color5:  #9b859d
+*.color6: #a8d2db
+*color6:  #a8d2db
+*.color7: #e6e6e6
+*color7:  #e6e6e6
+*.color8: #353535
+*color8:  #353535
+*.color9: #bc8778
+*color9:  #bc8778
+*.color10: #a0ac82
+*color10:  #a0ac82
+*.color11: #c3ae8b
+*color11:  #c3ae8b
+*.color12: #8f9cae
+*color12:  #8f9cae
+*.color13: #a392a5
+*color13:  #a392a5
+*.color14: #b9d8df
+*color14:  #b9d8df
+*.color15: #c7c7c7
+*color15:  #c7c7c7
+
+! Black color that will not be affected by bold highlighting.
+*.color66: #121212
+*color66:  #121212
+
+! Set depth to make transparency work.
+URxvt*depth: 32
+
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.autohint: 0
+Xft.rgba: rgb
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcdlight
+
+Xcursor.theme: Bibata-Modern-Classic
+Xcursor.size: 22

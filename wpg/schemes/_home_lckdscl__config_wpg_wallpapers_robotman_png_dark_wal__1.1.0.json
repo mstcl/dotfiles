@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/lckdscl/.config/wpg/wallpapers/robotman.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#121212",
+        "foreground": "#c7c7c7",
+        "cursor": "#c7c7c7"
+    },
+    "colors": {
+        "color0": "#121212",
+        "color1": "#b67262",
+        "color2": "#8a9273",
+        "color3": "#c0a474",
+        "color4": "#78859e",
+        "color5": "#9b859d",
+        "color6": "#a8d2db",
+        "color7": "#e6e6e6",
+        "color8": "#353535",
+        "color9": "#bc8778",
+        "color10": "#a0ac82",
+        "color11": "#c3ae8b",
+        "color12": "#8f9cae",
+        "color13": "#a392a5",
+        "color14": "#b9d8df",
+        "color15": "#c7c7c7"
+    }
+}

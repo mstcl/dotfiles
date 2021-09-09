@@ -1,0 +1,8 @@
+[main]
+  color-tsharks = ["/usr/bin/tshark"]
+  dark-mode = true
+  last-used-tshark = "/usr/bin/tshark"
+  packet-colors = false
+  respect-colorterm = true
+  theme-truecolor = "wal"
+  validated-tsharks = ["/usr/bin/tshark"]
