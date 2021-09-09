@@ -2,7 +2,7 @@
 
 use_nerdfont = true
 shuffle = false
-notify = true
+notify = false
 repeat = "off"
 flip_status_indicators = true
 command_key = " "

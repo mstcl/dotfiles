@@ -3,8 +3,8 @@
 
 # GENERAL [[[
 # Fonts [[[
-font_family {font0}
-font_size {font-size}
+font_family JetBrainsMono Nerd Font
+font_size 12
 # ]]]
 # Cursor [[[
 cursor_shape beam
@@ -19,7 +19,7 @@ scrollback_lines 2000
 mouse_hide_wait 3.0
 # ]]]
 # URLs [[[
-url_color {color1}
+url_color #b67262
 url_style curly
 # ]]]
 # Performance tuning [[[
@@ -41,10 +41,10 @@ window_alert_on_bell yes
 window_padding_width 20 20 0 20
 window_margin_width 0 0 0 0
 placement_strategy center
-active_border_color {color0}
+active_border_color #121212
 window_border_width 1.0
-inactive_border_color {color0}
-bell_border_color {color3}
+inactive_border_color #121212
+bell_border_color #c0a474
 # ]]]
 # Tab bar [[[
 tab_bar_edge bottom
@@ -55,40 +55,38 @@ tab_bar_min_tabs 0
 tab_fade 0
 # ]]]
 # Template to render the tab title [[[
-# tab_title_template " {{title}}"
-active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}{{fmt.fg._{color0.strip}}}{{fmt.bg._{color1.strip}}}{{index}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color8.strip}}}{{fmt.bg._{color8.strip}}}{{fmt.fg._{color1.strip}}}{{fmt.bg._{color8.strip}}}{{title}}{{fmt.fg._{color8.strip}}}{{fmt.bg.default}}
-# 
-tab_title_template {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}{{fmt.fg._{color0.strip}}}{{fmt.bg._{color8.strip}}}{{index}}{{fmt.fg._{color8.strip}}}{{fmt.bg._{color0.strip}}}{{fmt.fg._{color0.strip}}}{{fmt.bg._{color0.strip}}}{{fmt.fg._{color8.strip}}}{{fmt.bg._{color0.strip}}}{{title}}{{fmt.fg._{color0.strip}}}{{fmt.bg.default}}
+active_tab_title_template {{fmt.fg._{color7.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color7.strip}}}{{fmt.bg.default}}{{title}}
+tab_title_template {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}{{title}}
 # ]]]
 # Tab bar colors and styles [[[
 active_tab_font_style   bold
-active_tab_foreground   {color15}
-active_tab_background   {color0}
-inactive_tab_background {color0}
-inactive_tab_foreground {color8}
+active_tab_foreground   #c7c7c7
+active_tab_background   #121212
+inactive_tab_background #121212
+inactive_tab_foreground #353535
 inactive_tab_font_style bold
-tab_bar_background      {color0}
+tab_bar_background      #121212
 # ]]]
 # Color scheme [[[
-foreground   {color7}
-background   {color0}
-cursor       {color15}
-color0       {color0}
-color8       {color8}
-color1       {color1}
-color9       {color9}
-color2       {color2}
-color10      {color10}
-color3       {color3}
-color11      {color11}
-color4       {color4}
-color12      {color12}
-color5       {color5}
-color13      {color13}
-color6       {color6}
-color14      {color14}
-color7       {color7}
-color15      {color15}
+foreground   #e6e6e6
+background   #121212
+cursor       #c7c7c7
+color0       #121212
+color8       #353535
+color1       #b67262
+color9       #bc8778
+color2       #8a9273
+color10      #a0ac82
+color3       #c0a474
+color11      #c3ae8b
+color4       #78859e
+color12      #8f9cae
+color5       #9b859d
+color13      #a392a5
+color6       #a8d2db
+color14      #b9d8df
+color7       #e6e6e6
+color15      #c7c7c7
 # ]]]
 # Advanced [[[
 allow_remote_control yes
