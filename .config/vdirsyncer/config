@@ -1,0 +1,21 @@
+# :.config/vdirsyncer/config
+
+[general]
+status_path = "~/.local/share/vdirsyncer/status/"
+
+[pair default_calendar]
+a = "default_calendar_local"
+b = "default_calendar_remote"
+collections = ["from a", "from b"]
+metadata = ["color"]
+
+[storage default_calendar_local]
+type="filesystem"
+path="~/.local/share/vdirsyncer/calendars/"
+fileext = ".ics"
+
+[storage default_calendar_remote]
+type="caldav"
+url="https://cloud.disroot.org/remote.php/dav"
+username="lckdscl@disroot.org"
+password="3463z-9X9Ec-2NEss-GY5eJ-ysRYo"
