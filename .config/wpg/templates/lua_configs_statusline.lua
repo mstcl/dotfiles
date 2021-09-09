@@ -1,1 +1,1 @@
-/home/lckdscl/dotfiles/nvim/lua/configs/statusline.lua
+/home/lckdscl/dotfiles/.config/nvim/lua/configs/statusline.lua
