@@ -1,0 +1,139 @@
+# :.config/i3/config
+# vim:set fdm=marker foldenable:
+
+# GENERAL {{{
+# Modifier aliases {{{
+set $mod Mod4
+set $alt Mod1
+set $hyper Mod3
+# }}}
+# Font {{{
+font pango:Helvetica Neue 12
+# }}}
+# gaps {{{
+gaps outer 0
+gaps inner 8
+# }}}
+# Polybar gap {{{
+gaps top 40
+# }}}
+# Borders {{{
+smart_borders on
+for_window [class="^.*"] border pixel 2
+# }}}
+# Priority {{{
+focus_on_window_activation urgent
+popup_during_fullscreen smart
+# }}}
+# Startup {{{
+exec_always --no-startup-id sxhkd
+exec --no-startup-id aria2c &
+exec --no-startup-id play-with-mpv &
+exec --no-startup-id bash $HOME/.config/wpg/wp_init.sh &
+exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh
+exec --no-startup-id picom &
+exec --no-startup-id xset s off &
+exec --no-startup-id ibus-daemon -drxR
+exec --no-startup-id unclutter &
+exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
+exec --no-startup-id bash $HOME/scripts/polybar/launch.sh &
+exec_always --no-startup-id killall -q xcape 2>/dev/null &
+exec_always --no-startup-id xmodmap $HOME/.config/X11/Xmodmap &
+exec_always --no-startup-id xcape -e 'Mode_switch=Escape' 2>/dev/null &
+exec_always --no-startup-id autotiling &
+exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
+# }}}
+# From wal {{{
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $c2 i3wm.color8 #f0f0f0
+set_from_resource $bg i3wm.color0 #f0f0f0
+set_from_resource $c1 i3wm.color2 #f0f0f0
+## class                border  backgr  text indicator child_border
+client.focused          $c2     $bg     $fg  $c2       $c2
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+# }}}
+# Bare minimum for i3 to work {{{
+floating_modifier $mod
+bindsym $mod+backslash   workspace back_and_forth
+# }}}
+# }}}
+# WINDOW RULES {{{
+# MPV {{{
+for_window [class="mpv"] floating enable
+# }}}
+# Pavucontrol {{{
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set 940 680
+# }}}
+# File manager {{{
+for_window [class="Pcmanfm"] floating enable
+for_window [class="Pcmanfm"] resize set 940 680
+# }}}
+# Calculator {{{
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Qalculate-gtk"] resize set 640 480
+# }}}
+# Kitty {{{
+for_window [class="^kitty$" title="^textScratchpad$"] floating enable
+for_window [class="^kitty$" title="^textScratchpad$"] resize set 740 480; move absolute position center
+for_window [class="^kitty$" title="^floatingKitty$"] floating enable
+for_window [class="^kitty$" title="^floatingKitty$"] resize set 740 480; move absolute position center
+for_window [class="^kitty$" title="^cava$"] floating enable
+for_window [class="^kitty$" title="^cava$"] resize set 840 320
+for_window [class="^kitty$" title="^cava$"] move position 175 px 560 px
+assign [class="^kitty$" title="^cava$"] 4: Media
+for_window [class="^kitty$" title="^spotify$"] floating enable
+for_window [class="^kitty$" title="^spotify$"] resize set 960 420
+for_window [class="^kitty$" title="^spotify$"] move position 50 px 100 px
+assign [class="^kitty$" title="^spotify$"] 4: Media
+for_window [class="^cover$"] floating enable
+for_window [class="^cover$"] move position 1050 px 100 px
+assign [class="^cover$"] 4: Media
+for_window [class="^kitty$" title="^lyrics$"] floating enable
+for_window [class="^kitty$" title="^lyrics$"] resize set 530 630
+for_window [class="^kitty$" title="^lyrics$"] move position 1050 px 340 px
+assign [class="^kitty$" title="^lyrics$"] 4: Media
+# }}}
+# Wpg {{{
+for_window [class="Wpg"] floating enable
+for_window [class="Wpg"] resize set 640 480
+# }}}
+# Steam {{{
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floatin enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"]  floating enable
+for_window [class="steam_app_1182480"] floating enable
+# }}}
+# Feh {{{
+for_window [class="feh"] floating enable
+# }}}
+# }}}
+# MODES {{{
+# Resize {{{
+mode "resize" {
+    bindsym j         resize shrink width 10 px or 10 ppt
+    bindsym k         resize grow height 10 px or 10 ppt
+    bindsym l         resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym Left      resize shrink width 10 px or 10 ppt
+    bindsym Down      resize grow height 10 px or 10 ppt
+    bindsym Up        resize shrink height 10 px or 10 ppt
+    bindsym Right     resize grow width 10 px or 10 ppt
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+    bindsym $mod+r    mode "default"
+}
+bindsym $hyper+r        mode "resize"
+# }}}
+# }}}

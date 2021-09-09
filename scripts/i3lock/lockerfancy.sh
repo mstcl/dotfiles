@@ -24,7 +24,7 @@ timeposx=50
 timeposy=$((screenH-100))
 dateposy=$((timeposy+50))
 
-i3lock_cmd=(i3lock -i "$image" --inside-color=$semitrans --ring-color=$slighttransparent --line-uses-inside --keyhl-color=$green --bshl-color=$red --separator-color=$transparent --insidever-color=$semitrans --insidewrong-color=$semitrans --ringver-color=$cyan --ringwrong-color=$red --radius=100 --ring-width=4 --verif-text="" --wrong-text="" --noinput-text="_" --wrong-color=$red --clock --time-str="%H:%M" --time-pos="x+$timeposx:y+$timeposy" --time-color=$timecolor --time-align=1 --time-size=72 --date-str="%a, %b %d" --date-pos="x+$timeposx:y+$dateposy" --date-color=$timecolor --date-align=1 --date-size=24)
+i3lock_cmd=(i3lock -i "$image" --inside-color=$semitrans --ring-color=$slighttransparent --line-uses-inside --keyhl-color=$green --bshl-color=$red --separator-color=$transparent --insidever-color=$semitrans --insidewrong-color=$semitrans --ringver-color=$cyan --ringwrong-color=$red --radius=100 --ring-width=4 --verif-text="" --wrong-text="" --lockfailed-text="" --lock-text=""--noinput-text="" --wrong-color=$red --clock --time-str="%H:%M" --time-pos="x+$timeposx:y+$timeposy" --time-color=$timecolor --time-align=1 --time-size=72 --date-str="%a, %b %d" --date-pos="x+$timeposx:y+$dateposy" --date-color=$timecolor --date-align=1 --date-size=24)
 shot_custom=false
 
 options="Options:

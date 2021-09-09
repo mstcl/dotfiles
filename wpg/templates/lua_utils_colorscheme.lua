@@ -1,0 +1,1 @@
+/home/lckdscl/dotfiles/nvim/lua/utils/colorscheme.lua

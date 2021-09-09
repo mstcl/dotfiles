@@ -6,7 +6,11 @@
     bg1: #b67262;
     bg2: #8a9273;
     bg3: #c0a474;
+    bg4: #78859e;
+    bg5: #9b859d;
+    bg6: #a8d2db;
     fg: #e6e6e6;
+    fg2: #c7c7c7;
     hi-bold: bold #b67262;
     font: "JetBrainsMono Nerd Font 12";
     font-icon: "JetBrainsMono Nerd Font 12";

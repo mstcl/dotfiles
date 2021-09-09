@@ -16,48 +16,49 @@ window {
     border: 0px;
     border-color: @ac;
     border-radius: 0px;
-    width: 300px;
+    width: 602px;
+    dynamic: true;
     location: center;
     x-offset: 0;
-    y-offset: 0;
+    y-offset: -100;
 }
 
 prompt {
     enabled: true;
     padding: 10px 15px 10px 15px;
-    background-color: @fg;
-    text-color: @bg;
+    background-color: @al;
+    text-color: @fg;
 }
 
 textbox-prompt-colon {
     padding: 10px 5px 10px 15px;
     font: @font-icon;
-    background-color: @fg;
-    text-color: @bg;
+    background-color: @al;
+    text-color: @fg;
     expand: false;
     str: "神";
 }
 
 entry {
-    background-color: @bg2;
-    text-color: #FFFFFF;
-    placeholder-color: #FFFFFF;
+    background-color: @al;
+    text-color: @fg2;
+    placeholder-color: @fg2;
     expand: true;
     horizontal-align: 0;
-    placeholder: "Search...";
+    placeholder: "";
     padding: 10px;
     border-radius: 0px 0px 0px 0px;
     blink: true;
 }
 
 inputbar {
-    children: [ textbox-prompt-colon, prompt ];
-    background-color: @fg;
-    text-color: @bg;
+    children: [ textbox-prompt-colon, prompt, entry ];
+    background-color: @al;
+    text-color: @fg;
     expand: false;
     border: 0px;
     border-radius: 0px 0px 2px 2px;
-    border-color: @ac;
+    border-color: @al;
     spacing: 0px;
 }
 
@@ -66,10 +67,10 @@ listview {
     padding: 10px 10px 10px 10px;
     columns: 1;
     lines: 5;
-    spacing: 5px;
+    spacing: 0px;
     cycle: true;
     dynamic: true;
-    layout: vertical;
+    layout: horizontal;
 }
 
 mainbox {

@@ -1,0 +1,5 @@
+{
+ "default.profile.alsa_card.usb-GeneralPlus_USB_Audio_Device-00": { "name": "input:mono-fallback" },
+ "default.profile.alsa_card.pci-0000_09_00.4": { "name": "output:analog-stereo+input:analog-stereo" },
+ "default.profile.alsa_card.pci-0000_07_00.1": { "name": "output:hdmi-stereo" }
+}

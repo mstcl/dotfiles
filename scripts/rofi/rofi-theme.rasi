@@ -4,6 +4,7 @@
     background-color: @bg;
     spacing: 1;
     disable-history: false;
+    lines: 1;
 }
 
 #window {
@@ -12,7 +13,7 @@
     transparency: "real";
     width: 550px;
     x-offset: 0;
-    y-offset: 0;
+    y-offset: -100;
     location: center;
 }
 
@@ -36,7 +37,7 @@
 
 #inputbar {
     children:   [ textbox-prompt-colon, prompt, entry ];
-    background-color: @fg;
+    background-color: @al;
     text-color: @fg;
     expand: false;
     border: 0px;
@@ -48,8 +49,8 @@
     str: " ";
     font: @font-icon;
     padding: 12px 3px 8px 18px;
-    background-color: @fg;
-    text-color: @bg;
+    background-color: @al;
+    text-color: @fg;
 }
 
 #listview {
@@ -101,15 +102,15 @@
     padding: 12px 10px 10px 10px;
     margin: 0px 250px 0px 0px;
     border-radius: 0px 0px 0px 0px;
-    background-color: @fg;
-    text-color: @bg;
+    background-color: @al;
+    text-color: @fg;
     blink: true;
 }
 
 #prompt {
     enabled: true;
     padding: 12px 10px 10px 10px;
-    text-color: @bg;
+    text-color: @fg;
     spacing: 0;
-    background-color: @fg;
+    background-color: @al;
 }

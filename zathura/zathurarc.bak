@@ -1,0 +1,42 @@
+# :.config/zathura/zathurarc
+
+set synctex true
+set selection-notification "true"
+set guioptions ""
+set adjust-open "best-fit"
+set recolor "true"
+set recolor-keephue
+set completion-bg "#121212"
+set completion-fg "#e6e6e6"
+set completion-group-bg "#121212"
+set completion-group-fg "#e6e6e6"
+set completion-highlight-bg "#121212"
+set completion-highlight-fg "#e6e6e6"
+set recolor-lightcolor "#121212"
+set recolor-darkcolor "#e6e6e6"
+set default-bg "#121212"
+set inputbar-bg "#353535"
+set inputbar-fg "#e6e6e6"
+set notification-bg "#353535"
+set notification-fg "#e6e6e6"
+set notification-error-bg "#b67262"
+set notification-error-fg "#e6e6e6"
+set notification-warning-bg "#b67262"
+set notification-warning-fg "#e6e6e6"
+set statusbar-bg "#353535"
+set statusbar-fg "#e6e6e6"
+set index-bg "#353535"
+set index-fg "#e6e6e6"
+set index-active-bg "#c7c7c7"
+set index-active-fg "#121212"
+set render-loading-bg "#121212"
+set render-loading-fg "#e6e6e6"
+set highlight-color "#a0ac82"
+set highlight-active-color "#8f9cae"
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set scroll-page-aware true
+set statusbar-home-tilde true
+set statusbar-h-padding 10
+set statusbar-v-padding 10

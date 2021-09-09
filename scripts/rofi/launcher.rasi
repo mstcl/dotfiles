@@ -32,19 +32,19 @@ prompt {
 textbox-prompt-colon {
     padding: 11px 15px 10px 15px;
     font: @font-icon;
-    background-color: @fg;
-    text-color: @bg;
+    background-color: @al;
+    text-color: @fg;
     expand: false;
-    str: "";
+    str: "省";
 }
 
 entry {
-    background-color: @fg;
-    text-color: @bg;
-    placeholder-color: @bg;
+    background-color: @al;
+    text-color: @fg;
+    placeholder-color: @fg2;
     expand: true;
     horizontal-align: 0;
-    placeholder: "Search...";
+    /* placeholder: "Search..."; */
     padding: 12px 10px 10px 10px;
     margin: 0px 250px 0px 0px;
     border-radius: 0px 0px 0px 0px;
@@ -53,8 +53,8 @@ entry {
 
 inputbar {
     children: [ textbox-prompt-colon, entry ];
-    background-color: @fg;
-    text-color: #FFFFFF;
+    background-color: @al;
+    text-color: @fg;
     expand: false;
     border: 0px;
     border-radius: 0px;
