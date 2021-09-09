@@ -1,3 +1,4 @@
+*.bak
 .old
 task/taskrc
 vdirsyncer/config
