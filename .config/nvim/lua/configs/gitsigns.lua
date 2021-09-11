@@ -15,6 +15,5 @@ gs.setup {
     update_debounce = 100,
     status_formatter = nil,
     word_diff = false,
-    use_internal_diff = true,
     keymaps = {},
 }

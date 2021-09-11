@@ -1,4 +1,4 @@
-local present, lspconfig = pcall(require, "lspconfig")
+local present, lsp = pcall(require, "lspconfig")
 if not present then
    return
 end
@@ -6,46 +6,47 @@ end
 local on_attach = function(client,bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gH', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<C-x>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', '<C-K>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', '<Leader>qD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', '<Leader>qi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<Leader>qf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    buf_set_keymap('n', '<Leader>qd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', '<Leader>qs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
+    vim.fn.sign_define('LightBulbSign', { text = "", texthl = "LightbulbTextHL" })
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 9}, virtual_text = { enabled = true, text = "     Code actions available" } }]]
 end
 
-lspconfig.clangd.setup{
+lsp.clangd.setup{
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
     }
 }
 
-lspconfig.pyright.setup{
+lsp.pyright.setup{
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
     }
 }
 
-lspconfig.vimls.setup{
+lsp.vimls.setup{
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
     }
 }
 
-lspconfig.bashls.setup{
+lsp.bashls.setup{
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
     }
 }
 
-lspconfig.texlab.setup {
+lsp.texlab.setup {
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
@@ -80,7 +81,7 @@ lspconfig.texlab.setup {
     }
 }
 
-lspconfig.sumneko_lua.setup {
+lsp.sumneko_lua.setup {
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
@@ -105,8 +106,26 @@ lspconfig.sumneko_lua.setup {
     }
 }
 
+local lsp_configs = require('lspconfig/configs')
+local lsp_util = require('lspconfig/util')
+
+lsp_configs.prosemd = {
+    default_config = {
+        cmd = { "/home/lckdscl/.local/bin/prosemd-lsp", "--stdio" },
+        filetypes = { "markdown" },
+        root_dir = function(fname)
+            return lsp_util.find_git_ancestor(fname) or vim.fn.getcwd()
+        end,
+        settings = {},
+    }
+}
+
+lsp.prosemd.setup {
+    on_attach = on_attach
+}
+
 require("grammar-guard").init()
-lspconfig.grammar_guard.setup({
+lsp.grammar_guard.setup({
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
@@ -118,12 +137,12 @@ lspconfig.grammar_guard.setup({
             diagnosticSeverity = "information",
             setenceCacheSize = 2000,
             additionalRules = {
-                enablePickyRules = true,
+                enablePickyRules = false,
                 motherTongue = "en-GB",
             },
             trace = { server = "verbose" },
             dictionary = {},
-            disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S'}},
+            disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S','MORFOLOGIK_RULE_EN_GB'}},
             hiddenFalsePositives = {},
         },
     },

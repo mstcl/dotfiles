@@ -6,7 +6,7 @@ end
 telescope.setup {
     defaults = {
         use_less = false,
-        borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         prompt_prefix = "  ",
         selection_caret = "  ",
         entry_prefix = "  ",
@@ -51,11 +51,11 @@ telescope.setup {
     pickers = {
         buffers = {
             sort_lastused = true,
-            prompt_prefix = ' ﬘  ',
+            prompt_prefix = '   ',
             previewer = false,
             layout_config = {
-                width = 0.37,
-                height = 0.50,
+                width = 0.3,
+                height = 0.4,
             },
             mappings = {
                 i = {
@@ -67,7 +67,7 @@ telescope.setup {
             }
         },
         file_browser = {
-            prompt_prefix = '    ',
+            prompt_prefix = '   ',
             hidden = true,
         },
         find_files = {
@@ -77,46 +77,117 @@ telescope.setup {
                 '--hidden',
                 '--files',
             },
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
+            theme = "dropdown",
+            borderchars = {
+                { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+                results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+                preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            },
+            previewer = false,
         },
         oldfiles = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
+            theme = "dropdown",
+            borderchars = {
+                { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+                results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+                preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            },
+            previewer = false,
         },
         colorscheme = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
+            previewer = false,
+            theme = "dropdown",
+            borderchars = {
+                { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+                results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+                preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            },
         },
         highlights = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
         },
         live_grep = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
         },
         git_commits = {
-            prompt_prefix = '   ',
+            prompt_prefix = ' ﰖ  ',
         },
         git_bcommits = {
-            prompt_prefix = '   ',
+            prompt_prefix = ' ﰖ  ',
         },
         git_branches = {
-            prompt_prefix = '   ',
+            prompt_prefix = ' שׂ  ',
         },
         git_status = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
         },
         git_files = {
-            prompt_prefix = ' ﯙ  ',
+            prompt_prefix = ' שׂ  ',
         },
         commands = {
             prompt_prefix = '   ',
+            theme = "ivy";
+            layout_config = {
+                height = 10,
+            },
         },
         registers = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
+            theme = "ivy",
+            layout_config = {
+                height = 10,
+            },
         },
         spell_suggests = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
+            theme = "ivy",
+            layout_config = {
+                height = 10,
+            },
         },
         keymaps = {
-            prompt_prefix = '   ',
+            prompt_prefix = '   ',
+            theme = "ivy",
+            layout_config = {
+                height = 10,
+            },
+        },
+        lsp_code_actions = {
+            prompt_prefix = '   ',
+            theme = "cursor",
+            borderchars = {
+                { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+                results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+                preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            },
+        },
+        lsp_references = {
+            prompt_prefix = '   ',
+            theme = "ivy",
+            layout_config = {
+                height = 20,
+            },
+        },
+        lsp_implentations = {
+            prompt_prefix = '   ',
+            theme = "ivy",
+            layout_config = {
+                height = 20,
+            },
+        },
+        lsp_document_diagnostics = {
+            prompt_prefix = ' 律 ',
+            theme = "ivy",
+            layout_config = {
+                height = 20,
+            },
         },
         extensions = {
             fzf = {
