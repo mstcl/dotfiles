@@ -1,6 +1,6 @@
 " :.config/nvim/init.vim
 " vim:set fdm=marker foldenable:
-" colorscheme highlite
+
 " PLUGINS {{{
 " Require plugins.lua {{{
 lua require('impatient')
