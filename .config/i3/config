@@ -118,6 +118,9 @@ for_window [class="steam_app_1182480"] floating enable
 # Feh {{{
 for_window [class="feh"] floating enable
 # }}}
+# Florence {{{
+for_window [class="Florence"] floating enable
+# }}}
 # }}}
 # MODES {{{
 # Resize {{{
