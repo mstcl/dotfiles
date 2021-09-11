@@ -1,6 +1,6 @@
 " :.config/nvim/init.vim
-" vim:set fdm=marker foldenable foldlevel=1:
-
+" vim:set fdm=marker foldenable:
+" colorscheme highlite
 " PLUGINS {{{
 " Require plugins.lua {{{
 lua require('impatient')
@@ -35,18 +35,11 @@ EOF
 " }}}
 " AUTO-COMMANDS {{{
 " Auto show line diagnostic {{{
-autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({border = "single", focusable=false})
+autocmd CursorHold,CursorHoldI *.{vim,tex,python,lua,cpp,sh,bash,md,bib,lua} lua vim.lsp.diagnostic.show_line_diagnostics({border = "single", focusable=false})
 " }}}
 " Alpha options {{{
 augroup Alpha
-function! CleanEmptyBuffers()
-    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
-    if !empty(buffers)
-        exe 'bw ' . join(buffers, ' ')
-    endif
-endfunction
-autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd WinLeave <buffer> set showtabline=2
-autocmd WinEnter,BufRead,BufNewFile * if &ft != 'alpha' | set showtabline=2 | call CleanEmptyBuffers() | endif
+autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2
 augroup END
 " }}}
 " Open a file where it was left off {{{
@@ -80,7 +73,6 @@ autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldme
 augroup MDoptions
     autocmd!
     autocmd BufNewFile,BufRead *.md set nolist
-    autocmd BufNewFile,BufRead *.md nnoremap <silent> <buffer> <C-M> :execute 'syn region markdownStrike matchgroup=markdownStrikeDelimiter start="\%(\~\~\)" end="\%(\~\~\)"' . ' concealends'<CR>
 augroup END
 " }}}
 " Tex options {{{
@@ -96,9 +88,6 @@ augroup IndentFT
     autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,yaml,xml,cfg,dosini} nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm zm:IndentBlanklineRefresh<CR> | nnoremap <silent> zM zM:IndentBlanklineRefresh<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr zr:IndentBlanklineRefresh<CR> | nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
 augroup end
 " }}}
-" Autochdir {{{
-autocmd BufEnter * silent! lcd %:p:h
-" }}}
 " Terminal no number {{{
 autocmd Filetype floaterm set nonumber | set norelativenumber
 " }}}
@@ -112,10 +101,6 @@ function! ProcessSearch(timerid)
     if &ic | let l:patt = '\c' . l:patt | endif
     exe 'match IncSearch /' . l:patt . '/'
 endfunc
-" }}}
-" Insert only {{{
-autocmd InsertLeave,WinEnter *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,latex,yaml,xml,cfg,dosini} set cursorline
-autocmd InsertEnter,WinLeave *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,latex,yaml,xml,cfg,dosini} set nocursorline
 " }}}
 " Wilder autocommand and setup {{{
 autocmd CmdlineEnter * ++once call s:wilder_init()
@@ -168,18 +153,23 @@ endfunction
 let &titlestring = "nvim " ". expand("%:t")
 set title
 " }}}
+" Autochdir {{{
+set autochdir
+" }}}
 " Update time for LSP {{{
-set updatetime=150
+set updatetime=180
 " }}}
 " Use document modeline {{{
 set modeline
 " }}}
 " Visual settings {{{
-set cursorline
+set nocursorline
+set synmaxcol=200
 set hidden
 set noshowmode
 set showcmd
 set lazyredraw
+set ttyfast
 set conceallevel=2
 set termguicolors
 set showtabline=2
@@ -187,13 +177,16 @@ set laststatus=2
 set noruler
 " }}}
 " Folding {{{
-set foldmethod=indent
+set foldmethod=syntax
+set foldminlines=1
+set foldnestmax=6
 set foldenable
 set foldlevelstart=1
 set foldcolumn=0
 " }}}
 " Editing {{{
 set wrap
+set scrolljump=1
 set wrapmargin=0
 set textwidth=0
 set formatoptions-=cro
@@ -213,7 +206,7 @@ set undofile
 " }}}
 " Number {{{
 set number
-set relativenumber
+set norelativenumber
 " }}}
 " Change default split {{{
 set splitbelow
@@ -268,6 +261,9 @@ set completeopt=menuone,noselect
 " No-obnoxious nvim {{{
 set shortmess+=OoSsatqc
 " }}}
+" No swapfiles {{{
+set noswapfile
+" }}}
 " Huh I don't know if this should be here {{{
 set path+=**
 " }}}
@@ -281,8 +277,17 @@ filetype plugin on
 let mapleader = ","
 let maplocalleader = ",."
 " }}}
+" Toggle tree {{{
+nnoremap <silent> <C-T>  :lua require'utils.tree_toggle'.toggle()<CR>
+" }}}
 " Toggle relativenumber {{{
-nnoremap <silent> <C-N>  :set relativenumber!<CR>
+nnoremap <silent> <C-N> :set relativenumber!<CR>
+" }}}
+" Toggle list {{{
+nnoremap <silent> <C-L>  :set list!<CR>
+" }}}
+" Toggle cursorline {{{
+nnoremap <silent> <C-J>  :setlocal cursorline!<CR>
 " }}}
 " Center search results {{{
 nnoremap n nzz
@@ -355,11 +360,7 @@ EOF
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}}
-" Kommentary {{{
-nnoremap <silent> gcc <Plug>kommentary_line_default
-nnoremap <silent> gc  <Plug>kommentary_motion_default
-xnoremap <silent> gc  <Plug>kommentary_visual_default
-" Move between hunk {{{s
+" Move between hunks {{{
 nnoremap ]p :Gitsigns next_hunk<CR>
 nnoremap [p :Gitsigns prev_hunk<CR>
 " }}}
@@ -381,11 +382,11 @@ nnoremap <silent>    <A-7>     :BufferGoto 7<CR>
 nnoremap <silent>    <A-8>     :BufferGoto 8<CR>
 nnoremap <silent>    <A-9>     :BufferLast<CR>
 " Pin/unpin buffer
-nnoremap <silent>    <A-s>     :BufferPin<CR>
+nnoremap <silent>    <A-t>     :BufferPin<CR>
 " Close buffer
 nnoremap <silent>    <A-c>     :BufferClose<CR>
 " Magic buffer-picking mode
-nnoremap <silent>    <C-s>     :BufferPick<CR>
+nnoremap <silent>    <A-u>     :BufferPick<CR>
 " }}}
 " Popup menu scroll {{{
 function! s:s(delta) abort
@@ -397,6 +398,13 @@ return "\<Ignore>"
 endfunction
 inoremap <silent><expr><C-j> <SID>s(+4)
 inoremap <silent><expr><C-k> <SID>s(-4)
+" }}}
+" Make split {{{
+nnoremap <silent> <C-S>v :vs<CR>
+nnoremap <silent> <C-S>h :sp<CR>
+" }}}
+" Clear search highlighting {{{
+nnoremap <silent> <C-P>  :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 " }}}
 " }}}
 " }}}
@@ -440,13 +448,13 @@ nnoremap <silent> <Leader>h  :Telescope oldfiles<CR>
 " Leader i: Indent blankline toggle {{{
 nnoremap <silent> <Leader>i  :IndentBlanklineToggle<CR>
 " }}}
-" Leader j (empty) {{{
+" Leader j: Last telescope picker {{{
+nnoremap <silent> <Leader>j  :Telescope resume<CR>
 " }}}
 " Leader k: Telescope chdir with oxide {{{
 nnoremap <silent> <Leader>k :Telescope zoxide list<CR>
 " }}}
-" Leader l: Toggle listchars  {{{
-nnoremap <silent> <Leader>l  :set list!<CR>
+" Leader l (empty)  {{{
 " }}}
 " Leader m: Telescope man pages {{{
 nnoremap <silent> <leader>m  :Telescope man_pages<CR>
@@ -463,18 +471,21 @@ nnoremap <silent> <Leader>pr :wa<CR> <bar> :source %<CR> <bar> :PackerCompile<CR
 nnoremap <silent> <Leader>pi :PackerInstall<CR>
 nnoremap <silent> <Leader>pc :PackerCompile<CR>
 " }}}
-" Leader q (empty) {{{
+" Leader q: Telescope LSP {{{
+nnoremap <silent> <Leader>qe  :Telescope lsp_definitions<CR>
+nnoremap <silent> <Leader>qq  :Telescope lsp_document_diagnostics<CR>
+nnoremap <silent> <Leader>qr  :Telescope lsp_references<CR>
+nnoremap <silent> <Leader>qp  :Telescope lsp_implementations<CR>
+nnoremap <silent> <Leader>qc  :Telescope lsp_code_actions<CR>
 " }}}
-" Leader r: Last telescope picker {{{
-nnoremap <silent> <Leader>r  :Telescope resume<CR>
+" Leader r: Telesope registers {{{
+nnoremap <silent> <Leader>r  :Telescope registers<CR>
 " }}}
-" Leader s: Splits and spells {{{
-nnoremap <silent> <Leader>sv :vs<CR>
-nnoremap <silent> <Leader>sx :sp<CR>
+" Leader s: spells {{{
 nnoremap <silent> <Leader>sp :setlocal spell! spelllang=en_gb<CR>
+nnoremap <silent> <Leader>sf :Telescope spell_suggest<CR>
 " }}}
-" Leader t: Open sidebar {{{
-nnoremap <silent> <Leader>t  :lua require'utils.tree_toggle'.toggle()<CR>
+" Leader t (empty) {{{
 " }}}
 " Leader u: Undo tree {{{
 " Undotree toggle
@@ -496,24 +507,13 @@ nnoremap <silent> <Leader>z  :ZenMode<CR>
 " Leader space: Switch buffers {{{
 nnoremap <silent> <Leader><space> <C-^>
 " }}}
-" Leader backslash: Clear highlighting, redraw screen and more {{{
-nnoremap <silent> <Leader>\  :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
-" }}}
 " Leader slash: Telescope grep {{{
 nnoremap <silent> <leader>/  :Telescope live_grep<CR>
 " }}}
 " Leader semicolon: Telescope keymaps {{{
 nnoremap <silent> <Leader>;  :Telescope keymaps<CR>
 " }}}
-" Leader apostrophe: Telescope registers {{{
-nnoremap <silent> <Leader>'  :Telescope registers<CR>
-" }}}
 " }}}
 " LOCAL LEADER {{{
-" Leader d,q,r: Telescope LSP {{{
-nnoremap <silent> <LocalLeader>d :Telescope lsp_definitions<CR>
-nnoremap <silent> <LocalLeader>q :Telescope lsp_document_diagnostics<CR>
-nnoremap <silent> <LocalLeader>r :Telescope lsp_references<CR>
-" }}}
 " }}}
 " }}}
