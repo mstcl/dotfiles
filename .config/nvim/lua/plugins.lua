@@ -1,5 +1,5 @@
 -- :.config/nvim/lua/plugins.lua
--- vim: set foldmethod=marker foldenable:
+-- vim: set foldmethod=marker foldenable foldlevel=0:
 return require('packer').startup {
     function()
     -- IMPATIENT: faster startup time {{{
@@ -209,6 +209,12 @@ return require('packer').startup {
             end
         }
     --- }}}
+    -- LIGHTBULB: linter to indicate code actions {{{
+        use {
+            'kosayoda/nvim-lightbulb',
+            event = 'BufRead',
+        }
+    -- }}}
     -- GRAMMAR GUARD: lsp for latex and markdown {{{
         use {
             "brymer-meneses/grammar-guard.nvim",
@@ -220,7 +226,7 @@ return require('packer').startup {
             "b3nj5m1n/kommentary",
             event = "CursorMoved",
             config = function ()
-                vim.g.kommentary_create_default_mappings = false
+                vim.g.kommentary_create_default_mappings = true
                 require('kommentary.config').configure_language("default", {
                     ignore_whitespace = true,
                 })
@@ -348,7 +354,8 @@ return require('packer').startup {
     -- }}}
     -- MARKDOWN: better markdown syntax {{{
         use {
-            'gabrielelana/vim-markdown',
+            'hhn-pham/vim-markdown',
+            branch = "main",
             ft = {'markdown'},
             setup = function ()
                 require'configs.markdown'
@@ -371,7 +378,7 @@ return require('packer').startup {
     -- }}}
     -- ALPHA: splash screen in lua {{{
         use {
-            'goolord/alpha-nvim',
+            'hhn-pham/alpha-nvim',
             event = 'BufWinEnter',
             config = function ()
                 require'configs.alpha'
@@ -389,7 +396,7 @@ return require('packer').startup {
             end
         }
     -- }}}
-        end,
+       end,
     -- PACKER OPTIONS {{{
     config = {
         display = {
