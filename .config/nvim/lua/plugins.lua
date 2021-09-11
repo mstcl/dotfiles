@@ -287,12 +287,6 @@ return require('packer').startup {
             end
         }
     -- }}}
-    -- LIGHTSPEED: navigate inside a buffer quickly {{{
-        use {
-            'ggandor/lightspeed.nvim',
-            -- event = 'CursorMoved',
-        }
-    -- }}}
     -- SPELLSITTER: spellcheck comments with treesitter {{{
         use {
             'lewis6991/spellsitter.nvim',

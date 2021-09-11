@@ -3,15 +3,15 @@
 * {
     al: #353535;
     bg: #121212;
-    bg1: #b67262;
-    bg2: #8a9273;
-    bg3: #c0a474;
-    bg4: #78859e;
-    bg5: #9b859d;
-    bg6: #a8d2db;
-    fg: #e6e6e6;
-    fg2: #c7c7c7;
-    hi-bold: bold #b67262;
+    bg1: #637a8a;
+    bg2: #aa8f7c;
+    bg3: #8b8f7e;
+    bg4: #987a6b;
+    bg5: #877979;
+    bg6: #937f74;
+    fg: #bebebe;
+    fg2: #949494;
+    hi-bold: bold #637a8a;
     font: "JetBrainsMono Nerd Font 12";
     font-icon: "JetBrainsMono Nerd Font 12";
     icon-theme: "Fluent-grey-dark";

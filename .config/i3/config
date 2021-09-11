@@ -35,13 +35,13 @@ exec --no-startup-id picom &
 exec --no-startup-id xset s off &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id unclutter &
+exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
+exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
-exec --no-startup-id bash $HOME/scripts/polybar/launch.sh &
 exec_always --no-startup-id killall -q xcape 2>/dev/null &
 exec_always --no-startup-id xmodmap $HOME/.config/X11/Xmodmap &
 exec_always --no-startup-id xcape -e 'Mode_switch=Escape' 2>/dev/null &
 exec_always --no-startup-id autotiling &
-exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
 # }}}
 # From wal {{{
 set_from_resource $fg i3wm.color7 #f0f0f0

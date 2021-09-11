@@ -18,7 +18,6 @@ ts.setup {
         enable = true,
         loaded = true,
         extended_mode = true,
-        colors = { "#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#88c0d0", "#5e81ac", "#b48ead" },
         max_file_lines = 1400,
     }
 }

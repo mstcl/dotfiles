@@ -77,19 +77,19 @@
 
 [urgency_low]
     background = "#121212"
-    foreground = "#c7c7c7"
+    foreground = "#949494"
     timeout = 10
 
 [urgency_normal]
     background = "#121212"
-    foreground = "#c7c7c7"
+    foreground = "#949494"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
     background = "#121212"
-    foreground = "#b67262"
+    foreground = "#637a8a"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to
