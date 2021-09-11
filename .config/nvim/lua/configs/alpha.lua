@@ -150,7 +150,7 @@ local buttons = {
     button( "LDR h", "   Recents" , ":Telescope oldfiles<CR>"),
     button( "LDR b", "   Buffers" , ":Telescope buffers<CR>"),
     button( "LDR y", "   Explore" , ":Telescope file_browser<CR>"),
-    button( "LDR /", "   Ripgrep" , ":Telescope file_browser<CR>"),
+    button( "LDR /", "   Ripgrep" , ":Telescope live_grep<CR>"),
     button( "MRK V", "   Options" , ":execute 'normal! `V'<CR>"),
     button( "MRK P", "   Plugins" , ":execute 'normal! `P'<CR>"),
     },
