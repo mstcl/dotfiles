@@ -116,7 +116,7 @@ local function button(sc, txt, keybind)
         width = 24,
         align_shortcut = "right",
         hl_shortcut = "SpecialKey",
-        hl_text = "SpecialKey",
+        hl = {{ "SpecialKey", 0, 15 }},
     }
     if keybind then
         opts.keymap = {"n", sc_, keybind, {noremap = true, silent = true}}
