@@ -55,7 +55,7 @@ tab_bar_min_tabs 0
 tab_fade 0
 # ]]]
 # Template to render the tab title [[[
-active_tab_title_template {{fmt.fg._{color7.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color7.strip}}}{{fmt.bg.default}}{{title}}
+active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}{{title}}
 tab_title_template {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}{{title}}
 # ]]]
 # Tab bar colors and styles [[[
