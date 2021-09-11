@@ -1,6 +1,6 @@
 " :.config/nvim/init.vim
 " vim:set fdm=marker foldenable:
-
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 " PLUGINS {{{
 " Require plugins.lua {{{
 lua require('impatient')
