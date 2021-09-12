@@ -85,7 +85,7 @@ local black       = {'#202020', 0,   'black'}
 local gray        = {'#808080', 244, 'gray'}
 local gray_dark   = {'#353535', 236, 'darkgrey'}
 local gray_darker = {'#505050', 244, 'gray'}
-local gray_light  = {'#c0c0c0', 251, 'gray'}
+local gray_light  = {'#bebebe', 251, 'gray'}
 local white       = {'#ffffff', 15,  'white'}
 
 local tan = {'#f4c069', 180, 'darkyellow'}
