@@ -372,7 +372,7 @@ return require('packer').startup {
     -- }}}
     -- ALPHA: splash screen in lua {{{
         use {
-            'hhn-pham/alpha-nvim',
+            'goolord/alpha-nvim',
             event = 'BufWinEnter',
             config = function ()
                 require'configs.alpha'
