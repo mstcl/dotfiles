@@ -119,9 +119,9 @@ fif() {
 # Neovim {{{
 function nvim() {
     if [[ "$#" -ne 0 ]]; then
-        nvim $@
+        /usr/bin/nvim $@
         return
     fi
-    nvim -c ":Alpha"
+    /usr/bin/nvim -c ":Alpha"
 }
 # }}}

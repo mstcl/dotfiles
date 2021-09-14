@@ -46,8 +46,14 @@ augroup END
 " }}}
 " Alpha options {{{
 augroup alpha
-    autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2
+    autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | call CleanEmptyBuffers()
 augroup END
+function! CleanEmptyBuffers()
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
+    if !empty(buffers)
+        exe 'bw ' . join(buffers, ' ')
+    endif
+endfunction
 " }}}
 " Open a file where it was left off {{{
 augroup stay
