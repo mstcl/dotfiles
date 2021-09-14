@@ -69,6 +69,7 @@ telescope.setup {
         file_browser = {
             prompt_prefix = '   ',
             hidden = true,
+            initial_mode = "normal",
         },
         find_files = {
             find_command= {

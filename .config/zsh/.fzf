@@ -31,7 +31,8 @@ export FZF_CTRL_R_OPTS="
     --height 50%
     --info=hidden
     --prompt=' HISTORY '
-    --preview-window hidden"
+    --preview-window hidden
+    --bind 'space:unbind(space)'"
 # }}}
 # Ctrl-T {{{
 export FZF_CTRL_T_COMMAND='rg --files --hidden --no-ignore --follow -g '!{go/}*' -g '!{.cmake/}*' -g '!{.steam/}*' -g '!{.android/}*' -g '!{.nuget/}*' -g '!{.var/}*' -g '!{.gnome/}*' -g '!{.pvpn-cli/}*' -g '!{.pki}' -g '!{.gnupg/}*' -g '!{.ipypthon/}*' -g '!{.icons/}*' -g '!{.themes/}*' -g '!{.mozilla/}*' -g '!{.paradoxlauncher/}*' -g '!{.ssh/}*' -g '!{.conan}' -g '!{.git}' -g '!{dosdevices}' -g '!{compatdata}' -g '!{BraveSoftware}' -g '!{discord}' -g '!{BetterDiscord}' 2> /dev/null'

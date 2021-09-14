@@ -1,5 +1,5 @@
 *.bak
 .old
-task/taskrc
-vdirsyncer/config
-redshift/redshift.conf
+.config/task/taskrc
+.config/vdirsyncer/config
+.config/redshift/redshift.conf
