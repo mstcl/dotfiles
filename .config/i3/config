@@ -28,7 +28,6 @@ popup_during_fullscreen smart
 # Startup {{{
 exec_always --no-startup-id sxhkd
 exec --no-startup-id aria2c &
-exec --no-startup-id play-with-mpv &
 exec --no-startup-id bash $HOME/.config/wpg/wp_init.sh &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh
 exec --no-startup-id picom &
