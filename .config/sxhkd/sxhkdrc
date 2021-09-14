@@ -21,96 +21,96 @@ super + space
 
 super + t; {c,d}
 	{bash $HOME/scripts/hardware/picomtoggle.sh, \
-dunstctl set-paused toggle}
+	dunstctl set-paused toggle}
 
-	super + s; {p,c,slash,period,comma,l,v}
-{kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T spotify ncspot, \
+super + s; {p,c,slash,period,comma,l,v}
+	{kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T spotify ncspot, \
 	bash $HOME/scripts/music/fehcover.sh, \
-playerctl -p ncspot play-pause, \
+	playerctl -p ncspot play-pause, \
 	playerctl -p ncspot next, \
-playerctl -p ncspot previous, \
+    playerctl -p ncspot previous, \
 	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics ncspot, \
-kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
+	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
 
-	super + Return
-kitty
+super + Return
+	kitty
 
-	super + g
-bash $HOME/scripts/other/text-scratchpad.sh
+super + g
+    bash $HOME/scripts/other/text-scratchpad.sh
 
-	super + r; {p,c,w,s}
-{bash $HOME/.config/polybar/launch.sh, \
+super + r; {p,c,w,s}
+	{bash $HOME/.config/polybar/launch.sh, \
 	wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 " wpgtk" "Theme reloaded", \
-i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
+	i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
 	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
 
 super + {minus,equal}
 	i3-msg { move scratchpad, \
-scratchpad show }
+	scratchpad show }
 
-	super + {v,x}
-i3-msg split {v,h}
+super + {v,x}
+	i3-msg split {v,h}
 
-	super + {f,o,z}
-i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
+super + {f,o,z}
+	i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
 
-	super + {h,j,k,l}
-i3-msg focus {left,down,up,right}
+super + {h,j,k,l}
+	i3-msg focus {left,down,up,right}
 
-	super + {1,2,3,4,5,6}
-i3-msg workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Discord}
+super + {1,2,3,4,5,6}
+	i3-msg workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Discord}
 
-	super + {7,8,9,0}
-i3-msg workspace {7,8,9,10}
+super + {7,8,9,0}
+	i3-msg workspace {7,8,9,10}
 
-	super + {Left,Right}
-i3-msg workspace {prev,next}
+super + {Left,Right}
+	i3-msg workspace {prev,next}
 
-	super + shift + {h,j,k,l}
-i3-msg move {left,down,up,right}
+super + shift + {h,j,k,l}
+	i3-msg move {left,down,up,right}
 
-	super + shift + Return
-kitty -T floatingKitty
+super + shift + Return
+	kitty -T floatingKitty
 
-	super + shift + q
-i3-msg kill
+super + shift + q
+	i3-msg kill
 
-	super + shift + space
-i3-msg floating toggle
+super + shift + space
+	i3-msg floating toggle
 
-	super + shift + {1,2,3,4,5,6}
-i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Discord}
+super + shift + {1,2,3,4,5,6}
+	i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Discord}
 
-	super + shift + {7,8,9,0}
-i3-msg move container to workspace {7,8,9,10}
+super + shift + {7,8,9,0}
+	i3-msg move container to workspace {7,8,9,10}
 
-	super + shift + {Left,Right}
-i3-msg move container to workspace {prev,next}
+super + shift + {Left,Right}
+	i3-msg move container to workspace {prev,next}
 
-	super + alt + Return
-kitty --listen-on unix:/tmp/mykitty
+super + alt + Return
+	kitty --listen-on unix:/tmp/mykitty
 
-	alt + space
-bash $HOME/scripts/hardware/chkm.sh
+alt + space
+	bash $HOME/scripts/hardware/chkm.sh
 
-	hyper + {period,comma,m,n}
-pactl { set-sink-volume @DEFAULT_SINK@ +5%,\
+hyper + {period,comma,m,n}
+	pactl { set-sink-volume @DEFAULT_SINK@ +5%,\
 	set-sink-volume @DEFAULT_SINK@ -5%, \
-set-sink-mute @DEFAULT_SINK@ toggle, \
+	set-sink-mute @DEFAULT_SINK@ toggle, \
 	set-source-mute @DEFAULT_SOURCE@ toggle }
 
 hyper + {p,v}
 	bash { $HOME/scripts/rofi/powermenu.sh, \
-$HOME/scripts/rofi/rofi-select-sink.sh }
+	$HOME/scripts/rofi/rofi-select-sink.sh }
 
-	alt + Tab
-rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab
+alt + Tab
+	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab
 
-	control + Escape
-dunstctl history-pop
+control + Escape
+	dunstctl history-pop
 
-	control + space
-dunstctl close
+control + space
+	dunstctl close
 
-	control + shift + space
-dunstctl close-all
+control + shift + space
+	dunstctl close-all
