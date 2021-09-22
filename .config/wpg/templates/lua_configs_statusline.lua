@@ -1,1 +1,0 @@
-/home/lckdscl/dotfiles/.config/nvim/lua/configs/statusline.lua

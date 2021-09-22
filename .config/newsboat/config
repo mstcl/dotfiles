@@ -9,6 +9,7 @@ confirm-delete-all-articles yes
 cleanup-on-quit yes
 notify-always yes
 notify-program notify-send
+browser librewolf
 
 color background          white   black
 color listnormal          color8  black

@@ -1,6 +1,6 @@
 vim.g.bufferline = {
     animation = true,
-    auto_hide = true,
+    auto_hide = false,
     tabpages = true,
     closable = true,
     clickable = true,

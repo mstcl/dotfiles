@@ -26,6 +26,8 @@ focus_on_window_activation urgent
 popup_during_fullscreen smart
 # }}}
 # Startup {{{
+exec --no-startup-id openrgb -d 1 -m off
+exec --no-startup-id openrgb -d 2 -m off
 exec --no-startup-id sxhkd &
 exec --no-startup-id aria2c &
 exec --no-startup-id bash $HOME/.config/wpg/wp_init.sh &

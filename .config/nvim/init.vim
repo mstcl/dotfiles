@@ -4,6 +4,7 @@
 " Require plugins.lua {{{
 lua require('impatient')
 lua require('plugins')
+colorscheme marbles
 " }}}
 " Remove these built-in plugins {{{
 lua << EOF
@@ -46,7 +47,8 @@ augroup END
 " }}}
 " Alpha options {{{
 augroup alpha
-    autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | call CleanEmptyBuffers()
+    autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2
+    autocmd WinEnter,BufRead,BufNewFile * if &ft != 'alpha' | call CleanEmptyBuffers() | endif
 augroup END
 function! CleanEmptyBuffers()
     let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
@@ -132,53 +134,6 @@ function! ProcessSearch(timerid)
     exe 'match IncSearch /' . l:patt . '/'
 endfunc
 " }}}
-" Wilder autocommand and setup {{{
-autocmd CmdlineEnter * ++once call s:wilder_init()
-function! s:wilder_init() abort
-    call wilder#setup({
-        \ 'modes': [':', '/', '?'],
-        \ 'next_key': '<Tab>',
-        \ 'previous_key': '<S-Tab>',
-        \ 'accept_key': '<Down>',
-        \ 'reject_key': '<Up>',
-    \ })
-
-    call wilder#set_option('pipeline', [
-        \ wilder#debounce(10),
-        \ wilder#branch(
-        \ [
-            \ wilder#check({_, x -> empty(x)}),
-            \ wilder#history(),
-            \ wilder#result({
-                \ 'draw': [{_, x -> ' ' . x}],
-            \ }),
-        \ ],
-            \ wilder#cmdline_pipeline({
-                \ 'use_python': 0,
-                \ 'fuzzy': 1,
-                \ 'fuzzy_filter': wilder#vim_fuzzy_filter(),
-            \ }),
-            \ wilder#search_pipeline({
-                \ 'pattern': wilder#python_fuzzy_pattern(),
-                \ 'sorter': wilder#python_difflib_sorter(),
-                \ 'engine': 're',
-            \ }),
-        \ ),
-    \ ])
-
-    call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-        \ 'highlights': {
-            \   'border': 'Comment',
-        \ },
-        \ 'border': 'single',
-        \ 'highlighter': wilder#basic_highlighter(),
-        \ 'min_width': '100%',
-        \ 'min_height': '20%',
-        \ 'max_height': '20%',
-        \ 'reverse': 0,
-      \ })))
-endfunction
-" }}}
 " }}}
 " OPTIONS {{{
 " Terminal title {{{
@@ -199,7 +154,7 @@ set nocursorline
 set synmaxcol=200
 set hidden
 set noshowmode
-set showcmd
+set noshowcmd
 set lazyredraw
 set ttyfast
 set conceallevel=2
@@ -250,7 +205,7 @@ set ttimeout
 set ttimeoutlen=10
 " }}}
 " Search options {{{
-set nohlsearch
+set hlsearch
 set ignorecase
 set incsearch
 set smartcase

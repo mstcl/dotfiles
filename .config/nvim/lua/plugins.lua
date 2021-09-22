@@ -51,8 +51,8 @@ return require('packer').startup {
     -- -_-_-_- AESTHETIC -_-_-_
     -- GALAXYLINE: fancy status line {{{
         use {
-            "hhn-pham/galaxyline.nvim",
-            -- event = 'VimEnter',
+            "NTBBloodbath/galaxyline.nvim",
+            event = 'VimEnter',
             branch = 'main',
             wants = 'nvim-web-devicons',
             config = function()
@@ -83,7 +83,7 @@ return require('packer').startup {
     -- BARBAR: fancy buffer bar {{{
         use {
             'JA-Bar/barbar.nvim',
-            -- event = 'BufEnter',
+            event = 'BufEnter',
             wants = 'nvim-web-devicons',
             config = function()
                 require'configs.barbar'
@@ -93,20 +93,21 @@ return require('packer').startup {
     -- WEB-DEVICONS: icons for bars {{{
         use {
             'kyazdani42/nvim-web-devicons',
-            -- event = "VimEnter",
+            event = "VimEnter",
             config = function ()
                 require'configs.devicons'
+                vim.cmd[[ source $HOME/.config/nvim/colors/marbles.lua ]]
             end
         }
     -- }}}
     -- COLORBUDDY: neovim themer in lua {{{
-        use {
+        --[[ use {
             'tjdevries/colorbuddy.nvim',
             after = "packer.nvim",
             config = function()
                 require'configs.colorbuddy'
             end
-            }
+            } ]]
      -- }}}
     -- ZEN MODE: lightweight goyo replacement {{{
         use {
@@ -165,7 +166,7 @@ return require('packer').startup {
         }
     -- }}}
     -- SPELLSITTER: spellcheck comments with treesitter {{{
-        use {
+        --[[ use {
             'lewis6991/spellsitter.nvim',
             after = 'nvim-treesitter',
             config = function()
@@ -174,7 +175,7 @@ return require('packer').startup {
                     captures = {'comment'},
                 }
             end
-        }
+        } ]]
     -- }}}
     -- -_-_-_ COMPLETION -_-_-_
     -- COMPE: popup completion {{{
@@ -205,7 +206,10 @@ return require('packer').startup {
      -- WILDER: vim command fuzzy popup completion {{{
         use {
             'gelguy/wilder.nvim',
-            event = "BufEnter",
+            event = "CmdlineEnter",
+            config = function ()
+                vim.cmd [[ source $HOME/.config/nvim/lua/configs/wilder.vim ]]
+            end
         }
      -- }}}
     -- -_-_-_- TERMINAL -_-_-_-
@@ -408,6 +412,9 @@ return require('packer').startup {
             end
         }
     -- }}}
+    --[[ use {
+        'gerw/vim-HiLinkTrace'
+    } ]]
        end,
     -- PACKER OPTIONS {{{
     config = {
