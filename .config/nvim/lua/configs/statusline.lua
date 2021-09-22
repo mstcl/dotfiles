@@ -171,10 +171,16 @@ gls.right[12] = {
 }
 
 gls.short_line_left[1] = {
+  BufferSpace = {
+    provider = function()
+      return " "
+    end,
+    highlight = "GalaxyFgAlt",
+  },
+}
+gls.short_line_left[2] = {
   BufferType = {
     provider = "FileTypeName",
-    separator = " ",
-    separator_highlight = "GalaxyBg",
-    highlight = "GalaxyBg",
+    highlight = "GalaxyFgAlt",
   },
 }

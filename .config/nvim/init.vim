@@ -47,7 +47,7 @@ augroup END
 " }}}
 " Alpha options {{{
 augroup alpha
-    autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2
+    autocmd FileType alpha set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=2
     autocmd WinEnter,BufRead,BufNewFile * if &ft != 'alpha' | call CleanEmptyBuffers() | endif
 augroup END
 function! CleanEmptyBuffers()
