@@ -1,8 +1,8 @@
 # :.config/gtk-3.0/settings.ini
 [Settings]
-gtk-theme-name=FlatColor
+gtk-theme-name=sayo-dark
 gtk-icon-theme-name={icons}
-gtk-font-name=Helvetica Neue Medium 12
+gtk-font-name=Helvetica Neue Medium {font-size}
 gtk-cursor-theme-name={cursor}
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH

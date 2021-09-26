@@ -78,8 +78,9 @@ _G.packer_plugins = {
   },
   ["auto-pairs"] = {
     config = { "\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.autopairs\frequire\0" },
-    loaded = true,
-    path = "/home/lckdscl/.local/share/nvim/site/pack/packer/start/auto-pairs"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/lckdscl/.local/share/nvim/site/pack/packer/opt/auto-pairs"
   },
   ["barbar.nvim"] = {
     config = { "\27LJ\1\2.\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\19configs.barbar\frequire\0" },
@@ -190,7 +191,7 @@ _G.packer_plugins = {
     path = "/home/lckdscl/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
-    loaded = true,
+    loaded = false,
     needs_bufread = false,
     path = "/home/lckdscl/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
   },
@@ -338,9 +339,6 @@ time([[Defining packer_plugins]], false)
 time([[Setup for nvim-tree.lua]], true)
 try_loadstring("\27LJ\1\2,\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\17configs.tree\frequire\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
-time([[packadd for nvim-tree.lua]], true)
-vim.cmd [[packadd nvim-tree.lua]]
-time([[packadd for nvim-tree.lua]], false)
 -- Setup for: jupytext.vim
 time([[Setup for jupytext.vim]], true)
 try_loadstring("\27LJ\1\2|\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\4\0%\1\5\0>\0\2\1G\0\1\0003let g:jupytext_filetype_map = {'py': 'python'}\bcmd\15py:percent\17jupytext_fmt\6g\bvim\0", "setup", "jupytext.vim")
@@ -360,10 +358,6 @@ time([[Setup for ultisnips]], false)
 time([[Setup for vim-markdown]], true)
 try_loadstring("\27LJ\1\0020\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\21configs.markdown\frequire\0", "setup", "vim-markdown")
 time([[Setup for vim-markdown]], false)
--- Config for: auto-pairs
-time([[Config for auto-pairs]], true)
-try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.autopairs\frequire\0", "config", "auto-pairs")
-time([[Config for auto-pairs]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -418,13 +412,14 @@ vim.cmd [[au FileType sxhkd ++once lua require("packer.load")({'sxhkd-vim'}, { f
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-tree.lua'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au WinScrolled * ++once lua require("packer.load")({'neoscroll.nvim'}, { event = "WinScrolled *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'kommentary'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-treesitter', 'cleanfold.nvim', 'gitsigns.nvim', 'nvim-lightbulb', 'nvim-lspconfig', 'foldsigns.nvim', 'nvim-ts-rainbow'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'wilder.nvim'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.vim', 'ultisnips', 'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-web-devicons', 'packer.nvim', 'galaxyline.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufEnter * ++once lua require("packer.load")({'barbar.nvim', 'surround.nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufEnter * ++once lua require("packer.load")({'auto-pairs', 'barbar.nvim', 'surround.nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

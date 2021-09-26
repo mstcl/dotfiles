@@ -34,18 +34,18 @@ gl.short_line_list = {
     'toggleterm'
 }
 
-gls.left[2] = {
+gls.left[1] = {
 ViMode = {
         provider = function()
-            local mode_color = {n = "#353535", i = "#8b8f7e",v="#637a8a",
+            local mode_color = {n = "#454545", i = "#8b8f7e",v="#637a8a",
             [''] = "#637a8a",V="#637a8a",
-            c = "#877979",no = "#aa8f7c",s = "#908b7f",
-            S="#908b7f",[''] = "#908b7f",
+            c = "#877979",no = "#aa8f7c",s = "#917563",
+            S="#917563",[''] = "#917563",
             ic = "#90907f",R = "#877979",Rv = "#877979",
             cv = "#aa8f7c",ce = "#aa8f7c", r = "#aa8f7c",
             rm = "#4c5d69", ['r?'] = "#4c5d69",
             ['!']  = "#aa8f7c",t = "#aa8f7c"}
-            vim.api.nvim_command("hi GalaxyViMode guibg=#181818 guifg=" .. mode_color[vim.fn.mode()])
+            vim.api.nvim_command("hi GalaxyViMode guibg=#2f2f2f guifg=" .. mode_color[vim.fn.mode()])
             return "▊ "
         end,
         highlight = "GalaxyFg",

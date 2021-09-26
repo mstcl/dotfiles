@@ -37,6 +37,10 @@ EOF
 " Wipe register {{{
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 " }}}
+" Turn compe on and off {{{
+command! CompeEnable  call compe#setup(g:compe, 0)
+command! CompeDisable call compe#setup({'enabled': v:false}, 0)
+" }}}
 " }}}
 " AUTO-COMMANDS {{{
 " Auto show line diagnostic {{{
@@ -90,6 +94,8 @@ augroup filetypes
     autocmd BufReadPost *.rasi set filetype=css
     " Jupyter Notebook
     autocmd BufReadPost *.ipynb set filetype=python
+    " .conf files
+    autocmd BufReadPost *.conf set filetype=config
 augroup END
 " }}}
 " Autosource init.vim upon saving {{{
@@ -101,13 +107,34 @@ augroup END
 " Markdown options {{{
 augroup MDoptions
     autocmd!
-    autocmd BufNewFile,BufRead *.md set nolist
+    autocmd BufNewFile,BufRead *.md set nolist | inoremap <silent> <C-L>  <c-g>u<Esc>[s1z=`]a<c-g>u
 augroup END
+function! MathAndLiquid()
+    "" Define certain regions
+    " Block math. Look for "$$[anything]$$"
+    syn region math start=/\$\$/ end=/\$\$/
+    " inline math. Look for "$[not $][anything]$"
+    syn region math_block start="\\\@<!\$" end="\$" skip="\\\$"
+
+    " Liquid single line. Look for "{%[anything]%}"
+    syn match liquid '{%.*%}'
+    " Liquid multiline. Look for "{%[anything]%}[anything]{%[anything]%}"
+    syn region highlight_block start='{% highlight .*%}' end='{%.*%}'
+    " Fenced code blocks, used in GitHub Flavored Markdown (GFM)
+    syn region highlight_block start='```' end='```'
+
+    "" Actually highlight those regions.
+    hi link math Statement
+    hi link liquid Statement
+    hi link highlight_block Function
+    hi link math_block Function
+endfunction
+autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathAndLiquid()
 " }}}
 " Tex options {{{
 augroup TEXoptions
     autocmd!
-    autocmd BufNewFile,BufRead *.tex set nolist | setlocal spell
+    autocmd BufNewFile,BufRead *.tex set nolist | setlocal spell | inoremap <silent> <C-L>  <c-g>u<Esc>[s1z=`]a<c-g>u
 augroup END
 " }}}
 " Enable indent-blankline for some filetypes only {{{
@@ -267,8 +294,20 @@ let maplocalleader = ",."
 " Toggle tree {{{
 nnoremap <silent> <C-T>  :lua require'utils.tree_toggle'.toggle()<CR>
 " }}}
-" Toggle relativenumber {{{
-nnoremap <silent> <C-N> :set relativenumber!<CR>
+" Toggle number {{{
+nnoremap <silent> <C-N>  :call SetNumber()<CR>
+function! SetNumber()
+    if &number
+        if &relativenumber
+            set nonumber
+            set norelativenumber
+        else
+            set relativenumber
+        endif
+    else
+        set number
+    endif 
+endfunction
 " }}}
 " Toggle list {{{
 nnoremap <silent> <C-L>  :set list!<CR>

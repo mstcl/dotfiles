@@ -25,7 +25,7 @@ mono_option = average
 
 [color]
 background = default
-foreground = '#CC523B'
+foreground = '#A46836'
 
 [smoothing]
 integral = 77

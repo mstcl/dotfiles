@@ -7,7 +7,7 @@ type = calendar
 color = dark red
 
 [[uni]]
-path = ~/.local/share/vdirsyncer/calendars/university-of-bristol-personal-timetable-ju20390bristolacuk-1
+path = ~/.local/share/vdirsyncer/calendars/university
 type = calendar
 color = dark magenta
 

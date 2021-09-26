@@ -11,9 +11,9 @@ font=$(convert -list font | awk "{ a[NR] = \$2 } /family: $(fc-match sans -f "%{
 image=$(mktemp --suffix=.png)
 shot=(import -silent -window root)
 desktop=""
-green=00ff99c0
-red=ff5050c0
-cyan=66ffffa0
+green=8b8f7eff
+red=aa8f7cff
+cyan=4c5d69ff
 transparent=00000000
 slighttransparent=e0e0e050
 semitrans=e0e0e010
@@ -24,7 +24,7 @@ timeposx=50
 timeposy=$((screenH-100))
 dateposy=$((timeposy+50))
 
-i3lock_cmd=(i3lock -i "$image" --inside-color=$semitrans --ring-color=$slighttransparent --line-uses-inside --keyhl-color=$green --bshl-color=$red --separator-color=$transparent --insidever-color=$semitrans --insidewrong-color=$semitrans --ringver-color=$cyan --ringwrong-color=$red --radius=100 --ring-width=4 --verif-text="" --wrong-text="" --lockfailed-text="" --lock-text=""--noinput-text="" --wrong-color=$red --clock --time-str="%H:%M" --time-pos="x+$timeposx:y+$timeposy" --time-color=$timecolor --time-align=1 --time-size=72 --date-str="%a, %b %d" --date-pos="x+$timeposx:y+$dateposy" --date-color=$timecolor --date-align=1 --date-size=24)
+i3lock_cmd=(i3lock -i "$image" --inside-color=$semitrans --ring-color=$slighttransparent --line-uses-inside --keyhl-color=$green --bshl-color=$red --separator-color=$transparent --insidever-color=$semitrans --insidewrong-color=$semitrans --ringver-color=$cyan --ringwrong-color=$red --radius=100 --ring-width=4 --verif-text=" " --wrong-text=" " --lockfailed-text=" " --lock-text=" " --noinput-text=" " --wrong-color=$red --clock --time-str="%H:%M" --time-pos="x+$timeposx:y+$timeposy" --time-color=$timecolor --time-align=1 --time-size=72 --date-str="%a, %b %d" --date-pos="x+$timeposx:y+$dateposy" --date-color=$timecolor --date-align=1 --date-size=24)
 shot_custom=false
 
 options="Options:

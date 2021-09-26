@@ -1,11 +1,11 @@
 vim.g.colors_name = 'marbles'
 
-local black       = {'#121212', 0,   'black'}
-local blacker       = {'#0d0d0d', 0,   'black'}
+local black       = {'#2a2a2a', 0,   'black'}
+local blacker       = {'#121212', 0,   'black'}
 local gray        = {'#505050', 244, 'gray'}
-local gray_dark   = {'#353535', 237, 'darkgrey'}
-local gray_darker = {'#242424', 235, 'gray'}
-local gray_darkest = {'#181818', 233, 'gray'}
+local gray_dark   = {'#454545', 237, 'darkgrey'}
+local gray_darker = {'#343434', 235, 'gray'}
+local gray_darkest = {'#2f2f2f', 233, 'gray'}
 local gray_medium  = {'#7d7d7d', 243, 'gray'}
 local gray_light  = {'#999999', 251, 'gray'}
 local white       = {'#bebebe', 15,  'white'}
@@ -16,10 +16,10 @@ local red       = {'#aa8f7c', 196, 'red'}
 local red_dark  = {'#8d7667', 124, 'darkred'}
 local red_light = {'#c3b0a2', 203, 'red'}
 
-local orange       = {'#908b7f', 208, 'darkyellow'}
+local orange       = {'#917563', 208, 'darkyellow'}
 local orange_light = {'#b8b5ad', 214, 'yellow'}
 
-local yellow = {'#90907f', 220, 'yellow'}
+local yellow = {'#74725D', 220, 'yellow'}
 
 local green_dark  = {'#6b6e61', 83, 'darkgreen'}
 local green       = {'#8b8f7e', 72, 'green'}
@@ -388,12 +388,12 @@ local highlight_groups = {
     markdownCode = 'mkdCode',
     markdownStrike = {fg=gray_dark, style={"strikethrough"}},
     markdownCodeDelimiter = 'mkdCodeDelimiter',
-    markdownH1 = {fg=red, style='bold'},
-    markdownH2 = {fg=orange, style='bold'},
-    markdownH3 = {fg=yellow, style='bold'},
-    markdownH4 = {fg=green_dark, style='bold'},
-    markdownH5 = {fg=cyan, style='bold'},
-    markdownH6 = {fg=purple_light, style='bold'},
+    markdownH1 = {fg=red, style={'bold', 'underline'}},
+    markdownH2 = {fg=orange, style={'bold', 'underline'}},
+    markdownH3 = {fg=yellow, style={'bold', 'underline'}},
+    markdownH4 = {fg=green_dark, style={'bold', 'underline'}},
+    markdownH5 = {fg=cyan, style={'bold', 'underline'}},
+    markdownH6 = {fg=purple_light, style={'bold', 'underline'}},
     markdownLinkDelimiter = 'Delimiter',
     markdownLinkTextDelimiter = 'markdownLinkDelimiter',
     markdownUrl = 'Underlined',

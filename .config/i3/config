@@ -1,5 +1,5 @@
 # :.config/i3/config
-# vim:set fdm=marker foldenable:
+# vim:set ft=config fdm=marker foldenable:
 
 # GENERAL {{{
 # Modifier aliases {{{
@@ -10,9 +10,9 @@ set $hyper Mod3
 # Font {{{
 font pango:Helvetica Neue 12
 # }}}
-# gaps {{{
-gaps outer 0
-gaps inner 8
+# Gaps {{{
+gaps outer 4
+gaps inner 4
 # }}}
 # Polybar gap {{{
 gaps top 40
@@ -26,12 +26,10 @@ focus_on_window_activation urgent
 popup_during_fullscreen smart
 # }}}
 # Startup {{{
-exec --no-startup-id openrgb -d 1 -m off
-exec --no-startup-id openrgb -d 2 -m off
 exec --no-startup-id sxhkd &
 exec --no-startup-id aria2c &
 exec --no-startup-id bash $HOME/.config/wpg/wp_init.sh &
-exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
 exec --no-startup-id picom &
 exec --no-startup-id xset s off &
 exec --no-startup-id ibus-daemon -drxR

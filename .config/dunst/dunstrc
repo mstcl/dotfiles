@@ -19,7 +19,7 @@
     horizontal_padding = 8
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#353535"
+    frame_color = "#3a3a3a"
     separator_color = frame
     sort = yes
     idle_threshold = 120
@@ -76,19 +76,19 @@
 
 
 [urgency_low]
-    background = "#121212"
+    background = "#2a2a2a"
     foreground = "#949494"
     timeout = 10
 
 [urgency_normal]
-    background = "#121212"
+    background = "#2a2a2a"
     foreground = "#949494"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#121212"
+    background = "#2a2a2a"
     foreground = "#637a8a"
     timeout = 0
 

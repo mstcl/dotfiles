@@ -1,19 +1,29 @@
-vim.g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' }
-vim.g.nvim_tree_follow = 1
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_auto_open = 1
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_hijack_netrw = 1
-vim.g.nvim_tree_auto_resize = 1
-vim.g.nvim_tree_disable_netrw = 1
-vim.g.nvim_tree_symlink_arrow = '  '
-vim.g.nvim_tree_respect_buf_cwd = 1
-vim.g.nvim_tree_window_picker_exclude = {
-    filetype = {
-        'packer',
-        'qf'
+require'nvim-tree'.setup {
+    disable_netrw       = true,
+    hijack_netrw        = true,
+    open_on_setup       = true,
+    ignore_ft_on_setup  = {'alpha'},
+    auto_close          = true,
+    open_on_tab         = true,
+    hijack_cursor       = true,
+    update_cwd          = true,
+    lsp_diagnostics     = false,
+    update_focused_file = {
+        enable      = false,
+        update_cwd  = false,
+        ignore_list = {}
     },
-    buftype = {
-        'terminal'
+    system_open = {
+        cmd  = nil,
+        args = {}
+    },
+    view = {
+        width = 30,
+        side = 'left',
+        auto_resize = false,
+        mappings = {
+            custom_only = false,
+            list = {}
+        }
     }
 }

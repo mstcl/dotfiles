@@ -19,7 +19,7 @@ return require('packer').startup {
     -- TREE: sidebar to navigate files {{{
         use {
             'kyazdani42/nvim-tree.lua',
-            -- event = 'BufWinEnter',
+            event = 'BufWinEnter',
             setup = function()
                 require'configs.tree'
             end,
@@ -313,7 +313,7 @@ return require('packer').startup {
     -- AUTOPAIRS: auto insert pairs {{{
         use {
             'LunarWatcher/auto-pairs',
-            -- event = "BufEnter",
+            event = "BufEnter",
             config = function ()
                 require'configs.autopairs'
             end,
