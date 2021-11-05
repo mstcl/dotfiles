@@ -1,16 +1,4 @@
 ! :.config/X11/Xmodmap
-clear Lock
-keycode 66 = Mode_switch
-keysym h = h H Left
-keysym l = l L Right
-keysym k = k K Up
-keysym j = j J Down
-keysym u = u U Prior
-keysym i = i I Home
-keysym o = o O End
-keysym p = p P Next
-keysym bracketright = bracketright braceright Delete
-keysym equal = equal plus Caps_Lock
 
 clear mod1
 clear mod2
@@ -19,10 +7,7 @@ clear mod4
 clear mod5
 
 keycode 135 = Hyper_L
-keycode 108 = Alt_R
 
 add mod1 = Alt_L Alt_R
-!add mod2 = Meta_L Meta_R
 add mod3 = Hyper_L
 add mod4 = Super_L Super_R
-!add mod5 = Num_Lock
