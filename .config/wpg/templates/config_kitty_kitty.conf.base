@@ -37,7 +37,7 @@ window_alert_on_bell yes
 # ]]]
 # Window layout [[[
 enabled_layouts horizontal,splits,grid,fat
-window_padding_width 15 20 0 20
+window_padding_width 20 20 0 20
 window_margin_width 0 0 0 0
 placement_strategy center
 active_border_color {color0}
@@ -47,45 +47,49 @@ bell_border_color {color1}
 # ]]]
 # Tab bar [[[
 tab_bar_edge bottom
-tab_bar_margin_width 15.0
-tab_bar_margin_height 20.0 5
-tab_bar_style fade
+tab_bar_margin_width 0
+tab_bar_margin_height 0 0
+tab_bar_style separator
 tab_bar_min_tabs 0
+tab_separator " |"
 tab_fade 0
 # ]]]
 # Template to render the tab title [[[
-active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}{{title}}
-tab_title_template {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}⬤ {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}{{title}}
+active_tab_title_template {{fmt.fg._{color1.strip}}}{{fmt.bg.default}}  {{title}} {{fmt.bg.default}}
+tab_title_template {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}  {{title}} {{fmt.bg.default}}
 # ]]]
 # Tab bar colors and styles [[[
 active_tab_font_style   bold
 active_tab_foreground   {color15}
-active_tab_background   {color0}
-inactive_tab_background {color0}
+active_tab_background   #303030
+inactive_tab_background #303030
 inactive_tab_foreground {color8}
 inactive_tab_font_style bold
-tab_bar_background      {color0}
+tab_bar_background      #303030
 # ]]]
 # Color scheme [[[
-foreground   {color7}
-background   {color0}
-cursor       {color15}
-color0       {color0}
-color8       {color8}
-color1       {color1}
-color9       {color9}
-color2       {color2}
-color10      {color10}
-color3       {color3}
-color11      {color11}
-color4       {color4}
-color12      {color12}
-color5       {color5}
-color13      {color13}
-color6       {color6}
-color14      {color14}
-color7       {color7}
-color15      {color15}
+foreground           {color7}
+selection_foreground {color0}
+background           {color0}
+selection_background {color9}
+cursor               {color15}
+cursor_text_color    {color0}
+color0               #303030
+color8               {color8}
+color1               {color1}
+color9               {color9}
+color2               {color2}
+color10              {color10}
+color3               {color3}
+color11              {color11}
+color4               {color4}
+color12              {color12}
+color5               {color5}
+color13              {color13}
+color6               {color6}
+color14              {color14}
+color7               {color7}
+color15              {color15}
 # ]]]
 # Advanced [[[
 allow_remote_control yes
