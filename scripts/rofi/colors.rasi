@@ -12,7 +12,7 @@
     fg: #bebebe;
     fg2: #949494;
     hi-bold: bold #637a8a;
-    font: "JetBrainsMono Nerd Font 12";
+    font: "JetBrainsMono Nerd Font 13";
     font-icon: "JetBrainsMono Nerd Font 12";
     icon-theme: "Fluent-grey-dark";
     show-icons: true;

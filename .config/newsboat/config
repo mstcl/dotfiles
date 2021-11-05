@@ -11,13 +11,13 @@ notify-always yes
 notify-program notify-send
 browser librewolf
 
-color background          white   black
-color listnormal          color8  black
-color listfocus           yellow  color8 bold
-color listnormal_unread   color15 black  bold
-color listfocus_unread    yellow  color8 bold
-color info                red     black  bold
-color article             color15 black
+color background          white   default
+color listnormal          color8  default
+color listfocus           yellow  color8  bold
+color listnormal_unread   color15 default bold
+color listfocus_unread    yellow  color8  bold
+color info                red     default bold
+color article             color15 default
 
 bind-key j down
 bind-key k up

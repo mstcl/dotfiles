@@ -10,6 +10,5 @@ else
         ibus engine xkb:us::eng
     fi
 fi
-killall -q xcape
+
 xmodmap $HOME/.config/X11/Xmodmap
-xcape -e 'Mode_switch=Escape'
