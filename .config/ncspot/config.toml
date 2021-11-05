@@ -14,13 +14,11 @@ command_key = " "
 "G" = "move bottom"
 
 [theme]
-background = "black"
 primary = "light black"
 secondary = "light yellow"
 title = "red"
 playing = "red"
 playing_selected = "light yellow"
-playing_bg = "black"
 highlight = "white"
 highlight_bg = "black"
 error = "light white"
