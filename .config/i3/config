@@ -8,18 +8,18 @@ set $alt Mod1
 set $hyper Mod3
 # }}}
 # Font {{{
-font pango:Helvetica Neue 12
+font pango:JetBrainsMono Nerd Font Medium 13
 # }}}
 # Gaps {{{
-gaps outer 4
-gaps inner 4
+gaps outer 0
+gaps inner 0
 # }}}
 # Polybar gap {{{
 gaps top 40
 # }}}
 # Borders {{{
 smart_borders on
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 # }}}
 # Priority {{{
 focus_on_window_activation urgent
@@ -37,9 +37,7 @@ exec --no-startup-id unclutter &
 exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
 exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
-exec_always --no-startup-id killall -q xcape 2>/dev/null &
 exec_always --no-startup-id xmodmap $HOME/.config/X11/Xmodmap &
-exec_always --no-startup-id xcape -e 'Mode_switch=Escape' 2>/dev/null &
 exec_always --no-startup-id autotiling &
 # }}}
 # From wal {{{
@@ -76,6 +74,9 @@ for_window [class="Pcmanfm"] resize set 940 680
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Qalculate-gtk"] resize set 640 480
 # }}}
+# matplotlib {{{
+for_window [class="^matplotlib$"] floating enable
+# }}}
 # Kitty {{{
 for_window [class="^kitty$" title="^textScratchpad$"] floating enable
 for_window [class="^kitty$" title="^textScratchpad$"] resize set 740 480; move absolute position center
@@ -102,6 +103,7 @@ for_window [class="Wpg"] floating enable
 for_window [class="Wpg"] resize set 640 480
 # }}}
 # Steam {{{
+assign [class="^Steam$" title="^Steam$"] "5: Games"
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -119,6 +121,9 @@ for_window [class="feh"] floating enable
 # }}}
 # Florence {{{
 for_window [class="Florence"] floating enable
+# }}}
+# Discord {{{
+assign [class="^discord$"] "6: Discord"
 # }}}
 # }}}
 # MODES {{{
