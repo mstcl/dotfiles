@@ -42,7 +42,7 @@ alias scu='systemctl --user'
 alias big="nvim -n -u NONE -i NONE -N"
 alias fv='nv $(fzf --height 40% \
     --preview-window=nohidden \
-    --height=70% --border=sharp \
+    --height=70% \
     --margin=5%,7% --layout=reverse \
     --marker="++" --prompt=" " \
     --preview="bat --line-range :500 {}")'
@@ -53,9 +53,10 @@ alias f='feh -Z -. -X -g 1280x720'
 alias tile='feh --bg-tile ~/.config/wpg/.current'
 alias w='_weather() { curl -s wttr.in/“${1:-bristol}” | head -n 7 ;}; _weather'
 alias nb='newsboat -q'
-alias v='vdirsyncer sync'
+alias v='vdirsyncer sync default_calendar'
 alias k='ikhal'
 alias ts='task synchronize'
+alias def='SDCV_PAGER="less --quit-if-one-screen -RX" sdcv -2 ~/.local/share/dic -c'
 # }}}
 # XDG standards non-conformists {{{
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'

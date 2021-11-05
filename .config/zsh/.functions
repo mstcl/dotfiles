@@ -78,7 +78,7 @@ function cheat() {
         tldr $@
         return
     fi
-    tldr --list | fzf -q "$1"--prompt=' ' --preview-window=nohidden,80%  --preview "echo {} | xargs tldr --color always" | xargs -r tldr
+    tldr --list | fzf -q "$1" --prompt=' ' --preview-window=nohidden,80%  --preview "echo {} | xargs tldr --color always" | xargs -r tldr
 }
 # }}}
 # FZF select + execute history {{{
