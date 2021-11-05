@@ -37,7 +37,7 @@ gl.short_line_list = {
 gls.left[1] = {
 ViMode = {
         provider = function()
-            local mode_color = {n = "#454545", i = "#8b8f7e",v="#637a8a",
+            local mode_color = {n = "#505050", i = "#8b8f7e",v="#637a8a",
             [''] = "#637a8a",V="#637a8a",
             c = "#877979",no = "#aa8f7c",s = "#917563",
             S="#917563",[''] = "#917563",
@@ -45,7 +45,7 @@ ViMode = {
             cv = "#aa8f7c",ce = "#aa8f7c", r = "#aa8f7c",
             rm = "#4c5d69", ['r?'] = "#4c5d69",
             ['!']  = "#aa8f7c",t = "#aa8f7c"}
-            vim.api.nvim_command("hi GalaxyViMode guibg=#2f2f2f guifg=" .. mode_color[vim.fn.mode()])
+            vim.api.nvim_command("hi GalaxyViMode guibg=#454545 guifg=" .. mode_color[vim.fn.mode()])
             return "▊ "
         end,
         highlight = "GalaxyFg",

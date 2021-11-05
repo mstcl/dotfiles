@@ -113,7 +113,8 @@ local lsp_util = require('lspconfig/util')
 lsp_configs.prosemd = {
     default_config = {
         cmd = { "/home/lckdscl/.local/bin/prosemd-lsp", "--stdio" },
-        filetypes = { "markdown" },
+        -- filetypes = { "markdown" },
+        filetypes = {},
         root_dir = function(fname)
             return lsp_util.find_git_ancestor(fname) or vim.fn.getcwd()
         end,
@@ -143,13 +144,13 @@ lsp.grammar_guard.setup({
             },
             trace = { server = "verbose" },
             dictionary = {},
-            disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S','MORFOLOGIK_RULE_EN_GB'}},
+            disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S','MORFOLOGIK_RULE_EN_GB', 'COPYRIGHT'}},
             hiddenFalsePositives = {},
         },
     },
 })
 
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 for type, icon in pairs(signs) do
     local hl = "LspDiagnosticsSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })

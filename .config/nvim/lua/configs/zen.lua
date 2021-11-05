@@ -5,8 +5,10 @@ end
 
 zen.setup {
     window = {
+        backdrop = 1;
+        width = 90,
         options = {
-            signcolumn = "yes",
+            signcolumn = "no",
             number = false,
             relativenumber = false,
             cursorline = false,
@@ -18,7 +20,7 @@ zen.setup {
     plugins = {
         gitsigns = { enabled = true },
         kitty = {
-            enabled = true,
+            enabled = false,
             font = "+4",
         },
     },

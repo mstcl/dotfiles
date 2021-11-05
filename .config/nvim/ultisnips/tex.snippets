@@ -44,6 +44,15 @@ def add_row(snip):
 
 endglobal
 
+snippet newdoc "New document header"
+\documentclass{${1:class}}
+\title{${2:title}}
+\author{${3:someone}}
+\date{\today}
+\maketitle
+$0
+endsnippet
+
 snippet documentclass "Document class"
 \documentclass{${1:class}}
 $0

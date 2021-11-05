@@ -114,7 +114,7 @@ function! MathAndLiquid()
     " Block math. Look for "$$[anything]$$"
     syn region math start=/\$\$/ end=/\$\$/
     " inline math. Look for "$[not $][anything]$"
-    syn region math_block start="\\\@<!\$" end="\$" skip="\\\$"
+    syn match math_block '\$[^$].\{-}\$'
 
     " Liquid single line. Look for "{%[anything]%}"
     syn match liquid '{%.*%}'
@@ -140,9 +140,9 @@ augroup END
 " Enable indent-blankline for some filetypes only {{{
 augroup IndentFT
     autocmd!
-    autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,yaml,xml,cfg,dosini} silent! IndentBlanklineEnable
-    autocmd BufNewFile,BufRead *.{vim,tex,python,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,bash,yaml,xml,cfg,dosini} nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm zm:IndentBlanklineRefresh<CR> | nnoremap <silent> zM zM:IndentBlanklineRefresh<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr zr:IndentBlanklineRefresh<CR> | nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
-augroup end
+    autocmd BufNewFile,BufRead *.{vim,ipynb,tex,py,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,yaml,xml} silent! IndentBlanklineEnable
+    autocmd BufNewFile,BufRead *.{vim,ipynb,tex,py,lua,cpp,css,sh,ini,conf,html,json,toml,zsh,yaml,xml} nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm zm:IndentBlanklineRefresh<CR> | nnoremap <silent> zM zM:IndentBlanklineRefresh<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr zr:IndentBlanklineRefresh<CR> | nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>
+augroup END
 " }}}
 " Terminal no number {{{
 augroup floaterm
@@ -161,6 +161,12 @@ function! ProcessSearch(timerid)
     exe 'match IncSearch /' . l:patt . '/'
 endfunc
 " }}}
+" Fold with treesitter {{{
+augroup FoldTS
+    autocmd!
+    au BufNewFile,BufRead *.{vim,tex,py,lua,cpp,sh,toml} set foldmethod=expr | set foldexpr=nvim_treesitter#foldexpr()
+augroup END
+" }}}
 " }}}
 " OPTIONS {{{
 " Terminal title {{{
@@ -177,8 +183,8 @@ set updatetime=180
 set modeline
 " }}}
 " Visual settings {{{
-set nocursorline
-set synmaxcol=200
+set cursorline
+set synmaxcol=400
 set hidden
 set noshowmode
 set noshowcmd
@@ -220,7 +226,7 @@ set undofile
 " }}}
 " Number {{{
 set number
-set norelativenumber
+set relativenumber
 " }}}
 " Change default split {{{
 set splitbelow
@@ -299,14 +305,14 @@ nnoremap <silent> <C-N>  :call SetNumber()<CR>
 function! SetNumber()
     if &number
         if &relativenumber
-            set nonumber
-            set norelativenumber
+            setlocal nonumber
+            setlocal norelativenumber
         else
-            set relativenumber
+            setlocal relativenumber
         endif
     else
-        set number
-    endif 
+        setlocal number
+    endif
 endfunction
 " }}}
 " Toggle list {{{
@@ -349,7 +355,7 @@ tnoremap <silent> <F4>  <C-\><C-n>:FloatermToggle<CR>
 nnoremap <silent> <F10> :FloatermKill<CR>
 tnoremap <silent> <F10> <C-\><C-n>:FloatermKill<CR>
 vnoremap <silent> <F8>  :'<,'>FloatermSend<CR>
-nnoremap <silent> <F5>  :FloatermNew --width=0.5 --wintype=vsplit --name=repl --position=botright ipython3<CR>
+nnoremap <silent> <F5>  :FloatermNew --width=0.5 --wintype=vsplit --name=repl --position=botright ipython3 --no-autoindent<CR>
 " }}}
 " Better indentation {{{
 xnoremap < <gv

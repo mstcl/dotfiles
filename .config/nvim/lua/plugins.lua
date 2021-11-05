@@ -20,7 +20,7 @@ return require('packer').startup {
         use {
             'kyazdani42/nvim-tree.lua',
             event = 'BufWinEnter',
-            setup = function()
+            config = function()
                 require'configs.tree'
             end,
         }
@@ -152,7 +152,7 @@ return require('packer').startup {
     -- TREESITTER: syntax aware utilities {{{
         use {
             "nvim-treesitter/nvim-treesitter",
-            run = "TSUpdate",
+            run = ":TSUpdate",
             event = "BufRead",
             config = function()
                 require'configs.treesitter'
@@ -293,20 +293,16 @@ return require('packer').startup {
             "b3nj5m1n/kommentary",
             event = "CursorMoved",
             config = function ()
-                vim.g.kommentary_create_default_mappings = true
-                require('kommentary.config').configure_language("default", {
-                    ignore_whitespace = true,
-                })
+                require'configs.comment'
             end
         }
     -- }}}
     -- BETTER ESCAPE: use alphanumeric escape mappings without delay {{{
         use {
-            "jdhao/better-escape.vim",
+            "max397574/better-escape.nvim",
             event = "InsertEnter",
             config = function()
-                vim.g.better_escape_interval = 300
-                vim.g.better_escape_shortcut = {"jk"}
+                require'configs.escape'
             end,
         }
     -- }}}
@@ -412,6 +408,9 @@ return require('packer').startup {
             end
         }
     -- }}}
+    --[[ use {
+        "nvim-treesitter/playground"
+    } ]]
     --[[ use {
         'gerw/vim-HiLinkTrace'
     } ]]

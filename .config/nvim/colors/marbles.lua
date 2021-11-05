@@ -1,10 +1,12 @@
 vim.g.colors_name = 'marbles'
 
 local black       = {'#2a2a2a', 0,   'black'}
+local blackish       = {'#202020', 0,   'black'}
 local blacker       = {'#121212', 0,   'black'}
 local gray        = {'#505050', 244, 'gray'}
 local gray_dark   = {'#454545', 237, 'darkgrey'}
 local gray_darker = {'#343434', 235, 'gray'}
+local gray_darkerer = {'#303030', 235, 'gray'}
 local gray_darkest = {'#2f2f2f', 233, 'gray'}
 local gray_medium  = {'#7d7d7d', 243, 'gray'}
 local gray_light  = {'#999999', 251, 'gray'}
@@ -68,7 +70,7 @@ local highlight_groups = {
 
     --[[ 4.1.2. Identifiers]]
     Identifier = {fg=red_dark},
-    Function = {fg=purple},
+    Function = {fg=purple, style='bold'},
 
     --[[ 4.1.3. Syntax]]
     Statement   = {fg=ice},
@@ -80,9 +82,9 @@ local highlight_groups = {
     Exception = {fg=red_light, style='bold'},
     Noise = 'Delimiter',
 
-    --[[ 4.1.4. Metatextual Information]]
-    PreProc = {fg=tan},
-    Include = {fg=green_light, style='nocombine'},
+    --[[ 4.1.4. metatextual information]]
+    preproc = {fg=tan},
+    include = {fg=green_light, style={'nocombine', 'italic'}},
     Define = {fg=blue, style='nocombine'},
     Macro  = {fg=blue, style='italic'},
     PreCondit = {fg=tan, style='italic'},
@@ -113,11 +115,11 @@ local highlight_groups = {
 
     --[[ 4.2... Editor UI  ]]
     --[[ 4.2.1. Status Line]]
-    StatusLine = {fg=green_light, bg=gray_darkest},
+    StatusLine = {fg=green_light, bg=gray_dark},
     StatusLineNC = function(self) return {fg=gray, bg=self.StatusLine.bg} end,
     StatusLineTerm = 'StatusLine',
     StatusLineTermNC = 'StatusLineNC',
-    MsgArea = {bg=black},
+    MsgArea = {bg=gray_darkerer},
 
     --[[ 4.2.2. Separators]]
     VertSplit = {fg=gray_darker, bg=black},
@@ -128,11 +130,11 @@ local highlight_groups = {
 
     --[[ 4.2.3. Conditional Line Highlighting]]
     Conceal = {bg=BG},
-    CursorLine   = {bg=gray_dark},
+    CursorLine   = {bg=gray_darkest},
     CursorLineNr = function(self) return {fg=gray_medium, bg=self.LineNr.bg} end,
     debugBreakpoint = 'ErrorMsg',
     debugPC = 'ColorColumn',
-    LineNr  = {fg=gray_dark},
+    LineNr  = {fg=gray_dark, bg=blackish},
     QuickFixLine = {bg=gray_darkest},
     Visual    = {bg=gray_dark},
     VisualNOS = {bg=gray_darkest},
@@ -143,11 +145,11 @@ local highlight_groups = {
     PmenuSel  = {fg=gray_medium, bg=gray_darker, style={"inverse", "bold"}},
     PmenuThumb = {fg=gray_dark, bg=gray_dark},
     WildMenu = 'PmenuSel',
-    NormalFloat = {fg=white, bg=gray_darkest},
-    FloatBorder = {fg=gray_dark, bg=gray_darkest},
+    NormalFloat = {fg=white, bg=blackish},
+    FloatBorder = {fg=gray_dark, bg=blackish},
 
     --[[ 4.2.5. Folds]]
-    FoldColumn = {fg=gray_dark, bg=black, style='bold'},
+    FoldColumn = {fg=gray_dark, bg=blackish, style='bold'},
     Folded = {fg=gray_dark,  bg=black, style={'bold','italic'}},
 
     --[[ 4.2.6. Diffs]]
@@ -159,7 +161,7 @@ local highlight_groups = {
     --[[ 4.2.7. Searching]]
     IncSearch  = {style={'bold','inverse'}},
     MatchParen = {fg=black, bg=gray_light, style={'bold'}},
-    Search = {bg=BG},
+    Search = {style={'bold', 'underline'}},
 
     --[[ 4.2.8. Spelling]]
     SpellBad   = {fg=red, style={'undercurl', color=red}},
@@ -169,7 +171,7 @@ local highlight_groups = {
 
     --[[ 4.2.9. Conditional Column Highlighting]]
     ColorColumn = {bg=gray_dark, style='inverse'},
-    SignColumn  = NONE,
+    SignColumn  = {bg=blackish},
 
     --[[ 4.2.10. Messages]]
     ErrorMsg = {fg=red, style='bold'},
@@ -181,19 +183,19 @@ local highlight_groups = {
 
     --[[ 4.2.11. LSP ]]
     LspDiagnosticsDefaultError = 'Error',
-    LspDiagnosticsFloatingError = 'ErrorMsg',
+    LspDiagnosticsFloatingError = function(self) return {fg=self.ErrorMsg.fg, bg=blackish} end,
     LspDiagnosticsSignError = 'LspDiagnosticsFloatingError',
 
     LspDiagnosticsDefaultWarning = 'Warning',
-    LspDiagnosticsFloatingWarning = 'WarningMsg',
+    LspDiagnosticsFloatingWarning =  function(self) return {fg=self.WarningMsg.fg, bg=blackish} end,
     LspDiagnosticsSignWarning = 'LspDiagnosticsFloatingWarning',
 
     LspDiagnosticsDefaultHint = 'Hint',
-    LspDiagnosticsFloatingHint = 'HintMsg',
+    LspDiagnosticsFloatingHint = function(self) return {fg=self.HintMsg.fg, bg=blackish} end,
     LspDiagnosticsSignHint = 'LspDiagnosticsFloatingHint',
 
     LspDiagnosticsDefaultInformation = 'Info',
-    LspDiagnosticsFloatingInformation = 'InfoMsg',
+    LspDiagnosticsFloatingInformation = function(self) return {fg=self.InfoMsg.fg, bg=blackish} end,
     LspDiagnosticsSignInformation = 'LspDiagnosticsFloatingInformation',
 
     LspDiagnosticsUnderlineError = 'CocErrorHighlight',
@@ -602,10 +604,10 @@ local highlight_groups = {
     JumpMotion = 'EasyMotion',
 
     --[[ 4.4.4. vim-gitgutter / vim-signify ]]
-    GitGutterAdd    = {fg = addfg},
-    GitGutterChange = {fg = changefg},
-    GitGutterDelete = {fg = delfg},
-    GitGutterChangeDelete = {fg=orange},
+    GitGutterAdd    = {fg = addfg, bg=blackish},
+    GitGutterChange = {fg = changefg, bg=blackish},
+    GitGutterDelete = {fg = delfg, bg=blackish},
+    GitGutterChangeDelete = {fg=orange, bg=blackish},
 
     SignifySignAdd    = 'GitGutterAdd',
     SignifySignChange = 'GitGutterChange',
@@ -760,11 +762,12 @@ local highlight_groups = {
     TelescopePreviewBorder = {fg=gray_dark, bg=black},
     TelescopeMatching = {fg=red, style={"bold"}},
     TelescopePromptPrefix = {fg=red, style={"bold"}},
+    TelescopeTitle = {fg=red, style={"bold"}},
 
     --[[ 4.4.20. floaterm ]]
-    Floaterm = {bg = blacker},
+    Floaterm = {bg = blackish},
     FloatermNC = {bg = black},
-    FloatermBorder = {fg=gray_dark, bg = blacker},
+    FloatermBorder = {fg=gray_dark, bg = blackish},
 
     --[[ 4.4.21. nvim-tree ]]
     NvimTreeNormal = {fg=gray_light, bg=gray_darkest},
@@ -799,15 +802,15 @@ local highlight_groups = {
 
     --[[ 4.4.24. galaxyline ]]
     GalaxyBg = {fg=black,bg=black},
-    GalaxyFg = {fg=gray_light, bg=gray_darkest, style={"bold"}},
-    GalaxyFgAlt ={fg=gray_dark, bg=gray_darkest, style={"bold"}},
-    GalaxyYellow ={fg=yellow, bg=gray_darkest, style={"bold"}},
-    GalaxyCyan ={fg=cyan, bg=gray_darkest, style={"bold"}},
-    GalaxyGreen ={fg=green, bg=gray_darkest, style={"bold"}},
-    GalaxyOrange ={fg=orange, bg=gray_darkest, style={"bold"}},
-    GalaxyMagenta ={fg=magenta, bg=gray_darkest, style={"bold"}},
-    GalaxyBlue ={fg=blue, bg=gray_darkest, style={"bold"}},
-    GalaxyRed ={fg=red, bg=gray_darkest, style={"bold"}},
+    GalaxyFg = {fg=gray_light, bg=gray_dark, style={"bold"}},
+    GalaxyFgAlt ={fg=gray_medium, bg=gray_dark, style={"bold"}},
+    GalaxyYellow ={fg=yellow, bg=gray_dark, style={"bold"}},
+    GalaxyCyan ={fg=cyan, bg=gray_dark, style={"bold"}},
+    GalaxyGreen ={fg=green, bg=gray_dark, style={"bold"}},
+    GalaxyOrange ={fg=orange, bg=gray_dark, style={"bold"}},
+    GalaxyMagenta ={fg=magenta, bg=gray_dark, style={"bold"}},
+    GalaxyBlue ={fg=blue, bg=gray_dark, style={"bold"}},
+    GalaxyRed ={fg=red, bg=gray_dark, style={"bold"}},
 
     -- [[ 4.5 Others ]]
     FocusedSymbol={fg=black, bg=yellow}
