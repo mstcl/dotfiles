@@ -44,12 +44,18 @@ super + r; {p,c,w,s}
 	i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
 	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
 
+super + i
+	zathura
+
 super + {minus,equal}
 	i3-msg { move scratchpad, \
 	scratchpad show }
 
-super + {v,x}
-	i3-msg split {v,h}
+super + x
+	i3-msg layout toggle stacking splitv splith tabbed
+
+super + v; {b,s}
+	i3-msg gaps inner all {set 8, set 0}
 
 super + {f,o,z}
 	i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
@@ -103,8 +109,8 @@ hyper + {p,v}
 	bash { $HOME/scripts/rofi/powermenu.sh, \
 	$HOME/scripts/rofi/rofi-select-sink.sh }
 
-alt + Tab
-	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab
+alt + grave
+	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-grave' -kb-toggle-sort '!Alt-Escape' -kb-row-down Alt-grave
 
 control + Escape
 	dunstctl history-pop
