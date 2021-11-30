@@ -12,11 +12,11 @@ local on_attach = function(client,bufnr)
     buf_set_keymap('n', '<Leader>qf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     buf_set_keymap('n', '<Leader>qd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', '<Leader>qs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}}})<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}}})<CR>', opts)
     vim.fn.sign_define('LightBulbSign', { text = "", texthl = "LightbulbTextHL" })
-    vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 9}, virtual_text = { enabled = true, text = "     Code actions available" } }]]
-    require "lsp_signature".on_attach({ bind = true, handler_opts = { border = 'single' }, floating_window = true, floating_window_above_cur_line = true, fix_pos = true, hint_enable = false, })
+    -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 10}, virtual_text = { enabled = false, text = "" } }]]
+    require "lsp_signature".on_attach({ bind = true, handler_opts = { border = 'rounded' }, floating_window = true, floating_window_above_cur_line = true, fix_pos = true, hint_enable = false, })
 end
 
 lsp.clangd.setup{
@@ -107,46 +107,57 @@ lsp.sumneko_lua.setup {
     }
 }
 
-local lsp_configs = require('lspconfig/configs')
-local lsp_util = require('lspconfig/util')
+local lsp_configs = require('lspconfig.configs')
+local lsp_util = require('lspconfig.util')
 
-lsp_configs.prosemd = {
-    default_config = {
-        cmd = { "/home/lckdscl/.local/bin/prosemd-lsp", "--stdio" },
-        -- filetypes = { "markdown" },
-        filetypes = {},
-        root_dir = function(fname)
-            return lsp_util.find_git_ancestor(fname) or vim.fn.getcwd()
-        end,
-        settings = {},
+if not lsp_configs.prosemd then
+    lsp_configs.prosemd = {
+        default_config = {
+            cmd = { "/home/lckdscl/.local/bin/prosemd-lsp", "--stdio" },
+            filetypes = { "markdown" },
+            root_dir = function(fname)
+                return lsp_util.find_git_ancestor(fname) or vim.fn.getcwd()
+            end,
+            settings = {},
+        }
     }
-}
-
+end
 lsp.prosemd.setup {
     on_attach = on_attach
 }
 
 require("grammar-guard").init()
+if not lsp_configs.grammar_guard then
+    lsp_configs.grammar_guard = {
+        default_config = {
+            cmd = { "/home/lckdscl/.local/share/nvim/lsp_servers/ltex/ltex-ls" },
+            root_dir = function(fname)
+                return lsp_util.find_git_ancestor(fname) or vim.fn.getcwd()
+            end,
+            filetypes = { "markdown", "bib", "latex" },
+            settings = {
+                ltex = {
+                    enabled = { "latex", "tex", "bib", "markdown" },
+                    language = "en-GB",
+                    diagnosticSeverity = "information",
+                    setenceCacheSize = 2000,
+                    additionalRules = {
+                        enablePickyRules = false,
+                        motherTongue = "en-GB",
+                    },
+                    trace = { server = "verbose" },
+                    dictionary = {},
+                    disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S','MORFOLOGIK_RULE_EN_GB', 'COPYRIGHT'}},
+                    hiddenFalsePositives = {},
+                },
+            },
+        }
+    }
+end
 lsp.grammar_guard.setup({
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
-    },
-    settings = {
-        ltex = {
-            enabled = { "latex", "tex", "bib", "markdown" },
-            language = "en-GB",
-            diagnosticSeverity = "information",
-            setenceCacheSize = 2000,
-            additionalRules = {
-                enablePickyRules = false,
-                motherTongue = "en-GB",
-            },
-            trace = { server = "verbose" },
-            dictionary = {},
-            disabledRules = {['en-GB'] = {'OXFORD_SPELLING_Z_NOT_S','MORFOLOGIK_RULE_EN_GB', 'COPYRIGHT'}},
-            hiddenFalsePositives = {},
-        },
     },
 })
 
@@ -160,39 +171,35 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
     virtual_text = false,
     signs = true,
     underline = true,
-    update_in_insert = true,
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "double",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "double",
+    update_in_insert = false,
 })
 
 local icons = {
-    Class = " Class",
+    Class = "ﴯ Class", 
     Color = " Color",
     Constant = " Constant",
     Constructor = " Constructor",
     Enum = "了 Enum",
     EnumMember = "  EnumMember",
-    Field = " Field",
+    Event = "",
+    Field = " Field",
     File = " File",
     Folder = " Folder",
-    Function = " Function",
-    Interface = " Interface",
+    Function = " Function",
+    Interface = " Interface",
     Keyword = " Keyword",
+    Reference = "",
     Method = "ƒ Method",
     Module = " Module",
-    Property = " Property",
-    Snippet = "﬌ Snippet",
-    Struct = " Structure",
+    Operator = "",
+    Property = "ﰠ Property",
+    Snippet = " Snippet",
+    Struct = " Structure",
     Text = " Text",
+    TypeParameter = "",
     Unit = " Unit",
     Value = " Value",
-    Variable = " Variable",
+    Variable = " Variable",
 }
 
 local kinds = vim.lsp.protocol.CompletionItemKind
