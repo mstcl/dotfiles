@@ -32,7 +32,7 @@ let s:popupmenu_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_the
     \ 'highlights': {
         \   'border': 'Comment',
     \ },
-    \ 'border': 'single',
+    \ 'border': 'rounded',
     \ 'highlighter': wilder#basic_highlighter(),
     \ 'empty_message': wilder#popupmenu_empty_message_with_spinner(),
     \ 'min_height': '0%',
