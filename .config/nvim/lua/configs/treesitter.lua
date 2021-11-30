@@ -3,11 +3,23 @@ if not present then
    return
 end
 
-
 ts.setup {
-    ensure_installed = { "python", "html", "cpp", "css", "vim", "latex", "lua", "bash", "toml" },
+    ensure_installed = {
+        "python",
+        "html",
+        "c",
+        "cpp",
+        "bibtex",
+        "css",
+        "vim",
+        "latex",
+        "lua",
+        "bash",
+        "toml",
+    },
     highlight = {
         enable = true,
+        use_languagetree = true,
         additional_vim_regex_highlighting = false,
         disable = { "latex" },
     },
