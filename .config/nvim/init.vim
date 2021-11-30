@@ -37,16 +37,15 @@ EOF
 " Wipe register {{{
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 " }}}
-" Turn compe on and off {{{
-command! CompeEnable  call compe#setup(g:compe, 0)
-command! CompeDisable call compe#setup({'enabled': v:false}, 0)
-" }}}
 " }}}
 " AUTO-COMMANDS {{{
+" Reload snippets after editing {{{
+    autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
+" }}}
 " Auto show line diagnostic {{{
 augroup diagnostic
     autocmd!
-    autocmd CursorHold,CursorHoldI *.{vim,tex,python,lua,cpp,sh,bash,md,bib,lua} lua vim.lsp.diagnostic.show_line_diagnostics({border = "single", focusable=false})
+    autocmd CursorHold,CursorHoldI *.{vim,tex,python,lua,cpp,sh,bash,md,bib,lua} lua vim.lsp.diagnostic.show_line_diagnostics({border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}, focusable=false})
 augroup END
 " }}}
 " Alpha options {{{
@@ -185,6 +184,7 @@ set modeline
 " Visual settings {{{
 set cursorline
 set synmaxcol=400
+set colorcolumn=99999
 set hidden
 set noshowmode
 set noshowcmd
@@ -272,11 +272,11 @@ set encoding=utf-8
 " Funky characters {{{
 set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│,fold:\ ,diff:╱
 set list
-set listchars=tab:»·,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:·
+set listchars=tab:»·,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:·,space:·
 set showbreak=↳
 " }}}
-" Nvim-compe completion {{{
-set completeopt=menuone,noselect
+" Nvim-cmp completion {{{
+set completeopt=menu,menuone,noselect
 " }}}
 " No-obnoxious nvim {{{
 set shortmess+=OoSsatqc
@@ -346,16 +346,15 @@ autocmd InsertLeave,InsertEnter * call ShowPaste()
 " Floaterm {{{
 nnoremap <silent> <F1>  :FloatermNew<CR>
 tnoremap <silent> <F1>  <C-\><C-n>:FloatermNew<CR>
-nnoremap <silent> <F2>  :FloatermPrev<CR>
-tnoremap <silent> <F2>  <C-\><C-n>:FloatermPrev<CR>
-nnoremap <silent> <F3>  :FloatermNext<CR>
-tnoremap <silent> <F3>  <C-\><C-n>:FloatermNext<CR>
+nnoremap <silent> <F2>  :FloatermNew --position=botright --wintype=split --height=0.3<CR>
+tnoremap <silent> <F2>  <C-\><C-n>:FloatermNew --position=botright --wintype=split --height=0.3<CR>
 nnoremap <silent> <F4>  :FloatermToggle<CR>
 tnoremap <silent> <F4>  <C-\><C-n>:FloatermToggle<CR>
+nnoremap <silent> <F5>  :FloatermNew --width=0.5 --wintype=vsplit --name=repl --position=botright ipython3 --no-autoindent<CR>
+tnoremap <silent> <F5>  <C-\><C-n>:FloatermNew --width=0.5 --wintype=vsplit --name=repl --position=botright ipython3 --no-autoindent<CR>
+vnoremap <silent> <F8>  :'<,'>FloatermSend<CR>
 nnoremap <silent> <F10> :FloatermKill<CR>
 tnoremap <silent> <F10> <C-\><C-n>:FloatermKill<CR>
-vnoremap <silent> <F8>  :'<,'>FloatermSend<CR>
-nnoremap <silent> <F5>  :FloatermNew --width=0.5 --wintype=vsplit --name=repl --position=botright ipython3 --no-autoindent<CR>
 " }}}
 " Better indentation {{{
 xnoremap < <gv
@@ -383,10 +382,6 @@ noremap  <Down> <Nop>
 noremap  <Left> <Nop>
 noremap  <Right> <Nop>
 " }}}
-" Compe atocompletion and navigation {{{
-lua << EOF
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
-EOF
 " }}}
 " Easy align {{{
 xmap ga <Plug>(EasyAlign)
