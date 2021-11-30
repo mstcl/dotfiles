@@ -3,5 +3,7 @@ vim.g.symbols_outline = {
     auto_preview = false,
     highlight_hovered_item = true,
     show_guides = true,
-    width = 25,
+    width = 30,
+    relative_width = false,
+    preview_bg_highlight = 'OutlinePreviewBG',
 }
