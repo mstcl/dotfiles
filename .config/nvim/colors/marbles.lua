@@ -1,51 +1,43 @@
 vim.g.colors_name = 'marbles'
 
-local black       = {'#2a2a2a', 0,   'black'}
-local blackish       = {'#202020', 0,   'black'}
-local blacker       = {'#121212', 0,   'black'}
-local gray        = {'#505050', 244, 'gray'}
-local gray_dark   = {'#454545', 237, 'darkgrey'}
-local gray_darker = {'#343434', 235, 'gray'}
+local black =         {'#2a2a2a', 0,   'black'}
+local blackish =      {'#202020', 0,   'black'}
+local blacker =       {'#121212', 0,   'black'}
+local gray =          {'#505050', 244, 'gray'}
+local gray_dark =     {'#454545', 237, 'darkgrey'}
+local gray_darker =   {'#343434', 235, 'gray'}
 local gray_darkerer = {'#303030', 235, 'gray'}
-local gray_darkest = {'#2f2f2f', 233, 'gray'}
-local gray_medium  = {'#7d7d7d', 243, 'gray'}
-local gray_light  = {'#999999', 251, 'gray'}
-local white       = {'#bebebe', 15,  'white'}
-
-local tan = {'#7b7b6b', 180, 'darkyellow'}
-
-local red       = {'#aa8f7c', 196, 'red'}
-local red_dark  = {'#8d7667', 124, 'darkred'}
-local red_light = {'#c3b0a2', 203, 'red'}
-
-local orange       = {'#917563', 208, 'darkyellow'}
-local orange_light = {'#b8b5ad', 214, 'yellow'}
-
-local yellow = {'#74725D', 220, 'yellow'}
-
-local green_dark  = {'#6b6e61', 83, 'darkgreen'}
-local green       = {'#8b8f7e', 72, 'green'}
-local green_light = {'#c2c4bb', 72, 'green'}
-local turquoise    = {'#7f9090', 33, 'green'}
-
-local blue = {'#637a8a', 63, 'blue'}
-local cyan = {'#4c5d69', 87, 'cyan'}
-local ice  = {'#937f74', 63, 'cyan'}
-local teal = {'#7c6a61', 38, 'darkblue'}
-
-local magenta      = {'#877979', 126, 'magenta'}
-local magenta_dark = {'#6c6161', 126, 'darkmagenta'}
-local pink         = {'#6c574c', 162, 'magenta'}
-local pink_light   = {'#7c6a61', 38,  'white'}
-local purple       = {'#837f90', 129, 'magenta'}
-local purple_light = {'#bdbbc4', 63,  'magenta'}
-
-local addfg = {'#647460', 51, 'cyan' }
-local addbg = {'#263747', 51, 'cyan' }
-local delfg = {'#473447', 51, 'cyan' }
-local delbg = {'#382A38', 51, 'cyan' }
-local changebg = {'#464d6d', 51, 'cyan' }
-local changefg = {'#272B3D', 51, 'cyan' }
+local gray_darkest =  {'#2f2f2f', 233, 'gray'}
+local gray_medium =   {'#7d7d7d', 243, 'gray'}
+local gray_light =    {'#999999', 251, 'gray'}
+local white =         {'#bebebe', 15,  'white'}
+local red =           {'#9c6e63', 196, 'red'}
+local red_dark =      {'#835D54', 124, 'darkred'}
+local red_light =     {'#a58383', 203, 'red'}
+local orange =        {'#917563', 208, 'darkyellow'}
+local tan =           {'#9C8A74', 180, 'darkyellow'}
+local orange_light =  {'#c3b0a2', 214, 'yellow'}
+local yellow =        {'#74725D', 220, 'yellow'}
+local green_dark =    {'#6b6e61', 83, 'darkgreen'}
+local green =         {'#8b8f7e', 72, 'green'}
+local green_light =   {'#c2c4bb', 72, 'green'}
+local turquoise =     {'#7f9090', 33, 'green'}
+local teal =          {'#739593', 38, 'darkblue'}
+local blue =          {'#637a8a', 63, 'blue'}
+local cyan =          {'#4c5d69', 87, 'cyan'}
+local ice  =          {'#A0B7B7', 63, 'cyan'}
+local magenta      =  {'#7D7284', 126, 'magenta'}
+local magenta_dark =  {'#685f6d', 126, 'darkmagenta'}
+local pink         =  {'#715b65', 162, 'magenta'}
+local pink_light   =  {'#a9939d', 38,  'white'}
+local purple       =  {'#837f90', 129, 'magenta'}
+local purple_light =  {'#bdbbc4', 63,  'magenta'}
+local addfg =         {'#647460', 51, 'cyan' }
+local addbg =         {'#263747', 51, 'cyan' }
+local delfg =         {'#473447', 51, 'cyan' }
+local delbg =         {'#382A38', 51, 'cyan' }
+local changebg =      {'#464d6d', 51, 'cyan' }
+local changefg =      {'#272B3D', 51, 'cyan' }
 
 local BG = 'bg'
 local FG = 'fg'
@@ -64,13 +56,13 @@ local highlight_groups = {
     Constant = {fg=orange_light},
     String = {fg=green_dark},
     Character = {fg=red_light},
-    Number  = {fg=pink_light},
+    Number  = {fg=cyan},
     Boolean = {fg=yellow},
     Float   = 'Number',
 
     --[[ 4.1.2. Identifiers]]
     Identifier = {fg=red_dark},
-    Function = {fg=purple, style='bold'},
+    Function = {fg=tan, style='bold'},
 
     --[[ 4.1.3. Syntax]]
     Statement   = {fg=ice},
@@ -78,22 +70,22 @@ local highlight_groups = {
     Repeat   = {fg=turquoise, style='italic'},
     Label    = {fg=pink, style='bold'},
     Operator = {fg=green, style='bold'},
-    Keyword  = {fg=cyan},
+    Keyword  = {fg=purple},
     Exception = {fg=red_light, style='bold'},
     Noise = 'Delimiter',
 
     --[[ 4.1.4. metatextual information]]
     preproc = {fg=tan},
-    include = {fg=green_light, style={'nocombine', 'italic'}},
+    include = {fg=green, style={'nocombine', 'italic'}},
     Define = {fg=blue, style='nocombine'},
     Macro  = {fg=blue, style='italic'},
     PreCondit = {fg=tan, style='italic'},
 
     --[[ 4.1.5. Semantics]]
-    Type = {fg=cyan},
+    Type = {fg=turquoise},
     StorageClass = {fg=orange_light, style='bold'},
     Structure = {fg=blue, style='bold'},
-    Typedef = {fg=cyan, style='italic'},
+    Typedef = {fg=red_light, style='italic'},
 
     --[[ 4.1.6. Edge Cases]]
     Special = {fg=magenta, style='bold'},
@@ -130,13 +122,13 @@ local highlight_groups = {
 
     --[[ 4.2.3. Conditional Line Highlighting]]
     Conceal = {bg=BG},
-    CursorLine   = {bg=gray_darkest},
+    CursorLine = {bg=gray_darkest},
     CursorLineNr = function(self) return {fg=gray_medium, bg=self.LineNr.bg} end,
     debugBreakpoint = 'ErrorMsg',
     debugPC = 'ColorColumn',
-    LineNr  = {fg=gray_dark, bg=blackish},
+    LineNr = {fg=gray_dark, bg=black},
     QuickFixLine = {bg=gray_darkest},
-    Visual    = {bg=gray_dark},
+    Visual = {bg=gray_dark},
     VisualNOS = {bg=gray_darkest},
 
     --[[ 4.2.4. Popup Menu]]
@@ -160,7 +152,7 @@ local highlight_groups = {
 
     --[[ 4.2.7. Searching]]
     IncSearch  = {style={'bold','inverse'}},
-    MatchParen = {fg=black, bg=gray_light, style={'bold'}},
+    MatchParen = {style={'inverse'}},
     Search = {style={'bold', 'underline'}},
 
     --[[ 4.2.8. Spelling]]
@@ -171,7 +163,7 @@ local highlight_groups = {
 
     --[[ 4.2.9. Conditional Column Highlighting]]
     ColorColumn = {bg=gray_dark, style='inverse'},
-    SignColumn  = {bg=blackish},
+    SignColumn  = {bg=black},
 
     --[[ 4.2.10. Messages]]
     ErrorMsg = {fg=red, style='bold'},
@@ -184,19 +176,19 @@ local highlight_groups = {
     --[[ 4.2.11. LSP ]]
     LspDiagnosticsDefaultError = 'Error',
     LspDiagnosticsFloatingError = function(self) return {fg=self.ErrorMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignError = 'LspDiagnosticsFloatingError',
+    LspDiagnosticsSignError = function(self) return {fg=self.ErrorMsg.fg, bg=black} end,
 
     LspDiagnosticsDefaultWarning = 'Warning',
     LspDiagnosticsFloatingWarning =  function(self) return {fg=self.WarningMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignWarning = 'LspDiagnosticsFloatingWarning',
+    LspDiagnosticsSignWarning = function(self) return {fg=self.WarningMsg.fg, bg=black} end,
 
     LspDiagnosticsDefaultHint = 'Hint',
     LspDiagnosticsFloatingHint = function(self) return {fg=self.HintMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignHint = 'LspDiagnosticsFloatingHint',
+    LspDiagnosticsSignHint = function(self) return {fg=self.HintMsg.fg, bg=black} end,
 
     LspDiagnosticsDefaultInformation = 'Info',
     LspDiagnosticsFloatingInformation = function(self) return {fg=self.InfoMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignInformation = 'LspDiagnosticsFloatingInformation',
+    LspDiagnosticsSignInformation = function(self) return {fg=self.InfoMsg.fg, bg=black} end,
 
     LspDiagnosticsUnderlineError = 'CocErrorHighlight',
     LspDiagnosticsUnderlineHint  = 'CocHintHighlight',
@@ -389,13 +381,16 @@ local highlight_groups = {
     --[[ 4.3.13. Markdown ]]
     markdownCode = 'mkdCode',
     markdownStrike = {fg=gray_dark, style={"strikethrough"}},
+    markdownJekyllFrontMatter = {fg=gray_dark},
+    markdownJekyllDelimiter = {fg=gray_dark},
     markdownCodeDelimiter = 'mkdCodeDelimiter',
-    markdownH1 = {fg=red, style={'bold', 'underline'}},
-    markdownH2 = {fg=orange, style={'bold', 'underline'}},
-    markdownH3 = {fg=yellow, style={'bold', 'underline'}},
-    markdownH4 = {fg=green_dark, style={'bold', 'underline'}},
-    markdownH5 = {fg=cyan, style={'bold', 'underline'}},
-    markdownH6 = {fg=purple_light, style={'bold', 'underline'}},
+    markdownHeadingDelimiter = 'NonText',
+    markdownH1 = {bg=red, fg=black, style={'bold', 'underline'}},
+    markdownH2 = {bg=orange, fg=black, style={'bold', 'underline'}},
+    markdownH3 = {bg=yellow, fg=black, style={'bold', 'underline'}},
+    markdownH4 = {bg=turquoise, fg=black, style={'bold', 'underline'}},
+    markdownH5 = {bg=cyan, fg=black, style={'bold', 'underline'}},
+    markdownH6 = {bg=purple_light, fg=black, style={'bold', 'underline'}},
     markdownLinkDelimiter = 'Delimiter',
     markdownLinkTextDelimiter = 'markdownLinkDelimiter',
     markdownUrl = 'Underlined',
@@ -604,10 +599,10 @@ local highlight_groups = {
     JumpMotion = 'EasyMotion',
 
     --[[ 4.4.4. vim-gitgutter / vim-signify ]]
-    GitGutterAdd    = {fg = addfg, bg=blackish},
-    GitGutterChange = {fg = changefg, bg=blackish},
-    GitGutterDelete = {fg = delfg, bg=blackish},
-    GitGutterChangeDelete = {fg=orange, bg=blackish},
+    GitGutterAdd    = {fg = addfg, bg=black},
+    GitGutterChange = {fg = changefg, bg=black},
+    GitGutterDelete = {fg = delfg, bg=black},
+    GitGutterChangeDelete = {fg=orange, bg=black},
 
     SignifySignAdd    = 'GitGutterAdd',
     SignifySignChange = 'GitGutterChange',
@@ -629,6 +624,7 @@ local highlight_groups = {
     NERDTreeLinkTarget = 'Tag',
 
     --[[ 4.4.8. nvim-treesitter ]]
+    TSType = 'Type',
     TSConstBuiltin = 'Constant',
     TSConstructor  = 'Typedef',
     TSFuncBuiltin  = 'Function',
@@ -717,8 +713,22 @@ local highlight_groups = {
     GitSignsDeleteNr = {fg=delfg, bg=delbg},
     GitSignsDeleteLn = 'GitSignsDeleteNr',
 
-    --[[ 4.4.16. nvim-compe ]]
-    CompeDocumentationBorder = 'FloatBorder',
+    --[[ 4.4.16. nvim-compe and cmp ]]
+    CompeDocumentationBorder = {fg=gray_dark, bg=black},
+    CompeDocumentation = {bg=black},
+    CmpItemAbbr = {fg=gray_medium},
+    CmpItemAbbrMatch = {fg=red},
+    CmpItemAbbrDeprecated = {fg=gray_dark, style={"strikethrough"}},
+    CmpItemAbbrMatchFuzzy = {fg=red},
+    CmpItemKind = {fg=turquoise},
+    CmpItemKindVariable = {fg=blue},
+    CmpItemKindInterface = {fg=blue},
+    CmpItemKindText = {fg=blue},
+    CmpItemKindFunction = {fg=pink},
+    CmpItemKindMethod = {fg=pink},
+    CmpItemKindKeyword = {fg=green},
+    CmpItemKindProperty = {fg=green},
+    CmpItemKindUnit = {fg=green},
 
     --[[ 4.4.16. packer.nvim ]]
     packerFail = 'ErrorMsg',
@@ -735,6 +745,7 @@ local highlight_groups = {
 
     --[[ 4.4.18. dev-icons ]]
     DevIconLua = {fg=blue},
+    DevIconCpp = {fg=cyan},
     DevIconPy = {fg=blue},
     DevIconMarkdown = {fg=cyan},
     DevIconMd = {fg=cyan},
@@ -748,6 +759,8 @@ local highlight_groups = {
     DevIconZshenv = {fg=blue},
     DevIconZshprofile = {fg=blue},
     DevIconSh = {fg=pink},
+    DevIconTxt = {fg=turquoise},
+    DevIconH = {fg=purple},
     DevIconDefault = {fg=gray_light},
 
     --[[ 4.4.19. telescope ]]
@@ -766,22 +779,25 @@ local highlight_groups = {
 
     --[[ 4.4.20. floaterm ]]
     Floaterm = {bg = blackish},
-    FloatermNC = {bg = black},
+    FloatermNC = {bg = blackish},
     FloatermBorder = {fg=gray_dark, bg = blackish},
 
     --[[ 4.4.21. nvim-tree ]]
     NvimTreeNormal = {fg=gray_light, bg=gray_darkest},
     NvimTreeRootFolder = {fg=purple},
-    NvimTreeOpenedFolderName = {fg=yellow, style={"bold"}},
-    NvimTreeEmptyFolderName = {fg=yellow, style={"bold"}},
-    NvimTreeFolderName = {fg=yellow},
+    NvimTreeOpenedFolderName = {fg=white, style={"bold"}},
+    NvimTreeEmptyFolderName = {fg=gray_medium},
+    NvimTreeFolderName = {fg=blue, style={"bold"}},
     NvimTreeGitDirty = {fg=red},
     NvimTreeGitStaged = {fg=green},
     NvimTreeGitMerge = {fg=purple},
     NvimTreeGitRenamed = {fg=yellow},
     NvimTreeGitNew = {fg=blue},
     NvimTreeGitDeleted = {fg=red},
-    NvimTreeOpenedFile = {fg=white, style={"bold"}},
+    NvimTreeFolderIcon = {fg=blue},
+    NvimTreeIndentMarker = {fg=gray_darker},
+    NvimTreeWindowPicker = {fg=turquoise},
+    NvimTreeOpenedFile = {style={"bold"}},
     NvimTreeSpecialFile = {fg=pink, style={"underline"}},
     NvimTreeSymlink = {fg=blue, style={"underline"}},
     NvimTreeExecFile = {fg=green, style={"bold"}},
@@ -792,13 +808,13 @@ local highlight_groups = {
     LightbulbVirtualText = {fg=gray_dark, style="italic"},
 
     --[[ 4.4.23. rainbow ]]
-    rainbowcol1 = {fg=red},
-    rainbowcol2 = {fg=orange},
+    rainbowcol1 = {fg=red_dark},
+    rainbowcol2 = {fg=teal},
     rainbowcol3 = {fg=yellow},
-    rainbowcol4 = {fg=green},
+    rainbowcol4 = {fg=green_dark},
     rainbowcol5 = {fg=blue},
-    rainbowcol6 = {fg=teal},
-    rainbowcol7 = {fg=purple},
+    rainbowcol6 = {fg=magenta},
+    rainbowcol7 = {fg=purple_light},
 
     --[[ 4.4.24. galaxyline ]]
     GalaxyBg = {fg=black,bg=black},
@@ -813,7 +829,8 @@ local highlight_groups = {
     GalaxyRed ={fg=red, bg=gray_dark, style={"bold"}},
 
     -- [[ 4.5 Others ]]
-    FocusedSymbol={fg=black, bg=yellow}
+    FocusedSymbol={fg=black, bg=yellow},
+    OutlinePreviewBG = {bg=blackish},
 }
 
 local terminal_colors = {
