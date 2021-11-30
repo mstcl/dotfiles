@@ -15,6 +15,11 @@ return require('packer').startup {
             event = "VimEnter",
         }
     -- }}}
+    --[[ -- HILINKTRACE: See highlight group {{{
+    use {
+        'gerw/vim-HiLinkTrace'
+    }
+    -- }}} ]]
     -- -_-_-_ NAVIGATION -_-_-_
     -- TREE: sidebar to navigate files {{{
         use {
@@ -153,7 +158,7 @@ return require('packer').startup {
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
-            event = "BufRead",
+            -- event = "BufRead",
             config = function()
                 require'configs.treesitter'
             end
@@ -165,30 +170,30 @@ return require('packer').startup {
             event = "BufRead",
         }
     -- }}}
-    -- SPELLSITTER: spellcheck comments with treesitter {{{
-        --[[ use {
-            'lewis6991/spellsitter.nvim',
-            after = 'nvim-treesitter',
-            config = function()
-                require('spellsitter').setup {
-                    hl = 'SpellBad',
-                    captures = {'comment'},
-                }
-            end
-        } ]]
-    -- }}}
+    --[[ -- PLAYGROUND: Treesitter playground {{{
+    use {
+        "nvim-treesitter/playground"
+    }
+    -- }}} ]]
     -- -_-_-_ COMPLETION -_-_-_
-    -- COMPE: popup completion {{{
+    -- CMP: popup completion {{{
         use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
+            "hrsh7th/nvim-cmp",
+            requires = {
+                'hrsh7th/cmp-nvim-lsp',
+                'hrsh7th/cmp-buffer',
+                'hrsh7th/cmp-path',
+                "quangnguyen30192/cmp-nvim-ultisnips",
+                config = function()
+                    require("cmp-nvim-ultisnips").setup{}
+                end
+            },
             config = function()
-                require'configs.compe'
+                require'configs.cmp'
             end,
-            wants = "ultisnips",
         }
     -- }}}
-    -- ULTISNIPS: snippets utility {{{
+    -- ULTISNIPS (VS): snippets utility {{{
         use {
             'sirver/ultisnips',
             event = 'InsertEnter',
@@ -203,7 +208,7 @@ return require('packer').startup {
             }
     -- }}}
     -- -_-_-_-_ COMMAND -_-_-_-
-     -- WILDER: vim command fuzzy popup completion {{{
+     -- WILDER (VS): vim command fuzzy popup completion {{{
         use {
             'gelguy/wilder.nvim',
             event = "CmdlineEnter",
@@ -213,7 +218,7 @@ return require('packer').startup {
         }
      -- }}}
     -- -_-_-_- TERMINAL -_-_-_-
-    -- FLOATERM: floating terminal using built-in term {{{
+    -- FLOATERM (VS): floating terminal using built-in term {{{
         use {
             'voldikss/vim-floaterm',
             cmd = {"FloatermNew", "FloatermToggle", "FloatermNext", "FloatermPrev", "FloatermKill"},
@@ -233,7 +238,7 @@ return require('packer').startup {
             end,
         }
     -- }}}
-    -- FUGITIVE: Git inside vim {{{
+    --[[ -- FUGITIVE (VS): Git inside vim {{{
         use {
             'tpope/vim-fugitive',
             cmd = {
@@ -244,7 +249,7 @@ return require('packer').startup {
                 "Gwrite",
                 "Gw",
             },
-        }
+        } ]]
     -- }}}
     -- -_-_-_-_-_ LSP -_-_-_-_-
     -- LSPCONFIG: native lsp configuration {{{
@@ -256,12 +261,6 @@ return require('packer').startup {
             end
         }
     --- }}}
-    -- LIGHTBULB: linter to indicate code actions {{{
-        use {
-            'kosayoda/nvim-lightbulb',
-            event = 'BufRead',
-        }
-    -- }}}
         -- SIGNATURE: async signature helper {{{
         use {
             'ray-x/lsp_signature.nvim',
@@ -272,9 +271,12 @@ return require('packer').startup {
         use {
             "brymer-meneses/grammar-guard.nvim",
             wants = "nvim-lspconfig",
+            --[[ requires = {
+                "williamboman/nvim-lsp-installer"
+            } ]]
         }
     -- }}}
-        -- SYMBOLS OUTLINE: vista replacement; displays code outline panel {{{
+        -- SYMBOLS OUTLINE: displays code outline panel {{{
         use {
             'simrat39/symbols-outline.nvim',
             cmd = {
@@ -306,7 +308,7 @@ return require('packer').startup {
             end,
         }
     -- }}}
-    -- AUTOPAIRS: auto insert pairs {{{
+    -- AUTOPAIRS (VS): auto insert pairs {{{
         use {
             'LunarWatcher/auto-pairs',
             event = "BufEnter",
@@ -315,7 +317,7 @@ return require('packer').startup {
             end,
         }
     -- }}}
-    -- EASYALIGN: auto align by delimiters {{{
+    -- EASYALIGN (VS): auto align by delimiters {{{
         use {
             'junegunn/vim-easy-align',
             keys = "<Plug>(EasyAlign)",
@@ -347,7 +349,7 @@ return require('packer').startup {
             cmd = "Neoformat",
         }
     -- }}}
-    -- TABULAR: Format pretty tables {{{
+    -- TABULAR (VS): Format pretty tables {{{
     use {
         "godlygeek/tabular",
         after = {"vim-markdown"},
@@ -355,13 +357,13 @@ return require('packer').startup {
     }
     -- }}}
     -- -_-_-_- FILETYPES -_-_-_-
-    -- TEX CONCEAL: Further concealment of MathZone for tex files {{{
+    -- TEX CONCEAL (VS): Further concealment of MathZone for tex files {{{
         use {
             'KeitaNakamura/tex-conceal.vim',
             ft = {"tex"},
         }
     -- }}}
-    -- MARKDOWN: better markdown syntax {{{
+    -- MARKDOWN (VS): better markdown syntax {{{
         use {
             'hhn-pham/vim-markdown',
             branch = "main",
@@ -372,13 +374,13 @@ return require('packer').startup {
             wants = "tabular"
         }
     -- }}}
-    -- SXHKD: syntax for sxhkdrc {{{
+    -- SXHKD (VS): syntax for sxhkdrc {{{
         use {
             'kovetskiy/sxhkd-vim',
             ft = 'sxhkd',
         }
     -- }}}
-    -- JUPYTEXT: convert jupyter notebook formats into other formats {{{
+    -- JUPYTEXT (VS): convert jupyter notebook formats into other formats {{{
         use {
             'goerz/jupytext.vim',
             setup = function()
@@ -399,27 +401,22 @@ return require('packer').startup {
             end
         }
     -- }}}
-        -- CLEANFOLD: Minimal foldtext {{{
+    -- CLEANFOLD: Minimal foldtext {{{
         use {
             'lewis6991/cleanfold.nvim',
+            commit = "ed54df0",
             event = 'BufRead',
             config = function ()
                 require('cleanfold').setup()
             end
         }
     -- }}}
-    --[[ use {
-        "nvim-treesitter/playground"
-    } ]]
-    --[[ use {
-        'gerw/vim-HiLinkTrace'
-    } ]]
        end,
     -- PACKER OPTIONS {{{
     config = {
         display = {
             open_fn = function()
-                return require('packer.util').float({ border = 'single' })
+                return require('packer.util').float({ border = 'rounded' })
             end
         },
         profile = {
