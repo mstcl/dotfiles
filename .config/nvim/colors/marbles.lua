@@ -136,9 +136,11 @@ local highlight_groups = {
     PmenuSbar = {fg=blacker, bg=gray_darker},
     PmenuSel  = {fg=gray_medium, bg=gray_darker, style={"inverse", "bold"}},
     PmenuThumb = {fg=gray_dark, bg=gray_dark},
+    Wilder = {bg=black},
+    WilderScrole = {bg=black},
     WildMenu = 'PmenuSel',
-    NormalFloat = {fg=white, bg=blackish},
-    FloatBorder = {fg=gray_dark, bg=blackish},
+    NormalFloat = {fg=white, bg=black},
+    FloatBorder = {fg=gray_dark, bg=black},
 
     --[[ 4.2.5. Folds]]
     FoldColumn = {fg=gray_dark, bg=blackish, style='bold'},
@@ -174,26 +176,26 @@ local highlight_groups = {
     Question   = {fg=teal, style='bold'},
 
     --[[ 4.2.11. LSP ]]
-    LspDiagnosticsDefaultError = 'Error',
-    LspDiagnosticsFloatingError = function(self) return {fg=self.ErrorMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignError = function(self) return {fg=self.ErrorMsg.fg, bg=black} end,
+    DiagnosticError = 'Error',
+    DiagnosticFloatingError = function(self) return {fg=self.ErrorMsg.fg, bg=black} end,
+    DiagnosticSignError = function(self) return {fg=self.ErrorMsg.fg, bg=black} end,
 
-    LspDiagnosticsDefaultWarning = 'Warning',
-    LspDiagnosticsFloatingWarning =  function(self) return {fg=self.WarningMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignWarning = function(self) return {fg=self.WarningMsg.fg, bg=black} end,
+    DiagnosticWarn = 'Warning',
+    DiagnosticFloatingWarn =  function(self) return {fg=self.WarningMsg.fg, bg=black} end,
+    DiagnosticSignWarn = function(self) return {fg=self.WarningMsg.fg, bg=black} end,
 
-    LspDiagnosticsDefaultHint = 'Hint',
-    LspDiagnosticsFloatingHint = function(self) return {fg=self.HintMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignHint = function(self) return {fg=self.HintMsg.fg, bg=black} end,
+    DiagnosticHint = 'Hint',
+    DiagnosticFloatingHint = function(self) return {fg=self.HintMsg.fg, bg=black} end,
+    DiagnosticSignHint = function(self) return {fg=self.HintMsg.fg, bg=black} end,
 
-    LspDiagnosticsDefaultInformation = 'Info',
-    LspDiagnosticsFloatingInformation = function(self) return {fg=self.InfoMsg.fg, bg=blackish} end,
-    LspDiagnosticsSignInformation = function(self) return {fg=self.InfoMsg.fg, bg=black} end,
+    DiagnosticInfo = 'Info',
+    DiagnosticFloatingInfo = function(self) return {fg=self.InfoMsg.fg, bg=black} end,
+    DiagnosticSignInfo = function(self) return {fg=self.InfoMsg.fg, bg=black} end,
 
-    LspDiagnosticsUnderlineError = 'CocErrorHighlight',
-    LspDiagnosticsUnderlineHint  = 'CocHintHighlight',
-    LspDiagnosticsUnderlineInfo  = 'CocInfoHighlight',
-    LspDiagnosticsUnderlineWarning = 'CocWarningHighlight',
+    DiagnosticUnderlineError = 'CocErrorHighlight',
+    DiagnosticUnderlineHint  = 'CocHintHighlight',
+    DiagnosticUnderlineInfo  = 'CocInfoHighlight',
+    DiagnosticUnderlineWarn = 'CocWarningHighlight',
 
     --[[ 4.2.12. Cursor ]]
     Cursor   = {style='inverse'},
@@ -717,6 +719,7 @@ local highlight_groups = {
     CompeDocumentationBorder = {fg=gray_dark, bg=black},
     CompeDocumentation = {bg=black},
     CmpItemAbbr = {fg=gray_medium},
+    CmpItemMenu = {bg=gray_darker},
     CmpItemAbbrMatch = {fg=red},
     CmpItemAbbrDeprecated = {fg=gray_dark, style={"strikethrough"}},
     CmpItemAbbrMatchFuzzy = {fg=red},
@@ -805,7 +808,7 @@ local highlight_groups = {
 
     --[[ 4.4.22. lightbulb ]]
     LightbulbTextHL = {fg=blue},
-    LightbulbVirtualText = {fg=gray_dark, style="italic"},
+    LightbulbVirtualText = {fg=gray_darkest,bg=gray},
 
     --[[ 4.4.23. rainbow ]]
     rainbowcol1 = {fg=red_dark},

@@ -3,6 +3,18 @@ if not present then
    return
 end
 
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    float = {
+        show_header = false,
+        source = "if_many",
+    },
+    update_in_insert = false,
+    severity_sort = true,
+})
+
 local on_attach = function(client,bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }
@@ -10,12 +22,15 @@ local on_attach = function(client,bufnr)
     buf_set_keymap('n', '<Leader>qD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', '<Leader>qi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', '<Leader>qf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    buf_set_keymap('v', '<Leader>qf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     buf_set_keymap('n', '<Leader>qd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', '<Leader>qR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '<Leader>qs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}}})<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}}})<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ popup_opts = { border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}}})<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ popup_opts = { border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}}})<CR>', opts)
     vim.fn.sign_define('LightBulbSign', { text = "", texthl = "LightbulbTextHL" })
-    -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 10}, virtual_text = { enabled = false, text = "" } }]]
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,scope="line",header="",source="if_many"})]]
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 10}, virtual_text = { enabled = true, text = "  Code actions " } }]]
     require "lsp_signature".on_attach({ bind = true, handler_opts = { border = 'rounded' }, floating_window = true, floating_window_above_cur_line = true, fix_pos = true, hint_enable = false, })
 end
 
@@ -161,21 +176,14 @@ lsp.grammar_guard.setup({
     },
 })
 
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-})
-
 local icons = {
-    Class = "ﴯ Class", 
+    Class = "ﴯ Class",
     Color = " Color",
     Constant = " Constant",
     Constructor = " Constructor",

@@ -42,11 +42,6 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 " Reload snippets after editing {{{
     autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 " }}}
-" Auto show line diagnostic {{{
-augroup diagnostic
-    autocmd!
-    autocmd CursorHold,CursorHoldI *.{vim,tex,python,lua,cpp,sh,bash,md,bib,lua} lua vim.lsp.diagnostic.show_line_diagnostics({border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}}, focusable=false})
-augroup END
 " }}}
 " Alpha options {{{
 augroup alpha
@@ -453,11 +448,12 @@ nnoremap <silent> <Leader>b  :Telescope buffers<CR>
 " Leader c: Toggle colour highlighting {{{
 nnoremap <silent> <Leader>c  :ColorizerToggle<CR>
 " }}}
-" Leader d: Alpha screen {{{
-nnoremap <silent> <Leader>d  :Alpha<CR>
+" Leader d: Diffviews {{{
+nnoremap <silent> <Leader>dd  :DiffviewOpen<CR>
+nnoremap <silent> <Leader>dc  :DiffviewClose<CR>
+nnoremap <silent> <Leader>df  :DiffviewFileHistory<CR>
 "}}}
-" Leader e: Focus tree {{{
-nnoremap <silent> <Leader>e  :NvimTreeFocus<CR>
+" Leader e: Empty {{{
 " }}}
 " Leader f: Telescope find files {{{
 nnoremap <silent> <Leader>f  :Telescope find_files<CR>
@@ -505,8 +501,8 @@ nnoremap <silent> <Leader>qr  :Telescope lsp_references<CR>
 nnoremap <silent> <Leader>qp  :Telescope lsp_implementations<CR>
 nnoremap <silent> <Leader>qc  :Telescope lsp_code_actions<CR>
 " }}}
-" Leader r: Telesope registers {{{
-nnoremap <silent> <Leader>r  :Telescope registers<CR>
+" Leader r: Registers {{{
+nnoremap <silent> <Leader>r  :Registers<CR>
 " }}}
 " Leader s: spells {{{
 nnoremap <silent> <Leader>sp :setlocal spell! spelllang=en_gb<CR>

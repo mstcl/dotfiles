@@ -17,6 +17,8 @@ gl.short_line_list = {
     'startify',
     '',
     'floaterm',
+    'DiffviewFileHistoryPanel',
+    'DiffviewFiles',
     'alpha',
     'man',
     'term',

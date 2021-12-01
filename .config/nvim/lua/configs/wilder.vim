@@ -30,7 +30,8 @@ call wilder#set_option('pipeline', [
 
 let s:popupmenu_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
     \ 'highlights': {
-        \   'border': 'Comment',
+        \ 'default': 'Wilder',
+        \ 'border': 'Comment',
     \ },
     \ 'border': 'rounded',
     \ 'highlighter': wilder#basic_highlighter(),
@@ -39,12 +40,14 @@ let s:popupmenu_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_the
     \ 'max_height': '20%',
     \ 'reverse': 0,
     \ 'left': [
-    \   ' ',
-    \   wilder#popupmenu_devicons(),
+    \ ' ',
+    \ wilder#popupmenu_devicons(),
     \ ],
     \ 'right': [
-    \   ' ',
-    \   wilder#popupmenu_scrollbar(),
+    \ ' ',
+    \ wilder#popupmenu_scrollbar({
+        \ 'scrollbar_hl': "WilderScroll",
+        \ }),
     \ ],
 \ }))
 
