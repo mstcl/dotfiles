@@ -3,3 +3,4 @@
 .config/task/taskrc
 .config/vdirsyncer/config
 .config/redshift/redshift.conf
+.config/ncspot/userstate.cbor
