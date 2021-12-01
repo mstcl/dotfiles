@@ -7,9 +7,10 @@
     lines: 1;
 }
 
-#window {
+window {
     background-color: @bg;
     border: 0px;
+    border-radius: 0px;
     transparency: "real";
     width: 550px;
     x-offset: 0;
@@ -17,7 +18,7 @@
     location: center;
 }
 
-#mainbox {
+mainbox {
     border: 0;
     padding: 0px;
     children: [inputbar,listview ];
@@ -25,18 +26,18 @@
     padding: 0px;
 }
 
-#message {
+message {
     border: 2px 0px 0px;
     border-color: @fg;
     padding: 0px;
 }
 
-#textbox {
+textbox {
     text-color: @fg;
 }
 
-#inputbar {
-    children:   [ textbox-prompt-colon, prompt, entry ];
+inputbar {
+    children: [ textbox-prompt-colon, prompt, entry ];
     background-color: @al;
     text-color: @fg;
     expand: false;
@@ -44,7 +45,7 @@
     spacing: 0px;
 }
 
-#textbox-prompt-colon {
+textbox-prompt-colon {
     expand: false;
     str: " ";
     font: @font-icon;
@@ -53,7 +54,7 @@
     text-color: @fg;
 }
 
-#listview {
+listview {
     lines: 7;
     columns: 1;
     cycle: true;
@@ -63,7 +64,7 @@
     padding: 10px 10px 10px 10px;
 }
 
-#element {
+element {
     border: 0;
     padding: 6px;
     border-radius: 0px;
@@ -72,13 +73,13 @@
     text-color: @fg;
 }
 
-#element-icon {
+element-icon {
     background-color: inherit;
     size: 24px;
     border: 0px;
 }
 
-#element-text {
+element-text {
     text-color: inherit;
     background-color: inherit;
     expand: true;
@@ -87,13 +88,13 @@
     margin: 0px 2.5px 0px 2.5px;
 }
 
-#element.selected {
+element.selected.normal {
     background-color: @al;
     border-radius: 2px;
     text-color: @bg1;
 }
 
-#entry {
+entry {
     spacing: 0;
     expand: true;
     horizontal-align: 0;
@@ -107,7 +108,7 @@
     blink: true;
 }
 
-#prompt {
+prompt {
     enabled: true;
     padding: 12px 10px 10px 10px;
     text-color: @fg;

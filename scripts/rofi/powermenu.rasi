@@ -1,4 +1,3 @@
-
 configuration {
     show-icons: true;
     disable-history: false;
