@@ -267,7 +267,7 @@ set encoding=utf-8
 " Funky characters {{{
 set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│,fold:\ ,diff:╱
 set list
-set listchars=tab:»·,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:·,space:·
+set listchars=tab:<->,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:×,lead:\ ,space:·,multispace:···+
 set showbreak=↳
 " }}}
 " Nvim-cmp completion {{{
