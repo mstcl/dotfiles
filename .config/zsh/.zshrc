@@ -39,6 +39,7 @@ zsh-defer source "$HOME"/.config/zsh/.functions
 zsh-defer source "$HOME"/.config/zsh/.aliases
 zsh-defer source "$HOME"/.config/zsh/.fzf
 zsh-defer source "$HOME"/.config/zsh/.completion.zsh
+zsh-defer source "$HOME"/downloads/dasht/etc/zsh/completions.zsh
 zsh-defer source /etc/grc.zsh
 zsh-defer source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
 zsh-defer source /usr/share/fzf/key-bindings.zsh

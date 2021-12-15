@@ -2,25 +2,25 @@
 ! vim:set ft=xdefaults:
 ! X colors.
 *foreground:        #bebebe
-*background:        #2a2a2a
+*background:        #252525
 *.foreground:       #bebebe
-*.background:       #2a2a2a
+*.background:       #252525
 emacs*foreground:   #bebebe
-emacs*background:   #2a2a2a
+emacs*background:   #252525
 URxvt*foreground:   #bebebe
 XTerm*foreground:   #bebebe
 UXTerm*foreground:  #bebebe
-URxvt*background:   [100]#2a2a2a
-XTerm*background:   #2a2a2a
-UXTerm*background:  #2a2a2a
+URxvt*background:   [100]#252525
+XTerm*background:   #252525
+UXTerm*background:  #252525
 URxvt*cursorColor:  #949494
 XTerm*cursorColor:  #949494
 UXTerm*cursorColor: #949494
-URxvt*borderColor:  [100]#2a2a2a
+URxvt*borderColor:  [100]#252525
 
 ! Colors 0-15.
-*.color0: #2a2a2a
-*color0:  #2a2a2a
+*.color0: #252525
+*color0:  #252525
 *.color1: #637a8a
 *color1:  #637a8a
 *.color2: #aa8f7c
@@ -53,8 +53,8 @@ URxvt*borderColor:  [100]#2a2a2a
 *color15:  #949494
 
 ! Black color that will not be affected by bold highlighting.
-*.color66: #2a2a2a
-*color66:  #2a2a2a
+*.color66: #252525
+*color66:  #252525
 
 ! Set depth to make transparency work.
 URxvt*depth: 32
