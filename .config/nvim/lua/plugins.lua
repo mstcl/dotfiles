@@ -153,6 +153,14 @@ return require('packer').startup {
             end,
         }
     -- }}}
+    -- DRESSING: implement built-in input and select {{{
+        use {
+            'stevearc/dressing.nvim',
+            config = function()
+                require'configs.dressing'
+            end
+        }
+    -- }}}
     -- -_-_-_ TREESITTER -_-_-_
     -- TREESITTER: syntax aware utilities {{{
         use {
