@@ -339,7 +339,24 @@ return require('packer').startup {
         -- LIGHTBULB: linter to indicate code actions {{{
         use {
             'kosayoda/nvim-lightbulb',
-            event = 'BufRead',
+            after = 'nvim-lspconfig'
+        }
+    -- }}}
+    -- TROUBLE: pretty list of diagnostics {{{
+        use {
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
+            config = function()
+                require'configs.trouble'
+            end
+        }
+    -- }}}
+    -- NULL-LS: LSP goodies {{{
+        use {
+            "jose-elias-alvarez/null-ls.nvim",
+            config = function()
+                require'configs.null'
+            end
         }
     -- }}}
     -- -_-_-_-_ EDITING -_-_-_-_
