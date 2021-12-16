@@ -273,6 +273,18 @@ return require('packer').startup {
             end,
         }
     -- }}}
+    -- DIFFVIEW: neat way to view diffs within vim {{{
+        use {
+            'sindrets/diffview.nvim',
+            cmd = {
+                "DiffviewOpen",
+                "DiffviewFileHistory",
+            },
+            config = function()
+                require'configs.diffview'
+            end
+        }
+    -- }}}
     --[[ -- FUGITIVE (VS): Git inside vim {{{
         use {
             'tpope/vim-fugitive',
