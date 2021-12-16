@@ -351,8 +351,15 @@ return require('packer').startup {
     -- }}}
     -- NEOFORMAT: autoformat code {{{
         use {
-            "sbdchd/neoformat",
-            cmd = "Neoformat",
+            'tversteeg/registers.nvim',
+            event = 'BufEnter',
+            config = function()
+                vim.g.registers_show_empty_registers = 0
+                vim.g.registers_hide_only_whitespace = 1
+                vim.g.registers_window_border = "rounded"
+                vim.g.registers_window_max_width = 50
+                vim.g.registers_window_min_height = 3
+            end,
         }
     -- }}}
     -- TABULAR (VS): Format pretty tables {{{
