@@ -488,28 +488,41 @@ return require('packer').startup {
             end
         }
     -- }}}
-    use {
-        'sindrets/diffview.nvim',
-        cmd = {
-            "DiffviewOpen",
-            "DiffviewFileHistory",
-        },
-        config = function()
-            require'configs.diffview'
-        end
-    }
- 
-    use {
-        'tversteeg/registers.nvim',
-        event = 'BufEnter',
-        config = function()
-            vim.g.registers_show_empty_registers = 0
-            vim.g.registers_hide_only_whitespace = 1
-            vim.g.registers_window_border = "rounded"
-            vim.g.registers_window_max_width = 50
-            vim.g.registers_window_min_height = 3
-        end,
-    }
+    -- -_-_-_-_- DAP _-_-_-_-_-_
+    -- DAP-PYTHON: Debugging python {{{
+        use {
+            'mfussenegger/nvim-dap-python',
+            after = "nvim-dap",
+            config = function()
+                require'dap-python'.setup('/home/lckdscl/.local/share/applications/debugpy/bin/python', { justMyCode = false })
+            end
+        }
+    -- }}}
+    -- DAP: API for debuggers {{{
+        use {
+            "mfussenegger/nvim-dap",
+            module = 'dap',
+            config = function()
+                require'configs.dap'
+            end
+        }
+    -- }}}
+    -- DAP-VIRTUAL-TEXT: Display variable expressions as virtual text {{{
+        use {
+            'theHamsta/nvim-dap-virtual-text',
+            after = "nvim-dap",
+            config = function()
+                require("nvim-dap-virtual-text").setup()
+            end
+        }
+    -- }}}
+    -- DAP-UI: Sane ui for debuggers {{{
+        use {
+            'rcarriga/nvim-dap-ui',
+            module = "dapui",
+            requires = { "mfussenegger/nvim-dap"},
+        }
+    -- }}}
        end,
     -- PACKER OPTIONS {{{
     config = {
