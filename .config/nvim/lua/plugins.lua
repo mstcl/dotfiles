@@ -215,6 +215,33 @@ return require('packer').startup {
             end
             }
     -- }}}
+    -- CMP: popup completion {{{
+        use {
+            "hrsh7th/nvim-cmp",
+            after = "ultisnips",
+            config = function()
+                require'configs.cmp'
+            end
+        }
+    -- }}}
+    -- CMP-SOURCES: sources for nvim-cmp {{{
+        use {
+            "quangnguyen30192/cmp-nvim-ultisnips",
+            after = 'nvim-cmp',
+        }
+        use {
+            'hrsh7th/cmp-nvim-lsp',
+            after = "nvim-cmp",
+        }
+        use {
+            'hrsh7th/cmp-path',
+            after = "cmp-nvim-lsp",
+        }
+        use {
+            'hrsh7th/cmp-buffer',
+            after = "cmp-path",
+        }
+    -- }}}
     -- -_-_-_-_ COMMAND -_-_-_-
      -- WILDER (VS): vim command fuzzy popup completion {{{
         use {
