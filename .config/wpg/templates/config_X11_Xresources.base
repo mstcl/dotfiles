@@ -67,4 +67,4 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
 
 Xcursor.theme: {cursor}
-Xcursor.size: 22
+Xcursor.size: 48

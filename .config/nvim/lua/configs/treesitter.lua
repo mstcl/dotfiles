@@ -11,8 +11,12 @@ ts.setup {
         "cpp",
         "bibtex",
         "css",
+        "json",
         "vim",
-        "latex",
+        "java",
+        "javascript",
+        "cmake",
+        -- "latex",
         "lua",
         "bash",
         "toml",
@@ -21,7 +25,7 @@ ts.setup {
         enable = true,
         use_languagetree = true,
         additional_vim_regex_highlighting = false,
-        disable = { "latex" },
+        disable = { "latex", "markdown"},
     },
     autopairs = {
         enable = true

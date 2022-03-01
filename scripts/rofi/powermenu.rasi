@@ -15,7 +15,7 @@ window {
     border: 0px;
     border-color: @ac;
     border-radius: 0px;
-    width: 602px;
+    width: 640px;
     dynamic: true;
     location: center;
     x-offset: 0;
@@ -30,7 +30,7 @@ prompt {
 }
 
 textbox-prompt-colon {
-    padding: 10px 5px 10px 15px;
+    padding: 11px 5px 10px 15px;
     font: @font-icon;
     background-color: @al;
     text-color: @fg;

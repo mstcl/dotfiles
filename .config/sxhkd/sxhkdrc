@@ -10,10 +10,13 @@ super + q
 super + c
 	bash $HOME/scripts/other/colorpicker.sh
 
+super + w
+	notify-send "━━━━━━━━━━━━━━━━━" "$($HOME/scripts/other/notify.sh)"
+
 super + p; {r,f}
 	bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
 
-super + period
+super + semicolon
 	splatmoji copy
 
 super + space
@@ -23,14 +26,21 @@ super + t; {c,d}
 	{bash $HOME/scripts/hardware/picomtoggle.sh, \
 	dunstctl set-paused toggle}
 
-super + s; {p,c,slash,period,comma,l,v}
+super + s; {s,m,c,l,v}
 	{kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T spotify ncspot, \
+	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T mpd ncmpcpp, \
 	bash $HOME/scripts/music/fehcover.sh, \
-	playerctl -p ncspot play-pause, \
-	playerctl -p ncspot next, \
-    playerctl -p ncspot previous, \
-	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics ncspot, \
+	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics, \
 	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
+
+super + comma
+	playerctl -p ncspot,mpd previous
+
+super + period
+	playerctl -p ncspot,mpd next
+
+super + slash
+	playerctl -p ncspot,mpd play-pause
 
 super + Return
 	kitty
@@ -64,7 +74,7 @@ super + {h,j,k,l}
 	i3-msg focus {left,down,up,right}
 
 super + {1,2,3,4,5,6}
-	i3-msg workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Discord}
+	i3-msg workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Chat}
 
 super + {7,8,9,0}
 	i3-msg workspace {7,8,9,10}
@@ -85,7 +95,7 @@ super + shift + space
 	i3-msg floating toggle
 
 super + shift + {1,2,3,4,5,6}
-	i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Discord}
+	i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Chat}
 
 super + shift + {7,8,9,0}
 	i3-msg move container to workspace {7,8,9,10}

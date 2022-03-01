@@ -36,6 +36,10 @@ export MANPATH="/usr/share/man"
 export SCRIPTS="$HOME"/scripts
 export ADOTDIR="$XDG_DATA_HOME"/antigen
 export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 # ------------------------------------
 export WORDCHARS=${WORDCHARS//\/}
 # export SDCV_PAGER='less --quit-if-one-screen -RX'
@@ -45,7 +49,7 @@ export PAGER="nvim -R"
 export MANPAGER="nvim +Man!"
 export DIFFPROG=nvim
 export EDITOR=/usr/bin/nvim
-export XCURSOR_THEME=Bibata-Modern-Classic
+export XCURSOR_THEME=phinger-cursors
 export TERMINAL="/usr/bin/kitty"
 export VDPAU_DRIVER=nvidia
 export BROWSER="/usr/bin/brave"
@@ -53,6 +57,7 @@ export LIBVA_DRIVER_NAME=vdpau
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
+export QT_QPA_PLATFORMTHEME=qt5ct
 export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 export GLFW_IM_MODULE=ibus

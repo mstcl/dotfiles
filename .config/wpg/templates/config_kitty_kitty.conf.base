@@ -3,9 +3,40 @@
 
 # GENERAL [[[
 # Fonts [[[
-font_family {font0}
+font_family JetBrainsMono
+bold_font JetBrainsMono Bold
+italic_font Cartograph CF Italic
+bold_italic_font Cartograph CF Bold Italic
 font_size {font-size}
 adjust_line_height 120%
+box_drawing_scale 0.01, 1, 1.5, 2
+# Seti-UI + Custom
+symbol_map U+E5FA-U+E62B {font0}
+# Devicons
+symbol_map U+E700-U+E7C5 {font0}
+# Font Awesome
+symbol_map U+F000-U+F2E0 {font0}
+# Font Awesome Extension
+symbol_map U+E200-U+E2A9 {font0}
+# Material Design Icons
+symbol_map U+F500-U+FD46 {font0}
+# Weather
+symbol_map U+E300-U+E3EB {font0}
+# Octicons
+symbol_map U+F400-U+F4A8 {font0}
+symbol_map U+2665,U+26A1,U+F27C {font0}
+# Powerline Extra Symbols
+symbol_map U+E0A0 {font0}
+symbol_map U+E0B4-U+E0C8 {font0}
+symbol_map U+E0CC-U+E0D2 {font0}
+symbol_map U+E0D4 {font0}
+# IEC Power Symbols
+symbol_map U+23FB-U+23FE {font0}
+symbol_map U+2B58 {font0}
+# Font Logos
+symbol_map U+F300-U+F313 {font0}
+# Pomicons
+symbol_map U+E000-U+E00D {font0}
 # ]]]
 # Cursor [[[
 cursor_shape beam
@@ -50,7 +81,7 @@ tab_bar_edge bottom
 tab_bar_margin_width 0
 tab_bar_margin_height 0 0
 tab_bar_style separator
-tab_bar_min_tabs 0
+tab_bar_min_tabs 2
 tab_separator " |"
 tab_fade 0
 # ]]]
@@ -61,18 +92,18 @@ tab_title_template {{fmt.fg._{color8.strip}}}{{fmt.bg.default}}  {{title}} {{fmt
 # Tab bar colors and styles [[[
 active_tab_font_style   bold
 active_tab_foreground   {color15}
-active_tab_background   #303030
-inactive_tab_background #303030
+active_tab_background   #2f2f2f
+inactive_tab_background #2f2f2f
 inactive_tab_foreground {color8}
 inactive_tab_font_style bold
-tab_bar_background      #303030
+tab_bar_background      #2f2f2f
 # ]]]
 # Color scheme [[[
 foreground           {color7}
 selection_foreground {color0}
 background           {color0}
 selection_background {color9}
-cursor               {color15}
+cursor               {color12}
 cursor_text_color    {color0}
 color0               #303030
 color8               {color8}
@@ -100,7 +131,7 @@ linux_display_server auto
 # ]]]
 # ]]]
 # MAPPINGS [[[
-# Clear all default shorcuts [[[
+# Clear all default shortcuts [[[
 clear_all_shortcuts yes
 # ]]]
 # Mod [[[
@@ -159,7 +190,8 @@ map kitty_mod+e kitten hints
 map kitty_mod+f2 clear_terminal reset active
 # ]]]
 # Mouse actions [[[
-mouse_map left            click ungrabbed no-op
+mouse_map left click ungrabbed mouse_handle_click selection prompt
+mouse_map right press ungrabbed mouse_select_command_output
 mouse_map ctrl+shift+left release grabbed,ungrabbed mouse_click_url
 # ]]]
 # ]]]

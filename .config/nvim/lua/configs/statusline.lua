@@ -10,179 +10,216 @@ ScrollBar = extension.scrollbar_instance
 SearchResults = search.get_results
 
 gl.short_line_list = {
-    'LuaTree',
-    'vista',
-    'qf',
-    'dbui',
-    'startify',
-    '',
-    'floaterm',
-    'DiffviewFileHistoryPanel',
-    'DiffviewFiles',
-    'alpha',
-    'man',
-    'term',
-    'nerdtree',
-    'dashboard',
-    'Packer',
-    'NvimTree',
-    'Help',
-    'diff',
-    'undotree',
-    'netrw',
-    'plug',
-    'Outline',
-    'quickfix',
-    'toggleterm'
+	"Trouble",
+	"LuaTree",
+	"dapui_scopes",
+	"dapui_breakpoints",
+	"dapui_repl",
+	"vista",
+	"qf",
+	"dbui",
+	"startify",
+	"",
+	"floaterm",
+	"DiffviewFileHistoryPanel",
+	"DiffviewFiles",
+	"alpha",
+	"man",
+	"term",
+	"nerdtree",
+	"dashboard",
+	"Packer",
+	"NvimTree",
+	"Help",
+	"diff",
+	"undotree",
+	"netrw",
+	"plug",
+	"Outline",
+	"quickfix",
+	"toggleterm",
+}
+local colors = {
+	normal = "#505050",
+	insert = "#8b8f7e",
+	visual = "#637a8a",
+	cmd = "#9c6e63",
+	replace = "#7d7284",
+	term = "#917563",
 }
 
 gls.left[1] = {
-ViMode = {
-        provider = function()
-            local mode_color = {n = "#505050", i = "#8b8f7e",v="#637a8a",
-            [''] = "#637a8a",V="#637a8a",
-            c = "#877979",no = "#aa8f7c",s = "#917563",
-            S="#917563",[''] = "#917563",
-            ic = "#90907f",R = "#877979",Rv = "#877979",
-            cv = "#aa8f7c",ce = "#aa8f7c", r = "#aa8f7c",
-            rm = "#4c5d69", ['r?'] = "#4c5d69",
-            ['!']  = "#aa8f7c",t = "#aa8f7c"}
-            vim.api.nvim_command("hi GalaxyViMode guibg=#454545 guifg=" .. mode_color[vim.fn.mode()])
-            return "▊ "
-        end,
-        highlight = "GalaxyFg",
-        separator = '',
-        separator_highlight = "GalaxyFg",
-    },
+	ViMode = {
+		provider = function()
+			local mode_color = {
+				n = colors.normal,
+				i = colors.insert,
+				v = colors.visual,
+				[""] = colors.visual,
+				V = colors.visual,
+				c = colors.cmd,
+				s = colors.replace,
+				S = colors.replace,
+				[""] = colors.replace,
+				ic = colors.insert,
+				R = colors.replace,
+				Rv = colors.replace,
+				cv = colors.replace,
+				ce = colors.replace,
+				r = colors.replace,
+				rm = colors.visual,
+				["r?"] = colors.visual,
+				["!"] = colors.replace,
+				t = colors.term,
+			}
+			vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
+			return "▊ "
+		end,
+		highlight = "GalaxyFg",
+		separator = "",
+		separator_highlight = "GalaxyFg",
+	},
 }
 
 gls.left[4] = {
-  FileIcon = {
-    provider = "FileIcon",
-    condition = condition.buffer_not_empty,
-    highlight = "GalaxyFgAlt",
-  },
+	FileIcon = {
+		provider = "FileIcon",
+		condition = condition.buffer_not_empty,
+		highlight = "GalaxyFgAlt",
+	},
 }
 
 gls.left[5] = {
-  FileName = {
-    provider = "FileName",
-    condition = condition.buffer_not_empty,
-    highlight = "GalaxyFgAlt",
-  },
+	FileName = {
+		provider = "FileName",
+		condition = condition.buffer_not_empty,
+		highlight = "GalaxyFgAlt",
+		--[[ separator = " ",
+		separator_highlight = "GalaxyFgAlt", ]]
+	},
+}
+
+gls.left[6] = {
+	LineInfo = {
+		provider = "LineColumn",
+		highlight = "GalaxyFgAlt",
+        icon = " | ",
+		--[[ separator = " ",
+		separator_highlight = "GalaxyFgAlt", ]]
+	},
 }
 
 gls.mid[1] = {
-    Search = {
-        provider = SearchResults,
-        highlight = "GalaxyFgAlt",
-    }
+	Search = {
+		provider = SearchResults,
+		highlight = "GalaxyFgAlt",
+	},
 }
 
 gls.right[2] = {
-  GitIcon = {
-    provider = function()
-      return " שׂ "
-    end,
-    condition = condition.check_git_workspace,
-    separator = " ",
-    separator_highlight = "GalaxyFgAlt",
-    highlight = "GalaxyFgAlt",
-  },
+	GitIcon = {
+		provider = function()
+			return " שׂ "
+		end,
+		condition = condition.check_git_workspace,
+		separator = " ",
+		separator_highlight = "GalaxyFgAlt",
+		highlight = "GalaxyFgAlt",
+	},
 }
 
 gls.right[3] = {
-  GitBranch = {
-    provider = "GitBranch",
-    condition = condition.check_git_workspace,
-    highlight = "GalaxyFgAlt",
-  },
+	GitBranch = {
+		provider = "GitBranch",
+		condition = condition.check_git_workspace,
+		highlight = "GalaxyFgAlt",
+	},
 }
 
 gls.right[4] = {
-  BranchSpace = {
-    provider = function()
-      return " "
-    end,
-    highlight = "GalaxyFgAlt",
-  },
+	BranchSpace = {
+		provider = function()
+			return " "
+		end,
+		highlight = "GalaxyFgAlt",
+	},
 }
 
 gls.right[5] = {
-  DiffAdd = {
-    provider = "DiffAdd",
-    icon = " +",
-    highlight = "GalaxyGreen",
-  },
+	DiffAdd = {
+		provider = "DiffAdd",
+		icon = " +",
+		highlight = "GalaxyGreen",
+	},
 }
 
 gls.right[6] = {
-  DiffModified = {
-    provider = "DiffModified",
-    icon = " ~",
-    highlight = "GalaxyMagenta",
-  },
+	DiffModified = {
+		provider = "DiffModified",
+		icon = " ~",
+		highlight = "GalaxyMagenta",
+	},
 }
 
 gls.right[7] = {
-  DiffRemove = {
-    provider = "DiffRemove",
-    icon = " -",
-    highlight = "GalaxyRed",
-  },
+	DiffRemove = {
+		provider = "DiffRemove",
+		icon = " -",
+		highlight = "GalaxyRed",
+	},
 }
 
+
 gls.right[8] = {
-  DiagnosticError = {
-    provider = "DiagnosticError",
-    icon = "  ",
-    highlight = "GalaxyRed",
-  },
+	DiagnosticError = {
+		provider = "DiagnosticError",
+		icon = " ✗ ",
+		highlight = "GalaxyRed",
+	},
 }
 
 gls.right[9] = {
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    icon = "  ",
-    highlight = "GalaxyOrange",
-  },
+	DiagnosticWarn = {
+		provider = "DiagnosticWarn",
+		icon = " ! ",
+		highlight = "GalaxyOrange",
+	},
 }
 
 gls.right[10] = {
-  DiagnosticHint = {
-    provider = "DiagnosticHint",
-    icon = " 𥉉",
-    highlight = "GalaxyYellow",
-  },
+	DiagnosticHint = {
+		provider = "DiagnosticHint",
+		icon = " ? ",
+		highlight = "GalaxyYellow",
+	},
 }
 
 gls.right[11] = {
-    DiagnosticInfo = {
-        provider = "DiagnosticInfo",
-        icon = "  ",
-        highlight = "GalaxyBlue",
-    },
+	DiagnosticInfo = {
+		provider = "DiagnosticInfo",
+		icon = " i ",
+		highlight = "GalaxyBlue",
+	},
 }
 
 gls.right[12] = {
-    TrailingWhiteSpace = {
-        provider = whitespace,
-        icon = ' ',
-        highlight = "GalaxyMagenta",
-    }
+	TrailingWhiteSpace = {
+		provider = whitespace,
+		highlight = "GalaxyCyan",
+	},
 }
 
 gls.short_line_left[1] = {
-  BufferSpace = {
-    provider = function()
-      return " "
-    end,
-    highlight = "GalaxyFgAlt",
-  },
+	BufferSpace = {
+		provider = function()
+			return " "
+		end,
+		highlight = "GalaxyFgAlt",
+	},
 }
 gls.short_line_left[2] = {
-  BufferType = {
-    provider = "FileTypeName",
-    highlight = "GalaxyFgAlt",
-  },
+	BufferType = {
+		provider = "FileTypeName",
+		highlight = "GalaxyFgAlt",
+	},
 }

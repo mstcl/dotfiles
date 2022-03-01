@@ -73,8 +73,7 @@ function rem() {
 }
 # }}}
 # Tldr fuzzy {{{
-function cheat() {
-    if [[ "$#" -ne 0 ]]; then
+function cheat() { if [[ "$#" -ne 0 ]]; then
         tldr $@
         return
     fi
@@ -123,5 +122,17 @@ function nvim() {
         return
     fi
     /usr/bin/nvim -c ":Alpha"
+}
+# }}}
+# Dasht {{{
+function ffdash() {
+    dasht-query-line $@ | perl -0777 -pe 's/name = (.*?)\ntype = (.*?)\nfrom = (.*?)\nurl = (.*?)\n/ $4 | $1 | $3 | $3\n\n/g' | column -ts'|' | fzf --no-sort --with-nth=2.. --bind 'enter:execute(w3m {1})+accept'
+}
+# }}}
+# SDCV define word {{{
+function def() {
+    sdcv -2 '.local/share/dic' -n --utf8-output --color "$@" 2>&1 | \
+    fold --width=$(tput cols) | \
+    less --quit-if-one-screen -RX
 }
 # }}}

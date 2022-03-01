@@ -17,7 +17,7 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 GRAY='\033[1;37m'
 
-icon=""
+icon=" "
 
 get_uptime() {
     time=$(( $(date +%s) - $(date -d"$(uptime -s)" +%s) ))
@@ -84,7 +84,7 @@ get_weather() {
     echo -e "${DARKGRAY}│ ${WHITE}$icon${NOCOLOR} wt${DARKGRAY}${GRAY}$weather${NOCOLOR}${DARKGRAY}│"
 }
 echo -e ""
-echo -e "${DARKGRAY}┌──────────────┐"
+echo -e "${DARKGRAY}┌───────────────┐"
 get_distro
 get_kernel
 get_packages
@@ -93,5 +93,5 @@ get_term
 get_wm
 # get_weather
 # get_uptime
-echo -e "${DARKGRAY}└──────────────┘"
+echo -e "${DARKGRAY}└───────────────┘"
 echo -e ""

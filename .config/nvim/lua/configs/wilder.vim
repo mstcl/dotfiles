@@ -42,6 +42,7 @@ let s:popupmenu_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_the
     \ 'left': [
     \ ' ',
     \ wilder#popupmenu_devicons(),
+    \ ' ',
     \ ],
     \ 'right': [
     \ ' ',

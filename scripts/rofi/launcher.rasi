@@ -30,7 +30,7 @@ prompt {
 }
 
 textbox-prompt-colon {
-    padding: 11px 15px 10px 15px;
+    padding: 14px 15px 10px 16px;
     font: @font-icon;
     background-color: @al;
     text-color: @fg;
@@ -88,12 +88,12 @@ element {
     text-color: @fg;
     orientation: horizontal;
     border-radius: 0px;
-    padding: 6px;
+    padding: 8px;
 }
 
 element-icon {
     background-color: inherit;
-    size: 24px;
+    size: 30px;
     border: 0px;
 }
 
@@ -103,7 +103,7 @@ element-text {
     expand: true;
     horizontal-align: 0;
     vertical-align: 0.5;
-    margin: 0px 2.5px 0px 2.5px;
+    margin: 0px 2.5px 0px 10px;
 }
 
 element selected {

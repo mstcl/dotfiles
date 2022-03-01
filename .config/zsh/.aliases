@@ -56,7 +56,6 @@ alias nb='newsboat -q'
 alias v='vdirsyncer sync default_calendar'
 alias k='ikhal'
 alias ts='task synchronize'
-alias def='SDCV_PAGER="less --quit-if-one-screen -RX" sdcv -2 ~/.local/share/dic -c'
 # }}}
 # XDG standards non-conformists {{{
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'

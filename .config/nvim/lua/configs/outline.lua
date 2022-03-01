@@ -4,6 +4,7 @@ vim.g.symbols_outline = {
     highlight_hovered_item = true,
     show_guides = true,
     width = 30,
-    relative_width = false,
+    relative_width = true,
+    border = 'rounded',
     preview_bg_highlight = 'OutlinePreviewBG',
 }

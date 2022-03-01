@@ -13,3 +13,5 @@ icons.setup {
         }
     }
 }
+
+icons.set_default_icon('', '#6d8086')

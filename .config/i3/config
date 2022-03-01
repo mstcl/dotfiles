@@ -8,14 +8,14 @@ set $alt Mod1
 set $hyper Mod3
 # }}}
 # Font {{{
-font pango:JetBrainsMono Nerd Font Medium 13
+font pango:JetBrainsMono Nerd Font Medium 15
 # }}}
 # Gaps {{{
 gaps outer 0
 gaps inner 0
 # }}}
 # Polybar gap {{{
-gaps top 40
+gaps top 0
 # }}}
 # Borders {{{
 smart_borders on
@@ -34,10 +34,13 @@ exec --no-startup-id picom &
 exec --no-startup-id xset s off &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id unclutter &
-exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
+# exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
 exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
+exec --no-startup-id bash $HOME/scripts/hardware/norgb.sh &
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
-exec_always --no-startup-id xmodmap $HOME/.config/X11/Xmodmap &
+exec_always --no-startup-id sleep 4 && xmodmap $HOME/.config/X11/Xmodmap &
+exec_always --no-startup-id kitti3 -p tc
+exec_always --no-startup-id flashfocus &
 exec_always --no-startup-id autotiling &
 # }}}
 # From wal {{{
@@ -55,13 +58,17 @@ client.background       $bg
 # }}}
 # Bare minimum for i3 to work {{{
 floating_modifier $mod
-bindsym $mod+backslash   workspace back_and_forth
+bindsym $mod+backslash workspace back_and_forth
+bindsym $mod+n nop kitti3
+
 # }}}
 # }}}
 # WINDOW RULES {{{
 # MPV {{{
 for_window [class="mpv"] floating enable
 # }}}
+for_window [class="Ds9.tcl"] floating enable
+for_window [class="Uget-gtk"] floating enable
 # Pavucontrol {{{
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set 940 680
@@ -69,6 +76,12 @@ for_window [class="Pavucontrol"] resize set 940 680
 # File manager {{{
 for_window [class="Pcmanfm"] floating enable
 for_window [class="Pcmanfm"] resize set 940 680
+for_window [title="Rename File"] resize set 284 164
+for_window [title="Execute File"] resize set 284 164
+for_window [title="Choose Application"] resize set 284 164
+for_window [title="Creating New Folder"] resize set 284 164
+for_window [title="Confirm File Replacing"] resize set 284 164
+for_window [title="Copying files"] resize set 484 164
 # }}}
 # Calculator {{{
 for_window [class="Qalculate-gtk"] floating enable
@@ -83,24 +96,36 @@ for_window [class="^kitty$" title="^textScratchpad$"] resize set 740 480; move a
 for_window [class="^kitty$" title="^floatingKitty$"] floating enable
 for_window [class="^kitty$" title="^floatingKitty$"] resize set 740 480; move absolute position center
 for_window [class="^kitty$" title="^cava$"] floating enable
-for_window [class="^kitty$" title="^cava$"] resize set 840 320
-for_window [class="^kitty$" title="^cava$"] move position 175 px 560 px
+for_window [class="^kitty$" title="^cava$"] resize set 830 320
+for_window [class="^kitty$" title="^cava$"] move position 1050 px 100 px
 assign [class="^kitty$" title="^cava$"] 4: Media
 for_window [class="^kitty$" title="^spotify$"] floating enable
-for_window [class="^kitty$" title="^spotify$"] resize set 960 420
-for_window [class="^kitty$" title="^spotify$"] move position 50 px 100 px
+for_window [class="^kitty$" title="^spotify$"] resize set 960 920
+for_window [class="^kitty$" title="^spotify$"] move position 45 px 100 px
 assign [class="^kitty$" title="^spotify$"] 4: Media
+for_window [class="^kitty$" title="^mpd$"] floating enable
+for_window [class="^kitty$" title="^mpd$"] resize set 1360 520
+assign [class="^kitty$" title="^mpd$"] 4: Media
+for_window [class="^kitty$" title="^irc$"] floating enable
+for_window [class="^kitty$" title="^irc$"] resize set 1380 875
+assign [class="^kitty$" title="^irc$"] 6: Chat
 for_window [class="^cover$"] floating enable
 for_window [class="^cover$"] move position 1050 px 100 px
 assign [class="^cover$"] 4: Media
 for_window [class="^kitty$" title="^lyrics$"] floating enable
-for_window [class="^kitty$" title="^lyrics$"] resize set 530 630
-for_window [class="^kitty$" title="^lyrics$"] move position 1050 px 340 px
+for_window [class="^kitty$" title="^lyrics$"] resize set 830 575
+for_window [class="^kitty$" title="^lyrics$"] move position 1050 px 450 px
 assign [class="^kitty$" title="^lyrics$"] 4: Media
 # }}}
 # Wpg {{{
 for_window [class="Wpg"] floating enable
 for_window [class="Wpg"] resize set 640 480
+# }}}
+# Zoom {{{
+for_window [class="zoom"] floating enable
+# }}}
+# Fileroller {{{
+for_window [class="File-roller"] floating enable
 # }}}
 # Steam {{{
 assign [class="^Steam$" title="^Steam$"] "5: Games"
@@ -123,7 +148,10 @@ for_window [class="feh"] floating enable
 for_window [class="Florence"] floating enable
 # }}}
 # Discord {{{
-assign [class="^discord$"] "6: Discord"
+assign [class="^discord$"] "6: Chat"
+for_window [class="^discord$"] floating enable
+assign [class="^Guilded$"] "6: Chat"
+for_window [class="^Guilded$"] floating enable
 # }}}
 # }}}
 # MODES {{{

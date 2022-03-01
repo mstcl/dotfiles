@@ -4,7 +4,10 @@
     ### Display ###
     monitor = 0
     follow = mouse
-    geometry = "300x5-30+60"
+    width = (20,400)
+    height = 800
+    notification_limit = 0
+    offset = 10x10
     scale = 0
     progress_bar = true
     progress_bar_height = 10
@@ -13,7 +16,6 @@
     indicate_hidden = yes
     shrink = no
     transparency = 0
-    notification_height = 0
     separator_height = 2
     padding = 10
     horizontal_padding = 8
@@ -29,7 +31,7 @@
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
-    alignment = left
+    alignment = center
     vertical_alignment = center
     show_age_threshold = 60
     word_wrap = yes
@@ -40,9 +42,9 @@
     show_indicators = true
 
     ### Icons ###
-    icon_position = off
+    icon_position = left
     min_icon_size = 0
-    max_icon_size = 64
+    max_icon_size = 128
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     ### History ###
@@ -55,8 +57,6 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    startup_notification = false
-    verbosity = crit
     corner_radius = 2
     ignore_dbusclose = false
 
@@ -74,7 +74,6 @@
 [experimental]
     per_monitor_dpi = false
 
-
 [urgency_low]
     background = "{color0}"
     foreground = "{color15}"
@@ -89,7 +88,8 @@
 
 [urgency_critical]
     background = "{color0}"
-    foreground = "{color1}"
+    foreground = "{color2}"
+    frame_color = "{color2}"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

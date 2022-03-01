@@ -124,10 +124,25 @@ snippet fig "Figure environment" b
 \end{figure}
 endsnippet
 
+snippet svg "Figure environment (svg)" b
+\begin{figure}[${2:htpb}]
+	\centering
+	\includesvg[width=${3:0.9}\columnwidth]{${4:name.ext}}
+	\caption{${4/(\w+)\.\w+/\u$1/}$0}%
+	\label{fig:${4/(\w+)\.\w+/$1/}}
+\end{figure}
+endsnippet
+
 snippet enum "Enumerate" b
 \begin{enumerate}
 	\item $0
 \end{enumerate}
+endsnippet
+
+snippet equa "Equation" b
+\begin{equation}
+	$0
+\end{equation}
 endsnippet
 
 snippet item "Itemize" b
@@ -276,17 +291,83 @@ endsnippet
 
 # Bold text
 snippet bf "Bold"
-\textbf{$1} $0
+\textbf{$1}$0
+endsnippet
+
+# Bold symbol
+snippet bm "Bold math" iA
+\bm{$1}$0
 endsnippet
 
 # Italic text
 snippet ita "Italics"
-\textit{$1} $0
+\textit{$1}$0
 endsnippet
 
 # Underlined text
 snippet und "Underline"
-\underline{$1} $0
+\underline{$1}$0
+endsnippet
+
+# Fraction
+snippet // "Fraction" iA
+\\frac{${1:${VISUAL:nom}}}{${2:${VISUAL:denom}}}$0
+endsnippet
+
+snippet ^^ "Superscript" iA
+$1^{${2:${VISUAL:superscript}}}$0
+endsnippet
+
+snippet __ "Subscript" iA
+$1_{${2:${VISUAL:subscript}}}$0
+endsnippet
+
+snippet ep0 "Permittivity of free space" iA
+\epsilon_{0}$0
+endsnippet
+
+snippet mu0 "Permeability of free space" iA
+\mu_{0}$0
+endsnippet
+
+snippet dx "Differential" iA
+\dd{$1}$0
+endsnippet
+
+snippet ddv "Derivative" iA
+\dv[${1:${VISUAL:1}}]{$2}{$3}$0
+endsnippet
+
+snippet pdv "Partial derivative" iA
+\pdv[${1:${VISUAL:1}}]{$2}{$3}$0
+endsnippet
+
+snippet htt "Hat" iA
+\hat{$1}$0
+endsnippet
+
+snippet vcc "Vector" iA
+\vec{$1}$0
+endsnippet
+
+snippet grd "Gradient" iA
+\gradient{$1}$0
+endsnippet
+
+snippet lpl "Laplacian" iA
+\laplacian{$1}$0
+endsnippet
+
+snippet crl "Curl" iA
+\curl{\bm{$1}}$0
+endsnippet
+
+snippet dvg "Divergence" iAm
+\divergence{\bm{$1}}$0
+endsnippet
+
+snippet pdc "Partial derivative with constraints" iA
+{\left(\pdv[${1:${VISUAL:1}}]{$2}{$3}\right)}_{$4}$0
 endsnippet
 
 # vim:ft=snippets:

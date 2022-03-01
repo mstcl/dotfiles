@@ -96,11 +96,11 @@ local buttons = {
     type = "group",
     val = {
     button( "LDR h", "   Recents" , ":Telescope oldfiles<CR>"),
-    button( "LDR b", "   Buffers" , ":Telescope buffers<CR>"),
-    button( "LDR y", "   Explore" , ":Telescope file_browser<CR>"),
+    -- button( "LDR b", "   Buffers" , ":Telescope buffers<CR>"),
+    -- button( "LDR y", "   Explore" , ":Telescope file_browser<CR>"),
     button( "LDR /", "   Ripgrep" , ":Telescope live_grep<CR>"),
-    button( "MRK V", "   Options" , ":execute 'normal! `V'<CR>"),
-    button( "MRK P", "   Plugins" , ":execute 'normal! `P'<CR>"),
+    -- button( "MRK V", "   Options" , ":execute 'normal! `V'<CR>"),
+    -- button( "MRK P", "   Plugins" , ":execute 'normal! `P'<CR>"),
     },
     opts = {
         spacing = 1,
@@ -117,7 +117,7 @@ local section = {
 
 local opts = {
     layout = {
-        {type = "padding", val = 2},
+        {type = "padding", val = 1},
         section.header,
         {type = "padding", val = 1},
         section.heading,

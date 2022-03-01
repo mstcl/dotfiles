@@ -11,10 +11,10 @@ while true; do
     if hash notify-send &>/dev/null; then
         if (( UPDATES > 50 )); then
             notify-send -u critical \
-                "You really need to update!!" "$UPDATES new packages"
+                "Packages with updates" "$UPDATES new packages"
         elif (( UPDATES > 25 )); then
             notify-send -u normal \
-                "You should update soon." "$UPDATES new packages"
+                "Packages with updates" "$UPDATES new packages"
         elif (( UPDATES > 2 )); then
             notify-send -u low \
                 "$UPDATES new packages" \

@@ -6,11 +6,10 @@ uptime=$(uptime -p | sed -e 's/up //g')
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
 # Options
-shutdown=" 襤  Shutdown"
-reboot="   Restart"
-lock="   Lock"
-suspend="   Sleep"
-logout="   Logout"
+shutdown=" 襤 Shutdown "
+reboot=" Restart "
+lock="  Lock "
+suspend="  Sleep "
 
 # Confirmation
 confirm_exit() {
@@ -27,7 +26,7 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$lock\n$suspend\n$reboot\n$shutdown"
 
 chosen="$(echo -e "$options" | $rofi_command -i -p "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
@@ -64,22 +63,6 @@ case $chosen in
             loginctl lock-session
             sleep 2
             systemctl suspend
-        elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-            exit 0
-        else
-            msg
-        fi
-        ;;
-    $logout)
-        ans=$(confirm_exit &)
-        if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-            if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-                openbox --exit
-            elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-                bspc quit
-            elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
-                i3-msg exit
-            fi
         elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
             exit 0
         else

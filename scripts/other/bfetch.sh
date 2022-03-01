@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 
 # sysinfo: A sort of custom script
 # Thanks to u/x_ero for his sysinfo script
@@ -62,11 +62,11 @@ ROW=$(tput lines)
 ((PADX = COL / 2 - 34 / 2))
 
 for ((i = 0; i < PADX; ++i)); do
-	PADC="$PADC "
+    PADC="$PADC "
 done
 
 for ((i = 0; i < PADY; ++i)); do
-	PADR="$PADR\n"
+    PADR="$PADR\n"
 done
 
 # vertical padding
@@ -75,7 +75,7 @@ printf "\n"
 
 PADXX=$((PADX - 3))
 for ((i = 0; i < PADXX; ++i)); do
-	PADCC="$PADCC "
+    PADCC="$PADCC "
 done
 
 # # Ascii art arms
@@ -108,14 +108,6 @@ cat <<EOF
 
 
 
-
-
-
-
-
-
-
-
 EOF
 
 # BAR="█▓▒░"
@@ -124,11 +116,11 @@ EOF
 # printf "\n\n"
 
 i=0
-printf "%s%b" "$PADC" 
+printf "%s%b" "$PADC"
 while [ $i -le 6 ]
 do
-  printf "\e[$((i+41))m\e[$((i+30))m█▓▒░"
-  i=$(($i+1))
+    printf "\e[$((i+41))m\e[$((i+30))m█▓▒░"
+    i=$(($i+1))
 done
 printf "\e[37m█\e[0m▒░\n\n"
 
@@ -151,18 +143,18 @@ printf " $RST\n"
 
 # progress bar
 draw() {
-	perc=$1
-	size=$2
-	inc=$((perc * size / 100))
-	out=
-	color="$3"
-	for v in $(seq 0 $((size - 1))); do
-		test "$v" -le "$inc" &&
-			out="${out}\e[1;${color}m${FULL}" ||
-			out="${out}\e[0;90m${EMPTY}"
-	done
-	printf $out
-}
+    perc=$1
+    size=$2
+    inc=$((perc * size / 100))
+    out=
+    color="$3"
+    for v in $(seq 0 $((size - 1))); do
+        test "$v" -le "$inc" &&
+            out="${out}\e[1;${color}m${FULL}" ||
+            out="${out}\e[0;90m${EMPTY}"
+        done
+        printf $out
+    }
 
 # cpu
 cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')

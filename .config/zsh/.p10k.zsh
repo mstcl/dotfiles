@@ -53,6 +53,10 @@
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
+###########################[ vim_shell: vim shell indicator (:sh) ]###########################
+  # Vim shell indicator color.
+  typeset -g POWERLEVEL9K_VIM_SHELL_FOREGROUND=34
+
   ################################[ prompt_char: prompt symbol ]################################
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=2
   typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=1

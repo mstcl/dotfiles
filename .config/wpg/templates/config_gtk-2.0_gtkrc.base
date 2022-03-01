@@ -1,14 +1,15 @@
 # :.config/gtk-2.0/gtkrc
 
-gtk-theme-name="FlatColor"
+gtk-theme-name="Fluent-grey-dark"
 gtk-icon-theme-name="{icons}"
-gtk-font-name="Helvetica Neue Medium 12"
+gtk-font-name="SF Pro Text {font-size}"
 gtk-cursor-theme-name="{cursor}"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=1
 gtk-menu-images=1
+gtk-error-bell = 0
 gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=1
 gtk-xft-antialias=1
