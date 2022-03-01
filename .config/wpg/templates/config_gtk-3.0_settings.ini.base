@@ -1,6 +1,6 @@
 # :.config/gtk-3.0/settings.ini
 [Settings]
-gtk-theme-name=FlatColor
+gtk-theme-name=Fluent-grey-light
 gtk-icon-theme-name={icons}
 gtk-font-name=Helvetica Neue Medium 12
 gtk-cursor-theme-name={cursor}
@@ -15,4 +15,4 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle=hintslight
 gtk-xft-rgba=rgb
-gtk-application-prefer-dark-theme=1
+gtk-application-prefer-dark-theme=0

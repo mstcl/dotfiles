@@ -2,19 +2,19 @@
 # vim:set ft=sxhkd:
 
 super + b
-    brave --disable-frame-rate-limit --max-gum-fps=144 --frame-throttle-fps=144
+	MOZ_USE_XINPUT2=1 librewolf
+
+super + w
+	bash $HOME/scripts/other/status.sh
 
 super + q
-    qalculate-gtk
+	qalculate-gtk
 
 super + c
-    bash $HOME/scripts/other/colorpicker.sh
+	bash $HOME/scripts/other/colorpicker.sh
 
 super + p; {r,f}
-    bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
-
-super + period
-    splatmoji copy
+	bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
 
 super + space
     bash $HOME/scripts/rofi/launcher.sh
@@ -24,93 +24,104 @@ super + t; {c,d}
     dunstctl set-paused toggle}
 
 super + s; {p,c,slash,period,comma,l,v}
-    {kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T spotify ncspot, \
-    bash $HOME/scripts/music/fehcover.sh, \
-    playerctl -p ncspot play-pause, \
-    playerctl -p ncspot next, \
-    playerctl -p ncspot prev;;ious, \
-    kitty -T lyrics -o tab_bar_min_tabs=2 lyrics ncspot, \
-    kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
+	{kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T spotify ncspot, \
+	bash $HOME/scripts/music/fehcover.sh, \
+	playerctl -p ncspot play-pause, \
+	playerctl -p ncspot next, \
+	playerctl -p ncspot previous, \
+	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics ncspot, \
+	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
 
 super + Return
 	kitty
 
 super + g
-    bash $HOME/scripts/other/text-scratchpad.sh
+	bash $HOME/scripts/other/text-scratchpad.sh
 
-super + r; {p,c,w,s}
-    {bash $HOME/.config/polybar/launch.sh, \
-    wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 " wpgtk" "Theme reloaded", \
-    i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
-    pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
+super + r; {c,w,s}
+	{wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 " wpgtk" "Theme reloaded", \
+	i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
+	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
 
 super + {minus,equal}
-    i3-msg { move scratchpad, \
-    scratchpad show }
+	i3-msg { move scratchpad, \
+	scratchpad show }
 
-super + {v,x}
-    i3-msg split {v,h}
+super + x
+	i3-msg layout toggle stacking splitv splith
+
+super + v; {b, s}
+	i3-msg gaps inner all {set 8, set 0}
 
 super + {f,o,z}
-    i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
+	i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
 
 super + {h,j,k,l}
-    i3-msg focus {left,down,up,right}
+	i3-msg focus {left,down,up,right}
 
-super + {1,2,3,4,5}
-    i3-msg workspace {1: Term,2: Web,3: Study,4: Media,5: Games}
+super + {1,2,3,4}
+	i3-msg workspace {1: Term,2: Web,3: Study,4: Media}
 
-super + {6,7,8,9,0}
-    i3-msg workspace {6,7,8,9,10}
+super + {5,6,7,8,9,0}
+	i3-msg workspace {5,6,7,8,9,10}
 
 super + {Left,Right}
-    i3-msg workspace {prev,next}
+	i3-msg workspace {prev,next}
 
 super + shift + {h,j,k,l}
-    i3-msg move {left,down,up,right}
+	i3-msg move {left,down,up,right}
 
 super + shift + Return
-    kitty -T floatingKitty
+	kitty -T floatingKitty
 
 super + shift + q
-    i3-msg kill
+	i3-msg kill
 
 super + shift + space
-    i3-msg floating toggle
+	i3-msg floating toggle
 
-super + shift + {1,2,3,4,5}
-    i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media,5: Games}
+super + shift + s
+	i3-msg layout toggle tabbed stacking
 
-super + shift + {6,7,8,9,0}
-    i3-msg move container to workspace {6,7,8,9,10}
+super + shift + {1,2,3,4}
+	i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media}
+
+super + shift + {5,6,7,8,9,0}
+	i3-msg move container to workspace {5,6,7,8,9,10}
 
 super + shift + {Left,Right}
-    i3-msg move container to workspace {prev,next}
+	i3-msg move container to workspace {prev,next}
 
 super + alt + Return
-    kitty --listen-on unix:/tmp/mykitty
+	kitty --listen-on unix:/tmp/mykitty
 
 alt + space
-    bash $HOME/scripts/hardware/chkm.sh
+	bash $HOME/scripts/hardware/chkm.sh
 
 hyper + {period,comma,m,n}
-    pactl { set-sink-volume @DEFAULT_SINK@ +5%,\
-    set-sink-volume @DEFAULT_SINK@ -5%, \
-    set-sink-mute @DEFAULT_SINK@ toggle, \
-    set-source-mute @DEFAULT_SOURCE@ toggle }
+	pactl { set-sink-volume @DEFAULT_SINK@ +5%,\
+	set-sink-volume @DEFAULT_SINK@ -5%, \
+	set-sink-mute @DEFAULT_SINK@ toggle, \
+	set-source-mute @DEFAULT_SOURCE@ toggle }
+
+XF86MonBrightnessDown
+	xbacklight - 10% -steps 500
+
+XF86MonBrightnessUp
+	xbacklight + 10% -steps 500
 
 hyper + {p,v}
-    bash { $HOME/scripts/rofi/powermenu.sh, \
-    $HOME/scripts/rofi/rofi-select-sink.sh }
+	bash { $HOME/scripts/rofi/powermenu.sh, \
+	$HOME/scripts/rofi/rofi-select-sink.sh }
 
 alt + Tab
-    rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab
+	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab
 
 control + Escape
-    dunstctl history-pop
+	dunstctl history-pop
 
 control + space
-    dunstctl close
+	dunstctl close
 
 control + shift + space
-    dunstctl close-all
+	dunstctl close-all

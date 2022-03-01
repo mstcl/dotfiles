@@ -15,7 +15,7 @@ path="~/.local/share/vdirsyncer/calendars/"
 fileext = ".ics"
 
 [storage default_calendar_remote]
-type="caldav"
-url="https://cloud.disroot.org/remote.php/dav"
-username="lckdscl@disroot.org"
-password="3463z-9X9Ec-2NEss-GY5eJ-ysRYo"
+type = "caldav"
+url = "https://cloud.disroot.org/remote.php/dav"
+username = "lckdscl@disroot.org"
+password = "3463z-9X9Ec-2NEss-GY5eJ-ysRYo"

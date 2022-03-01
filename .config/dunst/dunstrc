@@ -4,7 +4,7 @@
     ### Display ###
     monitor = 0
     follow = mouse
-    geometry = "300x5-30+60"
+    geometry = "300x5-30+30"
     scale = 0
     progress_bar = true
     progress_bar_height = 10
@@ -19,13 +19,13 @@
     horizontal_padding = 8
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#353535"
+    frame_color = "#b8b2b0"
     separator_color = frame
     sort = yes
     idle_threshold = 120
 
     ### Text ###
-    font = JetBrainsMono Nerd Font 12
+    font = JetBrainsMono Nerd Font 14
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -76,20 +76,20 @@
 
 
 [urgency_low]
-    background = "#121212"
-    foreground = "#949494"
+    background = "#ede6e3"
+    foreground = "#3b3531"
     timeout = 10
 
 [urgency_normal]
-    background = "#121212"
-    foreground = "#949494"
+    background = "#ede6e3"
+    foreground = "#3b3531"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#121212"
-    foreground = "#637a8a"
+    background = "#ede6e3"
+    foreground = "#3a3a3a"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

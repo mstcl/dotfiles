@@ -1,19 +1,19 @@
 /* colors */
 
 * {
-    al: #353535;
-    bg: #121212;
-    bg1: #637a8a;
-    bg2: #aa8f7c;
-    bg3: #8b8f7e;
-    bg4: #987a6b;
+    al: #b8b2b0;
+    bg: #ede6e3;
+    bg1: #3a3a3a;
+    bg2: #637a8a;
+    bg3: #aa8f7c;
+    bg4: #8b8f7e;
     bg5: #877979;
     bg6: #937f74;
-    fg: #bebebe;
-    fg2: #949494;
-    hi-bold: bold #637a8a;
-    font: "JetBrainsMono Nerd Font 12";
+    fg: #685c56;
+    fg2: #3b3531;
+    hi-bold: bold #3a3a3a;
+    font: "JetBrainsMono Nerd Font 14";
     font-icon: "JetBrainsMono Nerd Font 12";
-    icon-theme: "Fluent-grey-dark";
+    icon-theme: "Fluent-grey";
     show-icons: true;
 }

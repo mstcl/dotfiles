@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/lain/.config/wpg/wallpapers/catto.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#ede6e3",
+        "foreground": "#3b3531",
+        "cursor": "#3b3531"
+    },
+    "colors": {
+        "color0": "#ede6e3",
+        "color1": "#3a3a3a",
+        "color2": "#637a8a",
+        "color3": "#aa8f7c",
+        "color4": "#8b8f7e",
+        "color5": "#877979",
+        "color6": "#937f74",
+        "color7": "#685c56",
+        "color8": "#b8b2b0",
+        "color9": "#252525",
+        "color10": "#485965",
+        "color11": "#887263",
+        "color12": "#676a5d",
+        "color13": "#665d5d",
+        "color14": "#706159",
+        "color15": "#3b3531"
+    }
+}

@@ -33,7 +33,7 @@ antigen apply
 # }}}
 # SAUCE {{{
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source ~/.config/zsh/.p10k.zsh
+source "$HOME"/.config/zsh/.p10k.zsh
 zsh-defer source /usr/share/doc/pkgfile/command-not-found.zsh
 zsh-defer source "$HOME"/.config/zsh/.functions
 zsh-defer source "$HOME"/.config/zsh/.aliases

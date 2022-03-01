@@ -15,7 +15,8 @@ local on_attach = function(client,bufnr)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
     vim.fn.sign_define('LightBulbSign', { text = "", texthl = "LightbulbTextHL" })
-    vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 9}, virtual_text = { enabled = true, text = "     Code actions available" } }]]
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb{ sign = {enabled = false, priority = 9}, virtual_text = { enabled = true, text = "     Code actions available" } }]]
+    require "lsp_signature".on_attach({ bind = true, handler_opts = { border = 'single' }, floating_window = true, floating_window_above_cur_line = true, fix_pos = true, hint_enable = false, })
 end
 
 lsp.clangd.setup{

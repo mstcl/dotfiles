@@ -6,49 +6,25 @@ end
 local header = {
     type = "text",
     val = {
--- [[               ______                ]],
--- [[          _.-""      ""-._           ]],
--- [[       .-'                `-.        ]],
--- [[     .'      __.----.__      `.      ]],
--- [[    /     .-"          "-.     \     ]],
--- [[   /    .'                `.    \    ]],
--- [[  J    /                    \    L   ]],
--- [[  F   J                      L   J   ]],
--- [[ J    F     ┌──────────┐     J    L  ]],
--- [[ |   J      │  nvLeet  │      L   |  ]],
--- [[ |   |      └──────────┘      |   |  ]],
--- [[ |   J                        F   |  ]],
--- [[ J    L                      J    F  ]],
--- [[  L   J   .-""""-.           F   J   ]],
--- [[  J    \ /        \   __    /    F   ]],
--- [[   \    (|)(|)_   .-'".'  .'    /    ]],
--- [[    \    \   /_>-'  .<_.-'     /     ]],
--- [[     `.   `-'     .'         .'      ]],
--- [[       `--.|___.-'`._    _.-'        ]],
--- [[           ^         """"            ]],
-
-[[                                                                              ]],
-[[                                    ██████                                    ]],
-[[                                ████▒▒▒▒▒▒████                                ]],
-[[                              ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                              ]],
-[[                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                            ]],
-[[                          ██▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒                              ]],
-[[                          ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▓▓▓▓                          ]],
-[[                          ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▒▒▓▓                          ]],
-[[                        ██▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒    ██                        ]],
-[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-[[                        ██▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒██                        ]],
-[[                        ████  ██▒▒██  ██▒▒▒▒██  ██▒▒██                        ]],
-[[                        ██      ██      ████      ████                        ]],
-[[                                                                              ]],
-[[                                                                              ]],
+[[]],
+[[██████▒░                    ██████▒░]],
+[[    ████▒░                ████▒░    ]],
+[[      ████▒░            ████▒░      ]],
+[[        ██████▒░    ██████▒░        ]],
+[[            ██████████▒░            ]],
+[[        ██████▓▓▓▓▓▓██████▒░        ]],
+[[        ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▒░        ]],
+[[      ████▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▒░      ]],
+[[      ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▒░      ]],
+[[      ████▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▒░      ]],
+[[        ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▒░        ]],
+[[        ██████▓▓▓▓▓▓██████▒░        ]],
+[[            ██████████▒░            ]],
+[[]],
     },
     opts = {
         position = "center",
-        hl = "SpecialKey"
+        hl = "AlphaHeader"
     }
 }
 
@@ -65,7 +41,7 @@ local plugin_count = {
     val = "└─   " .. plugins .. " plugins in total ─┘",
     opts = {
         position = "center",
-        hl = "Folded",
+        hl = "AlphaHeader",
     }
 }
 
@@ -74,25 +50,7 @@ local heading = {
     val = "┌─   Today is " .. date .. " ─┐",
     opts = {
         position = "center",
-        hl = "Folded",
-    }
-}
-
-local top_bar = {
-    type = "text",
-    val = "┌──══───══───══───══───══──┐",
-    opts = {
-        position = "center",
-        hl = "Folded",
-    }
-}
-
-local bot_bar = {
-    type = "text",
-    val = "└──══───══───══───══───══──┘",
-    opts = {
-        position = "center",
-        hl = "Folded",
+        hl = "AlphaHeader",
     }
 }
 
@@ -115,8 +73,8 @@ local function button(sc, txt, keybind)
         cursor = 5,
         width = 24,
         align_shortcut = "right",
-        hl_shortcut = "SpecialKey",
-        hl = "SpecialKey",
+        hl_shortcut = "AlphaButtons",
+        hl = "AlphaButtons",
     }
     if keybind then
         opts.keymap = {"n", sc_, keybind, {noremap = true, silent = true}}
@@ -136,17 +94,6 @@ end
 local buttons = {
     type = "group",
     val = {
-    --[[ button( "│ ", " │" , ":echo ''<CR>"),
-    button( "LDR h   ║", "║     Recents" , ":Telescope oldfiles<CR>"),
-    button( "│ ", " │" , ":echo ''<CR>"),
-    button( "LDR b   ║", "║     Buffers" , ":Telescope buffers<CR>"),
-    button( "│ ", " │" , ":echo ''<CR>"),
-    button( "LDR b   ║", "║     Browse" , ":Telescope file_browser<CR>"),
-    button( "│ ", " │" , ":echo ''<CR>"),
-    button( "MRK V   ║", "║     Settings" , ":execute 'normal! `V'<CR>"),
-    button( "│ ", " │" , ":echo ''<CR>"),
-    button( "MRK P   ║", "║     Plugins" , ":execute 'normal! `P'<CR>"),
-    button( "│ ", " │" , ":echo ''<CR>"), ]]
     button( "LDR h", "   Recents" , ":Telescope oldfiles<CR>"),
     button( "LDR b", "   Buffers" , ":Telescope buffers<CR>"),
     button( "LDR y", "   Explore" , ":Telescope file_browser<CR>"),
@@ -164,23 +111,21 @@ local section = {
     buttons = buttons,
     plugin_count = plugin_count,
     heading = heading,
-    top_bar = top_bar,
-    bot_bar = bot_bar,
     footer = footer
 }
 
 local opts = {
     layout = {
-        {type = "padding", val = 2},
+        {type = "padding", val = 3},
         section.header,
         {type = "padding", val = 2},
         section.heading,
         section.plugin_count,
-        {type = "padding", val = 3},
+        {type = "padding", val = 1},
         -- section.top_bar,
         section.buttons,
         -- section.bot_bar,
-        {type = "padding", val = 4},
+        {type = "padding", val = 1},
         section.footer,
     },
     opts = {

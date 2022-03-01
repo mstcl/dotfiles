@@ -1,10 +1,10 @@
 " :.config/nvim/init.vim
 " vim:set fdm=marker foldenable:
-command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 " PLUGINS {{{
 " Require plugins.lua {{{
 lua require('impatient')
 lua require('plugins')
+colorscheme marbles
 " }}}
 " Remove these built-in plugins {{{
 lua << EOF
@@ -33,26 +33,49 @@ end
 EOF
 " }}}
 " }}}
+" COMMANDS {{{
+" Wipe register {{{
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+" }}}
+" }}}
 " AUTO-COMMANDS {{{
 " Auto show line diagnostic {{{
-autocmd CursorHold,CursorHoldI *.{vim,tex,python,lua,cpp,sh,bash,md,bib,lua} lua vim.lsp.diagnostic.show_line_diagnostics({border = "single", focusable=false})
-" }}}
-" Alpha options {{{
-augroup Alpha
-autocmd FileType alpha set showtabline=0 | set ft= | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2
+augroup diagnostic
+    autocmd!
+    autocmd CursorHold,CursorHoldI *.{vim,tex,python,lua,cpp,sh,bash,md,bib,lua} lua vim.lsp.diagnostic.show_line_diagnostics({border = "single", focusable=false})
 augroup END
 " }}}
+" Alpha options {{{
+augroup alpha
+    autocmd FileType alpha set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=2
+    autocmd WinEnter,BufRead,BufNewFile * if &ft != 'alpha' | call CleanEmptyBuffers() | endif
+augroup END
+function! CleanEmptyBuffers()
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
+    if !empty(buffers)
+        exe 'bw ' . join(buffers, ' ')
+    endif
+endfunction
+" }}}
 " Open a file where it was left off {{{
-if has("autocmd")
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
+augroup stay
+    autocmd!
+    if has("autocmd")
+        autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+                    \| exe "normal! g'\"" | endif
+    endif
+augroup END
 " }}}
 " Stop autocommenting! {{{
-autocmd BufEnter * setlocal formatoptions-=cro
+augroup editing
+    autocmd!
+    autocmd BufEnter * setlocal formatoptions-=cro
+augroup END
 " }}}
 " Close Outline if it's the only window left {{{
-autocmd BufEnter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
+augroup Outline
+    autocmd BufEnter * if (winnr("$") == 1 && &filetype =~# 'Outline') | q | endif
+augroup END
 " }}}
 " Highlight yanked {{{
 augroup highlight_yank
@@ -60,14 +83,20 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{"IncSearch", 1000}
 augroup END
 " }}}
-" Rasi extension is css-based {{{
-autocmd BufReadPost *.rasi set filetype=css
-" }}}
-" Jupyter Notebook {{{
-autocmd BufReadPost *.ipynb set filetype=python
+" Set filetypes {{{
+augroup filetypes
+    autocmd!
+    " Rasi extension is css-based
+    autocmd BufReadPost *.rasi set filetype=css
+    " Jupyter Notebook
+    autocmd BufReadPost *.ipynb set filetype=python
+augroup END
 " }}}
 " Autosource init.vim upon saving {{{
-autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echo "Reloaded neovim"
+augroup vimrc
+    autocmd!
+    autocmd! BufWritePost $MYVIMRC,nvim-init.vim nested source $MYVIMRC | set foldmethod=marker | echo "Reloaded neovim"
+augroup END
 " }}}
 " Markdown options {{{
 augroup MDoptions
@@ -89,7 +118,10 @@ augroup IndentFT
 augroup end
 " }}}
 " Terminal no number {{{
-autocmd Filetype floaterm set nonumber | set norelativenumber
+augroup floaterm
+    autocmd!
+    autocmd Filetype floaterm set nonumber | set norelativenumber
+augroup END
 " }}}
 " Highlight current matched search {{{
 augroup procsearch
@@ -101,51 +133,6 @@ function! ProcessSearch(timerid)
     if &ic | let l:patt = '\c' . l:patt | endif
     exe 'match IncSearch /' . l:patt . '/'
 endfunc
-" }}}
-" Wilder autocommand and setup {{{
-autocmd CmdlineEnter * ++once call s:wilder_init()
-function! s:wilder_init() abort
-    call wilder#setup({
-        \ 'modes': [':', '/', '?'],
-        \ 'next_key': '<Tab>',
-        \ 'previous_key': '<S-Tab>',
-        \ 'accept_key': '<Down>',
-        \ 'reject_key': '<Up>',
-    \ })
-    call wilder#set_option('pipeline', [
-        \ wilder#debounce(10),
-        \ wilder#branch(
-        \ [
-            \ wilder#check({_, x -> empty(x)}),
-            \ wilder#history(),
-            \ wilder#result({
-                \ 'draw': [{_, x -> ' ' . x}],
-            \ }),
-        \ ],
-            \ wilder#cmdline_pipeline({
-                \ 'use_python': 0,
-                \ 'fuzzy': 1,
-                \ 'fuzzy_filter': wilder#vim_fuzzy_filter(),
-            \ }),
-            \ wilder#search_pipeline({
-                \ 'pattern': wilder#python_fuzzy_pattern(),
-                \ 'sorter': wilder#python_difflib_sorter(),
-                \ 'engine': 're',
-            \ }),
-        \ ),
-    \ ])
-
-    call wilder#set_option('renderer', wilder#popupmenu_renderer({
-        \ 'highlighter': wilder#basic_highlighter(),
-        \ 'left': [
-            \ wilder#popupmenu_devicons(),
-        \ ],
-        \ 'right': [
-            \ ' ',
-            \ wilder#popupmenu_scrollbar(),
-        \ ],
-    \ }))
-endfunction
 " }}}
 " }}}
 " OPTIONS {{{
@@ -167,7 +154,7 @@ set nocursorline
 set synmaxcol=200
 set hidden
 set noshowmode
-set showcmd
+set noshowcmd
 set lazyredraw
 set ttyfast
 set conceallevel=2

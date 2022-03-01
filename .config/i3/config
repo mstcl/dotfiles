@@ -8,34 +8,30 @@ set $alt Mod1
 set $hyper Mod3
 # }}}
 # Font {{{
-font pango:Helvetica Neue 12
+font pango:monospace 12
 # }}}
-# gaps {{{
+# Gaps {{{
 gaps outer 0
-gaps inner 8
-# }}}
-# Polybar gap {{{
-gaps top 40
+gaps inner 0
+smart_gaps on
 # }}}
 # Borders {{{
 smart_borders on
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 # }}}
 # Priority {{{
 focus_on_window_activation urgent
 popup_during_fullscreen smart
 # }}}
 # Startup {{{
-exec_always --no-startup-id sxhkd
-exec --no-startup-id aria2c &
-exec --no-startup-id play-with-mpv &
+exec --no-startup-id sxhkd &
+exec --no-startup-id xinput set-prop "ELAN0501:01 04F3:3040 Touchpad" "libinput Tapping Enabled" 1 &
+exec --no-startup-id xinput set-prop "ELAN0501:01 04F3:3040 Touchpad" "libinput Natural Scrolling Enabled" 1 &
 exec --no-startup-id bash $HOME/.config/wpg/wp_init.sh &
-exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
 exec --no-startup-id picom &
 exec --no-startup-id xset s off &
-exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id unclutter &
-exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
 exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
 exec_always --no-startup-id killall -q xcape 2>/dev/null &

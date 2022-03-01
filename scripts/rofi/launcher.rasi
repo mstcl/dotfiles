@@ -3,7 +3,6 @@ configuration {
     display-drun: "";
     drun-display-format: "{name}";
     disable-history: false;
-    fullscreen: false;
     sidebar-mode: false;
 }
 

@@ -4,12 +4,12 @@
 [[personal]]
 path = ~/.local/share/vdirsyncer/calendars/personal
 type = calendar
-color = dark green
-
-[[birthdays]]
-path = ~/.local/share/vdirsyncer/calendars/contact_birthdays
-type = calendar
 color = dark red
+
+[[uni]]
+path = ~/.local/share/vdirsyncer/calendars/university
+type = calendar
+color = dark magenta
 
 [default]
 highlight_event_days = True
@@ -31,3 +31,6 @@ longdatetimeformat = %Y-%m-%d %H:%M
 
 [view]
 frame = False
+event_view_always_visible = False
+agenda_event_format = 﨟{calendar-color}{bold}{cancelled}{start-end-time-style}   {title}{repeat-symbol}{alarm-symbol}  車{location}{reset}
+event_format = {calendar-color}{cancelled}{start}-{end} {title}{repeat-symbol}{alarm-symbol}{description-separator}{description}{reset}

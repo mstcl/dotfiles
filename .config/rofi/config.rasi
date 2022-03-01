@@ -1,7 +1,6 @@
 /* :.config/rofi/config.rasi
 */
 configuration {
-    theme: "~/scripts/rofi/rofi-theme.rasi";
     modi: "window,drun";
     fixed-num-lines: false;
     disable-history: false;
@@ -10,3 +9,4 @@ configuration {
         display-name: "Windows";
     }
 }
+@theme "~/scripts/rofi/rofi-theme.rasi"

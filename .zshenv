@@ -9,6 +9,7 @@ export ENABLE_VKBASALT=0
 export MANGOHUD=0
 # ------------------------------------
 export VIT_DIR="$XDG_CONFIG_HOME"/vit
+export STARDICT_DATA_DIR="$XDG_DATA_HOME"
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export TASKDATA="$XDG_DATA_HOME"/task
 export GOPATH="$XDG_DATA_HOME"/go
@@ -37,10 +38,11 @@ export ADOTDIR="$XDG_DATA_HOME"/antigen
 export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
 # ------------------------------------
 export WORDCHARS=${WORDCHARS//\/}
+export SDCV_PAGER='less --quit-if-one-screen -RX'
 export PROMPT_EOL_MARK=""
 export SUDO_PROMPT=" Password: "
 export PAGER="nvim -R"
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="nvim +Man!"
 export DIFFPROG=nvim
 export EDITOR=/usr/bin/nvim
 export XCURSOR_THEME=Bibata-Modern-Classic
