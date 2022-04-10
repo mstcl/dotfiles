@@ -4,6 +4,20 @@ extends texmath
 
 global !p
 
+texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+texIgnoreMathZones = ['texMathText']
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+
 def create_table(snip):
 	rows = snip.buffer[snip.line].split('x')[0]
 	cols = snip.buffer[snip.line].split('x')[1]
@@ -141,8 +155,10 @@ endsnippet
 
 snippet equa "Equation" b
 \begin{equation}
-	$0
+	\label{eq:$1}%
+	$2
 \end{equation}
+$0
 endsnippet
 
 snippet item "Itemize" b
@@ -294,7 +310,8 @@ snippet bf "Bold"
 \textbf{$1}$0
 endsnippet
 
-# Bold symbol
+# Bold math
+context "math()"
 snippet bm "Bold math" iA
 \bm{$1}$0
 endsnippet
@@ -310,64 +327,99 @@ snippet und "Underline"
 endsnippet
 
 # Fraction
+context "math()"
 snippet // "Fraction" iA
 \\frac{${1:${VISUAL:nom}}}{${2:${VISUAL:denom}}}$0
 endsnippet
 
+context "math()"
 snippet ^^ "Superscript" iA
 $1^{${2:${VISUAL:superscript}}}$0
 endsnippet
 
+context "math()"
 snippet __ "Subscript" iA
 $1_{${2:${VISUAL:subscript}}}$0
 endsnippet
 
+context "math()"
 snippet ep0 "Permittivity of free space" iA
 \epsilon_{0}$0
 endsnippet
 
+context "math()"
 snippet mu0 "Permeability of free space" iA
 \mu_{0}$0
 endsnippet
 
+context "math()"
 snippet dx "Differential" iA
 \dd{$1}$0
 endsnippet
 
+context "math()"
 snippet ddv "Derivative" iA
 \dv[${1:${VISUAL:1}}]{$2}{$3}$0
 endsnippet
 
+context "math()"
 snippet pdv "Partial derivative" iA
 \pdv[${1:${VISUAL:1}}]{$2}{$3}$0
 endsnippet
 
+context "math()"
 snippet htt "Hat" iA
 \hat{$1}$0
 endsnippet
 
+context "math()"
 snippet vcc "Vector" iA
 \vec{$1}$0
 endsnippet
 
+context "math()"
 snippet grd "Gradient" iA
 \gradient{$1}$0
 endsnippet
 
+context "math()"
 snippet lpl "Laplacian" iA
 \laplacian{$1}$0
 endsnippet
 
+context "math()"
 snippet crl "Curl" iA
 \curl{\bm{$1}}$0
 endsnippet
 
+context "math()"
 snippet dvg "Divergence" iAm
 \divergence{\bm{$1}}$0
 endsnippet
 
+context "math()"
 snippet pdc "Partial derivative with constraints" iA
 {\left(\pdv[${1:${VISUAL:1}}]{$2}{$3}\right)}_{$4}$0
+endsnippet
+
+context "math()"
+snippet nb "Normal brackets" iA
+\left($1\right)$0
+endsnippet
+
+context "math()"
+snippet sb "Square brackets" iA
+\left[$1\right]$0
+endsnippet
+
+context "math()"
+snippet cb "Curly brackets" iA
+\left{$1\right}$0
+endsnippet
+
+context "math()"
+snippet inf "Infinity" iA
+\infty
 endsnippet
 
 # vim:ft=snippets:

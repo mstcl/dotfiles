@@ -67,7 +67,13 @@ lsp.texlab.setup({
 			formatterLineLength = 80,
 			forwardSearch = {
 				executable = "zathura",
-				args = { "--synctex-forward", "%l:1:%f", "%p" },
+				args = {
+					"--synctex-editor-command",
+					[[nvim --headless -c 'TexlabInverseSearch %{input} %{line}']],
+					"--synctex-forward",
+					"%l:1:%f",
+					"%p",
+				},
 			},
 			latexFormatter = "latexindent",
 			latexindent = {

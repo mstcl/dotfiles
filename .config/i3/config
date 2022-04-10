@@ -82,10 +82,12 @@ for_window [title="Choose Application"] resize set 284 164
 for_window [title="Creating New Folder"] resize set 284 164
 for_window [title="Confirm File Replacing"] resize set 284 164
 for_window [title="Copying files"] resize set 484 164
+for_window [title="Moving files"] resize set 484 164
 # }}}
 # Calculator {{{
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Qalculate-gtk"] resize set 640 480
+for_window [title="Set Unknowns"] resize set 184 64
 # }}}
 # matplotlib {{{
 for_window [class="^matplotlib$"] floating enable

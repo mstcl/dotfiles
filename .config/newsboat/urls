@@ -21,9 +21,7 @@ https://api.quantamagazine.org/feed/ science "~Quanta Magazine"
 https://feeds.npr.org/1007/rss.xml science "~NPR Science"
 https://www.symmetrymagazine.org/feed science "~Symmetry Magazine"
 Headline headline
-https://feeds.bbci.co.uk/news/world/rss.xml headline "~BBC World News"
 https://www.theguardian.com/international/rss headline "~The Guardian"
-http://www.independent.co.uk/rss headlin "~The Independent"
 Linux linux
 https://www.phoronix.com/rss.php linux "~Phoronix"
 https://www.archlinux.org/feeds/news "~Arch Linux News" linux

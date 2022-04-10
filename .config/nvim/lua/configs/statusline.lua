@@ -40,15 +40,23 @@ gl.short_line_list = {
 	"toggleterm",
 }
 local colors = {
-	normal = "#505050",
-	insert = "#8b8f7e",
-	visual = "#637a8a",
-	cmd = "#9c6e63",
-	replace = "#7d7284",
-	term = "#917563",
+	normal = "#504945",
+	insert = "#86852c",
+	visual = "#4f7c7e",
+	cmd = "#e65949",
+	replace = "#a56e87",
+	term = "#cb952d",
+}
+gls.left[1] = {
+	Gape = {
+		provider = function()
+			return "█ "
+		end,
+		highlight = "GalaxyBg",
+	},
 }
 
-gls.left[1] = {
+gls.left[2] = {
 	ViMode = {
 		provider = function()
 			local mode_color = {
@@ -73,7 +81,7 @@ gls.left[1] = {
 				t = colors.term,
 			}
 			vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-			return "▊ "
+			return "█ "
 		end,
 		highlight = "GalaxyFg",
 		separator = "",
@@ -94,8 +102,6 @@ gls.left[5] = {
 		provider = "FileName",
 		condition = condition.buffer_not_empty,
 		highlight = "GalaxyFgAlt",
-		--[[ separator = " ",
-		separator_highlight = "GalaxyFgAlt", ]]
 	},
 }
 
@@ -103,9 +109,7 @@ gls.left[6] = {
 	LineInfo = {
 		provider = "LineColumn",
 		highlight = "GalaxyFgAlt",
-        icon = " | ",
-		--[[ separator = " ",
-		separator_highlight = "GalaxyFgAlt", ]]
+		icon = " | ",
 	},
 }
 
@@ -169,7 +173,6 @@ gls.right[7] = {
 	},
 }
 
-
 gls.right[8] = {
 	DiagnosticError = {
 		provider = "DiagnosticError",
@@ -208,6 +211,16 @@ gls.right[12] = {
 		highlight = "GalaxyCyan",
 	},
 }
+
+gls.right[13] = {
+	Gape2 = {
+		provider = function()
+			return "█ "
+		end,
+		highlight = "GalaxyBg",
+	},
+}
+
 
 gls.short_line_left[1] = {
 	BufferSpace = {

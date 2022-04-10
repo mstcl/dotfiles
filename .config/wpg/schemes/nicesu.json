@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/lckdscl/.config/wpg/wallpapers/desperado.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#202020",
+        "foreground": "#b2ada3",
+        "cursor": "#b2ada3"
+    },
+    "colors": {
+        "color0": "#202020",
+        "color1": "#6b7f78",
+        "color2": "#7f6d6b",
+        "color3": "#7e776a",
+        "color4": "#686057",
+        "color5": "#4e575e",
+        "color6": "#796a80",
+        "color7": "#a19d94",
+        "color8": "#363636",
+        "color9": "#6f847b",
+        "color10": "#877370",
+        "color11": "#8b8475",
+        "color12": "#736a60",
+        "color13": "#5c646e",
+        "color14": "#8b7893",
+        "color15": "#b2ada3"
+    }
+}

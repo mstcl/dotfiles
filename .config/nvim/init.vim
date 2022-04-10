@@ -48,7 +48,7 @@ augroup nvimcmp
 " Alpha options {{{
 augroup alpha
     autocmd!
-    autocmd FileType alpha set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=2
+    autocmd User AlphaReady set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=2
     autocmd WinEnter,BufRead,BufNewFile * if &ft != 'alpha' | call CleanEmptyBuffers() | endif
 augroup END
 function! CleanEmptyBuffers()
@@ -277,7 +277,7 @@ set showbreak=↳
 set completeopt=menu,menuone,noselect
 " }}}
 " No-obnoxious nvim {{{
-set shortmess+=OoSsatqc
+set shortmess+=OoSsatTcI
 " }}}
 " No swapfiles {{{
 set noswapfile

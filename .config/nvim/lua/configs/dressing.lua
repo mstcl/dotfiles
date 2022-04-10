@@ -4,8 +4,6 @@ require('dressing').setup({
         insert_only = true,
         anchor = "SW",
         relative = "cursor",
-        row = 0,
-        col = 0,
         border = "rounded",
         prefer_width = 40,
         max_width = nil,
@@ -14,14 +12,10 @@ require('dressing').setup({
     },
     select = {
         backend = { "telescope", "builtin"},
-        telescope = {
-            theme = "cursor",
-        },
+        telescope = require('telescope.themes').get_cursor(),
         builtin = {
             anchor = "NW",
             relative = "cursor",
-            row = 0,
-            col = 0,
             border = "rounded",
             winblend = 10,
             width = nil,

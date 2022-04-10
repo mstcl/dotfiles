@@ -55,7 +55,7 @@ alias w='_weather() { curl -s wttr.in/“${1:-bristol}” | head -n 7 ;}; _weath
 alias nb='newsboat -q'
 alias v='vdirsyncer sync default_calendar'
 alias k='ikhal'
-alias ts='task synchronize'
+alias td='todo.sh -d ~/.config/todo/todo.cfg -c'
 # }}}
 # XDG standards non-conformists {{{
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'

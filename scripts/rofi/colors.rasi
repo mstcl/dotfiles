@@ -1,19 +1,19 @@
 /* colors */
 
 * {
-    al: #363636;
-    bg: #202020;
-    bg1: #6b7f78;
-    bg2: #7f6d6b;
-    bg3: #7e776a;
-    bg4: #686057;
-    bg5: #4e575e;
-    bg6: #796a80;
-    fg: #a19d94;
-    fg2: #b2ada3;
-    hi-bold: bold #6b7f78;
+    al: #3c3836;
+    bg: #282828;
+    bg1: #b53934;
+    bg2: #86852c;
+    bg3: #cb952d;
+    bg4: #4f7c7e;
+    bg5: #a56e87;
+    bg6: #749176;
+    fg: #d5c4a1;
+    fg2: #ebdbb2;
+    hi-bold: bold #b53934;
     font: "JetBrainsMono Nerd Font 17";
     font-icon: "JetBrainsMono Nerd Font 14";
-    icon-theme: "Fluent-grey-dark";
+    icon-theme: "Gruvbox_Dark-2";
     show-icons: true;
 }

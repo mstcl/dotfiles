@@ -1,57 +1,56 @@
 vim.g.colors_name = "marbles"
 
-local black = { "#202020", 0, "black" }
-local blackish = { "#151515", 0, "black" }
-local blacker = { "#101010", 0, "black" }
-local gray = { "#505050", 244, "gray" }
-local gray_dark = { "#454545", 237, "darkgrey" }
-local gray_darker = { "#343434", 235, "gray" }
-local gray_darkerer = { "#2f2f2f", 235, "gray" }
-local gray_darkest = { "#2a2a2a", 233, "gray" }
-local gray_medium = { "#7d7d7d", 243, "gray" }
-local gray_light = { "#999999", 251, "gray" }
-local white = { "#bebebe", 15, "white" }
-local whiteish = { "#ebebeb", 15, "white" }
-local whiter = { "#fafafa", 15, "white" }
-local whitest = { "#ffffff", 15, "white" }
-local cream = { "#b2ada3", 15, "white" }
-local red = { "#7f6d6b", 196, "red" }
-local red_dark = { "#7A5543", 124, "darkred" }
+local black = { "#282828", 0, "black" }
+local blackish = { "#202020", 0, "black" }
+local blacker = { "#111010", 0, "black" }
+local gray = { "#665c54", 244, "gray" }
+local gray_dark = { "#504945", 237, "darkgrey" }
+local gray_darker = { "#3c3836", 235, "gray" }
+local gray_darkerer = { "#2f2f2f", 233, "gray" }
+local gray_darkest = { "#2d2d2d", 235, "gray" }
+local gray_medium = { "#7c6f64", 243, "gray" }
+local gray_light = { "#928374", 251, "gray" }
+local white = { "#bdae93", 15, "white" }
+local whiteish = { "#d5c4a1", 15, "white" }
+local whiter = { "#ebdbb2", 15, "white" }
+local whitest = { "#fbf1c7", 15, "white" }
+local red = { "#e65949", 196, "red" }
+local red_dark = { "#b53934", 124, "darkred" }
 local red_bg = { "#261A14", 124, "darkred" }
 local red_light = { "#A06F58", 203, "red" }
-local orange = { "#917563", 208, "darkyellow" }
-local orange_dark = { "#5B493E", 208, "darkyellow" }
+local orange = { "#e78230", 208, "darkyellow" }
+local orange_dark = { "#bf6225", 208, "darkyellow" }
 local orange_bg = { "#2E2520", 208, "darkyellow" }
-local orange_bright = { "#9C8A74", 180, "darkyellow" }
-local orange_light = { "#B49F85", 214, "yellow" }
-local yellow = { "#8f8671", 220, "yellow" }
-local green_dark = { "#6b6e61", 83, "darkgreen" }
-local green = { "#8b8f7e", 72, "green" }
-local green_light = { "#c2c4bb", 72, "green" }
-local turquoise = { "#6f847b", 38, "darkblue" }
-local turquoise_dark = { "#7f9090", 33, "green" }
-local blue = { "#5c646e", 63, "blue" }
-local blue_dark = { "#4c5d69", 87, "cyan" }
-local magenta = { "#8b7893", 126, "magenta" }
-local magenta_dark = { "#685f6d", 126, "darkmagenta" }
+local orange_light = { "#f2b98b", 214, "yellow" }
+local yellow_dark = { "#cb952d", 220, "yellow" }
+local yellow = { "#efb93a", 220, "yellow" }
+local green_dark = { "#86852c", 83, "darkgreen" }
+local green = { "#a2a43d", 72, "green" }
+local green_light = { "#cccd7a", 72, "green" }
+local turquoise = { "#97ad8f", 38, "darkblue" }
+local turquoise_dark = { "#749176", 33, "green" }
+local blue = { "#83a598", 63, "blue" }
+local blue_dark = { "#4f7c7e", 87, "cyan" }
+local magenta = { "#906c9f", 126, "magenta" }
+local magenta_dark = { "#6b5577", 126, "darkmagenta" }
 local magenta_bg = { "#2D2A30", 126, "magenta" }
-local pink = { "#715b65", 162, "magenta" }
-local pink_light = { "#a9939d", 38, "white" }
+local pink = { "#7b5164", 162, "magenta" }
+local pink_light = { "#b3899c", 38, "white" }
 local pink_bg = { "#2E2529", 162, "magenta" }
-local purple = { "#837f90", 129, "magenta" }
-local purple_light = { "#a2a0ac", 63, "magenta" }
-local addfg = { "#647460", 51, "cyan" }
-local addbg = { "#263747", 51, "cyan" }
-local delfg = { "#473447", 51, "cyan" }
-local delbg = { "#382A38", 51, "cyan" }
-local changebg = { "#464d6d", 51, "cyan" }
-local changefg = { "#272B3D", 51, "cyan" }
+local purple_light = { "#cb8e9f", 129, "magenta" }
+local purple = { "#a56e87", 63, "magenta" }
+local addfg = { "#605f1f", 51, "cyan" }
+local addbg = { "#393913", 51, "cyan" }
+local changefg = { "#6b4255", 51, "cyan" }
+local changebg = { "#4a3c42", 51, "cyan" }
+local delfg = { "#8d2d29", 51, "cyan" }
+local delbg = { "#473126", 51, "cyan" }
 
 local BG = "bg"
 local FG = "fg"
 local NONE = {}
 
-local highlight_group_normal = { dark = { fg = cream, bg = black }, light = { fg = blacker, bg = whiter } }
+local highlight_group_normal = { dark = { fg = white, bg = black }, light = { fg = blacker, bg = whiter } }
 
 local highlight_groups = {
 	--[[ 4.1. Text Analysis ]]
@@ -61,16 +60,16 @@ local highlight_groups = {
 	Whitespace = "NonText",
 
 	--[[ 4.1.1. Literals]]
-	Constant = { fg = blue },
+	Constant = { fg = blue_dark },
 	String = { fg = green_dark, style = "italic" },
-	Character = { fg = green },
+	Character = { fg = green_dark },
 	Number = { dark = { fg = pink_light }, light = { fg = orange_dark } },
-	Boolean = { fg = yellow },
+	Boolean = { fg = yellow_dark },
 	Float = "Number",
 
 	--[[ 4.1.2. Identifiers]]
-	Identifier = { dark = { fg = gray_light }, light = { fg = gray } },
-	Function = { fg = blue, style = "bold" },
+	Identifier = { dark = { fg = white }, light = { fg = gray } },
+	Function = { fg = blue_dark, style = "bold" },
 
 	--[[ 4.1.3. Syntax]]
 	Statement = { fg = green },
@@ -87,13 +86,13 @@ local highlight_groups = {
 	include = { fg = pink, style = { "nocombine", "italic" } },
 	Define = { fg = blue, style = "nocombine" },
 	Macro = { fg = blue, style = "italic" },
-	PreCondit = { dark = { fg = orange_bright }, light = { fg = orange_dark }, style = "italic" },
+	PreCondit = { dark = { fg = yellow_dark }, light = { fg = orange_dark }, style = "italic" },
 
 	--[[ 4.1.5. Semantics]]
-	Type = { fg = magenta, style = "bold" },
+	Type = { fg = yellow_dark},
 	StorageClass = { dark = { fg = orange_light }, light = { fg = orange_dark }, style = "bold" },
 	Structure = { fg = yellow, style = "bold" },
-	Typedef = { dark = { fg = orange_bright }, light = { fg = orange_dark }, style = "italic" },
+	Typedef = { dark = { fg = yellow_dark }, light = { fg = orange_dark }, style = "italic" },
 
 	--[[ 4.1.6. Edge Cases]]
 	Special = { fg = blue, style = "bold" },
@@ -115,13 +114,13 @@ local highlight_groups = {
 
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
-	StatusLine = { fg = green_light, dark = { bg = gray_dark }, light = { bg = white } },
+	StatusLine = { fg = green_light, dark = { bg = gray_darkerer }, light = { bg = white } },
 	StatusLineNC = function(self)
 		return { fg = gray, bg = self.StatusLine.bg }
 	end,
 	StatusLineTerm = "StatusLine",
 	StatusLineTermNC = "StatusLineNC",
-	MsgArea = { dark = { bg = gray_darkerer }, light = { bg = whiteish } },
+	MsgArea = { dark = { bg = black }, light = { bg = whiteish } },
 
 	--[[ 4.2.2. Separators]]
 	VertSplit = { dark = { fg = gray_darker, bg = black }, light = { fg = gray_light, bg = whiter } },
@@ -131,9 +130,9 @@ local highlight_groups = {
 	Title = { style = "bold" },
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
-	Conceal = { bg = BG },
+	Conceal = { fg = red, bg = BG },
 	CursorLine = { dark = { bg = gray_darkest }, light = { bg = whiteish } },
-	CursorLineNr = { dark = { bg = NONE }, light = { bg = whiteish } },
+	CursorLineNr = { dark = { fg = green, bg = NONE }, light = { bg = whiteish } },
 	debugBreakpoint = "ErrorMsg",
 	debugPC = "ColorColumn",
 	LineNr = { dark = { fg = gray_dark, bg = black }, light = { fg = white, bg = whiter } },
@@ -159,7 +158,7 @@ local highlight_groups = {
 	--[[ 4.2.5. Folds]]
 	FoldColumn = { dark = { fg = gray_dark, bg = black }, light = { fg = white, bg = whiter }, style = "bold" },
 	Folded = {
-		dark = { fg = gray_dark, bg = black },
+		dark = { fg = gray, bg = gray_darkest },
 		light = { fg = gray_light, bg = whiter },
 		style = {
 			"bold",
@@ -675,7 +674,7 @@ local highlight_groups = {
 	NERDTreeLinkTarget = "Tag",
 
 	--[[ 4.4.8. nvim-treesitter ]]
-	TSBoolean = { fg = orange, style = "italic" },
+	TSBoolean = { fg = orange_dark, style = "italic" },
 	TSNote = "Info",
 	TSWarning = "Warning",
 	TSDanger = "Error",
@@ -687,9 +686,9 @@ local highlight_groups = {
 	TSTextReference = { fg = blue_dark },
 	TSFuncBuiltin = { fg = turquoise_dark, style = "bold" },
 	TSFunction = "Function",
-	TSField = { dark = { fg = gray_light }, light = { gray_dark } },
-	TSException = { fg = magenta_dark, style = "italic" },
-	TSFuncMacro = { fg = red },
+	TSField = { dark = { fg = white }, light = { gray_dark } },
+	TSException = { fg = purple_light, style = "italic" },
+	TSFuncMacro = { fg = red_dark },
 	TSStringEscape = "Character",
 	TSStringRegex = "SpecialChar",
 	TSOperator = "Operator",
@@ -700,15 +699,15 @@ local highlight_groups = {
 	TSPunctSpecial = { fg = gray, style = "bold" },
 	TSRepeat = "Repeat",
 	TSKeywordOperator = { fg = blue_dark, style = "italic" },
-	TSKeywordFunction = { fg = magenta, style = "italic" },
-	TSKeywordReturn = { fg = magenta, style = "italic" },
-	TSInclude = { fg = magenta, style = "italic" },
+	TSKeywordFunction = { fg = red_dark, style = "italic" },
+	TSKeywordReturn = { fg = red_dark, style = "italic" },
+	TSInclude = { fg = purple, style = "italic" },
 	TSNameSpace = { fg = blue_dark },
 	TSLabel = { fg = blue },
 	TSError = { fg = red, style = { "undercurl", color = red } },
 	TSURI = "Tag",
 	TSVariable = "Identifier",
-	TSVariableBuiltin = { fg = red, style = "italic" },
+	TSVariableBuiltin = { fg = red_dark, style = "italic" },
 	TSTypeBuiltin = { fg = blue_dark, style = "italic" },
 	TSTitle = { fg = red, style = { "bold", "underline" } },
 	TSLiteral = "String",
@@ -720,7 +719,7 @@ local highlight_groups = {
 	BufferCurrentIndex = function(self)
 		return { fg = self.InfoMsg.fg, bg = self.BufferCurrent.bg }
 	end,
-	BufferCurrentMod = { fg = orange_bright, bg = black, style = { "italic", "bold" } },
+	BufferCurrentMod = { fg = yellow_dark, bg = black, style = { "italic", "bold" } },
 	BufferCurrentSign = { fg = gray_dark, bg = black },
 	BufferCurrentTarget = { fg = blue, style = "bold" },
 
@@ -762,7 +761,7 @@ local highlight_groups = {
 	IndentBlanklineChar = { dark = { fg = gray_darker }, light = { whiteish } },
 	IndentBlanklineSpaceChar = "IndentBlanklineChar",
 	IndentBlanklineSpaceCharBlankLine = "IndentBlanklineChar",
-	IndentBlanklineContextChar = { dark = { fg = gray_dark }, light = { white } },
+	IndentBlanklineContextChar = { dark = { fg = gray }, light = { white } },
 
 	--[[ 4.4.14. trouble.nvim ]]
 	TroubleCount = function(self)
@@ -877,13 +876,16 @@ local highlight_groups = {
 	end,
 
 	--[[ 4.4.17. alpha.nvim ]]
-	AlphaFooter = { dark = { fg = gray_dark }, light = { fg = white }, style = { "italic" } },
-	AlphaHeader = { dark = { fg = gray_dark }, light = { fg = white } },
-	AlphaButtons = { dark = { fg = gray_dark }, light = { fg = white }, style = { "bold" } },
+	AlphaAscii = { dark = { fg = gray_dark }, light = { fg = white } },
+	AlphaFooter = { dark = { fg = gray_medium }, light = { fg = white } },
+	AlphaEmphasis = { dark = { fg = red_dark }, light = { fg = white } },
+	AlphaShortcuts = { dark = { fg = black }, light = { fg = white } },
+	AlphaHeader = { dark = { fg = green_dark }, light = { fg = white } },
+	AlphaButtons = { dark = { fg = gray_medium }, light = { fg = white }, style = { "bold" } },
 
 	--[[ 4.4.18. dev-icons ]]
 	DevIconJS = { fg = yellow },
-	DevIconJson = { fg = orange_bright },
+	DevIconJson = { fg = yellow_dark },
 	DevIconLua = { fg = blue },
 	DevIconCpp = { fg = blue_dark },
 	DevIconPy = { fg = blue },
@@ -900,6 +902,8 @@ local highlight_groups = {
 	DevIconZshprofile = { fg = blue },
 	DevIconSh = { fg = pink },
 	DevIconTxt = { fg = turquoise_dark },
+	DevIconTex = { fg = green_dark },
+	DevIconConfiguration = { fg = gray_medium },
 	DevIconH = { fg = purple },
 	DevIconDefault = { fg = gray_light },
 
@@ -968,17 +972,17 @@ local highlight_groups = {
 
 	--[[ 4.4.24. galaxyline ]]
 	GalaxyTree = { dark = { fg = blackish, bg = blackish }, light = { fg = whitest, bg = whitest } },
-	GalaxyViMode = { dark = { fg = gray_dark, bg = gray_dark }, light = { fg = white, bg = white } },
+	GalaxyViMode = { dark = { fg = white, bg = gray_darkerer }, light = { fg = white, bg = white } },
 	GalaxyBg = { dark = { fg = black, bg = black }, light = { fg = whiter, bg = whiter } },
-	GalaxyFg = { dark = { fg = gray_light, bg = gray_dark }, light = { fg = black, bg = white }, style = { "bold" } },
-	GalaxyFgAlt = { fg = gray_medium, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyYellow = { fg = yellow, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyCyan = { fg = turquoise, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyGreen = { fg = green, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyOrange = { fg = orange, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyMagenta = { fg = magenta, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyBlue = { fg = blue, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
-	GalaxyRed = { fg = red, dark = { bg = gray_dark }, light = { bg = white }, style = { "bold" } },
+	GalaxyFg = { dark = { fg = white, bg = gray_darkerer }, light = { fg = black, bg = white }, style = { "bold" } },
+	GalaxyFgAlt = { fg = white, dark = { bg = gray_darkerer }, light = { bg = white } },
+	GalaxyYellow = { fg = yellow, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
+	GalaxyCyan = { fg = turquoise, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
+	GalaxyGreen = { fg = green, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
+	GalaxyOrange = { fg = orange, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
+	GalaxyMagenta = { fg = magenta, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
+	GalaxyBlue = { fg = blue, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
+	GalaxyRed = { fg = red, dark = { bg = gray_darkerer }, light = { bg = white }, style = { "bold" } },
 
 	-- [[ 4.5 Others ]]
 	FocusedSymbol = { fg = black, bg = yellow },

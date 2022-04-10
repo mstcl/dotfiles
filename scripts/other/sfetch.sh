@@ -46,45 +46,44 @@ get_uptime() {
     uptime=${uptime/ seconds/s}
     uptime=${uptime//,}
 
-    echo -e "${DARKGRAY}│ ${LIGHTRED}$icon${NOCOLOR} up${DARKGRAY} ${GRAY}$uptime${NOCOLOR}  ${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${LIGHTRED}$icon${NOCOLOR} up${DARKGRAY} ${GRAY}$uptime${NOCOLOR}  ${DARKGRAY}"
 }
 
 get_distro() {
     distro=$(lsb_release -ds | tr -d '"' | awk '{print tolower($0)}' | cut -d " " -f1 )
-    echo -e "${DARKGRAY}│ ${RED}$icon${NOCOLOR} os${DARKGRAY} ${GRAY}$distro${NOCOLOR}    ${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${RED}$icon${NOCOLOR} os${DARKGRAY} ${GRAY}$distro${NOCOLOR}    ${DARKGRAY}"
 }
 
 get_packages() {
     packages=$(pacman -Q | wc -l)
-    echo -e "${DARKGRAY}│ ${GREEN}$icon${NOCOLOR} pk${DARKGRAY} ${GRAY}$packages${NOCOLOR}    ${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${GREEN}$icon${NOCOLOR} pk${DARKGRAY} ${GRAY}$packages${NOCOLOR}    ${DARKGRAY}"
 }
 
 get_term() {
     term=$(echo -e $TERM | cut -d "-" -f2)
-    echo -e "${DARKGRAY}│ ${YELLOW}$icon${NOCOLOR} tm${DARKGRAY} ${GRAY}$term${NOCOLOR}   ${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${YELLOW}$icon${NOCOLOR} tm${DARKGRAY} ${GRAY}$term${NOCOLOR}   ${DARKGRAY}"
 }
 
 get_wm() {
     wm=$XDG_CURRENT_DESKTOP
-    echo -e "${DARKGRAY}│ ${BLUE}$icon${NOCOLOR} wm${DARKGRAY} ${GRAY}$wm"-gaps${NOCOLOR} ${DARKGRAY}│
+    echo -e "${DARKGRAY} ${BLUE}$icon${NOCOLOR} wm${DARKGRAY} ${GRAY}$wm"-gaps${NOCOLOR} ${DARKGRAY}
 }
 
 get_shell() {
     shell=$(echo -e $SHELL | cut -d "/" -f4)
-    echo -e "${DARKGRAY}│ ${PURPLE}$icon${NOCOLOR} sh${DARKGRAY} ${GRAY}$shell${NOCOLOR}     ${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${PURPLE}$icon${NOCOLOR} sh${DARKGRAY} ${GRAY}$shell${NOCOLOR}     ${DARKGRAY}"
 }
 
 get_kernel() {
     kernel=$(echo -e $(uname -r | cut -d "-" -f 3,4))
-    echo -e "${DARKGRAY}│ ${CYAN}$icon${NOCOLOR} kr${DARKGRAY} ${GRAY}$kernel${NOCOLOR} ${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${CYAN}$icon${NOCOLOR} kr${DARKGRAY} ${GRAY}$kernel${NOCOLOR} ${DARKGRAY}"
 }
 
 get_weather() {
     weather=$(curl -s 'wttr.in/Bristol?format=3&M' | cut -d ·  -f2)
-    echo -e "${DARKGRAY}│ ${WHITE}$icon${NOCOLOR} wt${DARKGRAY}${GRAY}$weather${NOCOLOR}${DARKGRAY}│"
+    echo -e "${DARKGRAY} ${WHITE}$icon${NOCOLOR} wt${DARKGRAY}${GRAY}$weather${NOCOLOR}${DARKGRAY}"
 }
 echo -e ""
-echo -e "${DARKGRAY}┌───────────────┐"
 get_distro
 get_kernel
 get_packages
@@ -93,5 +92,4 @@ get_term
 get_wm
 # get_weather
 # get_uptime
-echo -e "${DARKGRAY}└───────────────┘"
 echo -e ""

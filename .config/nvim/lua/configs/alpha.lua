@@ -1,136 +1,173 @@
 local present, alpha = pcall(require, "alpha")
 if not present then
-   return
+	return
 end
 
 local header = {
-    type = "text",
-    val = {
-[[]],
-[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠻⠿⣿⣿⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿]],
-[[⣿⣿⣿⣿⣿⣿⠟⠉⠄⠄⠄⠄⠄⠄⠄⠉⢟⠉⠄⠄⠄⠄⠄⠈⢻⣿⣿⣿⣿⣿]],
-[[⣿⣿⣿⣿⡿⠃⠄⠄⠤⠐⠉⠉⠉⠉⠉⠒⠬⡣⠤⠤⠄⠄⠄⠤⠤⠿⣿⣿⣿⣿]],
-[[⣿⣿⣿⣿⠁⠄⠄⠄⠄⠄⠄⠠⢀⡒⠤⠭⠅⠚⣓⡆⡆⣔⡙⠓⠚⠛⠄⣹⠿⣿]],
-[[⣿⠟⠁⡌⠄⠄⠄⢀⠤⠬⠐⣈⠠⡤⠤⠤⣤⠤⢄⡉⢁⣀⣠⣤⣤⣀⣐⡖⢦⣽]],
-[[⠏⠄⠄⠄⠄⠄⠄⠄⠐⠄⡿⠛⠯⠍⠭⣉⣉⠉⠍⢀⢀⡀⠉⠉⠉⠒⠒⠂⠄⣻]],
-[[⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠩⠵⠒⠒⠲⢒⡢⡉⠁⢐⡀⠬⠍⠁⢉⣉⣴⣿⣿]],
-[[⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠉⢉⣒⡉⠁⠁⠄⠄⠉⠂⠙⣉⣁⣀⣙⡿⣿⣿]],
-[[⠄⠄⠄⠄⠄⠄⠄⠄⢠⠄⡖⢉⠥⢤⠐⢲⠒⢲⠒⢲⠒⠲⡒⠒⡖⢲⠂⠄⢀⣿]],
-[[⠄⠄⠄⠄⠄⠄⠄⠄⠈⢆⡑⢄⠳⢾⠒⢺⠒⢺⠒⠚⡖⠄⡏⠉⣞⠞⠁⣠⣾⣿]],
-[[⠄⠄⠄⠄⠄⠄⢆⠄⠄⠄⠈⠢⠉⠢⠍⣘⣒⣚⣒⣚⣒⣒⣉⠡⠤⣔⣾⣿⣿⣿]],
-[[⠷⣤⠄⣀⠄⠄⠄⠈⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⣤⣾⣿⣿⣿⣿⣿]],
-[[⠄⠄⠉⠐⠢⠭⠄⢀⣒⣒⡒⠄⠄⠄⠄⠄⠄⣀⡠⠶⢶⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-[[⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠁⠈⠄⠄⠄⠄⠄⠄⠈⠻⣿⣿⣿⣿⣿⣿⣿]],
-[[]],
-    },
-    opts = {
-        position = "center",
-        hl = "AlphaHeader"
-    }
+	type = "text",
+	val = {
+        [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠋⠉⣉⣉⠙⠿⠋⣠⢴⣊⣙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠁⠀⢀⠔⡩⠔⠒⠛⠧⣾⠊⢁⣀⣀⣀⡙⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠛⠁⠀⠀⠀⠀⠀⡡⠊⠀⠀⣀⣠⣤⣌⣾⣿⠏⠀⡈⢿⡜⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠡⣤⣶⠏⢁⠈⢻⡏⠙⠛⠀⣀⣁⣤⢢⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣄⡀⠣⣌⡙⠀⣘⡁⠜⠈⠑⢮⡭⠴⠚⠉⠀⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⠁⠀⢀⠔⠁⣀⣤⣤⣤⣤⣤⣄⣀⠀⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠁⠀⢀⣠⢠⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⡀⠀⢸⠀⢼⣿⣿⣶⣭⣭⣭⣟⣛⣛⡿⠷⠶⠶⢶⣶⣤⣤⣤⣶⣶⣾⡿⠿⣫⣾⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠈⠉⠉⠉⠉⠉⠙⠛⠛⠻⠿⠿⠿⠷⣶⣶⣶⣶⣶⣶⣶⣶⡾⢗⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣤⣄⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣝⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+	},
+	opts = {
+		position = "left",
+		hl = "AlphaAscii",
+	},
 }
 
-local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
-local plugins = handle:read("*a")
-handle:close()
+local plugins_gen = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
+local plugins = plugins_gen:read("*a")
+plugins_gen:close()
 
-local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
-local date = thingy:read("*a")
-thingy:close()
+local date_gen = io.popen('echo "$(date +%d)/$(date +%m)/$(date +%y)($(date +%a))$(date +%X)" | tr -d "\n"')
+local date = date_gen:read("*a")
+date_gen:close()
 
-local plugin_count = {
-    type = "text",
-    val = "└─   " .. plugins .. " plugins in total ─┘",
-    opts = {
-        position = "center",
-        hl = "AlphaHeader",
-    }
-}
+local id_gen = io.popen('shuf -i 10000000-99999999 -n 1 | tr -d "\n"')
+local id = id_gen:read("*a")
+id_gen:close()
+
+local id_1 = tostring(tonumber(id) - 1)
+local id_2 = tostring(tonumber(id) - 2)
+
+local phrase_gen = io.popen('sh "$HOME"/scripts/other/random_4chin_word.sh | tr -d "\n"')
+local phrase = phrase_gen:read("*a")
+phrase_gen:close()
 
 local heading = {
-    type = "text",
-    val = "┌─   Today is " .. date .. " ─┐",
-    opts = {
-        position = "center",
-        hl = "AlphaHeader",
-    }
+	type = "text",
+	val = "  Anonymous " .. date .. " No." .. id .. " ",
+	opts = {
+		position = "left",
+		hl = "AlphaButtons",
+	},
+}
+
+local post_buttons = {
+	type = "text",
+	val = " They don't get it. For me, it's nvim.",
+	opts = {
+		position = "left",
+		hl = "AlphaFooter",
+	},
+}
+
+local pre_foot = {
+	type = "text",
+	val = " >>" .. id_2 .. "(OP)                      ",
+	opts = {
+		position = "left",
+		hl = "AlphaEmphasis",
+	},
 }
 
 local footer = {
-    type = "text",
-    val = "-nvLeet-",
-    opts = {
-        position = "center",
-        hl = "AlphaFooter",
-    }
+	type = "text",
+	val = " I've " .. plugins .. " plugins, it launches instantly kek.",
+	opts = {
+		position = "left",
+		hl = "AlphaFooter",
+	},
+}
+
+local pre_foot_2 = {
+	type = "text",
+	val = " >>" .. id_1 .. "                                ",
+	opts = {
+		position = "left",
+		hl = "AlphaEmphasis",
+	},
+}
+
+local footer_2 = {
+	type = "text",
+	val = " " .. phrase .. "      ",
+	opts = {
+		position = "left",
+		hl = "AlphaFooter",
+	},
 }
 
 local function button(sc, txt, keybind)
-    local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
+	local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
 
-    local opts = {
-        position = "center",
-        text = txt,
-        shortcut = sc,
-        cursor = 5,
-        width = 24,
-        align_shortcut = "right",
-        hl_shortcut = "AlphaButtons",
-        hl = "AlphaButtons",
-    }
-    if keybind then
-        opts.keymap = {"n", sc_, keybind, {noremap = true, silent = true}}
-    end
+	local opts = {
+		position = "left",
+		text = txt,
+		shortcut = sc,
+		cursor = 0,
+		width = 44,
+		align_shortcut = "right",
+		hl_shortcut = "AlphaShortcuts",
+		hl = "AlphaHeader",
+	}
+	if keybind then
+		opts.keymap = { "n", sc_, keybind, { noremap = true, silent = true } }
+	end
 
-    return {
-        type = "button",
-        val = txt,
-        on_press = function()
-            local key = vim.api.nvim_replace_termcodes(sc_, true, false, true)
-            vim.api.nvim_feedkeys(key, "normal", false)
-        end,
-        opts = opts,
-    }
+	return {
+		type = "button",
+		val = txt,
+		on_press = function()
+			local key = vim.api.nvim_replace_termcodes(sc_, true, false, true)
+			vim.api.nvim_feedkeys(key, "normal", false)
+		end,
+		opts = opts,
+	}
 end
 
 local buttons = {
-    type = "group",
-    val = {
-    button( "LDR h", "   Recents" , ":Telescope oldfiles<CR>"),
-    -- button( "LDR b", "   Buffers" , ":Telescope buffers<CR>"),
-    -- button( "LDR y", "   Explore" , ":Telescope file_browser<CR>"),
-    button( "LDR /", "   Ripgrep" , ":Telescope live_grep<CR>"),
-    -- button( "MRK V", "   Options" , ":execute 'normal! `V'<CR>"),
-    -- button( "MRK P", "   Plugins" , ":execute 'normal! `P'<CR>"),
-    },
-    opts = {
-        spacing = 1,
-    }
+	type = "group",
+	val = {
+		button("LDR h", " >open oldfiles", ":Telescope oldfiles<CR>"),
+		button("LDR f", " >fuzzy search", ":Telescope find_files<CR>"),
+		button("LDR y", " >browse folders" , ":Telescope file_browser<CR>"),
+		button("LDR /", " >regex search", ":Telescope live_grep<CR>"),
+	},
+	opts = {
+		spacing = 0,
+	},
 }
 
 local section = {
-    header = header,
-    buttons = buttons,
-    plugin_count = plugin_count,
-    heading = heading,
-    footer = footer
+	header = header,
+	buttons = buttons,
+	heading = heading,
+	post_buttons = post_buttons,
+	pre_foot = pre_foot,
+	footer = footer,
+	pre_foot_2 = pre_foot_2,
+	footer_2 = footer_2,
 }
 
 local opts = {
-    layout = {
-        {type = "padding", val = 1},
-        section.header,
-        {type = "padding", val = 1},
-        section.heading,
-        section.plugin_count,
-        {type = "padding", val = 1},
-        -- section.top_bar,
-        section.buttons,
-        -- section.bot_bar,
-        {type = "padding", val = 1},
-        section.footer,
-    },
-    opts = {
-        margin = 5
-    },
+	layout = {
+		{ type = "padding", val = 1 },
+		section.header,
+		{ type = "padding", val = 1 },
+		section.heading,
+		{ type = "padding", val = 1 },
+		section.buttons,
+		section.post_buttons,
+		{ type = "padding", val = 1 },
+		section.pre_foot,
+		section.footer,
+		{ type = "padding", val = 1 },
+		section.pre_foot_2,
+		section.footer_2,
+	},
+	opts = {
+		margin = 44,
+	},
 }
 alpha.setup(opts)

@@ -11,12 +11,11 @@ current_ws_prompt="${current_ws}"
 #  TASKS  #
 ###########
 
-num=$(task rc.verbose=nothing rc.report.next.columns=description.desc rc.report.next.labels= rc.defaultwidth=1000 next +ACTIVE | wc -l)
-numplus=$(( $num + 2 ))
-if [ $num -gt "0" ]; then
-    info=$(env printf "$(task rc.gc=no rc.indent.report=0 rc.verbose=nothing rc.report.next.columns=description.desc rc.report.next.labels= rc.defaultwidth=1000 next +ACTIVE 2>/dev/null </dev/null | awk '$1=$1')")
+num=$(wc -l < "$HOME/.local/share/todo/todo.txt")
+if [ "$num" -gt "0" ]; then
+    info=$(cat "$HOME/.local/share/todo/todo.txt")
 else
-    info=$(env printf "No active tasks\nMaybe do something useful?")
+    info=$(env printf "Nothing to do...\n")
 fi
 
 ###########
@@ -99,9 +98,9 @@ echo "<b>Layout</b> [${lang}]"
 echo "<b>Volume</b> [${volume}%]"
 # echo "<b>Updates</b> [${updates} packages]"
 echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
-echo "<b>Tasks</b>"
-echo "<i>${info}</i>"
-echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
+# echo "<b>Tasks</b>"
+# echo "<i>${info}</i>"
+# echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
 echo "<b>${status}</b>"
 echo "<i>${song}</i>"
 echo "${metadata}"

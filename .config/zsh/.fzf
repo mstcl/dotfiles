@@ -4,7 +4,7 @@
 # Default command {{{
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --follow -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
 export FZF_DEFAULT_OPTS="
-    --color fg:8,bg:#202020,hl:1,fg+:7,bg+:#202020,hl+:9,gutter:#202020
+    --color fg:8,bg:#282828,hl:1,fg+:7,bg+:#282828,hl+:9,gutter:#282828
     --color border:8,info:5,prompt:2,spinner:3,pointer:6,marker:4
     --height 100%
     --preview-window hidden:border-rounded
@@ -115,7 +115,7 @@ zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
 zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
 # }}}
 # General options {{{
-zstyle ':fzf-tab:*' fzf-flags '--color=fg:8,bg:#202020,hl:1,fg+:7,bg+:#202020,hl+:9,gutter:#202020' \
+zstyle ':fzf-tab:*' fzf-flags '--color=fg:8,bg:#282828,hl:1,fg+:7,bg+:#282828,hl+:9,gutter:#282828' \
     '--color=border:8,info:5,prompt:2,spinner:3,pointer:6,marker:4' \
     '--prompt= FZF ' \
     '--preview-window=nohidden' \

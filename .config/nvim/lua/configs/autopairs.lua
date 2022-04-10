@@ -1,5 +1,5 @@
 vim.cmd([[
-let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"}, {"open": '\w\zs<', "close": '>'}, {"open": '\\left(', 'close': '\right)', "filetype": "tex"}, {"open": '\\left(', 'close': '\right)', "filetype": "markdown"}, {"open": "_", "close": "_", "filetype": ["markdown"]}, {"open": "**", "close": "**", "filetype": ["markdown"]}, {"open": "~~", "close": "~~", "filetype": ["markdown"]}, {"open": "|", "close": "|", "filetype": "help"}, {"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}, {"open": '`', "close": "'", "filetype": "tex"}])
+let g:AutoPairs = autopairs#AutoPairsDefine([{"open": "$", "close": "$", "filetype": "tex"}, {"open": '\w\zs<', "close": '>'}, {"open": "_", "close": "_", "filetype": ["markdown"]}, {"open": "**", "close": "**", "filetype": ["markdown"]}, {"open": "~~", "close": "~~", "filetype": ["markdown"]}, {"open": "|", "close": "|", "filetype": "help"}, {"open": '\vclass .{-} (: (.{-}[ ,])+)? ?\{', 'close': '};', 'mapopen': '{', 'filetype': 'cpp'}, {"open": '`', "close": "'", "filetype": "tex"}])
 ]])
 vim.g.AutoPairsShortcutFastWrap = '<M-e>'
 vim.g.AutoPairsMapBS = "1"

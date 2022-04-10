@@ -116,7 +116,7 @@ return require("packer").startup({
 				require("configs.barbar")
 			end,
 		})
-		use "nvim-lua/lsp-status.nvim"
+		use("nvim-lua/lsp-status.nvim")
 		-- }}}
 		-- WEB-DEVICONS: icons for bars {{{
 		use({
@@ -192,9 +192,12 @@ return require("packer").startup({
 			event = "BufRead",
 		})
 		-- }}}
+		-- TS-PLAYGROUND: see treesitter syntax tree {{{
 		use({
 			"nvim-treesitter/playground",
+			cmd = {"TSPlaygroundToggle"}
 		})
+		-- }}}
 		-- -_-_-_ COMPLETION -_-_-_
 		-- ULTISNIPS (VS): snippets utility {{{
 		use({
@@ -311,6 +314,16 @@ return require("packer").startup({
 			end,
 		})
 		-- }}}
+
+		-- TEXLABCONFIG: texlab stuff {{{
+		use({
+			"f3fora/nvim-texlabconfig",
+			config = function()
+				require("texlabconfig").setup()
+			end,
+			ft = { "tex", "bib" },
+			cmd = { "TexlabInverseSearch" },
+		})
 		-- }}}
 		-- TROUBLE: pretty list of diagnostics {{{
 		use({
@@ -415,6 +428,7 @@ return require("packer").startup({
 			-- ft = {"markdown"},
 		})
 		-- }}}
+		-- MARKS: show marks in sign column {{{
 		use({
 			"chentau/marks.nvim",
 			ft = "markdown",
@@ -422,6 +436,7 @@ return require("packer").startup({
 				require("configs.marks")
 			end,
 		})
+		-- }}}
 		-- -_-_-_- FILETYPES -_-_-_-
 		-- TEX CONCEAL (VS): Further concealment of MathZone for tex files {{{
 		use({
@@ -459,14 +474,14 @@ return require("packer").startup({
 		})
 		-- }}}
 		-- CLEANFOLD: Minimal foldtext {{{
-		use({
+		--[[ use({
 			"lewis6991/cleanfold.nvim",
 			commit = "ed54df0",
 			event = "BufRead",
 			config = function()
 				require("cleanfold").setup()
 			end,
-		})
+		}) ]]
 		-- }}}
 		-- -_-_-_-_- DAP _-_-_-_-_-_
 		-- DAP-PYTHON: Debugging python {{{
@@ -506,7 +521,7 @@ return require("packer").startup({
 			requires = { "mfussenegger/nvim-dap" },
 		})
 		-- }}}
-    --[[ use {
+		--[[ use {
         'gerw/vim-HiLinkTrace'
     } ]]
 	end,

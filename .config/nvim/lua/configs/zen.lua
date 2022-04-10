@@ -31,10 +31,10 @@ zen.setup({
 			font = "+2",
 		},
 	},
-    on_open = function(win)
-        vim.cmd('hi MsgArea guibg=#202020')
-    end,
-    on_close = function()
-        vim.cmd('hi MsgArea guibg=#2f2f2f')
-    end,
+	--[[ on_open = function(win)
+		vim.cmd("hi MsgArea guibg=#202020")
+	end,
+	on_close = function()
+		vim.cmd("hi MsgArea guibg=#2f2f2f")
+	end, ]]
 })
