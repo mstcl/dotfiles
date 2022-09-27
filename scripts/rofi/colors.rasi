@@ -1,19 +1,19 @@
 /* colors */
 
 * {
-    al: #3c3836;
-    bg: #282828;
-    bg1: #b53934;
-    bg2: #86852c;
-    bg3: #cb952d;
-    bg4: #4f7c7e;
-    bg5: #a56e87;
-    bg6: #749176;
-    fg: #d5c4a1;
-    fg2: #ebdbb2;
-    hi-bold: bold #b53934;
-    font: "JetBrainsMono Nerd Font 17";
+    al: #d0d0d0;
+    bg: #f5f5f5;
+    bg1: #ac4142;
+    bg2: #90a959;
+    bg3: #f4bf75;
+    bg4: #6a9fb5;
+    bg5: #aa759f;
+    bg6: #75b5aa;
+    fg: #303030;
+    fg2: #151515;
+    hi-bold: bold #ac4142;
+    font: "JetBrainsMono Nerd Font 16";
     font-icon: "JetBrainsMono Nerd Font 14";
-    icon-theme: "Gruvbox_Dark-2";
+    icon-theme: "Colloid-grey-light";
     show-icons: true;
 }

@@ -1,7 +1,6 @@
 local g = vim.g
 
 g.nvim_tree_highlight_opened_files = 2
-g.nvim_tree_indent_markers = 1
 g.nvim_tree_root_folder_modifier = table.concat({ ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" })
 g.nvim_tree_show_icons = {
 	git = 1,
@@ -35,7 +34,6 @@ require("nvim-tree").setup({
 	hijack_netrw = true,
 	open_on_setup = false,
 	ignore_ft_on_setup = { "alpha" },
-	auto_close = true,
 	open_on_tab = true,
 	hijack_cursor = true,
 	update_cwd = false,
@@ -75,7 +73,13 @@ require("nvim-tree").setup({
 			custom_only = false,
 			list = {},
 		},
+        signcolumn = "yes",
 	},
+    renderer = {
+        indent_markers = {
+            enable = true,
+        },
+    },
 	git = {
 		enable = true,
 		ignore = false,
@@ -86,4 +90,3 @@ require("nvim-tree").setup({
 })
 require("nvim-tree.view").View.winopts.cursorline = false
 require("nvim-tree.view").View.winopts.wrap = true
-require("nvim-tree.view").View.winopts.signcolumn = "yes"

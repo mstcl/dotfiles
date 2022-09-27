@@ -1,8 +1,8 @@
 # :.config/gtk-2.0/gtkrc
 
-gtk-theme-name="Fluent-grey-dark"
-gtk-icon-theme-name="Gruvbox_Dark-2"
-gtk-font-name="SF Pro Text 17"
+gtk-theme-name="Colloid-Grey-Light"
+gtk-icon-theme-name="Colloid-grey-light"
+gtk-font-name="SF Pro Text 16"
 gtk-cursor-theme-name="phinger-cursors"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH

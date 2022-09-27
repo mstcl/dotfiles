@@ -17,7 +17,7 @@ local sources = {
 	null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.formatting.latexindent.with({
-		args = { "-m", "-l", "/home/lckdscl/documents/uni/PHYS20029/Notes/EM/textwrap.yaml", "-" },
+		args = { "-m", "-l", "/home/lckdscl/downloads/textwrap.yaml", "-" },
 	}),
 	null_ls.builtins.code_actions.gitsigns,
 }

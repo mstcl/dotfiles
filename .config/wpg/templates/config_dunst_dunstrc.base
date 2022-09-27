@@ -57,7 +57,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 2
+    corner_radius = 14
     ignore_dbusclose = false
 
     ### Wayland ###

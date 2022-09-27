@@ -40,7 +40,8 @@ gl.short_line_list = {
 	"toggleterm",
 }
 local colors = {
-	normal = "#504945",
+	-- normal = "#505050",
+	normal = "#d5d5d5",
 	insert = "#86852c",
 	visual = "#4f7c7e",
 	cmd = "#e65949",

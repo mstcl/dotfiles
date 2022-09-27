@@ -1,13 +1,9 @@
 " :.config/nvim/init.vim
 " vim:set fdm=marker foldenable:
-" PLUGINS {{{
-" Require plugins.lua {{{
+"
+" IMPORT PLUGINS AND DISABLE SOME {{{
 lua require'impatient'
 lua require'plugins'
-set background=dark
-colorscheme despair
-" }}}
-" Remove these built-in plugins {{{
 lua << EOF
 local disabled_built_ins = {
     "netrw",
@@ -33,6 +29,8 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 EOF
 " }}}
+" COLORSCHEME {{{
+colorscheme despair
 " }}}
 " COMMANDS {{{
 " Wipe register {{{
@@ -156,6 +154,11 @@ augroup FoldTS
     au BufNewFile,BufRead *.{vim,tex,py,lua,cpp,sh,toml} set foldmethod=expr | set foldexpr=nvim_treesitter#foldexpr()
 augroup END
 " }}}
+" Auto close nvim-tree {{{
+augroup nvimtreeclose
+    autocmd!
+    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+augroup END
 " Telescope no prompt {{{
 augroup TelescopeStuff
 autocmd FileType TelescopePrompt lua require'cmp'.setup.buffer {
@@ -163,130 +166,6 @@ autocmd FileType TelescopePrompt lua require'cmp'.setup.buffer {
 \ }
 augroup END
 " }}}
-" }}}
-" OPTIONS {{{
-" Terminal title {{{
-let &titlestring = 'nvim ' ". expand("%:t")
-set title
-" }}}
-" Autochdir {{{
-set autochdir
-" }}}
-" Update time for LSP {{{
-set updatetime=180
-" }}}
-" Use document modeline {{{
-set modeline
-" }}}
-" Visual settings {{{
-set cursorline
-set cursorlineopt=number
-set synmaxcol=400
-set colorcolumn=99999
-set hidden
-set noshowmode
-set noshowcmd
-set lazyredraw
-set ttyfast
-set conceallevel=2
-set termguicolors
-set showtabline=2
-set laststatus=2
-set noruler
-" }}}
-" Folding {{{
-set foldmethod=syntax
-set foldminlines=1
-set foldnestmax=6
-set foldenable
-set foldlevelstart=1
-set foldcolumn=0
-" }}}
-" Editing {{{
-set wrap
-set scrolljump=1
-set wrapmargin=0
-set textwidth=0
-set formatoptions-=cro
-set linebreak
-set mouse=a
-" }}}
-" Use lua syntax in lua codeblock {{{
-let g:vimsyn_embed='l'
-" }}}
-" Latex syntax {{{
-let g:tex_flavor='latex'
-let g:tex_fold_enabled=1
-let g:tex_conceal='abdgms'
-" }}}
-" Keep undo history {{{
-set undofile
-" }}}
-" Number {{{
-set number
-set norelativenumber
-" }}}
-" Change default split {{{
-set splitbelow
-set splitright
-" }}}
-" Typing {{{
-set timeoutlen=400
-set ttimeout
-set ttimeoutlen=10
-" }}}
-" Search options {{{
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
-" }}}
-" Indentation {{{
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-set autoindent
-" }}}
-" Normal backspace {{{
-set backspace=indent,eol,start
-" }}}
-" Systemwide clipboard {{{
-set clipboard=unnamedplus
-" }}}
-" Scrolloff {{{
-set sidescrolloff=5
-set scrolloff=1
-" }}}
-" Set history {{{
-set history=1000
-" }}}
-" Spelling {{{
-set spell spelllang=en_gb
-set nospell
-set encoding=utf-8
-" }}}
-" Funky characters {{{
-set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│,fold:\ ,diff:╱
-set list
-set listchars=tab:<->,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:×,lead:\ ,space:·,multispace:···+
-set showbreak=↳
-" }}}
-" Nvim-cmp completion {{{
-set completeopt=menu,menuone,noselect
-" }}}
-" No-obnoxious nvim {{{
-set shortmess+=OoSsatTcI
-" }}}
-" No swapfiles {{{
-set noswapfile
-" }}}
-" Huh I don't know if this should be here {{{
-set path+=**
-" }}}
-" Detect other filetypes {{{
-filetype plugin on
 " }}}
 " }}}
 " FUNCTIONS {{{
@@ -351,3 +230,4 @@ function ToggleCmp()
 endfunction
 " }}}
 " }}}
+lua require'utils.settings'

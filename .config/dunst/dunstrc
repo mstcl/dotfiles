@@ -21,13 +21,13 @@
     horizontal_padding = 8
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#3c3836"
+    frame_color = "#d0d0d0"
     separator_color = frame
     sort = yes
     idle_threshold = 120
 
     ### Text ###
-    font = JetBrainsMono Nerd Font 17
+    font = JetBrainsMono Nerd Font 16
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -57,7 +57,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 2
+    corner_radius = 14
     ignore_dbusclose = false
 
     ### Wayland ###
@@ -75,21 +75,21 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#282828"
-    foreground = "#ebdbb2"
+    background = "#f5f5f5"
+    foreground = "#151515"
     timeout = 10
 
 [urgency_normal]
-    background = "#282828"
-    foreground = "#ebdbb2"
+    background = "#f5f5f5"
+    foreground = "#151515"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#282828"
-    foreground = "#86852c"
-    frame_color = "#86852c"
+    background = "#f5f5f5"
+    foreground = "#90a959"
+    frame_color = "#90a959"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

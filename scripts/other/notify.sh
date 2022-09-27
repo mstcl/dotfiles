@@ -87,26 +87,26 @@ fi
 #  MEDIA  #
 ###########
 
-status=$(playerctl status)
+status=$(playerctl -p spotify,mpd status)
 song=$(playerctl metadata --format "{{ title }}")
 metadata=$(playerctl metadata --format "{{ artist }} - {{ album }}")
 
-echo "▒▒▒░░ <b>$(date +'%a %b %d %H:%M')</b> ░░▒▒▒"
-echo "━━━━━━━━━━━━━━━━━"
+echo "┗━━━━ <b>$(date +'%a %b %d %H:%M')</b> ━━━━┛"
+# echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "<b>Workspace</b> [${current_ws_prompt}]"
 echo "<b>Layout</b> [${lang}]"
 echo "<b>Volume</b> [${volume}%]"
 # echo "<b>Updates</b> [${updates} packages]"
-echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
+echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
 # echo "<b>Tasks</b>"
 # echo "<i>${info}</i>"
 # echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
 echo "<b>${status}</b>"
 echo "<i>${song}</i>"
 echo "${metadata}"
-echo "━━━━━━━━━━━━━━━━━"
-echo "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
-echo "━━━━━━━━━━━━━━━━━"
+# echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+# echo "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
+# echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 # notify-send "Layout" "$lang"
 # notify-send "Updates" "$updates package(s)"

@@ -1,22 +1,22 @@
 # :.config/termshark/themes/wal-truecolor.toml
 
 [wal]
-  black = "#282828"
-  base01 = "#b53934"
-  base02 = "#86852c"
-  base03 = "#cb952d"
-  base04 = "#4f7c7e"
-  base05 = "#a56e87"
-  base06 = "#749176"
-  white = "#d5c4a1"
-  red = "#e65949"
-  orange  = "#a2a43d"
-  yellow = "#efb93a"
-  green = "#83a598"
-  cyan = "#cb8e9f"
-  blue = "#97ad8f"
-  purple = "#ebdbb2"
-  brown = "#3c3836"
+  black = "#f5f5f5"
+  base01 = "#ac4142"
+  base02 = "#90a959"
+  base03 = "#f4bf75"
+  base04 = "#6a9fb5"
+  base05 = "#aa759f"
+  base06 = "#75b5aa"
+  white = "#303030"
+  red = "#d34f50"
+  orange  = "#b4d36f"
+  yellow = "#e9b670"
+  green = "#8fd7f5"
+  cyan = "#e9a0da"
+  blue = "#90dfd2"
+  purple = "#151515"
+  brown = "#d0d0d0"
 
 [dark]
   button = ["wal.black","wal.base04"]

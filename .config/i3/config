@@ -12,7 +12,8 @@ font pango:JetBrainsMono Nerd Font Medium 15
 # }}}
 # Gaps {{{
 gaps outer 0
-gaps inner 0
+gaps inner 5
+smart_gaps on
 # }}}
 # Polybar gap {{{
 gaps top 0
@@ -45,7 +46,7 @@ exec_always --no-startup-id autotiling &
 # }}}
 # From wal {{{
 set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $c2 i3wm.color8 #f0f0f0
+set_from_resource $c2 i3wm.color8 #d0d0d0
 set_from_resource $bg i3wm.color0 #f0f0f0
 set_from_resource $c1 i3wm.color2 #f0f0f0
 ## class                border  backgr  text indicator child_border
@@ -76,6 +77,8 @@ for_window [class="Pavucontrol"] resize set 940 680
 # File manager {{{
 for_window [class="Pcmanfm"] floating enable
 for_window [class="Pcmanfm"] resize set 940 680
+for_window [class="Nautilus"] floating enable
+for_window [class="Nautilus"] resize set 940 680
 for_window [title="Rename File"] resize set 284 164
 for_window [title="Execute File"] resize set 284 164
 for_window [title="Choose Application"] resize set 284 164
@@ -83,6 +86,7 @@ for_window [title="Creating New Folder"] resize set 284 164
 for_window [title="Confirm File Replacing"] resize set 284 164
 for_window [title="Copying files"] resize set 484 164
 for_window [title="Moving files"] resize set 484 164
+for_window [title="Deleting files"] resize set 484 164
 # }}}
 # Calculator {{{
 for_window [class="Qalculate-gtk"] floating enable
@@ -131,7 +135,7 @@ for_window [class="File-roller"] floating enable
 # }}}
 # Steam {{{
 assign [class="^Steam$" title="^Steam$"] "5: Games"
-for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable

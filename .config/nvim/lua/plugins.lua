@@ -142,7 +142,7 @@ return require("packer").startup({
 			"folke/twilight.nvim",
 			cmd = "Twilight",
 			config = function()
-				require("twilight").setup({})
+				require("twilight").setup()
 			end,
 		})
 		--}}}
@@ -180,7 +180,6 @@ return require("packer").startup({
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
-			-- event = "BufRead",
 			config = function()
 				require("configs.treesitter")
 			end,
@@ -195,7 +194,7 @@ return require("packer").startup({
 		-- TS-PLAYGROUND: see treesitter syntax tree {{{
 		use({
 			"nvim-treesitter/playground",
-			cmd = {"TSPlaygroundToggle"}
+			cmd = { "TSPlaygroundToggle" },
 		})
 		-- }}}
 		-- -_-_-_ COMPLETION -_-_-_
@@ -286,16 +285,17 @@ return require("packer").startup({
 		})
 		-- }}}
 		-- -_-_-_-_-_ LSP -_-_-_-_-
-		-- LSPCONFIG: native lsp configuration {{{
+		-- LSP-CONFIG: native lsp configuration {{{
 		use({
 			"neovim/nvim-lspconfig",
 			event = "BufRead",
+			after = "cmp-nvim-lsp",
 			config = function()
 				require("configs.lspconfig")
 			end,
 		})
 		--- }}}
-		-- SIGNATURE: async signature helper {{{
+		-- LSP-SIGNATURE: async signature helper {{{
 		use({
 			"ray-x/lsp_signature.nvim",
 			event = "InsertEnter",
@@ -314,7 +314,19 @@ return require("packer").startup({
 			end,
 		})
 		-- }}}
-
+		-- GLOW-HOVER: uses glow for lsp hover diagnostics {{{
+		--[[ use({
+			"JASONews/glow-hover",
+			config = function()
+				require("glow-hover").setup({
+					max_width = 50,
+					padding = 10,
+					border = "rounded",
+					glow_path = "glow",
+				})
+			end,
+		}) ]]
+		-- }}}
 		-- TEXLABCONFIG: texlab stuff {{{
 		use({
 			"f3fora/nvim-texlabconfig",
@@ -343,15 +355,15 @@ return require("packer").startup({
 			end,
 		})
 		-- }}}
-		--[[ -- LSP-LINES: replace virtual text with diagnostic lines {{{
-		use({
+		-- LSP-LINES: replace virtual text with diagnostic lines {{{
+		--[[ use({
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			event = "BufRead",
 			config = function()
 				require("lsp_lines").register_lsp_virtual_lines()
 			end,
-		})
-		-- }}} ]]
+		}) ]]
+		-- }}}
 		-- -_-_-_-_ EDITING -_-_-_-_
 		-- KOMMENTARY: comment keymaps {{{
 		use({
@@ -434,6 +446,15 @@ return require("packer").startup({
 			ft = "markdown",
 			config = function()
 				require("configs.marks")
+			end,
+		})
+		-- }}}
+		-- GUESS-INDENT: guess indentation {{{
+		use({
+			"nmac427/guess-indent.nvim",
+			event = "BufEnter",
+			config = function()
+				require("guess-indent").setup()
 			end,
 		})
 		-- }}}
@@ -521,9 +542,11 @@ return require("packer").startup({
 			requires = { "mfussenegger/nvim-dap" },
 		})
 		-- }}}
-		--[[ use {
-        'gerw/vim-HiLinkTrace'
-    } ]]
+		-- HILINKTRACE: See current highlight group {{{
+		--[[ use({
+			"gerw/vim-HiLinkTrace",
+		}) ]]
+		-- }}}
 	end,
 	-- PACKER OPTIONS {{{
 	config = {

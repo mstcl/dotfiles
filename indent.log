@@ -1,11 +1,12 @@
-INFO:  latexindent version 3.13.4, 2021-12-22, a script to indent .tex files
+INFO:  latexindent version 3.17.2, 2022-04-14, a script to indent .tex files
        latexindent lives here: /usr/share/texmf-dist/scripts/latexindent/
-       Thu Mar  3 08:21:18 2022
+       Tue Aug 30 21:32:18 2022
        Reading input from STDIN
 INFO:  Processing switches:
        -l|--localSettings: Read localSettings YAML file
        -m|--modifylinebreaks: modify line breaks
-INFO:  Directory for backup files and indent.log: .
+INFO:  Directory for backup files and indent.log:
+       .
 INFO:  YAML settings read: defaultSettings.yaml
        Reading defaultSettings.yaml from /usr/share/texmf-dist/scripts/latexindent/defaultSettings.yaml
 INFO:  YAML settings read: indentconfig.yaml or .indentconfig.yaml
@@ -13,9 +14,9 @@ INFO:  YAML settings read: indentconfig.yaml or .indentconfig.yaml
        To specify user settings you would put indentconfig.yaml here: /home/lckdscl/indentconfig.yaml
        Alternatively, you can use the hidden file .indentconfig.yaml as: /home/lckdscl/.indentconfig.yaml
 INFO:  YAML settings read: -l switch
-       Adding /home/lckdscl/documents/uni/PHYS20029/Notes/EM/textwrap.yaml to YAML read paths
+       Adding /home/lckdscl/downloads/textwrap.yaml to YAML read paths
 INFO:  YAML settings, reading from the following files:
-       Reading USER settings from /home/lckdscl/documents/uni/PHYS20029/Notes/EM/textwrap.yaml
+       Reading USER settings from /home/lckdscl/downloads/textwrap.yaml
        ---
        modifyLineBreaks:
          removeParagraphLineBreaks:

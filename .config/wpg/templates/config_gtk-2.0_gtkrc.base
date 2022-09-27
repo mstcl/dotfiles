@@ -1,6 +1,6 @@
 # :.config/gtk-2.0/gtkrc
 
-gtk-theme-name="Fluent-grey-dark"
+gtk-theme-name="{theme}"
 gtk-icon-theme-name="{icons}"
 gtk-font-name="SF Pro Text {font-size}"
 gtk-cursor-theme-name="{cursor}"

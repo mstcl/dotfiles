@@ -3,6 +3,15 @@ if not present then
 	return
 end
 
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+	["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics,
+		{ update_in_insert = false }
+	),
+}
+
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -14,8 +23,6 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Leader>qR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ wrap = false, float = false })<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ wrap = false, float = false })<CR>", opts)
-	vim.fn.sign_define("LightBulbSign", { text = " ", texthl = "LightbulbTextHL" })
-	-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{border = {{"╭", },{"─"},{"╮"},{"│"},{"╯"},{"─"},{"╰"},{"│"}},focusable=false,scope="line",header="",source="if_many"})]])
 	require("lsp_signature").on_attach({
 		bind = true,
 		handler_opts = { border = "rounded" },
@@ -35,6 +42,7 @@ for _, server in ipairs(servers) do
 	lsp[server].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
+		handlers = handlers,
 		flags = {
 			debounce_text_changes = 150,
 		},
@@ -44,6 +52,7 @@ end
 lsp.texlab.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	handlers = handlers,
 	flags = {
 		debounce_text_changes = 150,
 	},
@@ -86,6 +95,7 @@ lsp.texlab.setup({
 lsp.sumneko_lua.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	handlers = handlers,
 	flags = {
 		debounce_text_changes = 150,
 	},
@@ -164,10 +174,6 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	update_in_insert = false,
-})
-
 function format_range_operator()
 	local old_func = vim.go.operatorfunc
 	_G.op_func_formatting = function()
@@ -180,6 +186,24 @@ function format_range_operator()
 	vim.go.operatorfunc = "v:lua.op_func_formatting"
 	vim.api.nvim_feedkeys("g@", "n", false)
 end
+
 vim.api.nvim_set_keymap("n", "gm", "<cmd>lua format_range_operator()<CR>", { noremap = true })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	buffer = bufnr,
+	callback = function()
+		local opts = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = "rounded",
+			source = "if_many",
+			prefix = " ",
+			header = "",
+			scope = "cursor",
+			focus = false,
+		}
+		vim.diagnostic.open_float(nil, opts)
+	end,
+})
 
 return on_attach

@@ -11,13 +11,16 @@ super + c
 	bash $HOME/scripts/other/colorpicker.sh
 
 super + w
-	notify-send "━━━━━━━━━━━━━━━━━" "$($HOME/scripts/other/notify.sh)"
+	notify-send "┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓" "$($HOME/scripts/other/notify.sh)"
 
 super + p; {r,f}
 	bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
 
 super + semicolon
 	splatmoji copy
+
+super + e
+	nautilus
 
 super + space
 	bash $HOME/scripts/rofi/launcher.sh
@@ -27,20 +30,20 @@ super + t; {c,d}
 	dunstctl set-paused toggle}
 
 super + s; {s,m,c,l,v}
-	{kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T spotify ncspot, \
+	{spotify, \
 	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T mpd ncmpcpp, \
 	bash $HOME/scripts/music/fehcover.sh, \
 	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics, \
 	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
 
 super + comma
-	playerctl -p ncspot,mpd previous
+	playerctl -p spotify,mpd previous
 
 super + period
-	playerctl -p ncspot,mpd next
+	playerctl -p spotify,mpd next
 
 super + slash
-	playerctl -p ncspot,mpd play-pause
+	playerctl -p spotify,mpd play-pause
 
 super + Return
 	kitty

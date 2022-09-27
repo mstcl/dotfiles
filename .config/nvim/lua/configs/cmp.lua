@@ -78,16 +78,12 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "nvim_lsp" },
 	}),
-	mapping = {
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
+	mapping = cmp.mapping.preset.insert({
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<C-i>"] = cmp.mapping(function(fallback)
+		["<C-i>"] = function(fallback)
 			if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
 				press("<ESC>:call UltiSnips#JumpForwards()<CR>")
 			elseif cmp.visible() then
@@ -97,37 +93,28 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, {
-			"i",
-			"s",
-		}),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-				press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-			elseif cmp.visible() then
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-			elseif has_any_words_before() then
-				press("<Tab>")
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		}),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-				press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-			elseif cmp.visible() then
-				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		}),
-	},
+		end,
+		["<Tab>"] = function(fallback)
+				if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+					press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+				elseif cmp.visible() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+				elseif has_any_words_before() then
+					press("<Tab>")
+				else
+					fallback()
+				end
+			end,
+		["<S-Tab>"] = function(fallback)
+				if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+					press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+				elseif cmp.visible() then
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+				else
+					fallback()
+				end
+			end,
+	}),
 	formatting = {
 		format = function(entry, vim_item)
 			vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
@@ -141,11 +128,13 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-		max_width = 120,
-		max_height = math.floor(vim.o.lines * 0.3),
+	window = {
+		documentation = {
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+			max_width = 120,
+			max_height = math.floor(vim.o.lines * 0.3),
+		},
 	},
 	experimental = {
 		ghost_text = false,
