@@ -33,7 +33,6 @@ return require("packer").startup({
 		-- TELESCOPE: fuzzy searcher {{{
 		use({
 			"nvim-telescope/telescope.nvim",
-			module = "telescope",
 			cmd = { "Telescope" },
 			config = function()
 				require("configs.telescope")
@@ -44,7 +43,6 @@ return require("packer").startup({
 				},
 				{
 					"nvim-telescope/telescope-file-browser.nvim",
-					module = "telescope",
 				},
 				{
 					"nvim-telescope/telescope-fzf-native.nvim",
@@ -58,6 +56,10 @@ return require("packer").startup({
 				{
 					"rudism/telescope-dict.nvim",
 					filetype = { "markdown", "tex" },
+				},
+				{
+					"nvim-telescope/telescope-frecency.nvim",
+					requires = {"kkharji/sqlite.lua"}
 				},
 			},
 		})
@@ -197,6 +199,9 @@ return require("packer").startup({
 			cmd = { "TSPlaygroundToggle" },
 		})
 		-- }}}
+		-- TS-CONTEXT: context in code {{{
+		-- use({ "nvim-treesitter/nvim-treesitter-context", event = "BufRead" })
+		-- }}}
 		-- -_-_-_ COMPLETION -_-_-_
 		-- ULTISNIPS (VS): snippets utility {{{
 		use({
@@ -301,6 +306,19 @@ return require("packer").startup({
 			event = "InsertEnter",
 		})
 		-- }}}
+		-- BARBECUE: statusline with code context {{{
+		use({
+			"utilyre/barbecue.nvim",
+			branch = "dev",
+			after = "nvim-web-devicons",
+			requires = {
+				"smiteshp/nvim-navic",
+			},
+			config = function()
+				require("configs.barbecue")
+			end,
+		})
+		-- }}}
 		-- SYMBOLS-OUTLINE: displays code outline panel {{{
 		use({
 			"simrat39/symbols-outline.nvim",
@@ -309,7 +327,7 @@ return require("packer").startup({
 				"SymbolsOutlineOpen",
 				"SymbolsOutlineClose",
 			},
-			setup = function()
+			config = function()
 				require("configs.outline")
 			end,
 		})
@@ -334,7 +352,7 @@ return require("packer").startup({
 				require("texlabconfig").setup()
 			end,
 			ft = { "tex", "bib" },
-			cmd = { "TexlabInverseSearch" },
+			run = 'go build',
 		})
 		-- }}}
 		-- TROUBLE: pretty list of diagnostics {{{
@@ -361,6 +379,14 @@ return require("packer").startup({
 			event = "BufRead",
 			config = function()
 				require("lsp_lines").register_lsp_virtual_lines()
+			end,
+		}) ]]
+		-- }}}
+		-- MASON: LSP, linter, etc. manager {{{
+		--[[ use({
+			"williamboman/mason.nvim",
+			config = function()
+				require("mason").setup()
 			end,
 		}) ]]
 		-- }}}
@@ -458,6 +484,12 @@ return require("packer").startup({
 			end,
 		})
 		-- }}}
+		-- ILLUMINATE: highlight word under cursor {{{
+		use({
+			"RRethy/vim-illuminate",
+			event = "BufEnter",
+		})
+		-- }}}
 		-- -_-_-_- FILETYPES -_-_-_-
 		-- TEX CONCEAL (VS): Further concealment of MathZone for tex files {{{
 		use({
@@ -510,10 +542,7 @@ return require("packer").startup({
 			"mfussenegger/nvim-dap-python",
 			after = "nvim-dap",
 			config = function()
-				require("dap-python").setup(
-					"/home/lckdscl/.local/share/applications/debugpy/bin/python",
-					{ justMyCode = false }
-				)
+				require("dap-python").setup("/usr/bin/python3", { justMyCode = false })
 			end,
 		})
 		-- }}}

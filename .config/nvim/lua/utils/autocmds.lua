@@ -1,19 +1,29 @@
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = "*.snipppets",
 	command = "CmpUltisnipsReloadSnippets",
-    group = vim.api.nvim_create_augroup('nvimcmp', {clear = true})
+	group = vim.api.nvim_create_augroup("nvimcmp", { clear = true }),
 })
 
 vim.api.nvim_create_autocmd("User", {
 	pattern = "AlphaReady",
 	command = "set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=2",
-    group = vim.api.nvim_create_augroup('alpha', {clear = true})
+	group = vim.api.nvim_create_augroup("alpha", { clear = true }),
 })
 
-vim.api.nvim_create_autocmd({"WinEnter", "BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "WinEnter", "BufRead", "BufNewFile" }, {
 	pattern = "*",
 	command = "if &ft != 'alpha' | call CleanEmptyBuffers() | endif",
-    group = 'alpha'
+	group = "alpha",
 })
 
-
+--[[ vim.api.nvim_create_autocmd({
+	"WinScrolled",
+	"BufWinEnter",
+	"CursorHold",
+	"InsertLeave",
+}, {
+	group = vim.api.nvim_create_augroup("barbecue", {}),
+	callback = function()
+		require("barbecue.ui").update()
+	end,
+}) ]]

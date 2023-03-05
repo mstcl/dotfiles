@@ -8,7 +8,7 @@ telescope.setup({
 		use_less = false,
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		prompt_prefix = "  ",
-		selection_caret = "  ",
+		selection_caret = " ",
 		entry_prefix = "  ",
 		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
@@ -214,3 +214,4 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("zoxide")
 telescope.load_extension("file_browser")
+telescope.load_extension("frecency")

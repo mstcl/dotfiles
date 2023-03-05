@@ -14,7 +14,7 @@ local white = { "#bdae93", 15, "white" }
 local whiteish = { "#d5c4a1", 15, "white" }
 local whiter = { "#ebdbb2", 15, "white" }
 local whitest = { "#fbf1c7", 15, "white" } ]]
-local gray = { "#666666", 244, "gray" }
+local gray = { "#555555", 244, "gray" }
 local gray_dark = { "#505050", 237, "darkgrey" }
 local gray_darker = { "#3c3c3c", 235, "gray" }
 local gray_darkerer = { "#2f2f2f", 233, "gray" }
@@ -24,38 +24,42 @@ local gray_light = { "#929292", 251, "gray" }
 local white = { "#bdbdbd", 15, "white" }
 local whiteish = { "#d5d5d5", 15, "white" }
 local whiter = { "#ebebeb", 15, "white" }
+local whiterer = { "#f0f0f0", 15, "white" }
 local whitest = { "#f5f5f5", 15, "white" }
-local red = { "#e65949", 196, "red" }
-local red_dark = { "#b53934", 124, "darkred" }
+local red = { "#A8334C", 196, "red" }
+local red_dark = { "#811f34", 124, "darkred" }
 local red_bg = { "#261A14", 124, "darkred" }
-local red_light = { "#A06F58", 203, "red" }
-local orange = { "#e78230", 208, "darkyellow" }
-local orange_dark = { "#bf6225", 208, "darkyellow" }
+local red_light = { "#A8334C", 196, "red" }
+local orange = { "#a36b37", 208, "darkyellow" }
+local orange_dark = { "#944927", 208, "darkyellow" }
 local orange_bg = { "#2E2520", 208, "darkyellow" }
-local orange_light = { "#f2b98b", 214, "yellow" }
-local yellow_dark = { "#cb952d", 220, "yellow" }
-local yellow = { "#efb93a", 220, "yellow" }
-local green_dark = { "#86852c", 83, "darkgreen" }
-local green = { "#a2a43d", 72, "green" }
-local green_light = { "#cccd7a", 72, "green" }
+local orange_light = { "#a36b37", 214, "yellow" }
+local yellow = { "#d4bb74", 220, "yellow" }
+local yellow_dark = { "#a38737", 220, "yellow" }
+local green_dark = { "#4F6C31", 72, "green" }
+local green = { "#5b8332", 83, "darkgreen" }
+local green_light = { "#6fa13a", 72, "green" }
 local turquoise = { "#97ad8f", 38, "darkblue" }
 local turquoise_dark = { "#749176", 33, "green" }
-local blue = { "#83a598", 63, "blue" }
-local blue_dark = { "#4f7c7e", 87, "cyan" }
-local magenta = { "#906c9f", 126, "magenta" }
+local blue = { "#286486", 63, "blue" }
+local blue_dark = { "#2b4c5e", 87, "cyan" }
+local magenta = { "#88507D", 126, "magenta" }
 local magenta_dark = { "#6b5577", 126, "darkmagenta" }
 local magenta_bg = { "#2D2A30", 126, "magenta" }
 local pink = { "#7b5164", 162, "magenta" }
 local pink_light = { "#b3899c", 38, "white" }
 local pink_bg = { "#2E2529", 162, "magenta" }
 local purple_light = { "#cb8e9f", 129, "magenta" }
-local purple = { "#a56e87", 63, "magenta" }
+local purple = { "#6b4255", 51, "cyan" }
 local addfg = { "#605f1f", 51, "cyan" }
+local addbg_light = { "#CBE5B8", 51, "cyan" }
 local addbg = { "#393913", 51, "cyan" }
 local changefg = { "#6b4255", 51, "cyan" }
+local changebg_light = { "#D4DEE7", 51, "cyan" }
 local changebg = { "#4a3c42", 51, "cyan" }
 local delfg = { "#8d2d29", 51, "cyan" }
 local delbg = { "#473126", 51, "cyan" }
+local delbg_light = { "#EBD8DA", 51, "cyan" }
 
 local BG = "bg"
 local FG = "fg"
@@ -125,13 +129,14 @@ local highlight_groups = {
 
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
-	StatusLine = { dark = { bg = gray_darkerer, fg = green_light}, light = { bg = whiter, fg = green_dark} },
+	StatusLine = { dark = { bg = gray_darkerer, fg = green_light }, light = { bg = whiter, fg = green_dark } },
 	StatusLineNC = function(self)
 		return { fg = gray, bg = self.StatusLine.bg }
 	end,
 	StatusLineTerm = "StatusLine",
 	StatusLineTermNC = "StatusLineNC",
 	MsgArea = { bg = BG },
+	WinBar = { dark = { bg = gray_darkerer }, light = { bg = whiterer } },
 
 	--[[ 4.2.2. Separators]]
 	VertSplit = { dark = { bg = gray_darker, fg = gray_darker }, light = { bg = whiter, fg = whiter } },
@@ -168,20 +173,20 @@ local highlight_groups = {
 	FloatBorder = { bg = BG, dark = { fg = gray_dark }, light = { fg = white } },
 
 	--[[ 4.2.5. Folds]]
-	FoldColumn = { bg = black, dark = { fg = gray_dark }, light = { fg = white }, style = "bold" },
+	FoldColumn = { dark = { bg = BG, fg = gray_dark }, light = { bg=BG, fg = white }, style = "bold" },
 	Folded = {
-		dark = { fg = gray, bg = gray_darkest },
-		light = { fg = gray_light, bg = whiter },
-		style = {
+		dark = { bg = gray_darkest },
+		light = { bg = whiterer },
+		--[[ style = {
 			"bold",
 			"italic",
-		},
+		}, ]]
 	},
 
-	--[[ 4.2.6. Diffs]]
-	DiffAdd = { fg = addfg, bg = addbg },
-	DiffChange = { fg = changefg, bg = changebg },
-	DiffDelete = { fg = delfg, bg = delbg },
+--[[ 4.2.6. Diffs]]
+	DiffAdd = { fg = addfg, dark = {bg = addbg}, light = {bg = addbg_light} },
+	DiffChange = { fg = changefg, dark = {bg = changebg}, light = {bg = changebg_light} },
+	DiffDelete = { fg = delfg,  dark = {bg = delbg}, light = {bg = delbg_light}},
 	DiffText = function(self)
 		return { fg = self.DiffAdd.fg, bg = yellow }
 	end,
@@ -198,7 +203,7 @@ local highlight_groups = {
 	SpellRare = { style = { "undercurl", color = blue } },
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
-	ColorColumn = { bg = gray_dark, style = "inverse" },
+	ColorColumn = { dark = {bg = gray_dark}, light = {bg = whiter}},
 	SignColumn = { bg = BG },
 
 	--[[ 4.2.10. Messages]]
@@ -206,6 +211,7 @@ local highlight_groups = {
 	HintMsg = { fg = magenta, style = "italic" },
 	InfoMsg = { fg = pink_light, style = "italic" },
 	ModeMsg = { fg = yellow },
+	MoreMsg = { fg = whiteish },
 	WarningMsg = { fg = orange, style = "bold" },
 	Question = { fg = turquoise, style = "bold" },
 
@@ -725,6 +731,7 @@ local highlight_groups = {
 	TSLiteral = "String",
 	TSEmphasis = { style = "italic" },
 	TSStrong = { style = "bold" },
+	TSDefinitionUsage = {style = "underline"},
 
 	--[[ 4.4.9. barbar.nvim ]]
 	BufferCurrent = { dark = { fg = gray_light }, light = { fg = gray_light }, style = "bold" },
@@ -777,7 +784,7 @@ local highlight_groups = {
 	TargetWord = "Title",
 
 	--[[ 4.4.13. indent-blankline.nvim ]]
-	IndentBlanklineChar = { dark = { fg = gray_darker }, light = { whiteish } },
+	IndentBlanklineChar = { dark = { fg = gray_darker }, light = { whiter } },
 	IndentBlanklineSpaceChar = "IndentBlanklineChar",
 	IndentBlanklineSpaceCharBlankLine = "IndentBlanklineChar",
 	IndentBlanklineContextChar = { dark = { fg = gray }, light = { white } },
@@ -994,7 +1001,8 @@ local highlight_groups = {
 	GalaxyViMode = { dark = { fg = white, bg = gray_darkerer }, light = { fg = white, bg = whiter } },
 	GalaxyBg = { dark = { fg = black, bg = black }, light = { fg = whitest, bg = whitest } },
 	GalaxyFg = { dark = { fg = white, bg = gray_darkerer }, light = { fg = black, bg = whiter }, style = { "bold" } },
-	GalaxyFgAlt = { fg = FG, dark = { bg = gray_darkerer }, light = { bg = whiter } },
+	GalaxyFgAlt = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_medium, bg = whiter } },
+	GalaxyFgAlt2 = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_light, bg = whiter } },
 	GalaxyYellow = { fg = yellow, dark = { bg = gray_darkerer }, light = { bg = whiter }, style = { "bold" } },
 	GalaxyCyan = { fg = turquoise, dark = { bg = gray_darkerer }, light = { bg = whiter }, style = { "bold" } },
 	GalaxyGreen = { fg = green, dark = { bg = gray_darkerer }, light = { bg = whiter }, style = { "bold" } },
@@ -1033,6 +1041,78 @@ local highlight_groups = {
 	DapBreakpointRejected = { fg = orange },
 	MarkSignHL = { fg = red },
 	MarkSignNumHL = { fg = turquoise },
+	barbecue_normal = "Winbar",
+	barbecue_dirname = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_medium, bg = whiterer } },
+	barbecue_context = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_medium, bg = whiterer } },
+	barbecue_basename = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_medium, bg = whiterer } },
+	barbecue_separator = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_medium, bg = whiterer } },
+	barbecue_ellipsis = { dark = { fg = white, bg = gray_darkerer }, light = { fg = gray_medium, bg = whiterer } },
+	barbecue_context_file = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindFileDefault.fg }
+	end,
+	barbecue_context_module = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindFolderDefault.fg }
+	end,
+	barbecue_context_namespace = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindFolderDefault.fg }
+	end,
+	barbecue_context_package = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindFolderDefault.fg }
+	end,
+	barbecue_context_class = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindClassDefault.fg }
+	end,
+	barbecue_context_method = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindMethodDefault.fg }
+	end,
+	barbecue_context_property = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindPropertyDefault.fg }
+	end,
+	barbecue_context_field = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindFieldDefault.fg }
+	end,
+	barbecue_context_constructor = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindConstructorDefault.fg }
+	end,
+	barbecue_context_enum = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindEnumDefault.fg }
+	end,
+	barbecue_context_interface = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindInterfaceDefault.fg }
+	end,
+	barbecue_context_function = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindFunctionDefault.fg }
+	end,
+	barbecue_context_variable = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindVariableDefault.fg }
+	end,
+	barbecue_context_constant = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindConstantDefault.fg }
+	end,
+	barbecue_context_string = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindValueDefault.fg }
+	end,
+	barbecue_context_number = "barbecue_context_string",
+	barbecue_context_boolean = "barbecue_context_string",
+	barbecue_context_array = "barbecue_context_string",
+	barbecue_context_object = "barbecue_context_string",
+	barbecue_context_key = "barbecue_context_string",
+	barbecue_context_null = "barbecue_context_string",
+	barbecue_context_enum_member = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindEnumMemberDefault.fg }
+	end,
+	barbecue_context_struct = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindStructDefault.fg }
+	end,
+	barbecue_context_event = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindEventDefault.fg }
+	end,
+	barbecue_context_operator = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindOperatorDefault.fg }
+	end,
+	barbecue_context_type_parameter = function(self)
+		return { dark = { bg = gray_darkerer }, light = { bg = whiterer }, fg = self.CmpItemKindTypeParameterDefault.fg }
+	end,
 }
 local terminal_colors = {
 	[1] = black,

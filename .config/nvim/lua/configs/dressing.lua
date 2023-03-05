@@ -17,7 +17,7 @@ require('dressing').setup({
             anchor = "NW",
             relative = "cursor",
             border = "rounded",
-            winblend = 10,
+            -- winblend = 10,
             width = nil,
             max_width = 0.8,
             min_width = 40,

@@ -1,44 +1,12 @@
-local g = vim.g
-
-g.nvim_tree_highlight_opened_files = 2
-g.nvim_tree_root_folder_modifier = table.concat({ ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" })
-g.nvim_tree_show_icons = {
-	git = 1,
-	folders = 1,
-	files = 1,
-}
-g.nvim_tree_icons = {
-	default = "",
-	symlink = "",
-	git = {
-		deleted = "",
-		ignored = "◌",
-		renamed = "➜",
-		staged = "✓",
-		unmerged = "",
-		unstaged = "✗",
-		untracked = "★",
-	},
-	folder = {
-		default = "",
-		empty = " ",
-		empty_open = " ",
-		open = " ",
-		symlink = " ",
-		symlink_open = " ",
-	},
-}
-
 require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = false,
-	ignore_ft_on_setup = { "alpha" },
 	open_on_tab = true,
 	hijack_cursor = true,
-	update_cwd = false,
+	sync_root_with_cwd = false,
 	actions = {
 		open_file = {
+			resize_window = false,
 			window_picker = {
 				exclude = {
 					filetype = { "notify", "packer", "qf" },
@@ -51,13 +19,13 @@ require("nvim-tree").setup({
 		cmd = "trash",
 		require_confirm = true,
 	},
-	update_to_buf_dir = {
+	hijack_directories = {
 		enable = true,
 		auto_open = true,
 	},
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
+		update_root = true,
 		ignore_list = {},
 	},
 	system_open = {
@@ -67,19 +35,49 @@ require("nvim-tree").setup({
 	view = {
 		width = 25,
 		side = "left",
-		auto_resize = false,
 		hide_root_folder = true,
 		mappings = {
 			custom_only = false,
 			list = {},
 		},
-        signcolumn = "yes",
+		signcolumn = "yes",
 	},
-    renderer = {
-        indent_markers = {
-            enable = true,
-        },
-    },
+	renderer = {
+		highlight_opened_files = "name",
+		indent_markers = {
+			enable = true,
+		},
+		icons = {
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
+			},
+			glyphs = {
+				default = "",
+				symlink = "",
+				bookmark = "",
+				git = {
+					unstaged = "✗",
+					staged = "✓",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "★",
+					deleted = "",
+					ignored = "◌",
+				},
+				folder = {
+					default = "",
+					empty = " ",
+					empty_open = " ",
+					open = " ",
+					symlink = " ",
+					symlink_open = " ",
+				},
+			},
+		},
+	},
 	git = {
 		enable = true,
 		ignore = false,
@@ -90,3 +88,22 @@ require("nvim-tree").setup({
 })
 require("nvim-tree.view").View.winopts.cursorline = false
 require("nvim-tree.view").View.winopts.wrap = true
+
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_api = require('bufferline.state')
+
+local function get_tree_size()
+  return require'nvim-tree.view'.View.width
+end
+
+nvim_tree_events.subscribe('TreeOpen', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('Resize', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('TreeClose', function()
+  bufferline_api.set_offset(0)
+end)

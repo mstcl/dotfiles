@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ",."
@@ -32,7 +32,7 @@ map("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = 
 
 map("n", "<F1>", "<cmd>lua require'FTerm'.toggle()<CR>", { silent = true, noremap = true })
 
-map("n", "<C-T>", "<cmd>lua require'utils.tree_toggle'.toggle()<CR>", { silent = true, noremap = true })
+map("n", "<C-T>", "<cmd>NvimTreeToggle<CR>", { silent = true, noremap = true })
 map("n", "<C-N>", "<cmd>call SetNumber()<CR>", { silent = true, noremap = true })
 map("n", "<C-L>", "<cmd>set list!<CR>", { silent = true, noremap = true })
 map("n", "<C-J>", "<cmd>set cursorline!<CR>", { silent = true, noremap = true })
@@ -51,6 +51,10 @@ map("x", "<", "<gv", { silent = true, noremap = true })
 map("x", ">", ">gv", { silent = true, noremap = true })
 
 map("n", "<leader>a", ":call FoldColumnToggle()<CR>", { silent = true, noremap = true })
+map('n', 'zR', "require('ufo').openAllFolds", {silent = true, noremap = true })
+map('n', 'zM', "require('ufo').closeAllFolds", {silent = true, noremap = true })
+map('n', 'zr', "require('ufo').openFoldsExceptKinds", {silent = true, noremap = true })
+map('n', 'zm', "require('ufo').closeFoldsWith", {silent = true, noremap = true })
 
 map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { silent = true, noremap = true })
 

@@ -5,8 +5,9 @@
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --follow -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
 export FZF_DEFAULT_OPTS="
     --color fg:8,bg:#f5f5f5,hl:1,fg+:7,bg+:#f5f5f5,hl+:9,gutter:#f5f5f5
-    --color border:8,info:5,prompt:2,spinner:3,pointer:6,marker:4
+    --color border:8,info:5,prompt:2,spinner:3,pointer:6,marker:4,separator:8
     --height 100%
+    --no-separator
     --preview-window hidden:border-rounded
     --pointer='->'
     --marker='＋'

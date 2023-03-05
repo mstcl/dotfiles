@@ -11,7 +11,7 @@ super + c
 	bash $HOME/scripts/other/colorpicker.sh
 
 super + w
-	notify-send "┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓" "$($HOME/scripts/other/notify.sh)"
+	notify-send --icon="pig" "┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓" "$($HOME/scripts/other/notify.sh)"
 
 super + p; {r,f}
 	bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
@@ -20,7 +20,12 @@ super + semicolon
 	splatmoji copy
 
 super + e
-	nautilus
+	nemo
+
+super + g; {i,o}
+	{bash $HOME/scripts/hardware/game-enter.sh, \
+	bash $HOME/scripts/hardware/game-exit.sh}
+	
 
 super + space
 	bash $HOME/scripts/rofi/launcher.sh
@@ -106,6 +111,9 @@ super + shift + {7,8,9,0}
 super + shift + {Left,Right}
 	i3-msg move container to workspace {prev,next}
 
+super + shift + m
+	i3-msg move container to output left
+
 super + alt + Return
 	kitty --listen-on unix:/tmp/mykitty
 
@@ -113,17 +121,17 @@ alt + space
 	bash $HOME/scripts/hardware/chkm.sh
 
 hyper + {period,comma,m,n}
-	pactl { set-sink-volume @DEFAULT_SINK@ +5%,\
-	set-sink-volume @DEFAULT_SINK@ -5%, \
-	set-sink-mute @DEFAULT_SINK@ toggle, \
-	set-source-mute @DEFAULT_SOURCE@ toggle }
+	{ NO_NOTIFY_COLOR=1 i3-volume -nyPp up 5,\
+	NO_NOTIFY_COLOR=1 i3-volume -nyPp down 5, \
+	NO_NOTIFY_COLOR=1 i3-volume -nyPp mute, \
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle}
 
 hyper + {p,v}
 	bash { $HOME/scripts/rofi/powermenu.sh, \
 	$HOME/scripts/rofi/rofi-select-sink.sh }
 
-alt + grave
-	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-grave' -kb-toggle-sort '!Alt-Escape' -kb-row-down Alt-grave
+alt + Tab
+	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-toggle-sort '!Alt-Escape' -kb-row-down Alt-Tab
 
 control + Escape
 	dunstctl history-pop

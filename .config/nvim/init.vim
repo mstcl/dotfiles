@@ -2,8 +2,23 @@
 " vim:set fdm=marker foldenable:
 "
 " IMPORT PLUGINS AND DISABLE SOME {{{
-lua require'impatient'
-lua require'plugins'
+" lua require'impatient'
+" lua require'plugins'
+lua << EOF
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+EOF
+lua require'lazy-init'
 lua << EOF
 local disabled_built_ins = {
     "netrw",
@@ -42,11 +57,12 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 augroup nvimcmp
     autocmd!
     autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
+augroup END
 " }}}
 " Alpha options {{{
 augroup alpha
     autocmd!
-    autocmd User AlphaReady set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=2
+    autocmd User AlphaReady set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=3
     autocmd WinEnter,BufRead,BufNewFile * if &ft != 'alpha' | call CleanEmptyBuffers() | endif
 augroup END
 function! CleanEmptyBuffers()
@@ -230,4 +246,6 @@ function ToggleCmp()
 endfunction
 " }}}
 " }}}
+lua require'utils.mappings'
 lua require'utils.settings'
+source $HOME/.config/nvim/colors/despair.lua

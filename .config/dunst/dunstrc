@@ -4,7 +4,7 @@
     ### Display ###
     monitor = 0
     follow = mouse
-    width = (20,400)
+    width = (50,500)
     height = 800
     notification_limit = 0
     offset = 10x10
@@ -43,9 +43,9 @@
 
     ### Icons ###
     icon_position = left
-    min_icon_size = 0
+    min_icon_size = 16
     max_icon_size = 128
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /home/lckdscl/.local/share/icons/Colloid-grey-light/status/symbolic/:/home/lckdscl/.local/share/icons/Colloid-grey-light/devices/symbolic/:/home/lckdscl/.local/share/icons/Colloid-grey-light/status/32
 
     ### History ###
     sticky_history = yes
@@ -88,8 +88,8 @@
 
 [urgency_critical]
     background = "#f5f5f5"
-    foreground = "#90a959"
-    frame_color = "#90a959"
+    foreground = "#4f6c31"
+    frame_color = "#4f6c31"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

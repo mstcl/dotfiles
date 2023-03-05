@@ -7,6 +7,7 @@ clear mod4
 clear mod5
 
 keycode 135 = Hyper_L
+keycode 108 = Multi_key Alt_R Meta_R Alt_R Meta_R
 
 add mod1 = Alt_L Alt_R
 add mod3 = Hyper_L

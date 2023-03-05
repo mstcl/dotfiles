@@ -7,24 +7,25 @@ set.modeline = true
 set.cursorline = true
 set.cursorlineopt = "number"
 set.synmaxcol = 400
-set.colorcolumn = "99999"
+set.colorcolumn = "80"
 set.hidden = true
 set.showmode = false
-set.showcmd = false
+set.showcmd = true
 set.lazyredraw = true
 set.ttyfast = true
 set.conceallevel = 2
 set.termguicolors = true
 set.showtabline = 2
-set.laststatus = 2
+set.laststatus = 3
 set.ruler = false
 
 set.foldmethod = "syntax"
 set.foldminlines = 1
 set.foldnestmax = 6
 set.foldenable = true
-set.foldlevelstart = 1
-set.foldcolumn = "0"
+set.foldlevelstart = 99
+set.foldlevel = 99
+set.foldcolumn = "1"
 
 set.wrap = true
 set.scrolljump = 1
@@ -74,7 +75,7 @@ vim.cmd([[set listchars=tab:<->,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:�
 set.showbreak = '↳'
 
 set.completeopt = {'menu', 'menuone', 'noselect'}
-set.shortmess = set.shortmess + "OoSsatTcI"
+set.shortmess = set.shortmess + "OosSatTcI"
 set.swapfile = false
 set.path = set.path + "**"
 

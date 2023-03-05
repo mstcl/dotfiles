@@ -7,6 +7,7 @@ indent.setup {
     buftype_exclude = {"terminal"},
     bufnameExclude = {'README.md'},
     show_current_context = true,
-    filetype_exclude = {""},
+    show_end_of_line = false,
+    filetype_exclude = {"tex"},
     enabled = 'true',
 }

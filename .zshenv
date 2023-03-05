@@ -8,6 +8,7 @@ export XDG_DATA_HOME="$HOME"/.local/share
 export ENABLE_VKBASALT=0
 export MANGOHUD=0
 # ------------------------------------
+export _GL_SYNC_DISPLAY_DEVICE=DP-2
 export VIT_DIR="$XDG_CONFIG_HOME"/vit
 # export STARDICT_DATA_DIR=$XDG_DATA_HOME
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc

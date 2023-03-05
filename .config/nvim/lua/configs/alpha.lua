@@ -25,7 +25,7 @@ local header = {
 	},
 }
 
-local plugins_gen = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
+local plugins_gen = io.popen('fd -d 1 . $HOME"/.local/share/nvim/lazy" | wc -l | tr -d "\n" ')
 local plugins = plugins_gen:read("*a")
 plugins_gen:close()
 

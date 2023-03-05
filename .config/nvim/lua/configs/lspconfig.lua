@@ -1,4 +1,5 @@
 local present, lsp = pcall(require, "lspconfig")
+local navic = require("nvim-navic")
 if not present then
 	return
 end
@@ -16,10 +17,11 @@ local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "<C-K>", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "<Leader>qD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "<Leader>qf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	buf_set_keymap("n", "<Leader>qf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 	buf_set_keymap("n", "<Leader>qR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ wrap = false, float = false })<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ wrap = false, float = false })<CR>", opts)
@@ -31,10 +33,17 @@ local on_attach = function(client, bufnr)
 		fix_pos = false,
 		hint_enable = false,
 	})
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local servers = { "clangd", "pyright", "vimls", "bashls" }
 
@@ -75,14 +84,22 @@ lsp.texlab.setup({
 			diagnosticsDelay = 300,
 			formatterLineLength = 80,
 			forwardSearch = {
-				executable = "zathura",
+				executable = 'sioyek',
 				args = {
-					"--synctex-editor-command",
-					[[nvim --headless -c 'TexlabInverseSearch %{input} %{line}']],
-					"--synctex-forward",
-					"%l:1:%f",
-					"%p",
+					'--reuse-window',
+					'--inverse-search',
+					[[nvim-texlabconfig -file %1 -line %2]],
+					'--forward-search-file', '%f',
+					'--forward-search-line', '%l', '%p'
 				},
+				-- executable = "zathura",
+				-- args = {
+					-- "--synctex-editor-command",
+					-- [[nvim --headless -c 'TexlabInverseSearch %{input} %{line}']],
+					-- "--synctex-forward",
+					-- "%l:1:%f",
+					-- "%p",
+				-- },
 			},
 			latexFormatter = "latexindent",
 			latexindent = {
@@ -92,7 +109,7 @@ lsp.texlab.setup({
 	},
 })
 
-lsp.sumneko_lua.setup({
+lsp.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
@@ -111,6 +128,7 @@ lsp.sumneko_lua.setup({
 			},
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
 			},
 			telemetry = {
 				enable = false,

@@ -3,10 +3,15 @@
 local gl = require("galaxyline")
 local condition = require("galaxyline.condition")
 local gls = gl.section
+--[[ local whitespace = require("galaxyline.provider_whitespace")
+local extension = require("galaxyline.provider_extensions")
+local lspclient = require("galaxyline.provider_lsp") ]]
 local whitespace = require("galaxyline.providers.whitespace")
 local extension = require("galaxyline.providers.extensions")
+local lspclient = require("galaxyline.providers.lsp")
 local search = require("galaxyline.providers.search")
 ScrollBar = extension.scrollbar_instance
+GetLspClient = lspclient.get_lsp_client
 SearchResults = search.get_results
 
 gl.short_line_list = {
@@ -30,6 +35,7 @@ gl.short_line_list = {
 	"dashboard",
 	"Packer",
 	"NvimTree",
+	"TelescopePrompt",
 	"Help",
 	"diff",
 	"undotree",
@@ -48,14 +54,14 @@ local colors = {
 	replace = "#a56e87",
 	term = "#cb952d",
 }
-gls.left[1] = {
+--[[ gls.left[1] = {
 	Gape = {
 		provider = function()
 			return "█ "
 		end,
 		highlight = "GalaxyBg",
 	},
-}
+} ]]
 
 gls.left[2] = {
 	ViMode = {
@@ -82,10 +88,10 @@ gls.left[2] = {
 				t = colors.term,
 			}
 			vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-			return "█ "
+			return "█"
 		end,
 		highlight = "GalaxyFg",
-		separator = "",
+		separator = " ",
 		separator_highlight = "GalaxyFg",
 	},
 }
@@ -93,6 +99,7 @@ gls.left[2] = {
 gls.left[4] = {
 	FileIcon = {
 		provider = "FileIcon",
+		separator = "",
 		condition = condition.buffer_not_empty,
 		highlight = "GalaxyFgAlt",
 	},
@@ -107,17 +114,61 @@ gls.left[5] = {
 }
 
 gls.left[6] = {
-	LineInfo = {
-		provider = "LineColumn",
-		highlight = "GalaxyFgAlt",
-		icon = " | ",
+	FileEncode = {
+		provider = "FileEncode",
+		condition = condition.buffer_not_empty,
+		icon = " |",
+		highlight = "GalaxyFgAlt2",
+	},
+}
+
+gls.left[7] = {
+	FileFormat = {
+		provider = "FileFormat",
+		condition = condition.buffer_not_empty,
+		icon = "  | ",
+		highlight = "GalaxyFgAlt2",
 	},
 }
 
 gls.mid[1] = {
+	LineInfo = {
+		provider = "LineColumn",
+		highlight = "GalaxyFgAlt2",
+		-- icon = " | ",
+	},
+}
+
+gls.mid[2] = {
+	LinePercent = {
+		provider = "LinePercent",
+		highlight = "GalaxyFgAlt2",
+		icon = " |",
+	},
+}
+
+gls.mid[3] = {
 	Search = {
 		provider = SearchResults,
-		highlight = "GalaxyFgAlt",
+		highlight = "GalaxyFgAlt2",
+		icon = " |",
+	},
+}
+
+gls.right[1] = {
+	ShowLspClient = {
+		provider = "GetLspClient",
+		condition = function()
+			local tbl = { ["dashboard"] = true, [""] = true }
+			if tbl[vim.bo.filetype] then
+				return false
+			end
+			return true
+		end,
+		icon = " ",
+		separator = " ",
+		separator_highlight = "GalaxyFgAlt2",
+		highlight = "GalaxyFgAlt2",
 	},
 }
 
@@ -212,16 +263,54 @@ gls.right[12] = {
 		highlight = "GalaxyCyan",
 	},
 }
+--[[ gls.right[13] = {
+	ScrollBar = {
+		provider = "ScrollBar",
+		highlight = "GalaxyFgAlt2",
+		-- icon = " | ",
+	},
+} ]]
 
-gls.right[13] = {
-	Gape2 = {
+gls.right[14] = {
+	ViMode = {
 		provider = function()
+			local mode_color = {
+				n = colors.normal,
+				i = colors.insert,
+				v = colors.visual,
+				[""] = colors.visual,
+				V = colors.visual,
+				c = colors.cmd,
+				s = colors.replace,
+				S = colors.replace,
+				[""] = colors.replace,
+				ic = colors.insert,
+				R = colors.replace,
+				Rv = colors.replace,
+				cv = colors.replace,
+				ce = colors.replace,
+				r = colors.replace,
+				rm = colors.visual,
+				["r?"] = colors.visual,
+				["!"] = colors.replace,
+				t = colors.term,
+			}
+			vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
+			return "█"
+		end,
+		highlight = "GalaxyFg",
+		separator_highlight = "GalaxyFg",
+	},
+}
+
+--[[ gls.right[13] = {
+	Gape2 = {
+	provider = function()
 			return "█ "
 		end,
 		highlight = "GalaxyBg",
 	},
-}
-
+} ]]
 
 gls.short_line_left[1] = {
 	BufferSpace = {
