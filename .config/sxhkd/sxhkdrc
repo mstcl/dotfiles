@@ -11,7 +11,7 @@ super + c
 	bash $HOME/scripts/other/colorpicker.sh
 
 super + w
-	notify-send --icon="pig" "┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓" "$($HOME/scripts/other/notify.sh)"
+	notify-send --icon="pig" "━━━━ STATUS ━━━━" "$($HOME/scripts/other/notify.sh)"
 
 super + p; {r,f}
 	bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
@@ -22,7 +22,7 @@ super + semicolon
 super + e
 	nemo
 
-super + g; {i,o}
+super + m; {i,o}
 	{bash $HOME/scripts/hardware/game-enter.sh, \
 	bash $HOME/scripts/hardware/game-exit.sh}
 	
@@ -81,11 +81,11 @@ super + {f,o,z}
 super + {h,j,k,l}
 	i3-msg focus {left,down,up,right}
 
-super + {1,2,3,4,5,6}
-	i3-msg workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Chat}
+super + {1,2,3,4,5,6,7,8,9}
+	i3-msg workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
-super + {7,8,9,0}
-	i3-msg workspace {7,8,9,10}
+super + alt + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
 super + {Left,Right}
 	i3-msg workspace {prev,next}
@@ -102,20 +102,20 @@ super + shift + q
 super + shift + space
 	i3-msg floating toggle
 
-super + shift + {1,2,3,4,5,6}
-	i3-msg move container to workspace {1: Term,2: Web,3: Study,4: Media,5: Games, 6: Chat}
+super + shift + alt {1,2,3,4,5,6,7,8,9,0}
+	i3-msg move container to workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && notify-send --icon="window" "Moved to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
-super + shift + {7,8,9,0}
-	i3-msg move container to workspace {7,8,9,10}
+super + shift + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg move container to workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send --icon="window" "Moved to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
 super + shift + {Left,Right}
-	i3-msg move container to workspace {prev,next}
+	i3-msg move container to workspace {prev,next} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
 super + shift + m
 	i3-msg move container to output left
 
 super + alt + Return
-	kitty --listen-on unix:/tmp/mykitty
+	kitty --listen-on unix:/tmp/mykitty /home/lckdscl/scripts/bin/nv
 
 alt + space
 	bash $HOME/scripts/hardware/chkm.sh

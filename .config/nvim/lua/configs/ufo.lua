@@ -36,12 +36,12 @@ ufo.setup({
         return { "lsp", "indent" }
     end,
     open_fold_hl_timeout = 150,
-    close_fold_kinds = {'imports', 'comment'},
+    close_fold_kinds = {'imports', 'comment', 'region'},
     preview = {
         win_config = {
-            border = {'', '─', '', '', '', '─', '', ''},
-            winhighlight = 'Normal:Folded',
-            winblend = 0
+            border = "rounded",
+            winhighlight = 'Normal:Normal',
+            winblend = 20,
         },
         mappings = {
             scrollU = '<C-u>',

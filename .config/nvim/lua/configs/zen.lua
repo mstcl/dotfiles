@@ -28,7 +28,7 @@ zen.setup({
 		gitsigns = { enabled = true },
 		kitty = {
 			enabled = true,
-			font = "+2",
+			font = "+0",
 		},
 	},
 	--[[ on_open = function(win)

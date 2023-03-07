@@ -20,14 +20,14 @@ local on_attach = function(client, bufnr)
 
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "<C-K>", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<Leader>qD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "<Leader>qD", "<cmd>lua Scroll('declaration')<CR>", opts)
 	buf_set_keymap("n", "<Leader>qf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 	buf_set_keymap("n", "<Leader>qR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ wrap = false, float = false })<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ wrap = false, float = false })<CR>", opts)
 	require("lsp_signature").on_attach({
 		bind = true,
-		handler_opts = { border = "rounded" },
+		handler_opts = { border = "rounded", winblend = "20" },
 		floating_window = true,
 		floating_window_above_cur_line = true,
 		fix_pos = false,
@@ -40,8 +40,8 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
 }
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
@@ -84,21 +84,24 @@ lsp.texlab.setup({
 			diagnosticsDelay = 300,
 			formatterLineLength = 80,
 			forwardSearch = {
-				executable = 'sioyek',
+				executable = "sioyek",
 				args = {
-					'--reuse-window',
-					'--inverse-search',
+					"--reuse-window",
+					"--inverse-search",
 					[[nvim-texlabconfig -file %1 -line %2]],
-					'--forward-search-file', '%f',
-					'--forward-search-line', '%l', '%p'
+					"--forward-search-file",
+					"%f",
+					"--forward-search-line",
+					"%l",
+					"%p",
 				},
 				-- executable = "zathura",
 				-- args = {
-					-- "--synctex-editor-command",
-					-- [[nvim --headless -c 'TexlabInverseSearch %{input} %{line}']],
-					-- "--synctex-forward",
-					-- "%l:1:%f",
-					-- "%p",
+				-- "--synctex-editor-command",
+				-- [[nvim --headless -c 'TexlabInverseSearch %{input} %{line}']],
+				-- "--synctex-forward",
+				-- "%l:1:%f",
+				-- "%p",
 				-- },
 			},
 			latexFormatter = "latexindent",
@@ -178,7 +181,7 @@ end
 
 vim.diagnostic.config({
 	--[[ virtual_text = {
-        show = false,
+		show = false,
 		prefix = "",
 	}, ]]
 	virtual_text = false,

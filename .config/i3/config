@@ -6,6 +6,53 @@
 set $mod Mod4
 set $alt Mod1
 set $hyper Mod3
+set $monL DP-2
+set $monR DP-4
+
+# variables for workpacenames; 
+set $ws1L 1:A
+set $ws1R 11:A
+set $ws2L 2:B
+set $ws2R 12:B
+set $ws3L 3:C
+set $ws3R 13:C
+set $ws4L 4:D
+set $ws4R 14:D
+set $ws5L 5:E
+set $ws5R 15:E
+set $ws6L 6:F
+set $ws6R 16:F
+set $ws7L 7:G
+set $ws7R 17:G
+set $ws8L 8:H
+set $ws8R 18:H
+set $ws9L 9:I
+set $ws9R 19:I
+set $ws0L 10:J
+set $ws0R 20:J
+
+# assign workspaces to specific outputs
+workspace $ws1L output $monL
+workspace $ws1R output $monR
+workspace $ws2L output $monL
+workspace $ws2R output $monR
+workspace $ws3L output $monL
+workspace $ws3R output $monR
+workspace $ws4L output $monL
+workspace $ws4R output $monR
+workspace $ws5L output $monL
+workspace $ws5R output $monR
+workspace $ws6L output $monL
+workspace $ws6R output $monR
+workspace $ws7L output $monL
+workspace $ws7R output $monR
+workspace $ws8L output $monL
+workspace $ws8R output $monR
+workspace $ws9L output $monL
+workspace $ws9R output $monR
+workspace $ws0L output $monL
+workspace $ws0R output $monR
+
 # }}}
 # Font {{{
 font pango:JetBrainsMono Nerd Font Medium 15
@@ -27,6 +74,7 @@ focus_on_window_activation urgent
 popup_during_fullscreen smart
 # }}}
 # Startup {{{
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id sxhkd &
 exec --no-startup-id aria2c &
 exec --no-startup-id bash $HOME/scripts/other/wp.sh &
@@ -38,7 +86,7 @@ exec --no-startup-id xset -dpms &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id unclutter &
 # exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
-exec --no-startup-id i3-msg 'workspace 1: Term; exec kitty --listen-on unix:/tmp/mykitty'
+# exec --no-startup-id i3-msg 'workspace 1:A; exec kitty --listen-on unix:/tmp/mykitty'
 exec --no-startup-id bash $HOME/scripts/hardware/norgb.sh &
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
 exec_always --no-startup-id sleep 4 && xmodmap $HOME/.config/X11/Xmodmap &
@@ -108,24 +156,24 @@ for_window [class="^kitty$" title="^floatingKitty$"] resize set 740 480; move ab
 for_window [class="^kitty$" title="^cava$"] floating enable
 for_window [class="^kitty$" title="^cava$"] resize set 830 320
 for_window [class="^kitty$" title="^cava$"] move position 1050 px 100 px
-assign [class="^kitty$" title="^cava$"] 4: Media
+assign [class="^kitty$" title="^cava$"] 14:D
 for_window [class="^kitty$" title="^spotify$"] floating enable
 for_window [class="^kitty$" title="^spotify$"] resize set 960 920
 for_window [class="^kitty$" title="^spotify$"] move position 45 px 100 px
-assign [class="^kitty$" title="^spotify$"] 4: Media
+assign [class="^kitty$" title="^spotify$"] 14:D
 for_window [class="^kitty$" title="^mpd$"] floating enable
 for_window [class="^kitty$" title="^mpd$"] resize set 1360 520
-assign [class="^kitty$" title="^mpd$"] 4: Media
+assign [class="^kitty$" title="^mpd$"] 14:D
 for_window [class="^kitty$" title="^irc$"] floating enable
 for_window [class="^kitty$" title="^irc$"] resize set 1380 875
-assign [class="^kitty$" title="^irc$"] 6: Chat
+assign [class="^kitty$" title="^irc$"] 6:F
 for_window [class="^cover$"] floating enable
 for_window [class="^cover$"] move position 1050 px 100 px
 assign [class="^cover$"] 4: Media
 for_window [class="^kitty$" title="^lyrics$"] floating enable
 for_window [class="^kitty$" title="^lyrics$"] resize set 830 575
 for_window [class="^kitty$" title="^lyrics$"] move position 1050 px 450 px
-assign [class="^kitty$" title="^lyrics$"] 4: Media
+assign [class="^kitty$" title="^lyrics$"] 14:D
 # }}}
 # Wpg {{{
 for_window [class="Wpg"] floating enable
@@ -138,7 +186,7 @@ for_window [class="zoom"] floating enable
 for_window [class="File-roller"] floating enable
 # }}}
 # Steam {{{
-assign [class="^Steam$" title="^Steam$"] "5: Games"
+assign [class="^Steam$" title="^Steam$"] "5:E"
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^steamwebhelper$" title="^Friends List$"] floating enable
 for_window [class="^steamwebhelper$"] floating enable
@@ -160,9 +208,9 @@ for_window [class="feh"] floating enable
 for_window [class="Florence"] floating enable
 # }}}
 # Discord {{{
-assign [class="^discord$"] "6: Chat"
+assign [class="^discord$"] "6:F"
 for_window [class="^discord$"] floating enable
-assign [class="^Guilded$"] "6: Chat"
+assign [class="^Guilded$"] "6:F"
 for_window [class="^Guilded$"] floating enable
 # }}}
 # }}}

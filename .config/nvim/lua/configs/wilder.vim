@@ -69,3 +69,8 @@ call wilder#set_option('renderer', wilder#renderer_mux({
     \ '/': s:wildmenu_renderer,
     \ 'substitute': s:wildmenu_renderer,
 \ }))
+
+hi WilderAccent gui=underline guisp=FG
+hi WilderPoppupMenuAccent gui=underline guisp=FG
+hi WilderWildmenuAccent gui=underline guisp=FG
+hi WilderPopupMenuSelectedAccent gui=underline guisp=FG

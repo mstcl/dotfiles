@@ -3,21 +3,27 @@ if not present then
 	return
 end
 
+        -- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠋⠉⣉⣉⠙⠿⠋⣠⢴⣊⣙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠁⠀⢀⠔⡩⠔⠒⠛⠧⣾⠊⢁⣀⣀⣀⡙⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠛⠁⠀⠀⠀⠀⠀⡡⠊⠀⠀⣀⣠⣤⣌⣾⣿⠏⠀⡈⢿⡜⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠡⣤⣶⠏⢁⠈⢻⡏⠙⠛⠀⣀⣁⣤⢢⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣄⡀⠣⣌⡙⠀⣘⡁⠜⠈⠑⢮⡭⠴⠚⠉⠀⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⠁⠀⢀⠔⠁⣀⣤⣤⣤⣤⣤⣄⣀⠀⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠁⠀⢀⣠⢠⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⡀⠀⢸⠀⢼⣿⣿⣶⣭⣭⣭⣟⣛⣛⡿⠷⠶⠶⢶⣶⣤⣤⣤⣶⣶⣾⡿⠿⣫⣾⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠈⠉⠉⠉⠉⠉⠙⠛⠛⠻⠿⠿⠿⠷⣶⣶⣶⣶⣶⣶⣶⣶⡾⢗⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣤⣄⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣝⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		-- [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
 local header = {
 	type = "text",
 	val = {
-        [[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠋⠉⣉⣉⠙⠿⠋⣠⢴⣊⣙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠁⠀⢀⠔⡩⠔⠒⠛⠧⣾⠊⢁⣀⣀⣀⡙⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠛⠁⠀⠀⠀⠀⠀⡡⠊⠀⠀⣀⣠⣤⣌⣾⣿⠏⠀⡈⢿⡜⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠡⣤⣶⠏⢁⠈⢻⡏⠙⠛⠀⣀⣁⣤⢢⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣄⡀⠣⣌⡙⠀⣘⡁⠜⠈⠑⢮⡭⠴⠚⠉⠀⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⠁⠀⢀⠔⠁⣀⣤⣤⣤⣤⣤⣄⣀⠀⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠁⠀⢀⣠⢠⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⡀⠀⢸⠀⢼⣿⣿⣶⣭⣭⣭⣟⣛⣛⡿⠷⠶⠶⢶⣶⣤⣤⣤⣶⣶⣾⡿⠿⣫⣾⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠈⠉⠉⠉⠉⠉⠙⠛⠛⠻⠿⠿⠿⠷⣶⣶⣶⣶⣶⣶⣶⣶⡾⢗⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣤⣄⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣝⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-		[[ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
+		[[                      ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ██╗███╗   ███╗    ██╗]],
+		[[                     ██╔╝████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║████╗ ████║   ██╔╝]],
+		[[                    ██╔╝ ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║██╔████╔██║  ██╔╝ ]],
+		[[                   ██╔╝  ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║██║╚██╔╝██║ ██╔╝  ]],
+		[[                  ██╔╝   ██║ ╚████║███████╗╚██████╔╝██████╔╝██║██║ ╚═╝ ██║██╔╝   ]],
+		[[                  ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝     ╚═╝╚═╝    ]],
 	},
 	opts = {
 		position = "left",
@@ -46,7 +52,7 @@ phrase_gen:close()
 
 local heading = {
 	type = "text",
-	val = "  Anonymous " .. date .. " No." .. id .. " ",
+	val = "                   Anonymous " .. date .. " No." .. id .. " ",
 	opts = {
 		position = "left",
 		hl = "AlphaButtons",
@@ -55,7 +61,7 @@ local heading = {
 
 local post_buttons = {
 	type = "text",
-	val = " They don't get it. For me, it's nvim.",
+	val = "                  They don't get it. For me, it's neovim.        ",
 	opts = {
 		position = "left",
 		hl = "AlphaFooter",
@@ -64,7 +70,7 @@ local post_buttons = {
 
 local pre_foot = {
 	type = "text",
-	val = " >>" .. id_2 .. "(OP)                      ",
+	val = "                  >>" .. id_2 .. "(OP)                                 ",
 	opts = {
 		position = "left",
 		hl = "AlphaEmphasis",
@@ -73,7 +79,7 @@ local pre_foot = {
 
 local footer = {
 	type = "text",
-	val = " I've " .. plugins .. " plugins, it launches instantly kek.",
+	val = "                  I've " .. plugins .. " plugins, it launches instantly kek.    ",
 	opts = {
 		position = "left",
 		hl = "AlphaFooter",
@@ -82,7 +88,7 @@ local footer = {
 
 local pre_foot_2 = {
 	type = "text",
-	val = " >>" .. id_1 .. "                                ",
+	val = "                  >>" .. id_1 .. "                                     ",
 	opts = {
 		position = "left",
 		hl = "AlphaEmphasis",
@@ -91,7 +97,7 @@ local pre_foot_2 = {
 
 local footer_2 = {
 	type = "text",
-	val = " " .. phrase .. "      ",
+	val = "                  " .. phrase .. "          ",
 	opts = {
 		position = "left",
 		hl = "AlphaFooter",
@@ -106,7 +112,7 @@ local function button(sc, txt, keybind)
 		text = txt,
 		shortcut = sc,
 		cursor = 0,
-		width = 44,
+		width = 37,
 		align_shortcut = "right",
 		hl_shortcut = "AlphaShortcuts",
 		hl = "AlphaHeader",
@@ -130,9 +136,11 @@ local buttons = {
 	type = "group",
 	val = {
 		button("LDR h", " >open oldfiles", ":Telescope oldfiles<CR>"),
+		button("LDR .", " >open frecency", ":Telescope frecency<CR>"),
 		button("LDR f", " >fuzzy search", ":Telescope find_files<CR>"),
 		button("LDR y", " >browse folders" , ":Telescope file_browser<CR>"),
 		button("LDR /", " >regex search", ":Telescope live_grep<CR>"),
+		button("LDR p", " >plugin status", ":Lazy show<CR>"),
 	},
 	opts = {
 		spacing = 0,
@@ -152,7 +160,7 @@ local section = {
 
 local opts = {
 	layout = {
-		{ type = "padding", val = 1 },
+		{ type = "padding", val = 10 },
 		section.header,
 		{ type = "padding", val = 1 },
 		section.heading,

@@ -9,5 +9,7 @@ else
         kitty @ --to unix:/tmp/mykitty launch --type=tab --tab-title "nvim" --cwd "$PWD" nvim -c ":Alpha"
         sleep 0.1
         kitty @ --to unix:/tmp/mykitty set-spacing --match title:nvim padding=0
+        kitty @ --to unix:/tmp/mykitty set-font-size 14
+        # kitty @ --to unix:/tmp/mykitty set-colors background=#f0f0f0
     fi
 fi

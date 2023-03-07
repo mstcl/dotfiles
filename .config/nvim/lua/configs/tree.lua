@@ -41,6 +41,18 @@ require("nvim-tree").setup({
 			list = {},
 		},
 		signcolumn = "yes",
+		float = {
+			enable = true,
+			quit_on_focus_loss = true,
+			open_win_config = {
+				relative = "editor",
+				border = "rounded",
+				width = 25,
+				height = 59,
+				row = 1,
+				col = 1,
+			},
+		},
 	},
 	renderer = {
 		highlight_opened_files = "name",
@@ -88,22 +100,3 @@ require("nvim-tree").setup({
 })
 require("nvim-tree.view").View.winopts.cursorline = false
 require("nvim-tree.view").View.winopts.wrap = true
-
-local nvim_tree_events = require('nvim-tree.events')
-local bufferline_api = require('bufferline.state')
-
-local function get_tree_size()
-  return require'nvim-tree.view'.View.width
-end
-
-nvim_tree_events.subscribe('TreeOpen', function()
-  bufferline_api.set_offset(get_tree_size())
-end)
-
-nvim_tree_events.subscribe('Resize', function()
-  bufferline_api.set_offset(get_tree_size())
-end)
-
-nvim_tree_events.subscribe('TreeClose', function()
-  bufferline_api.set_offset(0)
-end)

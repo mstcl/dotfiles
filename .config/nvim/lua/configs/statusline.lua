@@ -48,11 +48,11 @@ gl.short_line_list = {
 local colors = {
 	-- normal = "#505050",
 	normal = "#d5d5d5",
-	insert = "#86852c",
-	visual = "#4f7c7e",
-	cmd = "#e65949",
-	replace = "#a56e87",
-	term = "#cb952d",
+	insert = "#4F6C31",
+	visual = "#2b4c5e",
+	cmd = "#A8334C",
+	replace = "#88507D",
+	term = "#a36b37",
 }
 --[[ gls.left[1] = {
 	Gape = {

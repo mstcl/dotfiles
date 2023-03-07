@@ -11,7 +11,8 @@ telescope.setup({
 		selection_caret = " ",
 		entry_prefix = "  ",
 		sorting_strategy = "ascending",
-		layout_strategy = "horizontal",
+		layout_strategy = "vertical",
+		winblend = 20,
 		layout_config = {
 			prompt_position = "top",
 			horizontal = {
@@ -77,10 +78,10 @@ telescope.setup({
 	pickers = {
 		buffers = {
 			sort_lastused = true,
+			theme = "dropdown",
 			prompt_prefix = "   ",
 			previewer = false,
 			layout_config = {
-				width = 0.3,
 				height = 0.4,
 			},
 			mappings = {

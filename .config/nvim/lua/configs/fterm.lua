@@ -1,9 +1,10 @@
 require'FTerm'.setup {
     border = 'rounded',
+    blend = 20,
     dimensions = {
-        height = 0.4,
-        width = 0.4,
-        x = 0.9,
-        y = 0.1,
+        height = 0.3,
+        width = 0.8,
+        x = 0.5,
+        y = 0.9,
     }
 }

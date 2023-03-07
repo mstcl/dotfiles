@@ -7,7 +7,7 @@ set.modeline = true
 set.cursorline = true
 set.cursorlineopt = "number"
 set.synmaxcol = 400
-set.colorcolumn = "80"
+set.colorcolumn = "86"
 set.hidden = true
 set.showmode = false
 set.showcmd = true
@@ -18,6 +18,7 @@ set.termguicolors = true
 set.showtabline = 2
 set.laststatus = 3
 set.ruler = false
+set.pastetoggle="<F2>"
 
 set.foldmethod = "syntax"
 set.foldminlines = 1
@@ -55,6 +56,9 @@ set.softtabstop = 4
 set.expandtab = true
 set.smarttab = true
 set.autoindent = true
+
+set.winblend = 20
+set.pumblend = 20
 
 set.backspace = { "indent", "eol", "start" }
 

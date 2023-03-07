@@ -11,35 +11,35 @@ current_ws_prompt="${current_ws}"
 #  TASKS  #
 ###########
 
-num=$(wc -l < "$HOME/.local/share/todo/todo.txt")
-if [ "$num" -gt "0" ]; then
-    info=$(cat "$HOME/.local/share/todo/todo.txt")
-else
-    info=$(env printf "Nothing to do...\n")
-fi
+# num=$(wc -l < "$HOME/.local/share/todo/todo.txt")
+# if [ "$num" -gt "0" ]; then
+#     info=$(cat "$HOME/.local/share/todo/todo.txt")
+# else
+#     info=$(env printf "Nothing to do...\n")
+# fi
 
 ###########
 #  PICOM  #
 ###########
 
-if pgrep -x "picom" > /dev/null
-then
-    picom_print="ON"
-else
-    picom_print="OFF"
-fi
+# if pgrep -x "picom" > /dev/null
+# then
+#     picom_print="ON"
+# else
+#     picom_print="OFF"
+# fi
 
 ###########
 #  DUNST  #
 ###########
 
-notification="$(dunstctl is-paused)"
-if [ "${notification}" = "false" ]; then
-    notification_print="ON"
-else
-    notification_print="OFF"
-fi
-toggle_print="Picom: $picom_print"
+# notification="$(dunstctl is-paused)"
+# if [ "${notification}" = "false" ]; then
+#     notification_print="ON"
+# else
+#     notification_print="OFF"
+# fi
+# toggle_print="Picom: $picom_print"
 
 ############
 #  VOLUME  #
@@ -48,18 +48,18 @@ toggle_print="Picom: $picom_print"
 volume="$(pactl list sinks | grep '^[[:space:]]Volume:' | \
     head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')"
 
-if [ "${volume}" -lt 25 ]; then
-    volume_bar="█▒▒▒"
-fi
-if [ "${volume}" -gt 24 ] && [ "${volume}" -lt 50 ]; then
-    volume_bar="██▒▒"
-fi
-if [ "${volume}" -gt 49 ] && [ "${volume}" -lt 75 ]; then
-    volume_bar="███▒"
-fi
-if [ "${volume}" -gt 74 ]; then
-    volume_bar="████"
-fi
+# if [ "${volume}" -lt 25 ]; then
+#     volume_bar="█▒▒▒"
+# fi
+# if [ "${volume}" -gt 24 ] && [ "${volume}" -lt 50 ]; then
+#     volume_bar="██▒▒"
+# fi
+# if [ "${volume}" -gt 49 ] && [ "${volume}" -lt 75 ]; then
+#     volume_bar="███▒"
+# fi
+# if [ "${volume}" -gt 74 ]; then
+#     volume_bar="████"
+# fi
 
 
 ##############
@@ -87,23 +87,24 @@ fi
 #  MEDIA  #
 ###########
 
-status=$(playerctl -p spotify,mpd status)
-song=$(playerctl metadata --format "{{ title }}")
-metadata=$(playerctl metadata --format "{{ artist }} - {{ album }}")
+# status=$(playerctl -p spotify,mpd status)
+# song=$(playerctl metadata --format "{{ title }}")
+# metadata=$(playerctl metadata --format "{{ artist }} - {{ album }}")
 
-echo "┗━━━━ <b>$(date +'%a %b %d %H:%M')</b> ━━━━┛"
+# echo "┗━━━━ <b>$(date +'%a %b %d %H:%M')</b> ━━━━┛"
+echo "<b>$(date +'%a %b %d %H:%M')</b>"
 # echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "<b>Workspace</b> [${current_ws_prompt}]"
 echo "<b>Layout</b> [${lang}]"
 echo "<b>Volume</b> [${volume}%]"
 # echo "<b>Updates</b> [${updates} packages]"
-echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
+# echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
 # echo "<b>Tasks</b>"
 # echo "<i>${info}</i>"
 # echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
-echo "<b>${status}</b>"
-echo "<i>${song}</i>"
-echo "${metadata}"
+# echo "<b>${status}</b>"
+# echo "<i>${song}</i>"
+# echo "${metadata}"
 # echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 # echo "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
 # echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

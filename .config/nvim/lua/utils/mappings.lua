@@ -1,8 +1,5 @@
 local map = vim.keymap.set
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ",."
-
 map("n", "Q", "", { silent = true, noremap = true })
 map("n", "gQ", "", { silent = true, noremap = true })
 
@@ -51,10 +48,10 @@ map("x", "<", "<gv", { silent = true, noremap = true })
 map("x", ">", ">gv", { silent = true, noremap = true })
 
 map("n", "<leader>a", ":call FoldColumnToggle()<CR>", { silent = true, noremap = true })
-map('n', 'zR', "require('ufo').openAllFolds", {silent = true, noremap = true })
-map('n', 'zM', "require('ufo').closeAllFolds", {silent = true, noremap = true })
-map('n', 'zr', "require('ufo').openFoldsExceptKinds", {silent = true, noremap = true })
-map('n', 'zm', "require('ufo').closeFoldsWith", {silent = true, noremap = true })
+map('n', 'zR', "<cmd>lua require('ufo').openAllFolds<CR>", {silent = true, noremap = true })
+map('n', 'zM', "<cmd>lua require('ufo').closeAllFolds<CR>", {silent = true, noremap = true })
+map('n', 'zr', "<cmd>lua require('ufo').openFoldsExceptKinds<CR>", {silent = true, noremap = true })
+map('n', 'zm', "<cmd>lua require('ufo').closeFoldsWith<CR>", {silent = true, noremap = true })
 
 map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { silent = true, noremap = true })
 
@@ -108,18 +105,10 @@ map("n", "<leader>n", "<cmd>Telescope builtin<CR>", { silent = true, noremap = t
 
 map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>ps", "<cmd>PackerStatus<CR>", { silent = true, noremap = true })
-map(
-	"n",
-	"<leader>pr",
-	":wa<CR> <bar> :source %<CR> <bar> :PackerCompile<CR> <bar> :PackerInstall<CR> <bar> :echo 'Recompiled Packer'<CR>",
-	{ silent = true, noremap = true }
-)
-map("n", "<leader>pi", "<cmd>PackerInstall<CR>", { silent = true, noremap = true })
-map("n", "<leader>pc", "<cmd>PackerCompile<CR>", { silent = true, noremap = true })
+map("n", "<leader>p", "<cmd>Lazy show<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>qr", "<cmd>Trouble lsp_references<CR>", { silent = true, noremap = true })
-map("n", "<leader>qd", "<cmd>Trouble lsp_definitions<CR>", { silent = true, noremap = true })
+map("n", "<leader>qd", "<cmd>lua Scroll('definition')<CR>", { silent = true, noremap = true })
 map("n", "<leader>qi", "<cmd>Trouble lsp_implentations<CR>", { silent = true, noremap = true })
 map("n", "<leader>qt", "<cmd>Trouble lsp_type_definitions<CR>", { silent = true, noremap = true })
 map("n", "<leader>qc", "<cmd>Telescope lsp_code_actions<CR>", { silent = true, noremap = true })
@@ -154,6 +143,8 @@ map("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { silent = true, noremap =
 
 map("n", "<leader>;", "<cmd>Telescope keymaps<CR>", { silent = true, noremap = true })
 
+map("n", "<leader>.", "<cmd>Telescope frecency<CR>", { silent = true, noremap = true })
+
 map("n", "]p", "<cmd>Gitsigns next_hunk<CR>", { silent = true, noremap = true })
 map("n", "[p", "<cmd>Gitsigns prev_hunk<CR>", { silent = true, noremap = true })
 
@@ -174,3 +165,56 @@ map("n", "<A-9>", "<cmd>BufferLast<CR>", { silent = true, noremap = true })
 map("n", "<A-t>", "<cmd>BufferPin<CR>", { silent = true, noremap = true })
 map("n", "<A-c>", "<cmd>BufferClose<CR>", { silent = true, noremap = true })
 map("n", "<A-u>", "<cmd>BufferPick<CR>", { silent = true, noremap = true })
+
+-- Half-window movements:
+map({ 'n', 'x' }, '<C-u>', "<Cmd>lua Scroll('<C-u>', 1, 1)<CR>")
+map({ 'n', 'x' }, '<C-d>', "<Cmd>lua Scroll('<C-d>', 1, 1)<CR>")
+
+-- Page movements:
+map({ 'n', 'x' }, '<C-b>', "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
+map({ 'n', 'x' }, '<C-f>', "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
+map({ 'n', 'x' }, '<PageUp>', "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
+map({ 'n', 'x' }, '<PageDown>', "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
+
+-- Start/end of line:
+map({ 'n', 'x' }, '0', "<Cmd>lua Scroll('0')<CR>")
+map({ 'n', 'x' }, '^', "<Cmd>lua Scroll('^')<CR>")
+map({ 'n', 'x' }, '$', "<Cmd>lua Scroll('$', 0, 1)<CR>")
+
+-- Paragraph movements:
+map({ 'n', 'x' }, '{', "<Cmd>lua Scroll('{')<CR>")
+map({ 'n', 'x' }, '}', "<Cmd>lua Scroll('}')<CR>")
+
+-- Previous/next search result:
+map('n', 'n', "<Cmd>lua Scroll('n', 1)<CR>")
+map('n', 'N', "<Cmd>lua Scroll('N', 1)<CR>")
+map('n', '*', "<Cmd>lua Scroll('*', 1)<CR>")
+map('n', '#', "<Cmd>lua Scroll('#', 1)<CR>")
+map('n', 'g*', "<Cmd>lua Scroll('g*', 1)<CR>")
+map('n', 'g#', "<Cmd>lua Scroll('g#', 1)<CR>")
+
+
+-- Screen scrolling:
+map('n', 'zz', "<Cmd>lua Scroll('zz', 0, 1)<CR>")
+map('n', 'zt', "<Cmd>lua Scroll('zt', 0, 1)<CR>")
+map('n', 'zb', "<Cmd>lua Scroll('zb', 0, 1)<CR>")
+map('n', 'z.', "<Cmd>lua Scroll('z.', 0, 1)<CR>")
+map('n', 'z<CR>', "<Cmd>lua Scroll('zt^', 0, 1)<CR>")
+map('n', 'z-', "<Cmd>lua Scroll('z-', 0, 1)<CR>")
+map('n', 'z^', "<Cmd>lua Scroll('z^', 0, 1)<CR>")
+map('n', 'z+', "<Cmd>lua Scroll('z+', 0, 1)<CR>")
+map('n', '<C-y>', "<Cmd>lua Scroll('<C-y>', 0, 1)<CR>")
+map('n', '<C-e>', "<Cmd>lua Scroll('<C-e>', 0, 1)<CR>")
+
+-- Horizontal screen scrolling:
+map('n', 'zH', "<Cmd>lua Scroll('zH')<CR>")
+map('n', 'zL', "<Cmd>lua Scroll('zL')<CR>")
+map('n', 'zs', "<Cmd>lua Scroll('zs')<CR>")
+map('n', 'ze', "<Cmd>lua Scroll('ze')<CR>")
+map('n', 'zh', "<Cmd>lua Scroll('zh', 0, 1)<CR>")
+map('n', 'zl', "<Cmd>lua Scroll('zl', 0, 1)<CR>")
+
+-- SCROLL_WHEEL_KEYMAPS:
+
+map({ 'n', 'x' }, '<ScrollWheelUp>', "<Cmd>lua Scroll('<ScrollWheelUp>')<CR>")
+map({ 'n', 'x' }, '<ScrollWheelDown>', "<Cmd>lua Scroll('<ScrollWheelDown>')<CR>")
