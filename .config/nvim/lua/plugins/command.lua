@@ -5,7 +5,7 @@ return {
 		build = ":UpdateRemotePlugins",
 		event = "CmdlineEnter",
 		config = function()
-			vim.cmd([[ source $HOME/.config/nvim/lua/configs/wilder.vim ]])
+			require('configs.wilder')
 		end,
 	},
 }

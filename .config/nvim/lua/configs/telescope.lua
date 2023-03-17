@@ -6,13 +6,27 @@ end
 telescope.setup({
 	defaults = {
 		use_less = false,
-		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-		prompt_prefix = "  ",
-		selection_caret = " ",
+		initial_mode = "insert",
+		selection_strategy = "reset",
+		vimgrep_arguments = {
+			"rg",
+			"-L",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+		},
+		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		prompt_prefix = "   ",
+		selection_caret = "  ",
 		entry_prefix = "  ",
+		path_display = { "truncate" },
+        color_devicons = true,
 		sorting_strategy = "ascending",
 		layout_strategy = "vertical",
-		winblend = 20,
+		winblend = 0,
 		layout_config = {
 			prompt_position = "top",
 			horizontal = {
@@ -78,12 +92,8 @@ telescope.setup({
 	pickers = {
 		buffers = {
 			sort_lastused = true,
-			theme = "dropdown",
 			prompt_prefix = "   ",
 			previewer = false,
-			layout_config = {
-				height = 0.4,
-			},
 			mappings = {
 				i = {
 					["<c-d>"] = "delete_buffer",
@@ -103,6 +113,7 @@ telescope.setup({
 				"rg",
 				"--no-ignore",
 				"--files",
+				"--hidden",
 			},
 			prompt_prefix = "   ",
 			-- theme = "dropdown",
@@ -110,13 +121,12 @@ telescope.setup({
 		},
 		oldfiles = {
 			prompt_prefix = "   ",
-			theme = "dropdown",
 			previewer = false,
 		},
 		colorscheme = {
 			prompt_prefix = "   ",
 			previewer = false,
-			theme = "dropdown",
+			-- theme = "dropdown",
 		},
 		highlights = {
 			prompt_prefix = "   ",
@@ -150,64 +160,82 @@ telescope.setup({
 		},
 		commands = {
 			prompt_prefix = "   ",
-			theme = "ivy",
-			layout_config = {
+			-- theme = "ivy",
+			--[[ layout_config = {
 				height = 10,
-			},
+			}, ]]
 		},
 		registers = {
 			prompt_prefix = "   ",
-			theme = "ivy",
-			layout_config = {
+			-- theme = "ivy",
+			--[[ layout_config = {
 				height = 10,
-			},
+			}, ]]
 		},
 		spell_suggests = {
 			prompt_prefix = "   ",
-			theme = "ivy",
-			layout_config = {
+			-- theme = "ivy",
+			--[[ layout_config = {
 				height = 10,
-			},
+			}, ]]
 		},
 		keymaps = {
 			prompt_prefix = "   ",
-			theme = "ivy",
-			layout_config = {
+			-- theme = "ivy",
+			--[[ layout_config = {
 				height = 10,
-			},
+			}, ]]
 		},
 		lsp_code_actions = {
 			prompt_prefix = "   ",
 			theme = "cursor",
 		},
 		lsp_references = {
-			prompt_prefix = "   ",
+			--[[ prompt_prefix = "   ",
 			theme = "ivy",
 			layout_config = {
 				height = 20,
-			},
+			}, ]]
 		},
 		lsp_implentations = {
 			prompt_prefix = "   ",
-			theme = "ivy",
-			layout_config = {
+			-- theme = "ivy",
+			--[[ layout_config = {
 				height = 20,
-			},
+			}, ]]
 		},
 		lsp_document_diagnostics = {
 			prompt_prefix = " 律 ",
-			theme = "ivy",
+			--[[ theme = "ivy",
 			layout_config = {
 				height = 20,
-			},
+			}, ]]
 		},
 		extensions = {
+			file_browser = {
+				hijack_netrw = true,
+				auto_depth = true,
+				hidden = true,
+				cwd_to_path = true,
+			},
 			fzf = {
 				fuzzy = true,
 				override_generic_sorter = true,
 				override_file_sorter = true,
 				case_mode = "smart_case",
 			},
+			undo = {
+				use_delta = true,
+				side_by_side = true,
+				layout_strategy = "vertical",
+				layout_config = {
+					preview_height = 0.8,
+				},
+			},
+			--[[ fzf_writer = {
+				minimum_grep_characters = 2,
+				minimum_files_characters = 2,
+			}, ]]
 		},
 	},
 })
@@ -216,3 +244,6 @@ telescope.load_extension("fzf")
 telescope.load_extension("zoxide")
 telescope.load_extension("file_browser")
 telescope.load_extension("frecency")
+telescope.load_extension("undo")
+telescope.load_extension("dap")
+telescope.load_extension("lazy")

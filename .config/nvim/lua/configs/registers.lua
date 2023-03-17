@@ -44,8 +44,8 @@ registers.setup({
     window = {
         max_width = 60,
         highlight_cursorline = true,
-        border = "rounded",
-        transparency = 20,
+        border = "single",
+        transparency = 0,
     },
 
     sign_highlights = {

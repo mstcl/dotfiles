@@ -2,11 +2,13 @@ local present, cmp = pcall(require, "cmp")
 if not present then
 	return
 end
+
 local kind_icons = {
+	Namespace = "",
 	Text = "",
-	Method = "ƒ",
+	Method = "",
 	Function = "",
-	Constructor = "",
+	Constructor = " ",
 	Field = "",
 	Variable = "",
 	Class = "ﴯ",
@@ -14,21 +16,34 @@ local kind_icons = {
 	Module = "",
 	Property = "ﰠ",
 	Unit = "",
-	Value = "",
+	Value = "",
 	Enum = "了",
 	Keyword = "",
 	Snippet = "",
 	Color = "",
-	File = "",
+	File = "",
 	Reference = "",
-	Folder = "",
+	Folder = "",
 	EnumMember = "",
 	Constant = "",
 	Struct = "",
 	Event = "",
 	Operator = "",
-	TypeParameter = "",
+	TypeParameter = "",
+	Table = "",
+	Object = " ",
+	Tag = "",
+	Array = "[]",
+	Boolean = " ",
+	Number = " ",
+	Null = "ﳠ",
+	String = " ",
+	Calendar = "",
+	Watch = " ",
+	Package = "",
+	Copilot = " ",
 }
+
 
 local has_any_words_before = function()
 	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -95,43 +110,53 @@ cmp.setup({
 			end
 		end,
 		["<Tab>"] = function(fallback)
-				if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-					press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-				elseif cmp.visible() then
-					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				elseif has_any_words_before() then
-					press("<Tab>")
-				else
-					fallback()
-				end
-			end,
+			if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+				press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+			elseif cmp.visible() then
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+			elseif has_any_words_before() then
+				press("<Tab>")
+			else
+				fallback()
+			end
+		end,
 		["<S-Tab>"] = function(fallback)
-				if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-					press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-				elseif cmp.visible() then
-					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-				else
-					fallback()
-				end
-			end,
+			if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+				press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+			elseif cmp.visible() then
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+			else
+				fallback()
+			end
+		end,
 	}),
 	formatting = {
-		format = function(entry, vim_item)
-			vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
-			-- vim_item.abbr = vim_item.abbr:sub(1, -2)
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-			vim_item.menu = ({
+		fields = {"kind", "abbr", "menu"},
+		format = function(entry, item)
+			local icon = kind_icons[item.kind]
+			icon = " " .. icon .. " "
+			item.menu = "   (" .. item.kind .. ")"
+			item.kind = icon
+			item.abbr = string.sub(item.abbr, 1, 20)
+			--[[ item.abbr = item.abbr:sub(1, -2)
+			item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
+			item.menu = ({
 				buffer = "[﬘]",
 				nvim_lsp = "[]",
 				ultisnips = "[]",
-			})[entry.source.name]
-			return vim_item
+			})[entry.source.name] ]]
+			return item
 		end,
 	},
 	window = {
+		completion = {
+			side_padding = 0,
+			scrollbar = false,
+			-- border = border "CmpBorder",
+		},
 		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+			border = "single",
+			winhighlight = "NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
 			max_width = 120,
 			max_height = math.floor(vim.o.lines * 0.3),
 		},

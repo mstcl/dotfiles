@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ wrap = false, float = false })<CR>", opts)
 	require("lsp_signature").on_attach({
 		bind = true,
-		handler_opts = { border = "rounded" },
+		handler_opts = { border = "single" },
 		floating_window = true,
 		floating_window_above_cur_line = true,
 		fix_pos = false,

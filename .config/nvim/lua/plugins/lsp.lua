@@ -18,6 +18,10 @@ return {
 		event = "InsertEnter",
 	},
 	{
+		"VidocqH/lsp-lens.nvim",
+		lazy = true,
+	},
+	{
 		"utilyre/barbecue.nvim",
 		lazy = true,
 		event = "BufRead",
@@ -46,7 +50,7 @@ return {
 				require("glow-hover").setup({
 					max_width = 50,
 					padding = 10,
-					border = "rounded",
+					border = "single",
 					glow_path = "glow",
 				}
 			end,

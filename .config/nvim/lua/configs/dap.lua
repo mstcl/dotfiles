@@ -53,7 +53,7 @@ ui.setup{
     floating = {
         max_height = nil, -- These can be integers or a float between 0 and 1.
         max_width = nil, -- Floats will be treated as percentage of your screen.
-        border = "rounded", -- Border style. Can be "single", "double" or "rounded"
+        border = "single", -- Border style. Can be "single", "double" or "rounded"
         mappings = {
             close = { "q", "<Esc>" },
         },

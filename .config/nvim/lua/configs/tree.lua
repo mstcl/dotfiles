@@ -34,7 +34,7 @@ require("nvim-tree").setup({
 	},
 	view = {
 		width = 25,
-		side = "left",
+		side = "right",
 		hide_root_folder = true,
 		mappings = {
 			custom_only = false,
@@ -44,14 +44,25 @@ require("nvim-tree").setup({
 		float = {
 			enable = true,
 			quit_on_focus_loss = true,
-			open_win_config = {
-				relative = "editor",
-				border = "rounded",
-				width = 25,
-				height = 59,
-				row = 1,
-				col = 1,
-			},
+			open_win_config = function()
+				local screen_w = vim.opt.columns:get()
+				local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+				local _height = screen_h * 0.8
+				local _width = screen_w * 0.8
+				local width = math.floor(_width)
+				local height = math.floor(_height)
+				local center_y = ((vim.opt.lines:get() - _height) / 2) - vim.opt.cmdheight:get()
+				local center_x = (screen_w - _width) / 2
+				return {
+					anchor = "NW",
+					relative = "editor",
+					border = "single",
+					row = center_y,
+					col = center_x,
+					width = width,
+					height = height,
+				}
+			end,
 		},
 	},
 	renderer = {

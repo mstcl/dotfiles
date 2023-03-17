@@ -29,7 +29,7 @@ map("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = 
 
 map("n", "<F1>", "<cmd>lua require'FTerm'.toggle()<CR>", { silent = true, noremap = true })
 
-map("n", "<C-T>", "<cmd>NvimTreeToggle<CR>", { silent = true, noremap = true })
+-- map("n", "<C-T>", "<cmd>NvimTreeToggle<CR>", { silent = true, noremap = true })
 map("n", "<C-N>", "<cmd>call SetNumber()<CR>", { silent = true, noremap = true })
 map("n", "<C-L>", "<cmd>set list!<CR>", { silent = true, noremap = true })
 map("n", "<C-J>", "<cmd>set cursorline!<CR>", { silent = true, noremap = true })
@@ -48,10 +48,10 @@ map("x", "<", "<gv", { silent = true, noremap = true })
 map("x", ">", ">gv", { silent = true, noremap = true })
 
 map("n", "<leader>a", ":call FoldColumnToggle()<CR>", { silent = true, noremap = true })
-map('n', 'zR', "<cmd>lua require('ufo').openAllFolds<CR>", {silent = true, noremap = true })
-map('n', 'zM', "<cmd>lua require('ufo').closeAllFolds<CR>", {silent = true, noremap = true })
-map('n', 'zr', "<cmd>lua require('ufo').openFoldsExceptKinds<CR>", {silent = true, noremap = true })
-map('n', 'zm', "<cmd>lua require('ufo').closeFoldsWith<CR>", {silent = true, noremap = true })
+map('n', 'zR', require('ufo').openAllFolds)
+map('n', 'zM', require('ufo').closeAllFolds)
+map('n', 'zr', require('ufo').openFoldsExceptKinds)
+map('n', 'zm', require('ufo').closeFoldsWith, {})
 
 map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { silent = true, noremap = true })
 
@@ -61,13 +61,14 @@ map("n", "<leader>dd", "<cmd>DiffviewOpen<CR>", { silent = true, noremap = true 
 map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { silent = true, noremap = true })
 map("n", "<leader>df", "<cmd>DiffviewFileHistory<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>er", "<cmd>lua require'dapui'.toggle()<CR>", { silent = true, noremap = true })
-map("n", "<leader>es", "<cmd>lua require'dap'.continue()<CR>", { silent = true, noremap = true })
-map("n", "<leader>eu", "<cmd>lua require'dap'.step_over()<CR>", { silent = true, noremap = true })
-map("n", "<leader>ei", "<cmd>lua require'dap'.step_into()<CR>", { silent = true, noremap = true })
-map("n", "<F4>", "<cmd>lua require'dap'.step_into()<CR>", { silent = true, noremap = true })
-map("n", "<leader>eo", "<cmd>lua require'dap'.step_out()<CR>", { silent = true, noremap = true })
-map("n", "<leader>eb", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { silent = true, noremap = true })
+map("n", "-", "<cmd>Telescope dap commands<CR>", { silent = true, noremap = true })
+map("n", "<leader>ev", "<cmd>Telescope dap variables<CR>", { silent = true, noremap = true })
+map("n", "<S->", "<cmd>lua require'dap'.continue()<CR>", { silent = true, noremap = true })
+map("n", "<PageUp>", "<cmd>lua require'dap'.step_over()<CR>", { silent = true, noremap = true })
+
+map("n", "<PageDown>", "<cmd>lua require'dap'.step_into()<CR>", { silent = true, noremap = true })
+map("n", "<End>", "<cmd>lua require'dap'.step_out()<CR>", { silent = true, noremap = true })
+map("n", "<Home>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { silent = true, noremap = true })
 map(
 	"n",
 	"<leader>ec",
@@ -95,43 +96,39 @@ map("n", "<leader>i", "<cmd>IndentBlanklineToggle<CR>", { silent = true, noremap
 
 map("n", "<leader>j", "<cmd>Telescope resume<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>k", "<cmd>Telescope zoxide list<CR>", { silent = true, noremap = true })
+map("n", "<leader>k", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>l", ":call ToggleCmp()<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>m", "<cmd>Telescope man_pages<CR>", { silent = true, noremap = true })
+map("n", "<leader>m", "<cmd>Telescope keymaps<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>n", "<cmd>Telescope builtin<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>p", "<cmd>Lazy show<CR>", { silent = true, noremap = true })
+map("n", "<leader>p", "<cmd>Telescope lazy<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>qr", "<cmd>Trouble lsp_references<CR>", { silent = true, noremap = true })
 map("n", "<leader>qd", "<cmd>lua Scroll('definition')<CR>", { silent = true, noremap = true })
 map("n", "<leader>qi", "<cmd>Trouble lsp_implentations<CR>", { silent = true, noremap = true })
 map("n", "<leader>qt", "<cmd>Trouble lsp_type_definitions<CR>", { silent = true, noremap = true })
-map("n", "<leader>qc", "<cmd>Telescope lsp_code_actions<CR>", { silent = true, noremap = true })
+map({"n", "v"}, "<leader>qc", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>r", "<cmd>Registers<CR>", { silent = true, noremap = true })
 
+map("n", "<leader>sb", ":lua MiniMap.toggle() <CR>", { silent = true, noremap = true })
 map("n", "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>", { silent = true, noremap = true })
 map("n", "<leader>sf", "<cmd>Telescope spell_suggests<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>t", ":lua require('telescope').extensions.dict.synonyms()<CR>", { silent = true, noremap = true })
-
-map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { silent = true, noremap = true })
+map("n", "<leader>t", "<cmd>Telescope frecency<CR>", { silent = true, noremap = true })
+map("n", "<leader>u", "<cmd>Telescope undo<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>vr", "<cmd>TSBufToggle rainbow<CR>", { silent = true, noremap = true })
 map("n", "<leader>vh", "<cmd>TSBufToggle highlight<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>w", ":call TrimWhiteSpace()<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>xx", "<cmd>Trouble<CR>", { silent = true, noremap = true })
-map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<CR>", { silent = true, noremap = true })
-map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<CR>", { silent = true, noremap = true })
-map("n", "<leader>xl", "<cmd>Trouble loclist<CR>", { silent = true, noremap = true })
-map("n", "<leader>xq", "<cmd>Trouble quickfix<CR>", { silent = true, noremap = true })
+map("n", "<leader>x", "<cmd>Trouble workspace_diagnostics<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>y", "<cmd>Telescope file_browser<CR>", { silent = true, noremap = true })
 
@@ -140,10 +137,6 @@ map("n", "<leader>z", "<cmd>ZenMode<CR>", { silent = true, noremap = true })
 map("n", "<leader><space>", "<C-^>", { silent = true, noremap = true })
 
 map("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { silent = true, noremap = true })
-
-map("n", "<leader>;", "<cmd>Telescope keymaps<CR>", { silent = true, noremap = true })
-
-map("n", "<leader>.", "<cmd>Telescope frecency<CR>", { silent = true, noremap = true })
 
 map("n", "]p", "<cmd>Gitsigns next_hunk<CR>", { silent = true, noremap = true })
 map("n", "[p", "<cmd>Gitsigns prev_hunk<CR>", { silent = true, noremap = true })
@@ -173,8 +166,6 @@ map({ 'n', 'x' }, '<C-d>', "<Cmd>lua Scroll('<C-d>', 1, 1)<CR>")
 -- Page movements:
 map({ 'n', 'x' }, '<C-b>', "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
 map({ 'n', 'x' }, '<C-f>', "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
-map({ 'n', 'x' }, '<PageUp>', "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
-map({ 'n', 'x' }, '<PageDown>', "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
 
 -- Start/end of line:
 map({ 'n', 'x' }, '0', "<Cmd>lua Scroll('0')<CR>")

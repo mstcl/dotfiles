@@ -1,6 +1,6 @@
 require'FTerm'.setup {
-    border = 'rounded',
-    blend = 20,
+    border = 'single',
+    blend = 0,
     dimensions = {
         height = 0.3,
         width = 0.8,

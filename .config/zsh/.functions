@@ -116,12 +116,17 @@ fif() {
 }
 # }}}
 # Neovim {{{
-function nvim() {
-    if [[ "$#" -ne 0 ]]; then
-        /usr/bin/nvim $@
+function nvm() {
+    prc=$(ps -ef | grep glrnvim | wc -l)
+    if [[ "$prc" -le 1 ]] then
+        if [[ "$#" -ne 0 ]]; then
+            i3-msg workspace "11:A" > /dev/null && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim $@
+            return
+        fi
+    else
+        /usr/bin/nvr --remote $@
         return
     fi
-    /usr/bin/nvim -c ":Alpha"
 }
 # }}}
 # Dasht {{{

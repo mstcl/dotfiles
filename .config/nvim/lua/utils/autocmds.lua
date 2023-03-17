@@ -1,20 +1,74 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+local function applyFoldsAndThenCloseAllFolds(bufnr, providerName)
+	require("async")(function()
+		bufnr = bufnr or vim.api.nvim_get_current_buf()
+		-- make sure buffer is attached
+		require("ufo").attach(bufnr)
+		-- getFolds return Promise if providerName == 'lsp'
+		local ok, ranges = pcall(await, require("ufo").getFolds(bufnr, providerName))
+		if ok and ranges then
+			ok = require("ufo").applyFolds(bufnr, ranges)
+			if ok then
+				require("ufo").closeAllFolds()
+			end
+		end
+	end)
+end
+
+local ufo = augroup("ufo", { clear = true })
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = "*.lua",
+	group = ufo,
+	callback = function(e)
+		applyFoldsAndThenCloseAllFolds(e.buf, "lsp")
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = "*.py",
+	group = ufo,
+	callback = function(e)
+		applyFoldsAndThenCloseAllFolds(e.buf, "indent")
+		vim.cmd("setlocal fdm=expr")
+	end,
+})
+
+local map = augroup("map", { clear = true })
+--[[ autocmd("BufRead", {
+	pattern = {"*.py", "*.lua", "*.tex"},
+	command = "lua MiniMap.toggle()",
+	group = map
+}) ]]
+
 local nvimcmp = augroup("nvimcmp", { clear = true })
-autocmd("BufWritePost", {
+autocmd({"BufWritePost"}, {
 	pattern = "*.snipppets",
 	group = nvimcmp,
 	command = "CmpUltisnipsReloadSnippets",
 })
 
 local alpha = augroup("alpha", { clear = true })
-autocmd("User", {
+autocmd({"User"}, {
 	pattern = "AlphaReady",
+	group = alpha,
 	command = "set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=3",
+})
+autocmd({"StdinReadPre"}, {
+	pattern = "*",
+	command = "let g:isReadingFromStdin = 1",
 	group = alpha,
 })
-
+autocmd({"VimEnter"}, {
+	pattern = "*",
+	group = alpha,
+    callback = function()
+        if vim.fn.argc() == 0 then
+            vim.cmd("Alpha")
+        end
+    end
+})
 autocmd({ "WinEnter", "BufRead", "BufNewFile" }, {
 	pattern = "*",
 	command = "if &ft != 'alpha' | call CleanEmptyBuffers() | endif",
@@ -113,7 +167,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = indentgroup,
 	group = indentft,
-	command = "nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm zm:IndentBlanklineRefresh<CR> | nnoremap <silent> zM zM:IndentBlanklineRefresh<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr zr:IndentBlanklineRefresh<CR> | nnoremap <silent> zR zR:IndentBlanklineRefresh<CR>",
+	command = "nnoremap <silent> zA zA:IndentBlanklineRefresh<CR> | nnoremap <silent> za za:IndentBlanklineRefresh<CR> | nnoremap <silent> zm :lua require('ufo').closeFoldsWith() require('indent_blankline').refresh()<CR> | nnoremap <silent> zM :lua require('ufo').closeAllFolds() require('indent_blankline').refresh()<CR> | nnoremap <silent> zc zc:IndentBlanklineRefresh<CR> | nnoremap <silent> zC zC:IndentBlanklineRefresh<CR> | nnoremap <silent> zr :lua require('ufo').openFoldsExceptKinds() require('indent_blankline').refresh()<CR> | nnoremap <silent> zR :lua require('ufo').openAllFolds() require('indent_blankline').refresh()<CR> | nnoremap <silent> zo zo:IndentBlanklineRefresh<CR> | nnoremap <silent> zO zO:IndentBlanklineRefresh<CR>",
 })
 
 local floaterm = augroup("floaterm", { clear = true })
@@ -147,7 +201,6 @@ autocmd({ "BufEnter" }, {
 		end
 	end,
 }) ]]
-
 local telescope = augroup("telescope", { clear = true })
 autocmd({ "Filetype" }, {
 	pattern = "TelescopePrompt",

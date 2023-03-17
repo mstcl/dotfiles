@@ -22,6 +22,7 @@ ts.setup({
         "lua",
         "bash",
         "toml",
+        "comment",
     },
     highlight = {
         enable = true,

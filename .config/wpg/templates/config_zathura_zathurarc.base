@@ -1,5 +1,5 @@
 # :.config/zathura/zathurarc
-set font "{font0} {font-size}"
+set font "{font1} {font-size}"
 set synctex true
 set selection-notification "true"
 set guioptions ""

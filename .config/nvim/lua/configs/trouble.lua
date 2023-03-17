@@ -4,6 +4,6 @@ if not present then
 end
 
 trouble.setup{
-    mode = "document_diagnostics",
+    mode = "workspace_diagnostics",
     padding = false,
 }

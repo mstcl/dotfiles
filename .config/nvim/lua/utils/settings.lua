@@ -29,6 +29,7 @@ set.foldlevel = 99
 set.foldcolumn = "1"
 
 set.wrap = true
+set.whichwrap = set.whichwrap + "<>[]hl"
 set.scrolljump = 1
 set.wrapmargin = 0
 set.textwidth = 0
@@ -57,8 +58,8 @@ set.expandtab = true
 set.smarttab = true
 set.autoindent = true
 
-set.winblend = 20
-set.pumblend = 20
+set.winblend = 0
+set.pumblend = 0
 
 set.backspace = { "indent", "eol", "start" }
 

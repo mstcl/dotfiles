@@ -2,7 +2,7 @@ return {
 	{
 		"mfussenegger/nvim-dap-python",
 		lazy = true,
-		dependencies = "nvim-dap",
+		ft = "python",
 		config = function()
 			require("dap-python").setup("/usr/bin/python3", { justMyCode = false })
 		end,

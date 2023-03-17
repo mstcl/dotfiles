@@ -1,5 +1,13 @@
 return {
 	{
+		"echasnovski/mini.cursorword",
+		event = "CursorMoved",
+		version = false,
+		config = function()
+			require("mini.cursorword").setup()
+		end,
+	},
+	{
 		"b3nj5m1n/kommentary",
 		lazy = true,
 		event = "CursorMoved",
@@ -24,23 +32,38 @@ return {
 		end,
 	},
 	{
-		"junegunn/vim-easy-align",
+		"echasnovski/mini.align",
+		version = false,
+		event = "VeryLazy",
 		lazy = true,
-		keys = "<Plug>(EasyAlign)",
+		config = function()
+			require("mini.align").setup()
+		end,
 	},
 	{
+		"echasnovski/mini.map",
+		ft = { "python", "tex", "lua", "markdown", "md" },
+		version = false,
+		config = function()
+			require("configs.map")
+			vim.cmd("lua MiniMap.toggle()")
+		end,
+	},
+	--[[ {
 		"mbbill/undotree",
 		lazy = true,
 		cmd = "UndotreeToggle",
 		config = function()
 			require("configs.undotree")
 		end,
-	},
+	}, ]]
 	{
 		"ur4ltz/surround.nvim",
 		lazy = true,
 		keys = {
 			{ "s", mode = { "n", "v" } },
+			{ "c", mode = { "n", "v" } },
+			{ "d", mode = { "n", "v" } },
 		},
 		config = function()
 			require("surround").setup({

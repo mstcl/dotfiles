@@ -31,17 +31,24 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     return newVirtText
 end
 
+local ftMap = {
+    python = 'indent',
+    lua = 'lsp',
+    vim = 'indent',
+    git = ''
+}
+
 ufo.setup({
-    provider_selector = function(bufnr, filetype)
-        return { "lsp", "indent" }
+    provider_selector = function(bufnr, filetype, buftype)
+        return ftMap[filetype]
     end,
     open_fold_hl_timeout = 150,
     close_fold_kinds = {'imports', 'comment', 'region'},
     preview = {
         win_config = {
-            border = "rounded",
+            border = "single",
             winhighlight = 'Normal:Normal',
-            winblend = 20,
+            winblend = 0,
         },
         mappings = {
             scrollU = '<C-u>',

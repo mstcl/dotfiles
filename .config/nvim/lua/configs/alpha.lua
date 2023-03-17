@@ -112,7 +112,7 @@ local function button(sc, txt, keybind)
 		text = txt,
 		shortcut = sc,
 		cursor = 0,
-		width = 37,
+		width = 47,
 		align_shortcut = "right",
 		hl_shortcut = "AlphaShortcuts",
 		hl = "AlphaHeader",

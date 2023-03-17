@@ -63,11 +63,14 @@ gaps inner 8
 smart_gaps on
 # }}}
 # Polybar gap {{{
-gaps top 0
+# gaps top 0
 # }}}
 # Borders {{{
 smart_borders on
 for_window [class="^.*"] border pixel 4
+default_border pixel 4
+default_floating_border pixel 4
+# hide_edge_borders smart_no_gaps
 # }}}
 # Priority {{{
 focus_on_window_activation urgent
@@ -77,6 +80,7 @@ popup_during_fullscreen smart
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id sxhkd &
 exec --no-startup-id aria2c &
+exec --no-startup-id safeeyes -e &
 exec --no-startup-id bash $HOME/scripts/other/wp.sh &
 exec --no-startup-id feh --bg-scale --no-xinerama .cache/superpaper/temp/bim-b.png &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
@@ -93,16 +97,17 @@ exec_always --no-startup-id sleep 4 && xmodmap $HOME/.config/X11/Xmodmap &
 exec_always --no-startup-id kitti3 -p tc
 exec_always --no-startup-id flashfocus &
 exec_always --no-startup-id autotiling &
+# exec_always --no-startup-id ~/.local/bin/i3-auto-layout &
 # }}}
 # From wal {{{
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $c2 i3wm.color8 #d0d0d0
-set_from_resource $bg i3wm.color0 #f0f0f0
-set_from_resource $c1 i3wm.color2 #f0f0f0
+set_from_resource $fg i3wm.color7
+set_from_resource $c2 i3wm.color8
+set_from_resource $bg i3wm.color0
+set_from_resource $c1 i3wm.color1
 ## class                border  backgr  text indicator child_border
-client.focused          $c2     $bg     $fg  $c2       $c2
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.focused          $c1     $bg     $fg  $c1       $c1
+client.focused_inactive $c2     $bg     $fg  $c2       $c2
+client.unfocused        $c2     $bg     $fg  $c2       $c2
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
@@ -149,31 +154,45 @@ for_window [title="Set Unknowns"] resize set 184 64
 for_window [class="^matplotlib$"] floating enable
 # }}}
 # Kitty {{{
+for_window [instance="kitti3"] border pixel 4
+
+assign [title="^neovim$"] "11:A"
+
+assign [class="^kitty$" title="^keysHelp$"] "11:A"
+for_window [class="^kitty$" title="^keysHelp$"] fullscreen enable
+
 for_window [class="^kitty$" title="^textScratchpad$"] floating enable
 for_window [class="^kitty$" title="^textScratchpad$"] resize set 740 480; move absolute position center
+
 for_window [class="^kitty$" title="^floatingKitty$"] floating enable
 for_window [class="^kitty$" title="^floatingKitty$"] resize set 740 480; move absolute position center
+
 for_window [class="^kitty$" title="^cava$"] floating enable
 for_window [class="^kitty$" title="^cava$"] resize set 830 320
 for_window [class="^kitty$" title="^cava$"] move position 1050 px 100 px
-assign [class="^kitty$" title="^cava$"] 14:D
+assign [class="^kitty$" title="^cava$"] "14:D"
+
 for_window [class="^kitty$" title="^spotify$"] floating enable
 for_window [class="^kitty$" title="^spotify$"] resize set 960 920
 for_window [class="^kitty$" title="^spotify$"] move position 45 px 100 px
-assign [class="^kitty$" title="^spotify$"] 14:D
+assign [class="^kitty$" title="^spotify$"] "14:D"
+
 for_window [class="^kitty$" title="^mpd$"] floating enable
 for_window [class="^kitty$" title="^mpd$"] resize set 1360 520
-assign [class="^kitty$" title="^mpd$"] 14:D
+assign [class="^kitty$" title="^mpd$"] "14:D"
+
+assign [class="^kitty$" title="^irc$"] "16:F"
 for_window [class="^kitty$" title="^irc$"] floating enable
 for_window [class="^kitty$" title="^irc$"] resize set 1380 875
-assign [class="^kitty$" title="^irc$"] 6:F
+
+assign [class="^cover$"] "14:D"
 for_window [class="^cover$"] floating enable
 for_window [class="^cover$"] move position 1050 px 100 px
-assign [class="^cover$"] 4: Media
+
+assign [class="^kitty$" title="^lyrics$"] "14:D"
 for_window [class="^kitty$" title="^lyrics$"] floating enable
 for_window [class="^kitty$" title="^lyrics$"] resize set 830 575
 for_window [class="^kitty$" title="^lyrics$"] move position 1050 px 450 px
-assign [class="^kitty$" title="^lyrics$"] 14:D
 # }}}
 # Wpg {{{
 for_window [class="Wpg"] floating enable
@@ -208,10 +227,9 @@ for_window [class="feh"] floating enable
 for_window [class="Florence"] floating enable
 # }}}
 # Discord {{{
-assign [class="^discord$"] "6:F"
-for_window [class="^discord$"] floating enable
-assign [class="^Guilded$"] "6:F"
-for_window [class="^Guilded$"] floating enable
+assign [class="^discord$"] "16:F"
+assign [class="signal beta"] "16:F"
+assign [class="^Guilded$"] "16:F"
 # }}}
 # }}}
 # MODES {{{

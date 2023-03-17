@@ -5,7 +5,7 @@ list_sinks() {
 }
 
 select_sink() {
-    sink="$(list_sinks | dmenu -p "Pulseaudio")" || return 1
+    sink="$(list_sinks | dmenu-def -p "Pulseaudio")" || return 1
     sink="$(echo "$sink" | cut -f 1 -d " ")"
     [ -n "$sink" ] || return 1
 

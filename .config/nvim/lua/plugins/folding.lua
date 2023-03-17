@@ -21,15 +21,16 @@ return {
 	{
 		"kevinhwang91/nvim-ufo",
 		lazy = true,
+		event = "VeryLazy",
 		dependencies = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
-		event = "BufRead",
+		-- ft = { "python", "lua", "vim", "tex", "markdown"},
 		config = function()
 			require("configs.ufo")
 		end,
 	},
-	{
+	--[[ {
 		"tmhedberg/SimpylFold",
 		lazy = true,
 		ft = "python",
-	}
+	} ]]
 }

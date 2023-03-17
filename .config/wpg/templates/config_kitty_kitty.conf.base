@@ -3,8 +3,8 @@
 
 # GENERAL [[[
 # Fonts [[[
-font_family JetBrainsMono
-bold_font JetBrainsMono Bold
+font_family {font1}
+bold_font {font1} Bold
 italic_font Cartograph CF Italic
 bold_italic_font Cartograph CF Bold Italic
 font_size {font-size}

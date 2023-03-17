@@ -39,8 +39,8 @@ alias sc='sudo systemctl'
 alias scu='systemctl --user'
 # }}}
 # Neovim {{{
-alias big="nvim -n -u NONE -i NONE -N"
-alias fv='nv $(fzf --height 40% \
+alias big="/usr/bin/nvim -n -u NONE -i NONE -N"
+alias fv='nvm $(fzf --height 40% \
     --preview-window=nohidden \
     --height=70% \
     --margin=5%,7% --layout=reverse \

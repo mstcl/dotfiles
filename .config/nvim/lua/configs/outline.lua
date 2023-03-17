@@ -5,7 +5,7 @@ end
 symbols.setup({
     highlight_hovered_item = true,
     show_guides = true,
-    border = "rounded",
+    border = "single",
     auto_preview = false,
     position = "right",
     relative_width = true,
@@ -19,7 +19,7 @@ symbols.setup({
     auto_unfold_hover = true,
     fold_markers = { "", "" },
     wrap = false,
-    winblend = 20,
+    winblend = 0,
     keymaps = { -- These keymaps can be a string or a table for multiple keys
         close = { "<Esc>", "q" },
         goto_location = "<Cr>",

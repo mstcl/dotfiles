@@ -4,6 +4,13 @@ vim.g.bufferline = {
 	tabpages = true,
 	closable = true,
 	clickable = true,
+	diagnostics = {
+		{ enabled = true, icon = "ﬀ" }, -- ERROR
+		{ enabled = false }, -- WARN
+		{ enabled = false }, -- INFO
+		{ enabled = true }, -- HINT
+	},
+	hide = { extensions = true, inactive = true },
 	exclude_name = { "python", "[dap-repl]" },
 	icons = true,
 	icon_custom_colors = false,

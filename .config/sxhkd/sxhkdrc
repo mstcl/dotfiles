@@ -1,38 +1,148 @@
 # :.config/sxhkd/sxhkdrc
 # vim:set ft=sxhkd:
 
+##############
+#  KEYBINDS  #
+##############
+
+# a:            wmfocus                   | shift + a:           signal-desktop-beta
+# b:            librewolf                 | shift + b:           chromium
+# c:            colorpicker               | shift + c:           lock
+# d:            powermenu                 | shift + d:           discord
+# e:            nemo                      | shift + e:           btm/btop
+# f:            fullscreen toggle         | shift + f:           logseq
+# g:            text scratchpad           |
+# h:            focus left                | shift + h:           move left
+# i:            zathura                   | shift + i:           change input language
+# j:            focus down                | shift + j:           move down
+# k:            focus up                  | shift + k:           move up
+# l:            focus right               | shift + l:           move right
+# m:            MONITOR CHORDS            | shift + m:           mute
+#               i : gaming
+#               o : non-gaming
+# n:            kitti3 (in i3config)      | shift + n:           mute mic
+# o:            sticky toggle             | shift + o:           move to 2nd monitor
+# p:            SCREENSHOT CHORDS         |
+#               r : region & clipboard
+#               f : fullscreen & save
+# q:            qalculate                 | shift + q:           quit application
+# r:            restart chords            |
+#               w : i3
+#               s : sxhkd
+#               p : polybar
+#               c : wpg theme
+# s:            MUSIC CHORDS              | shift + s:           steam
+#               s : spotify
+#               m : mpd
+#               c : album cover
+#               l : lyrics
+#               v : visualiser
+# t:            TOGGLE CHORDS             |
+#               c : picom
+#               d : dunst
+# u:                                      |
+# v:            SET GAPS                  |
+#               i : gaps on
+#               o : gaps off
+# w:            status notification       |
+# x:            toggle layout             | shift + x:           xournal++
+# y:            select sink               |
+# z:            toggle focus on floating  |
+# \:            back and forth workspace  |
+# .:            next track                | shift + .:           volume up
+# ,:            previous track            | shift + ,:           volume down
+# /:            play/pause                | shift + /:           keys help
+# -:            move to scratchpad        |
+# =:            toggle scratchpad windows |
+# return:       kitty                     | shift return:        floating kitty
+# alt + return: neovim                    |
+# tab:          current windows           |
+# space:        launcher                  | shift + space:       floating toggle
+# {1-0}:        workspaces 1-10           | shift + {1-0}:       move to workspaces 1-10
+# alt + {1-0}:  workspaces 1-10           | shift + alt + {1-0}: move to workspaces 11-20
+# escape:       dunst history             |
+# backspace:    dunst close               | shift + backspace:   close all
+# left:         focus workspace left      | shift + left:        move workspace left
+# right:        focus workspace right     | shift + right:       move workspace right
+
+super + a
+	wmfocus -f "JetBrains Mono Medium":100 --bgcolorcurrent "#811f34" --textcolor "#f5f5f5" --bgcolor "#151515" --textcolorcurrent "#f5f5f5" --fill
+
+super + shift + a
+	signal-desktop-beta --disable-frame-rate-limit
+
 super + b
 	librewolf
 
-super + q
-	qalculate-gtk
+super + shift + b
+	chromium --disable-frame-rate-limit
 
 super + c
 	bash $HOME/scripts/other/colorpicker.sh
 
-super + w
-	notify-send --icon="pig" "━━━━ STATUS ━━━━" "$($HOME/scripts/other/notify.sh)"
+super + shift + c
+	bash $HOME/scripts/i3lock/lockerfancy.sh
 
-super + p; {r,f}
-	bash {$HOME/scripts/screenshots/pshot.sh, $HOME/scripts/screenshots/fshot.sh}
+super + d
+	bash $HOME/scripts/rofi/dmenu-power-menu
 
-super + semicolon
-	splatmoji copy
+super + shift + d
+	/usr/bin/discord --disable-frame-rate-limit --class=discord --enable-gpu-rasterization --use-gl=desktop --enable-zero-copy --ignore-gpu-blocklist
 
 super + e
 	nemo
 
+super + shift + e
+	kitty -o font_size=10 -o tab_bar_min_tabs=2 -T keysHelp -e  $SHELL -lc "btm"
+
+super + {f,o,z}
+	i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
+
+super + shift + f
+	logseq --disable-frame-rate-limit
+
+super + g
+    bash $HOME/scripts/other/text-scratchpad.sh
+
+super + {h,j,k,l}
+	i3-msg focus {left,down,up,right}
+
+super + shift + {h,j,k,l}
+	i3-msg move {left,down,up,right}
+
+super + i
+	zathura
+
+super + shift + i
+	bash $HOME/scripts/hardware/chkm.sh
+
+super + shift + o
+	i3-msg move container to output left
+
+super + p; {r,f}
+	flameshot {gui, full}
+
+super + q
+	qalculate-gtk
+
+super + shift + q
+	i3-msg kill
+
 super + m; {i,o}
 	{bash $HOME/scripts/hardware/game-enter.sh, \
 	bash $HOME/scripts/hardware/game-exit.sh}
-	
 
-super + space
-	bash $HOME/scripts/rofi/launcher.sh
+super + shift + m
+	NO_NOTIFY_COLOR=1 i3-volume -nyPp mute
 
-super + t; {c,d}
-	{bash $HOME/scripts/hardware/picomtoggle.sh, \
-	dunstctl set-paused toggle}
+super + shift + n
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+super + r; {p,c,w,s}
+	{bash $HOME/.config/polybar/launch.sh, \
+	wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 " wpgtk" "Theme reloaded", \
+	i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
+	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
 
 super + s; {s,m,c,l,v}
 	{spotify, \
@@ -41,103 +151,91 @@ super + s; {s,m,c,l,v}
 	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics, \
 	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
 
+super + shift + s;
+	steam
+
+super + t; {c,d}
+	{bash $HOME/scripts/hardware/picomtoggle.sh, \
+	dunstctl set-paused toggle}
+
+super + v; {i,o}
+	i3-msg gaps inner all {set 8, set 0}
+
+super + w
+	notify-send --icon="pig" "━━━━ STATUS ━━━━" "$($HOME/scripts/other/notify.sh)"
+
+super + x
+	i3-msg layout toggle stacking splitv splith tabbed
+
+super + shift + x
+	xournalpp
+
+super + y
+	$HOME/scripts/rofi/rofi-select-sink.sh
+
 super + comma
 	playerctl -p spotify,mpd previous
+
+super + shift + comma
+	NO_NOTIFY_COLOR=1 i3-volume -nyPp down 5
 
 super + period
 	playerctl -p spotify,mpd next
 
+super + shift + period
+	NO_NOTIFY_COLOR=1 i3-volume -nyPp up 5
+
 super + slash
 	playerctl -p spotify,mpd play-pause
+
+super + shift + slash
+	bash $HOME/scripts/other/keys.sh
+
+super + space
+	rlaunch-def
+
+super + shift + space
+	i3-msg floating toggle
 
 super + Return
 	kitty
 
-super + g
-    bash $HOME/scripts/other/text-scratchpad.sh
+super + shift + Return
+	kitty -T floatingKitty
 
-super + r; {p,c,w,s}
-	{bash $HOME/.config/polybar/launch.sh, \
-	wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 " wpgtk" "Theme reloaded", \
-	i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
-	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
-
-super + i
-	zathura
+super + alt + Return
+	i3-msg workspace "11:A" && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim
 
 super + {minus,equal}
 	i3-msg { move scratchpad, \
 	scratchpad show }
 
-super + x
-	i3-msg layout toggle stacking splitv splith tabbed
-
-super + v; {b,s}
-	i3-msg gaps inner all {set 8, set 0}
-
-super + {f,o,z}
-	i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
-
-super + {h,j,k,l}
-	i3-msg focus {left,down,up,right}
-
 super + {1,2,3,4,5,6,7,8,9}
-	i3-msg workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+	i3-msg workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send -t 900 --icon="window" "Switched to" "Workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+
+super + shift + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg move container to workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send -t 900 --icon="window" "Moved to" " Workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
 super + alt + {1,2,3,4,5,6,7,8,9,0}
 	i3-msg workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
-super + {Left,Right}
-	i3-msg workspace {prev,next}
-
-super + shift + {h,j,k,l}
-	i3-msg move {left,down,up,right}
-
-super + shift + Return
-	kitty -T floatingKitty
-
-super + shift + q
-	i3-msg kill
-
-super + shift + space
-	i3-msg floating toggle
-
 super + shift + alt {1,2,3,4,5,6,7,8,9,0}
 	i3-msg move container to workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && notify-send --icon="window" "Moved to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
-super + shift + {1,2,3,4,5,6,7,8,9,0}
-	i3-msg move container to workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send --icon="window" "Moved to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+super + {Left,Right}
+	i3-msg workspace {prev,next}
 
 super + shift + {Left,Right}
 	i3-msg move container to workspace {prev,next} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
 
-super + shift + m
-	i3-msg move container to output left
+super + Tab
+	dmenu-window
 
-super + alt + Return
-	kitty --listen-on unix:/tmp/mykitty /home/lckdscl/scripts/bin/nv
-
-alt + space
-	bash $HOME/scripts/hardware/chkm.sh
-
-hyper + {period,comma,m,n}
-	{ NO_NOTIFY_COLOR=1 i3-volume -nyPp up 5,\
-	NO_NOTIFY_COLOR=1 i3-volume -nyPp down 5, \
-	NO_NOTIFY_COLOR=1 i3-volume -nyPp mute, \
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle}
-
-hyper + {p,v}
-	bash { $HOME/scripts/rofi/powermenu.sh, \
-	$HOME/scripts/rofi/rofi-select-sink.sh }
-
-alt + Tab
-	rofi -show window -p 'Windows' -kb-accept-entry '!Alt-Tab' -kb-toggle-sort '!Alt-Escape' -kb-row-down Alt-Tab
-
-control + Escape
+super + Escape
 	dunstctl history-pop
 
-control + space
+super + BackSpace
 	dunstctl close
 
-control + shift + space
+super + shift + BackSpace
 	dunstctl close-all

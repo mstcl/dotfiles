@@ -1,5 +1,5 @@
 # :.config/zathura/zathurarc
-set font "JetBrainsMono Nerd Font 16"
+set font "Liga SFMono Nerd Font 16"
 set synctex true
 set selection-notification "true"
 set guioptions ""

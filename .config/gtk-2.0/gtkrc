@@ -1,15 +1,16 @@
-# :.config/gtk-2.0/gtkrc
+# DO NOT EDIT! This file will be overwritten by LXAppearance.
+# Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-gtk-theme-name="Colloid-Grey-Light"
+include "/home/lckdscl/.gtkrc-2.0.mine"
+gtk-theme-name="Orchis-Grey-Light"
 gtk-icon-theme-name="Colloid-grey-light"
-gtk-font-name="SF Pro Text 16"
+gtk-font-name="SF Pro Display 16"
 gtk-cursor-theme-name="phinger-cursors"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=1
 gtk-menu-images=1
-gtk-error-bell = 0
 gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=1
 gtk-xft-antialias=1

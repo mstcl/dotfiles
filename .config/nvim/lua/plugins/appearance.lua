@@ -119,7 +119,7 @@ return {
 		lazy = true,
 		event = "BufRead",
 	}, ]]
-	{
+	--[[ {
 		"sunjon/shade.nvim",
 		lazy = true,
 		event = "BufEnter",
@@ -131,5 +131,5 @@ return {
 				brightness_down = "<C-Down>",
 			},
 		},
-	},
+	}, ]]
 }

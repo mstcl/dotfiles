@@ -27,7 +27,7 @@
     idle_threshold = 120
 
     ### Text ###
-    font = JetBrainsMono Nerd Font 16
+    font = Liga SFMono Nerd Font 16
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -57,7 +57,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 14
+    corner_radius = 0
     ignore_dbusclose = false
 
     ### Wayland ###

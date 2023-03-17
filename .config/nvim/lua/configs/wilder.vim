@@ -5,6 +5,7 @@ call wilder#setup({
      \ 'accept_key': '<Down>',
      \ 'reject_key': '<Up>',
      \ })
+
 call wilder#set_option('pipeline', [
     \ wilder#debounce(10),
     \ wilder#branch(
@@ -37,8 +38,11 @@ let s:popupmenu_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_the
     \ 'highlights': {
         \ 'default': 'Wilder',
         \ 'border': 'Comment',
+        \ 'selected': 'WilderSelected',
+        \ 'selected_accent': 'WilderSelectedAccent',
+        \ 'accent': 'WilderAccent',
     \ },
-    \ 'border': 'rounded',
+    \ 'border': 'single',
     \ 'highlighter': wilder#basic_highlighter(),
     \ 'empty_message': wilder#popupmenu_empty_message_with_spinner(),
     \ 'min_height': '0%',
@@ -60,6 +64,13 @@ let s:popupmenu_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_the
 
 let s:wildmenu_renderer = wilder#wildmenu_renderer({
     \ 'highlighter': wilder#basic_highlighter(),
+    \ 'highlights' : {
+        \ 'default': 'WildMenu',
+        \ 'border': 'Comment',
+        \ 'selected': 'WilderSelected',
+        \ 'selected_accent': 'WilderSelectedAccent',
+        \ 'accent': 'WilderAccent',
+    \ },
     \ 'left': [' ', wilder#wildmenu_spinner(), ' '],
     \ 'right': [' ', wilder#wildmenu_index()],
 \ })
@@ -69,8 +80,3 @@ call wilder#set_option('renderer', wilder#renderer_mux({
     \ '/': s:wildmenu_renderer,
     \ 'substitute': s:wildmenu_renderer,
 \ }))
-
-hi WilderAccent gui=underline guisp=FG
-hi WilderPoppupMenuAccent gui=underline guisp=FG
-hi WilderWildmenuAccent gui=underline guisp=FG
-hi WilderPopupMenuSelectedAccent gui=underline guisp=FG
