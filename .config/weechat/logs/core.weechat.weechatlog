@@ -1,0 +1,441 @@
+2022-01-18 21:16:00		New key binding (context "default"): meta-B => /buflist toggle
+2022-01-18 21:16:00		New key binding (context "default"): meta-OP => /bar scroll buflist * -100%
+2022-01-18 21:16:00		New key binding (context "default"): meta2-11~ => /bar scroll buflist * -100%
+2022-01-18 21:16:00		New key binding (context "default"): meta-OQ => /bar scroll buflist * +100%
+2022-01-18 21:16:00		New key binding (context "default"): meta2-12~ => /bar scroll buflist * +100%
+2022-01-18 21:16:00		New key binding (context "default"): meta2-11^ => /bar scroll buflist * -100%
+2022-01-18 21:16:00		New key binding (context "default"): meta2-1;5P => /bar scroll buflist * -100%
+2022-01-18 21:16:00		New key binding (context "default"): meta2-12^ => /bar scroll buflist * +100%
+2022-01-18 21:16:00		New key binding (context "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2022-01-18 21:16:00		New key binding (context "default"): meta-meta-OP => /bar scroll buflist * b
+2022-01-18 21:16:00		New key binding (context "default"): meta-meta2-11~ => /bar scroll buflist * b
+2022-01-18 21:16:00		New key binding (context "default"): meta2-1;3P => /bar scroll buflist * b
+2022-01-18 21:16:00		New key binding (context "default"): meta-meta-OQ => /bar scroll buflist * e
+2022-01-18 21:16:00		New key binding (context "default"): meta-meta2-12~ => /bar scroll buflist * e
+2022-01-18 21:16:00		New key binding (context "default"): meta2-1;3Q => /bar scroll buflist * e
+2022-01-18 21:16:00		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-18 21:16:01	=!=	You can not write text in this buffer
+2022-01-18 21:16:02		fifo: pipe closed
+2022-01-18 21:16:22		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-18 21:16:35		fifo: pipe closed
+2022-01-18 21:16:49		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-18 21:16:59		perl scripts loaded:
+2022-01-18 21:16:59		  (none)
+2022-01-18 21:17:01		python scripts loaded:
+2022-01-18 21:17:01		  (none)
+2022-01-18 21:17:04	=!=	Too few arguments for command "/msg" (help on command: /help msg)
+2022-01-18 21:17:07		fifo: pipe closed
+2022-01-18 21:17:12		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-18 21:17:14		fifo: pipe closed
+2022-01-18 21:17:55		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-18 21:18:12	=!=	Option "config.section.option" not found
+2022-01-18 21:19:36		Option changed: weechat.bar.status.color_bg = darkgray  (default: blue)
+2022-01-18 21:21:10		Option changed: weechat.bar.title.color_bg = darkgray  (default: blue)
+2022-01-18 21:21:53	=!=	Unknown command "/find" (type /help for help)
+2022-01-18 21:22:25		Option changed: weechat.color.chat_host = darkgray  (default: cyan)
+2022-01-18 21:22:55		Option changed: weechat.color.chat_highlight = darkgray  (default: yellow)
+2022-01-18 21:24:42		Plugins loaded:
+2022-01-18 21:24:42		  python: Support of python scripts
+2022-01-18 21:24:42		  perl: Support of perl scripts
+2022-01-18 21:24:42		  relay: Relay WeeChat data to remote application (irc/weechat protocols)
+2022-01-18 21:24:42		  ruby: Support of ruby scripts
+2022-01-18 21:24:42		  logger: Log buffers to files
+2022-01-18 21:24:42		  lua: Support of lua scripts
+2022-01-18 21:24:42		  exec: Execution of external commands in WeeChat
+2022-01-18 21:24:42		  xfer: DCC file transfer and direct chat
+2022-01-18 21:24:42		  fifo: FIFO pipe for remote control
+2022-01-18 21:24:42		  typing: Typing status of users
+2022-01-18 21:24:42		  fset: Fast set of WeeChat and plugins options
+2022-01-18 21:24:42		  guile: Support of scheme scripts (with Guile)
+2022-01-18 21:24:42		  script: Script manager
+2022-01-18 21:24:42		  irc: IRC (Internet Relay Chat) protocol
+2022-01-18 21:24:42		  charset: Charset conversions
+2022-01-18 21:24:42		  trigger: Text replacement and command execution on events triggered by WeeChat/plugins
+2022-01-18 21:24:42		  buflist: Buffers list
+2022-01-18 21:24:42		  alias: Alias commands
+2022-01-18 21:24:45	=!=	Unknown command "/home" (type /help for help)
+2022-01-18 21:24:48		[core]
+2022-01-18 21:24:48		  away     color    debug    help     key      mute     proxy    repeat   set      upgrade  wait   
+2022-01-18 21:24:48		  bar      command  eval     history  layout   plugin   quit     save     toggle   uptime   window 
+2022-01-18 21:24:48		  buffer   cursor   filter   input    mouse    print    reload   secure   unset    version
+2022-01-18 21:24:48		[python]
+2022-01-18 21:24:48		  python
+2022-01-18 21:24:48		[perl]
+2022-01-18 21:24:48		  perl
+2022-01-18 21:24:48		[relay]
+2022-01-18 21:24:48		  relay
+2022-01-18 21:24:48		[ruby]
+2022-01-18 21:24:48		  ruby
+2022-01-18 21:24:48		[logger]
+2022-01-18 21:24:48		  logger
+2022-01-18 21:24:48		[lua]
+2022-01-18 21:24:48		  lua
+2022-01-18 21:24:48		[exec]
+2022-01-18 21:24:48		  exec
+2022-01-18 21:24:48		[xfer]
+2022-01-18 21:24:48		  me  xfer
+2022-01-18 21:24:48		[fifo]
+2022-01-18 21:24:48		  fifo
+2022-01-18 21:24:48		[fset]
+2022-01-18 21:24:48		  fset
+2022-01-18 21:24:48		[guile]
+2022-01-18 21:24:48		  guile
+2022-01-18 21:24:48		[script]
+2022-01-18 21:24:48		  script
+2022-01-18 21:24:48		[irc]
+2022-01-18 21:24:48		  admin       ctcp        halfop      kill        msg         ping        restart     servlist    trace       wallops   
+2022-01-18 21:24:48		  allchan     cycle       ignore      links       names       pong        sajoin      setname     unban       who       
+2022-01-18 21:24:48		  allpv       dcc         info        list        nick        query       samode      squery      unquiet     whois     
+2022-01-18 21:24:48		  allserv     dehalfop    invite      lusers      notice      quiet       sanick      squit       userhost    whowas    
+2022-01-18 21:24:48		  auth        deop        ison        map         notify      quote       sapart      stats       users     
+2022-01-18 21:24:48		  ban         devoice     join        me          op          reconnect   saquit      summon      version   
+2022-01-18 21:24:48		  cap         die         kick        mode        oper        rehash      server      time        voice     
+2022-01-18 21:24:48		  connect     disconnect  kickban     motd        part        remove      service     topic       wallchops 
+2022-01-18 21:24:48		[charset]
+2022-01-18 21:24:48		  charset
+2022-01-18 21:24:48		[trigger]
+2022-01-18 21:24:48		  trigger
+2022-01-18 21:24:48		[buflist]
+2022-01-18 21:24:48		  buflist
+2022-01-18 21:24:48		[alias]
+2022-01-18 21:24:48		  AAWAY    BEEP     CHAT     EXIT     K        M        N        SAY      UB       W        WII    
+2022-01-18 21:24:48		  alias    BYE      CL       IG       KB       MSGBUF   Q        SIGNOFF  UMODE    WC       WM     
+2022-01-18 21:24:48		  ANICK    C        CLOSE    J        LEAVE    MUB      REDRAW   T        V        WI       WW     
+2022-01-18 21:24:53	=!=	Unknown command "/1" (type /help for help)
+2022-01-18 21:25:11		[core]
+2022-01-18 21:25:11		  away     color    debug    help     key      mute     proxy    repeat   set      upgrade  wait   
+2022-01-18 21:25:11		  bar      command  eval     history  layout   plugin   quit     save     toggle   uptime   window 
+2022-01-18 21:25:11		  buffer   cursor   filter   input    mouse    print    reload   secure   unset    version
+2022-01-18 21:25:11		[python]
+2022-01-18 21:25:11		  python
+2022-01-18 21:25:11		[perl]
+2022-01-18 21:25:11		  perl
+2022-01-18 21:25:11		[relay]
+2022-01-18 21:25:11		  relay
+2022-01-18 21:25:11		[ruby]
+2022-01-18 21:25:11		  ruby
+2022-01-18 21:25:11		[logger]
+2022-01-18 21:25:11		  logger
+2022-01-18 21:25:11		[lua]
+2022-01-18 21:25:11		  lua
+2022-01-18 21:25:11		[exec]
+2022-01-18 21:25:11		  exec
+2022-01-18 21:25:11		[xfer]
+2022-01-18 21:25:11		  me  xfer
+2022-01-18 21:25:11		[fifo]
+2022-01-18 21:25:11		  fifo
+2022-01-18 21:25:11		[fset]
+2022-01-18 21:25:11		  fset
+2022-01-18 21:25:11		[guile]
+2022-01-18 21:25:11		  guile
+2022-01-18 21:25:11		[script]
+2022-01-18 21:25:11		  script
+2022-01-18 21:25:11		[irc]
+2022-01-18 21:25:11		  admin       ctcp        halfop      kill        msg         ping        restart     servlist    trace       wallops   
+2022-01-18 21:25:11		  allchan     cycle       ignore      links       names       pong        sajoin      setname     unban       who       
+2022-01-18 21:25:11		  allpv       dcc         info        list        nick        query       samode      squery      unquiet     whois     
+2022-01-18 21:25:11		  allserv     dehalfop    invite      lusers      notice      quiet       sanick      squit       userhost    whowas    
+2022-01-18 21:25:11		  auth        deop        ison        map         notify      quote       sapart      stats       users     
+2022-01-18 21:25:11		  ban         devoice     join        me          op          reconnect   saquit      summon      version   
+2022-01-18 21:25:11		  cap         die         kick        mode        oper        rehash      server      time        voice     
+2022-01-18 21:25:11		  connect     disconnect  kickban     motd        part        remove      service     topic       wallchops 
+2022-01-18 21:25:11		[charset]
+2022-01-18 21:25:11		  charset
+2022-01-18 21:25:11		[trigger]
+2022-01-18 21:25:11		  trigger
+2022-01-18 21:25:11		[buflist]
+2022-01-18 21:25:11		  buflist
+2022-01-18 21:25:11		[alias]
+2022-01-18 21:25:11		  AAWAY    BEEP     CHAT     EXIT     K        M        N        SAY      UB       W        WII    
+2022-01-18 21:25:11		  alias    BYE      CL       IG       KB       MSGBUF   Q        SIGNOFF  UMODE    WC       WM     
+2022-01-18 21:25:11		  ANICK    C        CLOSE    J        LEAVE    MUB      REDRAW   T        V        WI       WW     
+2022-01-18 21:25:16		Plugins loaded:
+2022-01-18 21:25:16		  python: Support of python scripts
+2022-01-18 21:25:16		  perl: Support of perl scripts
+2022-01-18 21:25:16		  relay: Relay WeeChat data to remote application (irc/weechat protocols)
+2022-01-18 21:25:16		  ruby: Support of ruby scripts
+2022-01-18 21:25:16		  logger: Log buffers to files
+2022-01-18 21:25:16		  lua: Support of lua scripts
+2022-01-18 21:25:16		  exec: Execution of external commands in WeeChat
+2022-01-18 21:25:16		  xfer: DCC file transfer and direct chat
+2022-01-18 21:25:16		  fifo: FIFO pipe for remote control
+2022-01-18 21:25:16		  typing: Typing status of users
+2022-01-18 21:25:16		  fset: Fast set of WeeChat and plugins options
+2022-01-18 21:25:16		  guile: Support of scheme scripts (with Guile)
+2022-01-18 21:25:16		  script: Script manager
+2022-01-18 21:25:16		  irc: IRC (Internet Relay Chat) protocol
+2022-01-18 21:25:16		  charset: Charset conversions
+2022-01-18 21:25:16		  trigger: Text replacement and command execution on events triggered by WeeChat/plugins
+2022-01-18 21:25:16		  buflist: Buffers list
+2022-01-18 21:25:16		  alias: Alias commands
+2022-01-18 21:25:19		python scripts loaded:
+2022-01-18 21:25:19		  (none)
+2022-01-18 21:26:45		irc: server added: libera
+2022-01-18 21:26:58		Option changed: irc.server.libera.autoconnect = on  (default if null: off)
+2022-01-18 21:27:05		Option changed: irc.server.libera.sasl_username = "lckdscl"  (default if null: "")
+2022-01-18 21:27:19		Option changed: irc.server.libera.sasl_password = "homer-milk"  (default if null: "")
+2022-01-18 21:28:34		Option changed: irc.look.server_buffer = independent  (default: merge_with_core)
+2022-01-18 21:31:17		Option changed: irc.look.color_nicks_in_names = on  (default: off)
+2022-01-18 21:31:23		Option changed: irc.look.color_nicks_in_nicklist = on  (default: off)
+2022-01-18 21:33:38		Plugins loaded:
+2022-01-18 21:33:38		  python: Support of python scripts
+2022-01-18 21:33:38		  perl: Support of perl scripts
+2022-01-18 21:33:38		  relay: Relay WeeChat data to remote application (irc/weechat protocols)
+2022-01-18 21:33:38		  ruby: Support of ruby scripts
+2022-01-18 21:33:38		  logger: Log buffers to files
+2022-01-18 21:33:38		  lua: Support of lua scripts
+2022-01-18 21:33:38		  exec: Execution of external commands in WeeChat
+2022-01-18 21:33:38		  xfer: DCC file transfer and direct chat
+2022-01-18 21:33:38		  fifo: FIFO pipe for remote control
+2022-01-18 21:33:38		  typing: Typing status of users
+2022-01-18 21:33:38		  fset: Fast set of WeeChat and plugins options
+2022-01-18 21:33:38		  guile: Support of scheme scripts (with Guile)
+2022-01-18 21:33:38		  script: Script manager
+2022-01-18 21:33:38		  irc: IRC (Internet Relay Chat) protocol
+2022-01-18 21:33:38		  charset: Charset conversions
+2022-01-18 21:33:38		  trigger: Text replacement and command execution on events triggered by WeeChat/plugins
+2022-01-18 21:33:38		  buflist: Buffers list
+2022-01-18 21:33:38		  alias: Alias commands
+2022-01-18 21:39:46		Option changed: weechat.look.prefix_join = "▬▶"  (default: "-->")
+2022-01-18 21:39:54		Option changed: weechat.look.prefix_join = "-->"
+2022-01-18 21:40:11		Option changed: weechat.look.prefix_same_nick = "⤷"  (default: "")
+2022-01-18 21:40:16		Option changed: weechat.look.prefix_action = " •"  (default: " *")
+2022-01-18 21:40:22		Option changed: weechat.look.read_marker_string = "─"  (default: "- ")
+2022-01-18 21:40:27		Option changed: weechat.look.prefix_suffix = "│"  (default: "|")
+2022-01-18 21:40:34		Option changed: weechat.look.separator_horizontal = ""  (default: "-")
+2022-01-18 21:40:45		Option changed: weechat.look.color_nick_offline = on  (default: off)
+2022-01-18 21:40:50		Notify changed for "core.weechat": "all" to "message"
+2022-01-18 21:40:50		Notify changed for "irc.server.libera": "all" to "message"
+2022-01-18 21:40:50		Notify changed for "fset.fset": "all" to "message"
+2022-01-18 21:40:50		Notify changed for "irc.libera.#archlinux-offtopic": "all" to "message"
+2022-01-18 21:40:50		Option changed: weechat.look.buffer_notify_default = message  (default: all)
+2022-01-18 21:40:54	=!=	script: download of scripts is disabled by default; see /help script.scripts.download_enabled
+2022-01-18 21:41:14		Option changed: script.scripts.download_enabled = on  (default: off)
+2022-01-18 21:41:54		Option changed: weechat.look.scroll_page_percent = 50  (default: 100)
+2022-01-18 21:41:59		script: downloading list of scripts...
+2022-01-18 21:41:59		script: 368 scripts for WeeChat 3.4
+2022-01-18 21:41:59		script: script "buffers.pl" not found
+2022-01-18 21:42:05		python: loading script "/home/lckdscl/.config/weechat/python/colorize_nicks.py"
+2022-01-18 21:42:05		python: registered script "colorize_nicks", version 28 (Use the weechat nick colors in the chat area)
+2022-01-18 21:42:13		script: script "iset.pl" not found
+2022-01-18 21:42:20		Option changed: weechat.color.chat_channel = darkgray  (default: white)
+2022-01-18 21:42:25		Option changed: weechat.color.chat_delimiters = darkgray  (default: green)
+2022-01-18 21:42:31		Option changed: weechat.color.chat_highlight_bg = 60  (default: magenta)
+2022-01-18 21:50:00		Option changed: weechat.color.chat_host = darkgray  (default: cyan)
+2022-01-18 21:50:05		Option changed: weechat.color.chat_nick = darkgray  (default: lightcyan)
+2022-01-18 21:50:10		Option changed: weechat.color.chat_nick_colors = "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue,31,35,38,40,49,63,70,80,92,99,112,126,130,138,142,148,160,162,167,169,174,176,178,184,186,210,212,215,247"  (default: "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue")
+2022-01-18 21:50:25		Option changed: weechat.color.chat_nick_offline = darkgray  (default: default)
+2022-01-18 21:50:28		Option changed: weechat.color.chat_prefix_action = darkgray  (default: white)
+2022-01-18 21:50:31		Option changed: weechat.color.chat_prefix_join = 24  (default: lightgreen)
+2022-01-18 21:50:34		Option changed: weechat.color.chat_prefix_network = darkgray  (default: magenta)
+2022-01-18 21:50:37		Option changed: weechat.color.chat_prefix_quit = 23  (default: lightred)
+2022-01-18 21:50:55		Option changed: weechat.color.chat_prefix_quit = lightred
+2022-01-18 21:51:05		Option changed: weechat.color.chat_prefix_network = magenta
+2022-01-18 21:51:20		Option changed: weechat.color.chat_prefix_join = lightgreen
+2022-01-18 21:51:44		Option changed: weechat.color.chat_nick_colors = "= cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue"  (default: "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue")
+2022-01-18 21:51:53		Option changed: weechat.color.chat_nick_colors = "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue"
+2022-01-18 21:52:18		Option changed: weechat.color.chat_tags = darkgray  (default: red)
+2022-01-18 21:52:22		Option changed: weechat.color.chat_time = darkgray  (default: default)
+2022-01-18 21:52:27		Option changed: weechat.color.chat_time = 244  (default: default)
+2022-01-18 21:52:32		Option changed: weechat.color.chat_time = 244  (default: default)
+2022-01-18 21:52:42		Option changed: weechat.color.chat_host = 244  (default: cyan)
+2022-01-18 21:52:45		Option changed: weechat.color.chat_tags = 244  (default: red)
+2022-01-18 21:52:52		Option changed: weechat.color.chat_prefix_network = 244  (default: magenta)
+2022-01-18 21:52:55	=!=	Failed to set option "weechat.color.chat_prefix_network"
+2022-01-18 21:52:57		Option changed: weechat.color.chat_prefix_network = magenta
+2022-01-18 21:53:02		Option changed: weechat.color.chat_prefix_action = 244  (default: white)
+2022-01-18 21:53:17	=!=	Option "weechat.bar.buffers.hidden" not found
+2022-01-18 21:53:36		Option changed: irc.color.message_join = 244  (default: green)
+2022-01-18 21:53:41		Option changed: irc.color.message_quit = 244  (default: red)
+2022-01-18 21:53:43		Option changed: irc.color.message_quit = red
+2022-01-18 21:53:45		Option changed: irc.color.message_quit = 244  (default: red)
+2022-01-18 21:53:50		Option changed: irc.color.message_quit = red
+2022-01-18 21:53:53		Option changed: irc.color.message_join = green
+2022-01-18 21:53:57	=!=	Option "iset.color.bg_selected" not found
+2022-01-18 21:54:14		Option changed: script.color.text_bg_selected = 234  (default: red)
+2022-01-18 21:54:22		Option changed: colorize_nicks.look.colorize_input = on  (default: off)
+2022-01-18 21:54:38	=!=	Option "buffers.color.number_char" not found
+2022-01-18 21:56:20		Option changed: weechat.color.chat_time = 214  (default: default)
+2022-01-18 21:56:22		Option changed: weechat.color.chat_time = 244  (default: default)
+2022-01-18 21:56:42		Option changed: weechat.color.chat_nick_self = _white  (default: white)
+2022-01-18 21:57:21		Option changed: weechat.color.status_time = *99999  (default: default)
+2022-01-18 21:59:16		Option changed: weechat.bar.status.hidden = on  (default: off)
+2022-01-18 21:59:22		Option changed: weechat.bar.status.hidden = off
+2022-01-18 21:59:53		Option changed: weechat.bar.status.separator = on  (default: off)
+2022-01-18 22:00:01		Option changed: weechat.bar.status.separator = off
+2022-01-18 22:02:19		Option changed: weechat.color.chat_channel = *white  (default: white)
+2022-01-18 22:04:47		Option changed: weechat.bar.fset.color_delim = darkgray  (default: cyan)
+2022-01-18 22:05:04		Option changed: weechat.bar.buflist.color_delim = darkgray  (default: default)
+2022-01-18 22:05:33		Option changed: weechat.bar.input.color_delim = darkgray  (default: cyan)
+2022-01-18 22:05:56		Option changed: weechat.bar.nicklist.color_delim = darkgray  (default: cyan)
+2022-01-18 22:06:49		Option changed: weechat.bar.title.color_delim = darkgray  (default: cyan)
+2022-01-18 22:08:01		Option changed: weechat.color.chat_time_delimiters = 244  (default: brown)
+2022-01-18 22:08:17		Option changed: weechat.color.separator = darkgray  (default: blue)
+2022-01-18 22:09:57		Option changed: weechat.look.bar_more_left = "->>"  (default: "<<")
+2022-01-18 22:10:13		Option changed: weechat.look.bar_more_left = "<<-"  (default: "<<")
+2022-01-18 22:10:18		Option changed: weechat.look.bar_more_right = "->>"  (default: ">>")
+2022-01-18 22:10:26		Option changed: weechat.look.bar_more_up = "=="  (default: "--")
+2022-01-18 22:10:35		Option changed: weechat.look.bar_more_down = "+++"  (default: "++")
+2022-01-18 22:10:39		Option changed: weechat.look.bar_more_up = "==="  (default: "--")
+2022-01-18 22:11:16		Option changed: weechat.look.color_real_white = on  (default: off)
+2022-01-18 22:12:08		Option changed: weechat.look.nick_prefix = "["  (default: "")
+2022-01-18 22:12:10		Option changed: weechat.look.nick_suffix = "]"  (default: "")
+2022-01-18 22:12:19		Option changed: weechat.look.nick_suffix = ""
+2022-01-18 22:12:21		Option changed: weechat.look.nick_prefix = ""
+2022-01-18 22:13:29		Option changed: weechat.look.prefix_network = "!="  (default: "--")
+2022-01-18 22:15:46		Option changed: weechat.color.chat_nick_suffix = darkgray  (default: green)
+2022-01-18 22:16:03		Option changed: weechat.color.chat_prefix_suffix = darkgray  (default: green)
+2022-01-18 22:16:19		Option changed: weechat.color.chat_read_marker_bg = darkgray  (default: default)
+2022-01-18 22:17:32		Option changed: weechat.bar.buflist.color_bg = darkgray  (default: default)
+2022-01-18 22:17:47		Option changed: weechat.bar.buflist.color_delim = black  (default: default)
+2022-01-18 22:18:29		Option changed: weechat.bar.buflist.color_bg = default
+2022-01-18 22:18:33		Option changed: weechat.bar.buflist.color_delim = red  (default: default)
+2022-01-18 22:18:42		Option changed: weechat.bar.buflist.color_delim = darkgray  (default: default)
+2022-01-18 22:18:49		Option changed: weechat.bar.buflist.color_fg = *white  (default: default)
+2022-01-18 22:19:07		Option changed: weechat.bar.buflist.separator = off  (default: on)
+2022-01-18 22:19:27		Option changed: weechat.bar.buflist.color_bg = darkgray  (default: default)
+2022-01-18 22:19:44		Option changed: weechat.bar.buflist.separator = on
+2022-01-18 22:19:47		Option changed: weechat.bar.buflist.color_bg = black  (default: default)
+2022-01-18 22:19:54		Option changed: weechat.bar.buflist.color_bg = default
+2022-01-18 22:20:40		Option changed: weechat.bar.title.separator = on  (default: off)
+2022-01-18 22:20:43		Option changed: weechat.bar.title.separator = off
+2022-01-18 22:21:04		Option changed: weechat.color.chat_nick_prefix = darkgray  (default: green)
+2022-01-18 22:21:19		Option changed: weechat.color.chat_read_marker_bg = black  (default: default)
+2022-01-18 22:21:23		Option changed: weechat.color.chat_read_marker_bg = default
+2022-01-18 22:22:15		Option changed: weechat.bar.fset.color_bg = black  (default: default)
+2022-01-18 22:22:19		Option changed: weechat.bar.fset.color_bg = 12  (default: default)
+2022-01-18 22:22:27		Option changed: weechat.bar.fset.color_bg = 100  (default: default)
+2022-01-18 22:22:30		Option changed: weechat.bar.fset.color_bg = 12  (default: default)
+2022-01-18 22:22:34		Option changed: weechat.bar.fset.color_bg = black  (default: default)
+2022-01-18 22:22:39		Option changed: weechat.bar.fset.color_bg = default
+2022-01-18 22:22:43		Option changed: weechat.bar.fset.color_bg = darkgray  (default: default)
+2022-01-18 22:23:05		Option changed: weechat.bar.fset.color_bg = black  (default: default)
+2022-01-18 22:23:08		Option changed: weechat.bar.fset.color_delim = white  (default: cyan)
+2022-01-18 22:23:16		Option changed: weechat.bar.fset.separator = off  (default: on)
+2022-01-18 22:24:17	=!=	Unknown command "/colors" (type /help for help)
+2022-01-18 22:25:06		Option changed: script.color.text_bg_selected = darkgray  (default: red)
+2022-01-18 22:26:34		Option changed: fset.color.default_value_selected = white
+2022-01-18 22:27:41		Option changed: fset.color.default_value_selected = *red  (default: white)
+2022-01-18 22:27:55		Option changed: fset.color.line_selected_bg1 = darkgray  (default: blue)
+2022-01-18 22:28:04		Option changed: fset.color.line_selected_bg2 = darkgray  (default: red)
+2022-01-18 22:28:26		Option changed: fset.color.index_selected = darkgray  (default: lightcyan)
+2022-01-18 22:29:22		Option changed: buflist.format.buffer_current = "${color:,darkgray}${format_buffer}"  (default: "${color:,blue}${format_buffer}")
+2022-01-19 02:22:10		fifo: pipe closed
+2022-01-19 02:22:12		python scripts loaded: colorize_nicks
+2022-01-19 02:22:12		script: 368 scripts for WeeChat 3.4
+2022-01-19 02:22:12		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 02:22:27		fifo: pipe closed
+2022-01-19 11:26:48		python scripts loaded: colorize_nicks
+2022-01-19 11:26:48		script: 368 scripts for WeeChat 3.4
+2022-01-19 11:26:48		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 11:26:54		fifo: pipe closed
+2022-01-19 11:27:17		python scripts loaded: colorize_nicks
+2022-01-19 11:27:17		script: 368 scripts for WeeChat 3.4
+2022-01-19 11:27:17		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 11:27:18		fifo: pipe closed
+2022-01-19 11:28:29		python scripts loaded: colorize_nicks
+2022-01-19 11:28:29		script: 368 scripts for WeeChat 3.4
+2022-01-19 11:28:29		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 11:29:02		fifo: pipe closed
+2022-01-19 11:29:04		python scripts loaded: colorize_nicks
+2022-01-19 11:29:04		script: 368 scripts for WeeChat 3.4
+2022-01-19 11:29:04		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 11:29:29		fifo: pipe closed
+2022-01-19 11:30:32		python scripts loaded: colorize_nicks
+2022-01-19 11:30:32		script: 368 scripts for WeeChat 3.4
+2022-01-19 11:30:32		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 11:31:20		Option changed: buflist.format.buffer = "${format_number}${indent}${format_nick_prefix}${color_hotlist}${if:(${buffer.full_name} =~ ^irc)?${if:(${irc_server.away_time} > 0)?${color:yellow}>}${if:(${irc_channel.part} == 1)?${color:magenta}_}${if:(${irc_server.is_connected} == 0)?${color:*magenta}*}}${if:${type}==private?↪}${name}"  (default: "${format_number}${indent}${format_nick_prefix}${color_hotlist}${format_name}")
+2022-01-19 11:32:28		fifo: pipe closed
+2022-01-19 11:32:30		python scripts loaded: colorize_nicks
+2022-01-19 11:32:30		script: 368 scripts for WeeChat 3.4
+2022-01-19 11:32:30		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-19 11:33:29		Option changed: buflist.format.buffer = "${format_number}${indent}${format_nick_prefix}${color_hotlist}${if:(${buffer.full_name} =~ ^irc)?${if:(${irc_server.away_time} > 0)?${color:yellow}>}${if:(${irc_channel.part} == 1)?${color:magenta}_}${if:(${irc_server.is_connected} == 0)?${color:*magenta}*}}${if:${type}==private?↪}${name}"  (default: "${format_number}${indent}${format_nick_prefix}${color_hotlist}${format_name}")
+2022-01-19 11:35:22		Option changed: buflist.format.buffer = " ${format_number}${indent}${format_nick_prefix}${color_hotlist}${format_name}"  (default: "${format_number}${indent}${format_nick_prefix}${color_hotlist}${format_name}")
+2022-01-19 11:35:43	=!=	You can not write text in this buffer
+2022-01-19 11:36:01	=!=	Option ""${color:240}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├" not found
+2022-01-19 11:36:22		Option changed: buflist.format.indent = "${color:240}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├ :└─}"  (default: "  ")
+2022-01-19 11:36:52	=!=	irc: command "join" must be executed on irc buffer (server, channel or private)
+2022-01-19 11:38:27		Option changed: buflist.format.number = "${color:240}${number}${if:${number_displayed}?.: }"  (default: "${color:green}${number}${if:${number_displayed}?.: }")
+2022-01-19 11:38:27	=!=	You can not write text in this buffer
+2022-01-19 11:38:50		Option changed: buflist.format.number = "${color:240}${number}${if:${number_displayed}?.: }"  (default: "${color:green}${number}${if:${number_displayed}?.: }")
+2022-01-19 11:39:35		Option changed: buflist.look.nick_prefix = on  (default: off)
+2022-01-19 11:39:42		Option changed: buflist.look.nick_prefix = off
+2022-01-19 11:39:44		Option changed: buflist.look.nick_prefix = on  (default: off)
+2022-01-19 11:39:57		Option changed: buflist.look.nick_prefix_empty = off  (default: on)
+2022-01-19 11:40:30		Option changed: buflist.format.hotlist_message = "${color:blue}"  (default: "${color:brown}")
+2022-01-19 11:40:42		Option changed: buflist.format.hotlist_none = "${color:247}${if:${type}==server?${color:240}}"  (default: "${color:default}")
+2022-01-19 11:40:54		Option changed: buflist.format.hotlist_private = "${color:red}"  (default: "${color:green}")
+2022-01-19 11:41:13		Option changed: buflist.format.buffer_current = "${color:red,17}${format_buffer}"  (default: "${color:,blue}${format_buffer}")
+2022-01-19 11:41:20		Option changed: buflist.format.buffer_current = "${color:red}${format_buffer}"  (default: "${color:,blue}${format_buffer}")
+2022-01-19 11:41:30		Option changed: buflist.format.buffer_current = "${color:red,darkgray}${format_buffer}"  (default: "${color:,blue}${format_buffer}")
+2022-01-19 11:45:16		Option changed: weechat.look.mouse = on  (default: off)
+2022-01-19 11:45:28	=!=	Unknown command "/spell" (type /help for help)
+2022-01-20 03:01:05		fifo: pipe closed
+2022-01-20 10:26:45		python scripts loaded: colorize_nicks
+2022-01-20 10:26:45		script: 368 scripts for WeeChat 3.4
+2022-01-20 10:26:45		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-20 10:27:23	=!=	irc: command "join" must be executed on irc buffer (server, channel or private)
+2022-01-20 23:14:53		fifo: pipe closed
+2022-01-23 18:59:53		python scripts loaded: colorize_nicks
+2022-01-23 18:59:53		script: 368 scripts for WeeChat 3.4
+2022-01-23 18:59:53		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-23 19:09:12	=!=	WeeChat main buffer can't be closed
+2022-01-23 19:09:14		fifo: pipe closed
+2022-01-24 10:59:54		python scripts loaded: colorize_nicks
+2022-01-24 10:59:54		script: 368 scripts for WeeChat 3.4
+2022-01-24 10:59:54		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-24 11:16:49		script: downloading list of scripts...
+2022-01-24 11:16:50		script: 368 scripts for WeeChat 3.4
+2022-01-24 11:17:08		script: script "notify_send.pl" is already installed and up-to-date
+2022-01-24 22:47:17		fifo: pipe closed
+2022-01-31 17:21:07		perl scripts loaded: notify_send
+2022-01-31 17:21:07		python scripts loaded: colorize_nicks
+2022-01-31 17:21:07		script: 368 scripts for WeeChat 3.4
+2022-01-31 17:21:07		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-31 17:21:24		Option changed: weechat.bar.buflist.position = bottom  (default: left)
+2022-01-31 17:25:18		Option changed: buflist.format.indent = "${color:240}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?:}"  (default: "  ")
+2022-01-31 17:25:49		Option changed: buflist.format.name = "${name} "  (default: "${name}")
+2022-01-31 17:26:35		Option changed: weechat.look.separator_vertical = "|"  (default: "")
+2022-01-31 17:26:39		Option changed: weechat.look.separator_vertical = ""
+2022-01-31 17:29:24		Option changed: weechat.color.chat_time = 200  (default: default)
+2022-01-31 17:29:34		Option changed: weechat.color.chat_time = 0  (default: default)
+2022-01-31 17:29:42		Option changed: weechat.color.chat_time_delimiters = 0  (default: brown)
+2022-01-31 17:30:20		Option changed: weechat.look.buffer_time_format = "%H:%M"  (default: "%H:%M:%S")
+2022-01-31 17:30:36		Option changed: weechat.look.quote_time_format = "%H:%M"  (default: "%H:%M:%S")
+2022-01-31 17:31:18		Option changed: weechat.bar.nicklist.hidden = on  (default: off)
+2022-01-31 17:31:35	=!=	WeeChat main buffer can't be closed
+2022-01-31 17:31:37		fifo: pipe closed
+2022-01-31 17:32:18		perl scripts loaded: notify_send
+2022-01-31 17:32:18		python scripts loaded: colorize_nicks
+2022-01-31 17:32:18		script: 368 scripts for WeeChat 3.4
+2022-01-31 17:32:18		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-01-31 17:34:10		Option changed: weechat.bar.input.separator = on  (default: off)
+2022-01-31 17:35:29		Option changed: weechat.bar.status.items = "time [time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion"  (default: "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion")
+2022-01-31 17:35:45		Option changed: weechat.bar.status.items = " time,[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion"  (default: "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion")
+2022-01-31 17:36:23		Option changed: weechat.bar.status.items = " time,[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion"  (default: "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion")
+2022-01-31 17:36:30		Option changed: weechat.bar.status.position = top  (default: bottom)
+2022-01-31 17:36:37		Option changed: weechat.bar.status.position = right  (default: bottom)
+2022-01-31 17:36:42		Option changed: weechat.bar.status.position = left  (default: bottom)
+2022-01-31 17:36:46		Option changed: weechat.bar.status.items = " time,[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion"  (default: "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],[typing],completion")
+2022-01-31 17:36:51		Option changed: weechat.bar.status.position = bottom
+2022-01-31 17:38:04		Option changed: weechat.bar.input.separator = off
+2022-01-31 17:38:32		Option changed: weechat.bar.buflist.separator = off  (default: on)
+2022-01-31 17:38:37		Option changed: weechat.bar.input.separator = on  (default: off)
+2022-01-31 17:38:46		Option changed: weechat.bar.buflist.separator = on
+2022-01-31 17:39:05		Option changed: weechat.bar.title.items = " buffer_title"  (default: "buffer_title")
+2022-01-31 17:39:15		Option changed: weechat.bar.title.size = 2  (default: 1)
+2022-01-31 17:41:00		Option changed: irc.look.typing_status_nicks = on  (default: off)
+2022-01-31 17:41:07		Option changed: weechat.bar.status.position = top  (default: bottom)
+2022-01-31 17:41:49		Option changed: weechat.bar.title.separator = on  (default: off)
+2022-01-31 17:41:58		Option changed: weechat.bar.title.separator = off
+2022-01-31 17:42:21		Option changed: weechat.bar.title.color_bg = 0  (default: darkgray)
+2022-01-31 17:42:43		Option changed: weechat.bar.title.color_fg = gray  (default: default)
+2022-01-31 17:42:50		Option changed: weechat.bar.title.color_fg = 242  (default: default)
+2022-01-31 22:27:11	=!=	irc: command "join" must be executed on irc buffer (server, channel or private)
+2022-02-01 00:49:40		fifo: pipe closed
+2022-02-09 10:44:57		perl scripts loaded: notify_send
+2022-02-09 10:44:58		python scripts loaded: colorize_nicks
+2022-02-09 10:44:58		script: 368 scripts for WeeChat 3.4
+2022-02-09 10:44:58		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
+2022-02-09 10:45:41	=!=	WeeChat main buffer can't be closed
+2022-02-09 10:45:42		fifo: pipe closed

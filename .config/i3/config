@@ -79,10 +79,10 @@ popup_during_fullscreen smart
 # Startup {{{
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id sxhkd &
-exec --no-startup-id aria2c &
+# exec --no-startup-id aria2c &
 exec --no-startup-id safeeyes -e &
 exec --no-startup-id bash $HOME/scripts/other/wp.sh &
-exec --no-startup-id feh --bg-scale --no-xinerama .cache/superpaper/temp/bim-b.png &
+exec --no-startup-id feh --no-fehbg --bg-scale --no-xinerama .cache/superpaper/temp/bim-b.png &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
 # exec --no-startup-id picom &
 exec --no-startup-id xset s off &
@@ -95,7 +95,7 @@ exec --no-startup-id bash $HOME/scripts/hardware/norgb.sh &
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
 exec_always --no-startup-id sleep 4 && xmodmap $HOME/.config/X11/Xmodmap &
 exec_always --no-startup-id kitti3 -p tc
-exec_always --no-startup-id flashfocus &
+# exec_always --no-startup-id flashfocus &
 exec_always --no-startup-id autotiling &
 # exec_always --no-startup-id ~/.local/bin/i3-auto-layout &
 # }}}

@@ -108,10 +108,10 @@ map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { silent = true, noremap = true
 
 map("n", "<leader>p", "<cmd>Telescope lazy<CR>", { silent = true, noremap = true })
 
-map("n", "<leader>qr", "<cmd>Trouble lsp_references<CR>", { silent = true, noremap = true })
-map("n", "<leader>qd", "<cmd>lua Scroll('definition')<CR>", { silent = true, noremap = true })
-map("n", "<leader>qi", "<cmd>Trouble lsp_implentations<CR>", { silent = true, noremap = true })
-map("n", "<leader>qt", "<cmd>Trouble lsp_type_definitions<CR>", { silent = true, noremap = true })
+map("n", "<leader>qr", "<cmd>Glance references<CR>", { silent = true, noremap = true })
+map("n", "<leader>qd", "<cmd>Glance definitions<CR>", { silent = true, noremap = true })
+map("n", "<leader>qi", "<cmd>Glance implementations<CR>", { silent = true, noremap = true })
+map("n", "<leader>qt", "<cmd>Glance type_definitions<CR>", { silent = true, noremap = true })
 map({"n", "v"}, "<leader>qc", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, noremap = true })
 
 map("n", "<leader>r", "<cmd>Registers<CR>", { silent = true, noremap = true })

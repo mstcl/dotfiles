@@ -1,5 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local bo = vim.bo
+local cmd = vim.cmd
 
 local function applyFoldsAndThenCloseAllFolds(bufnr, providerName)
 	require("async")(function()
@@ -41,33 +43,32 @@ local map = augroup("map", { clear = true })
 	command = "lua MiniMap.toggle()",
 	group = map
 }) ]]
-
 local nvimcmp = augroup("nvimcmp", { clear = true })
-autocmd({"BufWritePost"}, {
+autocmd({ "BufWritePost" }, {
 	pattern = "*.snipppets",
 	group = nvimcmp,
 	command = "CmpUltisnipsReloadSnippets",
 })
 
 local alpha = augroup("alpha", { clear = true })
-autocmd({"User"}, {
+autocmd({ "User" }, {
 	pattern = "AlphaReady",
 	group = alpha,
 	command = "set laststatus=0 | set showtabline=0 | set nofoldenable | autocmd BufUnload <buffer> set showtabline=2 | set laststatus=3",
 })
-autocmd({"StdinReadPre"}, {
+autocmd({ "StdinReadPre" }, {
 	pattern = "*",
 	command = "let g:isReadingFromStdin = 1",
 	group = alpha,
 })
-autocmd({"VimEnter"}, {
+autocmd({ "VimEnter" }, {
 	pattern = "*",
 	group = alpha,
-    callback = function()
-        if vim.fn.argc() == 0 then
-            vim.cmd("Alpha")
-        end
-    end
+	callback = function()
+		if vim.fn.argc() == 0 then
+			vim.cmd("Alpha")
+		end
+	end,
 })
 autocmd({ "WinEnter", "BufRead", "BufNewFile" }, {
 	pattern = "*",
@@ -226,5 +227,28 @@ vim.api.nvim_create_autocmd({
 	group = vim.api.nvim_create_augroup("barbecue", {}),
 	callback = function()
 		require("barbecue.ui").update()
+	end,
+})
+
+autocmd({ "BufWinLeave", "BufLeave", "QuitPre", "FocusLost", "InsertLeave" }, {
+	pattern = "?*", -- pattern required for some events
+	callback = function()
+		if not bo.readonly and vim.fn.expand("%") ~= "" and bo.buftype == "" and bo.filetype ~= "gitcommit" then
+			cmd.update(vim.fn.expand("%:p"))
+		end
+	end,
+})
+
+local autochdir = augroup("autochdir", { clear = true })
+
+autocmd("BufWinEnter", {
+	group = "autochdir",
+	pattern = "?*",
+	callback = function()
+		local ignoredFT = { "gitcommit", "NeogitCommitMessage", "DiffviewFileHistory", "" }
+		if not bo.modifiable or vim.tbl_contains(ignoredFT, bo.filetype) or not (vim.fn.expand("%:p"):find("^/")) then
+			return
+		end
+		cmd.cd(vim.fn.expand("%:p:h"))
 	end,
 })

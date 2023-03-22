@@ -37,6 +37,7 @@ alias ka='killall -q'
 alias b='bat -pp'
 alias sc='sudo systemctl'
 alias scu='systemctl --user'
+alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings '
 # }}}
 # Neovim {{{
 alias big="/usr/bin/nvim -n -u NONE -i NONE -N"

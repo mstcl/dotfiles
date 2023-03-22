@@ -4,12 +4,20 @@ export LANG=en_GB.UTF-8
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/share
 # ------------------------------------
 export ENABLE_VKBASALT=0
 export MANGOHUD=0
 # ------------------------------------
 export _GL_SYNC_DISPLAY_DEVICE=DP-2
+export CONAN_USER_HOME="$XDG_CONFIG_HOME"/conan
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export XCURSOR_PATH=/usr/share/icons:${XDG_DATA_HOME}/icons
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql/mysql_history
 export VIT_DIR="$XDG_CONFIG_HOME"/vit
+export PYTHONSTARTUP="/etc/python/pythonrc"
+# export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 # export STARDICT_DATA_DIR=$XDG_DATA_HOME
 export TASKRC="$XDG_CONFIG_HOME"/task/taskrc
 export TASKDATA="$XDG_DATA_HOME"/task
@@ -36,7 +44,7 @@ export TRASH="$XDG_DATA_HOME"/Trash/files
 export MANPATH="/usr/share/man"
 export SCRIPTS="$HOME"/scripts
 export ADOTDIR="$XDG_DATA_HOME"/antigen
-export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
+export PATH="$HOME/.local/share/applications:$HOME/.local/bin:$HOME/scripts/bin:$HOME/.local/share/cargo/bin:$PATH"
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
@@ -62,6 +70,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 export GLFW_IM_MODULE=ibus
+export _JAVA_OPTIONS=-Djavafx.cachedir="$XDG_CACHE_HOME"/openjfx
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export W3M_DIR="$XDG_STATE_HOME/w3m"
 # ------------------------------------
 export EXA_COLORS="da=1;31"
 export LS_COLORS="BLK=38;5;68:CAPABILITY=38;5;17:CHR=38;5;113;1:DIR=38;5;30:DOOR=38;5;127:EXEC=38;5;208;1:FIFO=38;5;126:FILE=0:LINK=target:MULTIHARDLINK=38;5;222;1:NORMAL=0:ORPHAN=48;5;196;38;5;232;1:OTHER_WRITABLE=38;5;220;1:SETGID=48;5;3;38;5;0:SETUID=38;5;220;1;3;100;1:SOCK=38;5;197:STICKY=38;5;86;48;5;234:STICKY_OTHER_WRITABLE=48;5;235;38;5;139;3:*README=38;5;220;1:*README.rst=38;5;220;1:*README.md=38;5;220;1:*LICENSE=38;5;220;1:*COPYING=38;5;220;1:*INSTALL=38;5;220;1:*COPYRIGHT=38;5;220;1:*AUTHORS=38;5;220;1:\

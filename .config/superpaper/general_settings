@@ -1,0 +1,8 @@
+logging=false
+use hotkeys=false
+next wallpaper hotkey=
+pause wallpaper hotkey=
+show_help_at_start=false
+set_command=
+browse_default_dir=
+warn_large_img=true

@@ -1,0 +1,269 @@
+2022-01-19 11:50:05	-->	lckdscl [lckdscl] (lckdscl) (~lckdscl@user/lckdscl) has joined ##physics
+2022-01-19 11:50:05	!=	Topic for ##physics is "Anything physics! Keep it sane. | ##not-physics for off-topic convo."
+2022-01-19 11:50:05	!=	Topic set by mefistofeles on Thu, 20 May 2021 03:06:04
+2022-01-19 11:50:05	!=	Channel ##physics: 203 nicks (0 ops, 0 voices, 203 normals)
+2022-01-19 11:50:07	!=	Channel created on Wed, 19 May 2021 13:14:33
+2022-01-19 11:55:25	<--	Carbonflux (~Carbonflu@c-66-235-54-179.sea.wa.customer.broadstripe.net) has quit (Quit: When all you have are solutions, everything is a problem.)
+2022-01-19 12:10:30	-->	bn_mobile [bn_] (bn_mobile) (uid278100@id-278100.tinside.irccloud.com) has joined ##physics
+2022-01-19 12:21:32	<--	KAHR-Alpha (~Alpha@2a01cb0d024a66001939558a4e3f97d4.ipv6.abo.wanadoo.fr) has quit (Ping timeout: 268 seconds)
+2022-01-19 12:23:53	<--	mikey91 (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has quit (Ping timeout: 256 seconds)
+2022-01-19 12:39:04	-->	gentooclimax (gentooclimax) (~gentoocli@81-64-65-213.rev.numericable.fr) has joined ##physics
+2022-01-19 12:40:44	-->	aruns_ (Arun Sahadeo) (~aruns@176.27.177.204) has joined ##physics
+2022-01-19 12:40:53	-->	Vornotron [Vornicus] (Vornucopia) (~Vornicus@2603-8000-5d07-7ef0-49e1-8f43-b7ec-23cc.res6.spectrum.com) has joined ##physics
+2022-01-19 12:41:15	-->	sr20det [sr20det] (p) (~sr20det@user/sr20det) has joined ##physics
+2022-01-19 12:41:52	-->	montpol4 [montpol] (The Lounge User) (montpol@fine.mouses.xyz) has joined ##physics
+2022-01-19 12:42:46	-->	xihr_ [xihr] (Eleventh Hour) (sid524153@id-524153.lymington.irccloud.com) has joined ##physics
+2022-01-19 12:42:49	-->	msp [ms] (max) (~max@user/ms) has joined ##physics
+2022-01-19 12:42:52	-->	bn_mobile_ [bn_] (bn_mobile) (uid278100@id-278100.tinside.irccloud.com) has joined ##physics
+2022-01-19 12:42:52	-->	joel135_ [joel135] (Joel Sjögren) (sid136450@id-136450.hampstead.irccloud.com) has joined ##physics
+2022-01-19 12:42:56	-->	s73ph4n_ (Got ZNC?) (~s73ph4n@vps-b7a98d49.vps.ovh.net) has joined ##physics
+2022-01-19 12:42:56	-->	protodave_ [protodave] (protodave) (~protodave@104.236.171.34) has joined ##physics
+2022-01-19 12:43:33	-->	joedang (pi) (~pi@c-76-114-170-217.hsd1.md.comcast.net) has joined ##physics
+2022-01-19 12:43:53	-->	sdfgsdfgsdfgsfsd [sdfgsdfg] (sdfgsdfg) (~sdfgsdfg@user/sdfgsdfg) has joined ##physics
+2022-01-19 12:44:23	-->	szkl_ [szkl] (szkl) (uid110435@uxbridge.irccloud.com) has joined ##physics
+2022-01-19 12:45:03	-->	bluss_ [bluss] (bluss) (~bluss@user/bluss) has joined ##physics
+2022-01-19 12:45:06	-->	dostoyev1ky2 [dostoyevsky2] (Trust my intuition!) (~sck@user/dostoyevsky2) has joined ##physics
+2022-01-19 12:45:13	-->	segnior_ [segnior] (segnior) (segnior@user/segnior) has joined ##physics
+2022-01-19 12:45:14	-->	bowlofeg1 [bowlofeggs] (bowlofeggs) (~bowlofegg@fedora/bowlofeggs) has joined ##physics
+2022-01-19 12:45:46	-->	Fragment1dCurve (FC) (~FC@pool-100-2-232-17.nycmny.fios.verizon.net) has joined ##physics
+2022-01-19 12:45:49	!=	aruns_ has identified as aruns
+2022-01-19 12:45:49	!=	aruns has unidentified
+2022-01-19 12:45:50	<--	aruns (~aruns@176.27.177.204) has quit (Killed (erbium.libera.chat (Nickname regained by services)))
+2022-01-19 12:45:50	!=	aruns_ is now known as aruns
+2022-01-19 12:46:05	<--	xihr (sid524153@id-524153.lymington.irccloud.com) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:05	<--	bn_mobile (uid278100@id-278100.tinside.irccloud.com) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	TheCoffeMaker (~TheCoffeM@user/thecoffemaker) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	s73ph4n (~s73ph4n@vps-b7a98d49.vps.ovh.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	segnior (segnior@user/segnior) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	dostoyevsky2 (~sck@user/dostoyevsky2) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	bluss (~bluss@user/bluss) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	SnoopJ (~snoopj@user/snoopj) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	bowlofeggs (~bowlofegg@fedora/bowlofeggs) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	sdfgsdfg (~sdfgsdfg@user/sdfgsdfg) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	Vornicus (~Vornicus@2603-8000-5d07-7ef0-f4a2-2bdd-1b71-ce90.res6.spectrum.com) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	iz (~tv@157-131-220-165.fiber.dynamic.sonic.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:06	<--	Odysimus (~Odysimus@107.174.27.80) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	FragmentedCurve (~FC@pool-100-2-232-17.nycmny.fios.verizon.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	hays (rootvegeta@fsf/member/hays) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	szkl (uid110435@id-110435.uxbridge.irccloud.com) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	astroo- (~astro@2602:febc:0:28f::) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	jesseg (~jesseg@64.146.180.172) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	montpol (montpol@fine.mouses.xyz) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	Starfoxxes (~Starfoxxe@2a02:8070:5390:d00:12bf:48ff:feb8:38c8) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	nisstyre (~wes@user/nisstyre) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	protodave (~protodave@104.236.171.34) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	jab416171 (~jab416171@c-174-52-58-23.hsd1.ut.comcast.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:07	<--	joel135 (sid136450@id-136450.hampstead.irccloud.com) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:08	<--	ms (~max@user/ms) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:46:08	-->	astroo- (none) (~astro@2602:febc:0:28f::) has joined ##physics
+2022-01-19 12:46:08	-->	iz (Unknown) (~tv@157-131-220-165.fiber.dynamic.sonic.net) has joined ##physics
+2022-01-19 12:46:13	!=	xihr_ is now known as xihr
+2022-01-19 12:46:13	!=	bn_mobile_ is now known as bn_mobile
+2022-01-19 12:46:14	!=	montpol4 is now known as montpol
+2022-01-19 12:46:14	!=	joel135_ is now known as joel135
+2022-01-19 12:46:32	-->	SnoopJ [SnoopJ] (snoopj) (~snoopj@user/snoopj) has joined ##physics
+2022-01-19 12:46:45	-->	hays [hays] (h_) (rootvegeta@fsf/member/hays) has joined ##physics
+2022-01-19 12:46:57	-->	jesseg (jesseg) (~jesseg@64.146.180.172) has joined ##physics
+2022-01-19 12:47:05	-->	Starfoxxes [Starfoxxes] (Starfoxxes) (~Starfoxxe@2a02:8070:5390:d00:12bf:48ff:feb8:38c8) has joined ##physics
+2022-01-19 12:47:05	-->	jab416171 [jab416171] (jab416171) (~jab416171@c-174-52-58-23.hsd1.ut.comcast.net) has joined ##physics
+2022-01-19 12:47:07	<--	CatCow (~wtf_over@c-73-96-109-206.hsd1.or.comcast.net) has quit (Ping timeout: 256 seconds)
+2022-01-19 12:47:14	-->	Odysimus [Odysimus] (Odie) (~Odysimus@107.174.27.80) has joined ##physics
+2022-01-19 12:47:16	-->	nisstyre [nisstyre] (wes) (~wes@user/nisstyre) has joined ##physics
+2022-01-19 12:47:24	-->	TheCoffeMaker [TheCoffeMaker] (TheCoffeMaker) (~TheCoffeM@user/thecoffemaker) has joined ##physics
+2022-01-19 12:49:46	-->	CatCow [CatCow] (John) (~wtf_over@c-73-96-109-206.hsd1.or.comcast.net) has joined ##physics
+2022-01-19 12:49:57	<--	segnior_ (segnior@user/segnior) has quit (Ping timeout: 256 seconds)
+2022-01-19 12:49:57	<--	szkl_ (uid110435@uxbridge.irccloud.com) has quit (Ping timeout: 256 seconds)
+2022-01-19 12:50:31	<--	gentooclimax (~gentoocli@81-64-65-213.rev.numericable.fr) has quit (Ping timeout: 256 seconds)
+2022-01-19 12:50:32	<--	MiseryMyra (MiseryMyra@sponsored.by.bnc4you.xyz) has quit (Ping timeout: 256 seconds)
+2022-01-19 12:51:22	-->	mikey91 (mikey) (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has joined ##physics
+2022-01-19 12:51:40	-->	szkl_ (szkl_) (uid110435@id-110435.uxbridge.irccloud.com) has joined ##physics
+2022-01-19 12:53:00	-->	MiseryMyra [MiseryMyra] (FreeZNC provided by #bnc4you) (MiseryMyra@sponsored.by.bnc4you.xyz) has joined ##physics
+2022-01-19 12:54:41	-->	MetricT [MetricT] (realname) (~MetricT@2600:6c5d:4500:af86:845:6c69:88d:7447) has joined ##physics
+2022-01-19 12:55:16	-->	segnior [segnior] (segnior) (segnior@user/segnior) has joined ##physics
+2022-01-19 12:56:29	-->	MetricT3 [MetricT] (realname) (~MetricT@2600:6c5d:4500:af86:845:6c69:88d:7447) has joined ##physics
+2022-01-19 12:56:32	<--	MetricT2 (~MetricT@2600:6c5d:4500:af86:845:6c69:88d:7447) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:58:32	<--	mikey91 (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 12:58:57	<--	MetricT (~MetricT@2600:6c5d:4500:af86:845:6c69:88d:7447) has quit (Ping timeout: 240 seconds)
+2022-01-19 13:00:01	-->	ShinyRice [ShinyRice] (shinyrice) (~shinyrice@236.170.23.95.dynamic.jazztel.es) has joined ##physics
+2022-01-19 13:01:46	-->	mikey91 (mikey) (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has joined ##physics
+2022-01-19 13:03:42	<--	sdfgsdfgsdfgsfsd (~sdfgsdfg@user/sdfgsdfg) has quit (Quit: ZzzZ)
+2022-01-19 13:05:54	-->	Oli [Oli] (Unknown) (~Unknown@user/oli) has joined ##physics
+2022-01-19 13:11:09	-->	sdfgsdfg [sdfgsdfg] (sdfgsdfg) (~sdfgsdfg@user/sdfgsdfg) has joined ##physics
+2022-01-19 13:27:20	!=	bluss_ is now known as bluss
+2022-01-19 13:30:21	<--	sdfgsdfg (~sdfgsdfg@user/sdfgsdfg) has quit (Quit: ZzzZ)
+2022-01-19 13:37:48	-->	Bakunin [chrysalis] (...) (~Bakunin@user/lindis) has joined ##physics
+2022-01-19 13:44:41	-->	zephros [Zephros] (zephros) (~zephros@2603-6010-1103-15a1-63d4-5c18-fa38-7648.res6.spectrum.com) has joined ##physics
+2022-01-19 13:48:28	<--	CatCow (~wtf_over@c-73-96-109-206.hsd1.or.comcast.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2022-01-19 14:08:52	<--	mikey91 (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has quit (Ping timeout: 250 seconds)
+2022-01-19 14:09:58	-->	mikey91 (mikey) (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has joined ##physics
+2022-01-19 14:11:47	-->	KAHR-Alpha (realname) (~Alpha@2a01cb0d024a66001940bf45dafd7f77.ipv6.abo.wanadoo.fr) has joined ##physics
+2022-01-19 14:14:38	-->	dude12312414 [dude12312414] (test) (~test@gateway/tor-sasl/dude12312414) has joined ##physics
+2022-01-19 14:18:21	-->	gentooclimax (gentooclimax) (~gentoocli@81-64-65-213.rev.numericable.fr) has joined ##physics
+2022-01-19 14:21:57	<--	gentooclimax (~gentoocli@81-64-65-213.rev.numericable.fr) has quit (Client Quit)
+2022-01-19 14:22:19	<--	mikey91 (~mikey@99-189-74-178.lightspeed.austtx.sbcglobal.net) has quit (Ping timeout: 256 seconds)
+2022-01-19 14:37:15	-->	x_kuru [xkuru] (realname) (~xkuru@user/xkuru) has joined ##physics
+2022-01-19 14:40:17	<--	xkuru (~xkuru@user/xkuru) has quit (Ping timeout: 268 seconds)
+2022-01-19 14:42:32	<--	vysn (~vysn@user/vysn) has quit (Ping timeout: 240 seconds)
+2022-01-19 14:44:36	-->	[itchyjunk] [[itchyjunk]] (realname) (~itchyjunk@user/itchyjunk/x-7353470) has joined ##physics
+2022-01-19 15:09:38	-->	maplefinger [chrysalis] (...) (~Bakunin@user/lindis) has joined ##physics
+2022-01-19 15:09:43	<--	Bakunin (~Bakunin@user/lindis) has quit (Killed (NickServ (GHOST command used by maplefinger)))
+2022-01-19 15:09:47	!=	maplefinger is now known as Bakunin
+2022-01-19 15:10:17	-->	cvmn [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined ##physics
+2022-01-19 15:14:13	<--	stblaha (~stblaha@user/stblaha) has quit (Quit: leaving)
+2022-01-19 15:24:37	-->	SGautam [SGautam] (Siddharth Gautam) (uid286066@id-286066.ilkley.irccloud.com) has joined ##physics
+2022-01-19 15:30:00	<--	bn_mobile (uid278100@id-278100.tinside.irccloud.com) has quit (Quit: Connection closed for inactivity)
+2022-01-19 15:30:37	-->	NEYi_ [NEYi] (realname) (~NEYi@109.251.216.38) has joined ##physics
+2022-01-19 15:33:56	<--	NEYi (~NEYi@109.251.216.38) has quit (Ping timeout: 268 seconds)
+2022-01-19 15:34:43	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Remote host closed the connection)
+2022-01-19 15:35:31	-->	cvmn [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined ##physics
+2022-01-19 15:49:06	<--	dld (~davidlowr@2601:197:600:1210:aca6:8c80:35d5:4f3c) has quit (Ping timeout: 245 seconds)
+2022-01-19 15:50:24	-->	dld [dld] (davidlowryduda) (~davidlowr@2601:197:600:1210:88d:2354:617:54b5) has joined ##physics
+2022-01-19 15:58:50	<--	Malvolio (~Malvolio@user/malvolio) has quit (Ping timeout: 256 seconds)
+2022-01-19 16:00:10	!=	HellCat is now known as Panther
+2022-01-19 16:05:04	!=	trace is now known as trace987
+2022-01-19 16:18:15	-->	brheurhe (realname) (~vkt____@2401:4900:52b2:2457:6425:708d:e422:3af) has joined ##physics
+2022-01-19 16:25:26	-->	p0indexter [p0indexter] (alpha-0) (~alpha@user/p0indexter) has joined ##physics
+2022-01-19 16:29:25	-->	caveman_ [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined ##physics
+2022-01-19 16:30:02	-->	capefeather (realname) (~capefeath@bras-base-tnhlon4048w-grc-65-67-71-20-155.dsl.bell.ca) has joined ##physics
+2022-01-19 16:32:36	<--	caveman (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 16:48:11	!=	joedang has identified as joedang
+2022-01-19 16:48:41	-->	_Syscall_ (realname) (~syscall@aclermont-ferrand-653-1-162-45.w90-4.abo.wanadoo.fr) has joined ##physics
+2022-01-19 16:54:37	<--	brheurhe (~vkt____@2401:4900:52b2:2457:6425:708d:e422:3af) has quit (Ping timeout: 240 seconds)
+2022-01-19 16:55:08	-->	brheurhe (realname) (~vkt____@2401:4900:52b2:2457:8557:bf9c:493e:acaa) has joined ##physics
+2022-01-19 16:55:48	-->	gareppa [gareppa] (gareppa) (~gareppa@user/gareppa) has joined ##physics
+2022-01-19 16:56:59	<--	gareppa (~gareppa@user/gareppa) has quit (Remote host closed the connection)
+2022-01-19 16:59:25	<--	p0indexter (~alpha@user/p0indexter) has quit (Quit: ars longa vita brevis)
+2022-01-19 17:06:19	<--	dude12312414 (~test@gateway/tor-sasl/dude12312414) has quit (Remote host closed the connection)
+2022-01-19 17:06:37	<--	zephros (~zephros@2603-6010-1103-15a1-63d4-5c18-fa38-7648.res6.spectrum.com) has quit (Ping timeout: 240 seconds)
+2022-01-19 17:06:55	-->	dude12312414 [dude12312414] (test) (~test@gateway/tor-sasl/dude12312414) has joined ##physics
+2022-01-19 17:07:54	-->	zephros [Zephros] (zephros) (~zephros@2603-6010-1103-15a1-63d4-5c18-fa38-7648.res6.spectrum.com) has joined ##physics
+2022-01-19 17:09:44	<--	nvmd (~nvmd@user/nvmd) has quit (Quit: Later, nerds.)
+2022-01-19 17:16:04	Bakunin	https://iopscience.iop.org/article/10.3847/1538-4357/ac34fb
+2022-01-19 17:16:19	Bakunin	black hole stellar mass paper
+2022-01-19 17:16:32	Bakunin	claims something like 40 centrillion BHs
+2022-01-19 17:20:53	!=	dostoyev1ky2 is now known as dostoyevsky2
+2022-01-19 17:27:18	raptop	"We estimate a local stellar BH relic mass density of ρ• ≈ 5 × 10^7 M⊙ Mpc^{−3}"
+2022-01-19 17:27:21	raptop	oh
+2022-01-19 17:30:27	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 17:31:53	InPhase	I'm starting to think blackholes are a troubling flaw in the universe.  Someone should patch this hole before it becomes a security problem.
+2022-01-19 17:33:31	Bakunin	the fact that they appear to exhibit some synchony implies that something other than spaghettification may lie beyond their horizons
+2022-01-19 17:33:59	SnoopJ	it might
+2022-01-19 17:34:56	-->	cvmn [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined ##physics
+2022-01-19 17:35:25	Bakunin	oldie but a goodie   https://www.scientificamerican.com/article/strange-but-true-black-holes-sing/
+2022-01-19 17:58:03	<--	Fragment1dCurve (~FC@pool-100-2-232-17.nycmny.fios.verizon.net) has quit (Remote host closed the connection)
+2022-01-19 17:58:52	<--	NEYi_ (~NEYi@109.251.216.38) has quit (Read error: Connection reset by peer)
+2022-01-19 18:01:07	-->	FragmentedCurve [FragmentedCurve] (FC) (~FC@pool-100-2-232-17.nycmny.fios.verizon.net) has joined ##physics
+2022-01-19 18:01:28	<--	trace987 (~trace@ip5b42976d.dynamic.kabel-deutschland.de) has quit (Remote host closed the connection)
+2022-01-19 18:01:51	-->	gentooclimax (gentooclimax) (~gentoocli@81-64-65-213.rev.numericable.fr) has joined ##physics
+2022-01-19 18:05:56	-->	trace987 [trace] (Axel Korn) (~trace@ip5b42976d.dynamic.kabel-deutschland.de) has joined ##physics
+2022-01-19 18:15:52	<--	Codaraxis_ (~Codaraxis@user/codaraxis) has quit (Ping timeout: 250 seconds)
+2022-01-19 18:32:09	<--	johnkeats6 (~johnkeats@2804:14c:32:a0cc:4cc9:af1c:4459:8669) has quit (Ping timeout: 268 seconds)
+2022-01-19 18:34:08	-->	johnkeats6 [johnkeats6] (realname) (~johnkeats@2804:14c:32:a0cc:e8d1:56a0:bebb:6b03) has joined ##physics
+2022-01-19 18:34:13	<--	SGautam (uid286066@id-286066.ilkley.irccloud.com) has quit (Quit: Connection closed for inactivity)
+2022-01-19 18:35:38	<--	dude12312414 (~test@gateway/tor-sasl/dude12312414) has quit (Quit: THE RAM IS TOO DAMN HIGH)
+2022-01-19 18:54:57	<--	caveman_ (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 19:02:27	-->	Malvolio [Malvolio] (Malvolio) (~Malvolio@user/malvolio) has joined ##physics
+2022-01-19 19:07:18	<--	undefined_bob (~undefined@user/undefined-bob/x-5411918) has quit (Ping timeout: 276 seconds)
+2022-01-19 19:10:36	-->	vckt_ (realname) (~vkt____@103.136.92.19) has joined ##physics
+2022-01-19 19:13:37	<--	brheurhe (~vkt____@2401:4900:52b2:2457:8557:bf9c:493e:acaa) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:15:02	<--	ga1771774 (uid283390@id-283390.ilkley.irccloud.com) has quit (Quit: Connection closed for inactivity)
+2022-01-19 19:15:05	<--	Haxxa (~Haxxa@202-144-174-197.ip4.superloop.com) has quit (Quit: Haxxa flies away.)
+2022-01-19 19:15:57	<--	vckt_ (~vkt____@103.136.92.19) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:17:19	-->	Haxxa [Haxxa] (Harrison) (~Haxxa@202-144-174-197.ip4.superloop.com) has joined ##physics
+2022-01-19 19:18:21	-->	undefined_bob [undefined_bob] (undefined_bob) (~undefined@user/undefined-bob/x-5411918) has joined ##physics
+2022-01-19 19:18:35	-->	bn_mobile [bn_] (bn_mobile) (uid278100@id-278100.tinside.irccloud.com) has joined ##physics
+2022-01-19 19:19:13	bn_mobile	Hi, I have a force diagram question.  If a foot with a oblique spiral fracture of the 5th metatarsal occurs, how would that alter the distribution of forces in the foot (say with 85lbs of weight/force vector from the proximal (top) direction of the foot)?
+2022-01-19 19:19:30	bn_mobile	Would less weight be distributed all along the #5 bones (because of the fracture midway) so more of it would be concentrated at the heel... which would explain the (initially counterintuitive) increased pain there?  If so, could an orthotic be constructed that would help to redistribute that weight forward again?
+2022-01-19 19:23:06	-->	vckt_ (realname) (~vkt____@103.136.92.19) has joined ##physics
+2022-01-19 19:27:57	<--	vckt_ (~vkt____@103.136.92.19) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:30:25	-->	skapata (Skapata Lambda 1337) (~Skapata@2804:14c:87b0:a6f9:1cb:469c:e868:928d) has joined ##physics
+2022-01-19 19:30:25	!=	skapata has identified as skapata
+2022-01-19 19:30:25	!=	skapata (~Skapata@2804:14c:87b0:a6f9:1cb:469c:e868:928d) has changed host to ~Skapata@user/skapata
+2022-01-19 19:30:43	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 19:38:19	!=	iz has identified as xiz
+2022-01-19 19:38:19	!=	iz (~tv@157-131-220-165.fiber.dynamic.sonic.net) has changed host to ~tv@user/xiz
+2022-01-19 19:42:06	-->	Codaraxis [Codaraxis] (realname) (~Codaraxis@user/codaraxis) has joined ##physics
+2022-01-19 19:42:31	-->	Codaraxis_ [Codaraxis] (realname) (~Codaraxis@user/codaraxis) has joined ##physics
+2022-01-19 19:44:42	-->	Codaraxis__ [Codaraxis] (realname) (~Codaraxis@user/codaraxis) has joined ##physics
+2022-01-19 19:46:38	<--	Codaraxis (~Codaraxis@user/codaraxis) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:47:46	<--	Codaraxis_ (~Codaraxis@user/codaraxis) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:52:24	-->	NEYi [NEYi] (realname) (~NEYi@109.251.216.38) has joined ##physics
+2022-01-19 20:22:44	<--	iryith (~iryith3@user/iryith) has quit (Read error: Connection reset by peer)
+2022-01-19 20:24:41	-->	iryith (realname) (~iryith3@207.81-166-89.customer.lyse.net) has joined ##physics
+2022-01-19 20:24:41	!=	iryith has identified as iryith
+2022-01-19 20:24:41	!=	iryith (~iryith3@207.81-166-89.customer.lyse.net) has changed host to ~iryith3@user/iryith
+2022-01-19 20:32:22	-->	MetricT2 [MetricT] (realname) (~MetricT@2600:6c5d:4500:af86:81fc:f0a9:32a7:81be) has joined ##physics
+2022-01-19 20:34:58	<--	MetricT3 (~MetricT@2600:6c5d:4500:af86:845:6c69:88d:7447) has quit (Ping timeout: 250 seconds)
+2022-01-19 20:45:11	-->	cvmn [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined ##physics
+2022-01-19 20:56:10	-->	UmbralRaptor (Raptop) (~AndNex@2607:fb90:64eb:df96:f71f:9f46:b3b6:75cc) has joined ##physics
+2022-01-19 20:56:10	!=	UmbralRaptor has identified as raptop
+2022-01-19 20:59:40	<--	UmbralRaptop (~AndNex@2607:fb90:136d:89b8:2f65:727b:b0bc:7717) has quit (Ping timeout: 250 seconds)
+2022-01-19 21:00:14	-->	UmbralRaptop (Raptop) (~AndNex@2607:fb90:64e3:8564:e29c:763a:115c:48b1) has joined ##physics
+2022-01-19 21:00:14	!=	UmbralRaptop has identified as raptop
+2022-01-19 21:00:17	<--	UmbralRaptor (~AndNex@2607:fb90:64eb:df96:f71f:9f46:b3b6:75cc) has quit (Ping timeout: 240 seconds)
+2022-01-19 21:03:40	<--	trace987 (~trace@ip5b42976d.dynamic.kabel-deutschland.de) has quit (Remote host closed the connection)
+2022-01-19 21:25:29	<--	bn_mobile (uid278100@id-278100.tinside.irccloud.com) has quit (Quit: Connection closed for inactivity)
+2022-01-19 21:37:04	!=	gaze___ has identified as gaze___
+2022-01-19 21:54:57	<--	gentooclimax (~gentoocli@81-64-65-213.rev.numericable.fr) has quit (Read error: Connection reset by peer)
+2022-01-19 22:02:35	<--	slidercrank (~slidercra@user/slidercrank) has quit (Quit: Why not ask me about Sevastopol's safety protocols?)
+2022-01-19 22:06:58	-->	trace987 [trace] (Axel Korn) (~trace@ip5b42976d.dynamic.kabel-deutschland.de) has joined ##physics
+2022-01-19 22:09:53	-->	slidercrank [slidercrank] (Mr. Vain) (~slidercra@user/slidercrank) has joined ##physics
+2022-01-19 22:11:43	<--	Oli (~Unknown@user/oli) has quit (Quit: leaving)
+2022-01-19 22:13:00	astroo-	hello people
+2022-01-19 22:13:23	dukwon	hello astroo- 
+2022-01-19 22:13:31	astroo-	hello
+2022-01-19 22:15:23	<--	[-_-] (~fractal@user/---/x-1675478) has quit (Quit: ZZZzzz?)
+2022-01-19 22:22:57	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 22:43:15	<--	Donitz (~Donitz@88-115-149-215.elisa-laajakaista.fi) has quit (Ping timeout: 256 seconds)
+2022-01-19 22:44:22	<--	chomwitt (~chomwitt@2a02:587:dc0b:200:12c3:7bff:fe6d:d374) has quit (Ping timeout: 268 seconds)
+2022-01-19 22:45:27	-->	Donitz [Donitz] (realname) (~Donitz@88-115-149-215.elisa-laajakaista.fi) has joined ##physics
+2022-01-19 22:49:49	-->	bosspotato (realname) (~bosspotat@lnsm3-montreal02-142-118-86-202.internet.virginmobile.ca) has joined ##physics
+2022-01-19 22:49:49	!=	bosspotato has identified as bosspotato
+2022-01-19 22:49:49	!=	bosspotato (~bosspotat@lnsm3-montreal02-142-118-86-202.internet.virginmobile.ca) has changed host to ~bosspotat@user/bosspotato
+2022-01-19 22:54:03	-->	caveman_ [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined ##physics
+2022-01-19 22:58:15	!=	caveman_ is now known as caveman
+2022-01-19 23:00:39	<--	Bakunin (~Bakunin@user/lindis) has quit (Remote host closed the connection)
+2022-01-19 23:07:07	-->	gentooclimax (gentooclimax) (~gentoocli@81-64-65-213.rev.numericable.fr) has joined ##physics
+2022-01-19 23:07:58	-->	sdfgsdfg [sdfgsdfg] (sdfgsdfg) (~sdfgsdfg@user/sdfgsdfg) has joined ##physics
+2022-01-19 23:08:00	<--	gentooclimax (~gentoocli@81-64-65-213.rev.numericable.fr) has quit (Read error: Connection reset by peer)
+2022-01-19 23:08:17	-->	gentooclimax (gentooclimax) (~gentoocli@81-64-65-213.rev.numericable.fr) has joined ##physics
+2022-01-19 23:12:14	<--	gentooclimax (~gentoocli@81-64-65-213.rev.numericable.fr) has quit (Client Quit)
+2022-01-19 23:17:36	<--	ShinyRice (~shinyrice@236.170.23.95.dynamic.jazztel.es) has quit (Quit: WeeChat 3.4)
+2022-01-19 23:19:02	-->	Bakunin [chrysalis] (...) (~Bakunin@user/lindis) has joined ##physics
+2022-01-19 23:20:05	<--	Codaraxis__ (~Codaraxis@user/codaraxis) has quit (Ping timeout: 256 seconds)
+2022-01-19 23:20:35	<--	szkl_ (uid110435@id-110435.uxbridge.irccloud.com) has quit ()
+2022-01-19 23:21:04	-->	szkl_ (szkl_) (uid110435@id-110435.uxbridge.irccloud.com) has joined ##physics
+2022-01-19 23:21:25	<--	szkl_ (uid110435@id-110435.uxbridge.irccloud.com) has quit (Client Quit)
+2022-01-19 23:21:50	-->	szkl [szkl] (szkl) (uid110435@id-110435.uxbridge.irccloud.com) has joined ##physics
+2022-01-19 23:33:30	<--	plankster (~plankster@user/plankers) has quit (Ping timeout: 250 seconds)
+2022-01-19 23:36:07	-->	plankster [plankers] (plankster) (~plankster@user/plankers) has joined ##physics
+2022-01-19 23:48:22	Atque	Hey. If I have a continuous positive pressure fan and it blows air from my house to outside. What do you guys reckon is best for removing humidity? Should the fan be up high or down low? I don't get how the water moves in the air. : (
+2022-01-19 23:49:32	Bakunin	warmer air holds more moisture
+2022-01-19 23:50:40	Bakunin	https://www.engineersedge.com/hvac-systems/images/psychrometric.gif
+2022-01-19 23:50:44	<--	aruns (~aruns@176.27.177.204) has quit (Quit: leaving)
+2022-01-20 00:14:15	PlanckWalk	Ifit's blowing air out of the house, wouldn't that make it a negative pressure fan?
+2022-01-20 00:16:10	Bakunin	shh
+2022-01-20 00:20:16	PlanckWalk	In general if you blow air out of the house, it will be replaced by air from the outside with whatever water vapour content that has.
+2022-01-20 00:21:19	PlanckWalk	The most effective way to remove water vapour is with a dehumidifier
+2022-01-20 00:29:49	<--	johnkeats6 (~johnkeats@2804:14c:32:a0cc:e8d1:56a0:bebb:6b03) has quit (Ping timeout: 268 seconds)
+2022-01-20 00:34:32	<--	Odysimus (~Odysimus@107.174.27.80) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:35:57	-->	Odysimus [Odysimus] (Odie) (~Odysimus@107.174.27.80) has joined ##physics
+2022-01-20 00:44:49	-->	vysn [vysn] (vysn) (~vysn@user/vysn) has joined ##physics
+2022-01-20 00:46:34	-->	Oli [Oli] (Unknown) (~Unknown@user/oli) has joined ##physics
+2022-01-20 00:48:06	-->	[_] [[itchyjunk]] (realname) (~itchyjunk@user/itchyjunk/x-7353470) has joined ##physics
+2022-01-20 00:49:37	<--	[itchyjunk] (~itchyjunk@user/itchyjunk/x-7353470) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:49:54	-->	CatCow [CatCow] (John) (~wtf_over@c-73-96-109-206.hsd1.or.comcast.net) has joined ##physics
+2022-01-20 00:57:00	!=	[_] is now known as [itchyjunk]
+2022-01-20 01:03:12	-->	bn_mobile [bn_] (bn_mobile) (uid278100@id-278100.tinside.irccloud.com) has joined ##physics
+2022-01-20 01:05:49	<--	Vornotron (~Vornicus@2603-8000-5d07-7ef0-49e1-8f43-b7ec-23cc.res6.spectrum.com) has quit (Read error: Connection reset by peer)
+2022-01-20 01:38:33	<--	sdfgsdfg (~sdfgsdfg@user/sdfgsdfg) has quit (Quit: ZzzZ)
+2022-01-20 01:44:53	-->	plankster_ [plankers] (plankster) (~plankster@user/plankers) has joined ##physics
+2022-01-20 01:45:20	<--	plankster (~plankster@user/plankers) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:07:20	!=	plankster_ is now known as plank
+2022-01-20 02:21:02	<--	slidercrank (~slidercra@user/slidercrank) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:23:26	-->	Carbonflux [Carbonflux] (Bob Dobbs) (~Carbonflu@c-66-235-54-179.sea.wa.customer.broadstripe.net) has joined ##physics
+2022-01-20 02:33:21	astroo-	Quantum computing in silicon hits 99% accuracy  https://www.eurekalert.org/news-releases/940321
+2022-01-20 02:41:22	Bakunin	nice
+2022-01-20 02:43:05	<--	x_kuru (~xkuru@user/xkuru) has quit (Read error: Connection reset by peer)
+2022-01-20 02:55:45	-->	brettgilio [brettgilio] (Brett Gilio) (~brettgili@x-node.gq) has joined ##physics
+2022-01-20 03:01:05	!=	irc: disconnected from server

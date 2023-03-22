@@ -1,0 +1,73 @@
+2022-01-19 17:12:07	-->	lckdscl [lckdscl] (lckdscl) (~lckdscl@user/lckdscl) has joined #archlinux-proaudio
+2022-01-19 17:12:07	!=	Topic for #archlinux-proaudio is "Professional audio on Arch Linux. https://wiki.archlinux.org/index.php/Professional_audio https://lists.archlinux.org/listinfo/arch-proaudio"
+2022-01-19 17:12:07	!=	Topic set by dvzrv on Mon, 24 May 2021 21:02:40
+2022-01-19 17:12:07	!=	Channel #archlinux-proaudio: 33 nicks (1 op, 0 voices, 32 normals)
+2022-01-19 17:12:07	!=	URL for #archlinux-proaudio: https://wiki.archlinux.org/title/Professional_audio
+2022-01-19 17:12:09	!=	Channel created on Wed, 19 May 2021 15:01:37
+2022-01-19 17:23:43	robbert-vdh	By the way, would adding a `@realtime - nice -19` to bat /etc/security/limits.d/99-realtime-privileges.conf make sense? PipeWire tries setting thread niceness in its realtime module(s)
+2022-01-19 17:24:00	robbert-vdh	I now have my own very nice /etc/security/limits.d/99-nice.conf
+2022-01-19 17:26:23	dvzrv	robbert-vdh: maybe? I was always under the impression, that it is not really required (nice level), but I also only have questionable halfknowledge about everything
+2022-01-19 17:26:25	dvzrv	haha
+2022-01-19 17:27:02	robbert-vdh	Yeah I too never really touch niceness so idk either
+2022-01-19 17:27:10	dvzrv	robbert-vdh: do you see any error messages somewhere?
+2022-01-19 17:27:19	dvzrv	we could as wtay about it
+2022-01-19 17:28:32	robbert-vdh	In PipeWire you do if you doo't have permissions to use it. I think wtay wants to always use rtkit for that but it's a bit weird because RTKit doesn't just set niceness, it will change the scheduling policy to SCHED_OTHER|SCHED_RESET_ON_FORK and _then_ change niceness
+2022-01-19 17:29:16	robbert-vdh	PipeWire tries to use set the niceness to -11 on the main thread
+2022-01-19 17:32:34	robbert-vdh	dvzrv: `journalctl --user -u pipewire | rg 'could not set nice-level' | count`
+2022-01-19 17:32:42	robbert-vdh	166 entries :D
+2022-01-19 17:33:26	robbert-vdh	That's mostly why I gave myself permissions to do that. Doubt it actually makes a big difference in practice
+2022-01-19 17:35:22	dvzrv	robbert-vdh: hmm, I don't have that on my machine. do you have a specific configuration for pipewire?
+2022-01-19 17:35:59	dvzrv	robbert-vdh: I think realtime-privileges is also not yet an optional dependency for pipewire (but should be)
+2022-01-19 17:36:02	robbert-vdh	dvzrv: If you're using module-rtkit then it will use RTKit instead of setpriority()
+2022-01-19 17:36:42	robbert-vdh	Next update will only have a single module-rt, and it will use RTKit if you don't have realtime priviliges
+2022-01-19 17:36:51	robbert-vdh	So that's one less configuration step
+2022-01-19 17:38:40	dvzrv	robbert-vdh: ah, I understand
+2022-01-19 17:38:42	dvzrv	hmm
+2022-01-19 17:39:03	dvzrv	if only that wouldn't require polkit :S
+2022-01-19 17:41:29	dvzrv	wow, I was not aware, that heftig is now the rtkit upstream: https://github.com/heftig/rtkit
+2022-01-19 17:42:14	dvzrv	hm, rtkit module should be on by default and I still don't see those errors
+2022-01-19 17:42:44	dvzrv	maybe my services are not verbose enough?
+2022-01-19 17:44:10	robbert-vdh	dvzrv: No you won't see the error _because_ you're using rtkit
+2022-01-19 17:44:36	robbert-vdh	rtkit runs as root, so it can do all of those things without any additional config
+2022-01-19 17:45:53	dvzrv	robbert-vdh: ahh, I misunderstood you then
+2022-01-19 17:45:58	robbert-vdh	If you don't use RTKit (so module-rt with PipeWire <=0.3.43, module-rt+realtime priviliges with PipeWire >0.3.44) then you'll get that error if your user can't set the niceness that low
+2022-01-19 17:46:33	dvzrv	alright
+2022-01-19 19:18:19	dvzrv	man, why do people do these things? https://github.com/surge-synthesizer/surge/tags
+2022-01-19 19:18:34	dvzrv	it's still going to be "surge" for packaging...
+2022-01-19 19:34:41	stipa	wtf is "xt" ?
+2022-01-19 19:36:40	dvzrv	XTREME
+2022-01-19 19:36:52	stipa	dang
+2022-01-19 19:37:25	dvzrv	I don't really know ;-)
+2022-01-19 19:37:45	dvzrv	but renaming the project by using tags (and downgrading the version is just very nasty)
+2022-01-19 19:41:32	robbert-vdh	dvzrv: Surge and Surge XT are not compatible
+2022-01-19 19:41:36	robbert-vdh	...so good luck with packaging
+2022-01-19 19:41:52	robbert-vdh	*with each other
+2022-01-19 20:15:43	-->	thisven [thisven] (thisven) (~thisven@volans.uberspace.de) has joined #archlinux-proaudio
+2022-01-19 20:24:52	dvzrv	robbert-vdh: wat, rofl?!
+2022-01-19 20:25:08	dvzrv	so... surge is now what, deprecated or so?
+2022-01-19 20:26:03	robbert-vdh	Yes
+2022-01-19 20:26:39	robbert-vdh	Surge XT is a complete rewrite (of the plugin bits) using JUCE
+2022-01-19 20:27:32	robbert-vdh	I guess it would have been reused parameter IDs and the plugin ID, but they probably thought that would have been too much effort
+2022-01-19 20:29:10	dvzrv	hmpf
+2022-01-19 20:29:25	dvzrv	oh well, not dealing with that one today :S
+2022-01-19 20:29:46	dvzrv	another juce package /o\
+2022-01-19 20:32:11	-->	yustin [yustin] (yustin) (~yustin@user/yustin) has joined #archlinux-proaudio
+2022-01-19 20:32:27	robbert-vdh	Yeah that's going to be a fun one. I guess you'll need to move surge to the AUR and start anew with a surge-xt package (since it shouldn't replace surge).
+2022-01-19 20:33:24	robbert-vdh	But people will still depend on the old surge, so ¯\_(ツ)_/¯
+2022-01-19 20:33:35	dvzrv	na, will not move it yet
+2022-01-19 20:33:40	dvzrv	we'll see
+2022-01-19 20:33:53	stipa	just a waste of space
+2022-01-19 20:34:09	dvzrv	it's really silly, they should have just upped the major version
+2022-01-19 22:23:49	<--	jpcima (~jpcima@2a01:e0a:8eb:c9a0:46c2:5ba1:bc23:62c3) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:14:13	<--	yustin (~yustin@user/yustin) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:31:03	<--	VG9t (~VG9t@gateway/tor-sasl/vg9t) has quit (Remote host closed the connection)
+2022-01-20 00:43:21	<--	Midjak (~Midjak@may53-1-78-226-116-92.fbx.proxad.net) has quit (Quit: This computer has gone to sleep)
+2022-01-20 00:57:30	<--	Betal (~Betal@user/betal) has quit (Quit: WeeChat 3.4)
+2022-01-20 01:37:47	<--	bill-auger (~quassel@075-138-178-222.res.spectrum.com) has quit (Ping timeout: 256 seconds)
+2022-01-20 01:56:06	milkii	Left a comment
+2022-01-20 02:18:33	-->	bill-auger [bill-auger] (bill-auger) (~quassel@075-138-178-222.res.spectrum.com) has joined #archlinux-proaudio
+2022-01-20 02:26:24	<--	bill-auger (~quassel@075-138-178-222.res.spectrum.com) has quit (Ping timeout: 250 seconds)
+2022-01-20 02:27:02	-->	bill-auger [bill-auger] (bill-auger) (~quassel@075-138-178-222.res.spectrum.com) has joined #archlinux-proaudio
+2022-01-20 02:34:27	<--	bill-auger (~quassel@075-138-178-222.res.spectrum.com) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:34:53	-->	bill-auger [bill-auger] (bill-auger) (~quassel@075-138-178-222.res.spectrum.com) has joined #archlinux-proaudio
+2022-01-20 03:01:05	!=	irc: disconnected from server

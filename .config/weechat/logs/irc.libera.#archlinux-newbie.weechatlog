@@ -1,0 +1,55 @@
+2022-01-19 17:10:32	-->	lckdscl [lckdscl] (lckdscl) (~lckdscl@user/lckdscl) has joined #archlinux-newbie
+2022-01-19 17:10:32	!=	Topic for #archlinux-newbie is "Welcome to the Arch Linux community. This is a space to learn and try new things, without fear of ridicule. | RULES: https://archlinux-newbie.github.io/rules/ | The Arch community expects users to do the research before asking questions, please check the wiki and news before posting here."
+2022-01-19 17:10:32	!=	Topic set by eschwartz (~eschwartz@user/eschwartz) on Sun, 23 May 2021 21:14:28
+2022-01-19 17:10:32	!=	Channel #archlinux-newbie: 58 nicks (0 ops, 2 voices, 56 normals)
+2022-01-19 17:10:34	!=	Channel created on Thu, 20 May 2021 07:19:10
+2022-01-19 17:45:35	-->	lkor [lionkor] (Lion) (~lionkor@beammp/staff/lionkor) has joined #archlinux-newbie
+2022-01-19 17:46:19	<--	lionkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 256 seconds)
+2022-01-19 18:09:01	-->	lionkor [lionkor] (Lion) (~lionkor@beammp/staff/lionkor) has joined #archlinux-newbie
+2022-01-19 18:09:20	<--	lkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 268 seconds)
+2022-01-19 18:09:31	<--	azidburn (~azidburn@p5dd921c9.dip0.t-ipconnect.de) has quit (Remote host closed the connection)
+2022-01-19 18:41:42	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux-newbie
+2022-01-19 18:43:10	<--	darutoko (~darutoko@37.21.182.43) has quit (Quit: Leaving)
+2022-01-19 18:45:12	<--	beastDivision (~beastDivi@user/beastdivision) has quit (Ping timeout: 276 seconds)
+2022-01-19 18:49:49	<--	lionkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 240 seconds)
+2022-01-19 18:49:58	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Remote host closed the connection)
+2022-01-19 18:51:00	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux-newbie
+2022-01-19 18:52:17	-->	kescher [kescher] (Jeremy Kescher) (~kescher@2605:6400:30:f4ef:bf2d:f986:f99b:b98c) has joined #archlinux-newbie
+2022-01-19 19:13:18	-->	azidburn (azidburn) (~azidburn@p5dd921c9.dip0.t-ipconnect.de) has joined #archlinux-newbie
+2022-01-19 19:13:18	!=	azidburn has identified as azidburn
+2022-01-19 19:24:21	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Quit: beastDiv1)
+2022-01-19 19:24:40	-->	beastDivision [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux-newbie
+2022-01-19 19:25:05	-->	FluffyMask [FluffyMask] (masque) (~masque@user/fluffymask) has joined #archlinux-newbie
+2022-01-19 19:28:09	<--	kescher (~kescher@2605:6400:30:f4ef:bf2d:f986:f99b:b98c) has quit (Quit: Bye)
+2022-01-19 19:28:57	-->	kescher [kescher] (Jeremy Kescher) (~kescher@2605:6400:30:f4ef:bf2d:f986:f99b:b98c) has joined #archlinux-newbie
+2022-01-19 19:31:15	-->	lionkor [lionkor] (Lion) (~lionkor@beammp/staff/lionkor) has joined #archlinux-newbie
+2022-01-19 19:31:43	<--	FluffyMask (~masque@user/fluffymask) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:33:23	-->	FluffyMask [FluffyMask] (masque) (~masque@user/fluffymask) has joined #archlinux-newbie
+2022-01-19 20:33:48	-->	unlink2 (realname) (~unlink@p200300ebcf16ac004ae485b8515b37aa.dip0.t-ipconnect.de) has joined #archlinux-newbie
+2022-01-19 20:33:48	!=	unlink2 has identified as unlink2
+2022-01-19 20:37:58	<--	mingdao_ (~mingdao@107-146-172-064.res.spectrum.com) has quit (Quit: leaving)
+2022-01-19 20:38:08	-->	mingdao [mingdao] (mingdao) (~mingdao@wireguard/tunneler/mingdao) has joined #archlinux-newbie
+2022-01-19 21:19:05	-->	stefano999 [stefano999] (Steven Fucile) (~stefano99@c-73-221-243-139.hsd1.wa.comcast.net) has joined #archlinux-newbie
+2022-01-19 21:20:49	<--	stefano999 (~stefano99@c-73-221-243-139.hsd1.wa.comcast.net) has quit (Remote host closed the connection)
+2022-01-19 21:34:04	<--	lionkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 268 seconds)
+2022-01-19 22:54:37	<--	ahso (~Thunderbi@user/ahso) has quit (Ping timeout: 240 seconds)
+2022-01-19 23:24:45	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux-newbie
+2022-01-19 23:27:57	<--	beastDivision (~beastDivi@user/beastdivision) has quit (Ping timeout: 276 seconds)
+2022-01-19 23:28:32	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Remote host closed the connection)
+2022-01-19 23:29:31	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux-newbie
+2022-01-19 23:47:27	<--	jonathon (~jx@user/jonathon) has quit (Ping timeout: 276 seconds)
+2022-01-19 23:48:41	-->	jonathon [jonathon] (jonathon) (~jx@user/jonathon) has joined #archlinux-newbie
+2022-01-20 00:31:03	<--	VG9t (~VG9t@gateway/tor-sasl/vg9t) has quit (Remote host closed the connection)
+2022-01-20 00:53:30	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Quit: beastDiv1)
+2022-01-20 00:53:51	-->	beastDivision [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux-newbie
+2022-01-20 00:59:47	-->	mvk [mvk] (mvk) (~mvk@2607:fea8:5cdd:f000::55f8) has joined #archlinux-newbie
+2022-01-20 01:05:43	<--	jaysicks (~jaysicks@84-236-36-43.pool.digikabel.hu) has quit (Remote host closed the connection)
+2022-01-20 01:25:28	<--	FluffyMask (~masque@user/fluffymask) has quit (Quit: WeeChat 3.4)
+2022-01-20 02:30:57	<--	mvk (~mvk@2607:fea8:5cdd:f000::55f8) has quit (Ping timeout: 240 seconds)
+2022-01-20 02:40:41	<--	azidburn (~azidburn@p5dd921c9.dip0.t-ipconnect.de) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:44:52	<--	dawidi (~dawidi@2001:16b8:3fe4:8000:951a:d8c5:de2e:2306) has quit (Ping timeout: 268 seconds)
+2022-01-20 02:50:21	-->	dawidi (dawidi) (~dawidi@2001:16b8:3ff8:e800:608a:7fee:e24c:c80c) has joined #archlinux-newbie
+2022-01-20 02:50:21	!=	dawidi has identified as dawidi
+2022-01-20 02:53:34	-->	azidburn (azidburn) (~azidburn@p5dc1e8ae.dip0.t-ipconnect.de) has joined #archlinux-newbie
+2022-01-20 02:53:34	!=	azidburn has identified as azidburn
+2022-01-20 03:01:05	!=	irc: disconnected from server

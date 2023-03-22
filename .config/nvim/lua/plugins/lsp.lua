@@ -15,16 +15,16 @@ return {
 	{
 		"ray-x/lsp_signature.nvim",
 		lazy = true,
-		event = "InsertEnter",
+		event = "LspAttach",
 	},
-	{
+	--[[ {
 		"VidocqH/lsp-lens.nvim",
 		lazy = true,
-	},
+	}, ]]
 	{
 		"utilyre/barbecue.nvim",
 		lazy = true,
-		event = "BufRead",
+		event = "LspAttach",
 		branch = "fix/E36",
 		dependencies = { "nvim-web-devicons", "smiteshp/nvim-navic" },
 		config = function()
@@ -67,6 +67,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		lazy = true,
+		event = "LspAttach",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("configs.trouble")
@@ -95,4 +96,36 @@ return {
 				require("mason").setup()
 			end,
 	}, ]]
+	--[[ {
+		"zbirenbaum/neodim",
+		lazy = true,
+		event = "LspAttach",
+		config = function()
+			require("neodim").setup({
+				alpha = 0.75,
+				blend_color = "#f5f5f5",
+				update_in_insert = {
+					enable = true,
+					delay = 100,
+				},
+				hide = {
+					virtual_text = true,
+					signs = true,
+					underline = true,
+				},
+			})
+		end,
+	}, ]]
+	{
+		"dnlhc/glance.nvim",
+		lazy = true,
+		event = "LspAttach",
+		config = function()
+			require('glance').setup({
+				list = {
+					width = 0.5
+				}
+			})
+		end,
+	},
 }

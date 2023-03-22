@@ -5,7 +5,7 @@ if not present then
 end
 
 local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
 	["textDocument/signatureHelp"] = vim.lsp.with(
 		vim.lsp.handlers.signature_help,
 		{ border = "single", focusable = false, silent = true }

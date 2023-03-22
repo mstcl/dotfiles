@@ -15,7 +15,7 @@
     prompt_char               # prompt symbol
   )
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    taskwarrior               # taskwarrior task count (https://taskwarrior.org/)
+    # taskwarrior               # taskwarrior task count (https://taskwarrior.org/)
     vpn_ip                    # virtual private network indicator
     command_execution_time    # duration of the last command
     background_jobs           # presence of background jobs
@@ -207,7 +207,7 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=8
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_EXPANSION='󰔟'
   # typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PREFIX='%ftook '
 
   #######################[ background_jobs: presence of background jobs ]#######################

@@ -73,7 +73,7 @@ function rem() {
 }
 # }}}
 # Tldr fuzzy {{{
-function cheat() { if [[ "$#" -ne 0 ]]; then
+function tl() { if [[ "$#" -ne 0 ]]; then
         tldr $@
         return
     fi
@@ -89,25 +89,25 @@ zle     -N     fzf-history-widget-accept
 bindkey '^R^R' fzf-history-widget-accept
 # }}}
 # Browse history {{{
-hist() {
-    local cols sep history open
-    cols=$(( COLUMNS / 3 ))
-    sep='{::}'
+# hist() {
+#     local cols sep history open
+#     cols=$(( COLUMNS / 3 ))
+#     sep='{::}'
 
-    if [ "$(uname)" = "Darwin" ]; then
-        history="$HOME/Library/Application Support/Google/Chrome/Default/History"
-        open=open
-    else
-        history="$HOME/.config/BraveSoftware/Brave-Browser/Default/History"
-        open=xdg-open
-    fi
-    cp -f "$history" /tmp/h
-    sqlite3 -separator $sep /tmp/h \
-        "select substr(title, 1, $cols), url
-        from urls order by last_visit_time desc" |
-        awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-        fzf --prompt="爵HISTORY " --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
-}
+#     if [ "$(uname)" = "Darwin" ]; then
+#         history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+#         open=open
+#     else
+#         history="$HOME/.config/BraveSoftware/Brave-Browser/Default/History"
+#         open=xdg-open
+#     fi
+#     cp -f "$history" /tmp/h
+#     sqlite3 -separator $sep /tmp/h \
+#         "select substr(title, 1, $cols), url
+#         from urls order by last_visit_time desc" |
+#         awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+#         fzf --prompt="爵HISTORY " --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+# }
 # }}}
 # Ripgrep in file {{{
 fif() {
@@ -135,9 +135,9 @@ function ffdash() {
 }
 # }}}
 # SDCV define word {{{
-function def() {
-    sdcv -2 '.local/share/dic' -n --utf8-output --color "$@" 2>&1 | \
-    fold --width=$(tput cols) | \
-    less --quit-if-one-screen -RX
-}
+# function def() {
+#     sdcv -2 '.local/share/dic' -n --utf8-output --color "$@" 2>&1 | \
+#     fold --width=$(tput cols) | \
+#     less --quit-if-one-screen -RX
+# }
 # }}}

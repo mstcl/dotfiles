@@ -4,39 +4,16 @@
 # GENERAL [[[
 # Fonts [[[
 font_family {font1}
-bold_font {font1} Bold
-italic_font Cartograph CF Italic
-bold_italic_font Cartograph CF Bold Italic
+bold_font {font1}
+italic_font {font1}
+bold_italic_font {font1}
 font_size {font-size}
 adjust_line_height 120%
 box_drawing_scale 0.01, 1, 1.5, 2
-# Seti-UI + Custom
-symbol_map U+E5FA-U+E62B {font0}
-# Devicons
-symbol_map U+E700-U+E7C5 {font0}
-# Font Awesome
-symbol_map U+F000-U+F2E0 {font0}
-# Font Awesome Extension
-symbol_map U+E200-U+E2A9 {font0}
+symbol_map U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono
 # Material Design Icons
-symbol_map U+F500-U+FD46 {font0}
-# Weather
-symbol_map U+E300-U+E3EB {font0}
-# Octicons
-symbol_map U+F400-U+F4A8 {font0}
-symbol_map U+2665,U+26A1,U+F27C {font0}
-# Powerline Extra Symbols
-symbol_map U+E0A0 {font0}
-symbol_map U+E0B4-U+E0C8 {font0}
-symbol_map U+E0CC-U+E0D2 {font0}
-symbol_map U+E0D4 {font0}
-# IEC Power Symbols
-symbol_map U+23FB-U+23FE {font0}
-symbol_map U+2B58 {font0}
-# Font Logos
-symbol_map U+F300-U+F313 {font0}
-# Pomicons
-symbol_map U+E000-U+E00D {font0}
+symbol_map U+F8FF-U+FD46 JetBrainsMono Nerd Font
+
 # ]]]
 # Cursor [[[
 cursor_shape beam

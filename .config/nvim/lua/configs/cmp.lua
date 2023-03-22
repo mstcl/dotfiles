@@ -167,3 +167,4 @@ cmp.setup({
 })
 
 vim.g.cmp_toggle = true
+vim.cmd("let g:ultisnips_python_style = 'sphinx'")

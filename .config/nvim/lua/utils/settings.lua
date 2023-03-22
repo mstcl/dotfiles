@@ -1,24 +1,33 @@
 local set = vim.opt
 
-set.background = "light"
-set.autochdir = true
+set.autochdir = false
+
 set.updatetime = 180
+
 set.modeline = true
 set.cursorline = true
 set.cursorlineopt = "number"
+set.colorcolumn = "88"
 set.synmaxcol = 400
-set.colorcolumn = "86"
 set.hidden = true
 set.showmode = false
 set.showcmd = true
+-- set.cmdheight = 0
 set.lazyredraw = true
 set.ttyfast = true
 set.conceallevel = 2
-set.termguicolors = true
 set.showtabline = 2
 set.laststatus = 3
 set.ruler = false
-set.pastetoggle="<F2>"
+
+set.iskeyword:append("-")
+set.nrformats:append("unsigned")
+set.nrformats:remove("bin", "hex")
+set.pastetoggle = "<F2>"
+set.mouse = "a"
+
+set.termguicolors = true
+set.background = "light"
 
 set.foldmethod = "syntax"
 set.foldminlines = 1
@@ -33,12 +42,13 @@ set.whichwrap = set.whichwrap + "<>[]hl"
 set.scrolljump = 1
 set.wrapmargin = 0
 set.textwidth = 0
-set.formatoptions = set.formatoptions - "cro"
+set.breakindent = false
 set.linebreak = true
-set.mouse = "a"
-set.undofile = true
+set.formatoptions = set.formatoptions - "cro"
+
 set.number = true
 set.relativenumber = false
+
 set.splitbelow = true
 set.splitright = true
 
@@ -51,12 +61,20 @@ set.ignorecase = true
 set.incsearch = true
 set.smartcase = true
 
+set.showmatch = true
+set.matchtime = 1
+
+set.pumheight = 15
+set.pumwidth = 15
+
 set.tabstop = 4
 set.shiftwidth = 4
 set.softtabstop = 4
 set.expandtab = true
 set.smarttab = true
 set.autoindent = true
+set.shiftround = true
+set.smartindent = true
 
 set.winblend = 0
 set.pumblend = 0
@@ -68,8 +86,6 @@ set.clipboard = "unnamedplus"
 set.sidescrolloff = 5
 set.scrolloff = 1
 
-set.history = 1000
-
 vim.cmd([[set spell spelllang=en_gb]])
 set.spell = false
 set.encoding = "utf-8"
@@ -77,20 +93,24 @@ set.encoding = "utf-8"
 set.list = true
 vim.cmd([[set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│,fold:\ ,diff:╱]])
 vim.cmd([[set listchars=tab:<->,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:×,lead:\ ,space:·,multispace:···+]])
-set.showbreak = '↳'
+set.showbreak = "↳"
 
-set.completeopt = {'menu', 'menuone', 'noselect'}
+set.completeopt = { "menu", "menuone", "noselect" }
 set.shortmess = set.shortmess + "OosSatTcI"
 set.swapfile = false
 set.path = set.path + "**"
+set.history = 1000
+set.undofile = true
+set.undolevels = 500
 
 vim.cmd([[filetype plugin on]])
 
-vim.g['vimsyn_embed'] = 'l'
+vim.g["vimsyn_embed"] = "l"
 
-vim.g['tex_flavor'] = 'latex'
-vim.g['tex_fold_enabled'] = '1'
-vim.g['tex_conceal'] = 'abdgms'
+vim.g["tex_flavor"] = "latex"
+vim.g["tex_fold_enabled"] = "1"
+vim.g["tex_conceal"] = "abdgms"
 
 vim.cmd([[let &titlestring = 'nvim ' ". expand("%:t")]])
 set.title = true
+set.autoread = true

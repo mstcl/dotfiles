@@ -1,0 +1,1372 @@
+2022-01-19 17:12:29	-->	lckdscl [lckdscl] (lckdscl) (~lckdscl@user/lckdscl) has joined #archlinux
+2022-01-19 17:12:29	!=	Topic for #archlinux is "Welcome to Arch Linux, Good Luck: https://archlinux.org | Rules: https://coc.archlinux.org | Pastebins: !paste | https://status.archlinux.org |  Firefox issues? https://bugzilla.mozilla.org/show_bug.cgi?id=1749908 | Help out testing the AUR https://lists.archlinux.org/pipermail/aur-general/2021-September/036567.html"
+2022-01-19 17:12:29	!=	Topic set by jelle (~jelle@archlinux/developer/jelle) on Thu, 13 Jan 2022 09:21:14
+2022-01-19 17:12:29	!=	Channel #archlinux: 1425 nicks (1 op, 0 voices, 1424 normals)
+2022-01-19 17:12:31	!=	Channel created on Wed, 19 May 2021 13:12:33
+2022-01-19 17:12:33	snoot	after a pacman -Syu my pipewire-jack and jack2 are in conflict although i never installed jack2 and when i did yesterdays pacman -Syu it didn't tell me that, should i remove jack2?
+2022-01-19 17:12:50	jonathon	snoot: yes, unless you use jack2-dbus
+2022-01-19 17:14:07	snoot	jonathon: gotcha
+2022-01-19 17:14:15	<--	snoot (~snoot@user/snoot) has quit (Client Quit)
+2022-01-19 17:14:42	lckdscl	i saw that apparently wireplumber is a better alternative for pipewire-media-session, so i followed verbatim the instruction on wireplumber wiki to replace the systemd services and modify pipewire.conf but pipewire-pulse just craps itself instead
+2022-01-19 17:15:03	lckdscl	i switched back to pipewire-media-session and it works again
+2022-01-19 17:15:45	lckdscl	issue is that pw-record --list-targets is empty on wireplumber
+2022-01-19 17:15:57	-->	Lucretius [Lucretius] (Lucretius) (~Lucretius@191.186.57.185) has joined #archlinux
+2022-01-19 17:17:35	sunyibo	thanks, y'all!
+2022-01-19 17:18:15	jonathon	lckdscl: wireplumber does seem to have some issues at the moment; device routing and bluetooth seem to be much less reliable than a few releases ago
+2022-01-19 17:18:26	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 17:18:55	-->	Iamthehuman1 [Iamthehuman] (jukeboksid) (~noname@user/iamthehuman) has joined #archlinux
+2022-01-19 17:19:32	<--	progandy (~progandy@user/progandy) has quit (Ping timeout: 240 seconds)
+2022-01-19 17:19:34	-->	hollowman [hollowman] (Hollow Man) (~hollowman@openSUSE/member/hollowman) has joined #archlinux
+2022-01-19 17:20:53	!=	dostoyev1ky2 is now known as dostoyevsky2
+2022-01-19 17:21:00	<--	maschinenhans (~Hans@87.123.243.52) has quit (Ping timeout: 256 seconds)
+2022-01-19 17:21:45	-->	Xian [Xianx] (Xian) (~Xian@Linuxkompis/Member/Xianx) has joined #archlinux
+2022-01-19 17:22:34	-->	korrat [korrat] (korrat) (~Thunderbi@p4fda4f43.dip0.t-ipconnect.de) has joined #archlinux
+2022-01-19 17:23:55	<--	stonkey (~stonkey@user/stonkey) has quit (Remote host closed the connection)
+2022-01-19 17:24:16	-->	zenof [zenof] (realname) (~zenofthin@88.130.155.166) has joined #archlinux
+2022-01-19 17:24:28	-->	stonkey [stonkey] (realname) (~stonkey@user/stonkey) has joined #archlinux
+2022-01-19 17:24:58	<--	alwyn (~alwyn@user/alwyn) has quit (Quit: WeeChat 3.4)
+2022-01-19 17:25:43	!=	Xesxen_ is now known as Xesxen
+2022-01-19 17:27:07	<--	magnavox (~MagnaVox@user/MagnaVox) has quit (Remote host closed the connection)
+2022-01-19 17:27:36	-->	ju [ju] (ju) (~ju@user/ju) has joined #archlinux
+2022-01-19 17:27:50	-->	merethan [merethan] (Maarten) (~merethan@2a10:3781:14fe:1:7531:1133:c072:311d) has joined #archlinux
+2022-01-19 17:28:38	-->	magnavox [MagnaVox] (vox) (~MagnaVox@user/MagnaVox) has joined #archlinux
+2022-01-19 17:29:33	-->	maschinenhans [maschinenhans] (Hans Mueller) (~Hans@87.123.243.55) has joined #archlinux
+2022-01-19 17:29:37	<--	Syntax- (~Thunderbi@8.6.112.205) has quit (Ping timeout: 240 seconds)
+2022-01-19 17:29:38	-->	Veriwind [veriwind] (realname) (veriwind@user/veriwind) has joined #archlinux
+2022-01-19 17:30:27	<--	LuksNuke_ (~LuksNuke@gateway/tor-sasl/luksnuke) has quit (Ping timeout: 276 seconds)
+2022-01-19 17:30:27	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 17:31:32	-->	ice99 [ice9] (ice9) (~ice9@user/ice9) has joined #archlinux
+2022-01-19 17:32:09	<--	ice9 (~ice9@user/ice9) has quit (Ping timeout: 256 seconds)
+2022-01-19 17:33:03	<--	drathir_tor (~drathir@wireguard/tunneler/drathir) has quit (Ping timeout: 276 seconds)
+2022-01-19 17:33:10	-->	Akiva [Akiva] (Akiva) (~Akiva@user/Akiva) has joined #archlinux
+2022-01-19 17:33:57	-->	slowButPresent [slowButPresent] (Unknown) (~slowButPr@user/slowbutpresent) has joined #archlinux
+2022-01-19 17:33:57	<--	agvantibo (~agvantibo@79.165.99.155) has quit (Ping timeout: 240 seconds)
+2022-01-19 17:34:04	-->	drathir_tor [drathir] (drathir87) (~drathir@wireguard/tunneler/drathir) has joined #archlinux
+2022-01-19 17:34:56	-->	cvmn [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined #archlinux
+2022-01-19 17:35:10	<--	maschinenhans (~Hans@87.123.243.55) has quit (Ping timeout: 256 seconds)
+2022-01-19 17:35:27	-->	rodolfo [rodolfo] (Unknown) (~rodolfo@user/rodolfo) has joined #archlinux
+2022-01-19 17:37:00	-->	srv [srv] (realname) (~cmd@user/srv) has joined #archlinux
+2022-01-19 17:37:10	-->	kts [kts] (Kyaw Thu Soe) (~kts@103.73.237.13) has joined #archlinux
+2022-01-19 17:38:17	<--	stonkey (~stonkey@user/stonkey) has quit (Remote host closed the connection)
+2022-01-19 17:38:55	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 17:40:58	<--	mongy (~mongy@user/mongy) has quit (Quit: WeeChat 3.4)
+2022-01-19 17:41:13	<--	sharperguy (~sharpergu@fnord.cryptophone.de) has quit (Ping timeout: 256 seconds)
+2022-01-19 17:42:17	<--	Akiva (~Akiva@user/Akiva) has quit (Ping timeout: 240 seconds)
+2022-01-19 17:42:41	-->	sharperguy [sharperguy] (Unknown) (~sharpergu@88.130.222.121) has joined #archlinux
+2022-01-19 17:45:35	-->	lkor [lionkor] (Lion) (~lionkor@beammp/staff/lionkor) has joined #archlinux
+2022-01-19 17:46:19	<--	lionkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 256 seconds)
+2022-01-19 17:46:19	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-19 17:46:42	-->	progandy [progandy] (ProgAndy) (~progandy@user/progandy) has joined #archlinux
+2022-01-19 17:47:13	<--	joe_colben (~joe____co@185.190.112.211) has quit (Remote host closed the connection)
+2022-01-19 17:48:04	<--	EvilDMP (~textual@django/moderator/EvilDMP) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 17:48:26	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-19 17:49:21	-->	EvilDMP [EvilDMP] (Textual User) (~textual@django/moderator/EvilDMP) has joined #archlinux
+2022-01-19 17:50:21	<--	merethan (~merethan@2a10:3781:14fe:1:7531:1133:c072:311d) has quit (Quit: Ping timeout: 1337 seconds)
+2022-01-19 17:50:40	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 17:50:59	-->	agvantibo [agvantibo] (Savchenko Dmitriy) (~agvantibo@79.165.99.155) has joined #archlinux
+2022-01-19 17:51:09	<--	srv (~cmd@user/srv) has quit (Quit: Leaving)
+2022-01-19 17:51:27	<--	Major_Biscuit (~MajorBisc@c-001-018-021.client.tudelft.eduvpn.nl) has quit (Ping timeout: 268 seconds)
+2022-01-19 17:51:59	<--	Szadek (~Szadek@92.60.40.206) has quit (Quit: WeeChat 3.4)
+2022-01-19 17:53:22	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 17:53:49	-->	Aryan [Aryan] (Old.School.Of.Linux) (Aryan@user/aryan) has joined #archlinux
+2022-01-19 17:54:38	<--	joe_colben (~joe____co@185.190.112.211) has quit (Read error: Connection reset by peer)
+2022-01-19 17:57:10	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 17:57:32	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 17:57:39	<--	ice99 (~ice9@user/ice9) has quit (Ping timeout: 256 seconds)
+2022-01-19 17:58:16	<--	joe_colben (~joe____co@185.190.112.211) has quit (Read error: Connection reset by peer)
+2022-01-19 17:58:29	-->	sp1ff [sp1ff] (unknown) (~user@c-73-189-25-64.hsd1.ca.comcast.net) has joined #archlinux
+2022-01-19 17:58:29	<--	SergeantBiggs (~SergeantB@user/SergeantBiggs) has quit (Read error: Connection reset by peer)
+2022-01-19 17:59:50	<--	julianm (~julianm@2620:8d:8000:1050:2167:c70a:724d:bc4f) has quit (Ping timeout: 250 seconds)
+2022-01-19 18:00:23	<--	vicecea (~vicecea@gateway/vpn/pia/vicecea) has quit (Remote host closed the connection)
+2022-01-19 18:00:42	-->	vicecea [vicecea] (vicecea) (~vicecea@gateway/vpn/pia/vicecea) has joined #archlinux
+2022-01-19 18:00:44	<--	henry40408 (~henry4040@175.181.155.165) has quit (Remote host closed the connection)
+2022-01-19 18:01:13	-->	henry40408 [henry40408] (Henry Wu) (~henry4040@175.181.155.165) has joined #archlinux
+2022-01-19 18:01:51	<--	marcello42 (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has quit (Read error: Connection reset by peer)
+2022-01-19 18:02:44	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 18:02:56	-->	icy_hot_ [icy_hot] (icy_hot) (~icy_hot@99-83-35-64.lightspeed.elpstx.sbcglobal.net) has joined #archlinux
+2022-01-19 18:03:32	-->	aaro [aaro] (aaro) (aaro@user/aaro) has joined #archlinux
+2022-01-19 18:03:53	<--	icy_hot (~icy_hot@99-83-35-64.lightspeed.elpstx.sbcglobal.net) has quit (Ping timeout: 256 seconds)
+2022-01-19 18:04:00	-->	SergeantBiggs [SergeantBiggs] (SergeantBiggs) (~SergeantB@user/SergeantBiggs) has joined #archlinux
+2022-01-19 18:04:16	-->	Szadek [Szadek] (Szadek) (~Szadek@92.60.40.206) has joined #archlinux
+2022-01-19 18:04:25	<--	hollowman (~hollowman@openSUSE/member/hollowman) has quit (Quit: Konversation terminated!)
+2022-01-19 18:05:47	<--	synchris (~quassel@user/synchris) has quit (Quit: https://quassel-irc.org - Chat comfortably. Anywhere.)
+2022-01-19 18:06:10	<--	Figworm (FiggyWitIt@user/figworm) has quit (Quit: Figworm)
+2022-01-19 18:06:12	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 18:07:27	-->	maschinenhans [maschinenhans] (Hans Mueller) (~Hans@87.123.243.63) has joined #archlinux
+2022-01-19 18:08:09	<--	drathir_tor (~drathir@wireguard/tunneler/drathir) has quit (Ping timeout: 276 seconds)
+2022-01-19 18:09:01	-->	lionkor [lionkor] (Lion) (~lionkor@beammp/staff/lionkor) has joined #archlinux
+2022-01-19 18:09:20	<--	lkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 268 seconds)
+2022-01-19 18:09:42	<--	eirik (~eirik@93.165.134.178) has quit (Quit: leaving)
+2022-01-19 18:12:00	-->	hackbug [hackbug] (Samwise) (~hackbug@c-24-143-114-97.customer.broadstripe.net) has joined #archlinux
+2022-01-19 18:12:17	-->	marcello42 [marcello42] (mp) (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has joined #archlinux
+2022-01-19 18:12:52	-->	shivodit [shivodit] (realname) (~shivodit@122.180.183.172) has joined #archlinux
+2022-01-19 18:13:17	<--	TrentP (~quassel@2604:180:f2::24f) has quit (Quit: https://quassel-irc.org - Chat comfortably. Anywhere.)
+2022-01-19 18:13:29	<--	Xian (~Xian@Linuxkompis/Member/Xianx) has quit (Quit: WeeChat 3.4)
+2022-01-19 18:13:59	-->	TrentP [TrentP] (Quassel IRC User) (~quassel@2604:180:f2::24f) has joined #archlinux
+2022-01-19 18:14:14	-->	drathir_tor [drathir] (drathir87) (~drathir@wireguard/tunneler/drathir) has joined #archlinux
+2022-01-19 18:14:22	-->	brenix [brenix] (brenix) (~brenix@user/brenix) has joined #archlinux
+2022-01-19 18:14:45	-->	LordRishav [LordRishav] (LordRishav) (~LordRisha@user/lordrishav) has joined #archlinux
+2022-01-19 18:14:59	-->	mokulus [mokulus] (Unknown) (~mat@user/mokulus) has joined #archlinux
+2022-01-19 18:15:52	<--	Codaraxis_ (~Codaraxis@user/codaraxis) has quit (Ping timeout: 250 seconds)
+2022-01-19 18:17:02	<--	downtrip_ (~downtrip@188.166.151.198) has quit (Quit: WeeChat 3.4)
+2022-01-19 18:17:22	sunyibo	is 'ncdu -o' a way to speed up repeated refreshs of ncdu?
+2022-01-19 18:17:56	-->	downtrip [downtrip] (downtrip) (~downtrip@188.166.151.198) has joined #archlinux
+2022-01-19 18:18:00	!=	daniel3 is now known as daniel2
+2022-01-19 18:18:57	!=	toketin_ is now known as toketin
+2022-01-19 18:19:14	<--	Nimzowitsch (~nimzo@user/nimzowitsch) has quit (Remote host closed the connection)
+2022-01-19 18:19:17	<--	via_c7 (~orangeext@user/orangeextract) has left #archlinux (Leaving)
+2022-01-19 18:19:46	<--	Szadek (~Szadek@92.60.40.206) has quit (Quit: WeeChat 3.4)
+2022-01-19 18:20:59	<--	shivodit (~shivodit@122.180.183.172) has left #archlinux (Leaving)
+2022-01-19 18:21:31	Earnestly	ncdu2 is the way to speed up ncdu
+2022-01-19 18:22:08	Earnestly	sunyibo: https://dev.yorhel.nl/doc/ncdu2
+2022-01-19 18:22:09	phrik	Title: Ncdu 2: Less hungry and more Ziggy (at dev.yorhel.nl)
+2022-01-19 18:22:30	-->	Shivo [shivodit] (realname) (~shivodit@122.180.183.172) has joined #archlinux
+2022-01-19 18:23:01	-->	magnavox__ [MagnaVox] (vox) (~MagnaVox@user/MagnaVox) has joined #archlinux
+2022-01-19 18:24:14	-->	Akiva [Akiva] (Akiva) (~Akiva@user/Akiva) has joined #archlinux
+2022-01-19 18:25:00	-->	Satin [Seten] (Rillie Kramier) (uid193953@user/Seten) has joined #archlinux
+2022-01-19 18:25:06	The-Compiler	Earnestly, sunyibo: I kinda like https://github.com/Dundee/gdu
+2022-01-19 18:25:25	<--	magnavox (~MagnaVox@user/MagnaVox) has quit (Ping timeout: 256 seconds)
+2022-01-19 18:25:33	Earnestly	The-Compiler: Keep in mind that this ncdu2 is by the same author of ncdu
+2022-01-19 18:25:50	<--	CrustY_ (~crusty@2001:a61:5129:c101:a1ca:2645:699b:49fe) has quit (Ping timeout: 250 seconds)
+2022-01-19 18:26:12	Shivo	does anyone have problems when resuming from suspend after upgrading to kernel 5.16? On my system input devices are unresponsive for 10 s after waking from sleep...
+2022-01-19 18:26:51	-->	magnavox [MagnaVox] (vox) (~MagnaVox@user/MagnaVox) has joined #archlinux
+2022-01-19 18:27:48	teraflops	gdu is blazing fast
+2022-01-19 18:29:17	<--	Akiva (~Akiva@user/Akiva) has quit (Ping timeout: 240 seconds)
+2022-01-19 18:29:17	<--	magnavox__ (~MagnaVox@user/MagnaVox) has quit (Ping timeout: 240 seconds)
+2022-01-19 18:29:44	<--	chtaube (~chtaube@p200300dc5f0a95fc04ae89fffed02a49.dip0.t-ipconnect.de) has quit (Ping timeout: 250 seconds)
+2022-01-19 18:30:08	<--	jkwnki (~jkwnki@p4fedb70b.dip0.t-ipconnect.de) has quit (Ping timeout: 256 seconds)
+2022-01-19 18:31:34	<--	renard (~renard@2001:861:51:8aa0::2791:b0ca) has quit (Remote host closed the connection)
+2022-01-19 18:34:06	-->	andril [Andril] (andril) (~andril@2601:586:8400:e4:a965:a318:3940:38c4) has joined #archlinux
+2022-01-19 18:35:38	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 18:38:09	-->	jimr [jimr] (realname) (~jimr@2603-7080-7640-b000-0000-0000-0000-0003.res6.spectrum.com) has joined #archlinux
+2022-01-19 18:39:14	<--	sogens (~Sogens@23.81.114.219) has quit (Quit: WeeChat 3.4)
+2022-01-19 18:39:29	-->	sogens [sogens] (Jason Fischmann) (~Sogens@23.81.114.219) has joined #archlinux
+2022-01-19 18:39:42	<--	zenof (~zenofthin@88.130.155.166) has quit (Ping timeout: 250 seconds)
+2022-01-19 18:41:42	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux
+2022-01-19 18:43:04	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 18:43:25	<--	magnavox (~MagnaVox@user/MagnaVox) has quit (Read error: Connection reset by peer)
+2022-01-19 18:43:29	!=	vulnerable_boy is now known as jirio
+2022-01-19 18:43:51	!=	jirio is now known as jiridoo
+2022-01-19 18:44:21	<--	LordRishav (~LordRisha@user/lordrishav) has quit (Quit: Ight Imma Head out)
+2022-01-19 18:45:04	<--	ivanich (~ivanich@45-140-123-239.broadband.tenet.odessa.ua) has quit (Read error: Connection reset by peer)
+2022-01-19 18:45:06	<--	mokulus (~mat@user/mokulus) has quit (Quit: leaving)
+2022-01-19 18:45:12	<--	beastDivision (~beastDivi@user/beastdivision) has quit (Ping timeout: 276 seconds)
+2022-01-19 18:45:32	-->	ivanich [ivanich_] (Иван Иваныч) (~ivanich@45-140-123-239.broadband.tenet.odessa.ua) has joined #archlinux
+2022-01-19 18:46:17	<--	marcello42 (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has quit (Read error: Connection reset by peer)
+2022-01-19 18:46:21	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-19 18:46:24	<--	sogens (~Sogens@23.81.114.219) has quit (Quit: WeeChat 3.4)
+2022-01-19 18:46:39	-->	sogens [sogens] (Jason Fischmann) (~Sogens@23.81.114.219) has joined #archlinux
+2022-01-19 18:47:11	vd	does arch uses a custom /init or does it rely on systemd service units?
+2022-01-19 18:47:30	<--	sogens (~Sogens@23.81.114.219) has quit (Client Quit)
+2022-01-19 18:47:30	-->	sbradnick [sbradnick] (Scott Bradnick) (~sbradnick@user/sbradnick) has joined #archlinux
+2022-01-19 18:47:48	-->	sogens [sogens] (Jason Fischmann) (~Sogens@23.81.114.219) has joined #archlinux
+2022-01-19 18:47:55	Earnestly	vd: It uses systemd
+2022-01-19 18:47:59	angerctl	by default it's a custom init but you can use systemd, too
+2022-01-19 18:48:14	angerctl	oh, wait, i was thinking about the initramfs, nvm
+2022-01-19 18:48:22	grawity	the default initramfs /init from mkinitcpio is a busybox ash script, but systemd is available; the default rootfs /sbin/init is always systemd
+2022-01-19 18:48:34	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-19 18:48:50	!=	angerctl is now known as Namarrgon
+2022-01-19 18:49:49	<--	lionkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 240 seconds)
+2022-01-19 18:49:58	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Remote host closed the connection)
+2022-01-19 18:50:05	vd	the only thing that systemd needs in order to be in intrd mode (and thus reach initrd.target) is to have /init linked to the systemd binary as well as an /etc/initrd-release file, correct?
+2022-01-19 18:50:40	grawity	I think so,
+2022-01-19 18:50:57	grawity	but see build() in /usr/lib/initcpio/install/systemd for how Arch sets it up (if enabled)
+2022-01-19 18:51:00	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux
+2022-01-19 18:51:19	grawity	no, apparently it has to explicitly link default.target to initrd.target
+2022-01-19 18:51:31	grawity	initrd-release is more of a safeguard, IIRC
+2022-01-19 18:52:17	-->	kescher [kescher] (Jeremy Kescher) (~kescher@2605:6400:30:f4ef:bf2d:f986:f99b:b98c) has joined #archlinux
+2022-01-19 18:53:26	-->	HappyAporetic [HappyAporetic] (Unknown) (~HappyApor@user/HappyAporetic) has joined #archlinux
+2022-01-19 18:54:09	-->	timm [timm] (timm) (~timm@2a02:810d:4c40:a68:224:d7ff:fe18:af78) has joined #archlinux
+2022-01-19 18:54:55	<--	nklsfrt (~nklsfrt@user/nklsfrt) has quit (Remote host closed the connection)
+2022-01-19 18:54:57	<--	caveman_ (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 18:55:16	<--	jdarnold (~jdarnold@static-98-118-34-170.bstnma.fios.verizon.net) has quit (Quit: Leaving.)
+2022-01-19 18:55:57	<--	fcinq (~irc@46.105.34.51) has quit (Ping timeout: 240 seconds)
+2022-01-19 18:57:50	-->	duxsco [duxsco] (duxsco) (~Thunderbi@user/duxsco) has joined #archlinux
+2022-01-19 18:58:03	-->	CodeSpelunker [CodeSpelunker] (realname) (~CodeSpelu@user/codespelunker) has joined #archlinux
+2022-01-19 18:59:31	vd	I feel like having init scripts as systemd services attached to the initrd targets is better for logging, the context get passed to the final systemd and you can inspect what's going on
+2022-01-19 19:02:00	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@8.6.112.205) has joined #archlinux
+2022-01-19 19:03:32	<--	puke (~puke@user/puke) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:03:50	<--	mtn (~mtn@98.97.127.52) has quit (Quit: Leaving)
+2022-01-19 19:04:02	vd	grawity: do you know if systemd is doing the initrd.target symlink on its own? Because when initrd= is used, it just works
+2022-01-19 19:04:21	grawity	er, when initrd= is used with what?
+2022-01-19 19:04:49	vd	kernel command line parameter
+2022-01-19 19:05:06	grawity	okay but what's special about that initrd
+2022-01-19 19:05:18	<--	Rue_ (~rue@61-231-138-160.dynamic-ip.hinet.net) has quit (Quit: WeeChat 3.4)
+2022-01-19 19:05:30	grawity	arch standard initramfs? arch initramfs but with systemd? dracut initramfs? a custom initramfs that you built by hand?
+2022-01-19 19:05:38	vd	grawity: it simply contains a /init link to the systemd binary
+2022-01-19 19:05:47	vd	a custom one
+2022-01-19 19:06:31	-->	Figworm [Figworm] (Figworm) (~inoor@user/figworm) has joined #archlinux
+2022-01-19 19:06:46	<--	icy_hot_ (~icy_hot@99-83-35-64.lightspeed.elpstx.sbcglobal.net) has quit (Quit: WeeChat 3.4)
+2022-01-19 19:06:54	<--	Figworm (~inoor@user/figworm) has quit (Client Quit)
+2022-01-19 19:07:52	<--	mixfix41 (~homefame@user/mixfix41) has quit (Remote host closed the connection)
+2022-01-19 19:08:51	-->	Figworm [Figworm] (Figworm) (FiggyWitIt@user/figworm) has joined #archlinux
+2022-01-19 19:09:05	<--	Shivo (~shivodit@122.180.183.172) has quit (Quit: Leaving)
+2022-01-19 19:09:25	<--	labrador (~labrador@user/labrador) has quit (Quit: Leaving)
+2022-01-19 19:09:55	<--	wolfdale (~wolfdale@ec2-3-1-90-26.ap-southeast-1.compute.amazonaws.com) has quit (Quit: The Lounge - https://thelounge.chat)
+2022-01-19 19:10:40	-->	wolfdale [wolfdale] (wolfdale) (~wolfdale@ec2-3-1-90-26.ap-southeast-1.compute.amazonaws.com) has joined #archlinux
+2022-01-19 19:11:41	<--	issotm (~issotm@ns352767.ip-91-121-87.eu) has quit (Read error: Connection reset by peer)
+2022-01-19 19:13:04	<--	agvantibo (~agvantibo@79.165.99.155) has quit (Ping timeout: 250 seconds)
+2022-01-19 19:13:05	-->	doombaby [doombaby] (jtc) (~doombaby@216.109.199.128) has joined #archlinux
+2022-01-19 19:13:31	<--	wolfdale (~wolfdale@ec2-3-1-90-26.ap-southeast-1.compute.amazonaws.com) has quit (Client Quit)
+2022-01-19 19:13:58	-->	vevais [vevais] (sebastian) (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has joined #archlinux
+2022-01-19 19:14:04	sunyibo	thanks
+2022-01-19 19:14:15	-->	wolfdale [wolfdale] (wolfdale) (~wolfdale@ec2-3-1-90-26.ap-southeast-1.compute.amazonaws.com) has joined #archlinux
+2022-01-19 19:14:57	-->	issotm [issotm] (ElHabert) (~issotm@ns352767.ip-91-121-87.eu) has joined #archlinux
+2022-01-19 19:15:53	<--	SergeantBiggs (~SergeantB@user/SergeantBiggs) has quit (Quit: WeeChat 3.4)
+2022-01-19 19:16:37	-->	mewt [mewt] (Unknown) (~mewt@65.78.125.80) has joined #archlinux
+2022-01-19 19:17:18	mewt	Hi, post upgrade to firefox 97, I get unusably garbled UI -- pages and even the URL bar/menus are totally unreadable and UI elements are misplaced, distorted, or missing
+2022-01-19 19:18:13	Namarrgon	97 is out already?
+2022-01-19 19:18:19	mewt	Not sure how to troubleshoot, since firefox doesn't like giving debug info -- the behavior persists in safe mode
+2022-01-19 19:18:35	mewt	Mozilla Firefox 97.0b5, apparently
+2022-01-19 19:18:43	mewt	(I'm using the developer edition pkg)
+2022-01-19 19:19:11	<--	Justice (~Justice@31-208-114-75.cust.bredband2.com) has quit (Quit: Justice)
+2022-01-19 19:19:16	<--	JohnML (~JohnML@ip-037-201-129-030.um10.pools.vodafone-ip.de) has quit (Remote host closed the connection)
+2022-01-19 19:19:20	-->	Max-P [Max-P] (Maxime) (Max-P@thelounge/maintainer/Max-P) has joined #archlinux
+2022-01-19 19:19:25	-->	shem [shem] (Janne Himanka) (~shem@saltus.discendum.com) has joined #archlinux
+2022-01-19 19:19:44	Namarrgon	have you found similar cases in their bugtracker?
+2022-01-19 19:19:55	mewt	Let's see...
+2022-01-19 19:19:56	andrewSC	mewt: when you run dev edition from the terminal do you see any errors/informative messages?
+2022-01-19 19:19:58	Namarrgon	are you running it on X or wayland?
+2022-01-19 19:20:04	andrewSC	^^ that too
+2022-01-19 19:20:12	mewt	None whatsoever -- this is X
+2022-01-19 19:20:21	-->	agvantibo [agvantibo] (Savchenko Dmitriy) (~agvantibo@79.165.99.155) has joined #archlinux
+2022-01-19 19:20:23	Namarrgon	can you post the xorg log, too?
+2022-01-19 19:20:24	andrewSC	interesting
+2022-01-19 19:20:28	mewt	Sure thing, hold up
+2022-01-19 19:20:29	-->	Akiva [Akiva] (Akiva) (~Akiva@user/Akiva) has joined #archlinux
+2022-01-19 19:21:33	<--	_mikey (~mikey@user/mikey/x-4335048) has left #archlinux (WeeChat 3.4)
+2022-01-19 19:22:43	<--	timm (~timm@2a02:810d:4c40:a68:224:d7ff:fe18:af78) has quit (Ping timeout: 268 seconds)
+2022-01-19 19:23:12	-->	tmek [tmek] (tmek) (~tmek@89.46.223.91) has joined #archlinux
+2022-01-19 19:23:24	<--	maschinenhans (~Hans@87.123.243.63) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:23:46	mewt	Interesting, Xorg.0.log ends in "server terminated" ... even though I'm clearly here. Not sure if that should be ignored (as I'm definitely in X atm), but here: http://0x0.st/ooXb.log also looks like I've some font issues I need to sort out, but this goes so far beyond fonts I don't think it's my core problem right now
+2022-01-19 19:24:14	<--	issotm (~issotm@ns352767.ip-91-121-87.eu) has quit (Quit: ZNC 1.8.2 - https://znc.in)
+2022-01-19 19:24:16	mewt	Let me screencap the behavior
+2022-01-19 19:24:21	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Quit: beastDiv1)
+2022-01-19 19:24:23	Namarrgon	that log is three years old, look in ~/.local/share/xorg
+2022-01-19 19:24:40	-->	beastDivision [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux
+2022-01-19 19:24:48	mewt	...ah, sorry
+2022-01-19 19:25:05	-->	FluffyMask [FluffyMask] (masque) (~masque@user/fluffymask) has joined #archlinux
+2022-01-19 19:25:09	-->	tirnanog [tirnanog] (tirnanog) (~tirnanog@user/tirnanog) has joined #archlinux
+2022-01-19 19:25:18	<--	mikey (~mikey@user/mikey) has quit (Quit: leaving)
+2022-01-19 19:26:33	-->	Rue_ [Rue] (rue) (~rue@61-231-138-160.dynamic-ip.hinet.net) has joined #archlinux
+2022-01-19 19:27:08	mewt	http://0x0.st/ooXT.log ok, this should be right
+2022-01-19 19:27:09	-->	jkwnki [jkwnki] (jkwnki) (~jkwnki@p4fedb70b.dip0.t-ipconnect.de) has joined #archlinux
+2022-01-19 19:27:13	<--	Volgaar (~volgaar@193.137.116.78.rev.sfr.net) has quit (Quit: WeeChat 3.4)
+2022-01-19 19:28:05	-->	issotm [issotm] (ElHabert) (~issotm@ns352767.ip-91-121-87.eu) has joined #archlinux
+2022-01-19 19:28:09	<--	kescher (~kescher@2605:6400:30:f4ef:bf2d:f986:f99b:b98c) has quit (Quit: Bye)
+2022-01-19 19:28:18	Namarrgon	the regular "firefox" package is unaffected?
+2022-01-19 19:28:28	mewt	Well, let's see..
+2022-01-19 19:28:57	-->	kescher [kescher] (Jeremy Kescher) (~kescher@2605:6400:30:f4ef:bf2d:f986:f99b:b98c) has joined #archlinux
+2022-01-19 19:29:17	mewt	well, that's on 96, which was fine on dev edition too 
+2022-01-19 19:30:12	<--	julia (~quassel@user/julia) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:30:37	Namarrgon	are you holding back kernel updates?
+2022-01-19 19:30:43	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 19:31:06	-->	qwerty [qwerty] (Marcel) (~qwerty@user/badwolf) has joined #archlinux
+2022-01-19 19:31:15	-->	lionkor [lionkor] (Lion) (~lionkor@beammp/staff/lionkor) has joined #archlinux
+2022-01-19 19:31:34	-->	tatsumaru [tatsumaru] (purple) (~tatsumaru@82.147.131.155) has joined #archlinux
+2022-01-19 19:31:43	<--	FluffyMask (~masque@user/fluffymask) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:31:45	<--	CodeSpelunker (~CodeSpelu@user/codespelunker) has quit (Quit: CodeSpelunker)
+2022-01-19 19:31:56	tatsumaru	hey guys, is there some open source flowchart software you recommend?
+2022-01-19 19:32:09	mewt	Not AFAIK?
+2022-01-19 19:32:36	andrewSC	tatsumaru: offtopic however https://app.diagrams.net/
+2022-01-19 19:32:37	phrik	Title: Flowchart Maker & Online Diagram Software (at app.diagrams.net)
+2022-01-19 19:32:51	Namarrgon	mewt: you have firefox 97b5 but your kernel is lagging behind
+2022-01-19 19:33:02	Warepire	Doesn't LibreOffice Draw do those? tatsumaru 
+2022-01-19 19:33:13	mewt	Interesting
+2022-01-19 19:33:17	Warepire	If you like writing them by hand plantUML can also do them.
+2022-01-19 19:33:23	mewt	Yeah, I just searched it and it looks like 5.16 is current...
+2022-01-19 19:33:23	-->	FluffyMask [FluffyMask] (masque) (~masque@user/fluffymask) has joined #archlinux
+2022-01-19 19:33:29	Namarrgon	mewt: pacman -Q linux
+2022-01-19 19:33:32	mewt	Let me go ahead and fix that
+2022-01-19 19:33:36	<--	tatsumaru (~tatsumaru@82.147.131.155) has quit (Client Quit)
+2022-01-19 19:34:02	mewt	Ah nope, I guess I've upgraded since then...
+2022-01-19 19:34:14	mewt	Huh
+2022-01-19 19:34:29	Namarrgon	then reboot into the new kernel and see if you can still reproduce the issue
+2022-01-19 19:34:30	mewt	Let me restart once more, I didn't notice that it had upgraded on this past round
+2022-01-19 19:34:46	<--	shtirlic (~shtirlic@95-55-120-190.dynamic.avangarddsl.ru) has quit (Remote host closed the connection)
+2022-01-19 19:35:47	-->	andril1 [Andril] (andril) (~andril@c-66-229-99-96.hsd1.fl.comcast.net) has joined #archlinux
+2022-01-19 19:38:02	mewt	Nope, behavior persists after reboot -- uname -r now gives: 5.16.1-arch1-1
+2022-01-19 19:38:17	mewt	(I am not joined to IRC from that host)
+2022-01-19 19:38:41	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-19 19:38:56	mewt	Let me give a screencap of the actual behavior, since I didn't
+2022-01-19 19:42:06	-->	Codaraxis [Codaraxis] (realname) (~Codaraxis@user/codaraxis) has joined #archlinux
+2022-01-19 19:42:31	-->	Codaraxis_ [Codaraxis] (realname) (~Codaraxis@user/codaraxis) has joined #archlinux
+2022-01-19 19:42:37	<--	Rue_ (~rue@61-231-138-160.dynamic-ip.hinet.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:42:57	<--	andril1 (~andril@c-66-229-99-96.hsd1.fl.comcast.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:43:11	mewt	Here's a good one: http://0x0.st/ooXu.png
+2022-01-19 19:43:59	mewt	Sometimes the UI elements do flicker back: http://0x0.st/ooX1.png
+2022-01-19 19:44:25	andril	o/
+2022-01-19 19:44:32	<--	jiridoo (mistress@gateway02.insomnia247.nl) has quit (Ping timeout: 240 seconds)
+2022-01-19 19:44:37	andril	anyone using takeshot for screenshots
+2022-01-19 19:44:42	-->	Codaraxis__ [Codaraxis] (realname) (~Codaraxis@user/codaraxis) has joined #archlinux
+2022-01-19 19:44:50	-->	Rue_ [Rue] (rue) (~rue@61-231-136-36.dynamic-ip.hinet.net) has joined #archlinux
+2022-01-19 19:44:59	mewt	Now let's see if FF bugtracker has anything...
+2022-01-19 19:45:30	<--	rodolfo (~rodolfo@user/rodolfo) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:45:51	-->	rodolfo [rodolfo] (Unknown) (~rodolfo@user/rodolfo) has joined #archlinux
+2022-01-19 19:46:05	-->	jiridoo [jirido] (jirido) (mistress@gateway02.insomnia247.nl) has joined #archlinux
+2022-01-19 19:46:38	<--	Codaraxis (~Codaraxis@user/codaraxis) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:46:43	-->	mizu [mizu] (realname) (~miz@user/mizu) has joined #archlinux
+2022-01-19 19:47:23	<--	Namarrgon (~Namarrgon@archlinux/op/Namarrgon) has quit (Ping timeout: 268 seconds)
+2022-01-19 19:47:46	<--	Codaraxis_ (~Codaraxis@user/codaraxis) has quit (Ping timeout: 256 seconds)
+2022-01-19 19:48:33	<--	mizu (~miz@user/mizu) has quit (Quit: Leaving)
+2022-01-19 19:49:01	-->	Namarrgon [Namarrgon] (glei) (~Namarrgon@archlinux/op/Namarrgon) has joined #archlinux
+2022-01-19 19:49:24	-->	mizu [mizu] (Unknown) (~chaos@user/mizu) has joined #archlinux
+2022-01-19 19:50:43	-->	bart [bart4] (bart) (~bart@47.187.88.10) has joined #archlinux
+2022-01-19 19:50:43	-->	zro [zro] (zro) (~zro@user/zro) has joined #archlinux
+2022-01-19 19:50:53	-->	blaub [blaub] (blaub) (~blaub@194-208-201-025.tele.net) has joined #archlinux
+2022-01-19 19:51:16	-->	ugga-the-caveman [ugga-the-caveman] ([https://web.libera.chat] ugga-the-caveman) (~ugga-the-@185.66.195.90) has joined #archlinux
+2022-01-19 19:51:53	<--	greedom (~greedom@p200300de670bde008d70089aa5e33fb7.dip0.t-ipconnect.de) has quit (Remote host closed the connection)
+2022-01-19 19:52:59	mewt	Can't see anything on the bug tracker
+2022-01-19 19:53:04	Warepire	!give andril anyone
+2022-01-19 19:53:04	phrik	andril: Quite possibly. Why do you ask?
+2022-01-19 19:53:18	mewt	Guess I could try building 97 myself...?
+2022-01-19 19:53:33	mewt	Would take a bit, though
+2022-01-19 19:54:00	-->	ryzenda [ryzenda] (ryzendapgh) (~ryzenda@pool-74-109-246-70.pitbpa.fios.verizon.net) has joined #archlinux
+2022-01-19 19:54:10	-->	LuksNuke_ [LuksNuke] (LuksNuke) (~LuksNuke@gateway/tor-sasl/luksnuke) has joined #archlinux
+2022-01-19 19:56:02	<--	agvantibo (~agvantibo@79.165.99.155) has quit (Quit: Gone to seek for greater freedoms.)
+2022-01-19 19:56:27	<--	jaca122 (~Thunderbi@89-65-136-254.dynamic.chello.pl) has quit (Quit: jaca122)
+2022-01-19 19:56:28	Namarrgon	mewt: sorry, i timed out. 
+2022-01-19 19:56:31	-->	agvantibo [agvantibo] (Savchenko Dmitriy) (~agvantibo@79.165.99.155) has joined #archlinux
+2022-01-19 19:56:35	Namarrgon	which gpu are you using?
+2022-01-19 19:56:57	<--	agvantibo (~agvantibo@79.165.99.155) has quit (Client Quit)
+2022-01-19 19:57:38	andril	trying point the outcome to another folder
+2022-01-19 19:58:34	<--	vevais (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has quit (Ping timeout: 250 seconds)
+2022-01-19 19:58:58	-->	CrustY_ [CrustY] (Crostek Ftw) (~crusty@2001:a61:5129:c101:a1ca:2645:699b:49fe) has joined #archlinux
+2022-01-19 20:00:24	-->	vevais [vevais] (sebastian) (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has joined #archlinux
+2022-01-19 20:00:30	-->	mtn [mtn] (Dan) (~mtn@98.97.127.52) has joined #archlinux
+2022-01-19 20:00:47	mewt	Namarrgon: did you see the screenshots and the fact I rebooted into 5.16.1-arch1-1? I am using '0001:45:00.0 VGA compatible controller: NVIDIA Corporation G80GL [Quadro FX 4600] (rev a2)' with nouveau
+2022-01-19 20:01:04	mewt	Aware this is a bit old...
+2022-01-19 20:03:05	Warepire	andril: no distro packages this, and I can't find a project anywhere called this. Did you write this yourself or copy some script from the internet?
+2022-01-19 20:08:07	-->	julia [julia] (Julia) (~quassel@user/julia) has joined #archlinux
+2022-01-19 20:08:07	Namarrgon	mewt: no, sorry, missed it
+2022-01-19 20:08:32	mewt	Np, here: http://0x0.st/ooXu.png http://0x0.st/ooX1.png
+2022-01-19 20:08:44	<--	rickybob (~rickybob@gateway/vpn/pia/rickybob) has quit (Quit: rickybob)
+2022-01-19 20:09:10	-->	JohnML [JohnML] (realname) (~JohnML@ip-037-201-129-030.um10.pools.vodafone-ip.de) has joined #archlinux
+2022-01-19 20:09:21	BrainDamage	mojibake all the things
+2022-01-19 20:09:35	mewt	Indeed I have, apparently
+2022-01-19 20:09:39	Namarrgon	that's either a driver bug or a firefox bug
+2022-01-19 20:10:01	mewt	Driver seems likely-ish... let me see when my last nouveau version was
+2022-01-19 20:10:04	Namarrgon	there was talk about replacing ogl with gles in firefox but i don't know which version they were aiming for
+2022-01-19 20:10:18	Namarrgon	mewt: check the mesa bugtracker
+2022-01-19 20:11:37	<--	_dp (~dp@user/dp/x-8792323) has quit (Remote host closed the connection)
+2022-01-19 20:11:38	<--	ryzenda (~ryzenda@pool-74-109-246-70.pitbpa.fios.verizon.net) has quit (Remote host closed the connection)
+2022-01-19 20:11:55	andril	Warepire: thanks forgot when i got it but went the scrot route
+2022-01-19 20:13:17	<--	Syntax- (~Thunderbi@8.6.112.205) has quit (Ping timeout: 240 seconds)
+2022-01-19 20:13:32	-->	Szadek [Szadek] (Szadek) (~Szadek@92.60.40.236) has joined #archlinux
+2022-01-19 20:13:38	<--	aitor422 (~Thunderbi@224.85-84-135.dynamic.clientes.euskaltel.es) has quit (Quit: aitor422)
+2022-01-19 20:13:58	-->	aitor422 [a422] (aitor422) (~Thunderbi@224.85-84-135.dynamic.clientes.euskaltel.es) has joined #archlinux
+2022-01-19 20:14:43	<--	HappyAporetic (~HappyApor@user/HappyAporetic) has quit (Quit: leaving)
+2022-01-19 20:15:32	mewt	Hrm
+2022-01-19 20:15:44	-->	shtirlic [shtirlic] (Serg Podtynnyi) (~shtirlic@95-55-120-190.dynamic.avangarddsl.ru) has joined #archlinux
+2022-01-19 20:15:51	mewt	I may not be searching what I should -- just looked for "firefox nouveau" and didn't see anything
+2022-01-19 20:15:58	-->	swalladge [swalladge] (swalladge) (~swalladge@user/swalladge) has joined #archlinux
+2022-01-19 20:16:05	<--	Rue_ (~rue@61-231-136-36.dynamic-ip.hinet.net) has quit (Quit: WeeChat 3.4)
+2022-01-19 20:16:07	vd	Earnestly: grawity: do you have an opinion regarding a custom /init vs. systemd services to e.g. format a luks+btrfs partition at factory time?
+2022-01-19 20:16:11	mewt	<6mo old, and the older bugs aren't relevant
+2022-01-19 20:16:36	andrewSC	mewt: does 97.04 also produce the same issue?
+2022-01-19 20:16:37	-->	Pickchea [Pickchea] (realname) (~private@user/pickchea) has joined #archlinux
+2022-01-19 20:16:46	-->	arseru [arseru] (arseru) (uid515527@user/arseru) has joined #archlinux
+2022-01-19 20:17:12	<--	duuude (~user@user/duuude) has quit (Ping timeout: 250 seconds)
+2022-01-19 20:17:58	mewt	Yup, that was where I first noticed it -- downgraded to it to make sure since I've still got it cached
+2022-01-19 20:18:08	arseru	SponiX, mpan, jonathon: sorry for being away and thanks for answering, I'll reply to you now :)
+2022-01-19 20:18:57	<--	Namarrgon (~Namarrgon@archlinux/op/Namarrgon) has quit (Ping timeout: 240 seconds)
+2022-01-19 20:19:08	arseru	SponiX: when I run `sudo pacman -Syu` everything's fine, it's just the `aur sync -u` command that fails because somehow the permissions of that `custom.db.tar` file have changed today when I tried to update my system
+2022-01-19 20:19:26	-->	Namarrgon [Namarrgon] (glei) (~Namarrgon@archlinux/op/Namarrgon) has joined #archlinux
+2022-01-19 20:19:45	arseru	mpan: the error comes for `aurutils`, I run `aur sync -u` and out goes `==> ERROR: sync: /var/cache/pacman/custom/custom.db.tar: permission denied`
+2022-01-19 20:19:50	<--	EvilDMP (~textual@django/moderator/EvilDMP) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 20:19:50	mewt	...interesting
+2022-01-19 20:19:53	<--	andril (~andril@2601:586:8400:e4:a965:a318:3940:38c4) has quit (Quit: WeeChat 3.4)
+2022-01-19 20:20:14	-->	tatsumaru [tatsumaru] (purple) (~tatsumaru@82.147.131.155) has joined #archlinux
+2022-01-19 20:20:16	mewt	I didn't see the error before upgrading FF, and last time it prevented me from launching at all after downgrading back to 96
+2022-01-19 20:20:28	-->	ursatempest [ginko] (ursatempest) (~ursatempe@user/ginko) has joined #archlinux
+2022-01-19 20:20:28	mewt	However now I've downgraded back to 96, and it exhibits the same behavior...
+2022-01-19 20:20:45	-->	shtirlic_ [shtirlic] (Serg Podtynnyi) (~shtirlic@95-55-120-190.dynamic.avangarddsl.ru) has joined #archlinux
+2022-01-19 20:20:57	mewt	Maybe another package is at fault, then. Wouldn't be nouveau, as that was last updated too long ago
+2022-01-19 20:21:02	<--	ugga-the-caveman (~ugga-the-@185.66.195.90) has quit (Ping timeout: 256 seconds)
+2022-01-19 20:21:04	tatsumaru	hey guys I am trying to build this package but it fails and I can't understand the solution that the package manager provides: https://aur.archlinux.org/packages/dia-git/ They say that certain manual changes in ' in plug-ins/pdf/pdf-import.cpp to build with poppler 21.3.0" are needed but I am not sure where that is. Can you help/
+2022-01-19 20:21:05	phrik	Title: AUR (en) - dia-git (at aur.archlinux.org)
+2022-01-19 20:21:09	mewt	I did also try rolling back the kernel at the time and didn't see any improvement
+2022-01-19 20:21:15	-->	andril [Andril] (andril) (~andril@c-66-229-99-96.hsd1.fl.comcast.net) has joined #archlinux
+2022-01-19 20:21:18	<--	shtirlic (~shtirlic@95-55-120-190.dynamic.avangarddsl.ru) has quit (Ping timeout: 268 seconds)
+2022-01-19 20:21:21	mewt	Let's try in safe mode, to be sure
+2022-01-19 20:22:12	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 20:23:11	<--	joe_colben (~joe____co@185.190.112.211) has quit (Read error: Connection reset by peer)
+2022-01-19 20:23:22	-->	TheBirdWasHere [TheBirdWasHere] (TheBirdWasHere) (~tuxbunny@71.37.197.88) has joined #archlinux
+2022-01-19 20:23:27	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 20:23:29	rcf	tatsumaru: ideally they would provide a patch to do this, but for now you start off with makepkg --nobuild, then edit the files in src/ exactly as described. 
+2022-01-19 20:23:37	arseru	jelle: you said you were unsure what the db does in /var/cache/pacman, only thing I can tell you is these are the notes I had from checking `man aur` at the time of configuring aurutils some years ago https://bpa.st/76UA
+2022-01-19 20:23:37	rcf	tatsumaru: then build with makepkg --noextract 
+2022-01-19 20:23:39	phrik	Title: View paste 76UA (at bpa.st)
+2022-01-19 20:23:59	mewt	Ah no I'm an idiot
+2022-01-19 20:24:05	-->	agopo [agopo] (realname) (~agopo@ip1f115086.dynamic.kabel-deutschland.de) has joined #archlinux
+2022-01-19 20:24:06	mewt	I didn't close all the windows
+2022-01-19 20:24:08	<--	DLange (~DLange@about/linux/staff/DLange) has quit (Quit: \o/)
+2022-01-19 20:24:19	mewt	It did show me there's a profile downgrade option, though, so let's back up my current one and try
+2022-01-19 20:24:43	-->	DLange [DLange] (Daniel Lange) (~DLange@about/linux/staff/DLange) has joined #archlinux
+2022-01-19 20:24:52	arseru	jonathon: `/var/cache/pacman/custom` has permissions: `drwxr-xr-x 2 arseru root`
+2022-01-19 20:25:43	-->	EvilDMP [EvilDMP] (Textual User) (~textual@django/moderator/EvilDMP) has joined #archlinux
+2022-01-19 20:25:50	mewt	Ok, confirmed 96 still starts ok, please ignore the above!
+2022-01-19 20:26:05	-->	_dp [_dp] (ZNC - https://znc.in) (~dp@user/dp/x-8792323) has joined #archlinux
+2022-01-19 20:26:25	mewt	I can also probably wait this out on 96 if there's no fix, as it seems you can force it to run with the profile downgrade
+2022-01-19 20:26:26	-->	chazy [chazy] (chazy) (~chazy@2a0c:5a84:d103:c00:1ac0:4dff:fe96:16ad) has joined #archlinux
+2022-01-19 20:26:47	tatsumaru	rcf I just tried the --nobuild option but when I opened the file, the necessary changes were already there
+2022-01-19 20:27:09	<--	joe_colben (~joe____co@185.190.112.211) has quit (Read error: Connection reset by peer)
+2022-01-19 20:27:27	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-19 20:27:31	tatsumaru	maybe mine is breaking for a different reason
+2022-01-19 20:27:44	arseru	SponiX, mpan, jonathon: summarizing, is the best thing for me to just move the custom db to `/home/custompkgs` as explained in `maun aur`? https://bpa.st/FU7A
+2022-01-19 20:27:45	phrik	Title: View paste FU7A (at bpa.st)
+2022-01-19 20:27:58	Warepire	tatsumaru: Could you paste the failure log?
+2022-01-19 20:28:15	tatsumaru	Warepire: https://paste.rs/Yt2
+2022-01-19 20:28:25	<--	_dp (~dp@user/dp/x-8792323) has quit (Quit: ZNC 1.8.2 - https://znc.in)
+2022-01-19 20:28:55	-->	_dp [_dp] (ZNC - https://znc.in) (~dp@user/dp/x-8792323) has joined #archlinux
+2022-01-19 20:29:14	chazy	for dm-crypt, do i need to zerofill a new ssd before creating the encrypted container?
+2022-01-19 20:29:19	<--	et09 (~et09@user/et09) has quit (Quit: leaving)
+2022-01-19 20:29:33	agopo	I want to apt remove --purge all php* packages to prepare a clean install of php 8.0 . Only a few php-related packages are meant to stay. But sudo apt remove --purge php-* offers me libapache2-mod-php* libapache2-mod-php7.4* libapache2-mod-php8.0* phpmyadmin* pkg-php-tools* as well. I must be understanding the wildcard wrong. Can anyone help?
+2022-01-19 20:29:37	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@8.6.112.205) has joined #archlinux
+2022-01-19 20:29:51	Namarrgon	chazy: no, you don't need to
+2022-01-19 20:30:01	Namarrgon	agopo: wrong channel?
+2022-01-19 20:30:24	agopo	Would #bash be the better choice?
+2022-01-19 20:30:28	<--	TheBirdWasHere (~tuxbunny@71.37.197.88) has quit (Remote host closed the connection)
+2022-01-19 20:30:30	-->	et09 [et09] (et09) (~et09@user/et09) has joined #archlinux
+2022-01-19 20:30:34	Warepire	tatsumaru: Their meson.build (or something the packager has done to it) is broken. See the bottom line in the log you pasted.
+2022-01-19 20:30:41	Namarrgon	agopo: no, your distro's channel would be a good start
+2022-01-19 20:30:53	-->	boredcaveman [boredcaveman] (boredcaveman) (~boredcave@user/boredcaveman) has joined #archlinux
+2022-01-19 20:30:59	<--	agopo (~agopo@ip1f115086.dynamic.kabel-deutschland.de) has left #archlinux (Leaving)
+2022-01-19 20:31:02	-->	Nomz [Nomz] (realname) (~nomz@user/Nomz) has joined #archlinux
+2022-01-19 20:31:04	mewt	I'd still like to solve the bug, but at the very least I do have a workaround short-term
+2022-01-19 20:31:09	tatsumaru	Warepire: do I need to reinstall meson?
+2022-01-19 20:31:16	rcf	no
+2022-01-19 20:31:34	Warepire	No, but post about it on the package page and the packager will be aware of the problem
+2022-01-19 20:31:54	tatsumaru	alright, thanks
+2022-01-19 20:32:12	Warepire	Unless you know enough meson to try to fix it yourself ofcourse. Then feel free to try.
+2022-01-19 20:32:22	<--	CrustY_ (~crusty@2001:a61:5129:c101:a1ca:2645:699b:49fe) has quit (Ping timeout: 250 seconds)
+2022-01-19 20:32:26	-->	CrustY [CrustY] (Crostek Ftw) (~crusty@31.13.191.173) has joined #archlinux
+2022-01-19 20:33:23	 •	rcf will have a go at fixing it
+2022-01-19 20:35:41	copygirl	Mhh so I've been fighting with this WiFi stick my dad gave me and at this point I think something is wrong with it. I can watch my ping go up to seconds whenever I do anything like watch streams or play games. Meanwhile I don't think my laptop's WiFi connection has an issue.
+2022-01-19 20:36:12	<--	korrat (~Thunderbi@p4fda4f43.dip0.t-ipconnect.de) has quit (Quit: korrat)
+2022-01-19 20:36:19	NetSysFire	get the wifi sticks usb id and search for it
+2022-01-19 20:36:25	NetSysFire	there might be known issues
+2022-01-19 20:36:30	copygirl	I tried setting up connection sharing with the short ethernet cable I have. So router --> laptop ==> desktop.
+2022-01-19 20:36:43	<--	tatsumaru (~tatsumaru@82.147.131.155) has left #archlinux
+2022-01-19 20:36:44	NetSysFire	many of those are broadcom crap sticks, too.
+2022-01-19 20:36:47	copygirl	Mmmmmmm fair point.
+2022-01-19 20:37:15	<--	andril (~andril@c-66-229-99-96.hsd1.fl.comcast.net) has quit (Quit: WeeChat 3.4)
+2022-01-19 20:37:20	<--	igemnace (~ian@user/igemnace) has quit (Ping timeout: 268 seconds)
+2022-01-19 20:38:08	-->	mingdao [mingdao] (mingdao) (~mingdao@wireguard/tunneler/mingdao) has joined #archlinux
+2022-01-19 20:38:15	copygirl	rt5370 wireless adapter
+2022-01-19 20:38:22	rcf	tatsumaru: delete the first argument to i18n.merge_file() in the file given by the error and it should work. 
+2022-01-19 20:38:41	NetSysFire	copygirl: lsusb shows you the usb id, which is e.g eafc:012c or so
+2022-01-19 20:39:24	NetSysFire	this is the part you want, its pretty unique so you can find exactly what you want. unique as in every wifi stick of that specific make share that id
+2022-01-19 20:39:52	copygirl	Might want wireless_tools so I'll try with that.
+2022-01-19 20:40:24	NetSysFire	any reason for using a wifi stick instead of using the wifi card in your laptop?
+2022-01-19 20:40:57	mewt	you'd specifically want the vendor and product IDs, right? lsusb is p quick to run and check
+2022-01-19 20:41:07	NetSysFire	the complete id, yeah
+2022-01-19 20:41:30	NetSysFire	you search for it using quotes, so e.g "eafc:012c" in your search engine of choice so you get only the relevant stuff
+2022-01-19 20:41:45	mewt	also does dmesg show anything? (I realize I'm not the person that started here, but just in passing...)
+2022-01-19 20:41:53	-->	andril [Andril] (andril) (~andril@2601:586:8400:e4:a965:a318:3940:38c4) has joined #archlinux
+2022-01-19 20:41:53	NetSysFire	!dmesg
+2022-01-19 20:41:53	phrik	Always check your journal when possible, not your dmesg. The journal includes the dmesg together with other helpful and possibly relevant logs. journalctl also has more options to search and filter messages.
+2022-01-19 20:42:01	mewt	Ahh, sorry
+2022-01-19 20:42:55	<--	vzkb (~vzkb@ip-213-220-244-51.net.upcbroadband.cz) has quit (Quit: vzkb)
+2022-01-19 20:43:21	NetSysFire	we are also specifically interested in anything wpa_supplicant/iwd or the network manager says
+2022-01-19 20:43:33	-->	qorg11 [qorg] (lain) (~lain@36.pool213-77-252.dynamic.orange.es) has joined #archlinux
+2022-01-19 20:43:58	-->	heat [heat] (realname) (~heat@sortix/contributor/heat) has joined #archlinux
+2022-01-19 20:44:01	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 20:44:05	copygirl	Well the connection is sorta successful but then starts to lag with time.
+2022-01-19 20:44:39	copygirl	I haven't seen anything that sticks out but I'm also not entirely sure what I'm looking for.
+2022-01-19 20:45:11	-->	cvmn [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined #archlinux
+2022-01-19 20:45:24	NetSysFire	how do you determine it is successful?
+2022-01-19 20:45:26	copygirl	The only thing that was strange is I kept getting CTRL-EVENT-BEACON-LOSS messages after some time.
+2022-01-19 20:45:31	copygirl	I have internet.
+2022-01-19 20:45:55	NetSysFire	paste your whole journal
+2022-01-19 20:45:57	<--	duuude (~user@user/duuude) has quit (Ping timeout: 256 seconds)
+2022-01-19 20:46:03	copygirl	Laugh at me if you want but I have Mumble open on the server connection window and watching the Ping steadily raise up.
+2022-01-19 20:46:19	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-19 20:46:37	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-19 20:46:39	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 20:47:01	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 20:47:08	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-19 20:47:22	NetSysFire	also search for the usb id and see if there are any relevant bug reports
+2022-01-19 20:47:28	-->	marcello42 [marcello42] (mp) (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has joined #archlinux
+2022-01-19 20:48:11	<--	joe_colben (~joe____co@185.190.112.211) has quit (Read error: Connection reset by peer)
+2022-01-19 20:49:36	<--	Satin (uid193953@user/Seten) has quit (Quit: Connection closed for inactivity)
+2022-01-19 20:49:38	<--	boredcaveman (~boredcave@user/boredcaveman) has quit (Quit: WeeChat 3.4)
+2022-01-19 20:50:53	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 20:50:57	copygirl	Here's the journal first of all. https://gist.github.com/copygirl/d378c01718b9d56f70c6c3c1fb7bd08c
+2022-01-19 20:51:29	<--	vevais (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has quit (Quit: leaving)
+2022-01-19 20:51:38	-->	Damme [Damme] (realname) (~Damme@h-81-170-177-231.A216.priv.bahnhof.se) has joined #archlinux
+2022-01-19 20:51:41	-->	vevais [vevais] (sebastian) (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has joined #archlinux
+2022-01-19 20:51:49	-->	timm [timm] (timm) (~timm@2a02:810d:4c40:a68:224:d7ff:fe18:af78) has joined #archlinux
+2022-01-19 20:53:25	-->	jjt [jjt] (JJT) (~jjt@user/jjt) has joined #archlinux
+2022-01-19 20:54:22	NetSysFire	is that a fresh journal? it doesnt appear to have the stuff i am looking for
+2022-01-19 20:54:27	<--	primalmotion (~primalmot@user/primalmotion) has quit (Ping timeout: 256 seconds)
+2022-01-19 20:54:59	NetSysFire	try to reproduce that issue with the lag and paste the journal from that attempt, if you already did so just paste the journal of an earlier boot
+2022-01-19 20:55:03	copygirl	So FYI even after not doing much the ping consistently stays high.
+2022-01-19 20:55:24	Ivii	ffmpeg5 coming soon to pacman?
+2022-01-19 20:55:46	<--	joe_colben (~joe____co@185.190.112.211) has quit (Ping timeout: 256 seconds)
+2022-01-19 20:55:48	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 20:56:20	-->	tatsumaru [tatsumaru] (purple) (~tatsumaru@82.147.131.155) has joined #archlinux
+2022-01-19 20:56:28	NetSysFire	!give Ivii when5
+2022-01-19 20:56:29	phrik	Ivii: every time someone asks about a release date it is postponed by a week
+2022-01-19 20:56:51	tatsumaru	hey guys I installed calligra office and now when I launch it I get:" Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway." Where do I need to enter this option?
+2022-01-19 20:57:04	copygirl	Updated the gist, getting the beacon loss events again now.
+2022-01-19 20:57:16	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 20:57:32	NetSysFire	tatsumaru: in your shell or depending on your graphical environment, in an autostart file
+2022-01-19 20:58:40	NetSysFire	copygirl: i have no idea. networking issues can be very hard to debug, but first thing to do is trying to find bug reports for that stick
+2022-01-19 20:58:54	tatsumaru	NetSysFire: I tried in sheel but I get a program popup saying Mimetype for <filename> file: QT_QPA_PLATFORM=wayland</filename> not found!
+2022-01-19 20:58:59	tatsumaru	shell*
+2022-01-19 20:59:21	NetSysFire	!give tatsumaru aw variable
+2022-01-19 20:59:22	phrik	tatsumaru: Variable - https://wiki.archlinux.org/title/Variable
+2022-01-19 20:59:31	mpan	arseru: there have been multiple answers already after I asked about that, and there was also a note from me that I misinterpreted the source of the message.
+2022-01-19 21:00:00	copygirl	Mmh I'm trying my hardest to search for reports of similar issues. The thing got relatively warm so I'm wondering if it's half-broke.
+2022-01-19 21:00:12	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 21:00:17	<--	Syntax- (~Thunderbi@8.6.112.205) has quit (Ping timeout: 240 seconds)
+2022-01-19 21:00:28	NetSysFire	whats the usb id of that stick?
+2022-01-19 21:01:19	tatsumaru	NetSysFire: do I need to do this 'env QT_QPA_PLATFORM=wayland calligra' ?
+2022-01-19 21:01:19	copygirl	Ah yes I should have probably mentioned. 148f:5370
+2022-01-19 21:01:20	<--	joe_colben (~joe____co@185.190.112.211) has quit (Read error: Connection reset by peer)
+2022-01-19 21:01:20	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Client Quit)
+2022-01-19 21:01:35	NetSysFire	tatsumaru: minus the env at the beginning, yeah
+2022-01-19 21:02:09	tatsumaru	hmm it doesn't have any effect just returns the original error
+2022-01-19 21:02:26	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@8.6.112.205) has joined #archlinux
+2022-01-19 21:02:30	NetSysFire	try export instead of env
+2022-01-19 21:03:09	-->	primalmotion [primalmotion] (Primalmotion) (~primalmot@user/primalmotion) has joined #archlinux
+2022-01-19 21:03:22	tatsumaru	this time nothing happens
+2022-01-19 21:03:47	NetSysFire	copygirl: http://linux-hardware.org/?id=usb:148f-5370 theres reports of users having that where it just works apparently, and its fine when it gets warm. it shouldnt get hot though
+2022-01-19 21:04:31	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 21:04:57	<--	obale1 (~obale@user/obale) has quit (Ping timeout: 276 seconds)
+2022-01-19 21:04:58	NetSysFire	copygirl: i wonder if it is a regression
+2022-01-19 21:05:12	Warepire	copygirl: Probably a dumb question: Have you tried using different wifi channels? When I lived in an aparment the neighbors had so many wifi devices it was impossible to get good quality wifi connections. But some channels were better than others.
+2022-01-19 21:05:14	copygirl	Mhh I don't burn my fingers when touching it.
+2022-01-19 21:05:25	Earnestly	This is a nice website
+2022-01-19 21:05:43	-->	obale [obale] (ZNC - https://znc.in) (~obale@user/obale) has joined #archlinux
+2022-01-19 21:05:49	copygirl	I'm relatively far from any other house. But that was something I saw mentioned so.. maybe?
+2022-01-19 21:06:13	copygirl	I have a laptop in the same physical space who does not have any issues.
+2022-01-19 21:06:31	copygirl	And the "ping goes up but never returns to normal levels" thing is baffling me.
+2022-01-19 21:07:07	Warepire	Doesn't sound to me like there's a risk of the airspace being "too busy".
+2022-01-19 21:07:15	<--	tatsumaru (~tatsumaru@82.147.131.155) has quit (Quit: Leaving.)
+2022-01-19 21:07:16	<--	jjt (~jjt@user/jjt) has quit (Quit: Lost terminal)
+2022-01-19 21:07:20	NetSysFire	what network manager do you use?
+2022-01-19 21:07:21	copygirl	There's a total of 4 devices connected to the router.
+2022-01-19 21:07:51	copygirl	I went with NetworkManager after being frustrated with raw wpa_supplicant, hoping it might resolve things.
+2022-01-19 21:07:54	NetSysFire	if you use networkmanager, try nmcli -f in-use,ssid,bssid,chan,rate,freq,signal,bars,security device wifi list
+2022-01-19 21:08:14	NetSysFire	i put that as an alias in my shell, lswifi
+2022-01-19 21:08:47	timm	i like to use netctl's wifi-menu
+2022-01-19 21:09:06	NetSysFire	networkmanager has nmtui
+2022-01-19 21:09:25	<--	duxsco (~Thunderbi@user/duxsco) has quit (Quit: duxsco)
+2022-01-19 21:09:28	copygirl	IN-USE  SSID   BSSID              CHAN  RATE        FREQ      SIGNAL  BARS  SECURITY 
+2022-01-19 21:09:29	copygirl	*       Timmy  E0:28:6D:87:9C:E9  1     195 Mbit/s  2412 MHz  37      ▂▄__  WPA2    
+2022-01-19 21:09:51	MacGyver	Those are some nice bars.
+2022-01-19 21:10:02	MacGyver	Very helpful header, too.
+2022-01-19 21:10:02	<--	joe_colben (~joe____co@185.190.112.211) has quit (Remote host closed the connection)
+2022-01-19 21:10:15	NetSysFire	copygirl: are those all wifi networks?
+2022-01-19 21:10:21	NetSysFire	check if anything else uses the same chan
+2022-01-19 21:10:23	copygirl	Yes
+2022-01-19 21:10:27	NetSysFire	hmm
+2022-01-19 21:10:45	NetSysFire	do you have any other device, preferably not running linux, where you can test if this wifi stick works properly?
+2022-01-19 21:10:45	-->	joe_colben [joe_colben] (realname) (~joe____co@185.190.112.211) has joined #archlinux
+2022-01-19 21:11:34	copygirl	I believe there's a Windows laptop but it already has builtin WiFi.
+2022-01-19 21:12:20	-->	TheBirdWasHere [TheBirdWasHere] (TheBirdWasHere) (~tuxbunny@71.37.197.88) has joined #archlinux
+2022-01-19 21:12:37	NetSysFire	you can tell it to use the stick instead
+2022-01-19 21:12:48	copygirl	I'll try my luck.
+2022-01-19 21:12:52	NetSysFire	if it works on there, we know its probably a linux problem
+2022-01-19 21:12:59	copygirl	Would it be fair to give up and use connection sharing instead though?
+2022-01-19 21:13:58	copygirl	I have a short ethernet cable. I tried to set it up in various ways before without luck but I'm willing to give it another shot.
+2022-01-19 21:14:29	-->	pvdp [pvdp] (Pieter) (~Pieter@static-n58-105-183-94.rdl4.qld.optusnet.com.au) has joined #archlinux
+2022-01-19 21:14:29	NetSysFire	it is. it is your time and if it works better, then i'd just do it
+2022-01-19 21:14:43	copygirl	Well, either way I don't think I can try this tonight.
+2022-01-19 21:16:21	copygirl	Thank you for helping me.
+2022-01-19 21:16:43	NetSysFire	np
+2022-01-19 21:18:29	<--	drathir_tor (~drathir@wireguard/tunneler/drathir) has quit (Remote host closed the connection)
+2022-01-19 21:18:41	-->	drathir_tor [drathir] (drathir87) (~drathir@wireguard/tunneler/drathir) has joined #archlinux
+2022-01-19 21:18:58	<--	marcello42 (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has quit (Read error: Connection reset by peer)
+2022-01-19 21:18:59	<--	TheBirdWasHere (~tuxbunny@71.37.197.88) has quit (Remote host closed the connection)
+2022-01-19 21:19:05	-->	stefano999 [stefano999] (Steven Fucile) (~stefano99@c-73-221-243-139.hsd1.wa.comcast.net) has joined #archlinux
+2022-01-19 21:19:44	-->	ugga-the-caveman [ugga-the-caveman] ([https://web.libera.chat] ugga-the-caveman) (~ugga-the-@185.66.195.90) has joined #archlinux
+2022-01-19 21:20:49	<--	WoC (woc@2603-8080-cd40-00c6-eaaf-8a29-4225-dc1f.res6.spectrum.com) has quit (Remote host closed the connection)
+2022-01-19 21:20:49	<--	stefano999 (~stefano99@c-73-221-243-139.hsd1.wa.comcast.net) has quit (Remote host closed the connection)
+2022-01-19 21:21:44	<--	infides (~infides@i6DFA3886.versanet.de) has quit (Ping timeout: 268 seconds)
+2022-01-19 21:23:31	-->	zenof [zenof] (realname) (~zenofthin@88.130.155.166) has joined #archlinux
+2022-01-19 21:23:57	!=	timm (~timm@2a02:810d:4c40:a68:224:d7ff:fe18:af78) has changed host to ~timm@user/timm
+2022-01-19 21:24:07	<--	georgios (~georgios@user/georgios) has quit (Quit: Konversation terminated!)
+2022-01-19 21:26:17	chazy	is it possible to add a boot entry to grub in such a way that depending in what computer i connect my usb drive it detects the boot device and uses that entry?
+2022-01-19 21:26:40	<--	Twig (~Twig@45.152.183.53) has quit (Ping timeout: 268 seconds)
+2022-01-19 21:26:44	<--	duuude (~user@user/duuude) has quit (Remote host closed the connection)
+2022-01-19 21:26:51	chazy	not the boot device but the root device
+2022-01-19 21:27:15	mewt	I'll chill here in the hope someone else has other thoughts on FF97 + nouveau, I guess
+2022-01-19 21:27:18	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 21:27:36	-->	Nimzowitsch [Nimzowitsch] (Douglas) (~nimzo@user/nimzowitsch) has joined #archlinux
+2022-01-19 21:27:36	<--	upsala (~zcb@185.209.196.170) has quit (Quit: WeeChat 3.4)
+2022-01-19 21:28:02	-->	xdarklight [xdarklight] (ZNC - https://znc.in) (~libera@user/xdarklight) has joined #archlinux
+2022-01-19 21:28:04	<--	gproto23 (~gproto23@user/gproto23) has quit (Ping timeout: 256 seconds)
+2022-01-19 21:28:26	Warepire	mewt: Did you try the propriatary drivers just to see if it's a nouveau issue?
+2022-01-19 21:29:00	<--	ugga-the-caveman (~ugga-the-@185.66.195.90) has quit (Quit: Client closed)
+2022-01-19 21:30:06	<--	trumee (~rajlon.dy@122.166.135.68) has quit (Quit: ZNC 1.8.2 - https://znc.in)
+2022-01-19 21:30:09	-->	migul [migul] (miguel) (~mig@user/migul) has joined #archlinux
+2022-01-19 21:30:10	-->	ugga-the-caveman [ugga-the-caveman] ([https://web.libera.chat] ugga-the-caveman) (~ugga-the-@185.66.195.90) has joined #archlinux
+2022-01-19 21:30:42	<--	zwei (~Zweihande@znc.ext.zweihander.me) has quit (Quit: ZNC - https://znc.in)
+2022-01-19 21:32:57	<--	ugga-the-caveman (~ugga-the-@185.66.195.90) has quit (Client Quit)
+2022-01-19 21:33:31	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 21:34:04	<--	lionkor (~lionkor@beammp/staff/lionkor) has quit (Ping timeout: 268 seconds)
+2022-01-19 21:34:50	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 21:35:08	-->	blinux [blinux] (blinux) (~blinux@pool-72-78-144-199.phlapa.fios.verizon.net) has joined #archlinux
+2022-01-19 21:35:12	<--	jkwnki (~jkwnki@p4fedb70b.dip0.t-ipconnect.de) has quit (Ping timeout: 250 seconds)
+2022-01-19 21:36:00	<--	feriman (~feriman@188.163.113.151) has quit (Ping timeout: 256 seconds)
+2022-01-19 21:36:20	-->	lazlev [lazlev] (Unknown) (~lazlev@i59F4A6A2.versanet.de) has joined #archlinux
+2022-01-19 21:37:52	semiote	Warepire: nouveau works... kinda.
+2022-01-19 21:39:00	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Client Quit)
+2022-01-19 21:39:26	Warepire	It varies from case to case, some programs do not render well with my card on nouveau, but render fine with the nvidia drivers.
+2022-01-19 21:39:36	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 21:39:38	<--	ouestbillie (~gallup@45.83.220.194) has quit (Quit: leaving)
+2022-01-19 21:39:52	-->	ouestbillie [ouestbillie] (gallup) (~gallup@45.83.220.194) has joined #archlinux
+2022-01-19 21:40:23	topcat001	mewt: Have you tried to disable EGL in FF 97 as a test?
+2022-01-19 21:40:32	<--	zenof (~zenofthin@88.130.155.166) has quit (Ping timeout: 256 seconds)
+2022-01-19 21:40:52	-->	marcello42 [marcello42] (mp) (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has joined #archlinux
+2022-01-19 21:42:35	topcat001	I'm curious if that works. The setting is gfx. x11-egl.force-disabled.
+2022-01-19 21:44:58	topcat001	On another note, I finally got hardware video decoding to work in firefox and chrome and it's awesome.
+2022-01-19 21:45:02	<--	avapxia (~cbl@user/avapxia) has left #archlinux (Hyperspace Drive engaged)
+2022-01-19 21:46:15	archdemon	what did you have to do for that to work topcat001 
+2022-01-19 21:46:19	topcat001	Had to switch to intel DDX to avoid the "9 second hiccup" bug in modesetting.
+2022-01-19 21:46:19	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-19 21:46:31	archdemon	fun times
+2022-01-19 21:46:44	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-19 21:47:26	topcat001	But now I have perfect frame accurate hardware decoded video playback on Linux (with a TV/monitor which supports the correct refresh rates).
+2022-01-19 21:48:07	topcat001	archdemon: The first step is to set up vaapi correctly. Then firefox 96 has a setting for vaapi which needs to be enabled.
+2022-01-19 21:48:35	topcat001	It's all documented in various Arch wiki pages and linked from the hardware video aceel page.
+2022-01-19 21:48:44	topcat001	So I can't claim any credit haha
+2022-01-19 21:48:48	-->	heat_ [heat] (realname) (~heat@sortix/contributor/heat) has joined #archlinux
+2022-01-19 21:48:57	<--	rassawyer (~rassawyer@c-73-175-191-186.hsd1.pa.comcast.net) has quit (Ping timeout: 240 seconds)
+2022-01-19 21:48:59	<--	markpash (~markpash@51.15.69.81) has quit (Read error: Connection reset by peer)
+2022-01-19 21:49:00	<--	Pickchea (~private@user/pickchea) has quit (Quit: Leaving)
+2022-01-19 21:49:29	<--	Ruuchan (~Ruuchan@user/ruuchan) has quit (Ping timeout: 268 seconds)
+2022-01-19 21:49:31	-->	markpash [markpash] (markpash) (~markpash@51.15.69.81) has joined #archlinux
+2022-01-19 21:49:37	<--	heat (~heat@sortix/contributor/heat) has quit (Read error: Connection reset by peer)
+2022-01-19 21:49:41	topcat001	Chrome needs the `--use-gl=desktop --enable-features=VaapiVideoDecoder' flags (for X11).
+2022-01-19 21:49:58	topcat001	the difference is dramatic
+2022-01-19 21:50:59	topcat001	https://wiki.archlinux.org/title/Hardware_video_acceleration
+2022-01-19 21:51:00	phrik	Title: Hardware video acceleration - ArchWiki (at wiki.archlinux.org)
+2022-01-19 21:51:10	topcat001	I love this page so much :)
+2022-01-19 21:52:10	et09	how is wayland support for pre-2007 video cards
+2022-01-19 21:52:19	<--	semiote (~semiote@user/semiote) has quit (Remote host closed the connection)
+2022-01-19 21:52:19	<--	archdemon (~archdemon@user/archdemon) has quit (Quit: WeeChat 3.5-dev)
+2022-01-19 21:52:23	-->	Justice [Justice] (Commander) (~Justice@31-208-114-75.cust.bredband2.com) has joined #archlinux
+2022-01-19 21:52:27	et09	agnostic?
+2022-01-19 21:52:33	et09	like sway/wlroots
+2022-01-19 21:53:00	rcf	et09: it's... interesting at times. wlroots requires some drm features that aren't common on the older drivers. 
+2022-01-19 21:53:05	-->	odbk [odbk] ([https://kiwiirc.com] odbk) (~odbk@user/odbk) has joined #archlinux
+2022-01-19 21:53:25	topcat001	My Precision can now play 1080p Netflix with fans off!
+2022-01-19 21:53:26	rcf	Needs full PRIME support which breaks older intel, for example. 
+2022-01-19 21:53:34	<--	odbk (~odbk@user/odbk) has left #archlinux
+2022-01-19 21:53:54	rcf	Though if you have that I'm not sure you can even run Arch, technically. 
+2022-01-19 21:54:04	<--	Justice (~Justice@31-208-114-75.cust.bredband2.com) has quit (Client Quit)
+2022-01-19 21:54:23	-->	Justice [Justice] (Commander) (~Justice@31-208-114-75.cust.bredband2.com) has joined #archlinux
+2022-01-19 21:54:28	!=	heat_ is now known as heat
+2022-01-19 21:54:33	topcat001	I'm planning to install Arch on an old machine with an nvidia 9300.
+2022-01-19 21:54:52	Warepire	rcf: At least the 2020 builds of Arch ran on whatever Compaq stuffed in their higher end Presario machines c:a 2003
+2022-01-19 21:54:52	topcat001	Should be fun, probably the legacy driver will work.
+2022-01-19 21:55:25	rcf	topcat001: you'll need nouveau support; the older fbdev stuff doesn't work at all. 
+2022-01-19 21:55:48	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-19 21:55:56	<--	Nightah (~Nightah@user/nightah) has quit (Quit: ZNC - https://znc.in)
+2022-01-19 21:56:02	rcf	For wayland anyway. 
+2022-01-19 21:56:06	topcat001	I'm planning to run mostly headless, so hopefully should be ok.
+2022-01-19 21:56:11	rcf	Oh, that's fine. 
+2022-01-19 21:56:12	topcat001	and X11
+2022-01-19 21:56:22	topcat001	the latter very rarely
+2022-01-19 21:56:38	<--	Justice (~Justice@31-208-114-75.cust.bredband2.com) has quit (Client Quit)
+2022-01-19 21:56:42	rcf	On some of my truly ancient machines I still run modern X without issue. 
+2022-01-19 21:56:50	topcat001	For X11 the nvidia legacy should work I think?
+2022-01-19 21:56:52	rcf	Though that's beyond the scope of this channel. 
+2022-01-19 21:57:09	topcat001	rcf: good to know
+2022-01-19 21:57:12	rcf	Depends on whether it can build on current kernels and with current X servers. 
+2022-01-19 21:57:20	rcf	Assuming you mean the proprietary driver. 
+2022-01-19 21:57:26	topcat001	yes
+2022-01-19 21:57:34	CarloWood	Last time I ran `pacman -Syu` it went clean... Now I try again and I get: https://bpa.st/FHXQ
+2022-01-19 21:57:35	phrik	Title: View paste FHXQ (at bpa.st)
+2022-01-19 21:57:51	The-Compiler	sunyibo, Earnestly: FWIW with my homedir, after 3 tries each: gdu 14s, ncdu2 1min 20s, ncdu 1min 22s
+2022-01-19 21:58:03	-->	Nightah [Nightah] (Nightah) (~Nightah@user/nightah) has joined #archlinux
+2022-01-19 21:58:04	topcat001	anyway this is a throwaway machine and I'm mostly curious more than anything
+2022-01-19 21:58:06	<--	xcfa7b (~xcfa7b@user/xcfa7b) has quit (Ping timeout: 256 seconds)
+2022-01-19 21:58:07	<--	migul (~mig@user/migul) has quit (Quit: Leaving)
+2022-01-19 21:58:55	rcf	CarloWood: that is to be expected at this point. If you want to use plain jack2, you can't use pipewire-jack. 
+2022-01-19 21:59:31	CarloWood	rcf: I can't remember to ever have installed pipewire-jack - whatever that is.  Where does that come from?
+2022-01-19 22:00:03	Warepire	"pacman -Qi pipewire-jack"
+2022-01-19 22:00:05	-->	xcfa7b [xcfa7b] (xcfa7b) (~xcfa7b@user/xcfa7b) has joined #archlinux
+2022-01-19 22:00:07	rcf	That I'm not sure of, check with pacman -Qi to see if it was a dependency. 
+2022-01-19 22:00:32	-->	archdemon [Archdemon] (archdemon) (~archdemon@user/archdemon) has joined #archlinux
+2022-01-19 22:00:32	rcf	CarloWood: in some cases people suggested installing it in general as part of a migration to pipewire. 
+2022-01-19 22:00:48	CarloWood	Required By     : lib32-pipewire-jack
+2022-01-19 22:01:09	rcf	Now go down the tree to see what requires that. 
+2022-01-19 22:01:35	CarloWood	Nothing :)
+2022-01-19 22:01:41	CarloWood	Required By     : None
+2022-01-19 22:01:47	rcf	Well there you go 
+2022-01-19 22:02:14	rcf	If you really want jack2 to stay, remove that, remove pipewire-jack. Or remove jack2 and see if pipewire can suffice on its own 
+2022-01-19 22:02:18	CarloWood	Why on earth would I install a 32bit lib that I don't even know what that does? :/
+2022-01-19 22:02:39	Warepire	It might have been a dep to something at some point.
+2022-01-19 22:02:49	rcf	The pacman log might be somewhat enlightening; maybe you tried something that needed it in the past. 
+2022-01-19 22:02:56	CarloWood	I'm pretty dependent on JACK. I can't imagine that any "replacement" will work out of the box.
+2022-01-19 22:03:19	-->	MortimerHoughton [mortimer] (MortimerHoughton) (~MortimerH@cpe-70-121-32-165.tx.res.rr.com) has joined #archlinux
+2022-01-19 22:04:09	<--	heat (~heat@sortix/contributor/heat) has quit (Read error: Connection reset by peer)
+2022-01-19 22:04:28	-->	heat [heat] (realname) (~heat@sortix/contributor/heat) has joined #archlinux
+2022-01-19 22:05:17	<--	tmek (~tmek@89.46.223.91) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:05:41	<--	thingfish (~thingfish@user/thingfish) has quit (Quit: Leaving.)
+2022-01-19 22:06:22	CarloWood	Hmm, I see. steam-native-runtime requires lib32-pipewire; what is this with companies and 32bit?  And that has lib32-pipewire-jack as optional dependency.  I can imagine I installed that in the past for that reason, thinking I'd need it to get JACK support.  
+2022-01-19 22:06:32	-->	zenof [zenof] (realname) (~zenofthin@88.130.155.166) has joined #archlinux
+2022-01-19 22:07:01	rcf	That would make sense. 
+2022-01-19 22:07:07	CarloWood	But pipewire != jack .. so that never gave me jack support unless I also switch to pipewire-jack completely no?
+2022-01-19 22:07:34	<--	Nimzowitsch (~nimzo@user/nimzowitsch) has quit (Remote host closed the connection)
+2022-01-19 22:07:49	rcf	Indeed. 
+2022-01-19 22:08:18	-->	jjt [jjt] (JJT) (~jjt@user/jjt) has joined #archlinux
+2022-01-19 22:09:15	<--	rodolfo (~rodolfo@user/rodolfo) has quit (Ping timeout: 256 seconds)
+2022-01-19 22:09:47	-->	cchristiansen [cchristiansen] (Christian Christiansen) (~user@n122-106-221-66.sbr1.nsw.optusnet.com.au) has joined #archlinux
+2022-01-19 22:10:04	-->	liba [liba] (liba) (~liba@user/liba) has joined #archlinux
+2022-01-19 22:10:43	-->	HappyAporetic [HappyAporetic] (Unknown) (~HappyApor@user/HappyAporetic) has joined #archlinux
+2022-01-19 22:11:37	-->	zwei [Zweihander] (Zweihänder) (~Zweihande@znc.ext.zweihander.me) has joined #archlinux
+2022-01-19 22:11:56	<--	jimr (~jimr@2603-7080-7640-b000-0000-0000-0000-0003.res6.spectrum.com) has quit (Quit: Leaving)
+2022-01-19 22:12:04	<--	mtn (~mtn@98.97.127.52) has quit (Quit: Leaving)
+2022-01-19 22:13:32	<--	Megant_ (megant@user/megant) has quit (Ping timeout: 268 seconds)
+2022-01-19 22:13:39	<--	sord937 (~sord937@gateway/tor-sasl/sord937) has quit (Quit: sord937)
+2022-01-19 22:14:21	<--	marcello42 (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has quit (Read error: Connection reset by peer)
+2022-01-19 22:14:39	-->	Megant [Megant] (Kai Lindholm) (megant@user/megant) has joined #archlinux
+2022-01-19 22:15:03	<--	Syntax- (~Thunderbi@8.6.112.205) has quit (Read error: Connection reset by peer)
+2022-01-19 22:15:04	<--	ping2000 (~ping2000@user/ping2000) has quit (Quit: Leaving)
+2022-01-19 22:15:22	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@8.6.112.205) has joined #archlinux
+2022-01-19 22:15:41	CarloWood	Well, I'd like to switch to pipe-wire - but I have currently jack plugins running that can only run under windows or shit like that - they run under wine now I believe. Will all of that just seamless work when I switch from jack native to pipe-wire?
+2022-01-19 22:15:51	CarloWood	Can I still run Carla?
+2022-01-19 22:16:07	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has joined #archlinux
+2022-01-19 22:16:55	<--	daze (~Thunderbi@78-58-35-116.static.zebra.lt) has quit (Quit: daze)
+2022-01-19 22:16:58	-->	julianm [julianm] (julianm) (~julianm@2620:8d:8000:1050:2167:c70a:724d:bc4f) has joined #archlinux
+2022-01-19 22:17:07	rcf	Ideally it will still work. 
+2022-01-19 22:17:17	<--	redbrain (~oliver@193.96.224.58) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:17:45	rcf	Try It and See™ I suppose. Given the jack1/jack2 split that already existed I can't imagine it'd be too bad. 
+2022-01-19 22:18:07	BrainDamage	jack2 api is 99% compatible with jack1
+2022-01-19 22:18:13	<--	blindguard (~blindguar@2a02:908:1864:c200::12) has quit (Quit: Konversation terminated!)
+2022-01-19 22:18:59	BrainDamage	for what I glanced, pipewire edge cases that aren't caught are more like advanced jack2 usage like the network plugins
+2022-01-19 22:19:05	<--	timm (~timm@user/timm) has quit (Ping timeout: 268 seconds)
+2022-01-19 22:19:20	BrainDamage	or advanced pulseaudio usage with lots of modules self configured
+2022-01-19 22:19:47	chazy	is it possible to auto generate grub menu entries for more than 1 disk?
+2022-01-19 22:19:53	rcf	CarloWood: I haven't had any issues, I've not been doing anything too weird though 
+2022-01-19 22:20:03	BrainDamage	unfortunately, I fall in both cathegories
+2022-01-19 22:20:31	mewt	lemme try egl disable, hold
+2022-01-19 22:20:54	rcf	BrainDamage: on my weird not-actually-Arch-because-ARM chromebook the ALSA driver is so finnicky pulseaudio is just about the only application that can successfully output audio, pipewire is not quite there. 
+2022-01-19 22:21:09	<--	vevais (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has quit (Ping timeout: 256 seconds)
+2022-01-19 22:21:41	BrainDamage	it's funny, lot of people gave shit to PA about issues, when it was just alsa bugs that they were exacerbating
+2022-01-19 22:21:58	CarloWood	pacman -Qi jack2  gives: Required By     : darkice  ffmpeg  fluidsynth  gst-plugins-good  jack-stdio  jack2-dbus  jack_utils  lib32-jack2  mplayer  non-mixer  obs-studio  portaudio  pulseaudio-jack  qjackctl
+2022-01-19 22:22:00	<--	HappyAporetic (~HappyApor@user/HappyAporetic) has quit (Quit: leaving)
+2022-01-19 22:22:05	BrainDamage	they ended up unintentionally fuzzing the api
+2022-01-19 22:22:09	<--	jjt (~jjt@user/jjt) has quit (Remote host closed the connection)
+2022-01-19 22:22:25	CarloWood	I qjackctl stops working then I'll have to pass - my whole audio config is based off of that :/
+2022-01-19 22:22:26	-->	_mikey [_mikey] (mikey) (~mikey@user/mikey/x-4335048) has joined #archlinux
+2022-01-19 22:22:30	-->	HappyAporetic [HappyAporetic] (Unknown) (~HappyApor@user/HappyAporetic) has joined #archlinux
+2022-01-19 22:22:34	rcf	You will have to pass, then. 
+2022-01-19 22:22:57	<--	cvmn (~caveman@gateway/tor-sasl/caveman) has quit (Ping timeout: 276 seconds)
+2022-01-19 22:23:09	CarloWood	And non-mixer? If pipewire was even a little compatible with jack - then that should keep working: it is just a jack client!
+2022-01-19 22:23:13	BrainDamage	CarloWood: fwiw, I've found ffmpeg to be a better icecast streamer than darkice
+2022-01-19 22:23:37	BrainDamage	as in, it can read from jack and output to icecast
+2022-01-19 22:24:25	BrainDamage	ExecStart=ffmpeg -hide_banner -f jack -i icecast -b:a 64K icecast://source:blabhalah
+2022-01-19 22:24:35	CarloWood	thx
+2022-01-19 22:24:45	BrainDamage	64k because I'm a cheapass and using a free server
+2022-01-19 22:24:49	-->	ryzenda [ryzenda] (ryzendapgh) (~ryzenda@pool-74-109-246-70.pitbpa.fios.verizon.net) has joined #archlinux
+2022-01-19 22:25:17	<--	Veriwind (veriwind@user/veriwind) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:26:19	-->	aod [aod] (JamesJamesBon) (~a@190-203-240-94.dyn.dsl.cantv.net) has joined #archlinux
+2022-01-19 22:26:29	-->	WoC [WoC] (WoC) (woc@2603-8080-cd40-00c6-eaaf-8a29-4225-dc1f.res6.spectrum.com) has joined #archlinux
+2022-01-19 22:28:37	<--	Syntax- (~Thunderbi@8.6.112.205) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:28:48	<--	LuksNuke_ (~LuksNuke@gateway/tor-sasl/luksnuke) has quit (Ping timeout: 276 seconds)
+2022-01-19 22:30:52	CarloWood	:: Import PGP key C132293954BBE4AD, "Sergej Pupykin <spupykin@archlinux.org>"? [Y/n]
+2022-01-19 22:31:31	another|	64k with which encoder?
+2022-01-19 22:31:32	<--	mizu (~chaos@user/mizu) has quit (Ping timeout: 256 seconds)
+2022-01-19 22:31:36	CarloWood	I suppose it is safe to say yes - IF the current package is signed by someone trust worthy.
+2022-01-19 22:32:24	<--	amcorrigal (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has left #archlinux (WeeChat 3.4)
+2022-01-19 22:32:45	CarloWood	But if somehow someone managed to insert a malicious package into my pacman upgrade - then accepting this might add a PGP key of a bad actor, who after that can install whatever they want without me even getting prompted.
+2022-01-19 22:32:46	<--	mantiX (~manti7@176.10.104.94) has quit (Quit: WeeChat 3.3)
+2022-01-19 22:33:14	CarloWood	So, I feel the need to verify this key - which is not possible with a short abbreviation "C132293954BBE4AD".
+2022-01-19 22:33:23	-->	marcello42 [marcello42] (mp) (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has joined #archlinux
+2022-01-19 22:33:58	<--	EvilDMP (~textual@django/moderator/EvilDMP) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 22:34:28	Namarrgon	CarloWood: merely importing a key into the keyring doesn't assign any trust to it
+2022-01-19 22:34:37	<--	HawkinsTheWizard (~HawkinsTh@102.130.113.94) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:34:44	Namarrgon	but there's usually no need for this if you keep your system up-to-date
+2022-01-19 22:34:45	BrainDamage	another|: mp3 :s
+2022-01-19 22:34:51	BrainDamage	also mandated by the server
+2022-01-19 22:35:10	CarloWood	It is up to date.
+2022-01-19 22:35:32	CarloWood	At some point this key was needed for the first time - so somewhere in the past few weeks or so.
+2022-01-19 22:35:43	Namarrgon	CarloWood: what is asking to import it?
+2022-01-19 22:35:51	CarloWood	pacman -Syu  
+2022-01-19 22:36:10	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has joined #archlinux
+2022-01-19 22:36:13	Namarrgon	pacman -Q archlinux-keyring
+2022-01-19 22:36:36	another|	BrainDamage: AFAIK icecat supports a varity of codecs. including video
+2022-01-19 22:37:17	<--	Nightah (~Nightah@user/nightah) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:37:21	BrainDamage	another|: so does ffmpeg
+2022-01-19 22:37:38	CarloWood	archlinux-keyring 20211028-1
+2022-01-19 22:37:45	BrainDamage	in this case I'm using a free server that mandates me to use a shitty codec and shitty bitrate
+2022-01-19 22:37:46	another|	true
+2022-01-19 22:37:52	tomreyn	i agree with CarloWood, though, that this prompt is badly designed. "long key ids" are not long enough to decide on whether a key is trustable, only fingerprints can be.
+2022-01-19 22:37:54	Namarrgon	CarloWood: why did you say that the system is up-to-date when it clearly isn't?
+2022-01-19 22:38:10	<--	amcorrigal (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has quit (Client Quit)
+2022-01-19 22:38:19	Namarrgon	CarloWood: update that package first, then -Su again
+2022-01-19 22:38:32	mewt	topcat001: nope, that doesn't get it
+2022-01-19 22:38:34	CarloWood	Namarrgon: why doesn't it update archlinux-keyring (first) when I run pacman -Syu ? This is not my fault.
+2022-01-19 22:38:39	mewt	just tried it
+2022-01-19 22:38:47	-->	Nightah [Nightah] (Nightah) (~Nightah@user/nightah) has joined #archlinux
+2022-01-19 22:38:48	mewt	(I should just be able to stick it in user.js right?)
+2022-01-19 22:39:32	Namarrgon	CarloWood: because there's no functionality to update a package a specific package first
+2022-01-19 22:39:43	Namarrgon	a package
+2022-01-19 22:39:52	<--	marcello42 (~mp@2001:1a81:13ee:e600:7579:d375:3cfe:86fd) has quit (Read error: Connection reset by peer)
+2022-01-19 22:40:19	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has joined #archlinux
+2022-01-19 22:40:40	mewt	wait wait
+2022-01-19 22:40:47	mewt	That is not the setting it's x11-egl
+2022-01-19 22:40:48	mewt	lol
+2022-01-19 22:40:49	mewt	errt
+2022-01-19 22:40:53	mewt	gfx.x11-egl
+2022-01-19 22:41:25	<--	lazlev (~lazlev@i59F4A6A2.versanet.de) has quit (Quit: Lost terminal)
+2022-01-19 22:41:48	<--	predicament (~lol@thunder.h3ck3d.us) has quit (Quit: Gawn.)
+2022-01-19 22:42:01	mewt	ok, tested for real; same verdict
+2022-01-19 22:42:15	mewt	Staying on 96 unless other ideas surface, until I get more time
+2022-01-19 22:42:47	CarloWood	At any rate, this way it isn't asking to download that key.  I really think this is a bug in pacman.  There is no reason not to upgrade archlinux-keyring before any packages that require a key from that package to be upgraded.  Doing it in a random order has nothing to do with not running pacman -Syu often enough; this deadlock could happen anyway, even if you run it every other day.
+2022-01-19 22:43:09	-->	GuiToris [GuiToris] (https://www.dropbox.com/s/6wuoy5ii3zsbhdb/GuiToris) (~GuiToris@user/guitoris) has joined #archlinux
+2022-01-19 22:43:27	-->	predicament [predicament] (Just Ask) (~lol@thunder.h3ck3d.us) has joined #archlinux
+2022-01-19 22:44:13	<--	SanskritFritz (~quassel@20014C4C243A440018298E8532182D13.catv.pool.telekom.hu) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:44:32	GuiToris	hello, can Arch be installed on a MacBook with Apple M1 processor?
+2022-01-19 22:44:37	-->	marcello42 [marcello42] (mp) (~mp@2001:1a81:13ee:e600:2429:f440:aff0:8b70) has joined #archlinux
+2022-01-19 22:44:48	CarloWood	I did run it last 29 Dec 2021. Is that really no often enough?
+2022-01-19 22:45:14	Namarrgon	CarloWood: either update the package or import the key
+2022-01-19 22:45:20	Namarrgon	GuiToris: no
+2022-01-19 22:45:28	<--	amcorrigal (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has quit (Quit: WeeChat 3.4)
+2022-01-19 22:45:30	GuiToris	:( thank you
+2022-01-19 22:45:36	MortimerHoughton	GuiToris: You might want to ask on #archlinuxarm
+2022-01-19 22:46:02	BrainDamage	marcan hacked a bit towards that, but you're pretty much on your own
+2022-01-19 22:46:14	CarloWood	I am just ranting about "clearly not having an up-to-date system" while trying to run 'pacman -Syu' which is *intended* to bring it up to date :/.
+2022-01-19 22:46:33	Namarrgon	CarloWood: you said it's up-to-date but it wasn't
+2022-01-19 22:46:34	<--	arseru (uid515527@user/arseru) has quit (Quit: Connection closed for inactivity)
+2022-01-19 22:46:36	Foxboron	CarloWood: fwiw, even if someone do manage to sneak a malicious package updates with a random key pacman won't let you install it. We depend on a WoT.
+2022-01-19 22:46:48	grazzolini_	CarloWood: when a new key is introduced, packagers usually wait a few time after the keyring package gets updated to start packaging again. but, how long this wait is, is not something that's hardcoded anywhere, nor a requirement.
+2022-01-19 22:46:52	CarloWood	Of course it wasn't; why would I try to run pacman -Syu if it was?
+2022-01-19 22:46:56	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has joined #archlinux
+2022-01-19 22:47:02	Warepire	CarloWood: You can update with any frequency you want, but Arch is a rolling distro, so it's always out of date to some degree, and the longer you wait between updates, the more difficult they could be.
+2022-01-19 22:47:21	CarloWood	nods
+2022-01-19 22:47:23	grazzolini_	CarloWood: So, it might be the case that you might need to run pacman -Sy archlinux-keyring *before* running pacman -Syu
+2022-01-19 22:47:28	Namarrgon	CarloWood: at least say that it isn't up-to-date so i don't have to make you double-check
+2022-01-19 22:47:48	BrainDamage	fwiw, the energy would be better spent adding update priority to pacman
+2022-01-19 22:47:58	CarloWood	I'd upgrade every day - but I leave my PC on 24/7 and dislike rebooting. After an update I should reboot, so it usually is done once a month or so.
+2022-01-19 22:49:01	<--	Pseudocrat (~sudo@user/pseudocrat) has quit (Read error: Connection reset by peer)
+2022-01-19 22:49:24	-->	zmotaj [zmotaj] (bombo) (~zmotaj@user/zmotaj) has joined #archlinux
+2022-01-19 22:49:28	<--	amcorrigal (~alexcorri@cpc92712-cmbg20-2-0-cust192.5-4.cable.virginm.net) has quit (Client Quit)
+2022-01-19 22:49:50	-->	Pseudocrat [Pseudocrat] (sudo) (~sudo@user/pseudocrat) has joined #archlinux
+2022-01-19 22:50:04	CarloWood	Namarrgon: the definition of up to date is that pacman -Syu isn't needed... so when I try to run that, it isn't up to date. Hence, I "translated" your remark to "up to date enough". I think that running an update every 3 weeks is pretty normal / should be acceptable. So my "it is up-to-date" meant "I wasn't that long ago that I updated last".
+2022-01-19 22:50:09	<--	heat (~heat@sortix/contributor/heat) has quit (Read error: Connection reset by peer)
+2022-01-19 22:50:29	-->	heat [heat] (realname) (~heat@sortix/contributor/heat) has joined #archlinux
+2022-01-19 22:51:14	CarloWood	If you then interpret that as "it is IMPOSSIBLE that archlinux-keyring was updated since I last ran pacman (aka, I ran it 5 minutes ago.. but even then)
+2022-01-19 22:51:55	CarloWood	anyway... lemme reboot. Always fingers crossed that I have still audio :/
+2022-01-19 22:51:56	-->	bhat [bhat] (Black Hat) (~bhat@2600:8802:5100:222:1a8f:ad23:ce84:1dde) has joined #archlinux
+2022-01-19 22:52:10	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 22:52:55	-->	vevais [vevais] (sebastian) (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has joined #archlinux
+2022-01-19 22:53:06	CarloWood	PS I have 10 konsole windows open (over three monitors). And after a reboot they are all messed up. Not returning to the last session state at all.  Once of the main reasons I hate to reboot; and thus upgrade :/.
+2022-01-19 22:53:19	CarloWood	s/Once/One/
+2022-01-19 22:54:03	-->	caveman_ [caveman] (caveman) (~caveman@gateway/tor-sasl/caveman) has joined #archlinux
+2022-01-19 22:54:09	CarloWood	I need them all to reopen at the exact same place, and size and working directory :/.
+2022-01-19 22:54:31	CarloWood	And they should terminate when rebooting in a way that all shells write their HISTORY away.
+2022-01-19 22:54:37	<--	ahso (~Thunderbi@user/ahso) has quit (Ping timeout: 240 seconds)
+2022-01-19 22:54:49	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@185.192.71.70) has joined #archlinux
+2022-01-19 22:55:05	BrainDamage	fwiw zsh gets history right even when I open multiple shells
+2022-01-19 22:55:08	CarloWood	(I use a history file per directory; so each terminal has its own history)
+2022-01-19 22:55:09	grazzolini_	CarloWood: https://archlinux.org/packages/community/any/kernel-modules-hook/
+2022-01-19 22:55:10	phrik	Title: Arch Linux - kernel-modules-hook 0.1.7-2 (any) (at archlinux.org)
+2022-01-19 22:55:12	BrainDamage	bash, not so much
+2022-01-19 22:55:59	grazzolini_	CarloWood: seems like you can solve all your "problems" with that package.
+2022-01-19 22:56:12	CarloWood	*looks*
+2022-01-19 22:56:22	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@c-73-229-218-231.hsd1.co.comcast.net) has joined #archlinux
+2022-01-19 22:56:22	<--	Syntax- (~Thunderbi@c-73-229-218-231.hsd1.co.comcast.net) has quit (Client Quit)
+2022-01-19 22:56:28	<--	vxwarlock (~Darkcodex@user/vxwarlock) has left #archlinux (Closing Window)
+2022-01-19 22:56:28	grazzolini_	CarloWood:  i.e. uses a rolling release distro, doesn't like to reboot.
+2022-01-19 22:56:41	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@c-73-229-218-231.hsd1.co.comcast.net) has joined #archlinux
+2022-01-19 22:57:40	CarloWood	That package is totally unrelated imho. I have no problems with missing kernel modules.
+2022-01-19 22:57:48	CarloWood	*rebooting*
+2022-01-19 22:57:56	<--	CarloWood (~LdK13@212-127-230-18.cable.dynamic.v4.ziggo.nl) has quit (Remote host closed the connection)
+2022-01-19 22:58:00	mewt	Huh
+2022-01-19 22:58:15	!=	caveman_ is now known as caveman
+2022-01-19 22:58:23	<--	xulfer (uid452788@id-452788.ilkley.irccloud.com) has quit (Quit: Connection closed for inactivity)
+2022-01-19 22:58:26	grazzolini_	CarloWood: having said that, it isn't just the kernel that requires you to reboot. I suggest installing the archlinux-contrib package and running checkservices, or also restarting X and most gtk/qt software on updated.
+2022-01-19 22:58:28	-->	nvrhome [nvrhome] (realname) (~Bop@user/nvrhome) has joined #archlinux
+2022-01-19 22:58:43	mewt	I'm actually interested in using it, should I take any warning from the grim tone?
+2022-01-19 22:59:01	mewt	Guess I'll find out
+2022-01-19 22:59:03	grazzolini_	mewt: what grim tone?
+2022-01-19 22:59:58	mewt	guess I misinterpreted then
+2022-01-19 23:00:04	<--	km (znc@user/km) has quit (Remote host closed the connection)
+2022-01-19 23:00:28	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-19 23:00:38	grazzolini_	mewt: I use that package. And there are alternatives too: https://git.sr.ht/~moviuro/mkmm
+2022-01-19 23:00:39	phrik	Title: ~moviuro/mkmm - sourcehut git (at git.sr.ht)
+2022-01-19 23:01:08	grazzolini_	mewt: but as I said, kernel upgrades aren't the only reason to reboot.
+2022-01-19 23:01:10	-->	CarloWood [LdK13] (coder) (~LdK13@212-127-230-18.cable.dynamic.v4.ziggo.nl) has joined #archlinux
+2022-01-19 23:01:23	grazzolini_	CarloWood: ^
+2022-01-19 23:01:55	-->	driib20 [driib] (Andrew) (~driib@c-94bee655.017-99-73746f1.bbcust.telenor.se) has joined #archlinux
+2022-01-19 23:02:01	<--	raster (~raster@host81-156-200-130.range81-156.btcentralplus.com) has quit (Quit: Gettin' stinky!)
+2022-01-19 23:02:08	grazzolini_	CarloWood: also, it seems to me that you should use your terminal emulator profiles functionality and your DE/WM window matching to make what you want appear where you want. your "problem" isn't hard to solve.
+2022-01-19 23:02:11	CarloWood	I used to be able to boot and have audio (worked hard on that). But these days (after some upgrade) that stopped working :(.
+2022-01-19 23:02:18	-->	km [km] (Kirill M) (znc@user/km) has joined #archlinux
+2022-01-19 23:02:44	BrainDamage	ohhh, I didn't know a hook was finally packaged
+2022-01-19 23:02:49	BrainDamage	maybe I can ditch my own
+2022-01-19 23:03:20	grazzolini_	BrainDamage: it was on the AUR, now it's on the repos. but I've been using kernel-modules-hook for a while now, more than a year
+2022-01-19 23:03:32	<--	driib2 (~driib@185.65.135.252) has quit (Ping timeout: 240 seconds)
+2022-01-19 23:03:32	!=	driib20 is now known as driib2
+2022-01-19 23:03:34	archdemon	so what is it used for 
+2022-01-19 23:03:38	CarloWood	grazzolini_: I just joined again, so I don't know what you said between "*rebooting*" and your "CarloWood: ^"
+2022-01-19 23:04:11	grazzolini_	CarloWood: [19:58:25] <grazzolini_> CarloWood: having said that, it isn't just the kernel that requires you to reboot. I suggest installing the archlinux-contrib package and running checkservices, or also restarting X and most gtk/qt software on updated.
+2022-01-19 23:04:14	<--	amcorrigal (~alexcorri@185.192.71.70) has quit (Quit: WeeChat 3.4)
+2022-01-19 23:05:06	grazzolini_	archdemon: it copies your running kernel modules so you don't have issues with them when using new hardware. specially when mounting usb drives.
+2022-01-19 23:05:30	archdemon	ahh ok
+2022-01-19 23:05:52	CarloWood	Well, the problem is losing my konsole's. They are now ALL on the monitor in the middle AND on all desktops instead of just the "WorkStation" desktop.
+2022-01-19 23:06:20	<--	jnphilipp (~jnphilipp@gateway/tor-sasl/jnphilipp) has quit (Quit: Leaving)
+2022-01-19 23:06:29	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@185.192.71.70) has joined #archlinux
+2022-01-19 23:06:44	grazzolini_	CarloWood: since you mentioned konsole, I assume you're using it as your terminal emulator. is this on plasma too?
+2022-01-19 23:07:41	CarloWood	yes
+2022-01-19 23:08:19	grazzolini_	CarloWood: so, konsole has profiles: https://github.com/newsela/langston/pull/259
+2022-01-19 23:08:23	grazzolini_	oh sorry
+2022-01-19 23:08:28	grazzolini_	wrong paste
+2022-01-19 23:08:31	CarloWood	They are also all suddenly showing the menu bar and tool bar and all what not.
+2022-01-19 23:08:37	grazzolini_	CarloWood: https://userbase.kde.org/Konsole#Profile_Management
+2022-01-19 23:08:39	phrik	Title: Konsole - KDE UserBase Wiki (at userbase.kde.org)
+2022-01-19 23:08:56	CarloWood	The easiest is just to close them all and manually reopen them when needed :(
+2022-01-19 23:09:08	-->	ramblebamble [ramblebamble] (ramblebamble) (ramblebamb@gateway/vpn/protonvpn/ramblebamble) has joined #archlinux
+2022-01-19 23:09:25	CarloWood	ok, lemme first get jack running again.
+2022-01-19 23:09:35	grazzolini_	CarloWood: also, plasma, more specifically kwin, can assign specific windows to specific desktops.
+2022-01-19 23:10:01	grazzolini_	CarloWood: I don't use neither konsole nor plasma, but I know it has that functionality.
+2022-01-19 23:10:34	CarloWood	For the konsole I just want it to remember where they were for sessions; but newly opened terminals should always open on the middle monitor. 
+2022-01-19 23:10:54	<--	YuutaW (~YuutaW@2404:f4c0:f9c3:501:215:5dff:fe0d:ad32) has quit (Quit: ZNC 1.8.2 - https://znc.in)
+2022-01-19 23:11:24	CarloWood	I think I set the latter at some point because I was getting sick of them opening elsewhere - which probably explains why after this reboot they are all there. But all in all, not how the session manager should work imho.
+2022-01-19 23:12:01	-->	YuutaW [YuutaW] (YuutaW) (~YuutaW@2404:f4c0:f9c3:501:215:5dff:fe0d:ad32) has joined #archlinux
+2022-01-19 23:12:59	<--	Ivii (~Ivyy@2001:a62:4c3:8e01:1619:ead6:822:30d1) has quit (Remote host closed the connection)
+2022-01-19 23:13:53	CarloWood	What DOES work btw is chromium :).  That always opens exactly as it was and where it was: two windows on different monitors with currently 96 open tabs :p
+2022-01-19 23:14:22	CarloWood	I'd kill someone if those tabs were all lost (that certainly happened in the past)
+2022-01-19 23:14:41	<--	AmR (~AmREiSa@156.199.9.4) has quit (Quit: Konversation terminated!)
+2022-01-19 23:14:55	e36freak	if it's anything like dwm you can probably set your initial terminal windows with different x window names, and then have rules specifically for that name
+2022-01-19 23:15:05	e36freak	so they spawn in the config you want on login, but then opening more does a different thing
+2022-01-19 23:15:21	grazzolini_	CarloWood: it seems to me your reasons for not updating more often (and consequently not rebooting) have zero relation with Arch itself
+2022-01-19 23:15:23	<--	aod (~a@190-203-240-94.dyn.dsl.cantv.net) has quit (Quit: leaving)
+2022-01-19 23:15:55	ramblebamble	CarloWood o.O ... the loss of tabs or the killing or both?
+2022-01-19 23:15:59	NoImNotNineVolt	rebooting is for windows users.
+2022-01-19 23:16:07	<--	kaahne (~kaahne@2a01:c23:5db9:5e00::1cc) has quit (Remote host closed the connection)
+2022-01-19 23:16:17	ramblebamble	yeah right try hotloading/swapping a kernel 
+2022-01-19 23:16:20	Ghosthree3	grazzolini_: for what reason other than the kernel do you need a _full_ reboot
+2022-01-19 23:16:35	rcf	NoImNotNineVolt: and people who care about patching kernel vulnerabilities 
+2022-01-19 23:16:42	NoImNotNineVolt	rcf: that too :P
+2022-01-19 23:16:50	mewt	I don't mind the occasional reboot, I just don't like being forced if I need to interact w/ a USB drive or some other device and just updated
+2022-01-19 23:16:54	NoImNotNineVolt	but seriously, that's why you don't run a bleeding edge kernel.
+2022-01-19 23:17:07	Ghosthree3	mewt: heh, i literally downgrade the kernel load the usb then reupgrade when that happens
+2022-01-19 23:17:28	mewt	This package looks like a happier solution
+2022-01-19 23:17:29	rcf	There are pacman hooks (possibly in the AUR) you can use to preserve your old modules. 
+2022-01-19 23:17:37	<--	ouestbillie (~gallup@45.83.220.194) has quit (Ping timeout: 240 seconds)
+2022-01-19 23:17:50	Ghosthree3	oh the modules hook is an official package now? thats interesting, was an aur package not long ago and i was too scared to touch it tbh
+2022-01-19 23:17:50	rcf	Though I just hold off on the upgrade until I can reboot 
+2022-01-19 23:17:50	NoImNotNineVolt	my biggest problems with only rebooting annually wasn't risk from unpatched vulns 
+2022-01-19 23:18:12	NoImNotNineVolt	it was that arch maintainers sometimes make breaking changes in packages
+2022-01-19 23:18:16	bparker	this
+2022-01-19 23:18:33	rcf	Rolling release doesn't roll so smoothly if you wait too long 
+2022-01-19 23:18:33	NoImNotNineVolt	and so my annual maintenance cycle was _never_ smooth
+2022-01-19 23:18:48	bparker	I don't understand why that can't be fixed in the package scripts instead of 'read the random blog post from god knows how long ago'
+2022-01-19 23:18:52	rcf	Eventually it's like driving with square wheels 
+2022-01-19 23:18:52	Ghosthree3	rcf: found that's not true. i have two laptops i never really use, once or twice a year i update them and its not a problem
+2022-01-19 23:19:11	NoImNotNineVolt	and my primary use for this arch box was as a delicately assembled vm host for hpc and gaming.
+2022-01-19 23:19:11	rcf	Ghosthree3: if you're careful you can avoid surprises. 
+2022-01-19 23:19:14	grazzolini_	Ghosthree3: I've had my fair share of memory leaks after updates of major libs.
+2022-01-19 23:19:15	<--	plastico (~plastico@neomutt/plastico) has quit (Quit: WeeChat 3.4)
+2022-01-19 23:19:31	NoImNotNineVolt	so when updates broke something subtle, it was often a nightmare to figure out what/why.
+2022-01-19 23:19:33	grazzolini_	Ghosthree3: probably a kexec would solve those, but I reboot instead.
+2022-01-19 23:19:38	-->	ouestbillie [ouestbillie] (gallup) (~gallup@54.29.90.149.rev.vodafone.pt) has joined #archlinux
+2022-01-19 23:19:53	rcf	I found kexec useful when I had very buggy firmware 
+2022-01-19 23:20:02	NoImNotNineVolt	i've definitely had to just blow away the box and start from scratch on more than one occasion.
+2022-01-19 23:20:05	<--	Codaraxis__ (~Codaraxis@user/codaraxis) has quit (Ping timeout: 256 seconds)
+2022-01-19 23:20:08	Ghosthree3	grazzolini_: i see, tbh i generally put off rebooting for anywhere up to a month and jump 4-6 kernel versions lol, everything just keeps running...
+2022-01-19 23:20:10	topcat001	mewt: Thanks for trying. Did you confirm that EGL and dmabuf were indeed disabled in about:support?
+2022-01-19 23:20:10	NoImNotNineVolt	that's not a great maintenance process :P
+2022-01-19 23:20:18	grazzolini_	rcf: yeah, but it doesn't save you completely. sometimes a hard reboot is the only solution.
+2022-01-19 23:20:23	bparker	rcf: my problem is updates often broke my system, so I switched to just using the "arch linux archive" with a certain date as my mirror, so that I can continue installing new packages without actually updating to newer versions of everything... that way I can survive longer in-between system breakage because it happens every single time I -Syu otherwise.
+2022-01-19 23:20:41	NoImNotNineVolt	that being said, i'd rather have a solid week of downtime than have to deal with regular reboots
+2022-01-19 23:20:56	NoImNotNineVolt	to each their own.
+2022-01-19 23:21:00	grazzolini_	Ghosthree3: if you notice increased memory consumption, it might be a leak. usually restarting X and/or the apps fixes it, but not always.
+2022-01-19 23:21:22	<--	zenof (~zenofthin@88.130.155.166) has quit (Ping timeout: 250 seconds)
+2022-01-19 23:21:37	Ghosthree3	bparker: bizarre, i really do not experience package breakage like you're talking about
+2022-01-19 23:21:56	grazzolini_	bparker: well, using the archive for fixing occasional issues is ok. but I'd refrain from using it as your main thing
+2022-01-19 23:22:04	topcat001	I'm exactly the opposite. Reboot as frequently as possible, and certainly after an update. Why subject myself to pain and uncertainty and witness Murphy's law in action?
+2022-01-19 23:22:16	Ghosthree3	grazzolini_: ah see i dont use X, that might help, i do see memory bloat sometimes but i put it down to web browser caching and such typically, also echo 3 into drop_caches can help sometimes
+2022-01-19 23:22:22	topcat001	anyywayyy... moving on
+2022-01-19 23:22:23	NoImNotNineVolt	when rebooting means rebooting all your guests too, no.
+2022-01-19 23:22:32	<--	vevais (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has quit (Ping timeout: 256 seconds)
+2022-01-19 23:22:34	NoImNotNineVolt	coordinating that isn't fun.
+2022-01-19 23:22:41	NoImNotNineVolt	long running jobs, etc.
+2022-01-19 23:23:28	topcat001	I get it for productionish machines. Then don't update critical things till it is feasible (and protect them some other way i.e. firewall etc. in the meantime).
+2022-01-19 23:23:34	grazzolini_	NoImNotNineVolt: I had a script that used xdotool on a VM of mine to do some tasks before shutting down the host. never got the qemu mouse interface to work using python.
+2022-01-19 23:23:35	<--	Nomz (~nomz@user/Nomz) has quit (Remote host closed the connection)
+2022-01-19 23:23:53	rcf	Ghosthree3: keep in mind that breakage is a function of how many packages you have installed as well. 
+2022-01-19 23:24:03	rcf	Ghosthree3: if you're using a more minimalist system there is less to go wrong. 
+2022-01-19 23:24:38	Ghosthree3	rcf: sure, i get that many people may have a wider surface for failure than me, since for starters i dont use a DE, just 'weird'? ive never experienced any sort of big breakage from simply updating
+2022-01-19 23:24:38	rcf	bparker: that is actually a fairly sane approach if you must keep an older system going. 
+2022-01-19 23:24:40	grazzolini_	rcf: I have more than 2k packages, use [testing] and I count in the fingers of a hand how many times I had a major issue, where I couldn't even boot the system.
+2022-01-19 23:24:45	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux
+2022-01-19 23:25:13	grazzolini_	I always keep a pendrive with archiso around, however
+2022-01-19 23:25:17	-->	natewrench [natewrench] (realname) (~Soce1964@cpe-72-228-153-194.buffalo.res.rr.com) has joined #archlinux
+2022-01-19 23:25:20	grazzolini_	doesn't hurt
+2022-01-19 23:26:01	<--	natewrench (~Soce1964@cpe-72-228-153-194.buffalo.res.rr.com) has quit (Max SendQ exceeded)
+2022-01-19 23:26:19	NetSysFire	and its also useful for other linux emergencies
+2022-01-19 23:26:24	topcat001	Also for a system like Arch (or any rolling distro) unattended, unscheduled updates are a recipe for trouble in my very humble opinion and limited experience.
+2022-01-19 23:26:37	rcf	grazzolini_: 'major' is also relative, and a lot of those come down to whether or not you've kept up with news. And the universe has a way of making sure you're only going to break the system when you lose that pendrive :p 
+2022-01-19 23:27:57	<--	beastDivision (~beastDivi@user/beastdivision) has quit (Ping timeout: 276 seconds)
+2022-01-19 23:28:00	topcat001	Like not watching messages, running pacnew, rebooting after kernel/systemd/major components is unthinkable for me. Maybe I know nothing (certainly tru for most things) but it does not "feel" right.
+2022-01-19 23:28:15	-->	bitdex [bitdex] (bitdex) (~bitdex@gateway/tor-sasl/bitdex) has joined #archlinux
+2022-01-19 23:28:17	grazzolini_	rcf: I consider major something that I can't fix without external assistance, like an archiso pendrive.
+2022-01-19 23:28:32	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Remote host closed the connection)
+2022-01-19 23:28:36	grazzolini_	topcat001: oh yes, everyone should install archlinux-contrib and run checkservices often
+2022-01-19 23:28:54	topcat001	I always carry the "holy" ISO :D
+2022-01-19 23:29:05	grazzolini_	I like it because it also restarts systemd services with outdated libs
+2022-01-19 23:29:11	Ghosthree3	ive never used checkservices, running it immediately requires root which uhhh doesnt seem very checky to me
+2022-01-19 23:29:26	topcat001	also a windows boot usb (since not everyone's perfect) ;)
+2022-01-19 23:29:28	bparker	grazzolini_: you might want to 'refresh' (reflash) that pendrive occasionally as well, I read an awful report on how quickly bitrot appears to set in and continually get worse with specifically USB flash drives
+2022-01-19 23:29:31	-->	beastDiv1 [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux
+2022-01-19 23:29:35	-->	vevais [vevais] (sebastian) (~vevais@freifunk-gw.bsa1-cpe1.syseleven.net) has joined #archlinux
+2022-01-19 23:29:37	grazzolini_	Ghosthree3: how do you run pacman?
+2022-01-19 23:29:50	bparker	like random files can start getting corrupted within months easily
+2022-01-19 23:29:51	grazzolini_	bparker: yes, I update my pendrive every 6 months or so
+2022-01-19 23:29:56	Ghosthree3	grazzolini_: if im only checking things? without root
+2022-01-19 23:29:58	grazzolini_	with newer iso version
+2022-01-19 23:30:04	bparker	ok
+2022-01-19 23:30:18	rcf	bparker: decent flash will hold up for longer than the ISO will be useful. 
+2022-01-19 23:30:23	grazzolini_	Ghosthree3: yes, but checkservices is also meant to be run after running actual upgrade, and for that you need root.
+2022-01-19 23:30:48	Ghosthree3	why does it need root to tell me if services might need restarting though
+2022-01-19 23:30:54	<--	progandy (~progandy@user/progandy) has quit (Ping timeout: 250 seconds)
+2022-01-19 23:30:59	grazzolini_	rcf: I have a pendrive that I use exclusively for archiso that I have for more than 12 years
+2022-01-19 23:31:05	grazzolini_	it never failed me to date.
+2022-01-19 23:31:46	<--	amcorrigal (~alexcorri@185.192.71.70) has quit (Ping timeout: 250 seconds)
+2022-01-19 23:31:51	<--	cottoneyejim (~cottoneye@2a01:261:3d7:fb00:ea6a:64ff:fe4f:b643) has quit (Ping timeout: 268 seconds)
+2022-01-19 23:31:51	-->	urawotlol [urawotlol] (realname) (~urawotlol@131.203.183.246) has joined #archlinux
+2022-01-19 23:32:02	grazzolini_	Ghosthree3: because it needs to speak with the --system systemd bus.
+2022-01-19 23:32:17	rcf	I would expect that, I mean failures over the course of years with no refreshing of the contents. 
+2022-01-19 23:32:19	grazzolini_	Ghosthree3: you can use polkit if you want to allow your regular user to run checkservices
+2022-01-19 23:32:27	rcf	Soft failures at that. 
+2022-01-19 23:32:35	grazzolini_	rcf: ah yes, the content must be updated
+2022-01-19 23:32:45	grazzolini_	I update every 6 months or so
+2022-01-19 23:33:10	Ghosthree3	grazzolini_: i see, i tried running it to see what it did btw, it wants to restart libvirtd.service despite it not having been updated since i booted the system? for what reason and also there is nooo fucking way im just firing that, it doesnt seem like it lets you exclude it either, it has to do it and everything else
+2022-01-19 23:33:44	<--	cWve_ (~cWve@002130186241.mbb.telenor.dk) has quit (Read error: Connection reset by peer)
+2022-01-19 23:33:48	-->	amcorrigal [alexcorrigan] (Alex Corrigan) (~alexcorri@185.192.71.27) has joined #archlinux
+2022-01-19 23:34:10	-->	cWve_ [cWve] (cWve) (~cWve@002130186241.mbb.telenor.dk) has joined #archlinux
+2022-01-19 23:35:34	<--	lockeanarchist (~lockeanar@user/lockeanarchist) has quit (Ping timeout: 256 seconds)
+2022-01-19 23:36:01	grazzolini_	Ghosthree3: well, patches are always welcome:  https://github.com/archlinux/contrib
+2022-01-19 23:36:06	<--	davor (~davor@user/davor) has quit (Ping timeout: 250 seconds)
+2022-01-19 23:36:25	-->	zenof [zenof] (realname) (~zenofthin@2001:16b8:49ee:5e00:199b:7ce4:d1cb:dda1) has joined #archlinux
+2022-01-19 23:36:54	-->	davor [davor] (davor) (~davor@user/davor) has joined #archlinux
+2022-01-19 23:37:00	grazzolini_	Ghosthree3: but, if it is telling you that libvirt must be restarted, it can be that one of the libs it depend on got a bump
+2022-01-19 23:37:39	-->	lockeanarchist [lockeanarchist] (ZNC) (~lockeanar@user/lockeanarchist) has joined #archlinux
+2022-01-19 23:37:40	Ghosthree3	i wouldnt try to patch it because im not interested in it yet tbh. i wouldnt mind if it just told me what services it thinks should be rebooted (and even better, why it thinks that), but it actively wants to restart things in bulk, i cant do like for example an aur helper and exclude it.
+2022-01-19 23:37:47	Ghosthree3	hm i guess a lib could explain it
+2022-01-19 23:38:19	Ghosthree3	is this expected btw >Error:: Unable to parse pid file for getty@tty1.service.
+2022-01-19 23:39:46	<--	amcorrigal (~alexcorri@185.192.71.27) has quit (Quit: WeeChat 3.4)
+2022-01-19 23:39:51	grazzolini_	Ghosthree3: I think that happens because getty dies right after login, but it is still on the list of units. I think it is an error on systemd side
+2022-01-19 23:40:04	<--	palasso (~palasso@user/palasso) has quit (Read error: Connection reset by peer)
+2022-01-19 23:40:28	<--	Syntax- (~Thunderbi@c-73-229-218-231.hsd1.co.comcast.net) has quit (Quit: Syntax-)
+2022-01-19 23:43:47	<--	veegee (~veegee@ipagstaticip-469c2903-2b07-6dc3-3bc2-98748da5ca77.sdsl.bell.ca) has quit (Read error: Connection reset by peer)
+2022-01-19 23:43:53	-->	gyara [gyara] (gyara) (~Thunderbi@user/gyara) has joined #archlinux
+2022-01-19 23:44:06	<--	GuiToris (~GuiToris@user/guitoris) has quit (Quit: Sieben Acht Gute Nacht!)
+2022-01-19 23:44:44	-->	veegee [veegee] (veegee) (~veegee@ipagstaticip-469c2903-2b07-6dc3-3bc2-98748da5ca77.sdsl.bell.ca) has joined #archlinux
+2022-01-19 23:46:23	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-19 23:46:49	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-19 23:47:27	<--	jonathon (~jx@user/jonathon) has quit (Ping timeout: 276 seconds)
+2022-01-19 23:48:15	<--	zenof (~zenofthin@2001:16b8:49ee:5e00:199b:7ce4:d1cb:dda1) has quit (Quit: Leaving)
+2022-01-19 23:48:41	-->	jonathon [jonathon] (jonathon) (~jx@user/jonathon) has joined #archlinux
+2022-01-19 23:49:05	<--	gyara (~Thunderbi@user/gyara) has quit (Remote host closed the connection)
+2022-01-19 23:49:19	-->	gyara [gyara] (gyara) (~Thunderbi@user/gyara) has joined #archlinux
+2022-01-19 23:51:16	<--	duuude (~user@user/duuude) has quit (Ping timeout: 250 seconds)
+2022-01-19 23:53:56	-->	fiddlinmacx [fiddlinmacx] (Macxcool) (~quassel@45.2.176.162) has joined #archlinux
+2022-01-19 23:53:57	<--	julianm (~julianm@2620:8d:8000:1050:2167:c70a:724d:bc4f) has quit (Ping timeout: 240 seconds)
+2022-01-19 23:55:49	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-19 23:55:57	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-19 23:56:31	-->	mogad0n [mogad0n] (mogad0n) (~mogad0n@user/mogad0n) has joined #archlinux
+2022-01-19 23:56:38	<--	ivanich (~ivanich@45-140-123-239.broadband.tenet.odessa.ua) has quit (Quit: Konversation terminated!)
+2022-01-19 23:56:55	<--	Akiva (~Akiva@user/Akiva) has quit (Ping timeout: 256 seconds)
+2022-01-19 23:57:51	-->	herjazz [herjazz] (Unknown) (~herjazz@p6758124-ipngn30801marunouchi.tokyo.ocn.ne.jp) has joined #archlinux
+2022-01-19 23:58:27	-->	tuxer [tuxer] (tuxer) (~tuxer@fixed-189-203-7-133.totalplay.net) has joined #archlinux
+2022-01-19 23:58:28	<--	LucaTM (~LucaTM@user/lucatm) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2022-01-19 23:58:41	-->	igemnace [igemnace] (Ian Emnace) (~ian@user/igemnace) has joined #archlinux
+2022-01-19 23:59:21	-->	gumbo [gumbo] (gumbo) (~quassel@user/gumbo) has joined #archlinux
+2022-01-19 23:59:29	gumbo	Hmm
+2022-01-20 00:00:15	<--	ju (~ju@user/ju) has quit (Quit: ju)
+2022-01-20 00:00:21	gumbo	I would like to try arch again and need my mic to work. It has worked on Gentoo and debian I would really like to use arch for my daily driver
+2022-01-20 00:00:38	rcf	gumbo: what happened last time
+2022-01-20 00:01:22	<--	chazy (~chazy@2a0c:5a84:d103:c00:1ac0:4dff:fe96:16ad) has quit (Quit: WeeChat 3.4)
+2022-01-20 00:01:32	gumbo	rcf: my mic wasn't detected I got upset and left arch. But I would like to come back I like pacman and yay 
+2022-01-20 00:02:14	gumbo	Currently my driver for my mic and speakers are Kernel modules: snd_hda_intel, snd_sof_pci
+2022-01-20 00:02:24	gumbo	Does this work?
+2022-01-20 00:02:53	archdemon	is it the mic port on the mobo?
+2022-01-20 00:03:07	archdemon	i dont see why not
+2022-01-20 00:03:38	gumbo	I think so. Do you need lspci info?
+2022-01-20 00:03:46	rcf	gumbo: I believe this requires an extra firmware package to work properly but otherwise it should be fine. 
+2022-01-20 00:03:50	<--	cotko (~cotko@188-230-251-153.dynamic.t-2.net) has quit (Ping timeout: 250 seconds)
+2022-01-20 00:04:22	rcf	(a common trap and something that makes no sense given the absurd size of linux-firmware but whatever) 
+2022-01-20 00:05:19	-->	zyga-mbp [zyga] (Zygmunt Krynicki) (~zyga@31.0.173.147) has joined #archlinux
+2022-01-20 00:06:44	Scimmia	it is mentioned in the installation guide. The firmware comes from somewhere else completely, so it's separate
+2022-01-20 00:06:58	gumbo	https://termbin.com/4yi4
+2022-01-20 00:07:08	topcat001	In these situations Arch's fault, if any, is one of omission, i.e., not auto configuring. The user has to do the work.
+2022-01-20 00:07:10	gumbo	Hope that helps
+2022-01-20 00:07:52	rcf	gumbo: it's a common issue with newer Intel chips, you'll be fine. 
+2022-01-20 00:08:04	rcf	Just need the specific firmware package, which is in the repos. 
+2022-01-20 00:08:20	rcf	And apparently now even mentioned in the installation guide. 
+2022-01-20 00:08:21	gumbo	rcf: how do I know which to get?
+2022-01-20 00:09:02	<--	WoC (woc@2603-8080-cd40-00c6-eaaf-8a29-4225-dc1f.res6.spectrum.com) has quit (Remote host closed the connection)
+2022-01-20 00:09:10	<--	ramblebamble (ramblebamb@gateway/vpn/protonvpn/ramblebamble) has quit (Quit: WeeChat 3.4)
+2022-01-20 00:09:15	rcf	It's sof-firmware. 
+2022-01-20 00:09:54	rcf	Mentioned on the installation guide alongside the other suggested packages to install with base. 
+2022-01-20 00:10:07	rcf	("sof-firmware for sound cards") 
+2022-01-20 00:10:16	-->	spacelord [acid_king] (spacelord) (~spacelord@user/acid-king/x-4783339) has joined #archlinux
+2022-01-20 00:11:10	rcf	Scimmia: indeed, I more question the lack of inclusion of the sof firmware in the upstream kernel repo but I'm sure there's some obvious reason it's not done.... 
+2022-01-20 00:11:33	Hello72	sof-firmware is "open source"
+2022-01-20 00:11:38	Hello72	but tivoized
+2022-01-20 00:11:52	-->	Syntax- [Syntax-] (Sytax-) (~Thunderbi@8.48.134.57) has joined #archlinux
+2022-01-20 00:12:37	<--	marcello42 (~mp@2001:1a81:13ee:e600:2429:f440:aff0:8b70) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:12:46	Hello72	as a practical matter, it releases more often than linux-firmware
+2022-01-20 00:12:53	demonicmaniac1	man the sgx and tsx and avx512 removal will be so much fun speaking of modern intel chips
+2022-01-20 00:13:13	rcf	rip
+2022-01-20 00:13:30	gumbo	Ok thanks rcf I'll idle here install and come back later
+2022-01-20 00:14:12	Hello72	and linux-firmware has never made that much sense in the first place from a principled standpoint. there's no reason why all those files should be jammed into a single package, except that they're the only ones who are willing to touch the dubious encrypted blobs
+2022-01-20 00:14:21	demonicmaniac1	x86_64-v4 is practically dead with now intel shutting down all the backdoors to get avx512 working on tiger lake and alder lake
+2022-01-20 00:14:24	demonicmaniac1	remotely
+2022-01-20 00:14:37	<--	melodie (~melodie@user/melodie) has quit (Quit: Leaving)
+2022-01-20 00:14:55	-->	marcello42 [marcello42] (mp) (~mp@2001:1a81:1204:8a00:ea0c:2047:6cd8:7a12) has joined #archlinux
+2022-01-20 00:15:07	Hello72	good thing nobody ever actually used tsx and avx512, and sgx sucked anyways
+2022-01-20 00:15:11	Namarrgon	Hello72: it has been split in [testing]
+2022-01-20 00:15:14	<--	NoahvdAa (~NoahvdAa@user/noahvdaa) has quit (Ping timeout: 256 seconds)
+2022-01-20 00:15:15	Namarrgon	and compressed
+2022-01-20 00:16:16	Scimmia	Overall a good thing, but the transition is going to be fun when devices stop working
+2022-01-20 00:16:19	Hello72	seems like only modestly split
+2022-01-20 00:16:37	thrice	oddly split
+2022-01-20 00:16:52	Namarrgon	the largest blobs were split out
+2022-01-20 00:17:20	Scimmia	-631.75MB, I'll take it
+2022-01-20 00:17:28	Namarrgon	they also happen to be for rather exotic hardware
+2022-01-20 00:17:36	thrice	it'll be nice though, I've been using a PKGBUILD that just repackages debian's iwlwifi
+2022-01-20 00:18:25	demonicmaniac1	Hello72: all of signal and their coin stuff and what not depends on sgx
+2022-01-20 00:18:33	!=	_\_ is now known as ding
+2022-01-20 00:18:53	Hello72	i didn't say nobody uses sgx
+2022-01-20 00:19:09	demonicmaniac1	indeed. only smart people don't
+2022-01-20 00:19:26	demonicmaniac1	which also explains why you can't watch uhd blurays without sgx supported cpu
+2022-01-20 00:19:36	rcf	Given what it's supposed to be used for it's probably best that it stops working. 
+2022-01-20 00:19:57	<--	andril (~andril@2601:586:8400:e4:a965:a318:3940:38c4) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:20:22	demonicmaniac1	oh i fully agree
+2022-01-20 00:20:34	<--	marcello42 (~mp@2001:1a81:1204:8a00:ea0c:2047:6cd8:7a12) has quit (Ping timeout: 268 seconds)
+2022-01-20 00:20:48	rcf	Though not much help if you have to deal with people angry about $dumb_software not working. 
+2022-01-20 00:21:59	!=	ding is now known as _\_
+2022-01-20 00:22:21	<--	Forkk (~forkk@li926-228.members.linode.com) has quit (Quit: http://quassel-irc.org - Chat comfortably. Anywhere.)
+2022-01-20 00:24:38	!=	_\_ has unidentified
+2022-01-20 00:24:48	<--	gyara (~Thunderbi@user/gyara) has quit (Quit: gyara)
+2022-01-20 00:25:00	-->	gyara [gyara] (gyara) (~Thunderbi@user/gyara) has joined #archlinux
+2022-01-20 00:25:21	!=	_\_ has identified as _\_
+2022-01-20 00:27:09	-->	Forkk [Forkk] (Forkk) (~forkk@li926-228.members.linode.com) has joined #archlinux
+2022-01-20 00:28:15	<--	_\_ (~o@user/ding) has quit (Quit: ___)
+2022-01-20 00:28:27	-->	_\_ [_\_] (_\_) (~o@2001:19f0:5:14c2:5400:2ff:fee0:a42c) has joined #archlinux
+2022-01-20 00:28:49	<--	_\_ (~o@2001:19f0:5:14c2:5400:2ff:fee0:a42c) has quit (Remote host closed the connection)
+2022-01-20 00:29:03	-->	_\_ [_\_] (_\_) (~o@2001:19f0:5:14c2:5400:2ff:fee0:a42c) has joined #archlinux
+2022-01-20 00:29:57	<--	duuude (~user@user/duuude) has quit (Ping timeout: 240 seconds)
+2022-01-20 00:30:20	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-20 00:31:03	<--	VG9t (~VG9t@gateway/tor-sasl/vg9t) has quit (Remote host closed the connection)
+2022-01-20 00:35:29	<--	kts (~kts@103.73.237.13) has quit (Quit: Konversation terminated!)
+2022-01-20 00:36:10	<--	ncuxo (~ident@ip-109-43-114-68.web.vodafone.de) has quit (Quit: Konversation terminated!)
+2022-01-20 00:37:45	-->	madsa [madsa] (realname) (~madsa@user/madsa) has joined #archlinux
+2022-01-20 00:38:19	-->	Ruuchan [Ruuchan] (realname) (~Ruuchan@user/ruuchan) has joined #archlinux
+2022-01-20 00:43:21	<--	Midjak (~Midjak@may53-1-78-226-116-92.fbx.proxad.net) has quit (Quit: This computer has gone to sleep)
+2022-01-20 00:43:42	<--	Szadek (~Szadek@92.60.40.236) has quit (Ping timeout: 250 seconds)
+2022-01-20 00:44:00	-->	Satin [Seten] (Rillie Kramier) (uid193953@user/Seten) has joined #archlinux
+2022-01-20 00:44:16	-->	katovit [katovit] (katovit) (~katovit@121.red-88-0-28.dynamicip.rima-tde.net) has joined #archlinux
+2022-01-20 00:45:49	-->	Szadek [Szadek] (Szadek) (~Szadek@185.65.134.253) has joined #archlinux
+2022-01-20 00:45:56	<--	katovit (~katovit@121.red-88-0-28.dynamicip.rima-tde.net) has quit (Client Quit)
+2022-01-20 00:46:26	!=	_\_ has unidentified
+2022-01-20 00:46:26	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-20 00:46:32	!=	_\_ has identified as offon
+2022-01-20 00:46:33	!=	_\_ (~o@2001:19f0:5:14c2:5400:2ff:fee0:a42c) has changed host to ~o@user/offon
+2022-01-20 00:46:44	-->	srv [srv] (realname) (~cmd@user/srv) has joined #archlinux
+2022-01-20 00:46:54	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-20 00:47:29	-->	andril [Andril] (andril) (~andril@2601:586:8400:e4:a965:a318:3940:38c4) has joined #archlinux
+2022-01-20 00:47:38	<--	drathir_tor (~drathir@wireguard/tunneler/drathir) has quit (Remote host closed the connection)
+2022-01-20 00:47:55	-->	drathir_tor [drathir] (drathir87) (~drathir@wireguard/tunneler/drathir) has joined #archlinux
+2022-01-20 00:48:11	<--	herjazz (~herjazz@p6758124-ipngn30801marunouchi.tokyo.ocn.ne.jp) has quit (Quit: leaving)
+2022-01-20 00:48:38	-->	chuangzhu [chuangzhu] (Chuang Zhu) (~chuangzhu@user/chuangzhu) has joined #archlinux
+2022-01-20 00:53:30	<--	beastDiv1 (~beastDivi@user/beastdivision) has quit (Quit: beastDiv1)
+2022-01-20 00:53:51	-->	beastDivision [beastDivision] (beastDivision) (~beastDivi@user/beastdivision) has joined #archlinux
+2022-01-20 00:57:30	<--	Betal (~Betal@user/betal) has quit (Quit: WeeChat 3.4)
+2022-01-20 00:58:27	<--	bhat (~bhat@2600:8802:5100:222:1a8f:ad23:ce84:1dde) has quit (Quit: bhat)
+2022-01-20 00:58:39	-->	bhat [bhat] (Black Hat) (~bhat@ip72-205-83-93.sb.sd.cox.net) has joined #archlinux
+2022-01-20 00:58:59	<--	bhat (~bhat@ip72-205-83-93.sb.sd.cox.net) has quit (Client Quit)
+2022-01-20 00:59:18	-->	bhat [bhat] (Black Hat) (~bhat@2600:8802:5100:222:1a8f:ad23:ce84:1dde) has joined #archlinux
+2022-01-20 00:59:47	-->	mvk [mvk] (mvk) (~mvk@2607:fea8:5cdd:f000::55f8) has joined #archlinux
+2022-01-20 01:00:00	<--	bertptrs (~quassel@user/bertptrs) has quit (Quit: https://quassel-irc.org - Chat comfortably. Anywhere.)
+2022-01-20 01:00:36	-->	bertptrs [bertptrs] (Bert Peters) (~quassel@user/bertptrs) has joined #archlinux
+2022-01-20 01:01:37	<--	gyara (~Thunderbi@user/gyara) has quit (Ping timeout: 240 seconds)
+2022-01-20 01:02:46	<--	CrustY (~crusty@31.13.191.173) has quit (Ping timeout: 250 seconds)
+2022-01-20 01:03:05	-->	emanuele6 [emanuele6] (emanuele6) (~emanuele6@user/emanuele6) has joined #archlinux
+2022-01-20 01:03:09	<--	emanuele6 (~emanuele6@user/emanuele6) has left #archlinux (WeeChat 3.4)
+2022-01-20 01:03:29	<--	zyga-mbp (~zyga@31.0.173.147) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2022-01-20 01:04:04	<--	bhat (~bhat@2600:8802:5100:222:1a8f:ad23:ce84:1dde) has quit (Client Quit)
+2022-01-20 01:04:07	-->	obale1 [obale] (ZNC - https://znc.in) (~obale@user/obale) has joined #archlinux
+2022-01-20 01:04:23	-->	bhat [bhat] (Black Hat) (~bhat@2600:8802:5100:222:1a8f:ad23:ce84:1dde) has joined #archlinux
+2022-01-20 01:04:48	<--	obale (~obale@user/obale) has quit (Ping timeout: 276 seconds)
+2022-01-20 01:04:48	-->	gyara [gyara] (gyara) (~Thunderbi@user/gyara) has joined #archlinux
+2022-01-20 01:05:02	!=	obale1 is now known as obale
+2022-01-20 01:05:43	<--	jaysicks (~jaysicks@84-236-36-43.pool.digikabel.hu) has quit (Remote host closed the connection)
+2022-01-20 01:06:12	<--	andril (~andril@2601:586:8400:e4:a965:a318:3940:38c4) has quit (Ping timeout: 268 seconds)
+2022-01-20 01:08:16	-->	emanuele6 [emanuele6] (emanuele6) (~emanuele6@user/emanuele6) has joined #archlinux
+2022-01-20 01:11:10	-->	hollowman [hollowman] (Hollow Man) (~hollowman@openSUSE/member/hollowman) has joined #archlinux
+2022-01-20 01:12:16	-->	digup [digup] (realname) (~digup@149.167.138.23) has joined #archlinux
+2022-01-20 01:13:16	<--	cWve_ (~cWve@002130186241.mbb.telenor.dk) has quit (Read error: Connection reset by peer)
+2022-01-20 01:16:01	<--	predmijat (~predmijat@mail.strogopro.com) has quit (Quit: bye)
+2022-01-20 01:16:01	<--	Warepire (~warepire@user/Warepire) has quit (Read error: Connection reset by peer)
+2022-01-20 01:17:50	-->	predmijat [predmijat] (predmijat) (~predmijat@mail.strogopro.com) has joined #archlinux
+2022-01-20 01:20:58	<--	duuude (~user@user/duuude) has quit (Ping timeout: 256 seconds)
+2022-01-20 01:21:22	-->	moskos3 [moskos3] ([https://web.libera.chat] sokos) (~sokos@77.49.97.90.dsl.dyn.forthnet.gr) has joined #archlinux
+2022-01-20 01:21:28	<--	moskos3 (~sokos@77.49.97.90.dsl.dyn.forthnet.gr) has left #archlinux
+2022-01-20 01:21:33	-->	moskos3 [moskos3] ([https://web.libera.chat] sokos) (~sokos@77.49.97.90.dsl.dyn.forthnet.gr) has joined #archlinux
+2022-01-20 01:21:35	-->	Warepire [Warepire] (Unknown) (~warepire@user/Warepire) has joined #archlinux
+2022-01-20 01:21:39	moskos3	hey i need some help.
+2022-01-20 01:21:52	-->	heat_ [heat] (realname) (~heat@sortix/contributor/heat) has joined #archlinux
+2022-01-20 01:22:00	<--	heat (~heat@sortix/contributor/heat) has quit (Read error: Connection reset by peer)
+2022-01-20 01:22:04	moskos3	i am using i3wm to run this command:bindsym $mod+d exec rofi -show run
+2022-01-20 01:22:32	moskos3	but i need to pass $PATH to it. i have set PATH in .zshrc but its ignored by i3wm, and hence rofi
+2022-01-20 01:22:33	!=	heat_ is now known as heat
+2022-01-20 01:22:34	<--	bhat (~bhat@2600:8802:5100:222:1a8f:ad23:ce84:1dde) has quit (Quit: bhat)
+2022-01-20 01:22:55	thrice	how do you start i3?
+2022-01-20 01:23:12	digup	what does it show when you do "echo $PATH"?
+2022-01-20 01:23:17	-->	duuude [duuude] (duude) (~user@user/duuude) has joined #archlinux
+2022-01-20 01:23:34	thrice	well, if that gets run from a zsh shell... :)
+2022-01-20 01:23:54	moskos3	i start i3 from .zprofile using this:if [[ "$(tty)" = "/dev/tty1" ]]; then
+2022-01-20 01:23:54	moskos3	  exec startx
+2022-01-20 01:23:55	moskos3	fi
+2022-01-20 01:24:24	moskos3	and in .xinitrc this: xrdb -merge -I$HOME ~/.Xresources
+2022-01-20 01:24:25	moskos3	exec dbus-run-session i3
+2022-01-20 01:25:11	moskos3	the path i want is set in .zshrc (just set it, havent tried rebooting though)
+2022-01-20 01:25:28	<--	FluffyMask (~masque@user/fluffymask) has quit (Quit: WeeChat 3.4)
+2022-01-20 01:25:48	moskos3	but if i3wm is started from zsh, shouldn't it read zshrc ?
+2022-01-20 01:26:12	moskos3	digup echo path shows the right path
+2022-01-20 01:27:38	Namarrgon	remove the dbus call
+2022-01-20 01:27:55	-->	arch-angel [arch-angel] (Wayfarrer) (~arch-ange@2001:e68:5400:628:98f4:a0ee:dd7:976f) has joined #archlinux
+2022-01-20 01:28:00	thrice	does rofi keep a cache?
+2022-01-20 01:28:01	Namarrgon	why do you need to pass $PATH?
+2022-01-20 01:28:34	digup	to copy the path and add a variable under .zprofile
+2022-01-20 01:29:14	<--	malloy (~jimery@113.116.52.22) has quit (Ping timeout: 250 seconds)
+2022-01-20 01:29:28	<--	tangledwire (~imran@www.cubicsignal.com) has quit (Ping timeout: 256 seconds)
+2022-01-20 01:30:57	moskos3	thrice yes rofi has a cache. maybe i should clear it
+2022-01-20 01:31:18	thrice	just curious if you added the PATH after the cache was made, and it wasn't smart enough to find it
+2022-01-20 01:31:22	-->	srslypascal_ [srslypascal] (realname) (~srslypasc@2a01:41e3:2a97:8203:1d69:56da:6264:ea6b) has joined #archlinux
+2022-01-20 01:31:31	-->	malloy [malloy] (jimery) (~jimery@113.116.52.22) has joined #archlinux
+2022-01-20 01:31:33	<--	wayland (~orbur74@gateway/vpn/pia/orbur74) has quit (Ping timeout: 256 seconds)
+2022-01-20 01:31:39	moskos3	seems i3wm doesnt read environment variables
+2022-01-20 01:31:41	<--	timmcg (~timmcg@c-65-96-32-86.hsd1.me.comcast.net) has quit (Remote host closed the connection)
+2022-01-20 01:31:53	moskos3	also my path is set in .zshenv as an array
+2022-01-20 01:32:37	<--	madsa (~madsa@user/madsa) has quit (Quit: Leaving)
+2022-01-20 01:34:14	llua	since you exec startx in .zprofile, you replace the shell before it get to source .zshrc
+2022-01-20 01:34:34	<--	srslypascal (~srslypasc@2a01:41e3:2a62:b803:7136:438e:af93:d793) has quit (Ping timeout: 268 seconds)
+2022-01-20 01:35:42	<--	nyah (~nyah@94.6.71.219) has quit (Quit: leaving)
+2022-01-20 01:39:09	moskos3	so should i export path in .zprofile?
+2022-01-20 01:39:30	moskos3	before exec startx? or in .xinitrc before exec dbus-launch i3
+2022-01-20 01:39:43	Namarrgon	remove the dbus call, it doesn't belong there
+2022-01-20 01:39:54	Namarrgon	read the STARTUP FILES section of the zsh manual
+2022-01-20 01:40:08	moskos3	Namarrgon i had that line from the archwiki to launch i3
+2022-01-20 01:40:15	moskos3	why is it wrong?
+2022-01-20 01:40:23	Namarrgon	which page?
+2022-01-20 01:41:00	Namarrgon	dbus is already running at this point, starting a second instance one will only break things
+2022-01-20 01:41:23	<--	arcturus (~arcturus@gateway/tor-sasl/arcturus) has quit (Quit: arcturus)
+2022-01-20 01:42:18	moskos3	Namarrgon seems it has been removed (also gentoo wiki just has exec i3 in .xinitrc)
+2022-01-20 01:42:34	moskos3	how is dbus running? i am not even using a login manager, just startx from tty1
+2022-01-20 01:42:43	llua	systemd
+2022-01-20 01:42:49	-->	arcturus [arcturus] (arcturus) (~arcturus@gateway/tor-sasl/arcturus) has joined #archlinux
+2022-01-20 01:42:56	moskos3	oh so i dont need to call it ok
+2022-01-20 01:43:48	<--	derzahl (~derzahl@gateway/tor-sasl/derzahl) has quit (Ping timeout: 276 seconds)
+2022-01-20 01:44:37	<--	srv (~cmd@user/srv) has quit (Quit: Leaving)
+2022-01-20 01:52:47	moskos3	Namarrgon ok fixed the dbus issue. you should i should read startup files section
+2022-01-20 01:53:48	-->	Terexen [Terexen] (realname) (~terexen@user/terexen) has joined #archlinux
+2022-01-20 01:54:29	moskos3	seems .zshenv is read. maybe caches need to be cleared
+2022-01-20 01:54:43	<--	moskos3 (~sokos@77.49.97.90.dsl.dyn.forthnet.gr) has quit (Quit: Client closed)
+2022-01-20 01:55:13	-->	pankaj_ [marko822] (Unknown) (~pankaj@user/marko822) has joined #archlinux
+2022-01-20 01:58:28	<--	leonarth (~leonarth@user/leonarth) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2022-01-20 01:59:16	<--	spacelord (~spacelord@user/acid-king/x-4783339) has quit (Quit: spacelord)
+2022-01-20 02:01:18	-->	moskos3 [moskos3] ([https://web.libera.chat] miskos88) (~miskos88@77.49.97.90.dsl.dyn.forthnet.gr) has joined #archlinux
+2022-01-20 02:01:46	moskos3	Namarrgon i rebooted and still i3 seems to ignore .zshenv, and cant see the PATH i seat
+2022-01-20 02:02:02	moskos3	not sure what i am doing wrong, also the startup files should read .zshenv
+2022-01-20 02:02:16	<--	maetthew (~maetthew@user/maetthew) has quit (Quit: ZNC 1.8.2 - https://znc.in)
+2022-01-20 02:02:56	<--	co1umbarius (~columbari@i577BC6EA.versanet.de) has quit (Ping timeout: 268 seconds)
+2022-01-20 02:04:25	-->	co1umbarius [columbarius] (columbarius) (~columbari@muedsl-82-207-236-148.citykom.de) has joined #archlinux
+2022-01-20 02:05:07	-->	maetthew [maetthew] (maetthew) (~maetthew@user/maetthew) has joined #archlinux
+2022-01-20 02:05:44	<--	hollowman (~hollowman@openSUSE/member/hollowman) has quit (Quit: Konversation terminated!)
+2022-01-20 02:05:51	-->	trumee [trumee] (ZNC - https://znc.in) (~rajlon.dy@122.166.135.68) has joined #archlinux
+2022-01-20 02:07:46	<--	gyara (~Thunderbi@user/gyara) has quit (Ping timeout: 250 seconds)
+2022-01-20 02:11:37	-->	gratidude [gratidude] (gratidude) (~gratidude@user/gratidude) has joined #archlinux
+2022-01-20 02:12:29	Namarrgon	moskos3: ifyou comment out the i3 line and drop to the shell instead, is the $PATH correct there?
+2022-01-20 02:12:53	-->	gyara [gyara] (gyara) (~Thunderbi@user/gyara) has joined #archlinux
+2022-01-20 02:13:53	Namarrgon	first you said that you export $PATH in zshrc, then you said it's zshenv
+2022-01-20 02:14:48	Namarrgon	"Commands are then read from $ZDOTDIR/.zshenv. If the shell is a login shell, commands are read from /etc/zprofile and then $ZDOTDIR/.zprofile. Then, if the shell is interactive, commands are read from /etc/zshrc and then $ZDOTDIR/.zshrc. Finally, if the shell is a login shell, /etc/zlogin and $ZDOTDIR/.zlogin are read."
+2022-01-20 02:15:39	Namarrgon	if you launch i3 from zlogin and export $PATH in zshrc then you're exporting it too late
+2022-01-20 02:16:19	Namarrgon	as llua pointed it out earlier
+2022-01-20 02:17:24	moskos3	Namarrgon yes my mistake, i only use .zshenv with this:
+2022-01-20 02:17:36	moskos3	typeset -U PATH path
+2022-01-20 02:17:37	moskos3	path=("$HOME/.local/bin" "$path[@]")
+2022-01-20 02:17:37	moskos3	export PATH
+2022-01-20 02:18:11	!=	BillyZane2 is now known as BillyZane
+2022-01-20 02:18:59	moskos3	Namarrgon isnt .zshenv read before everything else?
+2022-01-20 02:19:14	Namarrgon	right
+2022-01-20 02:19:20	Namarrgon	did you do what i suggestd above?
+2022-01-20 02:19:34	<--	thebombzen (~thebombze@c-68-41-54-207.hsd1.mi.comcast.net) has quit (Quit: Quit)
+2022-01-20 02:19:55	moskos3	Namarrgon i am a bit confused to what you asked me to do , to be honest
+2022-01-20 02:20:04	moskos3	you mean remove exec i3 from .xinitrc?
+2022-01-20 02:20:08	moskos3	and replace it with what
+2022-01-20 02:20:26	Namarrgon	comment it out and replace it with nothing
+2022-01-20 02:20:48	Namarrgon	then check $PATH when you get dropped to that shell
+2022-01-20 02:21:04	moskos3	this will cause startx to start (i have exec startx) in .zprofile
+2022-01-20 02:21:12	moskos3	should i comment out that too?
+2022-01-20 02:21:41	Namarrgon	oh, sorry, i meant comment out the startx call
+2022-01-20 02:21:51	moskos3	ok be right back
+2022-01-20 02:22:25	<--	moskos3 (~miskos88@77.49.97.90.dsl.dyn.forthnet.gr) has quit (Quit: Client closed)
+2022-01-20 02:22:37	<--	MortimerHoughton (~MortimerH@cpe-70-121-32-165.tx.res.rr.com) has quit (Quit: bye)
+2022-01-20 02:23:18	<--	digup (~digup@149.167.138.23) has quit (Read error: Connection reset by peer)
+2022-01-20 02:24:26	<--	tsal (~tsal@user/tsal) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:25:35	-->	moskos3 [moskos3] ([https://web.libera.chat] miskos3) (~miskos3@77.49.97.90.dsl.dyn.forthnet.gr) has joined #archlinux
+2022-01-20 02:25:38	moskos3	hey
+2022-01-20 02:25:57	moskos3	Namarrgon the PATH was wrong
+2022-01-20 02:26:12	Namarrgon	how was it wrong?
+2022-01-20 02:26:42	<--	drathir_tor (~drathir@wireguard/tunneler/drathir) has quit (Ping timeout: 276 seconds)
+2022-01-20 02:27:01	moskos3	when i do echo $PATH in my terminal (that i use zsh) i get: /home/miskos/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:/usr/lib/llvm/13/bin
+2022-01-20 02:27:18	moskos3	but in tty1 i got /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:/usr/lib/llvm/13/bin
+2022-01-20 02:27:29	moskos3	do clearly my export in .zshenv doesnt work
+2022-01-20 02:28:02	Namarrgon	if you source ~/.zshenv from there, does that fix it?
+2022-01-20 02:28:03	-->	toropisco [toropisco] (@toropisco:matrix.org) (~toropisco@user/toropisco) has joined #archlinux
+2022-01-20 02:28:06	-->	drathir_tor [drathir] (drathir87) (~drathir@wireguard/tunneler/drathir) has joined #archlinux
+2022-01-20 02:28:12	moskos3	let me check
+2022-01-20 02:28:14	Namarrgon	do you export $PATH anywhere else in your configs?
+2022-01-20 02:29:15	moskos3	Namarrgon no i dont
+2022-01-20 02:30:08	-->	tsal [tsal] (tsal) (~tsal@user/tsal) has joined #archlinux
+2022-01-20 02:30:36	<--	moskos3 (~miskos3@77.49.97.90.dsl.dyn.forthnet.gr) has quit (Quit: Client closed)
+2022-01-20 02:30:57	<--	mvk (~mvk@2607:fea8:5cdd:f000::55f8) has quit (Ping timeout: 240 seconds)
+2022-01-20 02:31:22	-->	moskos3 [moskos3] ([https://web.libera.chat] miskos3) (~miskos3@77.49.97.90.dsl.dyn.forthnet.gr) has joined #archlinux
+2022-01-20 02:31:35	moskos3	Namarrgon sourcing .zshenv in tty1 fixes my path yes
+2022-01-20 02:31:43	-->	_Ev [_ev] (Ev) (~ev@user/ev/x-8999918) has joined #archlinux
+2022-01-20 02:32:26	moskos3	also in manual it says : $ZDOTDIR/.zshenv is read
+2022-01-20 02:33:02	moskos3	but echo $ZDOTDIR returns nothing
+2022-01-20 02:33:11	moskos3	maybe thats the issue
+2022-01-20 02:34:25	<--	captain_morgan (~morgan@oit.cloud) has quit (Remote host closed the connection)
+2022-01-20 02:34:27	moskos3	or not: If $ZDOTDIR is not set, $HOME is used instead. (from archwiki)
+2022-01-20 02:34:43	-->	captain_morgan [captain_morgan] (morgan) (~morgan@oit.cloud) has joined #archlinux
+2022-01-20 02:36:20	moskos3	i will ask in #zsh maybe they can help
+2022-01-20 02:37:24	-->	voltages [voltages] (The Lounge User) (~voltages@30e7-928e-d4a4-f482-7880-81ab-07d0-2001.dyn.estpak.ee) has joined #archlinux
+2022-01-20 02:38:25	<--	cyphics (~cyphix@user/cyphics) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:38:37	<--	DoXer (~DoXer@91.38.79.246) has quit (Ping timeout: 240 seconds)
+2022-01-20 02:40:14	<--	voltages (~voltages@30e7-928e-d4a4-f482-7880-81ab-07d0-2001.dyn.estpak.ee) has quit (Client Quit)
+2022-01-20 02:40:39	-->	DoXer [DoXer] (DoXer) (~DoXer@p5b2647a2.dip0.t-ipconnect.de) has joined #archlinux
+2022-01-20 02:41:23	-->	cyphics [cyphics] (cyphix) (~cyphix@user/cyphics) has joined #archlinux
+2022-01-20 02:43:31	<--	random-nick (~random-ni@87.116.167.125) has quit (Ping timeout: 256 seconds)
+2022-01-20 02:44:15	<--	teraflops (~teraflops@62.117.173.125.dyn.user.ono.com) has quit (Ping timeout: 268 seconds)
+2022-01-20 02:46:27	<--	packer (~packer@static.228.10.251.148.clients.your-server.de) has quit (Read error: Connection reset by peer)
+2022-01-20 02:48:27	-->	packer [Packer] (The Lounge User) (~packer@static.228.10.251.148.clients.your-server.de) has joined #archlinux
+2022-01-20 02:48:36	-->	Fede [Fede] (Federico) (~Fede@202.184.112.40) has joined #archlinux
+2022-01-20 02:49:44	-->	Megver83 [Megver83] (Megver83) (~Icedove@186.11.15.5) has joined #archlinux
+2022-01-20 02:50:16	-->	h4rd3n3D [h4rd3n3D] (h4rd3n3D) (~h4rd3n3D@wireguard/tunneler/h4rd3n3D) has joined #archlinux
+2022-01-20 02:51:19	-->	squatch [squatch] (realname) (~squatch@c-71-193-161-16.hsd1.or.comcast.net) has joined #archlinux
+2022-01-20 02:53:34	<--	Satin (uid193953@user/Seten) has quit (Quit: Connection closed for inactivity)
+2022-01-20 02:54:02	<--	Fede (~Fede@202.184.112.40) has quit (Quit: Leaving)
+2022-01-20 02:55:17	-->	Megver84 [Megver83] (Megver83) (~Icedove@181.43.228.15) has joined #archlinux
+2022-01-20 02:57:12	<--	Megver83 (~Icedove@186.11.15.5) has quit (Ping timeout: 268 seconds)
+2022-01-20 02:57:12	!=	Megver84 is now known as Megver83
+2022-01-20 02:57:15	-->	teraflops [teraflops] (teraflops) (~teraflops@62.117.173.125.dyn.user.ono.com) has joined #archlinux
+2022-01-20 02:58:11	-->	debn1x [debn1x] (koz) (~koz@23.94.41.108) has joined #archlinux
+2022-01-20 02:58:35	-->	voltages [voltages] (Randel M.) (~voltages@static.112.154.217.95.clients.your-server.de) has joined #archlinux
+2022-01-20 02:59:04	<--	falk689 (~falk689-q@gateway/tor-sasl/falk689) has quit (Remote host closed the connection)
+2022-01-20 02:59:17	-->	falk689 [falk689] (Falk689) (~falk689-q@gateway/tor-sasl/falk689) has joined #archlinux
+2022-01-20 03:01:05	!=	irc: disconnected from server
