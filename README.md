@@ -5,7 +5,6 @@
 ## System
 
 - OS: Arch
-- Kernel: tkg-calcule
 
 ### Programs and tools
 
@@ -13,10 +12,10 @@
 | --------------- | --------------------------------------------------- |
 | Shell           | ZSH                                                 |
 | Editor          | Neovim                                              |
-| Window manager  | i3-gaps                                             |
+| Window manager  | i3                                                  |
 | Compositor      | [Picom](https://github.com/jonaburg/picom)          |
 | ~~Bar~~         | ~~[Polybar](https://github.com/polybar/polybar/)~~  |
-| Launcher        | [Rofi](https://github.com/davatorium/rofi)          |
+| Launcher        | dmenu          |
 | Browser         | Librewolf                                           |
 | Audio           | Pipewire                                            |
 | Spotify         | [ncspot](https://github.com/hrkfdn/ncspot)          |
@@ -26,10 +25,9 @@
 | GTK & colors    | [wpgtk](https://github.com/deviantfero/wpgtk)       |
 | Prompt          | [p10k](https://github.com/romkatv/powerlevel10k)    |
 | Terminal        | [Kitty](https://github.com/kovidgoyal/kitty)        |
-| Icons           | Gruvbox                                             |
+| Icons           | Colloid                                             |
 | Cursor          | phinger                                             |
 | Lock            | [i3-lock](https://github.com/Raymo111/i3lock-color) |
 | Display manager | LightDM                                             |
 | Notifications   | dunst                                               |
-| Downloads       | uget                                                |
 | Image viewer    | feh                                                 |
