@@ -72,3 +72,7 @@ function ToggleCmp()
         let g:cmp_toggle=v:true
     endif
 endfunction
+
+function OpenMarkdownPreview (url)
+  execute "silent ! librewolf --new-window " . a:url
+endfunction

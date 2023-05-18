@@ -1,5 +1,5 @@
 # :.config/bat/config
---theme="wal"
+--theme="base16-256"
 --italic-text=always
 --paging=auto
 --pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse"

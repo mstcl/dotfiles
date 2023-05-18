@@ -189,7 +189,7 @@ lsp.texlab.setup({
 			auxDirectory = ".",
 			bibtexFormatter = "texlab",
 			build = {
-				args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f", "-shell-escape" },
+				args = { "-pdflatex=lualatex", "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f", "-shell-escape" },
 				executable = "latexmk",
 				forwardSearchAfter = true,
 				onSave = true,

@@ -59,7 +59,7 @@ font pango:JetBrainsMono Nerd Font Medium 15
 # }}}
 # Gaps {{{
 gaps outer 0
-gaps inner 8
+gaps inner 0
 smart_gaps on
 # }}}
 # Polybar gap {{{
@@ -80,7 +80,7 @@ popup_during_fullscreen smart
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id sxhkd &
 # exec --no-startup-id aria2c &
-exec --no-startup-id safeeyes -e &
+# exec --no-startup-id safeeyes -e &
 exec --no-startup-id bash $HOME/scripts/other/wp.sh &
 exec --no-startup-id feh --no-fehbg --bg-scale --no-xinerama .cache/superpaper/temp/bim-b.png &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
@@ -120,6 +120,9 @@ bindsym $mod+n nop kitti3
 # }}}
 # }}}
 # WINDOW RULES {{{
+# Scribus {{{
+for_window [class="scribus"] floating enable
+# }}}
 # MPV {{{
 for_window [class="mpv"] floating enable
 # }}}

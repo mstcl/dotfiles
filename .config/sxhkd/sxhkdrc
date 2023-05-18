@@ -174,19 +174,19 @@ super + y
 	$HOME/scripts/rofi/rofi-select-sink.sh
 
 super + comma
-	playerctl -p spotify,mpd previous
+	playerctl -p spotify,mpd,Sonixd previous
 
 super + shift + comma
 	NO_NOTIFY_COLOR=1 i3-volume -nyPp down 5
 
 super + period
-	playerctl -p spotify,mpd next
+	playerctl -p spotify,mpd,Sonixd next
 
 super + shift + period
 	NO_NOTIFY_COLOR=1 i3-volume -nyPp up 5
 
 super + slash
-	playerctl -p spotify,mpd play-pause
+	playerctl -p spotify,mpd,Sonixd play-pause
 
 super + shift + slash
 	bash $HOME/scripts/other/keys.sh

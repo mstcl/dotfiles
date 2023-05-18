@@ -17,3 +17,5 @@ file:///home/lckdscl/scripts scripts
 file:///home/lckdscl/.local/share/wineprefixes wine
 file:///home/lckdscl/site site
 file:///home/lckdscl/.config/aconfmgr aconfmgr
+sftp://192.168.1.162:2022/ sftpgo
+sftp://192.168.1.162:88/home/bim bimbox

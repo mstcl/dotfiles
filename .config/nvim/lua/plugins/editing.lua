@@ -23,12 +23,18 @@ return {
 			require("configs.escape")
 		end,
 	},
+	--[[ {
+        "LunarWatcher/auto-pairs",
+        lazy = true,
+        event = "InsertEnter",
+        config = function()
+            require("configs.autopairs")
+        end,
+    }, ]]
 	{
-		"LunarWatcher/auto-pairs",
-		lazy = true,
-		event = "InsertEnter",
+		"windwp/nvim-autopairs",
 		config = function()
-			require("configs.autopairs")
+			require("nvim-autopairs").setup({})
 		end,
 	},
 	{
@@ -78,7 +84,7 @@ return {
 		lazy = true,
 		cmd = "Registers",
 		keys = {
-			{ '"', mode = { "n", "v" } },
+			{ '"',     mode = { "n", "v" } },
 			{ "<C-R>", mode = "i" },
 		},
 		config = function()
@@ -125,6 +131,47 @@ return {
 		event = "CursorMoved",
 		config = function()
 			require("stay-in-place").setup({})
+		end,
+	},
+	--[[ {
+		"toppair/peek.nvim",
+		build = "deno task --quiet build:fast",
+		lazy = true,
+		ft = "markdown",
+		config = function()
+			require("peek").setup({
+				theme = "light",
+				app = { "chromium", "--new-window" },
+			})
+		end,
+	}, ]]
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		ft = { "markdown" },
+		lazy = true,
+		config = function()
+			require("configs.mdpreview")
+		end,
+	},
+	{
+		"fedepujol/move.nvim",
+		lazy = true,
+		event = "CursorMoved",
+	},
+	{
+		"dimfeld/section-wordcount.nvim",
+		lazy = true,
+		ft = { "markdown" },
+		config = function()
+			require("section-wordcount").setup({
+				-- These are the default values and can be omitted
+				highlight = "NonText",
+				virt_text_pos = "eol",
+			})
 		end,
 	},
 }

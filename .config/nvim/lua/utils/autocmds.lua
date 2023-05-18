@@ -218,26 +218,30 @@ autocmd({ "InsertLeave", "InsertEnter" }, {
 	command = "call ShowPaste()",
 })
 
-vim.api.nvim_create_autocmd({
-	"WinScrolled",
-	"BufWinEnter",
-	"CursorHold",
-	"InsertLeave",
-}, {
-	group = vim.api.nvim_create_augroup("barbecue", {}),
+local barbecue = augroup("barbecue", { clear = true })
+
+autocmd({ "WinScrolled", "BufWinEnter", "CursorHold", "InsertLeave" }, {
+	group = barbecue,
 	callback = function()
 		require("barbecue.ui").update()
 	end,
 })
 
-autocmd({ "BufWinLeave", "BufLeave", "QuitPre", "FocusLost", "InsertLeave" }, {
-	pattern = "?*", -- pattern required for some events
-	callback = function()
-		if not bo.readonly and vim.fn.expand("%") ~= "" and bo.buftype == "" and bo.filetype ~= "gitcommit" then
-			cmd.update(vim.fn.expand("%:p"))
-		end
-	end,
-})
+autocmd({
+	"BufWinLeave",
+	"BufLeave",
+	"QuitPre",
+	"FocusLost",
+	"InsertLeave"},
+	{
+		pattern = "?*", -- pattern required for some events
+		callback = function()
+			if not bo.readonly and vim.fn.expand("%") ~= "" and bo.buftype == "" and bo.filetype ~= "gitcommit" then
+				cmd.update(vim.fn.expand("%:p"))
+			end
+		end,
+	}
+)
 
 local autochdir = augroup("autochdir", { clear = true })
 
@@ -250,5 +254,15 @@ autocmd("BufWinEnter", {
 			return
 		end
 		cmd.cd(vim.fn.expand("%:p:h"))
+	end,
+})
+
+local wordcount = augroup("wordcount", { clear = true })
+
+autocmd("Filetype", {
+	group = "wordcount",
+	pattern = "markdown",
+	callback = function()
+		require("section-wordcount").wordcounter({})
 	end,
 })
