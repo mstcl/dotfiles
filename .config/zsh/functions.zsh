@@ -88,27 +88,6 @@ fzf-history-widget-accept() {
 zle     -N     fzf-history-widget-accept
 bindkey '^R^R' fzf-history-widget-accept
 # }}}
-# Browse history {{{
-# hist() {
-#     local cols sep history open
-#     cols=$(( COLUMNS / 3 ))
-#     sep='{::}'
-
-#     if [ "$(uname)" = "Darwin" ]; then
-#         history="$HOME/Library/Application Support/Google/Chrome/Default/History"
-#         open=open
-#     else
-#         history="$HOME/.config/BraveSoftware/Brave-Browser/Default/History"
-#         open=xdg-open
-#     fi
-#     cp -f "$history" /tmp/h
-#     sqlite3 -separator $sep /tmp/h \
-#         "select substr(title, 1, $cols), url
-#         from urls order by last_visit_time desc" |
-#         awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-#         fzf --prompt="爵HISTORY " --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
-# }
-# }}}
 # Ripgrep in file {{{
 fif() {
     if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
@@ -119,7 +98,10 @@ fif() {
 function nvm() {
     prc=$(ps -ef | grep glrnvim | wc -l)
     if [[ "$prc" -le 1 ]] then
-        if [[ "$#" -ne 0 ]]; then
+        if [[ "$#" -eq 0 ]]; then
+            i3-msg workspace "11:A" > /dev/null && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim -c "Alpha"
+            return
+        else
             i3-msg workspace "11:A" > /dev/null && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim $@
             return
         fi

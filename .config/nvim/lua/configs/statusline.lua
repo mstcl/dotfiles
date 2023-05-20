@@ -3,15 +3,7 @@
 local gl = require("galaxyline")
 local condition = require("galaxyline.condition")
 local gls = gl.section
---[[ local whitespace = require("galaxyline.provider_whitespace")
-local extension = require("galaxyline.provider_extensions")
-local lspclient = require("galaxyline.provider_lsp") ]]
--- local whitespace = require("galaxyline.providers.whitespace")
--- local extension = require("galaxyline.providers.extensions")
--- local lspclient = require("galaxyline.providers.lsp")
 local search = require("galaxyline.providers.search")
--- ScrollBar = extension.scrollbar_instance
--- GetLspClient = lspclient.get_lsp_client
 SearchResults = search.get_results
 
 gl.short_line_list = {
@@ -111,7 +103,7 @@ gls.left[2] = {
 	},
 }
 
-gls.left[4] = {
+--[[ gls.left[4] = {
 	FileIcon = {
 		provider = "FileIcon",
 		separator = "",
@@ -119,13 +111,14 @@ gls.left[4] = {
 		condition = condition.buffer_not_empty,
 		highlight = "GalaxyFgAlt",
 	},
-}
+} ]]
 
 gls.left[5] = {
 	FileName = {
 		provider = "FileName",
 		condition = condition.buffer_not_empty,
 		highlight = "GalaxyFgAlt",
+		icon = " ",
 	},
 }
 
@@ -165,7 +158,7 @@ gls.left[12] = {
 gls.left[13] = {
 	GitIcon = {
 		provider = function()
-			return " "
+			return " "
 		end,
 		condition = condition.check_git_workspace,
 		separator = " ",
@@ -227,7 +220,7 @@ gls.right[13] = {
 		separator = "",
 		separator_highlight = "GalaxyFgAlt2",
 		highlight = "GalaxyFgAlt2",
-		icon = " ",
+		icon = "⭡ ",
 		-- separator = "│",
 	},
 }
@@ -260,6 +253,7 @@ gls.short_line_left[1] = {
 		highlight = "GalaxyFgAlt2",
 	},
 } ]]
+
 gls.short_line_left[3] = {
 	BufferType = {
 		provider = "FileTypeName",

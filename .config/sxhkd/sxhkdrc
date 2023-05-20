@@ -5,65 +5,57 @@
 #  KEYBINDS  #
 ##############
 
-# a:            wmfocus                   | shift + a:           signal-desktop-beta
-# b:            librewolf                 | shift + b:           chromium
-# c:            colorpicker               | shift + c:           lock
-# d:            powermenu                 | shift + d:           discord
-# e:            nemo                      | shift + e:           btm/btop
-# f:            fullscreen toggle         | shift + f:           logseq
-# g:            text scratchpad           |
-# h:            focus left                | shift + h:           move left
-# i:            zathura                   | shift + i:           change input language
-# j:            focus down                | shift + j:           move down
-# k:            focus up                  | shift + k:           move up
-# l:            focus right               | shift + l:           move right
-# m:            MONITOR CHORDS            | shift + m:           mute
-#               i : gaming
-#               o : non-gaming
-# n:            kitti3 (in i3config)      | shift + n:           mute mic
-# o:            sticky toggle             | shift + o:           move to 2nd monitor
-# p:            SCREENSHOT CHORDS         |
-#               r : region & clipboard
-#               f : fullscreen & save
-# q:            qalculate                 | shift + q:           quit application
-# r:            restart chords            |
-#               w : i3
-#               s : sxhkd
-#               p : polybar
-#               c : wpg theme
-# s:            MUSIC CHORDS              | shift + s:           steam
-#               s : spotify
-#               m : mpd
-#               c : album cover
-#               l : lyrics
-#               v : visualiser
-# t:            TOGGLE CHORDS             |
-#               c : picom
-#               d : dunst
-# u:                                      |
-# v:            SET GAPS                  |
-#               i : gaps on
-#               o : gaps off
-# w:            status notification       |
-# x:            toggle layout             | shift + x:           xournal++
-# y:            select sink               |
-# z:            toggle focus on floating  |
-# \:            back and forth workspace  |
-# .:            next track                | shift + .:           volume up
-# ,:            previous track            | shift + ,:           volume down
-# /:            play/pause                | shift + /:           keys help
-# -:            move to scratchpad        |
-# =:            toggle scratchpad windows |
-# return:       kitty                     | shift return:        floating kitty
-# alt + return: neovim                    |
-# tab:          current windows           |
-# space:        launcher                  | shift + space:       floating toggle
-# {1-0}:        workspaces 1-10           | shift + {1-0}:       move to workspaces 1-10
-# alt + {1-0}:  workspaces 1-10           | shift + alt + {1-0}: move to workspaces 11-20
-# escape:       dunst history             |
-# backspace:    dunst close               | shift + backspace:   close all
-# left:         focus workspace left      | shift + left:        move workspace left
-# right:        focus workspace right     | shift + right:       move workspace right
+# a:         wmfocus               | shift a:         signal
+# b:         librewolf             | shift b:         chromium
+# c:         colorpicker           | shift c:         lock
+# d:         powermenu             | shift d:         discord
+# e:         nemo                  |
+# f:         fullscreen toggle     | shift f:         logseq
+# g:         text scratchpad       |
+# h:         focus left            | shift h:         move left
+# i:         zathura               | shift i:         change input
+# j:         focus down            | shift j:         move down
+# k:         focus up              | shift k:         move up
+# l:         focus right           | shift l:         move right
+# m:         MONITOR CHORDS--------| shift m:         mute
+#            i : gaming            |
+#            o : non-gaming        |
+# n:         trdop                 | shift n:         mute mic
+# o:         sticky toggle         | shift o:         move to DP-4
+# p:         SCREENSHOT CHORDS-----|
+#            r : region & gui      |
+#            f : fullscreen        |
+# q:         qalculate             | shift q:         quit window
+# r:         RESTART CHORDS--------|
+#            w : i3                |
+#            s : sxhkd             |
+#            p : polybar           |
+#            c : wpg theme         |
+# s:         sonixd                | shift s:         steam
+# t:         toggle dunst          |
+# u:         monitor               |
+# v:         SET GAPS              |
+#            i : gaps on           |
+#            o : gaps off          |
+# w:         status notification   |
+# x:         toggle layout         | shift x:         rnote
+# y:         select sink           |
+# z:         toggle focus          |
+# \:         last workspace        |
+# .:         next track            | shift .:         volume up
+# ,:         previous track        | shift ,:         volume down
+# /:         play/pause            | shift /:         keys help
+# -:         move to scratchpad    |
+# =:         toggle scratchpad     |
+# return:    terminal              | shift return:    nvim
+# tab:       current windows       |
+# space:     launcher              | shift space:     float toggle
+# {1-0}:     workspaces 1-10       | shift {1-0}:     move to wsp 1-10
+# alt {1-0}: workspaces 1-10       | shift alt {1-0}: move to wsp 11-20
+# escape:    dunst history         |
+# backspace: dunst close           | shift backspace: close all
+# left:      focus wsp left        | shift left:      move to wsp left
+# right:     focus wsp right       | shift right:     move to wsp right
 
 super + a
 	wmfocus -f "JetBrains Mono Medium":100 --bgcolorcurrent "#811f34" --textcolor "#f5f5f5" --bgcolor "#151515" --textcolorcurrent "#f5f5f5" --fill
@@ -92,9 +84,6 @@ super + shift + d
 super + e
 	nemo
 
-super + shift + e
-	kitty -o font_size=10 -o tab_bar_min_tabs=2 -T keysHelp -e  $SHELL -lc "btm"
-
 super + {f,o,z}
 	i3-msg {fullscreen toggle, sticky toggle, focus mode_toggle}
 
@@ -119,6 +108,8 @@ super + shift + i
 super + shift + o
 	i3-msg move container to output left
 
+super + n
+	tdrop -ma -w 80% -h 40% -x 100 -y 100 wezterm start --class quake
 super + p; {r,f}
 	flameshot {gui, full}
 
@@ -138,18 +129,13 @@ super + shift + m
 super + shift + n
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-super + r; {p,c,w,s}
-	{bash $HOME/.config/polybar/launch.sh, \
-	wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 " wpgtk" "Theme reloaded", \
-	i3-msg restart && sleep 0.5 && notify-send -t 1800 " i3wm" "Window manager reloaded", \
-	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 " sxhkd" "Configuration reloaded"}
+super + r; {c,w,s}
+	{wpg -s $(wpg -c) && sleep 0.5 && notify-send -t 1800 "wpgtk" "Theme reloaded", \
+	i3-msg restart && sleep 0.5 && notify-send -t 1800 "i3wm" "Window manager reloaded", \
+	pkill -USR1 -x sxhkd && sleep 0.5 && notify-send -t 1800 "sxhkd" "Configuration reloaded"}
 
-super + s; {s,m,c,l,v}
-	{spotify, \
-	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -T mpd ncmpcpp, \
-	bash $HOME/scripts/music/fehcover.sh, \
-	kitty -T lyrics -o tab_bar_min_tabs=2 lyrics, \
-	kitty -o window_padding_width=20 -o tab_bar_min_tabs=2 -o font_size=6 -T cava bash ~/scripts/music/colorcava.sh 2>/dev/null}
+super + s
+	sonixd
 
 super + shift + s;
 	steam
@@ -157,6 +143,9 @@ super + shift + s;
 super + t; {c,d}
 	{bash $HOME/scripts/hardware/picomtoggle.sh, \
 	dunstctl set-paused toggle}
+
+super + u
+	i3-msg workspace "11:A" && wezterm --config-file "/home/lckdscl/dotfiles/.config/wezterm/wezterm-alt.lua" start --class "whole" -e "btm" && i3-msg workspace back_and_forth
 
 super + v; {i,o}
 	i3-msg gaps inner all {set 8, set 0}
@@ -168,7 +157,7 @@ super + x
 	i3-msg layout toggle stacking splitv splith tabbed
 
 super + shift + x
-	xournalpp
+	rnote
 
 super + y
 	$HOME/scripts/rofi/rofi-select-sink.sh
@@ -189,7 +178,7 @@ super + slash
 	playerctl -p spotify,mpd,Sonixd play-pause
 
 super + shift + slash
-	bash $HOME/scripts/other/keys.sh
+	i3-msg workspace '11:A' && wezterm --config-file "/home/lckdscl/dotfiles/.config/wezterm/wezterm-nvim.lua" start --class "whole" -e "bat" --color never -r 3:59 ~/.config/sxhkd/sxhkdrc && i3-msg workspace back_and_forth
 
 super + space
 	rlaunch-def
@@ -198,13 +187,10 @@ super + shift + space
 	i3-msg floating toggle
 
 super + Return
-	kitty
+	wezterm
 
 super + shift + Return
-	kitty -T floatingKitty
-
-super + alt + Return
-	i3-msg workspace "11:A" && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim
+	i3-msg workspace "11:A" && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim -c "Alpha"
 
 super + {minus,equal}
 	i3-msg { move scratchpad, \

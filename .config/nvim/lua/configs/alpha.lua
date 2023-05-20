@@ -3,16 +3,21 @@ if not present then
 	return
 end
 
+local spacing = "           "
+local margin = 15
+local width = 27
+local banner = {
+	[[            ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ██╗███╗   ███╗    ██╗]],
+	[[           ██╔╝████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║████╗ ████║   ██╔╝]],
+	[[          ██╔╝ ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║██╔████╔██║  ██╔╝ ]],
+	[[         ██╔╝  ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║██║╚██╔╝██║ ██╔╝  ]],
+	[[        ██╔╝   ██║ ╚████║███████╗╚██████╔╝██████╔╝██║██║ ╚═╝ ██║██╔╝   ]],
+	[[        ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝     ╚═╝╚═╝    ]],
+}
+
 local header = {
 	type = "text",
-	val = {
-		[[            ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ██╗███╗   ███╗    ██╗]],
-		[[           ██╔╝████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║████╗ ████║   ██╔╝]],
-		[[          ██╔╝ ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║██╔████╔██║  ██╔╝ ]],
-		[[         ██╔╝  ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║██║╚██╔╝██║ ██╔╝  ]],
-		[[        ██╔╝   ██║ ╚████║███████╗╚██████╔╝██████╔╝██║██║ ╚═╝ ██║██╔╝   ]],
-		[[        ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝     ╚═╝╚═╝    ]],
-	},
+	val = banner,
 	opts = {
 		position = "left",
 		hl = "AlphaAscii",
@@ -37,8 +42,6 @@ local id_2 = tostring(tonumber(id) - 2)
 local phrase_gen = io.popen('sh "$HOME"/scripts/other/random_4chin_word.sh | tr -d "\n"')
 local phrase = phrase_gen:read("*a")
 phrase_gen:close()
-
-local spacing = "           "
 
 local heading = {
 	type = "text",
@@ -101,8 +104,8 @@ local function button(sc, txt, keybind)
 		position = "left",
 		text = txt,
 		shortcut = sc,
-		cursor = 17,
-		width = 27,
+		cursor = margin + 2,
+		width = width,
 		align_shortcut = "right",
 		hl_shortcut = "AlphaShortcuts",
 		hl = "AlphaHeader",
@@ -128,7 +131,7 @@ local buttons = {
 		button("LDR h", " >open oldfiles", ":Telescope oldfiles<CR>"),
 		button("LDR .", " >open frecency", ":Telescope frecency<CR>"),
 		button("LDR f", " >fuzzy search", ":Telescope find_files<CR>"),
-		button("LDR y", " >browse folders" , ":Telescope file_browser<CR>"),
+		button("LDR y", " >browse folders", ":Telescope file_browser<CR>"),
 		button("LDR /", " >regex search", ":Telescope live_grep<CR>"),
 		button("LDR p", " >plugin status", ":Lazy show<CR>"),
 	},
@@ -166,7 +169,7 @@ local opts = {
 		section.footer_2,
 	},
 	opts = {
-		margin = 15,
+		margin = margin,
 	},
 }
 alpha.setup(opts)

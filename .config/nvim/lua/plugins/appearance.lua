@@ -1,10 +1,19 @@
 return {
+	--[[ {
+		"Iron-E/nvim-highlite",
+		config = function()
+			vim.api.nvim_command("colorscheme lush")
+		end,
+		lazy = false,
+		priority = math.huge,
+		version = "^4.0.0",
+	}, ]]
 	{
-		'mstcl/nvim-highlite',
+		'mstcl/lush',
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.api.nvim_command 'colorscheme highlite'
+			vim.api.nvim_command 'colorscheme lush'
 		end,
 	},
 	{
@@ -96,14 +105,14 @@ return {
 	{
 		"declancm/cinnamon.nvim",
 		lazy = true,
-		event = "WinScrolled",
+		event = "BufEnter",
 		opts = {
 			default_keymaps = true,
 			centered = true,
 			disable = false,
 			scroll_limit = 150,
 			hide_cursor = true,
-			default_delay = 7,
+			default_delay = 3,
 		},
 	},
 	{

@@ -1,40 +1,12 @@
 # vim:fileencoding=utf-8:ft=yaml
 
-# Choose the backend terminal to run neovim in.
-# Current supported terminals: alacritty, urxvt, kitty, wezterm.
-backend: kitty
-
-# Path to backend executable file
-# NOTE: requires a backend key
-# NOTE: old key exe_path is now deprecated but can still be used
-term_exe_path: /usr/bin/kitty
-
-# Specify the Neovim executable path.
-# NOTE: nvim will be used if not specified
-# NOTE: For windows, e.g.: C:\tools\neovim\Neovim\bin\nvim.exe
+backend: wezterm
+term_exe_path: /usr/bin/wezterm
 nvim_exe_path: /usr/bin/nvim
 
-# The fonts to be used. Multi fonts can be supplied.
-# The first one will be set as the major font. Others will be set as
-# fallback fonts according to the given orders if possible.
-# NOTE: Not all backends support fallback font.
-fonts:
- - JetBrains Mono
- - JetBrainsMono Nerd Font
+# fonts:
+#  - scientifica
 
-# The font size to be used.
-#
-font_size: 13
-
-# Set to true if the terminal's default configuration should be loaded
-# first. Other glrnvim configurations will overwrite the terminal settings
-# if they are set in config.yml.
-# urxvt is not impacted by this setting. It always load resources according
-# to the defined orders.
+# font_size: 22
 load_term_conf: true
-
-# Configuration file for the selected terminal.
-# NOTE:This option is not supported by urxvt.
-# If this option is specified, the terminal's default config won't be loaded
-# when 'load_term_conf' is true.
-term_config_path: /home/lckdscl/.config/kitty/kitty_nvim.conf
+term_config_path: /home/lckdscl/dotfiles/.config/wezterm/wezterm-nvim.lua

@@ -61,7 +61,8 @@ autocmd({ "StdinReadPre" }, {
 	command = "let g:isReadingFromStdin = 1",
 	group = alpha,
 })
-autocmd({ "VimEnter" }, {
+
+--[[ autocmd({ "VimEnter" }, {
 	pattern = "*",
 	group = alpha,
 	callback = function()
@@ -69,7 +70,8 @@ autocmd({ "VimEnter" }, {
 			vim.cmd("Alpha")
 		end
 	end,
-})
+}) ]]
+
 autocmd({ "WinEnter", "BufRead", "BufNewFile" }, {
 	pattern = "*",
 	command = "if &ft != 'alpha' | call CleanEmptyBuffers() | endif",

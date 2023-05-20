@@ -1,5 +1,5 @@
 # :.config/i3/config
-# vim:set ft=config fdm=marker foldenable:
+# vim:set ft=i3config fdm=marker foldenable:
 
 # GENERAL {{{
 # Modifier aliases {{{
@@ -70,7 +70,6 @@ smart_borders on
 for_window [class="^.*"] border pixel 4
 default_border pixel 4
 default_floating_border pixel 4
-# hide_edge_borders smart_no_gaps
 # }}}
 # Priority {{{
 focus_on_window_activation urgent
@@ -79,25 +78,17 @@ popup_during_fullscreen smart
 # Startup {{{
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id sxhkd &
-# exec --no-startup-id aria2c &
-# exec --no-startup-id safeeyes -e &
 exec --no-startup-id bash $HOME/scripts/other/wp.sh &
 exec --no-startup-id feh --no-fehbg --bg-scale --no-xinerama .cache/superpaper/temp/bim-b.png &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
-# exec --no-startup-id picom &
 exec --no-startup-id xset s off &
 exec --no-startup-id xset -dpms &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id unclutter &
-# exec --no-startup-id bash $HOME/.config/polybar/launch.sh &
-# exec --no-startup-id i3-msg 'workspace 1:A; exec kitty --listen-on unix:/tmp/mykitty'
 exec --no-startup-id bash $HOME/scripts/hardware/norgb.sh &
 exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
 exec_always --no-startup-id sleep 4 && xmodmap $HOME/.config/X11/Xmodmap &
-exec_always --no-startup-id kitti3 -p tc
-# exec_always --no-startup-id flashfocus &
 exec_always --no-startup-id autotiling &
-# exec_always --no-startup-id ~/.local/bin/i3-auto-layout &
 # }}}
 # From wal {{{
 set_from_resource $fg i3wm.color7
@@ -115,7 +106,6 @@ client.background       $bg
 # Bare minimum for i3 to work {{{
 floating_modifier $mod
 bindsym $mod+backslash workspace back_and_forth
-bindsym $mod+n nop kitti3
 
 # }}}
 # }}}
@@ -156,46 +146,10 @@ for_window [title="Set Unknowns"] resize set 184 64
 # matplotlib {{{
 for_window [class="^matplotlib$"] floating enable
 # }}}
-# Kitty {{{
-for_window [instance="kitti3"] border pixel 4
-
+# Terminal {{{
 assign [title="^neovim$"] "11:A"
-
-assign [class="^kitty$" title="^keysHelp$"] "11:A"
-for_window [class="^kitty$" title="^keysHelp$"] fullscreen enable
-
-for_window [class="^kitty$" title="^textScratchpad$"] floating enable
-for_window [class="^kitty$" title="^textScratchpad$"] resize set 740 480; move absolute position center
-
-for_window [class="^kitty$" title="^floatingKitty$"] floating enable
-for_window [class="^kitty$" title="^floatingKitty$"] resize set 740 480; move absolute position center
-
-for_window [class="^kitty$" title="^cava$"] floating enable
-for_window [class="^kitty$" title="^cava$"] resize set 830 320
-for_window [class="^kitty$" title="^cava$"] move position 1050 px 100 px
-assign [class="^kitty$" title="^cava$"] "14:D"
-
-for_window [class="^kitty$" title="^spotify$"] floating enable
-for_window [class="^kitty$" title="^spotify$"] resize set 960 920
-for_window [class="^kitty$" title="^spotify$"] move position 45 px 100 px
-assign [class="^kitty$" title="^spotify$"] "14:D"
-
-for_window [class="^kitty$" title="^mpd$"] floating enable
-for_window [class="^kitty$" title="^mpd$"] resize set 1360 520
-assign [class="^kitty$" title="^mpd$"] "14:D"
-
-assign [class="^kitty$" title="^irc$"] "16:F"
-for_window [class="^kitty$" title="^irc$"] floating enable
-for_window [class="^kitty$" title="^irc$"] resize set 1380 875
-
-assign [class="^cover$"] "14:D"
-for_window [class="^cover$"] floating enable
-for_window [class="^cover$"] move position 1050 px 100 px
-
-assign [class="^kitty$" title="^lyrics$"] "14:D"
-for_window [class="^kitty$" title="^lyrics$"] floating enable
-for_window [class="^kitty$" title="^lyrics$"] resize set 830 575
-for_window [class="^kitty$" title="^lyrics$"] move position 1050 px 450 px
+for_window [class="^org.wezfurlong.wezterm$" class="whole"] fullscreen enable
+for_window [class="quake"] floating enable
 # }}}
 # Wpg {{{
 for_window [class="Wpg"] floating enable

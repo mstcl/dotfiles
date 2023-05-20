@@ -27,7 +27,7 @@
     idle_threshold = 120
 
     ### Text ###
-    font = {font1} {font-size}
+    font = {font1} {font-size-alt}
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"

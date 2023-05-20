@@ -1,5 +1,5 @@
 # :.config/zathura/zathurarc
-set font "SF Mono 13"
+set font "scientifica 13"
 set synctex true
 set selection-notification "true"
 set guioptions ""

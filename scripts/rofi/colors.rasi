@@ -12,7 +12,7 @@
     fg: #303030;
     fg2: #151515;
     hi-bold: bold #811f34;
-    font: "JetBrainsMono Nerd Font 13";
+    font: "JetBrainsMono Nerd Font 22";
     font-icon: "JetBrainsMono Nerd Font 15";
     icon-theme: "Colloid-grey-light";
     show-icons: true;
