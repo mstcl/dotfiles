@@ -18,12 +18,12 @@ end
 local header = {
 	type = "text",
 	val = {
-		[[                      ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ██╗███╗   ███╗    ██╗]],
-		[[                     ██╔╝████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║████╗ ████║   ██╔╝]],
-		[[                    ██╔╝ ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║██╔████╔██║  ██╔╝ ]],
-		[[                   ██╔╝  ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║██║╚██╔╝██║ ██╔╝  ]],
-		[[                  ██╔╝   ██║ ╚████║███████╗╚██████╔╝██████╔╝██║██║ ╚═╝ ██║██╔╝   ]],
-		[[                  ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝     ╚═╝╚═╝    ]],
+		[[            ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ██╗███╗   ███╗    ██╗]],
+		[[           ██╔╝████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║████╗ ████║   ██╔╝]],
+		[[          ██╔╝ ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║██╔████╔██║  ██╔╝ ]],
+		[[         ██╔╝  ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║██║╚██╔╝██║ ██╔╝  ]],
+		[[        ██╔╝   ██║ ╚████║███████╗╚██████╔╝██████╔╝██║██║ ╚═╝ ██║██╔╝   ]],
+		[[        ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝     ╚═╝╚═╝    ]],
 	},
 	opts = {
 		position = "left",
@@ -50,9 +50,11 @@ local phrase_gen = io.popen('sh "$HOME"/scripts/other/random_4chin_word.sh | tr 
 local phrase = phrase_gen:read("*a")
 phrase_gen:close()
 
+local spacing = "           "
+
 local heading = {
 	type = "text",
-	val = "                   Anonymous " .. date .. " No." .. id .. " ",
+	val = spacing .. " Anonymous " .. date .. " No." .. id .. " ⏵",
 	opts = {
 		position = "left",
 		hl = "AlphaButtons",
@@ -61,7 +63,7 @@ local heading = {
 
 local post_buttons = {
 	type = "text",
-	val = "                  They don't get it. For me, it's neovim.        ",
+	val = spacing .. "They don't get it. For me, it's neovim.        ",
 	opts = {
 		position = "left",
 		hl = "AlphaFooter",
@@ -70,7 +72,7 @@ local post_buttons = {
 
 local pre_foot = {
 	type = "text",
-	val = "                  >>" .. id_2 .. "(OP)                                 ",
+	val = spacing .. ">>" .. id_2 .. "(OP)                                 ",
 	opts = {
 		position = "left",
 		hl = "AlphaEmphasis",
@@ -79,7 +81,7 @@ local pre_foot = {
 
 local footer = {
 	type = "text",
-	val = "                  I've " .. plugins .. " plugins, it launches instantly kek.    ",
+	val = spacing .. "I've " .. plugins .. " plugins, it launches instantly kek.    ",
 	opts = {
 		position = "left",
 		hl = "AlphaFooter",
@@ -88,7 +90,7 @@ local footer = {
 
 local pre_foot_2 = {
 	type = "text",
-	val = "                  >>" .. id_1 .. "                                     ",
+	val = spacing .. ">>" .. id_1 .. "                                     ",
 	opts = {
 		position = "left",
 		hl = "AlphaEmphasis",
@@ -97,7 +99,7 @@ local pre_foot_2 = {
 
 local footer_2 = {
 	type = "text",
-	val = "                  " .. phrase .. "          ",
+	val = spacing .. phrase .. "          ",
 	opts = {
 		position = "left",
 		hl = "AlphaFooter",
@@ -111,8 +113,8 @@ local function button(sc, txt, keybind)
 		position = "left",
 		text = txt,
 		shortcut = sc,
-		cursor = 46,
-		width = 47,
+		cursor = 17,
+		width = 27,
 		align_shortcut = "right",
 		hl_shortcut = "AlphaShortcuts",
 		hl = "AlphaHeader",
@@ -166,6 +168,7 @@ local opts = {
 		section.heading,
 		{ type = "padding", val = 1 },
 		section.buttons,
+		{ type = "padding", val = 1 },
 		section.post_buttons,
 		{ type = "padding", val = 1 },
 		section.pre_foot,
@@ -175,7 +178,7 @@ local opts = {
 		section.footer_2,
 	},
 	opts = {
-		margin = 44,
+		margin = 15,
 	},
 }
 alpha.setup(opts)
