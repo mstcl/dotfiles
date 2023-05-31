@@ -64,12 +64,12 @@ _fzf_compgen_dir() {
 # }}}
 # Paru fuzzy install {{{
 function ins {
-    paru -Slq | fzf --height=80% --prompt=" " --preview-window=hidden --preview 'paru -Si {1}' | xargs -ro paru -S --removemake --cleanafter
+    paru -Slq | fzf --height=80% --prompt="↓ " --preview-window=hidden --preview 'paru -Si {1}' | xargs -ro paru -S --removemake --cleanafter
 }
 # }}}
 # Paru fuzzy remove {{{
 function rem() {
-    paru -Qq | fzf -q "$1" --height=80% --prompt=" " --preview-window=hidden --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+    paru -Qq | fzf -q "$1" --height=80% --prompt="✘ " --preview-window=hidden --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 # }}}
 # Tldr fuzzy {{{
@@ -77,7 +77,7 @@ function tl() { if [[ "$#" -ne 0 ]]; then
         tldr $@
         return
     fi
-    tldr --list | fzf -q "$1" --prompt=' ' --preview-window=nohidden,80%  --preview "echo {} | xargs tldr --color always" | xargs -r tldr
+    tldr --list | fzf -q "$1" --preview-window=nohidden,80%  --preview "echo {} | xargs tldr --color always" | xargs -r tldr
 }
 # }}}
 # FZF select + execute history {{{
@@ -91,7 +91,7 @@ bindkey '^R^R' fzf-history-widget-accept
 # Ripgrep in file {{{
 fif() {
     if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-    rg --files-with-matches --no-messages "$1" | fzf --preview-window=nohidden --prompt=" RIPGREP " --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+    rg --files-with-matches --no-messages "$1" | fzf --preview-window=nohidden --prompt="❯❯ RIPGREP " --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 # }}}
 # Neovim {{{

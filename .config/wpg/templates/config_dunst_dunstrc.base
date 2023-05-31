@@ -3,11 +3,12 @@
 [global]
     ### Display ###
     monitor = 0
-    follow = mouse
-    width = (50,500)
-    height = 800
+    follow = keyboard
+    width = (50,600)
+    height = (100,400)
+    origin = top-center
     notification_limit = 0
-    offset = 10x10
+    offset = 0x10
     scale = 0
     progress_bar = true
     progress_bar_height = 10
@@ -44,8 +45,8 @@
     ### Icons ###
     icon_position = left
     min_icon_size = 16
-    max_icon_size = 128
-    icon_path = /home/lckdscl/.local/share/icons/Colloid-grey-light/status/symbolic/:/home/lckdscl/.local/share/icons/Colloid-grey-light/devices/symbolic/:/home/lckdscl/.local/share/icons/Colloid-grey-light/status/32
+    max_icon_size = 64
+    icon_path = ""
 
     ### History ###
     sticky_history = yes

@@ -3,11 +3,12 @@
 [global]
     ### Display ###
     monitor = 0
-    follow = mouse
-    width = (50,500)
-    height = 800
+    follow = keyboard
+    width = (50,600)
+    height = (100,400)
+    origin = top-center
     notification_limit = 0
-    offset = 10x10
+    offset = 0x10
     scale = 0
     progress_bar = true
     progress_bar_height = 10
@@ -21,13 +22,13 @@
     horizontal_padding = 8
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#d0d0d0"
+    frame_color = "#c8beb7"
     separator_color = frame
     sort = yes
     idle_threshold = 120
 
     ### Text ###
-    font = scientifica 22
+    font = Source Serif Pro 13
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -44,8 +45,8 @@
     ### Icons ###
     icon_position = left
     min_icon_size = 16
-    max_icon_size = 128
-    icon_path = /home/lckdscl/.local/share/icons/Colloid-grey-light/status/symbolic/:/home/lckdscl/.local/share/icons/Colloid-grey-light/devices/symbolic/:/home/lckdscl/.local/share/icons/Colloid-grey-light/status/32
+    max_icon_size = 64
+    icon_path = ""
 
     ### History ###
     sticky_history = yes
@@ -75,21 +76,21 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#f5f5f5"
-    foreground = "#151515"
+    background = "#e9e5e2"
+    foreground = "#374250"
     timeout = 10
 
 [urgency_normal]
-    background = "#f5f5f5"
-    foreground = "#151515"
+    background = "#e9e5e2"
+    foreground = "#374250"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#f5f5f5"
-    foreground = "#4f6c31"
-    frame_color = "#4f6c31"
+    background = "#e9e5e2"
+    foreground = "#682828"
+    frame_color = "#682828"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

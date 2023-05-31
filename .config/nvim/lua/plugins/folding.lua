@@ -23,7 +23,6 @@ return {
 		lazy = true,
 		event = "VeryLazy",
 		dependencies = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
-		-- ft = { "python", "lua", "vim", "tex", "markdown"},
 		config = function()
 			require("configs.ufo")
 		end,

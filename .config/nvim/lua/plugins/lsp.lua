@@ -24,8 +24,9 @@ return {
 	{
 		"utilyre/barbecue.nvim",
 		lazy = true,
-		event = "LspAttach",
-		branch = "fix/E36",
+		version = "*",
+        even = "BufEnter",
+		branch = "main",
 		dependencies = { "nvim-web-devicons", "smiteshp/nvim-navic" },
 		config = function()
 			require("configs.barbecue")

@@ -9,11 +9,16 @@ return {
 		version = "^4.0.0",
 	}, ]]
 	{
-		'mstcl/lush',
+		"mstcl/lush",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"mstcl/dmg",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.api.nvim_command 'colorscheme lush'
+			vim.api.nvim_command("colorscheme dmg")
 		end,
 	},
 	{
@@ -58,10 +63,13 @@ return {
 		end,
 	},
 	{
-		"JA-Bar/barbar.nvim",
+		"romgrk/barbar.nvim",
 		lazy = true,
 		event = "BufAdd",
 		dependencies = { "nvim-web-devicons" },
+		init = function()
+			vim.g.barbar_auto_setup = false
+		end,
 		config = function()
 			require("configs.barbar")
 		end,
@@ -141,4 +149,21 @@ return {
 			},
 		},
 	}, ]]
+	{
+		"luukvbaal/statuscol.nvim",
+		config = function()
+			local builtin = require("statuscol.builtin")
+			require("statuscol").setup({
+				segments = {
+					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+					{ text = { "%s" }, click = "v:lua.ScSa" },
+					{
+						text = { builtin.lnumfunc, " " },
+						condition = { true, builtin.not_empty },
+						click = "v:lua.ScLa",
+					},
+				},
+			})
+		end,
+	},
 }

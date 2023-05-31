@@ -77,17 +77,11 @@ popup_during_fullscreen smart
 # }}}
 # Startup {{{
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id sxhkd &
-exec --no-startup-id bash $HOME/scripts/other/wp.sh &
-exec --no-startup-id feh --no-fehbg --bg-scale --no-xinerama .cache/superpaper/temp/bim-b.png &
-exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/scripts/i3lock/lockerfancy.sh &
-exec --no-startup-id xset s off &
-exec --no-startup-id xset -dpms &
+# exec --no-startup-id sh $HOME/scripts/bin/wp &
+exec --no-startup-id sh $HOME/scripts/bin/norgb &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id unclutter &
-exec --no-startup-id bash $HOME/scripts/hardware/norgb.sh &
-exec_always --no-startup-id sleep 3 && xrdb -load $HOME/.config/X11/Xresources &
-exec_always --no-startup-id sleep 4 && xmodmap $HOME/.config/X11/Xmodmap &
+exec_always --no-startup-id feh --no-fehbg --bg-scale --no-xinerama .cache/superpaper/temp/bim-a.png &
 exec_always --no-startup-id autotiling &
 # }}}
 # From wal {{{
@@ -147,9 +141,12 @@ for_window [title="Set Unknowns"] resize set 184 64
 for_window [class="^matplotlib$"] floating enable
 # }}}
 # Terminal {{{
-assign [title="^neovim$"] "11:A"
-for_window [class="^org.wezfurlong.wezterm$" class="whole"] fullscreen enable
+# assign [title="^neovim$"] "11:A"
+for_window [class="whole"] fullscreen enable
 for_window [class="quake"] floating enable
+for_window [class="quake"] border pixel 0
+for_window [class="float"] floating enable
+for_window [class="float-small"] resize set 640 320
 # }}}
 # Wpg {{{
 for_window [class="Wpg"] floating enable

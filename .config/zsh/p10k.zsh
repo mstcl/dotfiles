@@ -10,23 +10,22 @@
   unset -m '(POWERLEVEL9K_*|DEFAULT_USER)~POWERLEVEL9K_GITSTATUS_DIR'
   autoload -Uz is-at-least && is-at-least 5.1 || return
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    dir                       # current directory
-    vcs                       # git status
-    prompt_char               # prompt symbol
+    dir
+    vcs
+    prompt_char
   )
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    # taskwarrior               # taskwarrior task count (https://taskwarrior.org/)
-    vpn_ip                    # virtual private network indicator
-    command_execution_time    # duration of the last command
-    background_jobs           # presence of background jobs
+    vpn_ip
+    command_execution_time
+    background_jobs
   )
 
   typeset -g POWERLEVEL9K_MODE=nerdfont-complete
   typeset -g POWERLEVEL9K_ICON_PADDING=none
-  typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background
-  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=  # no surrounding whitespace
-  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '  # separate segments with a space
-  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=        # no end-of-line symbol
+  typeset -g POWERLEVEL9K_BACKGROUND=
+  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=
+  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '
+  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=
   typeset -g POWERLEVEL9K_ICON_BEFORE_CONTENT=true
   typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=
@@ -38,7 +37,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=
   typeset -g POWERLEVEL9K_SHOW_RULER=false
-  typeset -g POWERLEVEL9K_RULER_CHAR='─'        # reasonable alternative: '·'
+  typeset -g POWERLEVEL9K_RULER_CHAR='─'
   typeset -g POWERLEVEL9K_RULER_FOREGROUND=242
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' '
   if [[ $POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR != ' ' ]]; then
@@ -51,10 +50,8 @@
 
   #################################[ os_icon: os identifier ]##################################
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=
-  # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
 ###########################[ vim_shell: vim shell indicator (:sh) ]###########################
-  # Vim shell indicator color.
   typeset -g POWERLEVEL9K_VIM_SHELL_FOREGROUND=34
 
   ################################[ prompt_char: prompt symbol ]################################
@@ -107,15 +104,14 @@
   typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS_PCT=50
   typeset -g POWERLEVEL9K_DIR_HYPERLINK=true
   typeset -g POWERLEVEL9K_DIR_SHOW_WRITABLE=v3
-  typeset -g POWERLEVEL9K_LOCK_ICON=''
+  typeset -g POWERLEVEL9K_LOCK_ICON='⭤'
   typeset -g POWERLEVEL9K_DIR_CLASSES=(
   '*'            DEFAULT  '')
   typeset -g POWERLEVEL9K_DIR_DEFAULT_VISUAL_IDENTIFIER_EXPANSION=''
-  # typeset -g POWERLEVEL9K_DIR_PREFIX='%fin '
 
   #####################################[ vcs: git status ]######################################
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' '
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='●'
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' '
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='○'
   function my_git_formatter() {
     emulate -L zsh
     if [[ -n $P9K_CONTENT ]]; then
@@ -158,11 +154,11 @@
     if [[ $VCS_STATUS_COMMIT_SUMMARY == (|*[^[:alnum:]])(wip|WIP)(|[^[:alnum:]]*) ]]; then
       res+=" ${modified}❋"
     fi
-    (( VCS_STATUS_STASHES        )) && res+=" ${clean}◍"
+    (( VCS_STATUS_STASHES        )) && res+=" ${clean}✘"
     [[ -n $VCS_STATUS_ACTION     ]] && res+=" ${conflicted}${VCS_STATUS_ACTION}"
-    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted}◍"
+    (( VCS_STATUS_NUM_CONFLICTED )) && res+=" ${conflicted}⊕"
     (( VCS_STATUS_NUM_STAGED     )) && res+=" ${clean}●"
-    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}●"
+    (( VCS_STATUS_NUM_UNSTAGED   )) && res+=" ${modified}◐"
     (( VCS_STATUS_NUM_UNTRACKED  )) && res+=" ${untracked}${(g::)POWERLEVEL9K_VCS_UNTRACKED_ICON}"
     (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}─"
     typeset -g my_git_format=$res
@@ -177,7 +173,6 @@
   typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=1
   typeset -g POWERLEVEL9K_VCS_LOADING_VISUAL_IDENTIFIER_COLOR=244
   typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION=''
-  # typeset -g POWERLEVEL9K_VCS_PREFIX='%fon '
   typeset -g POWERLEVEL9K_VCS_BACKENDS=(git)
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=2
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=2
@@ -207,13 +202,12 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=8
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_EXPANSION='󰔟'
-  # typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PREFIX='%ftook '
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_EXPANSION='◔'
 
   #######################[ background_jobs: presence of background jobs ]#######################
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=8
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='✦'
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='⊠'
 
   ##################################[ disk_usage: disk usage ]##################################
   typeset -g POWERLEVEL9K_DISK_USAGE_NORMAL_FOREGROUND=35
@@ -222,26 +216,22 @@
   typeset -g POWERLEVEL9K_DISK_USAGE_WARNING_LEVEL=90
   typeset -g POWERLEVEL9K_DISK_USAGE_CRITICAL_LEVEL=95
   typeset -g POWERLEVEL9K_DISK_USAGE_ONLY_WARNING=false
-  # typeset -g POWERLEVEL9K_DISK_USAGE_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ######################################[ ram: free RAM ]#######################################
   typeset -g POWERLEVEL9K_RAM_FOREGROUND=66
-  # typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #####################################[ swap: used swap ]######################################
   typeset -g POWERLEVEL9K_SWAP_FOREGROUND=96
-  # typeset -g POWERLEVEL9K_SWAP_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ######################################[ load: CPU load ]######################################
   typeset -g POWERLEVEL9K_LOAD_WHICH=5
   typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=66
   typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=178
   typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=166
-  # typeset -g POWERLEVEL9K_LOAD_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##############[ taskwarrior: taskwarrior task count (https://taskwarrior.org/) ]##############
   typeset -g POWERLEVEL9K_TASKWARRIOR_FOREGROUND=8
-  typeset -g POWERLEVEL9K_TASKWARRIOR_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_TASKWARRIOR_VISUAL_IDENTIFIER_EXPANSION='✓'
 
   ##################################[ context: user@hostname ]##################################
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=1
@@ -251,7 +241,6 @@
   typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n@%m'
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
-  # typeset -g POWERLEVEL9K_CONTEXT_VISUAL_IDENTIFIER_EXPANSION='⭐'
   typeset -g POWERLEVEL9K_CONTEXT_PREFIX='%fwith '
 
   ########################[ vpn_ip: virtual private network indicator ]#########################
@@ -260,7 +249,7 @@
   typeset -g POWERLEVEL9K_VPN_IP_INTERFACE='(proton|gpd|wg|(.*tun)|tailscale)[0-9]*'
   typeset -g POWERLEVEL9K_VPN_IP_SHOW_ALL=false
   # Custom icon.
-  typeset -g POWERLEVEL9K_VPN_IP_VISUAL_IDENTIFIER_EXPANSION='嬨'
+  typeset -g POWERLEVEL9K_VPN_IP_VISUAL_IDENTIFIER_EXPANSION='☂'
 
   ####################################[ time: current time ]####################################
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=6

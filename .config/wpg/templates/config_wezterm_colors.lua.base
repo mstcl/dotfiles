@@ -1,0 +1,21 @@
+local palette = {{
+	color1 = "{color0}",
+	color2 = "{color1}",
+	color3 = "{color2}",
+	color4 = "{color3}",
+	color5 = "{color4}",
+	color6 = "{color5}",
+	color7 = "{color6}",
+	color8 = "{color7}",
+
+	color9 =  "{color8}",
+	color10 = "{color9}",
+	color11 = "{color10}",
+	color12 = "{color11}",
+	color13 = "{color12}",
+	color14 = "{color13}",
+	color15 = "{color14}",
+	color16 = "{color15}",
+}}
+
+return palette

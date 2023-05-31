@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/lckdscl/.config/wpg/wallpapers/samori.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#282828",
+        "foreground": "#ebdbb2",
+        "cursor": "#ebdbb2"
+    },
+    "colors": {
+        "color0": "#282828",
+        "color1": "#b53934",
+        "color2": "#86852c",
+        "color3": "#cb952d",
+        "color4": "#4f7c7e",
+        "color5": "#a56e87",
+        "color6": "#749176",
+        "color7": "#d5c4a1",
+        "color8": "#3c3836",
+        "color9": "#e65949",
+        "color10": "#a2a43d",
+        "color11": "#efb93a",
+        "color12": "#83a598",
+        "color13": "#cb8e9f",
+        "color14": "#97ad8f",
+        "color15": "#ebdbb2"
+    }
+}

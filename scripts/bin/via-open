@@ -1,0 +1,54 @@
+#!/bin/bash
+
+exec &> /dev/null
+
+while read -r arg; do
+	# first try matching by filename or pathname
+	case "${arg,,}" in
+		w\ *)
+			target=$(echo "$arg"|cut -d ' ' -f 3-)
+			wmctrl -a "$target"
+			;;
+		http*)
+			$BROWSER "$arg" &
+			;;
+		[^/]*) # doesn't start with '/'
+			sh -c "$arg"
+			;;
+		*.txt)
+			$TERMINAL $EDITOR "$arg" &
+			;;
+		*.pdf | *.epub)
+			mupdf "$arg" &
+			;;
+		*.mp3)
+			$TERMINAL mpg123 -opulse "$arg" &
+			;;
+		*.od[tsp]|*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
+			libreoffice "$arg" &
+			;;
+		*)
+			# then try matching by mimetype
+			mimetype=$(file -Lb --mime-type "$arg")
+			case "$mimetype" in
+				text/html)
+					$BROWSER "$arg" &
+					;;
+				text/* | inode/x-empty | message/rfc822)
+					$TERMINAL $EDITOR "$arg" &
+					;;
+				inode/directory)
+					cd "$arg"
+					$TERMINAL &
+					cd -
+					;;
+				image/*)
+					sxiv "$arg" &
+					;;
+				*)
+					exit 1
+					;;
+			esac
+			;;
+	esac
+done

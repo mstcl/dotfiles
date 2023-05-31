@@ -439,3 +439,9 @@
 2022-02-09 10:44:58		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, typing, xfer
 2022-02-09 10:45:41	=!=	WeeChat main buffer can't be closed
 2022-02-09 10:45:42		fifo: pipe closed
+2023-05-21 21:01:32	=!=	Warning: /home/lckdscl/.config/weechat/relay.conf, line 33: unknown option for section "network": compression_level = 6
+2023-05-21 21:01:32		perl scripts loaded: notify_send
+2023-05-21 21:01:32		python scripts loaded: colorize_nicks
+2023-05-21 21:01:32		script: 368 scripts for WeeChat 3.8
+2023-05-21 21:01:32		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, typing, xfer
+2023-05-21 21:02:04		fifo: pipe closed

@@ -62,7 +62,6 @@ map("x", ">", ">gv", opts)
 map("n", "<leader>a", ":call FoldColumnToggle()<CR>", opts)
 map('n', 'zR', require('ufo').openAllFolds)
 map('n', 'zM', require('ufo').closeAllFolds)
-map('n', 'zr', require('ufo').openFoldsExceptKinds)
 map('n', 'zm', require('ufo').closeFoldsWith, {})
 
 map("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)

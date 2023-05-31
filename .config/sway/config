@@ -1,0 +1,186 @@
+# :.config/sway/config
+# vim:set ft=i3config fdm=marker foldenable:
+
+# VARIABLES {{{
+
+# Mods {{{
+set $mod Mod4
+set $alt Mod1
+set $hyper Mod3
+# }}}
+
+# Displays {{{
+set $monL DP-2
+set $monR DP-4
+# }}}
+
+# Vim directions {{{
+set $left h
+set $down j
+set $up k
+set $right l
+# }}}
+
+# Workspace names {{{
+set $ws1L 1:A
+set $ws1R 11:A
+set $ws2L 2:B
+set $ws2R 12:B
+set $ws3L 3:C
+set $ws3R 13:C
+set $ws4L 4:D
+set $ws4R 14:D
+set $ws5L 5:E
+set $ws5R 15:E
+set $ws6L 6:F
+set $ws6R 16:F
+set $ws7L 7:G
+set $ws7R 17:G
+set $ws8L 8:H
+set $ws8R 18:H
+set $ws9L 9:I
+set $ws9R 19:I
+set $ws0L 10:J
+set $ws0R 20:J
+# }}}
+
+# Workspace outputs {{{
+workspace $ws1L output $monL
+workspace $ws1R output $monR
+workspace $ws2L output $monL
+workspace $ws2R output $monR
+workspace $ws3L output $monL
+workspace $ws3R output $monR
+workspace $ws4L output $monL
+workspace $ws4R output $monR
+workspace $ws5L output $monL
+workspace $ws5R output $monR
+workspace $ws6L output $monL
+workspace $ws6R output $monR
+workspace $ws7L output $monL
+workspace $ws7R output $monR
+workspace $ws8L output $monL
+workspace $ws8R output $monR
+workspace $ws9L output $monL
+workspace $ws9R output $monR
+workspace $ws0L output $monL
+workspace $ws0R output $monR
+# }}}
+
+# Other {{{
+set $term wezterm
+# }}}
+
+# }}}
+
+# FONT {{{
+font pango:Source Serif Pro 17
+# }}}
+
+# GAPS {{{
+gaps outer 0
+gaps inner 0
+smart_gaps on
+# }}}
+
+# BORDERS {{{
+smart_borders on
+for_window [class="^.*"] border pixel 4
+default_border pixel 4
+default_floating_border pixel 4
+# }}}
+
+# PRIORITY {{{
+focus_on_window_activation urgent
+popup_during_fullscreen smart
+# }}}
+
+# STARTUP {{{
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id sh $HOME/scripts/bin/norgb &
+exec --no-startup-id ibus-daemon -drxR
+exec_always --no-startup-id autotiling &
+exec_always --no-startup-id swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+exec_always --no-startup-id kitty &
+# }}}
+
+# CURSOR {{{
+seat * hide_cursor 8000
+seat * hide_cursor when-typing enable
+# }}}
+
+# KEYBINDINGS {{{
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+y reload
+ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+bindsym $mod+1 workspace $ws1L
+bindsym $mod+2 workspace $ws2L
+bindsym $mod+3 workspace $ws3L
+bindsym $mod+4 workspace $ws4L
+bindsym $mod+5 workspace $ws5L
+bindsym $mod+6 workspace $ws6L
+bindsym $mod+7 workspace $ws7L
+bindsym $mod+8 workspace $ws8L
+bindsym $mod+9 workspace $ws9L
+bindsym $mod+0 workspace $ws0L
+
+floating_modifier $mod normal
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# BAR {{{
+bar {
+    mode hide
+}
+# }}}
+
+# }}}
+
+# IMPORTS {{{
+include /etc/sway/config.d/*
+# }}}

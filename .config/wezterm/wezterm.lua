@@ -1,30 +1,11 @@
 local wezterm = require("wezterm")
+local palette = require("colors")
 
 local config = {}
 
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
-
-local palette = {
-	color1 = "#f5f5f5",
-	color2 = "#811f34",
-	color3 = "#4f6c31",
-	color4 = "#944927",
-	color5 = "#2b4c5e",
-	color6 = "#7b5164",
-	color7 = "#749176",
-	color8 = "#303030",
-
-	color9 = "#d0d0d0",
-	color10 = "#a8334c",
-	color11 = "#5b8332",
-	color12 = "#a36b37",
-	color13 = "#286486",
-	color14 = "#b3899c",
-	color15 = "#97ad8f",
-	color16 = "#151515",
-}
 
 config.colors = {
 	foreground = palette.color8,
@@ -33,7 +14,7 @@ config.colors = {
 	cursor_fg = palette.color1,
 	cursor_border = palette.color5,
 	selection_fg = palette.color16,
-	selection_bg = "#fffacd",
+	selection_bg = palette.color15,
 	scrollbar_thumb = palette.color1,
 	split = palette.color9,
 
@@ -71,7 +52,7 @@ config.colors = {
 		},
 		inactive_tab_hover = {
 			bg_color = palette.color1,
-			fg_color = "#696969",
+			fg_color = palette.color10,
 		},
 		new_tab = {
 			bg_color = palette.color1,
@@ -79,7 +60,7 @@ config.colors = {
 		},
 		new_tab_hover = {
 			bg_color = palette.color1,
-			fg_color = "#696969",
+			fg_color = palette.color10,
 		},
 	},
 }
@@ -98,8 +79,8 @@ config.window_padding = {
 }
 config.enable_wayland = false
 config.font = wezterm.font_with_fallback({ "scientifica", { family = "Symbols Nerd Font", scale = 0.8 } })
-config.font_size = 22
-config.bold_brightens_ansi_colors = "No"
+config.font_size = 17
+config.bold_brightens_ansi_colors = "BrightAndBold"
 config.line_height = 1
 config.cell_width = 1
 config.underline_thickness = "2pt"
@@ -118,6 +99,7 @@ config.command_palette_bg_color = palette.color1
 config.command_palette_fg_color = palette.color16
 config.use_cap_height_to_scale_fallback_fonts = true
 config.dpi = 93
-config.freetype_load_target = "Normal"
+config.detect_password_input = false
+config.warn_about_missing_glyphs = false
 
 return config

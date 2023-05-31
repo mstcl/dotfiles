@@ -3,46 +3,6 @@ local augroup = vim.api.nvim_create_augroup
 local bo = vim.bo
 local cmd = vim.cmd
 
-local function applyFoldsAndThenCloseAllFolds(bufnr, providerName)
-	require("async")(function()
-		bufnr = bufnr or vim.api.nvim_get_current_buf()
-		-- make sure buffer is attached
-		require("ufo").attach(bufnr)
-		-- getFolds return Promise if providerName == 'lsp'
-		local ok, ranges = pcall(await, require("ufo").getFolds(bufnr, providerName))
-		if ok and ranges then
-			ok = require("ufo").applyFolds(bufnr, ranges)
-			if ok then
-				require("ufo").closeAllFolds()
-			end
-		end
-	end)
-end
-
-local ufo = augroup("ufo", { clear = true })
-vim.api.nvim_create_autocmd("BufRead", {
-	pattern = "*.lua",
-	group = ufo,
-	callback = function(e)
-		applyFoldsAndThenCloseAllFolds(e.buf, "lsp")
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufRead", {
-	pattern = "*.py",
-	group = ufo,
-	callback = function(e)
-		applyFoldsAndThenCloseAllFolds(e.buf, "indent")
-		vim.cmd("setlocal fdm=expr")
-	end,
-})
-
-local map = augroup("map", { clear = true })
---[[ autocmd("BufRead", {
-	pattern = {"*.py", "*.lua", "*.tex"},
-	command = "lua MiniMap.toggle()",
-	group = map
-}) ]]
 local nvimcmp = augroup("nvimcmp", { clear = true })
 autocmd({ "BufWritePost" }, {
 	pattern = "*.snipppets",
@@ -187,23 +147,6 @@ autocmd({ "CmdLineLeave" }, {
 	command = "let b:cmdtype = expand('<afile>') | if (b:cmdtype == '/' || b:cmdtype == '?') | call timer_start(200, 'ProcessSearch') | endif",
 })
 
---[[ local foldts = augroup("foldts", {clear = true})
-autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = {"*.vim", "*.py", ".tex", ".lua", ".cpp", ".sh", ".toml"},
-	group = foldts,
-	command = "set foldmethod=expr | set foldexpr=nvim_treesitter#foldexpr()",
-})
-local tree = augroup("tree", { clear = true })
-autocmd({ "BufEnter" }, {
-	group = tree,
-	nested = true,
-	command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-	callback = function()
-		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-			vim.cmd("quit")
-		end
-	end,
-}) ]]
 local telescope = augroup("telescope", { clear = true })
 autocmd({ "Filetype" }, {
 	pattern = "TelescopePrompt",
@@ -222,7 +165,8 @@ autocmd({ "InsertLeave", "InsertEnter" }, {
 
 local barbecue = augroup("barbecue", { clear = true })
 
-autocmd({ "WinScrolled", "BufWinEnter", "CursorHold", "InsertLeave" }, {
+autocmd({ "WinResized", "BufWinEnter", "CursorHold", "InsertLeave" }, {
+	pattern = {"*.lua", "*.python", "*.tex", "*.vim", "*.sh", "*.cpp"},
 	group = barbecue,
 	callback = function()
 		require("barbecue.ui").update()

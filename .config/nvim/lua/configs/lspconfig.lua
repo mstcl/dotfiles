@@ -23,7 +23,20 @@ local handlers_pyright = {
 	),
 }
 
-local on_attach = function(client, bufnr)
+local function applyFoldsAndThenCloseAllFolds(bufnr, providerName)
+	require("async")(function()
+		bufnr = bufnr or vim.api.nvim_get_current_buf()
+		require("ufo").attach(bufnr)
+		local ok, ranges = pcall(await, require("ufo").getFolds(bufnr, providerName))
+		if ok and ranges then
+			ok = require("ufo").applyFolds(bufnr, ranges)
+		end
+	end)
+end
+
+local on_attach_fold_lsp = function(client, bufnr)
+	applyFoldsAndThenCloseAllFolds(bufnr, "lsp")
+
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -56,13 +69,47 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 	end
-	-- require'lsp-lens'.setup({})
 end
 
-local on_attach_pyright = function(client, bufnr)
+local on_attach_fold_indent = function(client, bufnr)
+	applyFoldsAndThenCloseAllFolds(bufnr, "indent")
+
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+
+	local opts = { noremap = true, silent = true }
+	if client.server_capabilities.hoverProvider then
+		buf_set_keymap("n", "<C-K>", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	end
+	if client.server_capabilities.definitionProvider then
+		buf_set_keymap("n", "<Leader>qD", "<cmd>lua Scroll('declaration')<CR>", opts)
+	end
+	if client.server_capabilities.documentFormattingProvider then
+		buf_set_keymap("n", "<Leader>qf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+	end
+	if client.server_capabilities.renameProvider then
+		buf_set_keymap("n", "<Leader>qR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	end
+	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ wrap = false, float = false })<CR>", opts)
+	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ wrap = false, float = false })<CR>", opts)
+	require("lsp_signature").on_attach({
+		bind = false,
+		handler_opts = { border = "single" },
+		transparency = 0,
+		floating_window = true,
+		floating_window_above_cur_line = true,
+		fix_pos = false,
+		hint_enable = false,
+		hi_parameter = "LspSignatureActiveParameter",
+	})
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
+end
+
+local on_attach_pyright = function(client, bufnr)
+	applyFoldsAndThenCloseAllFolds(bufnr, "indent")
 	client.server_capabilities.codeActionProvider = true
 	client.server_capabilities.completionProvider = false
 	client.server_capabilities.hoverProvider = false
@@ -72,10 +119,6 @@ local on_attach_pyright = function(client, bufnr)
 	client.server_capabilities.renameProvider = false
 	client.server_capabilities.signatureHelpProvider = false
 	client.server_capabilities.referencesProvider = false
-	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ wrap = false, float = false })<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ wrap = false, float = false })<CR>", opts)
-	-- require'lsp-lens'.setup({})
 end
 
 local on_attach_ruff = function(client, bufnr)
@@ -122,11 +165,11 @@ capabilities.textDocument.foldingRange = {
 }
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local servers = { "clangd", "vimls", "bashls" }
+local servers_fold_indent = { "clangd", "bashls" }
 
-for _, server in ipairs(servers) do
+for _, server in ipairs(servers_fold_indent) do
 	lsp[server].setup({
-		on_attach = on_attach,
+		on_attach = on_attach_fold_indent,
 		capabilities = capabilities,
 		handlers = handlers,
 		flags = {
@@ -134,6 +177,15 @@ for _, server in ipairs(servers) do
 		},
 	})
 end
+
+lsp.vimls.setup({
+	on_attach = on_attach_fold_lsp,
+	capabilities = capabilities,
+	handlers = handlers,
+	flags = {
+		debounce_text_changes = 150,
+	},
+})
 
 lsp.ruff_lsp.setup({
 	on_attach = on_attach_ruff,
@@ -145,7 +197,6 @@ lsp.ruff_lsp.setup({
 })
 
 lsp.jedi_language_server.setup({
-	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
 	flags = {
@@ -169,14 +220,13 @@ lsp.pyright.setup({
 				autoSearchPaths = false,
 				useLibraryCodeForTypes = true,
 				diagnosticMode = "openFilesOnly",
-				-- typeCheckingMode = "basic",
 			},
 		},
 	},
 })
 
 lsp.texlab.setup({
-	on_attach = on_attach,
+	on_attach = on_attach_fold_lsp,
 	capabilities = capabilities,
 	handlers = handlers,
 	flags = {
@@ -212,14 +262,6 @@ lsp.texlab.setup({
 					"%l",
 					"%p",
 				},
-				-- executable = "zathura",
-				-- args = {
-				-- "--synctex-editor-command",
-				-- [[nvim --headless -c 'TexlabInverseSearch %{input} %{line}']],
-				-- "--synctex-forward",
-				-- "%l:1:%f",
-				-- "%p",
-				-- },
 			},
 			latexFormatter = "latexindent",
 			latexindent = {
@@ -230,7 +272,7 @@ lsp.texlab.setup({
 })
 
 lsp.lua_ls.setup({
-	on_attach = on_attach,
+	on_attach = on_attach_fold_lsp,
 	capabilities = capabilities,
 	handlers = handlers,
 	flags = {
@@ -257,38 +299,38 @@ lsp.lua_ls.setup({
 	},
 })
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ✘", Warn = " !", Hint = " ?", Info = " i" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 local icons = {
-	Class = "ﴯ Class",
-	Color = " Color",
-	Constant = " Constant",
-	Constructor = " Constructor",
-	Enum = "了 Enum",
-	EnumMember = "  EnumMember",
-	Event = " Event",
-	Field = " Field",
-	File = " File",
-	Folder = " Folder",
-	Function = " Function",
-	Interface = " Interface",
-	Keyword = " Keyword",
-	Reference = " Reference",
+	Class = "⁐ Class",
+	Color = " Color",
+	Constant = "π Constant",
+	Constructor = "☂ Constructor",
+	Enum = "ζ Enum",
+	EnumMember = "⁜ EnumMember",
+	Event = " Event",
+	Field = "⊟ Field",
+	File = "⊡ File",
+	Folder = "₪ Folder",
+	Function = "ƒ Function",
+	Interface = "♺ Interface",
+	Keyword = "✮ Keyword",
+	Reference = "⇒ Reference",
 	Method = "ƒ Method",
-	Module = " Module",
-	Operator = " Operator",
-	Property = "ﰠ Property",
-	Snippet = " Snippet",
-	Struct = " Structure",
-	Text = " Text",
-	TypeParameter = " Parameter",
-	Unit = " Unit",
-	Value = " Value",
-	Variable = " Variable",
+	Module = "◫ Module",
+	Operator = "⁑ Operator",
+	Property = "✓ Property",
+	Snippet = " Snippet",
+	Struct = "◧ Structure",
+	Text = "☰ Text",
+	TypeParameter = "⊞ Parameter",
+	Unit = " Unit",
+	Value = "λ Value",
+	Variable = "Ψ Variable",
 }
 
 local kinds = vim.lsp.protocol.CompletionItemKind
@@ -297,10 +339,6 @@ for i, kind in ipairs(kinds) do
 end
 
 vim.diagnostic.config({
-	--[[ virtual_text = {
-		show = false,
-		prefix = "",
-	}, ]]
 	virtual_text = false,
 	signs = true,
 	underline = true,
@@ -344,4 +382,4 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	end,
 })
 
-return on_attach
+return on_attach_fold_lsp

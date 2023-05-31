@@ -91,7 +91,7 @@ set.spell = false
 set.encoding = "utf-8"
 
 set.list = true
-vim.cmd([[set fillchars+=eob:\ ,vert:│,foldopen:▾,foldclose:▸,foldsep:│,fold:\ ,diff:╱]])
+vim.cmd([[set fillchars+=eob:\ ,vert:│,foldopen:⏷,foldclose:▸,foldsep:│,fold:\ ,diff:╱]])
 vim.cmd([[set listchars=tab:<->,extends:›,precedes:‹,nbsp:∩,eol:¶,trail:×,lead:\ ,space:·,multispace:···+]])
 set.showbreak = "↳"
 

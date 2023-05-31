@@ -3,8 +3,8 @@ if not present then
 	return
 end
 
-local spacing = "           "
-local margin = 15
+local spacing = ""
+local margin = 25
 local width = 27
 local banner = {
 	[[            ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ██╗███╗   ███╗    ██╗]],

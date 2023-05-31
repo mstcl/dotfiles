@@ -2,7 +2,7 @@
 [Settings]
 gtk-theme-name={theme}
 gtk-icon-theme-name={icons}
-gtk-font-name=SF Pro Text {font-size}
+gtk-font-name=Source Serif Pro {font-size}
 gtk-cursor-theme-name={cursor}
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH

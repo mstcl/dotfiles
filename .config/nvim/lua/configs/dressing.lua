@@ -1,6 +1,6 @@
 require('dressing').setup({
     input = {
-        default_prompt = "➤ ",
+        default_prompt = "❯❯ ",
         insert_only = true,
         prompt_align = "left",
         start_in_insert = true,

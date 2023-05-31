@@ -4,13 +4,13 @@
 # Default command {{{
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --follow -g '!{dosdevices}' -g '!{compatdata}' 2> /dev/null'
 export FZF_DEFAULT_OPTS="
-    --color fg:8,bg:#f5f5f5,hl:1,fg+:7,bg+:#f5f5f5,hl+:9,gutter:#f5f5f5
+    --color fg:8,bg:0,hl:1,fg+:7,bg+:0,hl+:9,gutter:0
     --color border:8,info:5,prompt:2,spinner:3,pointer:6,marker:4,separator:8
     --height 100%
     --no-separator
     --preview-window hidden:border-rounded
-    --pointer='->'
-    --marker='＋'
+    --pointer='⇒'
+    --marker='✓ '
     --prompt='❯❯ FZF '
     --layout=reverse
     --border=none
@@ -118,7 +118,7 @@ zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
 zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
 # }}}
 # General options {{{
-zstyle ':fzf-tab:*' fzf-flags '--color=fg:8,bg:#f5f5f5,hl:1,fg+:7,bg+:#f5f5f5,hl+:9,gutter:#f5f5f5' \
+zstyle ':fzf-tab:*' fzf-flags '--color=fg:8,bg:0,hl:1,fg+:7,bg+:0,hl+:9,gutter:0' \
     '--color=border:8,info:5,prompt:2,spinner:3,pointer:6,marker:4' \
     '--prompt=❯❯ FZF ' \
     '--preview-window=nohidden' \

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/lckdscl/.config/wpg/wallpapers/gondo.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#f5f4f2",
+        "foreground": "#374250",
+        "cursor": "#374250"
+    },
+    "colors": {
+        "color0": "#f5f4f2",
+        "color1": "#630e49",
+        "color2": "#682828",
+        "color3": "#144119",
+        "color4": "#1d0e53",
+        "color5": "#494459",
+        "color6": "#898294",
+        "color7": "#161e29",
+        "color8": "#cecdca",
+        "color9": "#752c5f",
+        "color10": "#844242",
+        "color11": "#3b673f",
+        "color12": "#372969",
+        "color13": "#756a94",
+        "color14": "#aba2b9",
+        "color15": "#374250"
+    }
+}

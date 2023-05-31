@@ -63,12 +63,12 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/history"'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 # }}}
 # List with exa {{{
-alias lt='exa --icons --color=always -h --git --git-ignore --group-directories-first -T'
-alias lta='exa --icons --color=always -h --group-directories-first --git --git-ignore -T -a'
-alias l='exa --icons --color=always --group-directories-first -h --git --git-ignore'
-alias la='exa --icons --color=always --group-directories-first -h --git -a'
-alias ll='exa -l --icons --color=always --group-directories-first -h --git'
-alias lla='exa -l --icons --color=always --group-directories-first -h --git -a'
+alias lt='exa --color=always -h --git --git-ignore --group-directories-first -T'
+alias lta='exa --color=always -h --group-directories-first --git --git-ignore -T -a'
+alias l='exa --color=always --group-directories-first -h --git --git-ignore'
+alias la='exa --color=always --group-directories-first -h --git -a'
+alias ll='exa -l --color=always --group-directories-first -h --git'
+alias lla='exa -l --color=always --group-directories-first -h --git -a'
 # }}}
 # Git {{{
 alias gs='git status'

@@ -17,6 +17,7 @@ URxvt*cursorColor:  {color15}
 XTerm*cursorColor:  {color15}
 UXTerm*cursorColor: {color15}
 URxvt*borderColor:  [100]{color0}
+*.font: {font1}
 
 ! Colors 0-15.
 *.color0: {color0}

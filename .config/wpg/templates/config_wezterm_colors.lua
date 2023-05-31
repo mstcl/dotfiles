@@ -1,0 +1,1 @@
+/home/lckdscl/dotfiles/.config/wezterm/colors.lua

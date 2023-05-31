@@ -58,30 +58,34 @@
 # right:     focus wsp right       | shift right:     move to wsp right
 
 super + a
-	wmfocus -f "JetBrains Mono Medium":100 --bgcolorcurrent "#811f34" --textcolor "#f5f5f5" --bgcolor "#151515" --textcolorcurrent "#f5f5f5" --fill
+	focus
 
 super + shift + a
 	signal-desktop-beta --disable-frame-rate-limit
 
 super + b
-	librewolf
+	vivaldi-snapshot --disk-cache-dir="$XDG_RUNTIME_DIR/vivaldi-cache" --process-per-site --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --disable-gpu-driver-bug-workarounds --enable-native-gpu-memory-buffers
+	# GTK_THEME=cdetheme-solaris librewolf
 
 super + shift + b
-	chromium --disable-frame-rate-limit
+	chromium
 
 super + c
-	bash $HOME/scripts/other/colorpicker.sh
+	colorpicker
 
 super + shift + c
-	bash $HOME/scripts/i3lock/lockerfancy.sh
+	lockscreen
 
 super + d
-	bash $HOME/scripts/rofi/dmenu-power-menu
+	power-menu
 
 super + shift + d
 	/usr/bin/discord --disable-frame-rate-limit --class=discord --enable-gpu-rasterization --use-gl=desktop --enable-zero-copy --ignore-gpu-blocklist
 
 super + e
+	wezterm --config-file "/home/lckdscl/dotfiles/.config/wezterm/wezterm-nvim.lua" start --class "float" -e "joshuto"
+
+super + shift + e
 	nemo
 
 super + {f,o,z}
@@ -91,7 +95,7 @@ super + shift + f
 	logseq --disable-frame-rate-limit
 
 super + g
-    bash $HOME/scripts/other/text-scratchpad.sh
+   scratchpad
 
 super + {h,j,k,l}
 	i3-msg focus {left,down,up,right}
@@ -103,13 +107,14 @@ super + i
 	zathura
 
 super + shift + i
-	bash $HOME/scripts/hardware/chkm.sh
+	chkm
 
 super + shift + o
 	i3-msg move container to output left
 
 super + n
-	tdrop -ma -w 80% -h 40% -x 100 -y 100 wezterm start --class quake
+	wezquake
+
 super + p; {r,f}
 	flameshot {gui, full}
 
@@ -120,8 +125,8 @@ super + shift + q
 	i3-msg kill
 
 super + m; {i,o}
-	{bash $HOME/scripts/hardware/game-enter.sh, \
-	bash $HOME/scripts/hardware/game-exit.sh}
+	{game-enter, \
+	game-exit}
 
 super + shift + m
 	NO_NOTIFY_COLOR=1 i3-volume -nyPp mute
@@ -140,18 +145,17 @@ super + s
 super + shift + s;
 	steam
 
-super + t; {c,d}
-	{bash $HOME/scripts/hardware/picomtoggle.sh, \
-	dunstctl set-paused toggle}
+super + t
+	dunstctl set-paused toggle
 
 super + u
-	i3-msg workspace "11:A" && wezterm --config-file "/home/lckdscl/dotfiles/.config/wezterm/wezterm-alt.lua" start --class "whole" -e "btm" && i3-msg workspace back_and_forth
+	monitor
 
 super + v; {i,o}
 	i3-msg gaps inner all {set 8, set 0}
 
 super + w
-	notify-send --icon="pig" "━━━━ STATUS ━━━━" "$($HOME/scripts/other/notify.sh)"
+	notify-send --icon="none" "❮❮ STATUS  ❯❯" "$(notify)"
 
 super + x
 	i3-msg layout toggle stacking splitv splith tabbed
@@ -160,28 +164,28 @@ super + shift + x
 	rnote
 
 super + y
-	$HOME/scripts/rofi/rofi-select-sink.sh
+	select-sink
 
 super + comma
 	playerctl -p spotify,mpd,Sonixd previous
 
 super + shift + comma
-	NO_NOTIFY_COLOR=1 i3-volume -nyPp down 5
+	NO_NOTIFY_COLOR=1 i3-volume -nyP down 5
 
 super + period
 	playerctl -p spotify,mpd,Sonixd next
 
 super + shift + period
-	NO_NOTIFY_COLOR=1 i3-volume -nyPp up 5
+	NO_NOTIFY_COLOR=1 i3-volume -nyP up 5
 
 super + slash
 	playerctl -p spotify,mpd,Sonixd play-pause
 
 super + shift + slash
-	i3-msg workspace '11:A' && wezterm --config-file "/home/lckdscl/dotfiles/.config/wezterm/wezterm-nvim.lua" start --class "whole" -e "bat" --color never -r 3:59 ~/.config/sxhkd/sxhkdrc && i3-msg workspace back_and_forth
+	keys
 
 super + space
-	rlaunch-def
+	rlaunch-default
 
 super + shift + space
 	i3-msg floating toggle
@@ -190,29 +194,29 @@ super + Return
 	wezterm
 
 super + shift + Return
-	i3-msg workspace "11:A" && NVIM_LISTEN_ADDRESS=/tmp/nvimsocket glrnvim -c "Alpha"
+	nv-launch
 
 super + {minus,equal}
 	i3-msg { move scratchpad, \
 	scratchpad show }
 
 super + {1,2,3,4,5,6,7,8,9}
-	i3-msg workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send -t 900 --icon="window" "Switched to" "Workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+	i3-msg workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && current-workspace "Currently on workspace"
 
 super + shift + {1,2,3,4,5,6,7,8,9,0}
-	i3-msg move container to workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J} && notify-send -t 900 --icon="window" "Moved to" " Workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+	i3-msg move container to workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J}
 
 super + alt + {1,2,3,4,5,6,7,8,9,0}
-	i3-msg workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+	i3-msg workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && current-workspace "Currently on workspace"
 
 super + shift + alt {1,2,3,4,5,6,7,8,9,0}
-	i3-msg move container to workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && notify-send --icon="window" "Moved to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+	i3-msg move container to workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J} && current-workspace "Currently on workspace"
 
 super + {Left,Right}
 	i3-msg workspace {prev,next}
 
 super + shift + {Left,Right}
-	i3-msg move container to workspace {prev,next} && notify-send --icon="window" "Switched to workspace" "$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
+	i3-msg move container to workspace {prev,next}
 
 super + Tab
 	dmenu-window

@@ -19,8 +19,8 @@ local diagnostic_integration = map.gen_integration.diagnostic({
 map.setup({
 	integrations = { diagnostic_integration, git_integration },
 	symbols = {
-		encode = map.gen_encode_symbols.dot("3x2"), scroll_line = "█",
-		scroll_view = "┃",
+		encode = map.gen_encode_symbols.dot("3x2"), scroll_line = "▓",
+		scroll_view = "▒",
 	},
 	-- Window options
 	window = {
