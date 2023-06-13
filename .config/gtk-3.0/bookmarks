@@ -1,2 +1,3 @@
 sftp://192.168.1.162:88/ BimBox
 sftp://192.168.1.162:2022/ SFTPGo
+file:///mnt/sshftps/shared/orgzly orgzly

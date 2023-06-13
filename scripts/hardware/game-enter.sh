@@ -5,3 +5,5 @@ nvidia-settings --assign CurrentMetaMode="DP-2: 1920x1080_144 +1080+0 {ForceComp
 
 #Disable 2º screen
 xrandr --output DP-4 --off
+
+feh --no-fehbg --bg-scale --no-xinerama /home/lckdscl/pictures/Walls/cde-brick-wall.png

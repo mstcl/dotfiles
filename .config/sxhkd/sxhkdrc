@@ -64,11 +64,12 @@ super + shift + a
 	signal-desktop-beta --disable-frame-rate-limit
 
 super + b
-	vivaldi-snapshot --disk-cache-dir="$XDG_RUNTIME_DIR/vivaldi-cache" --process-per-site --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --disable-gpu-driver-bug-workarounds --enable-native-gpu-memory-buffers
+	librewolf
+	# vivaldi-snapshot --disk-cache-dir="$XDG_RUNTIME_DIR/vivaldi-cache" --process-per-site --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --disable-gpu-driver-bug-workarounds --enable-native-gpu-memory-buffers
 	# GTK_THEME=cdetheme-solaris librewolf
 
 super + shift + b
-	chromium
+	thorium-browser
 
 super + c
 	colorpicker

@@ -23,11 +23,12 @@ ts.setup({
         "bash",
         "toml",
         "comment",
+        "org"
     },
     highlight = {
         enable = true,
         use_languagetree = true,
-        additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = {'org'},
         disable = { "latex", "markdown" },
     },
     autopairs = {

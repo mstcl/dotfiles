@@ -4,7 +4,6 @@ vim.g.maplocalleader = ",."
 require'lazy-init'
 
 local disabled_built_ins = {
-    "netrw",
     "gzip",
     "zip",
     "netrwPlugin",

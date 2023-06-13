@@ -4,9 +4,5 @@ backend: wezterm
 term_exe_path: /usr/bin/wezterm
 nvim_exe_path: /usr/bin/nvim
 
-# fonts:
-#  - scientifica
-
-# font_size: 22
 load_term_conf: true
 term_config_path: /home/lckdscl/dotfiles/.config/wezterm/wezterm-nvim.lua

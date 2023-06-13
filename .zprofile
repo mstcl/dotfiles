@@ -19,7 +19,7 @@ export _GL_SYNC_DISPLAY_DEVICE=DP-2
 export VDPAU_DRIVER=nvidia
 export LIBVA_DRIVER_NAME=vdpau
 
-export BROWSER="/usr/bin/vivaldi-snapshot"
+export BROWSER="/usr/bin/floorp"
 export TERMINAL="/usr/bin/wezterm"
 
 export MANPAGER="nvim +Man!"
