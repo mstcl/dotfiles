@@ -1,9 +1,0 @@
-vim.g.floaterm_autoinsert = 1
-vim.g.floaterm_wintitle = 1
-vim.g.floaterm_autohide = 1
-vim.g.floaterm_autoclose = 1
-vim.g.floaterm_opener = "vsplit"
-vim.g.floaterm_position = "topright"
-vim.g.floaterm_height = 0.5
-vim.g.floaterm_width = 0.4
-vim.g.floaterm_borderchars = "─│─│╭╮╯╰"
