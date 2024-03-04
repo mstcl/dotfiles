@@ -1,0 +1,4 @@
+# :vim: set ft=yaml.ansible:
+---
+current_user: "{{ lookup('env', 'USER') }}"
+base_user: "lckdscl"

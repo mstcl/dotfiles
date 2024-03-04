@@ -1,0 +1,33 @@
+# :vim: set ft=yaml.ansible:
+---
+- name: Install and configure base system
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  vars_prompt:
+    - name: user_password
+      prompt: Enter the user's password
+
+  pre_tasks:
+    - name: Create the `aur_builder` user
+      become: true
+      ansible.builtin.user:
+        name: aur_builder
+        create_home: true
+        group: wheel
+    - name: Allow the `aur_builder` user to run `sudo pacman` without a password
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/11-install-aur_builder
+        line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+        create: true
+        mode: "0644"
+        validate: "visudo -cf %s"
+    - name: Install collections
+      community.general.ansible_galaxy_install:
+        type: both
+        requirements_file: "requirements.yml"
+
+  roles:
+    - create_user
+    - setup_toolbox
