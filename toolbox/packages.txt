@@ -1,0 +1,13 @@
+zsh
+speedtest-cli
+parallel-disk-usage-bin
+nvtop
+bottom
+net-tools
+duf
+ext4magic
+bind
+evtest
+gnu-netcat
+gperf
+vi
