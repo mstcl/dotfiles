@@ -1,6 +1,7 @@
 ---
 - name: Add to subuid and subgid for toolbox
-  tags: user
+  when: toolboxes is defined and toolboxes | length > 0
+  tags: toolbox
   become: true
   block:
     - name: Subuid
@@ -10,14 +11,28 @@
       changed_when: false
       ansible.builtin.command: "usermod --add-subgids 10000-65536 {{ base_user }}"
 
-- name: Create toolbox
+- name: Install toolbox
+  when: toolboxes is defined and toolboxes | length > 0
+  become: true
+  tags: toolbox
+  ansible.builtin.package:
+    name: toolbox
+    state: present
+
+- name: Create toolboxes
+  when: toolboxes is defined and toolboxes | length > 0
+  tags: toolbox
   register: toolbox_result
-  ansible.builtin.command: "toolbox create -y"
+  ansible.builtin.command: "toolbox create -y {{ item }}"
   changed_when: "'exists' not in toolbox_result.stderr"
   failed_when: false
+  with_items: "{{ toolboxes }}"
 
-- name: Create toolbox
+- name: Install ansible inside toolboxes
   register: toolbox_result
-  ansible.builtin.command: "toolbox run sudo pacman --needed --noconfirm -S ansible"
-  changed_when: "'nothing' not in toolbox_result.stderr"
+  tags: toolbox
+  when: toolboxes is defined and toolboxes | length > 0
+  ansible.builtin.command: "toolbox run -c {{ item }} sudo pacman --needed --noconfirm -S ansible"
+  changed_when: "'nothing' not in toolbox_result.stdout"
   failed_when: false
+  with_items: "{{ toolboxes }}"
