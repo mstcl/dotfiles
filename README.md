@@ -1,6 +1,6 @@
 # Dotfiles
 
-**lckdscl's opinionated dotfiles**
+**my opinionated dotfiles**
 
 ![preview](screenshots/preview.png)
 
@@ -11,9 +11,10 @@
 -   i3 with no compositor
 -   Development with [toolbox](https://containertoolbx.org/) containers.
 
-## Prerequisite
+## Requirements
 
 - A sudo, non-root user (for now)
+- ansible
 
 ## Get started
 
@@ -24,16 +25,6 @@ $ git clone -b master https://github.com/mstcl/dotfiles
 $ cd dotfiles
 $ git checkout prod
 ```
-
-### Installing Ansible
-
-Use [uv](https://astral.sh/blog/uv) as a pip wrapper:
-
-```sh
-$ sudo pacman -S --needed --noconfirm uv
-$ uv venv .venv && source .venv/bin/activate && uv pip install -r requirements.txt
-```
-
 ### Configuration
 
 Read through what's available to configure in `host_vars/localhost.yml` and
@@ -73,6 +64,8 @@ $ git clone https://github.com/mstcl/zsh
 $ cd zsh
 ```
 
+[https://github.com/mstcl/zsh](https://github.com/mstcl/zsh)
+
 Read the `README.md` and proceed from there.
 
 #### neovim
@@ -83,5 +76,7 @@ neovim installation is found on another separate repo:
 $ git clone https://github.com/mstcl/nvim
 $ cd nvim
 ```
+
+[https://github.com/mstcl/nvim](https://github.com/mstcl/nvim)
 
 Read the `README.md` and proceed from there.
