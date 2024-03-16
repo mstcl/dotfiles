@@ -28,11 +28,12 @@
   failed_when: false
   with_items: "{{ toolboxes }}"
 
-- name: Install ansible inside toolboxes
-  register: toolbox_result
+- name: Install and update packages inside toolboxes
   tags: toolbox
   when: toolboxes is defined and toolboxes | length > 0
-  ansible.builtin.command: "toolbox run -c {{ item }} sudo pacman --needed --noconfirm -S ansible"
-  changed_when: "'nothing' not in toolbox_result.stdout"
-  failed_when: false
-  with_items: "{{ toolboxes }}"
+  ansible.builtin.include_tasks: install_toolbox_packages.yml
+  vars:
+    setup_toolbox_toolbox_name: "{{ item2 }}"
+  loop: "{{ toolboxes | flatten }}"
+  loop_control:
+    loop_var: "item2"

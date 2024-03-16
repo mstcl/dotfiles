@@ -1,0 +1,34 @@
+# :vim: set ft=yaml.ansible:
+---
+current_user: "{{ lookup('env', 'USER') }}"
+base_user: "user"
+
+# ~~ (0) PACKAGES ~~
+
+# The aur helper to install (default yay)
+# All supported ones:
+#   yay
+#   paru
+#   pacaur
+#   trizen
+#   pikaur
+#   aurman
+aur_helper: yay
+
+# Toolboxes to create
+toolboxes:
+  - utils
+  - go
+  - rust
+
+toolbox_packages:
+  rust:
+    - rustup
+  go:
+    - go
+  utils:
+    - net-tools
+    - ext4magic
+    - bind
+    - evtest
+    - gnu-netcat
