@@ -32,3 +32,6 @@ toolbox_packages:
     - bind
     - evtest
     - gnu-netcat
+
+# Packages to be installed
+packages: []
