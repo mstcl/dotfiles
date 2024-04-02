@@ -1,0 +1,2 @@
+---
+get_font_maple_mono_font_path: "/home/{{ current_user }}/.local/share/fonts/maple-mono"

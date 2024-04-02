@@ -1,0 +1,2 @@
+---
+get_font_apple_emoji_font_path: "/home/{{ current_user }}/.local/share/fonts/apple-emoji"

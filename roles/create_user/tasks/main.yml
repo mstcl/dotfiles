@@ -5,7 +5,7 @@
   ansible.builtin.user:
     name: "{{ base_user }}"
     create_home: true
-    groups: wheel,audio,input,kvm,users,realtime,libvirt,docker,autologin
+    groups: wheel,audio,input,kvm,users,realtime,libvirt,docker,autologin,nix-users
     append: true
     shell: /usr/bin/zsh
     uid: 1000

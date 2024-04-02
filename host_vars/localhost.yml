@@ -18,20 +18,135 @@ aur_helper: yay
 # Toolboxes to create
 toolboxes:
   - utils
-  - go
-  - rust
 
 toolbox_packages:
-  rust:
-    - rustup
-  go:
-    - go
   utils:
-    - net-tools
-    - ext4magic
     - bind
+    - dos2unix
     - evtest
+    - ext4magic
     - gnu-netcat
+    - jpegoptim
+    - net-tools
+    - traceroute
+    - ethtool
 
 # Packages to be installed
-packages: []
+packages:
+  - adobe-source-serif-fonts
+  # - alacritty
+  - amd-ucode
+  - amfora
+  - android-file-transfer
+  - android-tools
+  - ark
+  - aseprite
+  - autotiling
+  - base
+  - base-devel
+  - bat
+  - betterbird-bin
+  - bfg
+  - direnv
+  - calibre
+  - chafa
+  - cpupower
+  - dnsmasq
+  - docker
+  - docker-compose
+  - f5vpn
+  - faac
+  - faad2
+  - fcitx5-qt
+  - fcitx5-unikey
+  - fd
+  - fdkaac
+  - feh
+  - firefox
+  - gamemode
+  - gimp
+  - git
+  - glances
+  - gparted
+  - gpu-screen-recorder-gtk-git
+  - grc
+  - gvfs
+  - gst-libav
+  - i2c-tools-git
+  # - i3-wm
+  - j4-menu-desktop
+  - jellyfin-media-player
+  - kcolorchooser
+  - kdeconnect
+  - kvantum
+  # - lemurs
+  - lesspipe
+  - lib32-gamemode
+  - lib32-vkd3d
+  - libebur128
+  - libreoffice-fresh
+  - libva-nvidia-driver
+  - libva-va-gl
+  - linux-lts
+  - lua51
+  - luarocks
+  - lutris
+  - lvm2
+  - lxqt-admin
+  - lxqt-archiver
+  - lxqt-config
+  - lxqt-notificationd
+  - lxqt-openssh-askpass
+  - lxqt-panel
+  - lxqt-policykit
+  - lxqt-qtplugin
+  - lxqt-session
+  - lxqt-sudo
+  - man-db
+  - miktex
+  - mkinitcpio
+  - mpv
+  - mumble
+  # - newsboat
+  - noto-fonts
+  - noto-fonts-cjk
+  - ntfs-3g
+  - nvidia
+  - nvidia-container-toolkit
+  - nvidia-settings
+  - nvidia-utils
+  - nvtop
+  - onefetch
+  - opencl-nvidia
+  - openrgb-bin
+  - opentabletdriver
+  - p7zip
+  - pacman-contrib
+  - pacutils
+  - pandoc-cli
+  - parallel-disk-usage-bin
+  - pavucontrol-qt
+  - pcmanfm-qt
+  - pdfarranger
+  - pipewire
+  - pipewire-alsa
+  - pipewire-jack
+  - pipewire-pulse
+  - pkgfile
+  - playerctl
+  - profile-sync-daemon
+  - protontricks
+  - qalculate-qt
+  - qpdfview
+  - qt5ct
+  - qt6ct
+  - quarto-cli-bin
+  - rbw
+  - realtime-privileges
+  - redshift-qt
+  - reflector
+  - ripgrep
+  - saber-bin
+  - safeeyes
+  - ttf-nerd-fonts-symbols
+  - wol
