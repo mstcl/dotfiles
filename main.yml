@@ -1,12 +1,20 @@
 # :vim: set ft=yaml.ansible:
 ---
+- name: Configure user (run as root)
+  hosts: localhost
+  connection: local
+  tags: root
+  vars_prompt:
+    - name: user_password
+      prompt: Enter the user's password
+
+  roles:
+    - create_user
+
 - name: Install and configure base system
   hosts: localhost
   connection: local
   gather_facts: true
-  vars_prompt:
-    - name: user_password
-      prompt: Enter the user's password
 
   pre_tasks:
     - name: Install collections
@@ -15,9 +23,11 @@
         requirements_file: "requirements.yml"
 
   roles:
-    - create_user
-    - aur
-    - get_font_maple_mono
-    - get_font_sf_pro
-    - get_font_apple_emoji
-    - setup_toolbox
+    # - aur
+    # - get_font_maple_mono
+    # - get_font_sf_pro
+    # - get_font_apple_emoji
+    # - setup_toolbox
+    # - setup_userscripts
+    - setup_rbw
+    # - setup_newsboat

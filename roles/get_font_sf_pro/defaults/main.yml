@@ -1,2 +1,2 @@
 ---
-get_font_sf_pro_font_path: "/home/{{ current_user }}/.local/share/fonts/sf-pro"
+get_font_sf_pro_font_path: "~/.local/share/fonts/sf-pro"

@@ -1,7 +1,6 @@
 # :vim: set ft=yaml.ansible:
 ---
 current_user: "{{ lookup('env', 'USER') }}"
-base_user: "user"
 
 # ~~ (0) PACKAGES ~~
 
@@ -33,120 +32,109 @@ toolbox_packages:
 
 # Packages to be installed
 packages:
-  - adobe-source-serif-fonts
-  # - alacritty
-  - amd-ucode
-  - amfora
-  - android-file-transfer
-  - android-tools
-  - ark
-  - aseprite
-  - autotiling
+  # - adobe-source-serif-fonts # serif fonts
+  # - alacritty # terminal emulator
+  # - amd-ucode # for AMD cpus
+  # - amfora # gemini browser
+  # - aseprite # graphical pixel art editor
+  - autotiling # for i3
   - base
   - base-devel
-  - bat
-  - betterbird-bin
-  - bfg
-  - direnv
-  - calibre
-  - chafa
-  - cpupower
-  - dnsmasq
-  - docker
-  - docker-compose
-  - f5vpn
-  - faac
-  - faad2
-  - fcitx5-qt
-  - fcitx5-unikey
-  - fd
-  - fdkaac
-  - feh
-  - firefox
-  - gamemode
-  - gimp
+  - bat # cat alternative
+  - direnv # directory-based env
+  - chafa # preview img in cli
+  - cpupower # cpu control
+  # - docker
+  # - docker-compose
+  - faac # audio codec
+  - faad2 # audio codec
+  # - fcitx5-qt # input
+  # - fcitx5-unikey # input
+  - fd # find alternative
+  - fdkaac # audio codec
+  - feh # image viewer
+  - firefox # browser
+  - gamemode # gaming
   - git
-  - glances
-  - gparted
-  - gpu-screen-recorder-gtk-git
-  - grc
-  - gvfs
-  - gst-libav
-  - i2c-tools-git
-  # - i3-wm
-  - j4-menu-desktop
-  - jellyfin-media-player
-  - kcolorchooser
-  - kdeconnect
-  - kvantum
-  # - lemurs
-  - lesspipe
-  - lib32-gamemode
-  - lib32-vkd3d
-  - libebur128
-  - libreoffice-fresh
-  - libva-nvidia-driver
-  - libva-va-gl
-  - linux-lts
-  - lua51
-  - luarocks
-  - lutris
-  - lvm2
-  - lxqt-admin
-  - lxqt-archiver
-  - lxqt-config
-  - lxqt-notificationd
-  - lxqt-openssh-askpass
-  - lxqt-panel
-  - lxqt-policykit
-  - lxqt-qtplugin
-  - lxqt-session
-  - lxqt-sudo
-  - man-db
-  - miktex
-  - mkinitcpio
-  - mpv
-  - mumble
-  # - newsboat
-  - noto-fonts
-  - noto-fonts-cjk
-  - ntfs-3g
-  - nvidia
-  - nvidia-container-toolkit
-  - nvidia-settings
-  - nvidia-utils
-  - nvtop
-  - onefetch
-  - opencl-nvidia
-  - openrgb-bin
-  - opentabletdriver
-  - p7zip
-  - pacman-contrib
-  - pacutils
-  - pandoc-cli
-  - parallel-disk-usage-bin
-  - pavucontrol-qt
-  - pcmanfm-qt
-  - pdfarranger
-  - pipewire
-  - pipewire-alsa
-  - pipewire-jack
-  - pipewire-pulse
-  - pkgfile
-  - playerctl
-  - profile-sync-daemon
-  - protontricks
-  - qalculate-qt
-  - qpdfview
-  - qt5ct
-  - qt6ct
-  - quarto-cli-bin
-  - rbw
+  - glances # system monitor
+  # - gpu-screen-recorder-gtk-git # record screen
+  - grc # color output of commands
+  - gvfs # pcmanfm-qt fs helper
+  - gst-libav # codec
+  # - iamb # tui matrix client
+  # - i2c-tools # hardware detector
+  # - i3-wm # wm
+  # - intel-ucode # for intel CPUs
+  # - intel-media-driver # hardware video acceleration (INTEL)
+  - kcolorchooser # color picker
+  - kdeconnect # phone connector
+  # - lemurs # display manager
+  - lesspipe # swissarmy less
+  - lib32-gamemode # gaming
+  - lib32-vkd3d # gaming
+  - libebur128 # audiocodec
+  # - libva-nvidia-driver # hardware video acceleration (nvidia)
+  # - libvdpau-va-gl # hardware video acceleration translation layer
+  # - linux-lts # backup kernel
+  # - lutris # game launcher
+  # - lvm2 # for LVM fs
+  - lxqt-admin # LXQt
+  - lxqt-archiver # LXQt
+  - lxqt-config # LXQt
+  - lxqt-notificationd # LXQt
+  - lxqt-openssh-askpass # LXQt
+  - lxqt-panel # LXQt
+  - lxqt-policykit # LXQt
+  - lxqt-qtplugin # LXQt
+  - lxqt-session # LXQt
+  - lxqt-sudo # LXQt
+  - man-db # man pages
+  - miktex # latex
+  - mkinitcpio # arch mkinitcpio
+  - mpv # media player
+  - neomutt # email
+  - newsboat # rss
+  - noto-fonts # font fallback
+  - noto-fonts-cjk # font fallback cjk
+  - ntfs-3g # NTFS driver
+  # - nvidia # NVIDIA
+  # - nvidia-container-toolkit # NVIDIA
+  # - nvidia-settings # NVIDIA
+  # - nvidia-utils # NVIDIA
+  # - nvtop # NVIDIA
+  - onefetch # fetch for git
+  # - opencl-nvidia # NVIDIA
+  # - openrgb-bin # for controlling rgb
+  # - opentabletdriver # for tablets
+  - p7zip # compressed archive tools
+  - pacman-contrib # pacman utils
+  - pacutils # pacman utils
+  - pandoc-bin # precompiled pandoc
+  - parallel-disk-usage-bin # cli disk usage tree
+  - partitionmanager # graphical partition manager
+  - pavucontrol-qt # graphical volume control
+  - pcmanfm-qt # graphical file manager
+  - pdfarranger # pdf tool
+  - pipewire # audio
+  - pipewire-alsa # audio
+  - pipewire-jack # audio
+  - pipewire-pulse # audio
+  - pkgfile # for reading pkg db
+  - playerctl # control media
+  - profile-sync-daemon # firefox profile on ram
+  - protontricks # gaming
+  - qalculate-qt # graphical calculator
+  - qpdfview # pdfviewer
+  - qt5ct # theming
+  - qt6ct # theming
+  - rbw # bit/vaultwarden client
   - realtime-privileges
-  - redshift-qt
-  - reflector
-  - ripgrep
-  - saber-bin
-  - safeeyes
-  - ttf-nerd-fonts-symbols
-  - wol
+  - redshift-qt # monitor hue shifter
+  - reflector # pacman utils
+  - ripgrep # grep alternative
+  - saber-bin # handwritten note
+  - safeeyes # eyerest
+  # - stmps # subsonic player (not packaged). See roles/install_stmps
+  # - steam # gaming. Needs multilib. See roles/enable_pacman_multilib
+  - ttf-nerd-fonts-symbols # font fallback symbols
+  # - wol # wake-from-lan
