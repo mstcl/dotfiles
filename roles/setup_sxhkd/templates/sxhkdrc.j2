@@ -55,9 +55,8 @@ super + {f,o,x}
 	i3-msg {fullscreen toggle, focus mode_toggle, \
 	layout toggle stacking splitv splith tabbed}
 
-super + g; {p,c,u}
-	rbw unlocked &> /dev/null || rbw unlock && \
-	{rbw-menu, rbw-menu-code, rbw-menu-user}
+super + g; {p,c}
+	{alapass, alatotp}
 
 super + {h,j,k,l}
 	i3-msg focus {left,down,up,right}
@@ -93,7 +92,7 @@ super + shift + space
 	i3-msg floating toggle
 
 super + Return
-	alacritty
+	alacritty msg create-window || alacritty
 
 super + space
 	alalauncher
