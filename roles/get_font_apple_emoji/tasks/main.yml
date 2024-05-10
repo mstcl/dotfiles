@@ -10,11 +10,9 @@
     path: "{{ get_font_apple_emoji_font_path }}"
     state: directory
     mode: "0775"
-    owner: 1000
 
 - name: Download
   ansible.builtin.get_url:
     url: "{{ (json_response.content | from_json)[0].assets[0].browser_download_url }}"
     dest: "{{ get_font_apple_emoji_font_path }}"
     mode: "0644"
-    owner: 1000

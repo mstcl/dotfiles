@@ -1,0 +1,14 @@
+source ~/.config/mutt/muttrc
+
+set imap_user={{ item.address }}
+set imap_pass=`rbw get "{{ item.password }}"`
+set folder=imaps://imap.migadu.com/
+set spoolfile=+INBOX
+set postponed=+Drafts
+set record=+Sent
+
+set smtp_url=smtps://$imap_user@smtp.migadu.com
+set realname="{{ item.sender }}"
+set from={{ item.address }}
+set use_from=yes
+set ssl_force_tls=yes

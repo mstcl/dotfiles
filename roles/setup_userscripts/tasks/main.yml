@@ -1,0 +1,27 @@
+---
+- name: Make symbolic link
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/scripts"
+    dest: "~/scripts"
+    state: link
+
+- name: Ensure ~/.local/bin exists
+  ansible.builtin.file:
+    path: "~/.local/bin"
+    state: directory
+    mode: "0775"
+
+- name: Get list of scripts
+  ansible.builtin.find:
+    paths: "{{ playbook_dir }}/scripts/src/"
+    patterns: "*.sh"
+  register: find_results
+
+- name: Make symbolic link into ~/.local/bin
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/scripts/src/{{ (item.path | basename) }}"
+    dest: "~/.local/bin/{{ (item.path | basename | splitext)[0] }}"
+    state: link
+    follow: false
+    force: true
+  with_items: "{{ find_results.files }}"

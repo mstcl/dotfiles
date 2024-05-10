@@ -23,11 +23,12 @@
         requirements_file: "requirements.yml"
 
   roles:
-    # - aur
-    # - get_font_maple_mono
-    # - get_font_sf_pro
-    # - get_font_apple_emoji
-    # - setup_toolbox
-    # - setup_userscripts
+    - setup_aur
+    - get_font_maple_mono
+    - get_font_sf_pro
+    - get_font_apple_emoji
+    - setup_toolbox
+    - setup_userscripts
     - setup_rbw
     # - setup_newsboat
+    - setup_neomutt

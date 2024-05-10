@@ -1,9 +1,5 @@
 # :vim: set ft=yaml.ansible:
 ---
-current_user: "{{ lookup('env', 'USER') }}"
-
-# ~~ (0) PACKAGES ~~
-
 # The aur helper to install (default yay)
 # All supported ones:
 #   yay
@@ -32,11 +28,11 @@ toolbox_packages:
 
 # Packages to be installed
 packages:
-  # - adobe-source-serif-fonts # serif fonts
-  # - alacritty # terminal emulator
+  - adobe-source-serif-fonts # serif fonts
+  - alacritty # terminal emulator
   # - amd-ucode # for AMD cpus
-  # - amfora # gemini browser
-  # - aseprite # graphical pixel art editor
+  - amfora # gemini browser
+  - aseprite # graphical pixel art editor
   - autotiling # for i3
   - base
   - base-devel
@@ -57,7 +53,6 @@ packages:
   - gamemode # gaming
   - git
   - glances # system monitor
-  # - gpu-screen-recorder-gtk-git # record screen
   - grc # color output of commands
   - gvfs # pcmanfm-qt fs helper
   - gst-libav # codec
@@ -120,6 +115,7 @@ packages:
   - pipewire-jack # audio
   - pipewire-pulse # audio
   - pkgfile # for reading pkg db
+  # - plasma-desktop # KDE plasma
   - playerctl # control media
   - profile-sync-daemon # firefox profile on ram
   - protontricks # gaming
@@ -134,7 +130,7 @@ packages:
   - ripgrep # grep alternative
   - saber-bin # handwritten note
   - safeeyes # eyerest
-  # - stmps # subsonic player (not packaged). See roles/install_stmps
+  - stmps # subsonic player (not packaged). See roles/install_stmps
   # - steam # gaming. Needs multilib. See roles/enable_pacman_multilib
   - ttf-nerd-fonts-symbols # font fallback symbols
   # - wol # wake-from-lan

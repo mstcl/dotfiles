@@ -4,7 +4,6 @@
     path: "{{ get_font_sf_pro_font_path }}/src"
     state: directory
     mode: "0775"
-    owner: 1000
 
 - name: Download and unzip
   ansible.builtin.unarchive:
@@ -27,6 +26,5 @@
     src: "{{ item }}"
     dest: "{{ get_font_sf_pro_font_path }}"
     mode: "0644"
-    owner: 1000
   with_fileglob:
     - "{{ get_font_sf_pro_font_path }}/src/SFProFonts/Library/Fonts/*.otf"

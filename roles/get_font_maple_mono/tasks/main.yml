@@ -10,7 +10,6 @@
     path: "{{ get_font_maple_mono_font_path }}"
     state: directory
     mode: "0775"
-    owner: 1000
 
 - name: Download and unzip
   ansible.builtin.unarchive:

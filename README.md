@@ -2,18 +2,15 @@
 
 **my opinionated dotfiles**
 
-![preview](screenshots/preview.png)
-
 ## Overview
 
 -   Arch Linux
 -   X11
 -   i3 with no compositor
--   Development with [toolbox](https://containertoolbx.org/) containers.
+-   Additional packages in [toolbox](https://containertoolbx.org/) containers.
 
 ## Requirements
 
-- A sudo, non-root user (for now)
 - ansible
 
 ## Get started
@@ -21,9 +18,8 @@
 ### Cloning
 
 ```sh
-$ git clone -b master https://github.com/mstcl/dotfiles
+$ git clone https://github.com/mstcl/dotfiles
 $ cd dotfiles
-$ git checkout prod
 ```
 ### Configuration
 
