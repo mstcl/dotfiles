@@ -1,0 +1,121 @@
+# :.config/sxhkd/sxhkdrc
+# vim:set ft=sxhkdrc:
+
+##############
+#  KEYBINDS  #
+##############
+
+# a:         wmfocus               |
+# b:         firefox               |
+# f:         fullscreen toggle     |
+# g:         RBW CHORDS------------|
+#            p : password          |
+#            c : totp              |
+#            u : username          |
+# h:         focus left            | shift h:         move left
+# i:                               | shift i:         kde change key input
+# j:         focus down            | shift j:         move down
+# k:         focus up              | shift k:         move up
+# l:         focus right           | shift l:         move right
+# n:         tdrop                 |
+# o                                | shift o:         move to DP-4
+# q                                | shift q:         quit window
+# s:         SCREEN CHORDS---------| shift s:         un/sticky window
+#            r : region & gui      |
+#            f : fullscreen        |
+#            c : colorpicker       |
+# t:         scratchpad            |
+# x:         toggle layout         |
+# o:         toggle focus          |
+# \:         last workspace        |
+# ;:         kde clipboard         |
+# .:         volume up             |
+# ,:         volume down           |
+# /:         play/pause            |
+# -:         move to scratchpad    |
+# =:         toggle scratchpad     |
+# return:    terminal              |
+# space:     launcher              | shift space:     float toggle
+# {1-0}:     workspaces 1-10       | shift {1-0}:     move to wsp 1-10
+# alt {1-0}: workspaces 1-10       | shift alt {1-0}: move to wsp 11-20
+# escape:    dunst history         | shift escape:    system monitor
+# left:      focus wsp left        | shift left:      move to wsp left
+# right:     focus wsp right       | shift right:     move to wsp right
+
+super + a
+	focus
+
+super + b
+	firefox
+
+super + d
+	sys-actions
+
+super + {f,o,x}
+	i3-msg {fullscreen toggle, focus mode_toggle, \
+	layout toggle stacking splitv splith tabbed}
+
+super + g; {p,c,u}
+	rbw unlocked &> /dev/null || rbw unlock && \
+	{rbw-menu, rbw-menu-code, rbw-menu-user}
+
+super + {h,j,k,l}
+	i3-msg focus {left,down,up,right}
+
+super + shift + {h,j,k,l}
+	i3-msg move {left,down,up,right}
+
+super + shift + {o,q,s}
+	i3-msg {move container to output left, kill, sticky toggle}
+
+super + t
+	alascratch
+
+super + n
+	alaquake
+
+super + s; {r,f,c}
+	{flameshot gui, flameshot full, colorpicker}
+
+super + comma
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+super  + period
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+super + slash
+	playerctl -p stmps play-pause
+
+super + bracketright
+	playerctl -p stmps next
+
+super + shift + space
+	i3-msg floating toggle
+
+super + Return
+	alacritty
+
+super + space
+	alalauncher
+
+super + {minus,equal}
+	i3-msg { move scratchpad, \
+	scratchpad show }
+
+super + {1,2,3,4,5,6,7,8,9}
+	i3-msg workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J}
+
+super + shift + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg move container to workspace {1:A,2:B,3:C,4:D,5:E,6:F,7:G,8:H,9:I,0:J}
+
+super + alt + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J}
+
+super + shift + alt {1,2,3,4,5,6,7,8,9,0}
+	i3-msg move container to workspace {11:A,12:B,13:C,14:D,15:E,16:F,17:G,18:H,19:I,20:J}
+
+super + {Left,Right}
+	i3-msg workspace {prev,next}
+
+super + shift + {Left,Right}
+	i3-msg move container to workspace {prev,next}

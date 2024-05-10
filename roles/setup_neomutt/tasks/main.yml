@@ -9,11 +9,11 @@
   ansible.builtin.template:
     src: "muttrc.j2"
     dest: "~/.config/mutt/muttrc"
-    mode: "0775"
+    mode: "0644"
 
 - name: Template neomuttrc inboxes
   ansible.builtin.template:
     src: "inbox.j2"
     dest: "~/.config/mutt/{{ item.name }}"
-    mode: "0775"
+    mode: "0644"
   loop: "{{ email_inboxes }}"

@@ -30,5 +30,7 @@
     - setup_toolbox
     - setup_userscripts
     - setup_rbw
-    # - setup_newsboat
+    - setup_i3
+    - setup_sxhkd
+    - setup_newsboat
     - setup_neomutt

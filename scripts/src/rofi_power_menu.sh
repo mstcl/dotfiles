@@ -6,10 +6,10 @@ uptime=$(uptime -p | sed -e 's/up //g')
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
 # Options
-shutdown=" 襤 Shutdown "
-reboot=" Restart "
-lock="  Lock "
-suspend="  Sleep "
+shutdown="Shutdown "
+reboot="Restart "
+lock="Lock "
+suspend="Sleep "
 
 # Confirmation
 confirm_exit() {

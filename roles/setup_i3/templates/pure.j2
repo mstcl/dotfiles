@@ -1,0 +1,154 @@
+# vim:set ft=i3config:
+
+#############
+#  Startup  #
+#############
+
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 &
+exec --no-startup-id sh ~/.local/bin/ram_rgb_off &
+exec --no-startup-id lxqt-panel &
+exec --no-startup-id safeeyes &
+exec --no-startup-id fcitx5 &
+exec --no-startup-id kdeconnect-indicator &
+exec --no-startup-id xbanish &
+exec --no-startup-id redshift-qt &
+exec --no-startup-id setxkbmap -option compose:menu &
+exec --no-startup-id twmnd &
+exec_always --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/downloads/1000007455-01.jpeg &
+exec_always --no-startup-id autotiling &
+
+
+#############
+#  Aliases  #
+#############
+
+set $mod Mod4
+set $alt Mod1
+set $hyper Mod3
+set $monL DP-2
+set $monR DP-4
+
+set $ws1L 1:A
+set $ws1R 11:A
+set $ws2L 2:B
+set $ws2R 12:B
+set $ws3L 3:C
+set $ws3R 13:C
+set $ws4L 4:D
+set $ws4R 14:D
+set $ws5L 5:E
+set $ws5R 15:E
+set $ws6L 6:F
+set $ws6R 16:F
+set $ws7L 7:G
+set $ws7R 17:G
+set $ws8L 8:H
+set $ws8R 18:H
+set $ws9L 9:I
+set $ws9R 19:I
+set $ws0L 10:J
+set $ws0R 20:J
+
+
+############################
+#  Workspace-monitor maps  #
+############################
+
+workspace $ws1L output $monL
+workspace $ws1R output $monR
+workspace $ws2L output $monL
+workspace $ws2R output $monR
+workspace $ws3L output $monL
+workspace $ws3R output $monR
+workspace $ws4L output $monL
+workspace $ws4R output $monR
+workspace $ws5L output $monL
+workspace $ws5R output $monR
+workspace $ws6L output $monL
+workspace $ws6R output $monR
+workspace $ws7L output $monL
+workspace $ws7R output $monR
+workspace $ws8L output $monL
+workspace $ws8R output $monR
+workspace $ws9L output $monL
+workspace $ws9R output $monR
+workspace $ws0L output $monL
+workspace $ws0R output $monR
+
+
+##############
+#  Priority  #
+##############
+
+focus_on_window_activation urgent
+popup_during_fullscreen smart
+
+
+##########################
+#  Bare minimum options  #
+##########################
+
+floating_modifier $mod
+bindsym $mod+backslash workspace back_and_forth
+
+
+################
+#  UI options  #
+################
+
+# Font
+font pango: SF Pro Display Bold 16
+
+# Gaps
+gaps outer 0
+gaps inner 0
+smart_gaps on
+
+# Borders
+smart_borders on
+for_window [class="^.*"] border pixel 4
+default_border pixel 4
+default_floating_border pixel 4
+
+# Extract colors from X
+set_from_resource $fg i3wm.color7
+set_from_resource $c2 i3wm.color0
+set_from_resource $bg i3wm.color0
+set_from_resource $c1 i3wm.color8
+
+# Window colors
+## class                border  backgr  text indicator child_border
+client.focused          $c1     $c1     $fg  $c1       $c1
+client.focused_inactive $c2     $c2     $fg  $c2       $c2
+client.unfocused        $c2     $c2     $fg  $c2       $c2
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+
+
+##################
+#  Window rules  #
+##################
+
+# Floating windows
+for_window [class="^(mpv)|(Pavucontrol)|(lxqt-config)|(pcmanfm*)|(Qalculate.*)|(quake)|(float)|(zoom)|([fq]eh)$"] floating enable
+for_window [class="^(launcher)$"] floating enable
+for_window [class="^(firefox)$" title="^Library$"] floating enable
+for_window [window_role="alert"] floating enable
+no_focus [window_role="alert"]
+
+# Resizing windows
+for_window [class="^(mpv)|(Pavucontrol)|(lxqt-config)|(pcmanfm*)|(quake)|(float)|(zoom)|([fq]eh)$"] resize set 940 680
+for_window [class="^(launcher)$"] resize set 800 678
+for_window [class="^(firefox)$" title="^Library$"] resize set 940 680
+for_window [class="Qalculate.*"] resize set 640 480
+for_window [title="Set Unknowns"] resize set 184 64
+for_window [class="float-small"] resize set 640 320
+for_window [title="^(Rename File)|(Execute File)|(Choose Application)|(Creating New Folder)|(Confirm File Replacing)$"] resize set 284 164
+for_window [title="^(Copying files)|(Moving files)|(Deleting files)$"] resize set 484 164
+
+
+for_window [class="whole"] fullscreen enable
+
+for_window [class="quake"] border pixel 0
+for_window [class="launcher"] border pixel 0
