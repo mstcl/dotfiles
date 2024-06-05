@@ -1,11 +1,13 @@
 ---
 - name: Ensure newsboat directory exists
+  tags: newsboat
   ansible.builtin.file:
     path: "~/.config/newsboat"
     state: directory
-    mode: "0775"
+    mode: "0755"
 
 - name: Template config
+  tags: newsboat
   ansible.builtin.template:
     src: "config.j2"
     dest: "~/.config/newsboat/config"

@@ -1,17 +1,20 @@
 ---
 - name: Ensure mutt directory exists
+  tags: mutt
   ansible.builtin.file:
     path: "~/.config/mutt"
     state: directory
-    mode: "0775"
+    mode: "0755"
 
 - name: Template neomuttrc
+  tags: mutt
   ansible.builtin.template:
     src: "muttrc.j2"
     dest: "~/.config/mutt/muttrc"
     mode: "0644"
 
 - name: Template neomuttrc inboxes
+  tags: mutt
   ansible.builtin.template:
     src: "inbox.j2"
     dest: "~/.config/mutt/{{ item.name }}"

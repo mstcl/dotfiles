@@ -1,17 +1,20 @@
 ---
 - name: Grab releases
+  tags: fonts
   ansible.builtin.uri:
     url: https://api.github.com/repos/samuelngs/apple-emoji-linux/releases
     return_content: true
   register: json_response
 
 - name: Ensure font directory exists
+  tags: fonts
   ansible.builtin.file:
     path: "{{ get_font_apple_emoji_font_path }}"
     state: directory
-    mode: "0775"
+    mode: "0755"
 
 - name: Download
+  tags: fonts
   ansible.builtin.get_url:
     url: "{{ (json_response.content | from_json)[0].assets[0].browser_download_url }}"
     dest: "{{ get_font_apple_emoji_font_path }}"

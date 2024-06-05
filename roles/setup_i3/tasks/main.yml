@@ -1,11 +1,13 @@
 ---
 - name: Ensure i3 directory exists
+  tags: i3
   ansible.builtin.file:
     path: "~/.config/i3"
     state: directory
-    mode: "0775"
+    mode: "0755"
 
 - name: Template config
+  tags: i3
   when: setup_i3_with_lxqt
   ansible.builtin.template:
     src: "config.j2"
@@ -13,6 +15,7 @@
     mode: "0644"
 
 - name: Template config
+  tags: i3
   when: not setup_i3_with_lxqt
   ansible.builtin.template:
     src: "pure.j2"

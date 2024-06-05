@@ -34,3 +34,6 @@
     - setup_sxhkd
     - setup_newsboat
     - setup_neomutt
+    - setup_vdirsyncer
+    - setup_khal
+    - setup_todoman

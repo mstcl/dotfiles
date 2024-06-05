@@ -1,27 +1,32 @@
 ---
 - name: Ensure font directory exists
+  tags: fonts
   ansible.builtin.file:
     path: "{{ get_font_sf_pro_font_path }}/src"
     state: directory
-    mode: "0775"
+    mode: "0755"
 
 - name: Download and unzip
+  tags: fonts
   ansible.builtin.unarchive:
     src: "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
     dest: "{{ get_font_sf_pro_font_path }}/src"
     remote_src: true
 
 - name: Unzip DMG file
+  tags: fonts
   ansible.builtin.unarchive:
     src: "{{ get_font_sf_pro_font_path }}/src/SF-Pro.dmg"
     dest: "{{ get_font_sf_pro_font_path }}/src"
 
 - name: Unzip Payload
+  tags: fonts
   ansible.builtin.unarchive:
     src: "{{ get_font_sf_pro_font_path }}/src/SFProFonts/Payload~"
     dest: "{{ get_font_sf_pro_font_path }}/src"
 
 - name: Copy fonts
+  tags: fonts
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ get_font_sf_pro_font_path }}"

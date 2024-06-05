@@ -4,17 +4,10 @@
 #  Startup  #
 #############
 
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 &
 exec --no-startup-id sh ~/.local/bin/ram_rgb_off &
-exec --no-startup-id lxqt-panel &
-exec --no-startup-id safeeyes &
-exec --no-startup-id fcitx5 &
-exec --no-startup-id kdeconnect-indicator &
-exec --no-startup-id xbanish &
-exec --no-startup-id redshift-qt &
-exec --no-startup-id setxkbmap -option compose:menu &
-exec --no-startup-id twmnd &
-exec_always --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/downloads/1000007455-01.jpeg &
+exec --no-startup-id clipcatd &
+exec --no-startup-id redshift -P -O 6000 &
+exec_always --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/downloads/background.jpeg &
 exec_always --no-startup-id autotiling &
 
 
@@ -97,7 +90,7 @@ bindsym $mod+backslash workspace back_and_forth
 ################
 
 # Font
-font pango: SF Pro Display Bold 16
+font pango: Maple Mono Bold 15
 
 # Gaps
 gaps outer 0
@@ -106,9 +99,12 @@ smart_gaps on
 
 # Borders
 smart_borders on
-for_window [class="^.*"] border pixel 4
-default_border pixel 4
-default_floating_border pixel 4
+for_window [class="^.*"] border normal 4
+default_border normal 4
+default_floating_border normal 4
+
+title_align left
+for_window [class=".*"] title_format "  %title"
 
 # Extract colors from X
 set_from_resource $fg i3wm.color7
@@ -133,13 +129,17 @@ client.background       $bg
 # Floating windows
 for_window [class="^(mpv)|(Pavucontrol)|(lxqt-config)|(pcmanfm*)|(Qalculate.*)|(quake)|(float)|(zoom)|([fq]eh)$"] floating enable
 for_window [class="^(launcher)$"] floating enable
+for_window [class="^(music)$"] floating enable
 for_window [class="^(firefox)$" title="^Library$"] floating enable
 for_window [window_role="alert"] floating enable
 no_focus [window_role="alert"]
 
 # Resizing windows
 for_window [class="^(mpv)|(Pavucontrol)|(lxqt-config)|(pcmanfm*)|(quake)|(float)|(zoom)|([fq]eh)$"] resize set 940 680
-for_window [class="^(launcher)$"] resize set 800 678
+for_window [class="^(launcher)$"] resize set 459 634
+for_window [class="^(launcher)$"] move position center
+for_window [class="^(music)$"] resize set 781 550
+for_window [class="^(music)$"] move position center
 for_window [class="^(firefox)$" title="^Library$"] resize set 940 680
 for_window [class="Qalculate.*"] resize set 640 480
 for_window [title="Set Unknowns"] resize set 184 64
@@ -152,3 +152,4 @@ for_window [class="whole"] fullscreen enable
 
 for_window [class="quake"] border pixel 0
 for_window [class="launcher"] border pixel 0
+for_window [class="music"] border pixel 0

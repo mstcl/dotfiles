@@ -1,11 +1,13 @@
 ---
 - name: Ensure rbw directory exists
+  tags: rbw
   ansible.builtin.file:
     path: "~/.config/rbw"
     state: directory
-    mode: "0775"
+    mode: "0755"
 
 - name: Make config
+  tags: rbw
   ansible.builtin.template:
     src: "rbw.json.j2"
     dest: "~/.config/rbw/config.json"
