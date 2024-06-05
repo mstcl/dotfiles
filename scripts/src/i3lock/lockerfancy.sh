@@ -8,7 +8,7 @@ red=682828ff
 cyan=1d0e53ff
 transparent=00000000
 bg=630e49ff
-fg=c8beb7ff
+fg=cec6bfff
 outline=161e29ff
 
 screenH=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2 | head -n 1)

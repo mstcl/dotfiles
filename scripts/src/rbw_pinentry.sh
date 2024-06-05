@@ -2,8 +2,8 @@
 
 # Pinentry depending on session
 
-if [ -z ${XDG_CURRENT_DESKTOP+x} ]; then
-	pinentry-curses
-else
+if [ -z ${SSH_TTY} ]; then
 	pinentry-qt
+else
+	pinentry-curses
 fi
