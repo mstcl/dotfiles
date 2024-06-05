@@ -1,0 +1,14 @@
+---
+- name: Ensure todoman directory exists
+  tags: todoman
+  ansible.builtin.file:
+    path: "~/.config/todoman"
+    state: directory
+    mode: "0755"
+
+- name: Template config
+  tags: todoman
+  ansible.builtin.template:
+    src: "config.py.j2"
+    dest: "~/.config/todoman/config.py"
+    mode: "0644"
