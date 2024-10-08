@@ -31,18 +31,17 @@ packages:
   - adobe-source-serif-fonts # serif fonts
   - alacritty # terminal emulator
   # - amd-ucode # for AMD cpus
-  - amfora # gemini browser
+  # - amfora # gemini browser
   - aseprite # graphical pixel art editor
   - autotiling # for i3
   - base
   - base-devel
   - bat # cat alternative
   - direnv # directory-based env
+  - dunst # notifications
   - chafa # preview img in cli
   - clipcat # clipboard manager
   - cpupower # cpu control
-  # - docker
-  # - docker-compose
   - faac # audio codec
   - faad2 # audio codec
   - fcitx5-qt # input
@@ -57,16 +56,14 @@ packages:
   - grc # color output of commands
   - gvfs # pcmanfm-qt fs helper
   - gst-libav # codec
-  - iamb # tui matrix client
   # - i2c-tools # hardware detector
   # - i3-wm # wm
   # - intel-ucode # for intel CPUs
   # - intel-media-driver # hardware video acceleration (INTEL)
-  - jq # json query
   - kcolorchooser # color picker
-  - kdeconnect # phone connector
+  # - kdeconnect # phone connector
   - kwayland5 # for pinentry-qt
-  - khal # for caldav
+  # - khal # for caldav
   - lemurs # display manager
   - lesspipe # swissarmy less
   - lib32-gamemode # gaming
@@ -74,6 +71,7 @@ packages:
   - libebur128 # audiocodec
   - lxqt-policykit # LXQt (generic)
   - lxqt-archiver # LXQt (generic)
+  - libnotify # sending notifications
   # - libva-nvidia-driver # hardware video acceleration (nvidia)
   # - libvdpau-va-gl # hardware video acceleration translation layer
   # - linux-lts # backup kernel
@@ -87,12 +85,11 @@ packages:
   # - lxqt-session # LXQt
   # - lxqt-sudo # LXQt
   - man-db # man pages
-  - miktex # latex
   - mkinitcpio # arch mkinitcpio
   - mpv # media player
   - mpv-mpris # media player
-  - neomutt # email
-  - newsboat # rss
+  # - neomutt # email
+  # - newsboat # rss
   - noto-fonts # font fallback
   - noto-fonts-cjk # font fallback cjk
   - ntfs-3g # NTFS driver
@@ -101,7 +98,6 @@ packages:
   # - nvidia-settings # NVIDIA
   # - nvidia-utils # NVIDIA
   # - nvtop # NVIDIA
-  - onefetch # fetch for git
   # - opencl-nvidia # NVIDIA
   # - openrgb-bin # for controlling rgb
   # - opentabletdriver # for tablets
@@ -131,12 +127,21 @@ packages:
   - redshift # monitor hue shifter
   - reflector # pacman utils
   - ripgrep # grep alternative
-  - saber-bin # handwritten note
   # - steam # gaming. Needs multilib. See roles/enable_pacman_multilib
-  - todoman # vTODO companion
+  # - todoman # vTODO companion
   - ttf-nerd-fonts-symbols # font fallback symbols
   # - wol # wake-from-lan
   - uv # python pip wrapper
-  - vdirsyncer # sync caldav
+  # - vdirsyncer # sync caldav
   - xss-lock # use external screensaver
   - xscreensaver # screensaver
+
+  # --- DEV PACKAGES
+  - buildkit
+  - docker
+  - docker-buildx
+  - docker-compose
+  - go
+  - jq
+  - miktex
+  - npm
