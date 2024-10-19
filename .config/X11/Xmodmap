@@ -1,0 +1,14 @@
+! :.config/X11/Xmodmap
+
+clear mod1
+clear mod2
+clear mod3
+clear mod4
+clear mod5
+
+!keycode 134 = Hyper_L
+keycode 108 = Multi_key Alt_R Meta_R Alt_R Meta_R
+
+add mod1 = Alt_L Alt_R
+!add mod3 = Hyper_L
+add mod4 = Super_L Super_R
