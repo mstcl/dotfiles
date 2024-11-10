@@ -74,26 +74,24 @@ text = "CellBackground"
 
 [cursor]
 thickness = 0.25
-unfocused_hollow = true
-vi_mode_style = "Block"
+unfocused_hollow = false
 
 [cursor.style]
 blinking = "Off"
-shape = "Beam"
 
 [env]
 TERM = "alacritty"
 
 [font]
 builtin_box_drawing = true
-size = 13.5
+size = 13
 
 [font.bold]
 family = "Maple Mono"
 
 [font.glyph_offset]
 x = 0
-y = 0
+y = 3
 
 [font.italic]
 family = "Maple Mono"
@@ -103,7 +101,7 @@ family = "Maple Mono"
 
 [font.offset]
 x = 0
-y = 0
+y = 6
 
 [hints]
 alphabet = "jfkdls;ahgurieowpq"

@@ -1,0 +1,70 @@
+! :.config/X11/Xresources
+! vim:set ft=xdefaults:
+! X colors.
+*foreground:        #161e29
+*background:        #e9e5e2
+*.foreground:       #161e29
+*.background:       #e9e5e2
+emacs*foreground:   #161e29
+emacs*background:   #e9e5e2
+urxvt*foreground:   #161e29
+xterm*foreground:   #161e29
+uxterm*foreground:  #161e29
+urxvt*background:   #e9e5e2
+xterm*background:   #e9e5e2
+uxterm*background:  #e9e5e2
+urxvt*cursorColor:  #3a322c
+xterm*cursorColor:  #3a322c
+uxterm*cursorColor: #3a322c
+urxvt*borderColor:  #e9e5e2
+*.font: SF Pro Display
+xterm*renderFont: true
+xterm*faceName: Maple Mono:size=16:antialias=false
+urxvt*font: Maple Mono:size=16:antialias=false
+xterm*utf8Title: true
+xterm*saveLines: 50000
+xterm*jumpScroll: true
+xterm*scrollTtyOutput: false
+xterm*scrollKey: true
+xterm*alwaysUseMods: true
+xterm*metaSendsEscape: true
+xterm.borderWidth: 0
+xterm.vt100.locale: false
+xterm.vt100.utf8: true
+xterm.vt100.metaSendsEscape: true
+xterm.vt100.scrollBar: false
+xterm.vt100.scrollbar.width: 0
+xterm.vt100.scaleHeight: 1.0
+
+! Colors 0-15.
+*.color0: #e9e5e2
+*color0:  #e9e5e2
+*color1: #735057
+*color2:  #6a2a2a
+*color3:  #184e1e
+*color4:  #836e9f
+*color5:  #836e9f
+*color6:  #53424c
+*color7:  #161e29
+*color8:  #c8beb7
+*color9:  #752c5f
+*color10:  #844242
+*color11:  #24752d
+*color12:  #483d8b
+*color13:  #b5a5c7
+*color14:  #baa6b1
+*color15:  #3a322c
+
+! Black color that will not be affected by bold highlighting.
+*.color66: #e9e5e2
+*color66:  #e9e5e2
+
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.autohint: 0
+Xft.rgba: rgb
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcdlight
+
+Xcursor.theme: KDE-classic
+Xcursor.size: 42

@@ -1,0 +1,34 @@
+# :vim: set ft=yaml.ansible:
+---
+- name: Configure user (run as root)
+  hosts: localhost
+  connection: local
+  tags: root
+  vars_prompt:
+    - name: user_password
+      prompt: Enter the user's password
+
+  roles:
+    - user
+
+- name: Install and configure base system
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  pre_tasks:
+    - name: Install collections
+      community.general.ansible_galaxy_install:
+        type: both
+        requirements_file: "requirements.yml"
+
+  roles:
+    - aur
+    - packages
+    - font_maple_mono
+    - font_sf_pro
+    - font_apple_emoji
+    - scripts
+    - rbw
+    - i3
+    - sxhkd

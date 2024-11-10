@@ -1,9 +1,0 @@
----
-- name: Install and update packages
-  tags: toolbox
-  when: toolbox_packages[setup_toolbox_toolbox_name | string] | length > 0
-  register: toolbox_result
-  failed_when: false
-  changed_when: "'nothing' not in toolbox_result.stdout"
-  ansible.builtin.command: "toolbox run -c {{ setup_toolbox_toolbox_name }} sudo pacman --noconfirm -Sy --needed {{ item }}"
-  with_items: "{{ toolbox_packages[setup_toolbox_toolbox_name | string] }}"

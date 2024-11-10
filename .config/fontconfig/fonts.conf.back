@@ -1,0 +1,93 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
+<fontconfig>
+ <include ignore_missing="yes">conf.d</include>
+ <match target="font">
+  <edit name="rgba" mode="assign">
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit name="lcdfilter" mode="assign">
+   <const>lcddefault</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit name="hinting" mode="assign">
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font">
+  <edit name="hintstyle" mode="assign">
+   <const>hintslight</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit name="autohint" mode="assign">
+   <bool>false</bool>
+  </edit>
+ </match>
+ <match target="pattern">
+  <edit name="dpi" mode="assign">
+   <double>93</double>
+  </edit>
+ </match>
+ <match target="font">
+  <test qual="any" name="family">
+   <string>scientifica</string>
+  </test>
+  <edit name="antialias" mode="assign">
+   <bool>false</bool>
+  </edit>
+  <edit name="hinting" mode="assign">
+   <bool>false</bool>
+  </edit>
+  <edit name="lcdfilter" mode="assign">
+   <const>lcddefault</const>
+  </edit>
+  <edit name="rgba" mode="assign">
+   <const>rgb</const>
+  </edit>
+ </match>
+ <alias>
+  <family>monospace</family>
+  <prefer>
+   <!-- <family>Misc Fixed</family> -->
+   <family>Maple Mono</family>
+   <family>SF Mono</family>
+   <family>Noto Sans Mono</family>
+  </prefer>
+ </alias>
+ <match>
+  <test name="family">
+   <string>Calibri</string>
+  </test>
+  <edit name="family" binding="strong" mode="assign">
+   <string>SF Pro Display</string>
+   <string>SF Pro Text</string>
+  </edit>
+ </match>
+ <match>
+  <test name="family">
+   <string>Segoe UI</string>
+  </test>
+  <edit name="family" binding="strong" mode="assign">
+   <string>SF Pro Text</string>
+  </edit>
+ </match>
+ <match>
+  <test name="family">
+   <string>Arial</string>
+  </test>
+  <edit name="family" binding="strong" mode="assign">
+   <string>SF Pro Display</string>
+   <string>SF Pro Text</string>
+  </edit>
+ </match>
+ <match target="font">
+  <edit name="antialias" mode="assign">
+   <bool>true</bool>
+  </edit>
+ </match>
+ <dir>~/.fonts</dir>
+</fontconfig>

@@ -1,8 +1,11 @@
 VIRTUAL_ENV = ${ANSIBLE_VENV}
+.PHONY: install push
 
-install:
+.install:
 	source $(VIRTUAL_ENV)/bin/activate && \
-		ansible-playbook --diff main.yml --ask-become-pass
+		cd ansible && \
+		ansible-playbook --diff playbooksmain.yml --ask-become-pass && \
+		cd ../
 
 push:
 	git push origin master
