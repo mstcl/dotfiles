@@ -10,13 +10,13 @@ export FZF_DEFAULT_OPTS="
     --color preview-scrollbar:8,preview-label:1
     --height=$FZF_HEIGHT
     --min-height=30
-    --info=inline-right
-    --scrollbar='▓'
+    --info=default
+    --no-scrollbar
     --preview-window nohidden:border-sharp:down:4
     --preview-label='Information'
     --pointer='▌'
     --marker='▎'
-    --prompt=' ➤ '
+    --prompt=' → '
     --highlight-line
     --tabstop=4
     --layout=reverse
