@@ -1,0 +1,38 @@
+[color]
+	ui = always
+	branch = no
+	status = auto
+	diff = false
+	interactive = always
+	grep = always
+	pager = yes
+	decorate = always
+	showbranch = always
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only --diff-so-fancy
+[delta]
+	navigate = true
+	minus-style = "#834c40" "#ecd5d3"
+	minus-emph-style = "#834c40" bold "#ecd5d3"
+	plus-style = "#637337" "#dae5cd"
+	plus-emph-style = "#637337" bold "#dae5cd"
+	line-numbers = true
+	line-numbers-minus-style = "#bdb2a9"
+    line-numbers-zero-style = "#bdb2a9"
+    line-numbers-plus-style = "#bdb2a9"
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-left-style = "#cec6bf"
+    line-numbers-right-style = "#cec6bf"
+    colorMoved = default
+    keep-plus-minus-markers = true
+	hunk-header-decoration-style = "#cec6bf" ul
+	hunk-header-file-style = "#79241f"
+	hunk-header-line-number-style = "#79241f"
+	hunk-header-style = "file line-number syntax"
+	file-decoration-style = "#cec6bf" ul
+	file-style = "#79241f" bold
+[merge]
+	conflictstyle = zdiff3
