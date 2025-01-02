@@ -9,4 +9,3 @@
     append: true
     shell: /usr/bin/zsh
     uid: 1000
-    password: "{{ user_password | password_hash('sha512') }}"

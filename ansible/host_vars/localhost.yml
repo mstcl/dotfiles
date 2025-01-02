@@ -140,3 +140,14 @@ packages:
   - jq
   - npm
   - terraform
+
+  # -- Wayland
+  - wl-color-picker
+  - imv
+  - cliphist
+  - j4-dmenu-desktop
+  - qalculate-gtk
+  - niri
+  - mako
+  - pavucontrol
+  - wl-clipboard

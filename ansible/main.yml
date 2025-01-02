@@ -1,16 +1,5 @@
 # :vim: set ft=yaml.ansible:
 ---
-- name: Configure user (run as root)
-  hosts: localhost
-  connection: local
-  tags: root
-  vars_prompt:
-    - name: user_password
-      prompt: Enter the user's password
-
-  roles:
-    - user
-
 - name: Install and configure base system
   hosts: localhost
   connection: local
@@ -30,5 +19,3 @@
     - font_apple_emoji
     - scripts
     - rbw
-    - i3
-    - sxhkd

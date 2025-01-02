@@ -1,0 +1,229 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+    }
+
+    touchpad {
+        tap
+        scroll-method "two-finger"
+        disabled-on-external-mouse
+    }
+
+    mouse {
+        accel-speed 0.0
+        accel-profile "flat"
+    }
+
+    trackpoint {}
+}
+
+output "DP-3" {
+    variable-refresh-rate on-demand=true
+    mode "1920x1080"
+    scale 1
+    transform "90"
+    position x=0 y=0
+    background-color "#000000"
+}
+output "DP-2" {
+    variable-refresh-rate on-demand=true
+    mode "1920x1080"
+    scale 1
+    transform "normal"
+    position x=1080 y=411
+    background-color "#000000"
+}
+
+layout {
+    gaps 12
+
+    center-focused-column "never"
+    always-center-single-column
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+		off
+        width 4
+        active-color "#cec6bf"
+        inactive-color "#DED8D3"
+    }
+
+    border {
+        width 4
+        active-color "#79241F"
+        inactive-color "#DED8D3"
+    }
+
+    struts {
+        left 32
+        right 32
+        top 32
+        bottom 32
+    }
+}
+
+screenshot-path "~/pictures/screenshots/%Y-%m-%d_%H-%M.png"
+
+animations {}
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+cursor {
+    xcursor-size 16
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
+window-rule {
+    geometry-corner-radius 7
+    clip-to-geometry true
+    open-maximized true
+}
+
+window-rule {
+    match app-id="Alacritty"
+    open-maximized false
+}
+
+window-rule {
+    match app-id="launcher"
+    match title="launcher"
+
+    default-column-width { proportion 0.3; }
+
+    open-maximized false
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+binds {
+    Mod+Return repeat=false cooldown-ms=500 { spawn "alacritty"; }
+
+    Mod+Space { spawn "alacritty_launch" "fzf_launcher"; }
+
+    Mod+B { spawn "firefox"; }
+
+    Mod+C { spawn "alacritty_launch" "fzf_cliphist"; }
+    Mod+D { spawn "alacritty_launch" "fzf_dunst"; }
+    Mod+G { spawn "alacritty_launch" "fzf_pass"; }
+    Mod+S { spawn "alacritty_launch" "fzf_music"; }
+    Mod+P { spawn "wl-color-picker" "clipboard"; }
+
+    Mod+Slash { spawn "playerctl" "play-pause"; }
+    Mod+N { spawn "notify"; }
+    Mod+Backspace { spawn "makoctl" "dismiss"; }
+
+    Mod+Shift+Q { close-window; }
+
+    Mod+H { focus-column-or-monitor-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-or-monitor-right; }
+
+    Mod+Shift+H { move-column-left-or-to-monitor-left; }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up; }
+    Mod+Shift+L { move-column-right-or-to-monitor-right; }
+
+    Mod+A       { focus-column-first; }
+    Mod+E       { focus-column-last; }
+    Mod+Shift+A { move-column-to-first; }
+    Mod+Shift+E { move-column-to-last; }
+
+    Mod+Ctrl+H { focus-monitor-left; }
+    Mod+Ctrl+L { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+H { move-window-to-monitor-left; }
+    Mod+Shift+Ctrl+L { move-window-to-monitor-right; }
+
+    Mod+Ctrl+Alt+H { move-workspace-to-monitor-left; }
+    Mod+Ctrl+Alt+L { move-workspace-to-monitor-right; }
+
+    Mod+Page_Down { move-workspace-down; }
+    Mod+Page_Up   { move-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+Tab { focus-workspace-previous; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+R { switch-preset-column-width; }
+
+    Mod+W       { switch-preset-window-height; }
+    Mod+Shift+W { reset-window-height; }
+
+    Mod+M { maximize-column; }
+    Mod+F { fullscreen-window; }
+    Mod+Z { center-column; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+Alt+C { screenshot; }
+    Mod+Alt+V { screenshot-screen; }
+    Mod+Alt+B { screenshot-window; }
+
+    Mod+Alt+Backspace   { quit; }
+    Mod+Shift+Backspace { spawn "swaylock" "--font" "monospace" "-f"; }
+
+    Mod+Alt+P { power-off-monitors; }
+
+    Mod+Shift+Period { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%";}
+    Mod+Shift+Comma  { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%";}
+}

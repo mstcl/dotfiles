@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eEuo pipefail
-
 source ~/.local/bin/fzf_defaults
 
-aquamarine interactive -s
+nohup aquamarine interactive -s >/dev/null 2>&1

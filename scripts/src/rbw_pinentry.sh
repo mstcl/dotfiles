@@ -3,7 +3,7 @@
 # Pinentry depending on session
 
 if [ -z ${SSH_TTY} ]; then
-	pinentry-qt
+	pinentry-gnome3
 else
 	pinentry-curses
 fi

@@ -81,14 +81,14 @@ TERM = "alacritty"
 
 [font]
 builtin_box_drawing = true
-size = 13
+size = 14
 
 [font.bold]
 family = "Maple Mono"
 
 [font.glyph_offset]
 x = 0
-y = 3
+y = 5
 
 [font.italic]
 family = "Maple Mono"
@@ -98,7 +98,7 @@ family = "Maple Mono"
 
 [font.offset]
 x = 0
-y = 6
+y = 10
 
 [hints]
 alphabet = "jfkdls;ahgurieowpq"

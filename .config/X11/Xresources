@@ -11,9 +11,9 @@ uxterm*foreground:  #493f37
 urxvt*background:   #e9e5e2
 xterm*background:   #e9e5e2
 uxterm*background:  #e9e5e2
-urxvt*cursorColor:  #352e2e
-xterm*cursorColor:  #352e2e
-uxterm*cursorColor: #352e2e
+urxvt*cursorColor:  #79241f
+xterm*cursorColor:  #79241f
+uxterm*cursorColor: #79241f
 urxvt*borderColor:  #e9e5e2
 *.font: SF Pro Display
 xterm*renderFont: true
@@ -33,6 +33,8 @@ xterm.vt100.metaSendsEscape: true
 xterm.vt100.scrollBar: false
 xterm.vt100.scrollbar.width: 0
 xterm.vt100.scaleHeight: 1.0
+
+*cursorColor: #79241f
 
 ! Colors 0-15.
 *color0:  #e9e5e2
