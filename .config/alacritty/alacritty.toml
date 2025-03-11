@@ -8,7 +8,7 @@ duration = 0
 draw_bold_text_with_bright_colors = false
 
 [colors.bright]
-black   = "#cec6bf"
+black   = "#e5e1da"
 red     = "#735057"
 yellow  = "#543227"
 green   = "#464c3a"
@@ -19,26 +19,26 @@ white   = "#493f37"
 
 [colors.cursor]
 cursor = "#79241f"
-text = "#e9e5e2"
+text = "#f1efeb"
 
 [colors.footer_bar]
-background = "#cec6bf"
+background = "#e5e1da"
 foreground = "#493f37"
 
 [colors.hints.end]
 background = "#79241f"
-foreground = "#e9e5e2"
+foreground = "#f1efeb"
 
 [colors.hints.start]
 background = "#844242"
-foreground = "#e9e5e2"
+foreground = "#f1efeb"
 
 [colors.line_indicator]
 background = "None"
 foreground = "None"
 
 [colors.normal]
-black   = "#e9e5e2"
+black   = "#f1efeb"
 red     = "#735057"
 yellow  = "#543227"
 green   = "#464c3a"
@@ -48,9 +48,9 @@ magenta = "#673d58"
 white   = "#352e2e"
 
 [colors.primary]
-background = "#e9e5e2"
+background = "#f1efeb"
 bright_foreground = "#493f37"
-dim_foreground = "#cec6bf"
+dim_foreground = "#e5e1da"
 foreground = "#352e2e"
 
 [colors.search.focused_match]
@@ -586,7 +586,7 @@ program = "/usr/bin/zsh"
 
 [window]
 decorations = "none"
-dynamic_padding = false
+dynamic_padding = true
 dynamic_title = true
 opacity = 1.0
 title = "Alacritty"
@@ -596,8 +596,8 @@ general = "Alacritty"
 instance = "Alacritty"
 
 [window.padding]
-x = 0
-y = 0
+x = 8
+y = 8
 
 [general]
 live_config_reload = true
