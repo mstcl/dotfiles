@@ -52,6 +52,19 @@ layout {
         proportion 1.0
     }
 
+    tab-indicator {
+    	place-within-column;
+    	hide-when-single-tab;
+    	length total-proportion=1.0;
+    	width 4;
+    	gaps-between-tabs 4;
+    	corner-radius 8;
+    }
+
+	insert-hint {
+        color "#ffc87f80"
+    }
+
     default-column-width { proportion 0.5; }
 
     focus-ring {
@@ -95,7 +108,7 @@ cursor {
 }
 
 window-rule {
-    geometry-corner-radius 7
+    geometry-corner-radius 8
     clip-to-geometry true
     open-maximized true
 }
@@ -136,7 +149,7 @@ binds {
     Mod+C { spawn "alacritty_launch" "fzf_cliphist"; }
     Mod+D { spawn "alacritty_launch" "fzf_dunst"; }
     Mod+G { spawn "alacritty_launch" "fzf_pass"; }
-    Mod+S { spawn "alacritty_launch" "fzf_music"; }
+    Mod+M { spawn "alacritty_launch" "fzf_music"; }
     Mod+P { spawn "wl-color-picker" "clipboard"; }
 
     Mod+Slash { spawn "playerctl" "play-pause"; }
@@ -192,7 +205,9 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
-    Mod+Tab { focus-workspace-previous; }
+    Mod+Tab { focus-window-previous; }
+    Mod+Shift+Space { toggle-window-floating; }
+    Mod+O { switch-focus-between-floating-and-tiling; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
@@ -205,12 +220,13 @@ binds {
     Mod+W       { switch-preset-window-height; }
     Mod+Shift+W { reset-window-height; }
 
-    Mod+M { maximize-column; }
     Mod+F { fullscreen-window; }
     Mod+Z { center-column; }
+    Mod+T { toggle-column-tabbed-display; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+S { show-hotkey-overlay; }
 
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
