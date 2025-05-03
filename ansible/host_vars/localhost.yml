@@ -1,7 +1,7 @@
 # :vim: set ft=yaml.ansible:
 ---
 current_user: "{{ lookup('env', 'USER') }}"
-base_user: 'lckdscl'
+base_user: "lckdscl"
 
 # The aur helper to install (default yay)
 # All supported ones:
@@ -18,16 +18,15 @@ packages:
   - adobe-source-serif-fonts # serif fonts
   - alacritty # terminal emulator
   # - amd-ucode # for AMD cpus
-  # - amfora # gemini browser
-  # - aseprite # graphical pixel art editor
+  - aseprite # graphical pixel art editor
   - arpscan
-  - autotiling # for i3
   - base
   - base-devel
   - bat # cat alternative
   - bind
   - chafa # preview img in cli
-  - clipcat # clipboard manager
+  - chromium
+  - cliphist # clipboard manager
   - cpupower # cpu control
   - direnv # directory-based env
   - dos2unix
@@ -47,21 +46,24 @@ packages:
   - firefox # browser
   - gamemode # gaming
   - git
+  - git-lfs
   - git-delta # git pager/differ
   - glances # system monitor
+  - gnome-settings-daemon # gtk helper
   - gnu-netcat
+  - grajay-bin # grayjay desktop
   - grc # color output of commands
-  - gvfs # pcmanfm-qt fs helper
   - gst-libav # codec
-  - jpegoptim
+  - gtrash # CLI trash utility
+  - gtk2
+  - gtk3
+  - gtk4
+  - gvfs # pcmanfm-qt fs helper
+  - hyprlock # screenlock
   - i2c-tools # hardware detector
-  - i3-wm # wm
+  - imv # photo viewer
   # - intel-ucode # for intel CPUs
   # - intel-media-driver # hardware video acceleration (INTEL)
-  - kcolorchooser # color picker
-  # - kdeconnect # phone connector
-  - kwayland5 # for pinentry-qt
-  # - khal # for caldav
   - lemurs # display manager
   - lesspipe # swissarmy less
   - lib32-gamemode # gaming
@@ -74,67 +76,58 @@ packages:
   - libvdpau-va-gl # hardware video acceleration translation layer
   - linux-lts # backup kernel
   - lvm2 # for LVM fs
-  # - lxqt-admin # LXQt
-  # - lxqt-config # LXQt
-  # - lxqt-notificationd # LXQt
-  # - lxqt-openssh-askpass # LXQt
-  # - lxqt-panel # LXQt
-  # - lxqt-qtplugin # LXQt
-  # - lxqt-session # LXQt
-  # - lxqt-sudo # LXQt
   - man-db # man pages
   - mkinitcpio # arch mkinitcpio
   - mpv # media player
   - mpv-mpris # media player
-  # - neomutt # email
-  # - newsboat # rss
+  - nautilus # file manager
   - net-tools # debugging
   - noto-fonts # font fallback
   - noto-fonts-cjk # font fallback cjk
+  - niri # scrolling wm
+  - ntfs-3g # ntfs driver
   - nvidia # NVIDIA
   # - nvidia-container-toolkit # NVIDIA
   - nvidia-settings # NVIDIA
   - nvidia-utils # NVIDIA
   - nvtop # NVIDIA
   # - opencl-nvidia # NVIDIA
+  - openbox # basic x11 wm
   - openrgb-bin # for controlling rgb
   - opentabletdriver # for tablets
   - p7zip # compressed archive tools
   - pacman-contrib # pacman utils
   - pacutils # pacman utils
   - pandoc-bin # precompiled pandoc
-  - partitionmanager # graphical partition manager
-  - pavucontrol-qt # graphical volume control
-  - pcmanfm-qt # graphical file manager
+  - pavucontrol # graphical volume control
   - pipewire # audio
   - pipewire-alsa # audio
   - pipewire-jack # audio
   - pipewire-pulse # audio
-  # - plasma-desktop # KDE plasma
   - playerctl # control media
+  - polkit-gnome # polkit-agent
   - profile-sync-daemon # firefox profile on ram
   - protontricks # gaming
-  - qalculate-qt # graphical calculator
-  - qpdfview # pdfviewer
-  - qt5ct # theming
-  - qt6ct # theming
+  - qalculate-gtk # graphical calculator
   - rbw # bit/vaultwarden client
   - realtime-privileges
   - redshift # monitor hue shifter
   - reflector # pacman utils
   - ripgrep # grep alternative
   # - steam # gaming. Needs multilib. See roles/enable_pacman_multilib
-  # - todoman # vTODO companion
+  - signal-desktop # gaming. Needs multilib. See roles/enable_pacman_multilib
+  - step-cli # certs manager
+  - swaybg # for setting background picture
   - ttf-nerd-fonts-symbols # font fallback symbols
+  - wl-color-picker # color picker
   - wol-systemd # wake-from-lan
   - uv # python pip wrapper
-  # - vdirsyncer # sync caldav
-  - xdg-desktop-portal-lxqt # will need for basic functionalities
-  - xss-lock # use external screensaver
-  - xscreensaver # screensaver
+  - xdg-desktop-portal-gtk # will need for basic functionalities
+  - xdg-desktop-portal-gnome # will need for basic functionalities
 
   # --- DEV PACKAGES
   - podman
+  - docker-buildx
   - buildkit
   - go
   - jq
