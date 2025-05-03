@@ -27,6 +27,7 @@ output "DP-3" {
     position x=0 y=0
     background-color "#000000"
 }
+
 output "DP-2" {
     variable-refresh-rate on-demand=true
     mode "1920x1080"
@@ -55,29 +56,28 @@ layout {
     tab-indicator {
     	place-within-column;
     	hide-when-single-tab;
-    	length total-proportion=1.0;
-    	width 4;
-    	gaps-between-tabs 4;
-    	corner-radius 8;
+    	length total-proportion=0.1;
+    	width 8;
+    	gaps-between-tabs 8;
+    	corner-radius 16;
+        active-color "#fcc500"
+        inactive-color "#ded8d3a0"
     }
 
 	insert-hint {
-        color "#ffc87f80"
+        color "#fcc500a0"
     }
 
     default-column-width { proportion 0.5; }
 
     focus-ring {
 		off
-        width 4
-        active-color "#574b42"
-        inactive-color "#DED8D3"
     }
 
     border {
         width 3
-        active-color "#574b42"
-        inactive-color "#DED8D3"
+        active-color "#ded8d3"
+        inactive-color "#f1efeb"
     }
 
     struts {
@@ -94,6 +94,7 @@ animations {}
 
 environment {
     QT_QPA_PLATFORM "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 hotkey-overlay {
@@ -108,14 +109,73 @@ cursor {
 }
 
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 16.0
     clip-to-geometry true
     open-maximized true
+    draw-border-with-background false
 }
 
 window-rule {
-    match app-id="Alacritty"
+	match app-id="Alacritty"
+	default-column-display "tabbed"
     open-maximized false
+}
+
+window-rule {
+    match app-id="qalculate-gtk"
+    open-maximized false
+}
+
+window-rule {
+	match app-id="dialog"
+	match app-id="popup"
+	match app-id="task_dialog"
+	match app-id="file-roller"
+	match app-id="blueman-manager"
+	match app-id="xdg-desktop-portal-gtk"
+	match app-id="pinentry"
+	match title="Copying"
+	match title="Progress"
+	match title="Moving"
+	match title="Properties"
+	match title="Downlaods"
+	match title="Confirm"
+	match title="Authentication Required"
+	match title="Notice"
+	match title="Error"
+	match title="Warning"
+	match app-id="firefox" title="Mozilla Firefox"
+	match title="^Picture-in-Picture$"
+    open-maximized false
+    open-floating true
+}
+
+window-rule {
+	match app-id="firefox" title="Mozilla Firefox"
+	open-on-workspace "browser"
+}
+
+window-rule {
+	match app-id="launcher"
+    open-maximized false
+    open-floating true
+    min-width 500
+    max-width 500
+    min-height 900
+    max-height 900
+}
+
+window-rule {
+	match is-floating=true
+
+    shadow {
+        on
+        softness 40
+        spread 9
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000044"
+    }
 }
 
 window-rule {
@@ -127,16 +187,12 @@ window-rule {
     open-maximized false
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+workspace "browser" {
+	open-on-output "DP-2"
+}
 
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
+workspace "code" {
+	open-on-output "DP-2"
 }
 
 binds {
@@ -236,8 +292,8 @@ binds {
     Mod+Alt+B { screenshot-window; }
 
     Mod+Alt+Backspace   { quit; }
-    Mod+Shift+Backspace { spawn "swaylock" "--font" "monospace" "-f"; }
 
+    Mod+Alt+L { spawn "hyprlock"; }
     Mod+Alt+P { power-off-monitors; }
 
     Mod+Shift+Period { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%";}
