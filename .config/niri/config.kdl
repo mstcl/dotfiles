@@ -212,7 +212,7 @@ binds {
 
     Mod+Slash { spawn "playerctl" "play-pause"; }
     Mod+N { spawn "notify"; }
-    Mod+Backspace { spawn "makoctl" "dismiss"; }
+    Mod+Backspace { spawn "dunstctl" "close"; }
 
     Mod+Shift+Q { close-window; }
 
