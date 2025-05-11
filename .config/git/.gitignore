@@ -1,0 +1,3 @@
+**/ansible/facts.d
+**/.ansible.log
+**/ansible/plugins

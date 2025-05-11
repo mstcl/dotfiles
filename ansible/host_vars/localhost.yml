@@ -16,6 +16,7 @@ aur_helper: yay
 # Packages to be installed
 packages:
   - adobe-source-serif-fonts # serif fonts
+  - adw-gtk-theme # libadwaita for gtk3
   - alacritty # terminal emulator
   # - amd-ucode # for AMD cpus
   - aseprite # graphical pixel art editor
@@ -23,7 +24,7 @@ packages:
   - base
   - base-devel
   - bat # cat alternative
-  - bind
+  - bind # dns utils
   - chafa # preview img in cli
   - chromium
   - cliphist # clipboard manager
@@ -64,6 +65,7 @@ packages:
   - imv # photo viewer
   # - intel-ucode # for intel CPUs
   # - intel-media-driver # hardware video acceleration (INTEL)
+  - j4-dmenu-desktop # get desktop files
   - lemurs # display manager
   - lesspipe # swissarmy less
   - lib32-gamemode # gaming
@@ -87,12 +89,10 @@ packages:
   - niri # scrolling wm
   - ntfs-3g # ntfs driver
   - nvidia # NVIDIA
-  # - nvidia-container-toolkit # NVIDIA
   - nvidia-settings # NVIDIA
   - nvidia-utils # NVIDIA
   - nvtop # NVIDIA
   # - opencl-nvidia # NVIDIA
-  - openbox # basic x11 wm
   - openrgb-bin # for controlling rgb
   - opentabletdriver # for tablets
   - p7zip # compressed archive tools
@@ -111,7 +111,6 @@ packages:
   - qalculate-gtk # graphical calculator
   - rbw # bit/vaultwarden client
   - realtime-privileges
-  - redshift # monitor hue shifter
   - reflector # pacman utils
   - ripgrep # grep alternative
   # - steam # gaming. Needs multilib. See roles/enable_pacman_multilib
@@ -119,9 +118,10 @@ packages:
   - step-cli # certs manager
   - swaybg # for setting background picture
   - ttf-nerd-fonts-symbols # font fallback symbols
-  - wl-color-picker # color picker
   - wol-systemd # wake-from-lan
   - uv # python pip wrapper
+  - wl-color-picker # colorpicker
+  - wl-clipboard # clipboard
   - xdg-desktop-portal-gtk # will need for basic functionalities
   - xdg-desktop-portal-gnome # will need for basic functionalities
 
@@ -133,14 +133,4 @@ packages:
   - jq
   - npm
   - terraform
-
-  # -- Wayland
-  - wl-color-picker
-  - imv
-  - cliphist
-  - j4-dmenu-desktop
-  - qalculate-gtk
-  - niri
-  - mako
-  - pavucontrol
-  - wl-clipboard
+  # - nvidia-container-toolkit # NVIDIA

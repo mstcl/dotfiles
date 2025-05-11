@@ -93,6 +93,7 @@ screenshot-path "~/pictures/screenshots/%Y-%m-%d_%H-%M.png"
 animations {}
 
 environment {
+    DISPLAY ":0"
     QT_QPA_PLATFORM "wayland"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
@@ -127,6 +128,7 @@ window-rule {
 }
 
 window-rule {
+    match app-id="steam"
 	match app-id="dialog"
 	match app-id="popup"
 	match app-id="task_dialog"

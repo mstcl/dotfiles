@@ -1,3 +1,8 @@
+[user]
+	email = code@beee.ps
+	name = code
+[credential]
+	helper = store
 [color]
 	ui = always
 	branch = no
@@ -9,6 +14,7 @@
 	decorate = always
 	showbranch = always
 [core]
+	excludesFile = "~/.config/git/.gitignore"
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
@@ -36,3 +42,5 @@
 	file-style = "#79241f" bold
 [merge]
 	conflictstyle = zdiff3
+[init]
+	defaultBranch = master

@@ -1,6 +1,6 @@
 {
-	"email":"{{ rbw_bitwarden_username }}",
-	"base_url":"{{ rbw_bitwarden_url }}",
+	"email":"<redacted>",
+	"base_url":"<redacted>",
 	"identity_url":null,
 	"notifications_url":null,
 	"lock_timeout":36000,
