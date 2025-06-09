@@ -77,10 +77,10 @@
     timeout = 0
     override_pause_level = 60
 
-; [skip-displ:y]
-;     summary = "*"
-;     skip_display = yes
-;     match_transient = no
+[skip-displ:y]
+    summary = "*"
+    skip_display = yes
+    match_transient = no
 
 [transient_discard]
     history_ignore = yes

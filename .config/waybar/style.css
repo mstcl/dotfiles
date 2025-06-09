@@ -1,0 +1,82 @@
+* {
+  background: transparent;
+  color: white;
+  font-family:
+    SF Pro Text,
+    Symbols Nerd Font;
+  font-weight: 500;
+}
+
+#mpris {
+  background-color: #fcc500;
+  color: black;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+#clock {
+  background-color: #352e2e;
+  color: white;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+#workspaces {
+  background-color: #352e2e;
+  color: black;
+  border-radius: 20px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+#workspaces button {
+  border-radius: 20px;
+}
+
+#workspaces button.focused {
+  background-color: #493f37;
+}
+
+#window {
+  background-color: #493f37;
+  color: white;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+#pulseaudio {
+  background-color: #493f37;
+  color: white;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+#pulseaudio.muted {
+  background-color: #493f37;
+}
+
+#custom-dunst {
+  background-color: #493f37;
+  color: white;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 2px;
+  margin-left: 2px;
+}
