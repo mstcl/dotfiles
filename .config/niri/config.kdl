@@ -181,11 +181,11 @@ window-rule {
 }
 
 workspace "browser" {
-	open-on-output "DP-2"
+	open-on-output "DP-1"
 }
 
 workspace "code" {
-	open-on-output "DP-2"
+	open-on-output "DP-1"
 }
 
 binds {
@@ -278,6 +278,7 @@ binds {
 
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Grave { toggle-overview; }
 
     Mod+Alt+C { screenshot; }
     Mod+Alt+V { screenshot-screen; }
