@@ -93,8 +93,8 @@ packages:
   - nvidia-utils # NVIDIA
   - nvtop # NVIDIA
   # - opencl-nvidia # NVIDIA
-  - openrgb-bin # for controlling rgb
-  - opentabletdriver # for tablets
+  # - openrgb-bin # for controlling rgb
+  # - opentabletdriver # for tablets
   - p7zip # compressed archive tools
   - pacman-contrib # pacman utils
   - pacutils # pacman utils

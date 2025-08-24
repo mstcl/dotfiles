@@ -20,7 +20,7 @@ input {
 }
 
 output "DP-1" {
-    variable-refresh-rate on-demand=true
+    variable-refresh-rate
     mode "1920x1080"
     scale 1
     position x=0 y=0

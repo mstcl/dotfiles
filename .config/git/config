@@ -14,32 +14,36 @@
 	decorate = always
 	showbranch = always
 [core]
-	excludesFile = "~/.config/git/.gitignore"
+	excludesFile = "~/.gitignore"
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
 [delta]
 	navigate = true
 	minus-style = "#834c40" "#ecd5d3"
-	minus-emph-style = "#834c40" bold "#ecd5d3"
+	minus-emph-style = "#834c40" bold "#DAB0AD"
 	plus-style = "#637337" "#dae5cd"
-	plus-emph-style = "#637337" bold "#dae5cd"
-	line-numbers = true
-	line-numbers-minus-style = "#bdb2a9"
-    line-numbers-zero-style = "#bdb2a9"
-    line-numbers-plus-style = "#bdb2a9"
-    line-numbers-left-format = "{nm:>4}┊"
-    line-numbers-right-format = "{np:>4}│"
-    line-numbers-left-style = "#cec6bf"
-    line-numbers-right-style = "#cec6bf"
+	plus-emph-style = "#637337" bold "#C9DAB5"
+	line-numbers = false
+	line-numbers-minus-style = "#834c40" bold
+    line-numbers-zero-style = "#9e8d7f"
+    line-numbers-plus-style = "#637337" bold
+    line-numbers-left-style = "#9e8d7f"
+    line-numbers-right-style = "#9e8d7f"
     colorMoved = default
     keep-plus-minus-markers = true
-	hunk-header-decoration-style = "#cec6bf" ul
-	hunk-header-file-style = "#79241f"
-	hunk-header-line-number-style = "#79241f"
+	hunk-header-decoration-style = omit
+	file-decoration-style = omit
+	hunk-header-file-style = "#352e2e" bold
+	hunk-header-line-number-style = "#9e8d7f"
 	hunk-header-style = "file line-number syntax"
-	file-decoration-style = "#cec6bf" ul
-	file-style = "#79241f" bold
+	file-style = "#f1efeb"  bold "#352e2e"
+	file-modified-label = " modified"
+	file-removed-label = " deleted"
+	file-renamed-label = " renamed"
+	file-copied-label = " copied"
+	file-added-label = " added"
+	file-transformation = "s/$/ /"
 [merge]
 	conflictstyle = zdiff3
 [init]
