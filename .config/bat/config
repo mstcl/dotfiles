@@ -1,10 +1,7 @@
---theme="base16-256"
+--theme=ivory
 --italic-text=always
---paging=auto
---pager="nvim -R"
 --map-syntax "*.ino:C++"
 --map-syntax ".ignore:Git Ignore"
 --map-syntax "*rc:INI"
 --map-syntax "*.conf:INI"
---color=never
 --style=plain
