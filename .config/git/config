@@ -20,18 +20,20 @@
 	diffFilter = delta --color-only --diff-so-fancy
 [delta]
 	navigate = true
-	minus-style = "#834c40" "#ecd5d3"
-	minus-emph-style = "#834c40" bold "#DAB0AD"
-	plus-style = "#637337" "#dae5cd"
-	plus-emph-style = "#637337" bold "#C9DAB5"
+	syntax-theme = ivory
+	zero-style = dim syntax
+	minus-style = syntax "#ecd5d3"
+	minus-emph-style = "syntax" bold "#DAB0AD"
+	plus-style = syntax "#d5dbcd"
+	plus-emph-style = "syntax" bold "#BDC9AF"
 	line-numbers = false
 	line-numbers-minus-style = "#834c40" bold
     line-numbers-zero-style = "#9e8d7f"
-    line-numbers-plus-style = "#637337" bold
+    line-numbers-plus-style = "#686d63" bold
     line-numbers-left-style = "#9e8d7f"
     line-numbers-right-style = "#9e8d7f"
     colorMoved = default
-    keep-plus-minus-markers = true
+    keep-plus-minus-markers = false
 	hunk-header-decoration-style = omit
 	file-decoration-style = omit
 	hunk-header-file-style = "#352e2e" bold
