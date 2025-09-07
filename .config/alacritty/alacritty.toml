@@ -81,7 +81,7 @@ TERM = "alacritty"
 
 [font]
 builtin_box_drawing = true
-size = 14
+size = 11
 
 [font.bold]
 family = "Maple Mono"

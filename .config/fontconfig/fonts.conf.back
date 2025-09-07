@@ -54,6 +54,7 @@
   <prefer>
    <!-- <family>Misc Fixed</family> -->
    <family>Maple Mono</family>
+   <family>Maple Mono NF</family>
    <family>SF Mono</family>
    <family>Noto Sans Mono</family>
   </prefer>
