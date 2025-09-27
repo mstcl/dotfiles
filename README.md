@@ -4,10 +4,10 @@
 
 ## Overview
 
--   Arch Linux
--   X11
--   i3 with no compositor
--   Additional packages in [toolbox](https://containertoolbx.org/) containers.
+- Arch Linux
+- X11
+- i3 with no compositor
+- Additional packages in [toolbox](https://containertoolbx.org/) containers.
 
 ## Requirements
 
@@ -21,10 +21,11 @@
 $ git clone https://github.com/mstcl/dotfiles
 $ cd dotfiles
 ```
+
 ### Configuration
 
-Read through what's available to configure in `host_vars/localhost.yml` and
-edit it.
+Read through what's available to configure in `host_vars/localhost.yml` and edit
+it.
 
 ### Installation
 
@@ -61,3 +62,9 @@ $ cd nvim
 [https://github.com/mstcl/nvim](https://github.com/mstcl/nvim)
 
 Read the `README.md` and proceed from there.
+
+## Manual
+
+```bash
+sudo ln -sf /usr/lib64/libunwind.so /usr/lib64/libunwind.so.1
+```

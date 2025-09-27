@@ -18,92 +18,62 @@ packages:
   - adobe-source-serif-fonts # serif fonts
   - adw-gtk-theme # libadwaita for gtk3
   - alacritty # terminal emulator
-  # - amd-ucode # for AMD cpus
-  - aseprite # graphical pixel art editor
-  - arpscan
+  - amd-ucode # for AMD cpus
+  # - aseprite # graphical pixel art editor
   - base
   - base-devel
   - bat # cat alternative
-  - bind # dns utils
   - chafa # preview img in cli
   - chromium
   - cliphist # clipboard manager
   - cpupower # cpu control
   - direnv # directory-based env
-  - dos2unix
   - duf # df replacement
   - dunst # notifications
   - erd # du replacement
-  - ethtool
-  - evtest
-  - ext4magic
-  - faac # audio codec
-  - faad2 # audio codec
-  - fcitx5-qt # input
-  - fcitx5-unikey # input
+  - easyeffects # audio
+  # - fcitx5-qt # input
+  # - fcitx5-unikey # input
   - fd # find alternative
-  - fdkaac # audio codec
   - feh # image viewer
   - firefox # browser
-  - gamemode # gaming
+  - feishin-electron-bin # subsonic player
+  - gamemode
   - git
   - git-lfs
   - git-delta # git pager/differ
-  - glances # system monitor
+  - git-filter-repo
   - gnome-settings-daemon # gtk helper
-  - gnu-netcat
-  - grajay-bin # grayjay desktop
   - grc # color output of commands
-  - gst-libav # codec
   - gtrash # CLI trash utility
   - gtk2
   - gtk3
   - gtk4
-  - gvfs # pcmanfm-qt fs helper
   - hyprlock # screenlock
+  - gvfs # for nautilus
   - i2c-tools # hardware detector
   - imv # photo viewer
   # - intel-ucode # for intel CPUs
-  # - intel-media-driver # hardware video acceleration (INTEL)
   - j4-dmenu-desktop # get desktop files
   - lemurs # display manager
   - lesspipe # swissarmy less
-  - lib32-gamemode # gaming
-  - lib32-vkd3d # gaming
-  - libebur128 # audiocodec
-  - lxqt-policykit # LXQt (generic)
-  - lxqt-archiver # LXQt (generic)
-  - libnotify # sending notifications
-  - libva-nvidia-driver # hardware video acceleration (nvidia)
-  - libvdpau-va-gl # hardware video acceleration translation layer
   - linux-lts # backup kernel
-  - lvm2 # for LVM fs
-  - man-db # man pages
-  - mkinitcpio # arch mkinitcpio
   - mpv # media player
   - mpv-mpris # media player
   - nautilus # file manager
-  - net-tools # debugging
   - noto-fonts # font fallback
   - noto-fonts-cjk # font fallback cjk
   - niri # scrolling wm
-  - ntfs-3g # ntfs driver
   - nvidia # NVIDIA
-  - nvidia-settings # NVIDIA
-  - nvidia-utils # NVIDIA
-  - nvtop # NVIDIA
-  # - opencl-nvidia # NVIDIA
+  - nvtop
   # - openrgb-bin # for controlling rgb
   # - opentabletdriver # for tablets
   - p7zip # compressed archive tools
+  - pop-icon-theme # icon theme
   - pacman-contrib # pacman utils
   - pacutils # pacman utils
   - pandoc-bin # precompiled pandoc
   - pavucontrol # graphical volume control
-  - pipewire # audio
-  - pipewire-alsa # audio
-  - pipewire-jack # audio
-  - pipewire-pulse # audio
   - playerctl # control media
   - polkit-gnome # polkit-agent
   - profile-sync-daemon # firefox profile on ram
@@ -113,24 +83,87 @@ packages:
   - realtime-privileges
   - reflector # pacman utils
   - ripgrep # grep alternative
-  # - steam # gaming. Needs multilib. See roles/enable_pacman_multilib
+  - steam # gaming. NOTE: Needs multilib. See roles/enable_pacman_multilib
   - signal-desktop # gaming. Needs multilib. See roles/enable_pacman_multilib
+  - seahorse # passwords and keys managers
   - step-cli # certs manager
   - swaybg # for setting background picture
   - ttf-nerd-fonts-symbols # font fallback symbols
+  # - tdrop # quake
   - wol-systemd # wake-from-lan
-  - uv # python pip wrapper
+  - ueberzug # image display
   - wl-color-picker # colorpicker
   - wl-clipboard # clipboard
+  - wlr-randr # wayland outputs
   - xdg-desktop-portal-gtk # will need for basic functionalities
   - xdg-desktop-portal-gnome # will need for basic functionalities
+  - xorg-apps
+
+  # --- FS EXTRAS
+  - lvm2
+  - sshfs
+  - ntfs-3g
+  - nfs-utils
+
+  # --- AUDIO/GRAPHICS
+  - pipewire
+  - pipewire-alsa
+  - pipewire-jack
+  - pipewire-pulse
+  - vulkan-tools
+  - vdpauinfo
+  - nvidia-settings
+  - nvidia-utils
+  - gst-libav
+  - fdkaac
+  - faac
+  - faad2
+  - lib32-gamemode
+  - lib32-vkd3d
+  - libebur128
+  - libva-nvidia-driver
+  - libva-utils
+  - libvdpau-va-gl
+  # - opencl-nvidia # NVIDIA
+  # - intel-media-driver # hardware video acceleration (INTEL)
 
   # --- DEV PACKAGES
   - podman
+  - bc
   - docker-buildx
+  - docker-compose
   - buildkit
   - go
   - jq
   - npm
   - terraform
-  # - nvidia-container-toolkit # NVIDIA
+  - tea
+  - rustup
+  - lua51
+  - imagemagick
+  - just
+  - tcpdump
+  - inetutils
+  - net-tools
+  - age
+  - arp-scan
+  - nomad
+  - consul
+  - tailscale
+  - uv
+  - ethtool
+  - evtest
+  - ext4magic
+  - android-tools
+  - bind
+  - nvidia-container-toolkit
+  # - tinyxxd
+  - smartmontools
+  - dos2unix
+  - libnotify
+  - gnu-netcat
+  - man-db
+  - mkinitcpio
+  - libc++ # citrix
+  - glances
+  - tpm2-abrmd
