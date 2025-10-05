@@ -9,9 +9,12 @@ BIN_DIR="${HOME}/.local/bin"
 
 # ENSURE DIRS EXIST
 mkdir -p "${CONFIG_DIR}"
-mkdir -p "${HOME}"/downloads
+mkdir -p "${HOME}/downloads"
 mkdir -p "${BIN_DIR}"
 mkdir -p "${HOME}/.terraform.d/plugin-cache"
+mkdir -p "${HOME}/pictures"
+mkdir -p "${HOME}/certs"
+mkdir -p "${HOME}/secret"
 
 # INIT GIT SUBMODULE(S)
 git submodule update --recursive --remote --init || true
