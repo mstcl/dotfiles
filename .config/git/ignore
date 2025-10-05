@@ -1,3 +1,5 @@
+# vim:set ft=gitignore:
 **/ansible/facts.d
 **/.ansible.log
 **/ansible/plugins
+**/credentials

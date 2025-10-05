@@ -26,7 +26,7 @@
 .local/share/*
 !.local/share/nvim/
 .local/share/nvim/*
-!.local/share/nvim/lazy
+!.local/share/nvim/*.log
 !.local/share/applications
 
 !.config/

@@ -14,7 +14,7 @@
 	decorate = always
 	showbranch = always
 [core]
-	excludesFile = "~/.gitignore"
+	excludesFile = "~/.config/git/ignore"
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
@@ -50,3 +50,9 @@
 	conflictstyle = zdiff3
 [init]
 	defaultBranch = master
+[cinnut]
+	gpgsign = true
+[push]
+	autoSetupRemote = true
+[alias]
+	sync = !git checkout master && git fetch --prune && git merge origin/master

@@ -28,6 +28,8 @@ ln -sfnv "${DOTFILES_DIR}/.config/bat" "${CONFIG_DIR}/bat" || true
 ln -sfnv "${DOTFILES_DIR}/.config/dunst" "${CONFIG_DIR}/dunst" || true
 ln -sfnv "${DOTFILES_DIR}/.config/fd" "${CONFIG_DIR}/fd" || true
 ln -sfnv "${DOTFILES_DIR}/.config/fontconfig" "${CONFIG_DIR}/fontconfig" || true
+ln -sfnv "${DOTFILES_DIR}/.config/git" "${CONFIG_DIR}/git" || true
+ln -sfnv "${DOTFILES_DIR}/.config/hypr" "${CONFIG_DIR}/hypr" || true
 ln -sfnv "${DOTFILES_DIR}/.config/niri" "${CONFIG_DIR}/niri" || true
 ln -sfnv "${DOTFILES_DIR}/.config/npm" "${CONFIG_DIR}/npm" || true
 ln -sfnv "${DOTFILES_DIR}/.config/waybar" "${CONFIG_DIR}/waybar" || true
@@ -37,7 +39,7 @@ ln -sfnv "${DOTFILES_DIR}/.config/gamemode.ini" "${CONFIG_DIR}/gamemode.ini" || 
 for src in ${DOTFILES_DIR}/.*; do
 	name=$(basename "$src")
 
-	if [[ "$name" == ".envrc" || "$name" == "." || "$name" == ".." || "$name" == ".git" || "$name" == ".config" ]]; then
+	if [[ "$name" == ".envrc" || "$name" == "." || "$name" == ".." || "$name" == ".git" || "$name" == ".config" || "$name" == ".gitignore" ]]; then
 		continue
 	fi
 
