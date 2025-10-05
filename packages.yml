@@ -151,3 +151,4 @@ packages:
   - libc++ # citrix
   - glances
   - tpm2-abrmd
+  - parallel-disk-usage

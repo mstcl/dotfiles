@@ -23,6 +23,7 @@ git submodule update --recursive --remote --init || true
 ln -sfnv "${DOTFILES_DIR}/nvim" "${CONFIG_DIR}/nvim" || true
 ln -sfnv "${DOTFILES_DIR}/zsh/.zshenv" "${HOME}/.zshenv" || true
 ln -sfnv "${DOTFILES_DIR}/zsh" "${CONFIG_DIR}/zsh" || true
+ln -sfnv "/hades/pictures/screenshots" "${HOME}/pictures/screenshots" || true
 
 # CONFIG SYMLINKS
 ln -sfnv "${DOTFILES_DIR}/.config/X11" "${CONFIG_DIR}/X11" || true
