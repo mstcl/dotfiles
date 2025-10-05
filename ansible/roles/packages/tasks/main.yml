@@ -1,6 +1,0 @@
----
-- name: Install packages
-  tags: packages
-  kewlfft.aur.aur:
-    name: "{{ packages }}"
-    state: present

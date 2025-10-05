@@ -2,3 +2,5 @@
 .old
 zsh/
 nvim/
+**/.zconfdump*
+**/.zcompdump*

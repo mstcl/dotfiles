@@ -1,0 +1,2 @@
+#!/bin/sh
+[[ -f ~/.zshenv ]] && source ~/.zshenv
