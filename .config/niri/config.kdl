@@ -30,6 +30,7 @@ output "DP-1" {
 layout {
     gaps 12
 
+	default-column-display "tabbed"
     center-focused-column "never"
     always-center-single-column
 
@@ -189,49 +190,47 @@ workspace "code" {
 }
 
 binds {
+	// General keybinds guide:
+	// Mod => High-frequency keybinds
+	// Mod+Alt => App/Window related
+	// Mod+Shift => Layout related
+
     Mod+Return repeat=false cooldown-ms=500 { spawn "alacritty"; }
+    Mod+B      repeat=false cooldown-ms=500 { spawn "firefox";   }
+    Mod+Alt+L  repeat=false cooldown-ms=500 { spawn "hyprlock";  }
 
-    Mod+Space { spawn "alacritty_launch" "fzf_launcher"; }
+    Mod+P     repeat=false cooldown-ms=500 { spawn "wl-color-picker"  "clipboard";        }
+    Mod+W     repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_niri_windows"; }
+    Mod+Alt+W repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_niri_ws";      }
+    Mod+Space repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_launcher";     }
+    Mod+C     repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_cliphist";     }
+    Mod+D     repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_dunst";        }
+    Mod+G     repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_pass";         }
+    Mod+M     repeat=false cooldown-ms=500 { spawn "alacritty_launch" "fzf_music";        }
 
-    Mod+B { spawn "firefox"; }
+	// Screenshot keybinds
+    Mod+Alt+S { screenshot;        }
+    Mod+Alt+D { screenshot-screen; }
 
-    Mod+C { spawn "alacritty_launch" "fzf_cliphist"; }
-    Mod+D { spawn "alacritty_launch" "fzf_dunst"; }
-    Mod+G { spawn "alacritty_launch" "fzf_pass"; }
-    Mod+M { spawn "alacritty_launch" "fzf_music"; }
-    Mod+P { spawn "wl-color-picker" "clipboard"; }
-
+	// Volume keybinds
     Mod+Slash { spawn "playerctl" "play-pause"; }
-    Mod+Backspace { spawn "dunstctl" "close"; }
 
-    Mod+Shift+Q { close-window; }
+    Mod+Page_Up   { spawn "pactl"     "set-sink-volume" "@DEFAULT_SINK@" "+5%";}
+    Mod+Page_Down { spawn "pactl"     "set-sink-volume" "@DEFAULT_SINK@" "-5%";}
 
-    Mod+H { focus-column-or-monitor-left; }
-    Mod+J { focus-window-or-workspace-down; }
-    Mod+K { focus-window-or-workspace-up; }
-    Mod+L { focus-column-or-monitor-right; }
+	// [Layout] Close
+    Mod+Shift+Backspace { close-window; }
 
-    Mod+Shift+H { move-column-left-or-to-monitor-left; }
-    Mod+Shift+J { move-window-down-or-to-workspace-down; }
-    Mod+Shift+K { move-window-up-or-to-workspace-up; }
-    Mod+Shift+L { move-column-right-or-to-monitor-right; }
-
-    Mod+A       { focus-column-first; }
-    Mod+E       { focus-column-last; }
-    Mod+Shift+A { move-column-to-first; }
-    Mod+Shift+E { move-column-to-last; }
-
-    Mod+Ctrl+H { focus-monitor-left; }
-    Mod+Ctrl+L { focus-monitor-right; }
-
-    Mod+Shift+Ctrl+H { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+L { move-window-to-monitor-right; }
-
-    Mod+Ctrl+Alt+H { move-workspace-to-monitor-left; }
-    Mod+Ctrl+Alt+L { move-workspace-to-monitor-right; }
-
-    Mod+Page_Down { move-workspace-down; }
-    Mod+Page_Up   { move-workspace-up; }
+	// [Layout] Focus window
+    Mod+H         { focus-column-or-monitor-left;             }
+    Mod+J         { focus-window-or-workspace-down;           }
+    Mod+K         { focus-window-or-workspace-up;             }
+    Mod+L         { focus-column-or-monitor-right;            }
+    Mod+Z         { switch-focus-between-floating-and-tiling; } // like foreground/background
+    Mod+A         { focus-column-first;                       }
+    Mod+E         { focus-column-last;                        }
+    Mod+Backslash { focus-window-previous;                    }
+    Mod+Grave     { toggle-overview;                          }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -243,6 +242,14 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
 
+	// [Layout] Move window
+    Mod+Shift+H { move-column-left-or-to-monitor-left;   }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up;     }
+    Mod+Shift+L { move-column-right-or-to-monitor-right; }
+    Mod+Shift+A { move-column-to-first;                  }
+    Mod+Shift+E { move-column-to-last;                   }
+
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
@@ -253,42 +260,21 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
-    Mod+Tab { focus-window-previous; }
-    Mod+Shift+Space { toggle-window-floating; }
-    Mod+O { switch-focus-between-floating-and-tiling; }
-
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
-
-    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+Comma        { consume-window-into-column;    }
+    Mod+Period       { expel-window-from-column;      }
+    Mod+BracketLeft  { consume-or-expel-window-left;  }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+R { switch-preset-column-width; }
+	// [Layout] Window adjustments
+    Mod+R       { switch-preset-column-width;   }
+    Mod+F       { fullscreen-window;            }
+    Mod+Q       { center-column;                }
+    Mod+S       { toggle-column-tabbed-display; } // like vim split
+    Mod+Shift+F { toggle-window-floating;       }
+    Mod+Shift+R { reset-window-height;          }
 
-    Mod+W       { switch-preset-window-height; }
-    Mod+Shift+W { reset-window-height; }
-
-    Mod+F { fullscreen-window; }
-    Mod+Z { center-column; }
-    Mod+T { toggle-column-tabbed-display; }
-
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
-    Mod+Shift+S { show-hotkey-overlay; }
-
+    Mod+Minus       { set-column-width  "-10%"; }
+    Mod+Equal       { set-column-width  "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
-    Mod+Grave { toggle-overview; }
-
-    Mod+Alt+C { screenshot; }
-    Mod+Alt+V { screenshot-screen; }
-    Mod+Alt+B { screenshot-window; }
-
-    Mod+Alt+Backspace   { quit; }
-
-    Mod+Alt+L { spawn "hyprlock"; }
-    Mod+Alt+P { power-off-monitors; }
-
-    Mod+Shift+Period { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%";}
-    Mod+Shift+Comma  { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%";}
 }
