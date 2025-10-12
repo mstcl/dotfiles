@@ -14,7 +14,7 @@ yellow =  "#543227"
 blue    = "#535367"
 magenta = "#735057"
 cyan    = "#563E1A"
-white   = "#493F37"
+white   = "#4B4039"
 
 [colors.cursor]
 cursor = "#79241F"
@@ -22,7 +22,7 @@ text = "#F2F0ED"
 
 [colors.footer_bar]
 background = "#E6E2DA"
-foreground = "#493F37"
+foreground = "#4B4039"
 
 [colors.hints.end]
 background = "#79241F"
@@ -48,7 +48,7 @@ white   = "#352F2F"
 
 [colors.primary]
 background = "#F2F0ED"
-bright_foreground = "#493F37"
+bright_foreground = "#4B4039"
 dim_foreground = "#E6E2DA"
 foreground = "#352F2F"
 
