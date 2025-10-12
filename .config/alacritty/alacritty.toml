@@ -1,4 +1,3 @@
-
 [bell]
 animation = "EaseOutExpo"
 color = "#ffffff"
@@ -8,50 +7,50 @@ duration = 0
 draw_bold_text_with_bright_colors = false
 
 [colors.bright]
-black   = "#e5e1da"
-red     = "#735057"
-yellow  = "#543227"
-green   = "#464c3a"
-blue    = "#545468"
-cyan    = "#735057"
-magenta = "#673d58"
-white   = "#493f37"
+black   = "#E6E2DA"
+red     = "#553327"
+green   = "#454B39"
+yellow =  "#543227"
+blue    = "#535367"
+magenta = "#735057"
+cyan    = "#563E1A"
+white   = "#493F37"
 
 [colors.cursor]
-cursor = "#79241f"
-text = "#f1efeb"
+cursor = "#79241F"
+text = "#F2F0ED"
 
 [colors.footer_bar]
-background = "#e5e1da"
-foreground = "#493f37"
+background = "#E6E2DA"
+foreground = "#493F37"
 
 [colors.hints.end]
-background = "#79241f"
-foreground = "#f1efeb"
+background = "#79241F"
+foreground = "#F2F0ED"
 
 [colors.hints.start]
 background = "#844242"
-foreground = "#f1efeb"
+foreground = "#F2F0ED"
 
 [colors.line_indicator]
 background = "None"
 foreground = "None"
 
 [colors.normal]
-black   = "#f1efeb"
-red     = "#735057"
-yellow  = "#543227"
-green   = "#464c3a"
-blue    = "#545468"
-cyan    = "#735057"
-magenta = "#673d58"
-white   = "#352e2e"
+black   = "#F2F0ED"
+red     = "#553327"
+green   = "#454B39"
+yellow =  "#543227"
+blue    = "#535367"
+magenta = "#735057"
+cyan    = "#563E1A"
+white   = "#352F2F"
 
 [colors.primary]
-background = "#f1efeb"
-bright_foreground = "#493f37"
-dim_foreground = "#e5e1da"
-foreground = "#352e2e"
+background = "#F2F0ED"
+bright_foreground = "#493F37"
+dim_foreground = "#E6E2DA"
+foreground = "#352F2F"
 
 [colors.search.focused_match]
 background = "CellForeground"
