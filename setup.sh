@@ -20,9 +20,9 @@ mkdir -p "${HOME}/secret"
 git submodule update --recursive --remote --init || true
 
 # SPECIAL SYMLINKS
-ln -sfnv "${DOTFILES_DIR}/nvim" "${CONFIG_DIR}/nvim" || true
-ln -sfnv "${DOTFILES_DIR}/zsh/.zshenv" "${HOME}/.zshenv" || true
-ln -sfnv "${DOTFILES_DIR}/zsh" "${CONFIG_DIR}/zsh" || true
+ln -sfnv "${DOTFILES_DIR}/.config/nvim" "${CONFIG_DIR}/nvim" || true
+ln -sfnv "${DOTFILES_DIR}/.config/zsh/.zshenv" "${HOME}/.zshenv" || true
+ln -sfnv "${DOTFILES_DIR}/.config/zsh" "${CONFIG_DIR}/zsh" || true
 ln -sfnv "/hades/pictures/screenshots" "${HOME}/pictures/screenshots" || true
 
 # CONFIG SYMLINKS

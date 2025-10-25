@@ -1,0 +1,6 @@
+[submodule "nvim"]
+	path = .config/nvim
+	url = git@codeberg.org:mstcl/nvim.git
+[submodule "zsh"]
+	path = .config/zsh
+	url = git@codeberg.org:mstcl/zsh.git

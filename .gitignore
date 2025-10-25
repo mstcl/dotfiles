@@ -1,6 +1,4 @@
 *.bak
 .old
-zsh/
-nvim/
 **/.zconfdump*
 **/.zcompdump*
