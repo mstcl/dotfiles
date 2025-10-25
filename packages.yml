@@ -39,6 +39,7 @@ packages:
   - imv # photo viewer
   # - intel-ucode # for intel CPUs
   - j4-dmenu-desktop # get desktop files
+  - jujutsu
   - lemurs # display manager
   - lesspipe # swissarmy less
   - linux-lts # backup kernel
