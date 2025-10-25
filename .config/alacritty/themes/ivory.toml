@@ -1,6 +1,6 @@
 [colors.bright]
 black   = "#E6E2DA"
-red     = "#553327"
+red     = "#562622"
 green   = "#454B39"
 yellow =  "#543227"
 blue    = "#535367"
@@ -30,7 +30,7 @@ foreground = "None"
 
 [colors.normal]
 black   = "#F2F0ED"
-red     = "#553327"
+red     = "#562622"
 green   = "#454B39"
 yellow =  "#543227"
 blue    = "#535367"
