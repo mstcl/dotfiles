@@ -1,45 +1,45 @@
+[colors.primary]
+background = "#1D1B19"
+bright_foreground = "#282523"
+dim_foreground = "#D1B39A"
+foreground = "#E3D1C3"
+
+[colors.normal]
+black   = "#1D1B19"
+red     = "#B0877D"
+green   = "#9E9F8C"
+yellow =  "#A38E6B"
+blue    = "#A1A6B1"
+magenta = "#B6A0A9"
+cyan    = "#C39474"
+white   = "#E3D1C3"
+
 [colors.bright]
 black   = "#282523"
 red     = "#B0877D"
 green   = "#9E9F8C"
-yellow =  "#B1877D"
+yellow =  "#A38E6B"
 blue    = "#A1A6B1"
 magenta = "#B6A0A9"
-cyan    = "#C09579"
-white   = "#D6C3BB"
+cyan    = "#C39474"
+white   = "#D1B39A"
 
 [colors.cursor]
 cursor = "#F0644A"
-text = "#E4E2E2"
+text = "#E3D1C3"
 
 [colors.footer_bar]
 background = "#282523"
-foreground = "#D6C3BB"
+foreground = "#D1B39A"
 
 [colors.hints.end]
 background = "#F0644A"
-foreground = "#1C1B19"
+foreground = "#1D1B19"
 
 [colors.hints.start]
-background = "#C5A3A4"
-foreground = "#1C1B19"
+background = "#AC7A73"
+foreground = "#1D1B19"
 
 [colors.line_indicator]
 background = "None"
 foreground = "None"
-
-[colors.normal]
-black   = "#1C1B19"
-red     = "#B0877D"
-green   = "#9E9F8C"
-yellow =  "#B1877D"
-blue    = "#A1A6B1"
-magenta = "#B6A0A9"
-cyan    = "#C09579"
-white   = "#E4E2E2"
-
-[colors.primary]
-background = "#1C1B19"
-bright_foreground = "#282523"
-dim_foreground = "#E4E2E2"
-foreground = "#D6C3BB"
