@@ -6,3 +6,13 @@ passlib
 virtualenv
 ansible-lint
 jmespath
+numpy
+matplotlib
+h5py
+cmcrameri
+scipy
+seaborn
+pandas
+ipython
+ipykernel
+jupyterlab
