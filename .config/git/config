@@ -66,8 +66,8 @@
 	conflictstyle = zdiff3
 [init]
 	defaultBranch = master
-[cinnut]
-	gpgsign = true
+[commit]
+	gpgsign = false
 [push]
 	autoSetupRemote = true
 [alias]
