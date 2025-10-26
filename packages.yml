@@ -1,123 +1,111 @@
 packages:
-  - adobe-source-serif-fonts # serif fonts
-  - adw-gtk-theme # libadwaita for gtk3
-  - alacritty # terminal emulator
-  - amd-ucode # for AMD cpus
-  # - aseprite # graphical pixel art editor
+  # :: base
   - base
   - base-devel
-  - bat # cat alternative
-  - chafa # preview img in cli
-  - chromium
-  - cliphist # clipboard manager
-  - cpupower # cpu control
-  - direnv # directory-based env
-  - duf # df replacement
-  - dunst # notifications
-  - erd # du replacement
-  - easyeffects # audio
-  # - fcitx5-qt # input
-  # - fcitx5-unikey # input
-  - fd # find alternative
-  - feh # image viewer
-  - firefox # browser
-  - feishin-electron-bin # subsonic player
-  - gamemode
-  - git
-  - git-lfs
-  - git-delta # git pager/differ
-  - git-filter-repo
-  - gnome-settings-daemon # gtk helper
-  - grc # color output of commands
-  - gtrash # CLI trash utility
+  - xdg-desktop-portal-gtk # will need for basic functionalities
+  - xdg-desktop-portal-gnome # will need for basic functionalities
+  - linux-lts # backup kernel
+  - polkit-gnome # polkit-agent
+
+  # :: pacman
+  - reflector # pacman utils
+  - pacman-contrib # pacman utils
+  - pacutils # pacman utils
+
+  # :: theming / fonts
+  - ttf-nerd-fonts-symbols # font fallback symbols
+  - adobe-source-serif-fonts # serif fonts
+  - noto-fonts # font fallback
+  - noto-fonts-cjk # font fallback cjk
+  - pop-icon-theme # icon theme
+  - adw-gtk-theme # libadwaita for gtk3
   - gtk2
   - gtk3
   - gtk4
-  - hyprlock # screenlock
-  - gvfs # for nautilus
-  - i2c-tools # hardware detector
-  - imv # photo viewer
-  # - intel-ucode # for intel CPUs
-  - j4-dmenu-desktop # get desktop files
-  - jujutsu
-  - lemurs # display manager
-  - lesspipe # swissarmy less
-  - linux-lts # backup kernel
-  - mpv # media player
-  - mpv-mpris # media player
-  - nautilus # file manager
-  - noto-fonts # font fallback
-  - noto-fonts-cjk # font fallback cjk
-  - niri # scrolling wm
-  - nvidia # NVIDIA
-  - nvtop
-  # - openrgb-bin # for controlling rgb
-  # - opentabletdriver # for tablets
-  - p7zip # compressed archive tools
-  - pop-icon-theme # icon theme
-  - pacman-contrib # pacman utils
-  - pacutils # pacman utils
-  - pandoc-bin # precompiled pandoc
-  - pavucontrol # graphical volume control
-  - playerctl # control media
-  - polkit-gnome # polkit-agent
-  - profile-sync-daemon # firefox profile on ram
-  - protontricks # gaming
+  - gnome-settings-daemon # gtk helper
+
+  # :: graphical applications / utilities
   - qalculate-gtk # graphical calculator
-  - rbw # bit/vaultwarden client
-  - realtime-privileges
-  - reflector # pacman utils
-  - ripgrep # grep alternative
-  - steam # gaming. NOTE: Needs multilib. See roles/enable_pacman_multilib
-  - signal-desktop # gaming. Needs multilib. See roles/enable_pacman_multilib
-  - seahorse # passwords and keys managers
-  - step-cli # certs manager
-  - swaybg # for setting background picture
-  - ttf-nerd-fonts-symbols # font fallback symbols
-  # - tdrop # quake
-  - wol-systemd # wake-from-lan
-  - ueberzug # image display
+  - niri # scrolling wm
+  - lemurs # display manager
   - wl-color-picker # colorpicker
+  - xorg-apps
   - wl-clipboard # clipboard
   - wlr-randr # wayland outputs
-  - xdg-desktop-portal-gtk # will need for basic functionalities
-  - xdg-desktop-portal-gnome # will need for basic functionalities
-  - xorg-apps
+  - hyprlock # screenlock
+  - alacritty # terminal emulator
+  # - tdrop # quake
+  # - aseprite # graphical pixel art editor
+  - chromium
+  - dunst # notifications
+  - feh # image viewer
+  - imv # photo viewer
+  - firefox # browser
+  - feishin-electron-bin # subsonic player
+  - steam # gaming. NOTE: Needs multilib. See roles/enable_pacman_multilib
+  - protontricks # proton prefix helper / manager
+  # - signal-desktop
+  - seahorse # passwords and keys managers
+  - nautilus # file manager
+  - swaybg # for setting background picture
 
-  # --- FS EXTRAS
-  - lvm2
-  - sshfs
-  - ntfs-3g
-  - nfs-utils
-
-  # --- AUDIO/GRAPHICS
+  # :: audio utilities / codecs
+  - playerctl # control media
+  - mpv # media player
+  - mpv-mpris # media player
+  - easyeffects # sound i/o effects
+  - pavucontrol # graphical volume control
   - pipewire
   - pipewire-alsa
   - pipewire-jack
   - pipewire-pulse
+  - fdkaac
+  - faac
+  - faad2
+
+  # :: hardware / firmware / drivers
+  - nvidia
+  - amd-ucode # for AMD cpus
+  # - intel-ucode # for intel CPUs
+  - cpupower # cpu control
+  - gamemode
+  - lvm2
+  - sshfs
+  - ntfs-3g
+  - nfs-utils
+  - libc++ # citrix
+  - tpm2-abrmd
   - vulkan-tools
   - vdpauinfo
   - nvidia-settings
   - nvidia-utils
   - gst-libav
-  - fdkaac
-  - faac
-  - faad2
   - lib32-gamemode
   - lib32-vkd3d
   - libebur128
   - libva-nvidia-driver
   - libva-utils
   - libvdpau-va-gl
-  # - opencl-nvidia # NVIDIA
+  - opencl-nvidia # NVIDIA
   # - intel-media-driver # hardware video acceleration (INTEL)
+  - i2c-tools # hardware detector
+  - gvfs # for nautilus
+  # - openrgb-bin # for controlling rgb
+  # - opentabletdriver # for tablets
 
-  # --- DEV PACKAGES
+  # :: locale support
+  # - fcitx5-qt # input
+  # - fcitx5-unikey # input
+
+  # :: dev utilities
+  - pandoc-bin # precompiled pandoc
+  - just
   - podman
   - bc
   - docker-buildx
   - docker-compose
   - buildkit
+  - nvidia-container-toolkit
   - go
   - jq
   - npm
@@ -125,31 +113,60 @@ packages:
   - tea
   - rustup
   - lua51
-  - imagemagick
-  - just
-  - tcpdump
-  - inetutils
-  - net-tools
-  - age
-  - arp-scan
   - nomad
   - consul
   - tailscale
-  - uv
+  - age
+  - git
+  - git-lfs
+  - step-cli # certs manager
+
+  # :: system utilities
+  - realtime-privileges
+  - profile-sync-daemon # firefox profile on ram
+  - nvtop
+  - wol-systemd # wake-from-lan
+  - tcpdump
+  - inetutils
+  - net-tools
+  - gnu-netcat
+  - arp-scan
   - ethtool
   - evtest
   - ext4magic
   - android-tools
   - bind
-  - nvidia-container-toolkit
-  # - tinyxxd
   - smartmontools
   - dos2unix
   - libnotify
-  - gnu-netcat
   - man-db
   - mkinitcpio
-  - libc++ # citrix
-  - glances
-  - tpm2-abrmd
-  - parallel-disk-usage
+  # - tinyxxd
+  - duf # new df
+  - erd # new du
+  - parallel-disk-usage # fast du
+  - j4-dmenu-desktop # get desktop files
+
+  # :: interactive CLI utilities
+  - zsh
+  - uv
+  - fzf
+  - ripgrep # new grep
+  - fd # new find
+  - lesspipe
+  - bat # new cat
+  - chafa # image display
+  - ueberzug # image display
+  - zoxide
+  - grc
+  - eza # new ls
+  - direnv
+  - cliphist # clipboard manager
+  - git-delta # git pager/differ
+  - git-filter-repo
+  - imagemagick
+  - bottom # new htop
+  - gtrash # CLI trash utility
+  - jujutsu
+  - rbw # bit/vaultwarden client
+  - p7zip # compressed archive tools
