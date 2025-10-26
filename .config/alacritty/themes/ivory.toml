@@ -1,7 +1,7 @@
 [colors.primary]
 background = "#F2F0ED"
 bright_foreground = "#4B4039"
-dim_foreground = "#E6E2DA"
+dim_foreground = "#D7D1C5"
 foreground = "#352F2F"
 
 [colors.normal]
@@ -15,7 +15,7 @@ cyan    = "#563E1A"
 white   = "#352F2F"
 
 [colors.bright]
-black   = "#E6E2DA"
+black   = "#D7D1C5"
 red     = "#562622"
 green   = "#454B39"
 yellow =  "#543227"
@@ -29,7 +29,7 @@ cursor = "#79241F"
 text = "#F2F0ED"
 
 [colors.footer_bar]
-background = "#E6E2DA"
+background = "#D7D1C5"
 foreground = "#4B4039"
 
 [colors.hints.end]
