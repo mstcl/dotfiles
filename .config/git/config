@@ -72,3 +72,25 @@
 	autoSetupRemote = true
 [alias]
 	sync = !git checkout master && git fetch --prune && git merge origin/master
+	sa = status
+	ss = status -s
+	st = stash
+	sp = stash pop
+	re = remote -v
+	ra = remote add
+	di = diff
+	dd = !DELTA_FEATURES=+side-by-side git diff
+	in = init
+	pu = push
+	pl = pull
+	ad = add
+	fe = fetch
+	lo = log
+	rb = rebase
+	cl = clone
+	br = branch
+	co = checkout
+	cm = commit
+	sl = shortlog -sn
+	cp = cherry-pick
+	su = submodule update --recursive --remote --init
