@@ -120,6 +120,8 @@ packages:
   - git
   - git-lfs
   - step-cli # certs manager
+  - tree-sitter
+  - tree-sitter-cli
 
   # :: system utilities
   - realtime-privileges

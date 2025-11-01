@@ -4,7 +4,7 @@ current=$(gsettings get org.gnome.desktop.interface color-scheme)
 
 ALACRITTY_CONFIG_FILE="$HOME/.config/alacritty/alacritty.toml"
 GIT_CONFIG_FILE="$HOME/.config/git/config"
-NVIM_CONFIG_FILE="$HOME/.config/nvim/lua/plugin/99_override.lua"
+NVIM_CONFIG_FILE="$HOME/.config/nvim/plugin/10_ui.lua"
 
 if [ "$current" = "'prefer-dark'" ]; then
 	# gsettings
