@@ -28,6 +28,7 @@ unfocused_hollow = false
 
 [cursor.style]
 blinking = "Off"
+shape = "Beam"
 
 [env]
 TERM = "alacritty"

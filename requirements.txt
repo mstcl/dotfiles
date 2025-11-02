@@ -1,4 +1,5 @@
 ansible
+ansible-lint
 docker==6.1.3
 docker-compose
 pyyaml==5.3.1

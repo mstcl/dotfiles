@@ -1,6 +1,4 @@
 [submodule "nvim"]
 	path = .config/nvim
 	url = git@github.com:mstcl/nvim.git
-[submodule "zsh"]
-	path = .config/zsh
-	url = git@github.com:mstcl/zsh.git
+	branch = master
