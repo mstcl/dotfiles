@@ -1,12 +1,16 @@
 # Dotfiles
 
-**my opinionated dotfiles**
-
 ## Overview
 
 - Arch Linux
 - Wayland
 - niri
+
+## Installation
+
+```bash
+./setup.sh
+```
 
 ## Manual
 
