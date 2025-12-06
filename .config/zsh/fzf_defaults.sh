@@ -7,6 +7,7 @@ export FZF_DEFAULT_OPTS="
     --color preview-bg:0,preview-border:8
     --color preview-scrollbar:8,preview-label:1
     --height=~$FZF_HEIGHT
+    --gutter=' '
     --style=minimal
     --no-scrollbar
     --info=default
