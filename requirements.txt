@@ -17,3 +17,4 @@ pandas
 ipython
 ipykernel
 jupyterlab
+beets

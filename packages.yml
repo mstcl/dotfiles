@@ -1,3 +1,4 @@
+---
 packages:
   # :: base
   - base
@@ -68,7 +69,9 @@ packages:
   - amd-ucode # for AMD cpus
   # - intel-ucode # for intel CPUs
   - cpupower # cpu control
-  - gamemode
+  - ananicy-cpp
+  - cachyos-ananicy-rules
+  - linux-cachyos
   - lvm2
   - sshfs
   - ntfs-3g
@@ -80,7 +83,6 @@ packages:
   - nvidia-settings
   - nvidia-utils
   - gst-libav
-  - lib32-gamemode
   - lib32-vkd3d
   - libebur128
   - libva-nvidia-driver
