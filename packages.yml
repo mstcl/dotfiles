@@ -71,7 +71,9 @@ packages:
   - cpupower # cpu control
   - ananicy-cpp
   - cachyos-ananicy-rules
+  - cachyos-gaming-meta
   - linux-cachyos
+  - linux-cachyos-nvidia
   - lvm2
   - sshfs
   - ntfs-3g
