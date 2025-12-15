@@ -18,3 +18,9 @@ ipython
 ipykernel
 jupyterlab
 beets
+mdformat
+mdformat-gfm
+mdformat-gfm-alerts
+mdformat-deflist
+mdformat-footnote
+mdformat-frontmatter
