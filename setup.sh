@@ -41,7 +41,6 @@ ln -sfn "${DOTFILES_DIR}/.config/npm" "${CONFIG_DIR}/npm" || true
 ln -sfn "${DOTFILES_DIR}/.config/waybar" "${CONFIG_DIR}/waybar" || true
 ln -sfn "${DOTFILES_DIR}/.config/yamlfmt" "${CONFIG_DIR}/yamlfmt" || true
 ln -sfn "${DOTFILES_DIR}/.config/jj" "${CONFIG_DIR}/jj" || true
-ln -sfn "${DOTFILES_DIR}/.config/gamemode.ini" "${CONFIG_DIR}/gamemode.ini" || true
 echo "[INFO] configuration symlink completed"
 
 # :: dotfiles symlink

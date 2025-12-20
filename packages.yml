@@ -19,7 +19,7 @@ packages:
   - noto-fonts # font fallback
   - noto-fonts-cjk # font fallback cjk
   - pop-icon-theme # icon theme
-  - adw-gtk-theme # libadwaita for gtk3
+  - gnome-themes-extra
   - gtk2
   - gtk3
   - gtk4
