@@ -17,12 +17,13 @@ mkdir -p "${HOME}/certs"
 mkdir -p "${HOME}/secret"
 
 # :: init git submodule(s)
-git submodule update --recursive --remote --init || true
+# git submodule update --recursive --remote --init || true
 
 # :: special symlinks
 ln -sfn "${DOTFILES_DIR}/.config/nvim" "${CONFIG_DIR}/nvim" || true
 ln -sfn "${DOTFILES_DIR}/.config/zsh/.zshenv" "${HOME}/.zshenv" || true
 ln -sfn "${DOTFILES_DIR}/.config/zsh" "${CONFIG_DIR}/zsh" || true
+ln -sfn "${DOTFILES_DIR}/.config/systemd" "${CONFIG_DIR}/systemd" || true
 ln -sfn "/hades/pictures/screenshots" "${HOME}/pictures/screenshots" || true
 echo "[INFO] special symlink completed"
 
