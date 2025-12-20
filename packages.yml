@@ -75,10 +75,14 @@ packages:
   - linux-cachyos
   - linux-cachyos-nvidia
   - lvm2
+  # - cadaver # webdav cli client
+  - parted
   - sshfs
   - ntfs-3g
+  - btrfs-progs
+  - compsize
   - nfs-utils
-  - libc++ # citrix
+  # - libc++ # citrix
   - tpm2-abrmd
   - vulkan-tools
   - vdpauinfo
