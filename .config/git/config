@@ -16,6 +16,12 @@
 [core]
 	excludesFile = "~/.config/git/ignore"
 	pager = delta
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = false
+[difftool "nvimdiff"]
+	cmd = nvim -d -R "$LOCAL" "$REMOTE"
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
 [delta]
