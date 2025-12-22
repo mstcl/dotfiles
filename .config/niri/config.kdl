@@ -1,3 +1,5 @@
+spawn-at-startup "~/dotfiles/scripts/src/niri_dynamic_float.py"
+
 input {
     keyboard {
         xkb {
@@ -122,10 +124,19 @@ window-rule {
 window-rule {
     match app-id="qalculate-gtk"
     open-maximized false
+    min-width 200
+    max-width 200
 }
 
 window-rule {
-    match app-id="steam"
+	match title="^Kingdom Come: Deliverance$"
+    open-maximized true
+    open-floating false
+    open-fullscreen true
+}
+
+window-rule {
+	match app-id="steam"
 	match app-id="dialog"
 	match app-id="popup"
 	match app-id="task_dialog"
@@ -143,11 +154,16 @@ window-rule {
 	match title="Notice"
 	match title="Error"
 	match title="Warning"
-	match app-id="firefox" title="Mozilla Firefox"
-	match title="^Picture-in-Picture$"
 	match app-id="pavucontrol"
+	match title="Friends List"
     open-maximized false
     open-floating true
+}
+
+window-rule {
+	match app-id="steam" title="Steam Games List"
+	max-width 430
+	open-floating false
 }
 
 window-rule {
