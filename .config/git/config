@@ -12,11 +12,14 @@
     ui = auto
 [init]
 	defaultBranch = master
+[status]
+	branch = true
 [commit]
-	gpgsign = false
+	gpgsign = true
 	verbose = true
 [tag]
 	sort = -version:refname
+	gpgSign = true
 [branch]
 	sort = -committerdate
 [push]
@@ -40,6 +43,7 @@
 [user]
 	email = code@beee.ps
 	name = code
+	signingkey = 6F49A8A7AEF70827
 [credential]
 	helper = store
 
@@ -100,7 +104,7 @@
 [alias]
 	sync = !git checkout master && git fetch --prune && git merge origin/master
 	sa = status
-	ss = status -s
+	ss = status --short
 	st = stash
 	sp = stash pop
 	re = remote -v
@@ -112,7 +116,8 @@
 	pl = pull
 	ad = add
 	fe = fetch
-	lo = log
+	lo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ls = log --all --graph --decorate --oneline
 	rb = rebase
 	cl = clone
 	br = branch

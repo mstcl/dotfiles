@@ -203,19 +203,20 @@ alias lla='eza -l --color=always --group-directories-first -h --git -a'         
 alias g='git'       # [g]it
 alias gs='git sync' # [g]it [s]ync
 alias gsa='git sa'  # [g]it [s]tatus [a]ll
-alias gss='git ss'  # [g]it [s]tatus [s]taged
+alias gss='git ss'  # [g]it [s]tatus [s]hort
 alias gst='git st'  # [g]it [st]ash
 alias gsp='git sp'  # [g]it [s]tash [p]op
 alias gre='git re'  # [g]it [re]mote
 alias gra='git ra'  # [g]it [r]emote [a]dd
 alias gdi='git di'  # [g]it [di]ff
-alias gdd='git dd'  # [g]it [d]iff x2
+alias gdd='git dd'  # [g]it [d]iff side-by-side
 alias gin='git in'  # [g]it [in]it
 alias gpu='git pu'  # [g]it [pu]sh
 alias gpl='git pl'  # [g]it [p]u[l]l
 alias gad='git ad'  # [g]it [ad]d
 alias gfe='git fe'  # [g]it [fe]tch
 alias glo='git lo'  # [g]it [lo]g
+alias gls='git ls'  # [g]it [l]og [s]hort
 alias grb='git rb'  # [g]it [r]e[b]ase
 alias gcl='git cl'  # [g]it [cl]one
 alias gbr='git br'  # [g]it [br]anch
@@ -350,6 +351,7 @@ zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab/fzf-tab.zsh
 # :: other stuff
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+export GPG_TTY=$(tty)
 
 # :: uv default venv
 [[ -d "$VENV_DIR/default/bin" ]] && zsh-defer source $VENV_DIR/default/bin/activate
