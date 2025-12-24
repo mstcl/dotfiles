@@ -3,13 +3,19 @@
 	excludesFile = "~/.config/git/ignore"
 	pager = delta
 	compression = 9
+	whitespace = trailing-space
 [maintenance]
 	auto = true
 	strategy = incremental
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
+[help]
+	autocorrect = prompt
+[rerere]
+	enabled = true
+	autoUpdate = true
 [column]
-    ui = auto
+	ui = auto
 [init]
 	defaultBranch = master
 [status]
