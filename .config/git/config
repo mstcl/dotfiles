@@ -2,16 +2,29 @@
 [core]
 	excludesFile = "~/.config/git/ignore"
 	pager = delta
+	compression = 9
+[maintenance]
+	auto = true
+	strategy = incremental
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
-[merge]
-	conflictstyle = zdiff3
+[column]
+    ui = auto
 [init]
 	defaultBranch = master
 [commit]
 	gpgsign = false
+	verbose = true
+[tag]
+	sort = -version:refname
+[branch]
+	sort = -committerdate
 [push]
 	autoSetupRemote = true
+[pull]
+	rebase = true
+[merge]
+	conflictstyle = zdiff3
 [color]
 	ui = always
 	branch = no
@@ -33,6 +46,7 @@
 # :: Diff / delta
 [diff]
 	tool = nvimdiff
+	algorithm = histogram
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
