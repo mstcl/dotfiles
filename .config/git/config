@@ -1,8 +1,17 @@
-[user]
-	email = code@beee.ps
-	name = code
-[credential]
-	helper = store
+# :: Generic
+[core]
+	excludesFile = "~/.config/git/ignore"
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only --diff-so-fancy
+[merge]
+	conflictstyle = zdiff3
+[init]
+	defaultBranch = master
+[commit]
+	gpgsign = false
+[push]
+	autoSetupRemote = true
 [color]
 	ui = always
 	branch = no
@@ -13,17 +22,21 @@
 	pager = yes
 	decorate = always
 	showbranch = always
-[core]
-	excludesFile = "~/.config/git/ignore"
-	pager = delta
+
+# :: Credential / authoring
+[user]
+	email = code@beee.ps
+	name = code
+[credential]
+	helper = store
+
+# :: Diff / delta
 [diff]
 	tool = nvimdiff
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
 	cmd = nvim -d -R "$LOCAL" "$REMOTE"
-[interactive]
-	diffFilter = delta --color-only --diff-so-fancy
 [delta]
 	navigate = true
 	zero-style = dim syntax
@@ -68,14 +81,8 @@
 	hunk-header-file-style = "#E4E2E2" bold
 	hunk-header-line-number-style = "#8A7267"
 	file-style = "#1D1B19"  bold "#E4E2E2"
-[merge]
-	conflictstyle = zdiff3
-[init]
-	defaultBranch = master
-[commit]
-	gpgsign = false
-[push]
-	autoSetupRemote = true
+
+# :: Aliases
 [alias]
 	sync = !git checkout master && git fetch --prune && git merge origin/master
 	sa = status
