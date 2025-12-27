@@ -9,12 +9,15 @@ BIN_DIR="${HOME}/.local/bin"
 
 # :: ensure dirs exist
 mkdir -p "${CONFIG_DIR}"
-mkdir -p "${HOME}/downloads"
 mkdir -p "${BIN_DIR}"
 mkdir -p "${HOME}/.terraform.d/plugin-cache"
 mkdir -p "${HOME}/pictures"
+mkdir -p "${HOME}/documents"
 mkdir -p "${HOME}/certs"
 mkdir -p "${HOME}/secret"
+
+# :: special symlinks
+ln -sfn /tmp "${HOME}/downloads" || true
 
 # :: init git submodule(s)
 # git submodule update --recursive --remote --init || true
