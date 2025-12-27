@@ -215,6 +215,7 @@ alias glo='git lo'  # [g]it [lo]g
 alias gls='git ls'  # [g]it [l]og [s]hort
 alias gpl='git pl'  # [g]it [p]u[l]l
 alias gpu='git pu'  # [g]it [pu]sh
+alias gmv='git mv'  # [g]it [m]o[v]e
 alias gra='git ra'  # [g]it [r]emote [a]dd
 alias grb='git rb'  # [g]it [r]e[b]ase
 alias gre='git re'  # [g]it [re]mote
@@ -226,6 +227,7 @@ alias gsp='git sp'  # [g]it [s]tash [p]op
 alias gss='git ss'  # [g]it [s]tatus [s]hort
 alias gst='git st'  # [g]it [st]ash
 alias gsu='git su'  # [g]it [s]ubmodule [u]pdate
+alias gun='git un'  # [g]it [un]do
 alias gs='git sync' # [g]it [s]ync
 
 # :: terraform

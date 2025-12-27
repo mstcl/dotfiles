@@ -4,11 +4,13 @@
 	pager = delta
 	compression = 9
 	whitespace = trailing-space
+	autocrlf = input
 [maintenance]
 	auto = true
 	strategy = incremental
 [interactive]
 	diffFilter = delta --color-only --diff-so-fancy
+	singlekey = true
 [help]
 	autocorrect = prompt
 [rerere]
@@ -44,6 +46,8 @@
 	pager = yes
 	decorate = always
 	showbranch = always
+[grep]
+	lineNumber = true
 
 # :: Credential / authoring
 [user]
@@ -57,6 +61,8 @@
 [diff]
 	tool = nvimdiff
 	algorithm = histogram
+	mnemonicprefix = true
+	rename = copy
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
@@ -65,8 +71,8 @@
 	navigate = true
 	zero-style = dim syntax
 	line-numbers = false
-    colorMoved = default
-    keep-plus-minus-markers = false
+	colorMoved = default
+	keep-plus-minus-markers = false
 	hunk-header-decoration-style = omit
 	file-decoration-style = omit
 	hunk-header-style = "file line-number syntax"
@@ -84,10 +90,10 @@
 	plus-style = syntax "#CED7C8"
 	plus-emph-style = "syntax" bold "#b3bbae"
 	line-numbers-minus-style = "#844D41" bold
-    line-numbers-zero-style = "#89766A"
-    line-numbers-plus-style = "#676c62" bold
-    line-numbers-left-style = "#89766A"
-    line-numbers-right-style = "#89766A"
+	line-numbers-zero-style = "#89766A"
+	line-numbers-plus-style = "#676c62" bold
+	line-numbers-left-style = "#89766A"
+	line-numbers-right-style = "#89766A"
 	hunk-header-file-style = "#352F2F" bold
 	hunk-header-line-number-style = "#89766A"
 	file-style = "#F2F0ED"  bold "#352F2F"
@@ -98,10 +104,10 @@
 	plus-style = syntax "#2F312B"
 	plus-emph-style = "syntax" bold "#3a3c35"
 	line-numbers-minus-style = "#C5A3A4" bold
-    line-numbers-zero-style = "#8A7267"
-    line-numbers-plus-style = "#AAAD9E" bold
-    line-numbers-left-style = "#8A7267"
-    line-numbers-right-style = "#8A7267"
+	line-numbers-zero-style = "#8A7267"
+	line-numbers-plus-style = "#AAAD9E" bold
+	line-numbers-left-style = "#8A7267"
+	line-numbers-right-style = "#8A7267"
 	hunk-header-file-style = "#E4E2E2" bold
 	hunk-header-line-number-style = "#8A7267"
 	file-style = "#1D1B19"  bold "#E4E2E2"
@@ -116,7 +122,7 @@
 	cp = cherry-pick
 	dd = !DELTA_FEATURES=+side-by-side git diff
 	di = diff
-	fe = fetch
+	fe = fetch --all
 	in = init
 	lo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ls = log --all --graph --decorate --oneline
@@ -124,7 +130,7 @@
 	pu = push
 	ra = remote add
 	rb = rebase
-	re = remote -v
+	re = remote --verbose
 	ri = rebase -i
 	sa = status
 	sh = show
@@ -134,3 +140,4 @@
 	st = stash
 	su = submodule update --recursive --remote --init
 	sync = !git checkout master && git fetch --prune && git merge origin/master
+	un = reset --soft HEAD~
