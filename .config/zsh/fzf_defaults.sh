@@ -16,7 +16,7 @@ export FZF_DEFAULT_OPTS="
     --preview-label=' Preview '
     --pointer='▌'
     --marker='▎'
-    --prompt=' → '
+    --prompt=' '
     --highlight-line
     --tabstop=4
     --layout=reverse
