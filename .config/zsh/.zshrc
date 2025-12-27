@@ -218,6 +218,7 @@ alias gpu='git pu'  # [g]it [pu]sh
 alias gra='git ra'  # [g]it [r]emote [a]dd
 alias grb='git rb'  # [g]it [r]e[b]ase
 alias gre='git re'  # [g]it [re]mote
+alias gri='git ri'  # [g]it [r]ebase [i]nteractive
 alias gsa='git sa'  # [g]it [s]tatus [a]ll
 alias gsh='git sh'  # [g]it [sh]ow
 alias gsl='git sl'  # [g]it [s]hort[log]

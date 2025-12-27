@@ -125,6 +125,7 @@
 	ra = remote add
 	rb = rebase
 	re = remote -v
+	ri = rebase -i
 	sa = status
 	sh = show
 	sl = shortlog -sn
