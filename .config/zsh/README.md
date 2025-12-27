@@ -2,7 +2,8 @@
 
 ```bash
 ./setup.zsh
-fast-theme base16 # or whatever fast-syntax-highlighting theme
+build-fzf-tab-module # NOTE: see https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#binary-module
+fast-theme base16    # or whatever fast-syntax-highlighting theme
 ```
 
 ## Keybindings
