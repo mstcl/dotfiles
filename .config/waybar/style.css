@@ -1,6 +1,6 @@
 * {
   background: transparent;
-  color: white;
+  color: #e3d1c3;
   font-family:
     SF Pro Display,
     Symbols Nerd Font;
@@ -18,7 +18,7 @@
 }
 
 #clock {
-  background-color: #352e2e;
+  background-color: #1d1b19;
   color: white;
   border-radius: 20px;
   padding-left: 1rem;
@@ -28,7 +28,7 @@
 }
 
 #workspaces {
-  background-color: #352e2e;
+  background-color: #1d1b19;
   color: black;
   border-radius: 20px;
   margin-right: 2px;
@@ -37,15 +37,20 @@
 
 #workspaces button {
   border-radius: 20px;
+  border-width: 0px;
+}
+
+#workspaces button:hover {
+  border-radius: 20px;
+  background-color: #282523;
 }
 
 #workspaces button.focused {
-  background-color: #493f37;
+  background-color: #282523;
 }
 
 #window {
-  background-color: #493f37;
-  color: white;
+  background-color: #5e5043;
   border-radius: 20px;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -58,8 +63,7 @@ window#waybar.empty #window {
 }
 
 #pulseaudio {
-  background-color: #493f37;
-  color: white;
+  background-color: #5e5043;
   border-radius: 20px;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -68,12 +72,11 @@ window#waybar.empty #window {
 }
 
 #pulseaudio.muted {
-  background-color: #493f37;
+  background-color: #5e5043;
 }
 
 #custom-dunst {
-  background-color: #493f37;
-  color: white;
+  background-color: #5e5043;
   border-radius: 20px;
   padding-left: 1rem;
   padding-right: 1rem;

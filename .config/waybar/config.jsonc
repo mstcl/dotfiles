@@ -1,60 +1,58 @@
 {
-  "layer": "bottom",
-  "position": "top",
-  "height": 16,
-  "spacing": 8,
-  "margin-top": 8,
-  "margin-left": 8,
-  "margin-right": 8,
-  "mode": "dock",
-  "reload_style_on_change": true,
-  "modules-left": ["niri/workspaces", "niri/window"],
-  "modules-right": ["mpris", "pulseaudio", "custom/dunst", "clock"],
+	"layer": "bottom",
+	"position": "top",
+	"height": 16,
+	"spacing": 8,
+	"margin-top": 8,
+	"margin-left": 8,
+	"margin-right": 8,
+	"mode": "dock",
+	"reload_style_on_change": true,
+	"modules-left": ["niri/workspaces", "niri/window"],
+	"modules-right": ["mpris", "pulseaudio", "custom/dunst", "clock"],
 
-  "custom/dunst": {
-    "format": "{icon}  {text}",
-    "format-icons": {
-      "false": "",
-      "true": "",
-    },
-    "return-type": "json",
-    "exec": "echo \"{\\\"alt\\\": \\\"$(dunstctl is-paused)\\\", \\\"text\\\": $(dunstctl count history)}\"",
-    "interval": 1,
-    "hide-empty-text": true,
-    "on-click": "alacritty_launch fzf_dunst",
-    "on-click-middle": "dunstctl set-paused toggle",
-  },
+	"custom/dunst": {
+		"format": "{icon}  {text}",
+		"format-icons": {
+			"false": "",
+			"true": ""
+		},
+		"return-type": "json",
+		"exec": "echo \"{\\\"alt\\\": \\\"$(dunstctl is-paused)\\\", \\\"text\\\": $(dunstctl count history)}\"",
+		"interval": 1,
+		"hide-empty-text": true,
+		"on-click": "alacritty_launch fzf_dunst",
+		"on-click-middle": "dunstctl set-paused toggle"
+	},
 
-  "pulseaudio": {
-    "tooltip": false,
-    "format": "{icon}  {volume}%",
-    "format-bluetooth": "{icon} {volume}% ",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""],
-    },
-    "scroll-step": 1,
-    "on-click": "pavucontrol",
-    "ignored-sinks": ["Easy Effects Sink"],
-    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-  },
+	"pulseaudio": {
+		"tooltip": false,
+		"format": "{icon}  {volume}%",
+		"format-bluetooth": "{icon} {volume}% ",
+		"format-muted": "",
+		"format-icons": {
+			"default": ["", "", ""]
+		},
+		"scroll-step": 1,
+		"on-click": "pavucontrol",
+		"ignored-sinks": ["Easy Effects Sink"],
+		"on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+	},
 
-  "niri/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "browser": "",
-      "code": "",
-      "default": "",
-    },
-  },
+	"niri/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"default": ""
+		}
+	},
 
-  "mpris": {
-    "player": "playerctld",
-    "format": "{status_icon}  {artist} – {title}",
-    "tooltip-format": "",
-    "status-icons": {
-      "playing": "",
-      "paused": "",
-    },
-  },
+	"mpris": {
+		"player": "playerctld",
+		"format": "{status_icon}  {artist} – {title}",
+		"tooltip-format": "",
+		"status-icons": {
+			"playing": "",
+			"paused": ""
+		}
+	}
 }
