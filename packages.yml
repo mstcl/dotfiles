@@ -68,12 +68,14 @@ packages:
   - nvidia
   - amd-ucode # for AMD cpus
   # - intel-ucode # for intel CPUs
-  - cpupower # cpu control
+  - power-profiles-daemon # cpu control
   - ananicy-cpp
   - cachyos-ananicy-rules
   - cachyos-gaming-meta
+  - gamescope
+  - mangohud
   - linux-cachyos
-  - linux-cachyos-nvidia
+  - linux-cachyos-nvidia-open
   - lvm2
   # - cadaver # webdav cli client
   - parted

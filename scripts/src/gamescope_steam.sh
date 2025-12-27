@@ -1,3 +1,20 @@
 #!/bin/sh
 
-gamescope -r 144 -W 1920 -H 1080 -w 1920 -h 1080 -f  -- steam
+PROTON_ENABLE_WAYLAND=1
+PROTON_USE_NTSYNC=1
+
+gamescope \
+	-r 165 \
+	-W 3440 \
+	-H 1440 \
+	-w 3440 \
+	-h 1440 \
+	--force-windows-fullscreen \
+	--hdr-enabled \
+	--rt \
+	--adaptive-sync \
+	--backend=wayland \
+	--mangoapp \
+	--force-grab-cursor \
+	--fullscreen \
+	-- steam
