@@ -201,30 +201,31 @@ alias lla='eza -l --color=always --group-directories-first -h --git -a'         
 
 # :: alias / git (requires git aliases) -- convenience to avoid needing the space
 alias g='git'       # [g]it
-alias gs='git sync' # [g]it [s]ync
-alias gsa='git sa'  # [g]it [s]tatus [a]ll
-alias gss='git ss'  # [g]it [s]tatus [s]hort
-alias gst='git st'  # [g]it [st]ash
-alias gsp='git sp'  # [g]it [s]tash [p]op
-alias gre='git re'  # [g]it [re]mote
-alias gra='git ra'  # [g]it [r]emote [a]dd
-alias gdi='git di'  # [g]it [di]ff
-alias gdd='git dd'  # [g]it [d]iff side-by-side
-alias gin='git in'  # [g]it [in]it
-alias gpu='git pu'  # [g]it [pu]sh
-alias gpl='git pl'  # [g]it [p]u[l]l
 alias gad='git ad'  # [g]it [ad]d
+alias gbr='git br'  # [g]it [br]anch
+alias gcl='git cl'  # [g]it [cl]one
+alias gcm='git cm'  # [g]it [c]o[m]mit
+alias gco='git co'  # [g]it [c]heck[o]ut
+alias gcp='git cp'  # [g]it [c]herry [p]ick
+alias gdd='git dd'  # [g]it [d]iff side-by-side
+alias gdi='git di'  # [g]it [di]ff
 alias gfe='git fe'  # [g]it [fe]tch
+alias gin='git in'  # [g]it [in]it
 alias glo='git lo'  # [g]it [lo]g
 alias gls='git ls'  # [g]it [l]og [s]hort
+alias gpl='git pl'  # [g]it [p]u[l]l
+alias gpu='git pu'  # [g]it [pu]sh
+alias gra='git ra'  # [g]it [r]emote [a]dd
 alias grb='git rb'  # [g]it [r]e[b]ase
-alias gcl='git cl'  # [g]it [cl]one
-alias gbr='git br'  # [g]it [br]anch
-alias gco='git co'  # [g]it [c]heck[o]ut
-alias gcm='git cm'  # [g]it [c]o[m]mit
+alias gre='git re'  # [g]it [re]mote
+alias gsa='git sa'  # [g]it [s]tatus [a]ll
+alias gsh='git sh'  # [g]it [sh]ow
 alias gsl='git sl'  # [g]it [s]hort[log]
-alias gcp='git cp'  # [g]it [c]herry [p]ick
+alias gsp='git sp'  # [g]it [s]tash [p]op
+alias gss='git ss'  # [g]it [s]tatus [s]hort
+alias gst='git st'  # [g]it [st]ash
 alias gsu='git su'  # [g]it [s]ubmodule [u]pdate
+alias gs='git sync' # [g]it [s]ync
 
 # :: terraform
 export TERRAFORM_ARGS="-parallelism=1"

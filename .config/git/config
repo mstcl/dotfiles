@@ -108,27 +108,28 @@
 
 # :: Aliases
 [alias]
-	sync = !git checkout master && git fetch --prune && git merge origin/master
-	sa = status
-	ss = status --short
-	st = stash
-	sp = stash pop
-	re = remote -v
-	ra = remote add
-	di = diff
-	dd = !DELTA_FEATURES=+side-by-side git diff
-	in = init
-	pu = push
-	pl = pull
 	ad = add
+	br = branch
+	cl = clone
+	cm = commit
+	co = checkout
+	cp = cherry-pick
+	dd = !DELTA_FEATURES=+side-by-side git diff
+	di = diff
 	fe = fetch
+	in = init
 	lo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ls = log --all --graph --decorate --oneline
+	pl = pull
+	pu = push
+	ra = remote add
 	rb = rebase
-	cl = clone
-	br = branch
-	co = checkout
-	cm = commit
+	re = remote -v
+	sa = status
+	sh = show
 	sl = shortlog -sn
-	cp = cherry-pick
+	sp = stash pop
+	ss = status --short
+	st = stash
 	su = submodule update --recursive --remote --init
+	sync = !git checkout master && git fetch --prune && git merge origin/master
