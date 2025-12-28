@@ -53,6 +53,9 @@
 	prompt = false
 [credential]
 	helper = store
+[rebase]
+    autosquash = true
+    autostash = true
 [include]
 	path = ~/.config/git/aliases.toml
 	path = ~/.config/git/delta.toml
