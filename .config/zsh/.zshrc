@@ -231,6 +231,7 @@ alias gsp='git sp'  # [g]it [s]tash [p]op
 alias gss='git ss'  # [g]it [s]tatus [s]hort
 alias gst='git st'  # [g]it [st]ash
 alias gsu='git su'  # [g]it [s]ubmodule [u]pdate
+alias gta='git ta'  # [g]it [ta]gs
 alias gun='git un'  # [g]it [un]do
 alias gs='git sync' # [g]it [s]ync
 

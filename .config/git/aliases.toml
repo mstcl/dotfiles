@@ -9,8 +9,7 @@
 	di = diff
 	fe = fetch --all
 	in = init
-	lo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ls = log --all --graph --decorate --oneline
+	lo = log --color=always --graph --pretty=format:'%C(bold red)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(yellow)%ad%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=human --decorate=full --all
 	pl = pull
 	pu = push
 	ra = remote add
@@ -25,4 +24,5 @@
 	st = stash
 	su = submodule update --recursive --remote --init
 	sync = !git checkout master && git fetch --prune && git merge origin/master
+	ta = tag -l --format='%(color:bold red)%(tag)%(color:reset) %(subject)'
 	un = reset --soft HEAD~
