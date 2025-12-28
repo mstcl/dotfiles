@@ -1,0 +1,4 @@
+[merge]
+	tool = codediff
+[mergetool "codediff"]
+	cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"

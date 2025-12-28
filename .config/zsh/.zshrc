@@ -151,6 +151,10 @@ function nbr() {
 	if [[ -n "$ticket" ]] then; type="/$type"; fi
 	git checkout -b "$ticket$type/$summary"
 } # [n]ew [br]anch
+function gsc() {
+	local commit=${1:-HEAD}
+	nvim -c "CodeDiff $commit"
+} # [g]it [s]how [c]ommit
 
 # :: alias quit
 alias q='exit' # [q]uit
@@ -364,3 +368,6 @@ export GPG_TTY=$(tty)
 unset FD_FLAGS
 unset ERD_PREVIEW
 unset TERRAFORM_ARGS TERRAFORM_BIN
+
+# :: setup completion for custom funcs
+compdef _git gsc=git-show

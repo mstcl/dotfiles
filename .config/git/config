@@ -1,7 +1,5 @@
-# :: Generic
 [core]
 	excludesFile = "~/.config/git/ignore"
-	pager = delta
 	compression = 9
 	whitespace = trailing-space
 	autocrlf = input
@@ -9,7 +7,6 @@
 	auto = true
 	strategy = incremental
 [interactive]
-	diffFilter = delta --color-only --diff-so-fancy
 	singlekey = true
 [help]
 	autocorrect = prompt
@@ -48,96 +45,16 @@
 	showbranch = always
 [grep]
 	lineNumber = true
-
-# :: Credential / authoring
-[user]
-	email = code@beee.ps
-	name = code
-	signingkey = 6F49A8A7AEF70827
-[credential]
-	helper = store
-
-# :: Diff / delta
 [diff]
-	tool = nvimdiff
 	algorithm = histogram
 	mnemonicprefix = true
 	rename = copy
 [difftool]
 	prompt = false
-[difftool "nvimdiff"]
-	cmd = nvim -d -R "$LOCAL" "$REMOTE"
-[delta]
-	navigate = true
-	zero-style = dim syntax
-	line-numbers = false
-	colorMoved = default
-	keep-plus-minus-markers = false
-	hunk-header-decoration-style = omit
-	file-decoration-style = omit
-	hunk-header-style = "file line-number syntax"
-	file-modified-label = " modified"
-	file-removed-label = " deleted"
-	file-renamed-label = " renamed"
-	file-copied-label = " copied"
-	file-added-label = " added"
-	file-transformation = "s/$/ /"
-	features = tavern
-[delta "ivory"]
-	syntax-theme = ivory
-	minus-style = syntax "#E7CFC9"
-	minus-emph-style = "syntax" bold "#D49F8F"
-	plus-style = syntax "#CED7C8"
-	plus-emph-style = "syntax" bold "#b3bbae"
-	line-numbers-minus-style = "#844D41" bold
-	line-numbers-zero-style = "#89766A"
-	line-numbers-plus-style = "#676c62" bold
-	line-numbers-left-style = "#89766A"
-	line-numbers-right-style = "#89766A"
-	hunk-header-file-style = "#352F2F" bold
-	hunk-header-line-number-style = "#89766A"
-	file-style = "#F2F0ED"  bold "#352F2F"
-[delta "tavern"]
-	syntax-theme = tavern
-	minus-style = syntax "#432A28"
-	minus-emph-style = "syntax" bold "#513431"
-	plus-style = syntax "#2F312B"
-	plus-emph-style = "syntax" bold "#3a3c35"
-	line-numbers-minus-style = "#C5A3A4" bold
-	line-numbers-zero-style = "#8A7267"
-	line-numbers-plus-style = "#AAAD9E" bold
-	line-numbers-left-style = "#8A7267"
-	line-numbers-right-style = "#8A7267"
-	hunk-header-file-style = "#E4E2E2" bold
-	hunk-header-line-number-style = "#8A7267"
-	file-style = "#1D1B19"  bold "#E4E2E2"
-
-# :: Aliases
-[alias]
-	ad = add
-	br = branch
-	cl = clone
-	cm = commit
-	co = checkout
-	cp = cherry-pick
-	dd = !DELTA_FEATURES=+side-by-side git diff
-	di = diff
-	fe = fetch --all
-	in = init
-	lo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ls = log --all --graph --decorate --oneline
-	pl = pull
-	pu = push
-	ra = remote add
-	rb = rebase
-	re = remote --verbose
-	ri = rebase -i
-	sa = status
-	sh = show
-	sl = shortlog -sn
-	sp = stash pop
-	ss = status --short
-	st = stash
-	su = submodule update --recursive --remote --init
-	sync = !git checkout master && git fetch --prune && git merge origin/master
-	un = reset --soft HEAD~
+[credential]
+	helper = store
+[include]
+	path = ~/.config/git/aliases.toml
+	path = ~/.config/git/delta.toml
+	path = ~/.config/git/personal.toml
+	path = ~/.config/git/tools.toml

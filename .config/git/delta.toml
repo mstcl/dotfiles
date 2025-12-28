@@ -1,0 +1,48 @@
+[interactive]
+	diffFilter = delta --color-only --diff-so-fancy
+[core]
+	pager = delta
+[delta]
+	navigate = true
+	zero-style = dim syntax
+	line-numbers = true
+	colorMoved = default
+	keep-plus-minus-markers = false
+	hunk-header-decoration-style = omit
+	file-decoration-style = omit
+	hunk-header-style = "file line-number syntax"
+	file-modified-label = " modified"
+	file-removed-label = " deleted"
+	file-renamed-label = " renamed"
+	file-copied-label = " copied"
+	file-added-label = " added"
+	file-transformation = "s/$/ /"
+	features = tavern
+[delta "ivory"]
+	syntax-theme = ivory
+	minus-style = syntax "#E7CFC9"
+	minus-emph-style = "syntax" bold "#D49F8F"
+	plus-style = syntax "#CED7C8"
+	plus-emph-style = "syntax" bold "#b3bbae"
+	line-numbers-minus-style = "#844D41" bold
+	line-numbers-zero-style = "#89766A"
+	line-numbers-plus-style = "#676c62" bold
+	line-numbers-left-style = "#89766A"
+	line-numbers-right-style = "#89766A"
+	hunk-header-file-style = "#352F2F" bold
+	hunk-header-line-number-style = "#89766A"
+	file-style = "#F2F0ED"  bold "#352F2F"
+[delta "tavern"]
+	syntax-theme = tavern
+	minus-style = syntax "#432A28"
+	minus-emph-style = "syntax" bold "#513431"
+	plus-style = syntax "#2F312B"
+	plus-emph-style = "syntax" bold "#3a3c35"
+	line-numbers-minus-style = "#C5A3A4" bold
+	line-numbers-zero-style = "#8A7267"
+	line-numbers-plus-style = "#AAAD9E" bold
+	line-numbers-left-style = "#8A7267"
+	line-numbers-right-style = "#8A7267"
+	hunk-header-file-style = "#E4E2E2" bold
+	hunk-header-line-number-style = "#8A7267"
+	file-style = "#1D1B19"  bold "#E4E2E2"
