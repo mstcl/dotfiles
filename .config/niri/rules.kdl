@@ -1,17 +1,25 @@
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
 window-rule {
     match app-id=r#"^org\.gnome\."#
+
     geometry-corner-radius 12
     clip-to-geometry true
 }
 
 window-rule {
 	match app-id="Alacritty"
+
 	default-column-display "tabbed"
     open-maximized false
 }
 
 window-rule {
     match app-id="qalculate-gtk"
+
     open-maximized false
     min-width 200
     max-width 200
@@ -19,9 +27,11 @@ window-rule {
 
 window-rule {
 	match title="^Kingdom Come: Deliverance$"
+
     open-maximized true
     open-floating false
     open-fullscreen true
+    open-maximized-to-edges true
 }
 
 window-rule {
@@ -48,28 +58,21 @@ window-rule {
     match app-id=r#"^xdg-desktop-portal$"#
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"org.quickshell$"#
+
     open-maximized false
     open-floating true
 }
 
-layer-rule {
-    match namespace="^quickshell$"
-    place-within-backdrop true
-}
-
 window-rule {
 	match app-id="steam" title="Steam Games List"
+
 	max-width 430
 	open-floating false
 }
 
 window-rule {
-	match app-id="firefox" title="Mozilla Firefox"
-	open-on-workspace "browser"
-}
-
-window-rule {
 	match app-id="launcher"
+
     open-maximized false
     open-floating true
     min-width 500
@@ -79,23 +82,9 @@ window-rule {
 }
 
 window-rule {
-	match is-floating=true
-
-    shadow {
-        on
-        softness 40
-        spread 9
-        offset x=0 y=5
-        draw-behind-window true
-        color "#00000044"
-    }
-}
-
-window-rule {
     match app-id="launcher"
     match title="launcher"
 
     default-column-width { proportion 0.3; }
-
     open-maximized false
 }

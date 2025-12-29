@@ -98,6 +98,7 @@ binds {
     Mod+R       { switch-preset-column-width;   }
     Mod+F       { fullscreen-window;            }
     Mod+Q       { center-column;                }
+    Mod+M       { maximize-window-to-edges;     }
     Mod+S       { toggle-column-tabbed-display; } // like vim split
     Mod+Shift+F { toggle-window-floating;       }
     Mod+Shift+R { reset-window-height;          }
