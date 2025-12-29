@@ -57,7 +57,7 @@
     autosquash = true
     autostash = true
 [include]
-	path = ~/.config/git/aliases.toml
-	path = ~/.config/git/delta.toml
-	path = ~/.config/git/personal.toml
-	path = ~/.config/git/tools.toml
+	path = ~/.config/git/aliases.ini
+	path = ~/.config/git/delta.ini
+	path = ~/.config/git/personal.ini
+	path = ~/.config/git/tools.ini
