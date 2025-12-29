@@ -1,21 +1,7 @@
 ! :.config/X11/Xresources
 ! vim:set ft=xdefaults:
 ! X colors.
-*foreground:        #493f37
-*background:        #e9e5e2
-emacs*foreground:   #493f37
-emacs*background:   #e9e5e2
-urxvt*foreground:   #493f37
-xterm*foreground:   #493f37
-uxterm*foreground:  #493f37
-urxvt*background:   #e9e5e2
-xterm*background:   #e9e5e2
-uxterm*background:  #e9e5e2
-urxvt*cursorColor:  #79241f
-xterm*cursorColor:  #79241f
-uxterm*cursorColor: #79241f
-urxvt*borderColor:  #e9e5e2
-*.font: SF Pro Display
+*.font: SF Pro Text
 xterm*renderFont: true
 xterm*faceName: Maple Mono:size=16:antialias=false
 urxvt*font: Maple Mono:size=16:antialias=false
@@ -34,36 +20,9 @@ xterm.vt100.scrollBar: false
 xterm.vt100.scrollbar.width: 0
 xterm.vt100.scaleHeight: 1.0
 
-*cursorColor: #79241f
-
-! Colors 0-15.
-*color0:  #e9e5e2
-*color1:  #735057
-*color2:  #543227
-*color3:  #464c3a
-*color4:  #545468
-*color5:  #735057
-*color6:  #673d58
-*color7:  #352e2e
-*color8:  #cec6bf
-*color9:  #735057
-*color10: #543227
-*color11: #464c3a
-*color12: #545468
-*color13: #735057
-*color14: #673d58
-*color15: #493f37
-
-! Black color that will not be affected by bold highlighting.
-*.color66: #e9e5e2
-*color66:  #e9e5e2
-
 Xft.antialias: 1
 Xft.hinting: 1
 Xft.autohint: 0
 Xft.rgba: rgb
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
-
-Xcursor.theme: KDE-classic
-Xcursor.size: 42

@@ -41,6 +41,9 @@ ln -sfn "${DOTFILES_DIR}/.config/niri" "${CONFIG_DIR}/niri" || true
 ln -sfn "${DOTFILES_DIR}/.config/npm" "${CONFIG_DIR}/npm" || true
 ln -sfn "${DOTFILES_DIR}/.config/yamlfmt" "${CONFIG_DIR}/yamlfmt" || true
 ln -sfn "${DOTFILES_DIR}/.config/sway" "${CONFIG_DIR}/sway" || true
+ln -sfn "${DOTFILES_DIR}/.config/gtk-3.0" "${CONFIG_DIR}/gtk-3.0" || true
+ln -sfn "${DOTFILES_DIR}/.config/gtk-4.0" "${CONFIG_DIR}/gtk-4.0" || true
+ln -sfn "${DOTFILES_DIR}/.config/environment.d" "${CONFIG_DIR}/environment.d" || true
 ln -sfn "${DOTFILES_DIR}/.config/jj" "${CONFIG_DIR}/jj" || true
 echo "[INFO] configuration symlink completed"
 

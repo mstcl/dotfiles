@@ -18,18 +18,22 @@ packages:
   - adobe-source-serif-fonts # serif fonts
   - noto-fonts # font fallback
   - noto-fonts-cjk # font fallback cjk
-  - pop-icon-theme # icon theme
   - gnome-themes-extra
+  - adw-gtk-theme
   - gtk2
   - gtk3
   - gtk4
   - gnome-settings-daemon # gtk helper
+  - dms-shell-bin
+  - greetd-dms-greeter-git
+  - quickshell
+  - dgop
+  - matugen
 
   # :: graphical applications / utilities
   - qalculate-gtk # graphical calculator
   - niri # scrolling wm
-  - lemurs # display manager
-  - wl-color-picker # colorpicker
+  - greeterd
   - xorg-apps
   - wl-clipboard # clipboard
   - wlr-randr # wayland outputs
@@ -60,6 +64,7 @@ packages:
   - fdkaac
   - faac
   - faad2
+  - cava
 
   # :: hardware / firmware / drivers
   - nvidia

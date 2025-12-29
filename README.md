@@ -29,6 +29,30 @@ You have to update it if that's the case.
 
 [Releases](https://github.com/AvengeMedia/DankMaterialShell/releases)
 
+```bash
+systemctl --user enable --now dms
+systemctl --user add-wants niri dms
+```
+
+#### greetd
+
+Update /etc/greetd/config.toml
+
+```toml
+[terminal]
+vt = 1
+
+[default_session]
+user = "greeter"
+command = "/usr/bin/dms-greeter --command niri"
+```
+
+Then run:
+
+```bash
+dms greeter sync
+```
+
 ### If using Citrix
 
 ```bash

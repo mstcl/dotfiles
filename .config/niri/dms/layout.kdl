@@ -1,7 +1,13 @@
 layout {
     gaps 4
-    border { width 2; }
-    focus-ring { width 2; }
+
+    border {
+        width 2
+    }
+
+    focus-ring {
+        width 2
+    }
 }
 window-rule {
     geometry-corner-radius 12

@@ -52,8 +52,9 @@ window-rule {
     open-floating true
 }
 
-debug {
-    honor-xdg-activation-with-invalid-serial
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
 }
 
 window-rule {

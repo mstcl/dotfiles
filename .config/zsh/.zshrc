@@ -106,7 +106,7 @@ bindkey "^X^E" edit-command-line
 function mkcd() { command mkdir $1 && cd $1 } # [mk]dir and [cd] into it
 function temp() { cd "$(mktemp -d)" } # create [temp]orary directory
 function scr() { "$EDITOR" $(mktemp) } # [scr]atch file
-function pif() {
+function paf() {
 	yay -Sl | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g' |
 		awk '{ print $2 " " $4 $5 }' |
 		sed 's/installed/i/' |
