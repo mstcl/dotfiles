@@ -25,9 +25,10 @@ text = "CellBackground"
 [cursor]
 thickness = 0.25
 unfocused_hollow = false
+blink_interval = 500
 
 [cursor.style]
-blinking = "Off"
+blinking = "On"
 shape = "Beam"
 
 [env]

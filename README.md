@@ -25,6 +25,10 @@ sudo ./cachyos-repo.sh
 It is entirely possible that the pacman version in the script is outdated.
 You have to update it if that's the case.
 
+### Install DankShell
+
+[Releases](https://github.com/AvengeMedia/DankMaterialShell/releases)
+
 ### If using Citrix
 
 ```bash

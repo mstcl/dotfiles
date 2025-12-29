@@ -33,12 +33,10 @@ packages:
   - xorg-apps
   - wl-clipboard # clipboard
   - wlr-randr # wayland outputs
-  - hyprlock # screenlock
   - alacritty # terminal emulator
   # - tdrop # quake
   # - aseprite # graphical pixel art editor
   - chromium
-  - dunst # notifications
   - feh # image viewer
   - imv # photo viewer
   - firefox # browser
@@ -48,7 +46,6 @@ packages:
   # - signal-desktop
   - seahorse # passwords and keys managers
   - nautilus # file manager
-  - swaybg # for setting background picture
 
   # :: audio utilities / codecs
   - playerctl # control media

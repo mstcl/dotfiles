@@ -1,0 +1,21 @@
+layout {
+	default-column-display "tabbed"
+    default-column-width { proportion 0.5; }
+    center-focused-column "never"
+    always-center-single-column
+    struts {}
+
+    preset-column-widths { proportion 0.5; proportion 1.0; }
+    preset-window-heights { proportion 0.5; proportion 1.0; }
+
+    tab-indicator {
+    	place-within-column;
+    	hide-when-single-tab;
+    	length total-proportion=0.1;
+    	width 8;
+    	gaps-between-tabs 8;
+    	corner-radius 16;
+    }
+
+    shadow { softness 30; spread 5; offset x=0 y=5; }
+}

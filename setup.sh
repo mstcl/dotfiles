@@ -34,15 +34,13 @@ echo "[INFO] special symlink completed"
 ln -sfn "${DOTFILES_DIR}/.config/X11" "${CONFIG_DIR}/X11" || true
 ln -sfn "${DOTFILES_DIR}/.config/alacritty" "${CONFIG_DIR}/alacritty" || true
 ln -sfn "${DOTFILES_DIR}/.config/bat" "${CONFIG_DIR}/bat" || true
-ln -sfn "${DOTFILES_DIR}/.config/dunst" "${CONFIG_DIR}/dunst" || true
 ln -sfn "${DOTFILES_DIR}/.config/fd" "${CONFIG_DIR}/fd" || true
 ln -sfn "${DOTFILES_DIR}/.config/fontconfig" "${CONFIG_DIR}/fontconfig" || true
 ln -sfn "${DOTFILES_DIR}/.config/git" "${CONFIG_DIR}/git" || true
-ln -sfn "${DOTFILES_DIR}/.config/hypr" "${CONFIG_DIR}/hypr" || true
 ln -sfn "${DOTFILES_DIR}/.config/niri" "${CONFIG_DIR}/niri" || true
 ln -sfn "${DOTFILES_DIR}/.config/npm" "${CONFIG_DIR}/npm" || true
-ln -sfn "${DOTFILES_DIR}/.config/waybar" "${CONFIG_DIR}/waybar" || true
 ln -sfn "${DOTFILES_DIR}/.config/yamlfmt" "${CONFIG_DIR}/yamlfmt" || true
+ln -sfn "${DOTFILES_DIR}/.config/sway" "${CONFIG_DIR}/sway" || true
 ln -sfn "${DOTFILES_DIR}/.config/jj" "${CONFIG_DIR}/jj" || true
 echo "[INFO] configuration symlink completed"
 
