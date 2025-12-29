@@ -19,15 +19,13 @@ binds {
     Mod+Shift+D hotkey-overlay-title="Dashboard" repeat=false cooldown-ms=500    { spawn "dms" "ipc" "call" "dash" "toggle" "overview";    }
     Mod+Shift+N hotkey-overlay-title="Notepad" repeat=false cooldown-ms=500      { spawn "dms" "ipc" "call" "notepad" "toggle";            }
     Mod+Shift+P hotkey-overlay-title="Color Picker" repeat=false cooldown-ms=500 { spawn "dms" "color" "pick" "-a";                        }
-    Mod+Shift+Slash hotkey-overlay-title="Binds" repeat=false cooldown-ms=500    { spawn "dms" "ipc" "call" "keybinds" "toggle" "niri"; }
+    Mod+Shift+Slash hotkey-overlay-title="Binds" repeat=false cooldown-ms=500    { spawn "dms" "ipc" "call" "keybinds" "toggle" "niri";    }
+    Mod+Shift+Q hotkey-overlay-title="Power Menu" repeat=false cooldown-ms=500   { spawn "dms" "ipc" "call" "powermenu" "toggle";          }
 
 	// Screenshot keybinds
     Mod+Alt+P hotkey-overlay-title="Screenshot (Picker)" { spawn "dms" "screenshot"; }
 	Mod+Alt+S hotkey-overlay-title="Screenshot (Screen)" { spawn "dms" "screenshot" "full"; }
     Mod+Alt+W hotkey-overlay-title="Screenshot (Window)" { screenshot-window; }
-
-	// Powermenu
-    Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
     // Audio Controls
     Mod+Slash                                   { spawn "playerctl" "play-pause"; }
