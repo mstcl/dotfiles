@@ -59,7 +59,7 @@ bindkey ^B backward-word # swap backward word and backward char for ergonomics
 bindkey '^[b' backward-char
 
 # :: ctrl-x to toggle sudo in normal mode
-sudo-command-line() {
+function sudo-command-line() {
 	[[ -z $BUFFER ]] && zle up-history
 	if [[ $BUFFER == sudo\ * ]]; then
 		LBUFFER="${LBUFFER#sudo }"
@@ -77,7 +77,7 @@ zle -N sudo-command-line
 bindkey "^X" sudo-command-line
 
 # :: ctrl-z to put process in background and ctrl-z again to bring it back up
-fancy-ctrl-z() {
+function fancy-ctrl-z() {
 	if [[ $#BUFFER -eq 0 ]]; then
 		BUFFER="fg"
 		zle accept-line
@@ -106,7 +106,7 @@ bindkey "^X^E" edit-command-line
 function mkcd() { command mkdir $1 && cd $1 } # [mk]dir and [cd] into it
 function temp() { cd "$(mktemp -d)" } # create [temp]orary directory
 function scr() { "$EDITOR" $(mktemp) } # [scr]atch file
-function yif() {
+function pif() {
 	yay -Sl | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g' |
 		awk '{ print $2 " " $4 $5 }' |
 		sed 's/installed/i/' |
@@ -116,15 +116,15 @@ function yif() {
 			--preview-window=nohidden \
 			--preview 'yay -Si {1}' |
 		awk '{ print $1 }' |
-		xargs -ro yay -S \
+		xargs -ro yay -Sy \
 		 --sudoloop --removemake --cleanafter
-} # [y]ay [i]nstall with [f]zf
-function yrf() {
+} # [p]acman [i]nstall with [f]zf
+function prf() {
 	yay -Qq | fzf -q "$1" --border=top \
 		--border-label="Select package(s) to uninstall" \
 		--preview-window=nohidden --preview 'yay -Qi {1}' |
 		xargs -ro yay -Rns
-} # [y]ay remove with [f]zf
+} # [p]acman remove with [f]zf
 function rgf() {
 	rg --line-number --no-heading --smart-case --color=never \
 		--no-ignore-vcs --ignore-file ~/.config/fd/ignore "${*:-}" |
@@ -256,30 +256,60 @@ alias tta="$TERRAFORM_BIN taint"                             # [t]erraform [ta]i
 alias tut="$TERRAFORM_BIN untaint"                           # [t]erraform [u]n[t]aint
 
 # :: aur/pacman
-alias pst='yay -Ps'                                                  # [p]acman [st]ats
-alias pnw='yay -Pw'                                                  # [p]acman [n]e[w]s
-alias pup='yay -Syu --removemake --sudoloop'                         # [p]acman [up]date
-alias pid='yay -U'                                                   # [p]acman [i]nstall from [d]atabase
-alias pir='yay -S'                                                   # [p]acman [i]nstall from [r]emote
-alias pni='yay -Qi'                                                  # [p]acman i[n]fo of [i]nstalled
-alias pna='yay -Si'                                                  # [p]acman i[n]fo of [a]ny
-alias psi='yay -Qs'                                                  # [p]acman [s]each [i]nstalled
-alias psa='yay -Ss'                                                  # [p]acman [s]earch [a]ny
-alias pfi='yay -Qo'                                                  # [p]acman [f]ile owned by [i]nstalled
-alias pfa='yay -F'                                                   # [p]acman [f]ile owned by [a]ny
-alias plf='yay -Ql'                                                  # [p]acman [l]ist [f]iles owned
-alias pla='yay -Q'                                                   # [p]acman [l]ist [a]ll installed
-alias ple='yay -Qe'                                                  # [p]acman [l]ist [e]xplicit installed
-alias poa='yay -Qdt'                                                 # [p]acman [o]rphaned [a]ll
-alias poe='yay -Qet'                                                 # [p]acman [o]rphaned [e]xplicity
-alias pcd='yay -Scd'                                                 # [p]acman [c]lean and [d]elete cache
-alias pil="grep -i installed /var/log/pacman.log | cut -d ' ' -f1,4" # [p]acman [i]nstalled [l]og
-alias prl="grep -i removed /var/log/pacman.log | cut -d ' ' -f1,4"   # [p]acman [r]emoved [l]og
-alias pul="grep -i upgraded /var/log/pacman.log | cut -d ' ' -f1,4"  # [p]acman [u]pdated [l]og
+alias pacsys='yay -Ps'                         # [pac]man [sys]tem stats
+alias pacnews='yay -Pw'                        # [pac]man [news]
+alias pacup='yay -Syu --removemake --sudoloop' # [pac]man [up]date
+alias pacad='yay -Sy'                          # [pac]man [ad]d
+alias pacrm='yay -Rns'                         # [pac]man [r]e[m]ove
+alias pacown='yay -Ql'                         # [pac]man which package [own]s these files
+alias pacclean='yay -Scd'                      # [pac]man [c]lean and [d]elete cache
+function pacstat() {
+  if [[ $* == *-a* ]]; then
+  	shift
+  	yay -Qi $@
+  else
+  	yay -Si $@
+  fi
+} # [pac]man [stat] a package
+function pacgrep() {
+  if [[ $* == *-a* ]]; then
+  	shift
+  	yay -Ss $@
+  else
+  	yay -Qs $@
+  fi
+} # [pac]man [grep]
+function pacwho() {
+  if [[ $* == *-a* ]]; then
+  	shift
+  	yay -Fy $@
+  else
+  	yay -Qo $@
+  fi
+} # [pac]man [who] owns the file
+function pacls() {
+  if [[ $* == *-a* ]]; then
+  	shift
+  	yay -Q
+  else
+  	yay -Qe
+  fi
+} # [pac]man [l]ist installed packages
+function pacorphans() {
+  if [[ $* == *-a* ]]; then
+  	shift
+  	yay -Qtd
+  else
+  	yay -Qte
+  fi
+} # [pac]man ls [o]rphans
+alias paclogi="grep -i installed /var/log/pacman.log | cut -d ' ' -f1,4" # [pac]man [log] [i]nstalled
+alias paclogr="grep -i removed /var/log/pacman.log | cut -d ' ' -f1,4"   # [pac]man [log] [r]emoved
+alias paclogu="grep -i upgraded /var/log/pacman.log | cut -d ' ' -f1,4"  # [pac]man [log] [u]pdated
 
 # :: tea (gitea CLI)
-alias gfc='tea pulls c'    # [g]it [f]orge pull [c]reate
-alias gfm='tea pulls m $1' # [g]it [f]orge pull [m]erge
+alias gtc='tea pulls c'    # [g]i[t]ea pull [c]reate
+alias gtm='tea pulls m $1' # [g]i[t]ea pull [m]erge
 
 # :: jujutsu
 alias j='jj'
