@@ -1,37 +1,44 @@
 layer-rule {
-    match namespace="^quickshell$"
-    place-within-backdrop true
+	match namespace="^quickshell$"
+	place-within-backdrop true
 }
 
 window-rule {
-    match app-id=r#"^org\.gnome\."#
+	match app-id=r#"^org\.gnome\."#
 
-    geometry-corner-radius 12
-    clip-to-geometry true
+	geometry-corner-radius 12
+	clip-to-geometry true
 }
 
 window-rule {
 	match app-id="Alacritty"
 
 	default-column-display "tabbed"
-    open-maximized false
+	open-maximized false
 }
 
 window-rule {
-    match app-id="qalculate-gtk"
+	match app-id="feishin"
 
-    open-maximized false
-    min-width 200
-    max-width 200
+	open-maximized true
+	default-column-width { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="qalculate-gtk"
+
+	open-maximized false
+	min-width 200
+	max-width 200
 }
 
 window-rule {
 	match title="^Kingdom Come: Deliverance$"
 
-    open-maximized true
-    open-floating false
-    open-fullscreen true
-    open-maximized-to-edges true
+	open-maximized true
+	open-floating false
+	open-fullscreen true
+	open-maximized-to-edges true
 }
 
 window-rule {
@@ -54,13 +61,13 @@ window-rule {
 	match title="Warning"
 	match app-id="pavucontrol"
 	match title="Friends List"
-    match app-id=r#"^org\.gnome\.Nautilus$"#
-    match app-id=r#"^xdg-desktop-portal$"#
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    match app-id=r#"org.quickshell$"#
+	match app-id=r#"^org\.gnome\.Nautilus$"#
+	match app-id=r#"^xdg-desktop-portal$"#
+	match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+	match app-id=r#"org.quickshell$"#
 
-    open-maximized false
-    open-floating true
+	open-maximized false
+	open-floating true
 }
 
 window-rule {
@@ -73,18 +80,18 @@ window-rule {
 window-rule {
 	match app-id="launcher"
 
-    open-maximized false
-    open-floating true
-    min-width 500
-    max-width 500
-    min-height 900
-    max-height 900
+	open-maximized false
+	open-floating true
+	min-width 500
+	max-width 500
+	min-height 900
+	max-height 900
 }
 
 window-rule {
-    match app-id="launcher"
-    match title="launcher"
+	match app-id="launcher"
+	match title="launcher"
 
-    default-column-width { proportion 0.3; }
-    open-maximized false
+	default-column-width { proportion 0.3; }
+	open-maximized false
 }
