@@ -1,4 +1,5 @@
 environment {
+	QS_ICON_THEME "Papirus-Dark"
 	QT_QPA_PLATFORM "wayland"
 	ELECTRON_OZONE_PLATFORM_HINT "auto"
 	QT_QPA_PLATFORMTHEME "gtk3"

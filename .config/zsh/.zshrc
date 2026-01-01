@@ -157,7 +157,7 @@ function gsc() {
 } # [g]it [s]how [c]ommit
 
 # :: alias quit
-alias q='exit' # [q]uit
+alias q="exit" # [q]uit
 
 # :: alias / sudo
 alias sudo="sudo "
@@ -328,6 +328,7 @@ alias ts='tailscale status'
 alias w='curl -s https://wttr.in/London?format=3'
 alias zke='zk edit -i'
 alias th='~/.local/bin/toggle_dark'
+alias js="just"
 
 # :: instant prompt
 # NOTE: https://github.com/romkatv/powerlevel10k/issues/702#issuecomment-626222730
