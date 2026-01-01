@@ -401,5 +401,10 @@ unset FD_FLAGS
 unset ERD_PREVIEW
 unset TERRAFORM_ARGS TERRAFORM_BIN
 
+# :: foot-specific issue: https://codeberg.org/dnkl/foot/issues/797
+function precmd {
+    print -Pn "\e[ q"
+}
+
 # :: setup completion for custom funcs
 compdef _git gsc=git-show

@@ -38,6 +38,7 @@ packages:
   - wl-clipboard # clipboard
   - wlr-randr # wayland outputs
   - foot # terminal emulator
+  - alacritty # terminal emulator
   # - tdrop # quake
   # - aseprite # graphical pixel art editor
   - chromium

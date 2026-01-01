@@ -78,7 +78,6 @@ done
 echo "[INFO] scripts symlink completed"
 
 # TODO: package installation
-# yay -Syy
 
 # :: bat init
 bat cache --build 1>/dev/null

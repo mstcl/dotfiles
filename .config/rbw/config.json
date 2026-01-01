@@ -1,10 +1,10 @@
 {
-	"email":"<redacted>",
-	"base_url":"<redacted>",
-	"identity_url":null,
-	"notifications_url":null,
-	"lock_timeout":36000,
-	"sync_interval":3600,
-	"pinentry":"rbw_pinentry",
-	"client_cert_path":null
+	"email": "<redacted>",
+	"base_url": "<redacted>",
+	"identity_url": null,
+	"notifications_url": null,
+	"lock_timeout": 36000,
+	"sync_interval": 3600,
+	"pinentry": "custom_pinentry",
+	"client_cert_path": null
 }
