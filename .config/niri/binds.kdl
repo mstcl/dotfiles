@@ -5,11 +5,11 @@ binds {
 	// Mod+Shift => Layout related
 
 	// Primary applications
-	Mod+Return hotkey-overlay-title="Open Terminal" repeat=false cooldown-ms=100        { spawn "alacritty";                                 }
+	Mod+Return hotkey-overlay-title="Open Terminal" repeat=false cooldown-ms=100        { spawn "foot";                                      }
 	Mod+B      hotkey-overlay-title="Open Browser" repeat=false cooldown-ms=500         { spawn "firefox";                                   }
 	Mod+Space  hotkey-overlay-title="Application Launcher" repeat=false cooldown-ms=500 { spawn "dms" "ipc" "call" "spotlight" "toggle";     }
 	Mod+C      hotkey-overlay-title="Clipboard Manager" repeat=false cooldown-ms=500    { spawn "dms" "ipc" "call" "clipboard" "toggle";     }
-	Mod+G      hotkey-overlay-title="Password Manager" repeat=false cooldown-ms=500     { spawn "alacritty_launch" "fzf_pass";               }
+	Mod+G      hotkey-overlay-title="Password Manager" repeat=false cooldown-ms=500     { spawn "foot_launch" "fzf_pass";                    }
 	Mod+N      hotkey-overlay-title="Notification Center" repeat=false cooldown-ms=500  { spawn "dms" "ipc" "call" "notifications" "toggle"; }
 	Mod+E      hotkey-overlay-title="File Manager" repeat=false cooldown-ms=500         { spawn "nautilus";                                  }
 

@@ -32,7 +32,7 @@ echo "[INFO] special symlink completed"
 
 # :: config symlinks
 ln -sfn "${DOTFILES_DIR}/.config/X11" "${CONFIG_DIR}/X11" || true
-ln -sfn "${DOTFILES_DIR}/.config/alacritty" "${CONFIG_DIR}/alacritty" || true
+ln -sfn "${DOTFILES_DIR}/.config/foot" "${CONFIG_DIR}/foot" || true
 ln -sfn "${DOTFILES_DIR}/.config/bat" "${CONFIG_DIR}/bat" || true
 ln -sfn "${DOTFILES_DIR}/.config/fd" "${CONFIG_DIR}/fd" || true
 ln -sfn "${DOTFILES_DIR}/.config/fontconfig" "${CONFIG_DIR}/fontconfig" || true

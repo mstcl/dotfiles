@@ -37,7 +37,7 @@ packages:
   - xorg-apps
   - wl-clipboard # clipboard
   - wlr-randr # wayland outputs
-  - alacritty # terminal emulator
+  - foot # terminal emulator
   # - tdrop # quake
   # - aseprite # graphical pixel art editor
   - chromium
