@@ -20,6 +20,7 @@ packages:
   - noto-fonts-cjk # font fallback cjk
   - gnome-themes-extra
   - adw-gtk-theme
+  - freetype2-qdoled
   - gtk2
   - gtk3
   - gtk4
@@ -135,6 +136,8 @@ packages:
   - step-cli # certs manager
   - tree-sitter
   - tree-sitter-cli
+  - qwen-code
+  - gemini-cli
 
   # :: system utilities
   - realtime-privileges

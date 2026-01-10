@@ -1,6 +1,7 @@
 output "DP-1" {
+	variable-refresh-rate on-demand=true
 	mode "3440x1440@164.900"
-	scale 1.25
+	scale 1.35
 	position x=0 y=0
 	background-color "#000000"
 }

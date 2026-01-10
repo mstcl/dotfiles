@@ -4,6 +4,13 @@ layer-rule {
 }
 
 window-rule {
+	match app-id="Hollow Knight Silksong"
+	match app-id="Against the Storm"
+
+	variable-refresh-rate true
+}
+
+window-rule {
 	match app-id=r#"^org\.gnome\."#
 
 	geometry-corner-radius 12
