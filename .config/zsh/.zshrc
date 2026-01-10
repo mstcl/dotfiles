@@ -354,6 +354,7 @@ source $XDG_CONFIG_HOME/zsh/p10k.zsh
 
 # :: plugins configuration
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(end-of-line) # accept with EOL (Ctrl-E)
 ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 	forward-word
