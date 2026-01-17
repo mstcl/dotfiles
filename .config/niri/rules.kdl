@@ -4,10 +4,15 @@ layer-rule {
 }
 
 window-rule {
+	match title="^Kingdom Come: Deliverance$"
 	match app-id="Hollow Knight Silksong"
 	match app-id="Against the Storm"
 
 	variable-refresh-rate true
+	open-maximized true
+	open-floating false
+	open-fullscreen true
+	open-maximized-to-edges true
 }
 
 window-rule {
@@ -37,15 +42,6 @@ window-rule {
 	open-maximized false
 	min-width 200
 	max-width 200
-}
-
-window-rule {
-	match title="^Kingdom Come: Deliverance$"
-
-	open-maximized true
-	open-floating false
-	open-fullscreen true
-	open-maximized-to-edges true
 }
 
 window-rule {
@@ -93,12 +89,6 @@ window-rule {
 	max-width 500
 	min-height 900
 	max-height 900
-}
-
-window-rule {
-	match app-id="launcher"
-	match title="launcher"
 
 	default-column-width { proportion 0.3; }
-	open-maximized false
 }
