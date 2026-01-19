@@ -136,8 +136,7 @@ packages:
   - step-cli # certs manager
   - tree-sitter
   - tree-sitter-cli
-  - qwen-code
-  - gemini-cli
+  - opencode
 
   # :: system utilities
   - realtime-privileges
