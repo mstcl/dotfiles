@@ -7,6 +7,7 @@ window-rule {
 	match title="^Kingdom Come: Deliverance$"
 	match app-id="Hollow Knight Silksong"
 	match app-id="Against the Storm"
+	match title=r#"^Sekiro$"#
 
 	variable-refresh-rate true
 	open-maximized true
