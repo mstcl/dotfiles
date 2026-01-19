@@ -12,9 +12,6 @@ export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # :: env vars / display/graphics
-export _GL_SYNC_DISPLAY_DEVICE="DP-2"
-# NOTE: https://wiki.cachyos.org/configuration/gaming/#increase-maximum-shader-cache-size
-export __GL_SHADER_DISK_CACHE_SIZE=12000000000
 export VDPAU_DRIVER="nvidia"
 export LIBVA_DRIVER_NAME="nvidia"
 
