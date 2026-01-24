@@ -384,10 +384,10 @@ fi
 zsh-defer source /etc/grc.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-autopair/autopair.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-window-title/zsh-window-title.zsh
+zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab/fzf-tab.zsh
+zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab-source/*.plugin.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab-source/*.plugin.zsh
-zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab/fzf-tab.zsh
 
 # :: other stuff
 eval "$(zoxide init zsh)"
