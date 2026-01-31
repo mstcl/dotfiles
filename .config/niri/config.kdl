@@ -6,7 +6,6 @@ cursor { xcursor-size 24; hide-when-typing; hide-after-inactive-ms 1000; }
 debug { honor-xdg-activation-with-invalid-serial; }
 
 include "animations.kdl"
-include "binds.kdl"
 include "environment.kdl"
 include "input.kdl"
 include "layout.kdl"
@@ -16,3 +15,5 @@ include "rules.kdl"
 include "dms/colors.kdl"
 include "dms/layout.kdl"
 include "dms/alttab.kdl"
+include "dms/cursor.kdl"
+include "dms/binds.kdl"
