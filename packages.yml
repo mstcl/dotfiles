@@ -39,7 +39,6 @@ packages:
   - wl-clipboard # clipboard
   - wlr-randr # wayland outputs
   - foot # terminal emulator
-  - alacritty # terminal emulator
   # - tdrop # quake
   # - aseprite # graphical pixel art editor
   - chromium
@@ -176,7 +175,6 @@ packages:
   - grc
   - eza # new ls
   - direnv
-  - cliphist # clipboard manager
   - git-delta # git pager/differ
   - git-filter-repo
   - imagemagick
