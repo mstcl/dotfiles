@@ -69,9 +69,15 @@ packages:
   - cava
 
   # :: hardware / firmware / drivers
-  - nvidia
   - amd-ucode # for AMD cpus
   # - intel-ucode # for intel CPUs
+  - gst-plugin-va # TODO
+  - vulkan-radeon
+  - lib32-vulkan-radeon
+  - mesa
+  - lib32-mesa
+  - nvtop
+  - linux-firmware-amdgpu
   - power-profiles-daemon # cpu control
   - ananicy-cpp
   - cachyos-ananicy-rules
@@ -79,7 +85,6 @@ packages:
   - gamescope
   - mangohud
   - linux-cachyos
-  - linux-cachyos-nvidia-open
   - lvm2
   # - cadaver # webdav cli client
   - parted
@@ -88,19 +93,14 @@ packages:
   - btrfs-progs
   - compsize
   - nfs-utils
-  # - libc++ # citrix
   - tpm2-abrmd
   - vulkan-tools
   - vdpauinfo
-  - nvidia-settings
-  - nvidia-utils
   - gst-libav
   - lib32-vkd3d
   - libebur128
-  - libva-nvidia-driver
   - libva-utils
   - libvdpau-va-gl
-  - opencl-nvidia # NVIDIA
   # - intel-media-driver # hardware video acceleration (INTEL)
   - i2c-tools # hardware detector
   - gvfs # for nautilus
@@ -119,7 +119,6 @@ packages:
   - docker-buildx
   - docker-compose
   - buildkit
-  - nvidia-container-toolkit
   - go
   - jq
   - npm
@@ -141,7 +140,6 @@ packages:
   # :: system utilities
   - realtime-privileges
   - profile-sync-daemon # firefox profile on ram
-  - nvtop
   - wol-systemd # wake-from-lan
   - tcpdump
   - inetutils
