@@ -17,8 +17,6 @@ pandas
 ipython
 ipykernel
 jupyterlab
-beets[lastgenre]
-beets-filetote
 mdformat
 mdformat-gfm
 mdformat-gfm-alerts
