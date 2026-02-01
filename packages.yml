@@ -183,3 +183,4 @@ packages:
   - jujutsu
   - rbw # bit/vaultwarden client
   - p7zip # compressed archive tools
+  - zk # note CLI tool
