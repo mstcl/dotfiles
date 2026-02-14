@@ -195,13 +195,16 @@ alias catp='bat -pp --color=always'
 alias nv='nvim'
 alias vi='nvim'
 alias vim='nvim'
-alias tree='eza --color=always -h --group-directories-first -T'                      # [l]ist [tree]
-alias lta='eza --color=always -h --group-directories-first --git --git-ignore -T -a' # list tree all
-alias l='eza --color=always --group-directories-first -h --git --git-ignore'         # [l]ist
-alias ls='eza --color=always --group-directories-first -h --git --git-ignore'        # [l]ist
-alias la='eza --color=always --group-directories-first -h --git -a'                  # [l]ist all
-alias ll='eza -l --color=always --group-directories-first -h --git'                  # [l]ist [l]ong
-alias lla='eza -l --color=always --group-directories-first -h --git -a'              # [l]ist [l]ong [a]ll
+alias tree='eza --color=always --group-directories-first -T'
+alias treea='eza --color=always --group-directories-first --git --git-ignore -Ta'
+alias treed='eza --color=always --group-directories-first -TD'
+
+alias l='eza --color=always --group-directories-first --git-ignore'
+alias ls='eza --color=always --group-directories-first --git-ignore'
+alias la='eza --color=always --group-directories-first --git -ha'
+alias ll='eza --color=always --group-directories-first --git -lhgo'
+alias lla='eza --color=always --group-directories-first --git -lhgoa'
+alias lal='eza --color=always --group-directories-first --git -lhgoa'
 
 # :: alias / git (requires git aliases) -- convenience to avoid needing the space
 alias g='git'       # [g]it

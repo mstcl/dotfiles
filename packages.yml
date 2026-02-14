@@ -157,7 +157,6 @@ packages:
   - mkinitcpio
   # - tinyxxd
   - duf # new df
-  - erd # new du
   - parallel-disk-usage # fast du
   - j4-dmenu-desktop # get desktop files
 
