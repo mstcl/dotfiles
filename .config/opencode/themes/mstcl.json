@@ -1,0 +1,239 @@
+{
+	"$schema": "https://opencode.ai/theme.json",
+	"defs": {
+		"ivory0": "#F2F0ED",
+		"ivory1": "#EDEBE5",
+		"ivory2": "#E6E2DA",
+		"ivory3": "#79241f",
+		"ivory4": "#352F2F",
+		"ivory5": "#4B4039",
+		"ivory6": "#5B4D45",
+		"ivory7": "#78675C",
+		"ivory8": "#89766A",
+		"ivory9": "#A99183",
+		"ivory10": "#535367",
+		"ivory11": "#562622",
+		"ivory12": "#543227",
+		"ivory13": "#563E1A",
+		"ivory14": "#454B39",
+		"ivory15": "#735057",
+		"tavern0": "#191715",
+		"tavern1": "#1D1B19",
+		"tavern2": "#23211F",
+		"tavern3": "#F0644A",
+		"tavern4": "#DBC2AE",
+		"tavern5": "#C2A68E",
+		"tavern6": "#A48C78",
+		"tavern7": "#877362",
+		"tavern8": "#6C5B4D",
+		"tavern9": "#514439",
+		"tavern10": "#A1A6B1",
+		"tavern11": "#B4554C",
+		"tavern12": "#A38E6B",
+		"tavern13": "#C39474",
+		"tavern14": "#9E9F8C",
+		"tavern15": "#B6A0A9"
+	},
+	"theme": {
+		"primary": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		},
+		"secondary": {
+			"dark": "tavern3",
+			"light": "ivory3"
+		},
+		"accent": {
+			"dark": "tavern3",
+			"light": "ivory3"
+		},
+		"error": {
+			"dark": "tavern11",
+			"light": "ivory11"
+		},
+		"warning": {
+			"dark": "tavern13",
+			"light": "ivory13"
+		},
+		"success": {
+			"dark": "tavern14",
+			"light": "ivory14"
+		},
+		"info": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		},
+		"text": {
+			"dark": "tavern4",
+			"light": "ivory4"
+		},
+		"textMuted": {
+			"dark": "tavern7",
+			"light": "ivory7"
+		},
+		"background": {
+			"dark": "tavern0",
+			"light": "ivory0"
+		},
+		"backgroundPanel": {
+			"dark": "tavern1",
+			"light": "ivory1"
+		},
+		"backgroundElement": {
+			"dark": "tavern1",
+			"light": "ivory1"
+		},
+		"border": {
+			"dark": "tavern2",
+			"light": "ivory2"
+		},
+		"borderActive": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"borderSubtle": {
+			"dark": "tavern2",
+			"light": "ivory2"
+		},
+		"diffAdded": {
+			"dark": "tavern14",
+			"light": "ivory14"
+		},
+		"diffRemoved": {
+			"dark": "tavern11",
+			"light": "ivory11"
+		},
+		"diffContext": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"diffHunkHeader": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"diffHighlightAdded": {
+			"dark": "tavern14",
+			"light": "ivory14"
+		},
+		"diffHighlightRemoved": {
+			"dark": "tavern11",
+			"light": "ivory11"
+		},
+		"diffAddedBg": {
+			"dark": "#2F312B",
+			"light": "#CED7C8"
+		},
+		"diffRemovedBg": {
+			"dark": "#432A28",
+			"light": "#E7CFC9"
+		},
+		"diffContextBg": {
+			"dark": "tavern1",
+			"light": "ivory1"
+		},
+		"diffLineNumber": {
+			"dark": "tavern2",
+			"light": "ivory2"
+		},
+		"diffAddedLineNumberBg": {
+			"dark": "#2F312B",
+			"light": "#CED7C8"
+		},
+		"diffRemovedLineNumberBg": {
+			"dark": "#432A28",
+			"light": "#E7CFC9"
+		},
+		"markdownText": {
+			"dark": "tavern4",
+			"light": "ivory4"
+		},
+		"markdownHeading": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		},
+		"markdownLink": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"markdownLinkText": {
+			"dark": "tavern7",
+			"light": "ivory7"
+		},
+		"markdownCode": {
+			"dark": "tavern14",
+			"light": "ivory14"
+		},
+		"markdownBlockQuote": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"markdownEmph": {
+			"dark": "tavern12",
+			"light": "ivory12"
+		},
+		"markdownStrong": {
+			"dark": "tavern13",
+			"light": "ivory13"
+		},
+		"markdownHorizontalRule": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"markdownListItem": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		},
+		"markdownListEnumeration": {
+			"dark": "tavern7",
+			"light": "ivory7"
+		},
+		"markdownImage": {
+			"dark": "tavern9",
+			"light": "ivory9"
+		},
+		"markdownImageText": {
+			"dark": "tavern7",
+			"light": "ivory7"
+		},
+		"markdownCodeBlock": {
+			"dark": "tavern4",
+			"light": "ivory4"
+		},
+		"syntaxComment": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		},
+		"syntaxKeyword": {
+			"dark": "tavern6",
+			"light": "ivory6"
+		},
+		"syntaxFunction": {
+			"dark": "tavern4",
+			"light": "ivory4"
+		},
+		"syntaxVariable": {
+			"dark": "tavern4",
+			"light": "ivory4"
+		},
+		"syntaxString": {
+			"dark": "tavern5",
+			"light": "ivory5"
+		},
+		"syntaxNumber": {
+			"dark": "tavern15",
+			"light": "ivory15"
+		},
+		"syntaxType": {
+			"dark": "tavern15",
+			"light": "ivory15"
+		},
+		"syntaxOperator": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		},
+		"syntaxPunctuation": {
+			"dark": "tavern8",
+			"light": "ivory8"
+		}
+	}
+}

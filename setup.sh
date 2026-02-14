@@ -15,6 +15,7 @@ mkdir -p "${HOME}/pictures"
 mkdir -p "${HOME}/documents"
 mkdir -p "${HOME}/certs"
 mkdir -p "${HOME}/secret"
+mkdir -p "${HOME}/opencode"
 
 # :: special symlinks
 ln -sfn /tmp "${HOME}/downloads" || true
@@ -27,6 +28,7 @@ ln -sfn "${DOTFILES_DIR}/.config/nvim" "${CONFIG_DIR}/nvim" || true
 ln -sfn "${DOTFILES_DIR}/.config/zsh/.zshenv" "${HOME}/.zshenv" || true
 ln -sfn "${DOTFILES_DIR}/.config/zsh" "${CONFIG_DIR}/zsh" || true
 ln -sfn "${DOTFILES_DIR}/.config/systemd" "${CONFIG_DIR}/systemd" || true
+ln -sfn "${DOTFILES_DIR}/.config/opencode/themes" "${CONFIG_DIR}/opencode/themes" || true
 ln -sfn "/hades/pictures/screenshots" "${HOME}/pictures/screenshots" || true
 echo "[INFO] special symlink completed"
 
