@@ -9,6 +9,7 @@ window-rule {
 	match app-id="Against the Storm"
 	match app-id="aimlab_tb"
 	match app-id="mycopunk.exe"
+	match app-id="mewgenics.exe"
 	match app-id="steam_app_1245620"
 	match app-id="risk of rain 2.exe"
 	match title=r#"^Sekiro$"#
