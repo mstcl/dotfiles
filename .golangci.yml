@@ -1,0 +1,58 @@
+---
+version: "2"
+
+run:
+  tests: false
+
+linters:
+  enable:
+    # enabled by default
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+
+    # disabled by default
+    - bodyclose
+    - canonicalheader
+    - copyloopvar
+    - cyclop
+    - decorder
+    - depguard
+    - dogsled
+    - dupl
+    - dupword
+    - embeddedstructfieldcheck
+    - err113
+    - funcorder
+    - funlen
+    - gocognit
+    - goconst
+    - gocritic
+    - godoclint
+    - godot
+    - godox
+    - goheader
+    - gosec
+    - iface
+    - importas
+    - intrange
+    - lll
+    - misspell
+    - mnd
+    - nakedret
+    - nestif
+    - nlreturn
+    - perfsprint
+    - prealloc
+    - revive
+    - sloglint
+    - sqlclosecheck
+    - testifylint
+    - unconvert
+    - usestdlibvars
+    - varnamelen
+    - wastedassign
+    - whitespace
+    - wsl_v5
