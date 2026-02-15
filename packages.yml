@@ -113,16 +113,15 @@ packages:
   - zsh
 
   # :: dev utilities
-  - bc
   - podman
   - docker-buildx
   - docker-compose
   - buildkit
-  - tea
   - git
   - mise
 
   # :: system utilities
+  - bc
   - tailscale
   - realtime-privileges
   - profile-sync-daemon # firefox profile on ram
@@ -130,6 +129,7 @@ packages:
   - tcpdump
   - inetutils
   - net-tools
+  - mtr
   - gnu-netcat
   - arp-scan
   - ethtool
