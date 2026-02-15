@@ -332,6 +332,7 @@ alias w='curl -s https://wttr.in/London?format=3'
 alias zke='zk edit -i'
 alias th='~/.local/bin/toggle_dark'
 alias js="just"
+alias gl="gitleaks git"
 
 # :: instant prompt
 # NOTE: https://github.com/romkatv/powerlevel10k/issues/702#issuecomment-626222730
