@@ -1,5 +1,7 @@
 [settings]
+lockfile = true
 fetch_remote_versions_cache = "24h"
+experimental = true
 # go_download_mirror = ""
 
 [settings.url_replacements]
