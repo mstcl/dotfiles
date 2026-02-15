@@ -1,0 +1,33 @@
+{
+	"$schema": "https://opencode.ai/config.json",
+	"theme": "mstcl",
+	"autoupdate": false,
+	"instructions": ["CONTRIBUTING.md"],
+	"formatter": {
+		"gofumpt": {
+			"command": ["gofumpt", "-w", "$FILE"],
+			"extensions": [".go"]
+		},
+		"goimports": {
+			"command": ["goimports", "-w", "$FILE"],
+			"extensions": [".go"]
+		},
+		"stylua": {
+			"command": [
+				"stylua",
+				"--stdin-filepath",
+				"--respect-ignores",
+				"$FILE"
+			],
+			"extensions": [".lua"]
+		},
+		"yamlfmt": {
+			"command": ["yamlfmt", "$FILE"],
+			"extensions": [".yaml", ".yml"]
+		},
+		"mdformat": {
+			"command": ["mdformat", "$FILE"],
+			"extensions": [".md"]
+		}
+	}
+}

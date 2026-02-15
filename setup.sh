@@ -29,6 +29,8 @@ ln -sfn "${DOTFILES_DIR}/.config/zsh/.zshenv" "${HOME}/.zshenv" || true
 ln -sfn "${DOTFILES_DIR}/.config/zsh" "${CONFIG_DIR}/zsh" || true
 ln -sfn "${DOTFILES_DIR}/.config/systemd" "${CONFIG_DIR}/systemd" || true
 ln -sfn "${DOTFILES_DIR}/.config/opencode/themes" "${CONFIG_DIR}/opencode/themes" || true
+ln -sfn "${DOTFILES_DIR}/.config/opencode/agents" "${CONFIG_DIR}/opencode/agents" || true
+ln -sfn "${DOTFILES_DIR}/.config/opencode/opencode.jsonc" "${CONFIG_DIR}/opencode/opencode.jsonc" || true
 ln -sfn "/hades/pictures/screenshots" "${HOME}/pictures/screenshots" || true
 echo "[INFO] special symlink completed"
 

@@ -10,6 +10,7 @@ export ZK_NOTEBOOK_DIR="$HOME/projects/wiki"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 
 # :: env vars / display/graphics
 export VDPAU_DRIVER="nvidia"
