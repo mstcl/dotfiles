@@ -1,0 +1,9 @@
+---
+# vim: ft=yaml
+line_ending: lf
+formatter:
+  type: basic
+  indent: 2
+  include_document_start: false
+  retain_line_breaks_single: true
+  trim_trailing_whitespace: true
