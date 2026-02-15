@@ -17,12 +17,12 @@ export VDPAU_DRIVER="nvidia"
 export LIBVA_DRIVER_NAME="nvidia"
 
 # :: env vars / defaults
-export BROWSER="/usr/bin/firefox"
-export MANPAGER="/usr/bin/nvim +Man!"
-export DIFFPROG="/usr/bin/nvim"
-export EDITOR="/usr/bin/nvim"
+export BROWSER="firefox"
+export MANPAGER="nvim +Man!"
+export DIFFPROG="nvim"
+export EDITOR="nvim"
 export PAGER="bat"
-export BAT_PAGER="/usr/bin/less -RF"
+export BAT_PAGER="less -RF"
 
 # :: env vars / don't trash my home
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
