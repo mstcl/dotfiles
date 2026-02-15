@@ -11,9 +11,11 @@ COMPLETIONS_DIR="$XDG_DATA_HOME"/zsh/completions
 mkdir -p "$COMPLETIONS_DIR"
 
 rg --generate complete-zsh >"$COMPLETIONS_DIR/_rg"
+# tenv completion zsh >"$COMPLETIONS_DIR/_tenv"
 # uv generate-shell-completion zsh >"$COMPLETIONS_DIR/_uv"
 # podman completion zsh >"COMPLETIONS_DIR"/_podman
 # glab completion -s zsh >"$COMPLETIONS_DIR"/_glab
+mise completion zsh >"$COMPLETIONS_DIR"/_mise
 wget -qnc https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_golang -O "$COMPLETIONS_DIR/_golang"
 wget -qnc https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_age -O "$COMPLETIONS_DIR/_age"
 wget -qnc https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_direnv -O "$COMPLETIONS_DIR/_direnv"
