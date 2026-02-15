@@ -30,7 +30,6 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 export _JAVA_OPTIONS="-Djavafx.cachedir=$XDG_CACHE_HOME/openjfx"
-export JAVA_HOME="$XDG_DATA_HOME/nvim/mason/packages/ltex-ls/ltex-ls-16.0.0/jdk-11.0.12+7"
 export CONAN_USER_HOME="$XDG_CONFIG_HOME/conan"
 export ANDROID_HOME="$XDG_DATA_HOME/android"
 export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/mysql_history"
@@ -73,7 +72,6 @@ append_path "$HOME/bin"
 append_path "$HOME/scripts/bin"
 append_path "$CARGO_HOME/bin"
 append_path "$GOPATH/bin"
-append_path "$HOME/.local/share/nvim/mason/bin/"
 
 export PATH
 
@@ -95,3 +93,6 @@ if test "$BASH" &&
 fi
 
 unset TERMCAP
+
+# :: mise
+eval "$(mise activate zsh)"

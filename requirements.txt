@@ -23,3 +23,6 @@ mdformat-gfm-alerts
 mdformat-deflist
 mdformat-footnote
 mdformat-frontmatter
+git-filter-repo
+codespell
+pyrefly

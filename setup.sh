@@ -49,6 +49,7 @@ ln -sfn "${DOTFILES_DIR}/.config/gtk-3.0" "${CONFIG_DIR}/gtk-3.0" || true
 ln -sfn "${DOTFILES_DIR}/.config/gtk-4.0" "${CONFIG_DIR}/gtk-4.0" || true
 ln -sfn "${DOTFILES_DIR}/.config/environment.d" "${CONFIG_DIR}/environment.d" || true
 ln -sfn "${DOTFILES_DIR}/.config/jj" "${CONFIG_DIR}/jj" || true
+ln -sfn "${DOTFILES_DIR}/.config/mise" "${CONFIG_DIR}/mise" || true
 echo "[INFO] configuration symlink completed"
 
 # :: dotfiles symlink
@@ -87,4 +88,6 @@ echo "[INFO] scripts symlink completed"
 bat cache --build 1>/dev/null
 echo "[INFO] bat cache updated"
 
-"$BIN_DIR"/setup_packages_python
+eval "$(mise activate bash)"
+mise install
+mise run -q python:sync

@@ -397,9 +397,6 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 export GPG_TTY=$(tty)
 
-# :: uv default venv
-[[ -d "$VENV_DIR/default/bin" ]] && zsh-defer source $VENV_DIR/default/bin/activate
-
 # :: tidy up
 unset FD_FLAGS
 unset ERD_PREVIEW

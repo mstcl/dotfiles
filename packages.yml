@@ -1,4 +1,3 @@
----
 packages:
   # :: base
   - base
@@ -110,33 +109,21 @@ packages:
   # - fcitx5-qt # input
   # - fcitx5-unikey # input
 
+  # :: shell
+  - zsh
+
   # :: dev utilities
-  - pandoc-bin # precompiled pandoc
-  - just
-  - podman
   - bc
+  - podman
   - docker-buildx
   - docker-compose
   - buildkit
-  - go
-  - jq
-  - npm
-  - terraform
   - tea
-  - rustup
-  - lua51
-  - nomad
-  - consul
-  - tailscale
-  - age
   - git
-  - git-lfs
-  - step-cli # certs manager
-  - tree-sitter
-  - tree-sitter-cli
-  - opencode
+  - mise
 
   # :: system utilities
+  - tailscale
   - realtime-privileges
   - profile-sync-daemon # firefox profile on ram
   - wol-systemd # wake-from-lan
@@ -156,30 +143,12 @@ packages:
   - man-db
   - mkinitcpio
   # - tinyxxd
-  - duf # new df
-  - parallel-disk-usage # fast du
   - j4-dmenu-desktop # get desktop files
-
-  # :: interactive CLI utilities
-  - zsh
-  - uv
-  - fzf
-  - ripgrep # new grep
-  - fd # new find
-  - lesspipe
-  - bat # new cat
+  - lesspipe # smarter less
   - chafa # image display
   - ueberzug # image display
-  - zoxide
   - grc
-  - eza # new ls
-  - direnv
-  - git-delta # git pager/differ
-  - git-filter-repo
   - imagemagick
-  - bottom # new htop
-  - gtrash # CLI trash utility
-  - jujutsu
   - rbw # bit/vaultwarden client
   - p7zip # compressed archive tools
   - zk # note CLI tool

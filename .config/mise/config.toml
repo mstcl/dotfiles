@@ -1,0 +1,94 @@
+[settings]
+fetch_remote_versions_cache = "24h"
+# go_download_mirror = ""
+
+[settings.url_replacements]
+
+[settings.node]
+# mirror_url = ""
+[settings.npm]
+package_manager = "bun"
+
+[tools]
+# :: toolchains
+bun = "latest"
+go = "1.26"
+node = "24"
+python = "3.12"
+rust = "latest"
+lua = "5.1"
+terraform = "latest"
+# :: devtools
+neovim = "v0.11.6"
+uv = "latest"
+bottom = "latest"
+opencode = "latest"
+hcl2json = "latest"
+conftest = "latest"
+opa = "latest"
+jujutsu = "latest"
+git-lfs = "latest"
+fzf = "latest"
+delta = "latest"
+duf = "latest"
+ripgrep = "latest"
+fd = "latest"
+bat = "latest"
+age = "latest"
+direnv = "latest"
+zoxide = "latest"
+eza = "latest"
+"cargo:tree-sitter-cli" = "latest"
+just = "latest"
+pandoc = "latest"
+jq = "latest"
+yq = "latest"
+"go:github.com/umlx5h/gtrash" = "latest"
+"cargo:parallel-disk-usage" = "latest"
+"cargo:rbw" = "latest"
+# glab = "latest"
+# kubectx = "latest"
+# cosign = "latest"
+# :: homelab
+step = "latest"
+nomad = "latest"
+consul = "latest"
+# :: lsp
+terraform-ls = "latest"
+"go:github.com/opentofu/tofu-ls" = "latest"
+tflint = "latest"
+"cargo:emmylua_ls" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+ty = "latest"
+"npm:bash-language-server" = "latest"
+"npm:ansible-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:yaml-language-server" = "latest"
+ruff = "latest"
+"cargo:gitlab-ci-ls" = "latest"
+# :: formatters/linters
+yamlfmt = "latest"
+yamllint = "latest"
+hadolint = "latest"
+trivy = "latest"
+"cargo:selene" = "latest"
+golangci-lint = "latest"
+biome = "latest"
+stylua = "latest"
+shfmt = "latest"
+gofumpt = "latest"
+"go:golang.org/x/tools/cmd/goimports" = "latest"
+"go:github.com/daixiang0/gci" = "latest"
+golines = "latest"
+"go:github.com/hashicorp/hcl/v2/cmd/hclfmt" = "latest"
+
+[env]
+DOTFILES = "{{env.HOME}}/dotfiles"
+_.python.venv = { path = "{{env.HOME}}/.venv/default", create = true }
+
+[tasks."python:sync"]
+description = "Sync global python venv with dotfiles"
+run = "uv pip install -q -r $DOTFILES/requirements.txt"
+sources = ["{{env.HOME}}/dotfiles/requirements.txt"]
+outputs = ["{{env.HOME}}/.venv/default/bin/python"]
