@@ -82,12 +82,14 @@ for script in ${DOTFILES_DIR}/scripts/src/*.sh; do
 done
 echo "[INFO] scripts symlink completed"
 
-# TODO: package installation
+# TODO: system package installation
+
+# :: mise setup
+eval "$(mise activate bash)"
+mise install
+mise run -q python:sync
+echo "[INFO] mise setup completed"
 
 # :: bat init
 bat cache --build 1>/dev/null
 echo "[INFO] bat cache updated"
-
-eval "$(mise activate bash)"
-mise install
-mise run -q python:sync
