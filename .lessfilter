@@ -11,9 +11,8 @@ kind=${mime##*/}
 
 # https://github.com/wofr06/lesspipe/pull/107
 if [ -d "$1" ]; then
-	if has_cmd erd; then
-		erd --color force --hidden -L 1 --no-progress --suppress-size --no-git \
-			--no-ignore -x -f -y inverted "$1" | head -200
+	if has_cmd eza; then
+		eza --color=always --group-directories-first -TDa --git --git-ignore -L 1 "$1" | head -200
 	fi
 elif [ "$category" = image ]; then
 	chafa "$1"
