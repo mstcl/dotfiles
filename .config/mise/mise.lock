@@ -310,13 +310,8 @@ backend = "vfox:mise-plugins/vfox-lua"
 "platforms.windows-x64" = { url = "https://www.lua.org/ftp/lua-5.1.tar.gz"}
 
 [[tools.neovim]]
-version = "0.11.6"
+version = "nightly"
 backend = "vfox:mise-plugins/vfox-neovim"
-"platforms.linux-arm64" = { url = "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz"}
-"platforms.linux-x64" = { url = "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz"}
-"platforms.macos-arm64" = { url = "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz"}
-"platforms.macos-x64" = { url = "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz"}
-"platforms.windows-x64" = { url = "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz"}
 
 [[tools.node]]
 version = "24.13.1"

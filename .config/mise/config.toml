@@ -21,7 +21,7 @@ python = "3.12"
 rust = "latest"
 lua = "5.1"
 # :: devtools
-neovim = "v0.11.6"
+neovim = "nightly"
 uv = "latest"
 bottom = "latest"
 opencode = "latest"
