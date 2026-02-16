@@ -68,8 +68,6 @@ append_path '/usr/local/bin'
 append_path '/usr/bin'
 append_path "$HOME/.local/share/applications"
 append_path "$HOME/.local/bin"
-append_path "$HOME/bin"
-append_path "$HOME/scripts/bin"
 append_path "$CARGO_HOME/bin"
 append_path "$GOPATH/bin"
 
