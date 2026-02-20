@@ -61,3 +61,4 @@
 	path = ~/.config/git/delta.ini
 	path = ~/.config/git/personal.ini
 	path = ~/.config/git/tools.ini
+	path = ~/.config/git/mtls.ini
