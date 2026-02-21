@@ -13,6 +13,7 @@ window-rule {
 	match app-id="steam_app_1245620"
 	match app-id="risk of rain 2.exe"
 	match title=r#"^Sekiro$"#
+	match title=r#"^Red Dead Redemption 2$"#
 
 	variable-refresh-rate true
 	open-maximized true
