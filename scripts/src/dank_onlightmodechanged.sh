@@ -8,7 +8,7 @@ export NVIM_CONFIG_FILE="$HOME/.config/nvim/plugin/99_override.lua"
 export FOOT_CONFIG_FILE="$HOME/.config/foot/foot.ini"
 
 if [ "$current" = "light" ]; then
-	gui_light_theme
+	,gui_light_theme
 else
-	gui_dark_theme
+	,gui_dark_theme
 fi
