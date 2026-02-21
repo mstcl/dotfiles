@@ -1,13 +1,10 @@
 [settings]
+color_theme = "base16"
 lockfile = true
 fetch_remote_versions_cache = "24h"
+fetch_remote_versions_timeout = "40s"
 experimental = true
-# go_download_mirror = ""
 
-[settings.url_replacements]
-
-[settings.node]
-# mirror_url = ""
 [settings.npm]
 package_manager = "bun"
 
@@ -98,6 +95,25 @@ _.python.venv = { path = "{{env.HOME}}/.venv/default", create = true }
 
 [tasks."python:sync"]
 description = "Sync global python venv with dotfiles"
-run = "uv pip install -q -r $DOTFILES/requirements.txt"
+run = "mise sync python -q --silent --uv -y && uv pip install -qr $DOTFILES/requirements.txt && uv pip freeze > $DOTFILES/uv.lock"
 sources = ["{{env.HOME}}/dotfiles/requirements.txt"]
 outputs = ["{{env.HOME}}/.venv/default/bin/python"]
+
+[tasks."zsh:completions"]
+description = "Setup ZSH completions"
+run = "$DOTFILES/scripts/setup-zsh.sh completions"
+sources = ["{{config_root}}/scripts/setup-zsh.sh"]
+outputs = ["{{env.XDG_DATA_HOME}}/zsh/completions/_mise"]
+
+[tasks."zsh:plugins"]
+description = "Setup ZSH plugins"
+run = "$DOTFILES/scripts/setup-zsh.sh plugins"
+sources = ["{{config_root}}/scripts/setup-zsh.sh"]
+outputs = ["{{env.XDG_DATA_HOME}}/zsh/plugins/zsh-defer"]
+
+[tasks."zsh:setup"]
+description = "Setup ZSH completions and plugins"
+depends = ["zsh:completions", "zsh:plugins"]
+
+[hooks]
+postinstall = "mise run zsh:completions"
