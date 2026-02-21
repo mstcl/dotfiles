@@ -77,9 +77,9 @@ binds {
     Mod+Shift+WheelScrollUp { focus-column-left; }
     Mod+B cooldown-ms=500 hotkey-overlay-title="Open Browser" repeat=false { spawn "firefox"; }
     Mod+E cooldown-ms=500 hotkey-overlay-title="File Manager" repeat=false { spawn "nautilus"; }
-    Mod+G repeat=false cooldown-ms=500 hotkey-overlay-title="Password Manager" { spawn "launch_foot" "fzf_pass"; }
+    Mod+G repeat=false cooldown-ms=500 hotkey-overlay-title="Password Manager" { spawn ",launch_foot" ",fzf_pass"; }
     Mod+Return hotkey-overlay-title="Open Terminal" repeat=false cooldown-ms=100 { spawn "foot"; }
-    Mod+S repeat=false cooldown-ms=500 hotkey-overlay-title="Scratch Pad" { spawn "launch_foot" "launch_nvim_scratch"; }
+    Mod+S repeat=false cooldown-ms=500 hotkey-overlay-title="Scratch Pad" { spawn ",launch_foot" ",launch_nvim_scratch"; }
     XF86AudioNext hotkey-overlay-title="Next Track" { spawn "playerctl" "next"; }
     XF86AudioPlay hotkey-overlay-title="Play/Pause" { spawn "playerctl" "play-pause"; }
     XF86AudioPrev hotkey-overlay-title="Previous Track" { spawn "playerctl" "previous"; }
