@@ -1,4 +1,4 @@
-source ~/.local/bin/fzf_defaults
+source ~/.local/bin/,fzf_defaults
 
 dunstctl history | jq -r \
 	'.data[0][] | "\(.id.data)\t\u001b[1;33m\(.summary.data)\u001b[0m\t\(.appname.data)"' |

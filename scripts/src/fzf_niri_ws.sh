@@ -2,7 +2,7 @@
 
 set -eEuo pipefail
 
-source ~/.local/bin/fzf_defaults
+source ~/.local/bin/,fzf_defaults
 
 niri msg -j workspaces |
 	jq --arg OUTPUT "$(niri msg -j focused-output | jq -r '.name')" -r '.[] | select( .output==$OUTPUT ) | "\(.idx)\t\(.name // "")"' |

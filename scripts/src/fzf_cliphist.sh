@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.local/bin/fzf_defaults
+source ~/.local/bin/,fzf_defaults
 
 cid=$(cliphist list | fzf -d'\t' --with-nth 2 --preview 'echo $(cliphist decode {1})' \
 	--preview-window 6:down:border-sharp \

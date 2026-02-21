@@ -1,1 +1,1 @@
-spawn-at-startup "~/dotfiles/scripts/src/niri_dynamic_float.py"
+spawn-at-startup "~/.local/bin/,niri_dynamic_float"

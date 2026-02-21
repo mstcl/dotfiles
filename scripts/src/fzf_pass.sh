@@ -3,7 +3,7 @@
 set -eEuo pipefail
 rbw unlocked &>/dev/null || rbw unlock
 
-source ~/.local/bin/fzf_defaults
+source ~/.local/bin/,fzf_defaults
 
 name=$(rbw ls --fields name,folder,user |
 	sort |

@@ -2,7 +2,7 @@
 
 set -eEuo pipefail
 
-source ~/.local/bin/fzf_defaults
+source ~/.local/bin/,fzf_defaults
 
 niri msg -j windows |
 	jq -r '.[] | "\(.id)\t\(.title // "") (\(.app_id))"' |
