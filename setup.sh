@@ -103,6 +103,7 @@ setup_mise_tools() {
 # :: initalize tools
 initialize_tools() {
 	# :: bat init
+	git submodule update --recursive --remote --init
 	bat cache --build 1>/dev/null
 	echo "[INFO] bat cache updated"
 }
