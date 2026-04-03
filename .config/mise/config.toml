@@ -13,7 +13,7 @@ usage = "latest"
 # :: toolchains
 bun = "latest"
 go = "1.26"
-node = "24"
+node = "25"
 python = "3.12"
 rust = "latest"
 lua = "5.1"
@@ -101,14 +101,14 @@ outputs = ["{{env.HOME}}/.venv/default/bin/python"]
 
 [tasks."zsh:completions"]
 description = "Setup ZSH completions"
-run = "$DOTFILES/scripts/setup-zsh.sh completions"
-sources = ["{{config_root}}/scripts/setup-zsh.sh"]
+run = "$DOTFILES/scripts/src/setup-zsh.sh completions"
+sources = ["{{config_root}}/scripts/src/setup-zsh.sh"]
 outputs = ["{{env.XDG_DATA_HOME}}/zsh/completions/_mise"]
 
 [tasks."zsh:plugins"]
 description = "Setup ZSH plugins"
-run = "$DOTFILES/scripts/setup-zsh.sh plugins"
-sources = ["{{config_root}}/scripts/setup-zsh.sh"]
+run = "$DOTFILES/scripts/src/setup-zsh.sh plugins"
+sources = ["{{config_root}}/scripts/src/setup-zsh.sh"]
 outputs = ["{{env.XDG_DATA_HOME}}/zsh/plugins/zsh-defer"]
 
 [tasks."zsh:setup"]
