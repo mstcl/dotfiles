@@ -9,9 +9,14 @@ export FZF_DEFAULT_OPTS="
 	--height=~$FZF_HEIGHT
 	--gutter=' '
 	--style=minimal
+	--input-border=bottom
+	--header-first
+	--header-border=horizontal
+	--header-label-pos=2
+	--preview-label-pos=2
 	--scrollbar='┃'
 	--cycle
-	--info=default
+	--info=inline-right
 	--preview-window 70%:hidden:border-rounded
 	--preview 'lesspipe.sh {}'
 	--preview-label=' Preview '

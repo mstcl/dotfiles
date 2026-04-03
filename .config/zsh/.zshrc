@@ -29,15 +29,23 @@ export LESSOPEN="|/usr/bin/lesspipe.sh %s" # lesspipe & lessfilter
 export FZF_DEFAULT_COMMAND="fd ${FD_FLAGS}" # fzf default command
 export FZF_CTRL_R_OPTS="
     --info=hidden
-    --preview 'echo {}'
-    --preview-window hidden
-    --bind 'enter:accept'" # fzf / ctrl-r
+    --preview='echo {}'
+    --preview-window=hidden
+    --footer='command history'
+    --bind='enter:accept'" # fzf / ctrl-r
 export FZF_CTRL_T_COMMAND="fd --color=always ${FD_FLAGS}"
 export FZF_CTRL_T_OPTS="
-	--preview-window nohidden
     --ansi
+	--preview-window=nohidden
+    --footer='file picker'
     --select-1
     --exit-0" # fzf / ctrl-t
+export FZF_ALT_C_OPTS="
+    --ansi
+	--preview-window=nohidden
+    --footer='change directory'
+    --select-1
+    --exit-0" # fzf / alt-c
 export _ZO_FZF_OPTS="${FZF_DEFAULT_OPTS}
     --no-sort
     --bind 'ctrl-d:'
@@ -110,8 +118,7 @@ function paf() {
 	yay -Sl | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g' |
 		awk '{ print $2 " " $4 $5 }' |
 		sed 's/installed/i/' |
-		fzf --border=top \
-			--border-label="Select package(s) to install" \
+		fzf --footer="install package(s)" \
 			--delimiter " " \
 			--preview-window=nohidden \
 			--preview 'yay -Si {1}' |
@@ -120,8 +127,8 @@ function paf() {
 		 --sudoloop --removemake --cleanafter
 } # [p]acman [i]nstall with [f]zf
 function prf() {
-	yay -Qq | fzf -q "$1" --border=top \
-		--border-label="Select package(s) to uninstall" \
+	yay -Qq | fzf -q "$1" \
+		--footer="remove packages" \
 		--preview-window=nohidden --preview 'yay -Qi {1}' |
 		xargs -ro yay -Rns
 } # [p]acman remove with [f]zf
@@ -129,6 +136,7 @@ function rgf() {
 	rg --line-number --no-heading --smart-case --color=never \
 		--no-ignore-vcs --ignore-file ~/.config/fd/ignore "${*:-}" |
 		fzf --preview-window=nohidden:up \
+			--footer='search string' \
 			--delimiter : \
 			--preview-window 'up,60%,+{2}+3/3,~3' \
 			--preview "bat --style=numbers,header --color=always {1} --highlight-line {2} \
@@ -139,7 +147,7 @@ function fv() {
 	"$EDITOR" $(__fzf_select)
 } # [f]zf select file and open in editor ([v]im)
 function venf() {
-  venv=$(/usr/bin/ls $VENV_DIR/ | fzf --border=top)
+  venv=$(/usr/bin/ls $VENV_DIR/ | fzf --footer='python virtual env')
   if [[ $? == 130 ]]; then return; fi
   source "$VENV_DIR/$venv/bin/activate"
 } # switch python [ven]v with [f]zf
