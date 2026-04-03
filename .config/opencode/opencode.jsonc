@@ -1,6 +1,5 @@
 {
 	"$schema": "https://opencode.ai/config.json",
-	"theme": "mstcl",
 	"autoupdate": false,
 	"instructions": ["CONTRIBUTING.md"],
 	"formatter": {
@@ -29,5 +28,6 @@
 			"command": ["mdformat", "$FILE"],
 			"extensions": [".md"]
 		}
-	}
+	},
+	"small_model": "fireworks-ai/accounts/fireworks/routers/kimi-k2p5-turbo"
 }

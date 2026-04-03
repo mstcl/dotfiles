@@ -31,6 +31,7 @@ setup_symlinks() {
 	ln -sfn "${DOTFILES_DIR}/.config/opencode/themes" "${XDG_CONFIG_HOME}/opencode/themes" || true
 	ln -sfn "${DOTFILES_DIR}/.config/opencode/agents" "${XDG_CONFIG_HOME}/opencode/agents" || true
 	ln -sfn "${DOTFILES_DIR}/.config/opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc" || true
+	ln -sfn "${DOTFILES_DIR}/.config/opencode/tui.jsonc" "${XDG_CONFIG_HOME}/opencode/tui.jsonc" || true
 	ln -sfn "/hades/pictures/screenshots" "${HOME}/pictures/screenshots" || true
 	echo "[INFO] special symlink completed"
 
