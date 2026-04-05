@@ -15,6 +15,7 @@ window-rule {
 	match app-id="monsterhunterworld.exe"
 	match app-id="b1-win64-shipping.exe"
 	match app-id="Slay the Spire 2"
+	match title="STRAFTAT"
 	match title=r#"^Sekiro$"#
 	match title=r#"^Red Dead Redemption 2$"#
 
