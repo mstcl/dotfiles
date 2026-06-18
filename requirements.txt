@@ -26,3 +26,4 @@ mdformat-frontmatter
 git-filter-repo
 codespell
 pyrefly
+mypy
