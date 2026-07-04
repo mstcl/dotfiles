@@ -1785,6 +1785,10 @@ url = "https://github.com/jdx/usage/releases/download/v3.2.0/usage-universal-app
 checksum = "sha256:f0a566bc05fc485b23a339abddbaef04225e7730574dbb603fdc021e084d26f9"
 url = "https://github.com/jdx/usage/releases/download/v3.2.0/usage-universal-apple-darwin.tar.gz"
 
+[[tools.usql]]
+version = "0.21.4"
+backend = "aqua:xo/usql"
+
 [[tools.uv]]
 version = "0.11.3"
 backend = "aqua:astral-sh/uv"

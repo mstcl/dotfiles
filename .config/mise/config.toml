@@ -89,6 +89,7 @@ gofumpt = "latest"
 golines = "latest"
 "go:github.com/hashicorp/hcl/v2/cmd/hclfmt" = "latest"
 "github:Ataraxy-Labs/sem" = "latest"
+usql = "latest"
 
 [env]
 DOTFILES = "{{env.HOME}}/dotfiles"
