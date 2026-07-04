@@ -27,3 +27,4 @@ git-filter-repo
 codespell
 pyrefly
 mypy
+harlequin[postgres,s3]
