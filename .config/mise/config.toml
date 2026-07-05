@@ -71,6 +71,7 @@ ty = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:yaml-language-server" = "latest"
+"npm:sql-language-server" = "latest"
 ruff = "latest"
 "cargo:gitlab-ci-ls" = "latest"
 # :: formatters/linters

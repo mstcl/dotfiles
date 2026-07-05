@@ -1263,6 +1263,10 @@ backend = "npm:bash-language-server"
 version = "0.15.0"
 backend = "npm:dockerfile-language-server-nodejs"
 
+[[tools."npm:sql-language-server"]]
+version = "1.7.1"
+backend = "npm:sql-language-server"
+
 [[tools."npm:vscode-langservers-extracted"]]
 version = "4.10.0"
 backend = "npm:vscode-langservers-extracted"
