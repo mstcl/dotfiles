@@ -5,6 +5,8 @@ has_cmd() {
 	done
 }
 
+export BAT_PAGER=""
+
 mime=$(file -Lbs --mime-type "$1")
 category=${mime%%/*}
 kind=${mime##*/}
@@ -20,5 +22,5 @@ elif [ "$category" = image ]; then
 elif [ "$category" = text ]; then
 	bat --color=always --paging=never "$1"
 else
-	lesspipe.sh "$1" | bat --color=always --paging=never
+	exit 1
 fi
