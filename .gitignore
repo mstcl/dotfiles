@@ -3,3 +3,4 @@
 **/.zconfdump*
 **/.zcompdump*
 .config/git/mtls.ini
+.grip
