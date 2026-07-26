@@ -366,9 +366,23 @@ unfunction zcompile-many
 source $XDG_DATA_HOME/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 source $XDG_CONFIG_HOME/zsh/p10k.zsh
 
+# :: histdb zsh-autosuggestions integration
+_zsh_autosuggest_strategy_histdb_top() {
+    local query="
+        select commands.argv from history
+        left join commands on history.command_id = commands.rowid
+        left join places on history.place_id = places.rowid
+        where commands.argv LIKE '$(sql_escape $1)%'
+        group by commands.argv, places.dir
+        order by places.dir != '$(sql_escape $PWD)', count(*) desc
+        limit 1
+    "
+    suggestion=$(_histdb_query "$query")
+}
+
 # :: plugins configuration
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=histdb_top
 ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(end-of-line) # accept with EOL (Ctrl-E)
 ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 	forward-word
@@ -394,6 +408,8 @@ if command -v fzf &>/dev/null; then
   source <(fzf --zsh)
 fi
 
+bindkey '^R' histdb-fzf-widget
+
 # :: load plugins
 zsh-defer source /etc/grc.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-autopair/autopair.zsh
@@ -402,6 +418,8 @@ zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab/fzf-tab.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/fzf-tab-source/*.plugin.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source $XDG_DATA_HOME/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-histdb/sqlite-history.zsh
+zsh-defer source $XDG_DATA_HOME/zsh/plugins/zsh-histdb-fzf/fzf-histdb.zsh
 
 # :: other stuff
 eval "$(zoxide init zsh)"

@@ -13,21 +13,21 @@ function completions() {
 	COMPLETIONS_DIR="$XDG_DATA_HOME"/zsh/completions
 	mkdir -p "$COMPLETIONS_DIR"
 
-	(( ${+commands[mise]} )) && mise completion zsh >"$COMPLETIONS_DIR"/_mise
-	(( ${+commands[tenv]} )) && tenv completion zsh >"$COMPLETIONS_DIR/_tenv"
-	(( ${+commands[rg]} )) && rg --generate complete-zsh >"$COMPLETIONS_DIR/_rg"
-	(( ${+commands[uv]} )) && uv generate-shell-completion zsh >"$COMPLETIONS_DIR/_uv"
-	(( ${+commands[podman]} )) && podman completion zsh >"$COMPLETIONS_DIR/_podman"
-	(( ${+commands[docker]} )) && docker completion zsh >"$COMPLETIONS_DIR/_docker"
-	(( ${+commands[glab]} )) && glab completion -s zsh >"$COMPLETIONS_DIR/_glab"
-	(( ${+commands[wget]} )) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_golang -O "$COMPLETIONS_DIR/_golang"
-	(( ${+commands[wget]} )) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_age -O "$COMPLETIONS_DIR/_age"
-	(( ${+commands[wget]} )) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_direnv -O "$COMPLETIONS_DIR/_direnv"
-	(( ${+commands[wget]} )) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_openssl -O "$COMPLETIONS_DIR/_openssl"
-	(( ${+commands[just]} )) && just --completions zsh >"$COMPLETIONS_DIR/_just"
-	(( ${+commands[jj]} )) && jj util completion zsh >"$COMPLETIONS_DIR/_jj"
-	(( ${+commands[osc]} )) && osc completion zsh >"$COMPLETIONS_DIR/_osc"
-	(( ${+commands[tea]} )) && tea completion zsh >"$COMPLETIONS_DIR/_tea"
+	((${+commands[mise]})) && mise completion zsh >"$COMPLETIONS_DIR"/_mise
+	((${+commands[tenv]})) && tenv completion zsh >"$COMPLETIONS_DIR/_tenv"
+	((${+commands[rg]})) && rg --generate complete-zsh >"$COMPLETIONS_DIR/_rg"
+	((${+commands[uv]})) && uv generate-shell-completion zsh >"$COMPLETIONS_DIR/_uv"
+	((${+commands[podman]})) && podman completion zsh >"$COMPLETIONS_DIR/_podman"
+	((${+commands[docker]})) && docker completion zsh >"$COMPLETIONS_DIR/_docker"
+	((${+commands[glab]})) && glab completion -s zsh >"$COMPLETIONS_DIR/_glab"
+	((${+commands[wget]})) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_golang -O "$COMPLETIONS_DIR/_golang"
+	((${+commands[wget]})) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_age -O "$COMPLETIONS_DIR/_age"
+	((${+commands[wget]})) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_direnv -O "$COMPLETIONS_DIR/_direnv"
+	((${+commands[wget]})) && wget -q https://raw.githubusercontent.com/zsh-users/zsh-completions/refs/heads/master/src/_openssl -O "$COMPLETIONS_DIR/_openssl"
+	((${+commands[just]})) && just --completions zsh >"$COMPLETIONS_DIR/_just"
+	((${+commands[jj]})) && jj util completion zsh >"$COMPLETIONS_DIR/_jj"
+	((${+commands[osc]})) && osc completion zsh >"$COMPLETIONS_DIR/_osc"
+	((${+commands[tea]})) && tea completion zsh >"$COMPLETIONS_DIR/_tea"
 	echo "[INFO] completions setup completed"
 }
 
@@ -95,6 +95,23 @@ function plugins() {
 		git -C "$PLUGINS_DIR"/fzf-tab-source pull
 	fi
 	zcompile-many "$PLUGINS_DIR"/fzf-tab-source/{sources/*.zsh,functions/*.zsh}
+
+	# :: zsh-histdb
+	if [[ ! -e "$PLUGINS_DIR"/zsh-histdb ]]; then
+		git clone -q --branch master --depth 1 https://github.com/larkery/zsh-histdb "$PLUGINS_DIR"/zsh-histdb
+	else
+		git -C "$PLUGINS_DIR"/zsh-histdb pull
+	fi
+	zcompile-many "$PLUGINS_DIR"/zsh-histdb/sqlite-history.zsh
+
+	# :: zsh-histdb-fzf
+	if [[ ! -e "$PLUGINS_DIR"/zsh-histdb-fzf ]]; then
+		git clone -q --branch master --depth 1 https://github.com/mstcl/zsh-histdb-fzf "$PLUGINS_DIR"/zsh-histdb-fzf
+	else
+		git -C "$PLUGINS_DIR"/zsh-histdb-fzf pull
+	fi
+	zcompile-many "$PLUGINS_DIR"/zsh-histdb-fzf/fzf-histdb.zsh
+
 	echo "[INFO] plugins setup completed"
 }
 

@@ -94,6 +94,7 @@ shellcheck = "latest"
 "pipx:yamllint" = "latest"
 "pipx:codespell" = "latest"
 "pipx:pyrefly" = "latest"
+"go:github.com/drewis/go-histdbimport" = "latest"
 
 [env]
 DOTFILES = "{{env.HOME}}/dotfiles"
