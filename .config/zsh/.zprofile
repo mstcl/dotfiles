@@ -12,6 +12,13 @@ export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 
+export MISE_AQUA_GITHUB_ATTESTATIONS=false
+export MISE_AQUA_COSIGN=false
+export MISE_AQUA_SLSA=false
+export MISE_AQUA_MINISIGN=false
+export MISE_GITHUB_GITHUB_ATTESTATIONS=false
+export MISE_GITHUB_SLSA=false
+
 # :: env vars / display/graphics
 export VDPAU_DRIVER="nvidia"
 export LIBVA_DRIVER_NAME="nvidia"

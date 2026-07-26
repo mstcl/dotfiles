@@ -8,6 +8,9 @@ experimental = true
 [settings.npm]
 package_manager = "bun"
 
+[settings.github]
+github_attestations = false
+
 [tools]
 usage = "latest"
 # :: toolchains
@@ -15,7 +18,7 @@ bun = "latest"
 go = "1.26"
 node = "26"
 python = "3.14"
-rust = "latest"
+rust = { version = "latest", profile = "minimal" }
 lua = "5.5"
 # :: devtools
 neovim = "nightly"
@@ -51,10 +54,12 @@ sops = "latest"
 gitleaks = "latest"
 sqlc = "latest"
 "go:code.gitea.io/tea" = "v0.11.1"
-# :: homelab
 step = "latest"
 nomad = "latest"
 consul = "latest"
+"pipx:ansible" = "latest"
+"pipx:git-filter-repo" = "latest"
+# :: language servers
 "go:github.com/opentofu/tofu-ls" = "latest"
 tflint = "latest"
 "github:EmmyLuaLs/emmylua-analyzer-rust" = "latest"
@@ -83,7 +88,12 @@ gofumpt = "latest"
 "go:github.com/daixiang0/gci" = "latest"
 golines = "latest"
 "go:github.com/hashicorp/hcl/v2/cmd/hclfmt" = "latest"
-"github:Ataraxy-Labs/sem" = "latest"
+"pipx:ansible-lint" = "latest"
+shellcheck = "latest"
+"pipx:mypy" = "latest"
+"pipx:yamllint" = "latest"
+"pipx:codespell" = "latest"
+"pipx:pyrefly" = "latest"
 
 [env]
 DOTFILES = "{{env.HOME}}/dotfiles"
@@ -95,21 +105,30 @@ run = "mise sync python -q --silent --uv -y && uv pip install -qr $DOTFILES/requ
 sources = ["{{env.HOME}}/dotfiles/requirements.txt"]
 outputs = ["{{env.HOME}}/.venv/default/bin/python"]
 
+[tasks."python:tools"]
+description = "Install python CLI tools that need plugins in one env (mdformat)"
+run = """
+uv tool install -q --force mdformat \
+--with mdformat-gfm \
+--with mdformat-gfm-alerts \
+--with mdformat-deflist \
+--with mdformat-footnote \
+--with mdformat-frontmatter \
+"""
+sources = ["{{env.HOME}}/.local/bin/mdformat"]
+
 [tasks."zsh:completions"]
 description = "Setup ZSH completions"
 run = "$DOTFILES/scripts/src/setup-zsh.sh completions"
-sources = ["{{config_root}}/scripts/src/setup-zsh.sh"]
+sources = ["{{env.DOTFILES}}/scripts/src/setup-zsh.sh"]
 outputs = ["{{env.XDG_DATA_HOME}}/zsh/completions/_mise"]
 
 [tasks."zsh:plugins"]
 description = "Setup ZSH plugins"
 run = "$DOTFILES/scripts/src/setup-zsh.sh plugins"
-sources = ["{{config_root}}/scripts/src/setup-zsh.sh"]
+sources = ["{{env.DOTFILES}}/scripts/src/setup-zsh.sh"]
 outputs = ["{{env.XDG_DATA_HOME}}/zsh/plugins/zsh-defer"]
 
 [tasks."zsh:setup"]
 description = "Setup ZSH completions and plugins"
 depends = ["zsh:completions", "zsh:plugins"]
-
-[hooks]
-postinstall = "mise run zsh:completions"
