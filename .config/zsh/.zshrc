@@ -366,6 +366,9 @@ unfunction zcompile-many
 source $XDG_DATA_HOME/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 source $XDG_CONFIG_HOME/zsh/p10k.zsh
 
+# :: activate mise
+eval "$(mise activate zsh)"
+
 # :: histdb zsh-autosuggestions integration
 _zsh_autosuggest_strategy_histdb_top() {
     local query="

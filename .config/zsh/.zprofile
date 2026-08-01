@@ -80,24 +80,4 @@ append_path "$GOPATH/bin"
 
 export PATH
 
-if test -d /etc/profile.d/; then
-	for profile in /etc/profile.d/*.sh; do
-		test -r "$profile" && . "$profile"
-	done
-	unset profile
-fi
-
-unset -f append_path
-
-if test "$BASH" &&
-	test "$PS1" &&
-	test -z "$POSIXLY_CORRECT" &&
-	test "${0#-}" != sh &&
-	test -r /etc/bash.bashrc; then
-	. /etc/bash.bashrc
-fi
-
 unset TERMCAP
-
-# :: mise
-eval "$(mise activate zsh)"
