@@ -1,10 +1,10 @@
 # :: shell options
-setopt autocd # cd without typing cd
+setopt autocd               # cd without typing cd
 setopt interactive_comments # allow comments in commands
-setopt magicequalsubst # unquoted arguments of form `anything=expression` have filename expansion
-setopt glob_dots # dotfiles will be matched without specifying the dot i.e. *config will match .config
-setopt numericglobsort # sort filenames numerically when applicable
-setopt nonomatch # does not return error if file not found when globbing
+setopt magicequalsubst      # unquoted arguments of form `anything=expression` have filename expansion
+setopt glob_dots            # dotfiles will be matched without specifying the dot i.e. *config will match .config
+setopt numericglobsort      # sort filenames numerically when applicable
+setopt nonomatch            # does not return error if file not found when globbing
 
 # :: history configuration
 HISTFILE=$XDG_DATA_HOME/zsh/history
@@ -22,11 +22,11 @@ setopt HIST_IGNORE_ALL_DUPS
 FD_FLAGS='--strip-cwd-prefix --follow 2> /dev/null' # fzf fd flags
 ERD_PREVIEW='erd --color force --hidden -L 1 --no-progress --suppress-size --no-git \
             --no-ignore -x -f -y inverted {2} | head -200' # fzf erd flags
-source "$ZDOTDIR"/lscolors.zsh # ls colros
-source "$ZDOTDIR"/fzf_defaults.sh # fzf / defaults
-export SUDO_PROMPT="Enter sudo password: " # sudo prompt
-export LESSOPEN="|/usr/bin/lesspipe.sh %s" # lesspipe & lessfilter
-export FZF_DEFAULT_COMMAND="fd ${FD_FLAGS}" # fzf default command
+source "$ZDOTDIR"/lscolors.zsh                             # ls colros
+source "$ZDOTDIR"/fzf_defaults.sh                          # fzf / defaults
+export SUDO_PROMPT="Enter sudo password: "                 # sudo prompt
+export LESSOPEN="|/usr/bin/lesspipe.sh %s"                 # lesspipe & lessfilter
+export FZF_DEFAULT_COMMAND="fd ${FD_FLAGS}"                # fzf default command
 export FZF_CTRL_R_OPTS="
     --info=hidden
     --preview='echo {}'
@@ -39,7 +39,7 @@ export FZF_CTRL_T_OPTS="
 	--preview-window=nohidden
     --footer='file picker'
     --select-1
-    --exit-0" # fzf / ctrl-t
+    --exit-0"     # fzf / ctrl-t
 export FZF_ALT_C_OPTS="
     --ansi
 	--preview-window=nohidden
@@ -59,8 +59,8 @@ source $XDG_DATA_HOME/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
 # :: keybindings / behaviour
 bindkey -e # emacs keybinding in viins
 autoload -Uz select-word-style
-select-word-style bash # use bash select-word-style so Ctrl-W deletes # a directory at a time, not the whole directory
-bindkey -r ^D # remove zsh native autocompletion popup
+select-word-style bash  # use bash select-word-style so Ctrl-W deletes # a directory at a time, not the whole directory
+bindkey -r ^D           # remove zsh native autocompletion popup
 bindkey ^F forward-word # swap forward word and forward char for ergonomics
 bindkey '^[f' forward-char
 bindkey ^B backward-word # swap backward word and backward char for ergonomics
@@ -111,9 +111,9 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 # :: functions
-function mkcd() { command mkdir $1 && cd $1 } # [mk]dir and [cd] into it
-function temp() { cd "$(mktemp -d)" } # create [temp]orary directory
-function scr() { "$EDITOR" $(mktemp) } # [scr]atch file
+function mkcd() { command mkdir $1 && cd $1; } # [mk]dir and [cd] into it
+function temp() { cd "$(mktemp -d)"; }         # create [temp]orary directory
+function scr() { "$EDITOR" $(mktemp); }        # [scr]atch file
 function paf() {
 	yay -Sl | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g' |
 		awk '{ print $2 " " $4 $5 }' |
@@ -124,7 +124,7 @@ function paf() {
 			--preview 'yay -Si {1}' |
 		awk '{ print $1 }' |
 		xargs -ro yay -Sy \
-		 --sudoloop --removemake --cleanafter
+			--sudoloop --removemake --cleanafter
 } # [p]acman [i]nstall with [f]zf
 function prf() {
 	yay -Qq | fzf -q "$1" \
@@ -147,18 +147,10 @@ function fv() {
 	"$EDITOR" $(__fzf_select)
 } # [f]zf select file and open in editor ([v]im)
 function venf() {
-  venv=$(/usr/bin/ls $VENV_DIR/ | fzf --footer='python virtual env')
-  if [[ $? == 130 ]]; then return; fi
-  source "$VENV_DIR/$venv/bin/activate"
+	venv=$(/usr/bin/ls $VENV_DIR/ | fzf --footer='python virtual env')
+	if [[ $? == 130 ]]; then return; fi
+	source "$VENV_DIR/$venv/bin/activate"
 } # switch python [ven]v with [f]zf
-function nbr() {
-	type=$1; summary=$(echo $2 | tr " " "-"); ticket=$3;
-	git fetch --prune --quiet
-	git checkout master --quiet
-	git merge origin/master --quiet
-	if [[ -n "$ticket" ]] then; type="/$type"; fi
-	git checkout -b "$ticket$type/$summary"
-} # [n]ew [br]anch
 function gsc() {
 	local commit=${1:-HEAD}
 	nvim -c "CodeDiff $commit"
@@ -277,45 +269,45 @@ alias pacrm='yay -Rns'                         # [pac]man [r]e[m]ove
 alias pacown='yay -Ql'                         # [pac]man which package [own]s these files
 alias pacclean='yay -Scd'                      # [pac]man [c]lean and [d]elete cache
 function pacstat() {
-  if [[ $* == *-a* ]]; then
-  	shift
-  	yay -Qi $@
-  else
-  	yay -Si $@
-  fi
+	if [[ $* == *-a* ]]; then
+		shift
+		yay -Qi $@
+	else
+		yay -Si $@
+	fi
 } # [pac]man [stat] a package
 function pacgrep() {
-  if [[ $* == *-a* ]]; then
-  	shift
-  	yay -Ss $@
-  else
-  	yay -Qs $@
-  fi
+	if [[ $* == *-a* ]]; then
+		shift
+		yay -Ss $@
+	else
+		yay -Qs $@
+	fi
 } # [pac]man [grep]
 function pacwho() {
-  if [[ $* == *-a* ]]; then
-  	shift
-  	yay -Fy $@
-  else
-  	yay -Qo $@
-  fi
+	if [[ $* == *-a* ]]; then
+		shift
+		yay -Fy $@
+	else
+		yay -Qo $@
+	fi
 } # [pac]man [who] owns the file
 function pacls() {
-  if [[ $* == *-a* ]]; then
-  	shift
-  	yay -Q
-  else
-  	yay -Qe
-  fi
+	if [[ $* == *-a* ]]; then
+		shift
+		yay -Q
+	else
+		yay -Qe
+	fi
 } # [pac]man [l]ist installed packages
 function pacorphans() {
-  if [[ $* == *-a* ]]; then
-  	shift
-  	yay -Qtd
-  else
-  	yay -Qte
-  fi
-} # [pac]man ls [o]rphans
+	if [[ $* == *-a* ]]; then
+		shift
+		yay -Qtd
+	else
+		yay -Qte
+	fi
+}                                                                        # [pac]man ls [o]rphans
 alias paclogi="grep -i installed /var/log/pacman.log | cut -d ' ' -f1,4" # [pac]man [log] [i]nstalled
 alias paclogr="grep -i removed /var/log/pacman.log | cut -d ' ' -f1,4"   # [pac]man [log] [r]emoved
 alias paclogu="grep -i upgraded /var/log/pacman.log | cut -d ' ' -f1,4"  # [pac]man [log] [u]pdated
@@ -346,16 +338,16 @@ alias gl="gitleaks git"
 
 # :: instant prompt
 # NOTE: https://github.com/romkatv/powerlevel10k/issues/702#issuecomment-626222730
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+((${+commands[direnv]})) && emulate zsh -c "$(direnv export zsh)"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+((${+commands[direnv]})) && emulate zsh -c "$(direnv hook zsh)"
 
 # load autocompletion
 function zcompile-many() {
-  local f
-  for f; do zcompile -R -- "$f".zwc "$f"; done
+	local f
+	for f; do zcompile -R -- "$f".zwc "$f"; done
 }
 fpath=($XDG_DATA_HOME/zsh/completions $fpath) # add completions directory to fpath
 autoload -Uz compinit && compinit -i
@@ -371,7 +363,7 @@ eval "$(mise activate zsh)"
 
 # :: histdb zsh-autosuggestions integration
 _zsh_autosuggest_strategy_histdb_top() {
-    local query="
+	local query="
         select commands.argv from history
         left join commands on history.command_id = commands.rowid
         left join places on history.place_id = places.rowid
@@ -380,7 +372,7 @@ _zsh_autosuggest_strategy_histdb_top() {
         order by places.dir != '$(sql_escape $PWD)', count(*) desc
         limit 1
     "
-    suggestion=$(_histdb_query "$query")
+	suggestion=$(_histdb_query "$query")
 }
 
 # :: plugins configuration
@@ -399,16 +391,16 @@ ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 ) # partial accept with forward word
 
 # :: fzf-tab zstyle
-zstyle ':fzf-tab:*' use-fzf-default-opts yes # use default fzf opts
-zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l' # switch tab group
-zstyle ':completion:*:git-checkout:*' sort false # disable sort when completing git checkout
-zstyle ':completion:*:descriptions' format '[%d]' # set descriptions format to enable group support
+zstyle ':fzf-tab:*' use-fzf-default-opts yes          # use default fzf opts
+zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'    # switch tab group
+zstyle ':completion:*:git-checkout:*' sort false      # disable sort when completing git checkout
+zstyle ':completion:*:descriptions' format '[%d]'     # set descriptions format to enable group support
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # lscolors
 zstyle ':completion:*' menu no
 
 # :: fzf completion
 if command -v fzf &>/dev/null; then
-  source <(fzf --zsh)
+	source <(fzf --zsh)
 fi
 
 bindkey '^R' histdb-fzf-widget
@@ -436,7 +428,7 @@ unset TERRAFORM_ARGS TERRAFORM_BIN
 
 # :: foot-specific issue: https://codeberg.org/dnkl/foot/issues/797
 function precmd {
-    print -Pn "\e[ q"
+	print -Pn "\e[ q"
 }
 
 # :: setup completion for custom funcs
