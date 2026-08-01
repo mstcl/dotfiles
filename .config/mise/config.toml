@@ -95,6 +95,7 @@ shellcheck = "latest"
 "pipx:codespell" = "latest"
 "pipx:pyrefly" = "latest"
 "go:github.com/drewis/go-histdbimport" = "latest"
+"github:smallstep/cli" = "latest"
 
 [env]
 DOTFILES = "{{env.HOME}}/dotfiles"
