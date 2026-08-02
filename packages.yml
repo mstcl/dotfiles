@@ -21,6 +21,7 @@ packages:
   - noto-fonts-cjk # font fallback cjk
   - gnome-themes-extra
   - adw-gtk-theme
+  - papirus-icon-theme
   - freetype2-qdoled # aur only
   - gtk2
   - gtk3
@@ -58,6 +59,7 @@ packages:
   - playerctl # control media
   - mpv # media player
   - mpv-mpris # media player
+  - yt-dlp
   - easyeffects # sound i/o effects
   - pavucontrol # graphical volume control
   - pipewire
