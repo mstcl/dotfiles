@@ -82,7 +82,6 @@ ty = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:yaml-language-server" = "latest"
 ruff = "latest"
-"github:alesbrelih/gitlab-ci-ls" = "latest"
 "github:nametake/golangci-lint-langserver" = "latest"
 # :: formatters/linters
 yamlfmt = "latest"
