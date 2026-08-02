@@ -69,6 +69,7 @@ consul = "latest"
 "pipx:git-filter-repo" = "latest"
 "go:github.com/drewis/go-histdbimport" = "latest"
 "github:smallstep/cli" = "latest"
+"aqua:zk-org/zk" = "latest"
 # :: language servers
 "go:github.com/opentofu/tofu-ls" = "latest"
 tflint = "latest"

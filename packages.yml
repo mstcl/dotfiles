@@ -6,6 +6,8 @@ packages:
   - xdg-desktop-portal-gnome # will need for basic functionalities
   - linux-lts # backup kernel
   - polkit-gnome # polkit-agent
+  - iptables
+  - proton-cachyos-slr
 
   # :: pacman
   - reflector # pacman utils
@@ -19,13 +21,13 @@ packages:
   - noto-fonts-cjk # font fallback cjk
   - gnome-themes-extra
   - adw-gtk-theme
-  - freetype2-qdoled
+  - freetype2-qdoled # aur only
   - gtk2
   - gtk3
   - gtk4
   - gnome-settings-daemon # gtk helper
-  - dms-shell-bin
-  - greetd-dms-greeter-git
+  - dms-shell
+  - greetd-dms-greeter-bin # aur only
   - quickshell
   - dgop
   - matugen
@@ -44,7 +46,7 @@ packages:
   - feh # image viewer
   - imv # photo viewer
   - firefox # browser
-  - feishin-electron-bin # subsonic player
+  - feishin # subsonic player
   - steam # gaming. NOTE: Needs multilib. See roles/enable_pacman_multilib
   - protontricks # proton prefix helper / manager
   # - signal-desktop
@@ -126,7 +128,7 @@ packages:
   - tailscale
   - realtime-privileges
   - profile-sync-daemon # firefox profile on ram
-  - wol-systemd # wake-from-lan
+  # - wol-systemd # wake-from-lan
   - tcpdump
   - inetutils
   - net-tools
@@ -150,6 +152,4 @@ packages:
   - ueberzug # image display
   - grc
   - imagemagick
-  - rbw # bit/vaultwarden client
   - p7zip # compressed archive tools
-  - zk # note CLI tool

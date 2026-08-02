@@ -115,22 +115,18 @@ function mkcd() { command mkdir $1 && cd $1; } # [mk]dir and [cd] into it
 function temp() { cd "$(mktemp -d)"; }         # create [temp]orary directory
 function scr() { "$EDITOR" $(mktemp); }        # [scr]atch file
 function paf() {
-	yay -Sl | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g' |
-		awk '{ print $2 " " $4 $5 }' |
-		sed 's/installed/i/' |
-		fzf --footer="install package(s)" \
-			--delimiter " " \
-			--preview-window=nohidden \
-			--preview 'yay -Si {1}' |
+	pacman -Slq | fzf --footer="install package(s)" \
+		--delimiter " " \
+		--preview-window=nohidden \
+		--preview 'pacman -Si {1}' |
 		awk '{ print $1 }' |
-		xargs -ro yay -Sy \
-			--sudoloop --removemake --cleanafter
+		xargs -ro sudo pacman -Sy
 } # [p]acman [i]nstall with [f]zf
 function prf() {
-	yay -Qq | fzf -q "$1" \
+	pacman -Qq | fzf -q "$1" \
 		--footer="remove packages" \
-		--preview-window=nohidden --preview 'yay -Qi {1}' |
-		xargs -ro yay -Rns
+		--preview-window=nohidden --preview 'pacman -Qi {1}' |
+		xargs -ro sudo pacman -Rns
 } # [p]acman remove with [f]zf
 function rgf() {
 	rg --line-number --no-heading --smart-case --color=never \
@@ -261,51 +257,51 @@ alias tta="$TERRAFORM_BIN taint"                             # [t]erraform [ta]i
 alias tut="$TERRAFORM_BIN untaint"                           # [t]erraform [u]n[t]aint
 
 # :: aur/pacman
-alias pacsys='yay -Ps'                         # [pac]man [sys]tem stats
-alias pacnews='yay -Pw'                        # [pac]man [news]
-alias pacup='yay -Syu --removemake --sudoloop' # [pac]man [up]date
-alias pacad='yay -Sy'                          # [pac]man [ad]d
-alias pacrm='yay -Rns'                         # [pac]man [r]e[m]ove
-alias pacown='yay -Ql'                         # [pac]man which package [own]s these files
-alias pacclean='yay -Scd'                      # [pac]man [c]lean and [d]elete cache
+alias pacsys='sudo pacman -Ps'    # [pac]man [sys]tem stats
+alias pacnews='sudo pacman -Pw'   # [pac]man [news]
+alias pacup='sudo pacman -Syu'    # [pac]man [up]date
+alias pacad='sudo pacman -Sy'     # [pac]man [ad]d
+alias pacrm='sudo pacman -Rns'    # [pac]man [r]e[m]ove
+alias pacown='sudo pacman -Ql'    # [pac]man which package [own]s these files
+alias pacclean='sudo pacman -Scd' # [pac]man [c]lean and [d]elete cache
 function pacstat() {
 	if [[ $* == *-a* ]]; then
 		shift
-		yay -Qi $@
+		pacman -Qi $@
 	else
-		yay -Si $@
+		pacman -Si $@
 	fi
 } # [pac]man [stat] a package
 function pacgrep() {
 	if [[ $* == *-a* ]]; then
 		shift
-		yay -Ss $@
+		pacman -Ss $@
 	else
-		yay -Qs $@
+		pacman -Qs $@
 	fi
 } # [pac]man [grep]
 function pacwho() {
 	if [[ $* == *-a* ]]; then
 		shift
-		yay -Fy $@
+		sudo pacman -Fy $@
 	else
-		yay -Qo $@
+		pacman -Qo $@
 	fi
 } # [pac]man [who] owns the file
 function pacls() {
 	if [[ $* == *-a* ]]; then
 		shift
-		yay -Q
+		pacman -Q
 	else
-		yay -Qe
+		pacman -Qe
 	fi
 } # [pac]man [l]ist installed packages
 function pacorphans() {
 	if [[ $* == *-a* ]]; then
 		shift
-		yay -Qtd
+		pacman -Qtd
 	else
-		yay -Qte
+		pacman -Qte
 	fi
 }                                                                        # [pac]man ls [o]rphans
 alias paclogi="grep -i installed /var/log/pacman.log | cut -d ' ' -f1,4" # [pac]man [log] [i]nstalled
