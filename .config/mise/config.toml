@@ -5,6 +5,16 @@ fetch_remote_versions_cache = "24h"
 fetch_remote_versions_timeout = "40s"
 experimental = true
 
+auto_install = false
+not_found_auto_install = false
+task_run_auto_install = false
+
+[settings.aqua]
+cosign = false
+slsa = false
+minisign = false
+github_attestations = false
+
 [settings.npm]
 package_manager = "bun"
 
@@ -25,8 +35,6 @@ neovim = "nightly"
 uv = "latest"
 bottom = "latest"
 opencode = "latest"
-hcl2json = "latest"
-conftest = "latest"
 git-lfs = "latest"
 fzf = "latest"
 delta = "latest"
@@ -46,7 +54,7 @@ jq = "latest"
 yq = "latest"
 "go:github.com/umlx5h/gtrash" = "latest"
 "github:KSXGitHub/parallel-disk-usage" = "latest"
-"cargo:rbw" = "latest"
+"github:doy/rbw" = "latest"
 "github:tofuutils/tenv" = "latest"
 terraform-docs = "latest"
 gomplate = "latest"
@@ -59,6 +67,8 @@ nomad = "latest"
 consul = "latest"
 "pipx:ansible" = "latest"
 "pipx:git-filter-repo" = "latest"
+"go:github.com/drewis/go-histdbimport" = "latest"
+"github:smallstep/cli" = "latest"
 # :: language servers
 "go:github.com/opentofu/tofu-ls" = "latest"
 tflint = "latest"
@@ -70,15 +80,15 @@ ty = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:yaml-language-server" = "latest"
-"npm:sql-language-server" = "latest"
 ruff = "latest"
 "github:alesbrelih/gitlab-ci-ls" = "latest"
+"github:nametake/golangci-lint-langserver" = "latest"
 # :: formatters/linters
 yamlfmt = "latest"
 yamllint = "latest"
 hadolint = "latest"
 trivy = "latest"
-"github:Kampfkarren/selene" = "latest"
+"aqua:Kampfkarren/selene" = "latest"
 golangci-lint = "latest"
 biome = "latest"
 stylua = "latest"
@@ -94,8 +104,6 @@ shellcheck = "latest"
 "pipx:yamllint" = "latest"
 "pipx:codespell" = "latest"
 "pipx:pyrefly" = "latest"
-"go:github.com/drewis/go-histdbimport" = "latest"
-"github:smallstep/cli" = "latest"
 
 [env]
 DOTFILES = "{{env.HOME}}/dotfiles"
@@ -131,6 +139,23 @@ run = "$DOTFILES/scripts/src/setup-zsh.sh plugins"
 sources = ["{{env.DOTFILES}}/scripts/src/setup-zsh.sh"]
 outputs = ["{{env.XDG_DATA_HOME}}/zsh/plugins/zsh-defer"]
 
+[tasks."zsh:fzf-tab"]
+description = "Build fzf tab module"
+shell = "zsh -c"
+run = """
+source {{env.XDG_DATA_HOME}}/zsh/plugins/fzf-tab/fzf-tab.zsh
+build-fzf-tab-module
+"""
+outputs = ["{{env.XDG_DATA_HOME}}/zsh/plugins/fzf-tab/modules/Src/aloxaf/fzftab.so"]
+
+[tasks."zsh:theme"]
+description = "Change zsh syntax highlighting"
+shell = "zsh -c"
+run = """
+source {{env.XDG_DATA_HOME}}/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+fast-theme base16
+"""
+
 [tasks."zsh:setup"]
 description = "Setup ZSH completions and plugins"
-depends = ["zsh:completions", "zsh:plugins"]
+depends = ["zsh:completions", "zsh:plugins", "zsh:theme", "zsh:fzf-tab"]

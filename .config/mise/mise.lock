@@ -40,6 +40,46 @@ url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-wi
 checksum = "sha256:c56e8ce22f7e80cb85ad946cc82d198767b056366201d3e1a2b93d865be38154"
 url = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-windows-amd64.zip"
 
+[[tools."aqua:Kampfkarren/selene"]]
+version = "0.31.0"
+backend = "aqua:Kampfkarren/selene"
+
+[tools."aqua:Kampfkarren/selene"."platforms.linux-x64"]
+checksum = "sha256:dac452422747999ec4919bbb8bb52992b66aae533b60022bf005669de8616671"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-linux.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.linux-x64-baseline"]
+checksum = "sha256:dac452422747999ec4919bbb8bb52992b66aae533b60022bf005669de8616671"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-linux.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.linux-x64-musl"]
+checksum = "sha256:dac452422747999ec4919bbb8bb52992b66aae533b60022bf005669de8616671"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-linux.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:dac452422747999ec4919bbb8bb52992b66aae533b60022bf005669de8616671"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-linux.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.macos-arm64"]
+checksum = "sha256:67f644e57e14ccb74a0c272bc44af0dc7909d8bdff58e4e59bb3524717da5741"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-macos.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.macos-x64"]
+checksum = "sha256:67f644e57e14ccb74a0c272bc44af0dc7909d8bdff58e4e59bb3524717da5741"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-macos.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.macos-x64-baseline"]
+checksum = "sha256:67f644e57e14ccb74a0c272bc44af0dc7909d8bdff58e4e59bb3524717da5741"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-macos.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.windows-x64"]
+checksum = "sha256:c5d5d087daa8e38bd71680b2202a407e5d4bc00fd584a648dec17ef9b29a2b73"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-windows.zip"
+
+[tools."aqua:Kampfkarren/selene"."platforms.windows-x64-baseline"]
+checksum = "sha256:c5d5d087daa8e38bd71680b2202a407e5d4bc00fd584a648dec17ef9b29a2b73"
+url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-windows.zip"
+
 [[tools.ast-grep]]
 version = "0.45.0"
 backend = "aqua:ast-grep/ast-grep"
@@ -755,6 +795,10 @@ checksum = "sha256:ae7f23de085b958de6f08d4f6b700722d1733dc27c9b11d95f909ef5c29a2
 url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.24.0/emmylua_check-win32-x64.zip"
 url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/472470125"
 
+[[tools."github:KSXGitHub/parallel-disk-usage"]]
+version = "0.24.0"
+backend = "github:KSXGitHub/parallel-disk-usage"
+
 [[tools."github:Kampfkarren/selene"]]
 version = "0.31.0"
 backend = "github:Kampfkarren/selene"
@@ -837,6 +881,69 @@ url_api = "https://api.github.com/repos/alesbrelih/gitlab-ci-ls/releases/assets/
 checksum = "sha256:9e4d08c95c64fd270f82af3f5afa16b6f2b13804f5bdbd49b55c7405928e4451"
 url = "https://github.com/alesbrelih/gitlab-ci-ls/releases/download/1.3.3/gitlab-ci-ls-x86_64-unknown-linux-gnu"
 url_api = "https://api.github.com/repos/alesbrelih/gitlab-ci-ls/releases/assets/441364792"
+
+[[tools."github:nametake/golangci-lint-langserver"]]
+version = "0.0.12"
+backend = "github:nametake/golangci-lint-langserver"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.linux-arm64"]
+checksum = "sha256:4b1b582213978803bb215a36c88c2fbbd14e26bf15e0377c74f04dbe424c1063"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564689"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.linux-arm64-musl"]
+checksum = "sha256:4b1b582213978803bb215a36c88c2fbbd14e26bf15e0377c74f04dbe424c1063"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564689"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.linux-x64"]
+checksum = "sha256:7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564690"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.linux-x64-baseline"]
+checksum = "sha256:7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564690"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.linux-x64-musl"]
+checksum = "sha256:7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564690"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564690"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.macos-arm64"]
+checksum = "sha256:e630712320bcc1c75a1584f2b46a5c7ee7b15e603bb180b8b42c2932302d2a95"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564693"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.macos-x64"]
+checksum = "sha256:3ba8589115bb1b0d5df70f8139d774120830bf9dc9f716b60f5e0fb3269c504f"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564688"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.macos-x64-baseline"]
+checksum = "sha256:3ba8589115bb1b0d5df70f8139d774120830bf9dc9f716b60f5e0fb3269c504f"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564688"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.windows-x64"]
+checksum = "sha256:39b900b6b18bdc0328a9a58539af2bfc0bdaad9c2f217c1afa7921717d11e4d6"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564698"
+
+[tools."github:nametake/golangci-lint-langserver"."platforms.windows-x64-baseline"]
+checksum = "sha256:39b900b6b18bdc0328a9a58539af2bfc0bdaad9c2f217c1afa7921717d11e4d6"
+url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/nametake/golangci-lint-langserver/releases/assets/360564698"
+
+[[tools."github:smallstep/cli"]]
+version = "0.30.6"
+backend = "github:smallstep/cli"
 
 [[tools."github:tofuutils/tenv"]]
 version = "4.15.1"
@@ -1074,6 +1181,10 @@ backend = "go:github.com/daixiang0/gci"
 [[tools."go:github.com/danvergara/dblab"]]
 version = "0.46.0"
 backend = "go:github.com/danvergara/dblab"
+
+[[tools."go:github.com/drewis/go-histdbimport"]]
+version = "latest"
+backend = "go:github.com/drewis/go-histdbimport"
 
 [[tools."go:github.com/hashicorp/hcl/v2/cmd/hclfmt"]]
 version = "2.24.0"
