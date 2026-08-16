@@ -1,16 +1,16 @@
 binds {
     Ctrl+Print hotkey-overlay-title="Screenshot (Picker)" { spawn "dms" "screenshot" "full"; }
     Mod+C hotkey-overlay-title="Clipboard Manager" repeat=false cooldown-ms=500 { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
-    Mod+N repeat=false cooldown-ms=500 hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-    Mod+Shift+C repeat=false cooldown-ms=500 hotkey-overlay-title="Color Picker" { spawn "dms" "color" "pick" "-a"; }
-    Mod+Shift+D cooldown-ms=500 hotkey-overlay-title="Dashboard" repeat=false { spawn "dms" "ipc" "call" "dash" "toggle" "overview"; }
-    Mod+Shift+Escape hotkey-overlay-title="Task Manager" repeat=false cooldown-ms=500 { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
-    Mod+Shift+N repeat=false cooldown-ms=500 hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
-    Mod+Shift+O hotkey-overlay-title="Control Center: Toggle" cooldown-ms=500 { spawn "dms" "ipc" "call" "control-center" "toggle"; }
-    Mod+Shift+P hotkey-overlay-title="Power Menu" repeat=false cooldown-ms=500 { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+    Mod+N hotkey-overlay-title="Notification Center" repeat=false cooldown-ms=500 { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+S repeat=false cooldown-ms=500 hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
+    Mod+Shift+C cooldown-ms=500 hotkey-overlay-title="Color Picker" repeat=false { spawn "dms" "color" "pick" "-a"; }
+    Mod+Shift+D repeat=false cooldown-ms=500 hotkey-overlay-title="Dashboard" { spawn "dms" "ipc" "call" "dash" "toggle" "overview"; }
+    Mod+Shift+Escape repeat=false cooldown-ms=500 hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
+    Mod+Shift+O cooldown-ms=500 hotkey-overlay-title="Control Center: Toggle" { spawn "dms" "ipc" "call" "control-center" "toggle"; }
+    Mod+Shift+P repeat=false cooldown-ms=500 hotkey-overlay-title="Power Menu" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
     Mod+Shift+S hotkey-overlay-title="Screenshot (Picker)" { spawn "dms" "screenshot"; }
     Mod+Shift+Slash repeat=false cooldown-ms=500 hotkey-overlay-title="Binds" { spawn "dms" "ipc" "call" "keybinds" "toggle" "niri"; }
-    Mod+Space hotkey-overlay-title="Application Launcher" repeat=false cooldown-ms=500 { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+Space repeat=false cooldown-ms=500 hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Print hotkey-overlay-title="Screenshot (Picker)" { spawn "dms" "screenshot"; }
     XF86AudioLowerVolume hotkey-overlay-title="Volume Down" { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
     XF86AudioMicMute hotkey-overlay-title="Mute Mic" { spawn "dms" "ipc" "call" "audio" "micmute"; }
@@ -28,7 +28,7 @@ binds {
     Mod+8 hotkey-overlay-title="Focus Workspace 8" { focus-workspace 8; }
     Mod+9 hotkey-overlay-title="Focus Workspace 9" { focus-workspace 9; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="Move down" { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp cooldown-ms=150 hotkey-overlay-title="Move up" { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollUp hotkey-overlay-title="Move up" cooldown-ms=150 { move-column-to-workspace-up; }
     Mod+J hotkey-overlay-title="Focus down" { focus-window-or-workspace-down; }
     Mod+K hotkey-overlay-title="Focus up" { focus-window-or-workspace-up; }
     Mod+Shift+1 hotkey-overlay-title="Move to Workspace 1" { move-column-to-workspace 1; }
@@ -77,9 +77,8 @@ binds {
     Mod+Shift+WheelScrollUp hotkey-overlay-title="Focus left" { focus-column-left; }
     Mod+B repeat=false cooldown-ms=500 hotkey-overlay-title="Open Browser" { spawn "firefox"; }
     Mod+E repeat=false cooldown-ms=500 hotkey-overlay-title="File Manager" { spawn "nautilus"; }
-    Mod+G repeat=false cooldown-ms=500 hotkey-overlay-title="Password Manager" { spawn ",launch_foot" ",fzf_pass"; }
-    Mod+Return repeat=false cooldown-ms=100 hotkey-overlay-title="Open Terminal" { spawn "foot"; }
-    Mod+S repeat=false cooldown-ms=500 hotkey-overlay-title="Scratch Pad" { spawn ",launch_foot" ",launch_nvim_scratch"; }
+    Mod+G hotkey-overlay-title="Password Manager" repeat=false cooldown-ms=500 { spawn-sh ",launch_foot -- zsh -lic ,fzf_pass"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" repeat=false cooldown-ms=100 { spawn "foot"; }
     XF86AudioNext hotkey-overlay-title="Next Track" { spawn "playerctl" "next"; }
     XF86AudioPlay hotkey-overlay-title="Play/Pause" { spawn "playerctl" "play-pause"; }
     XF86AudioPrev hotkey-overlay-title="Previous Track" { spawn "playerctl" "previous"; }
