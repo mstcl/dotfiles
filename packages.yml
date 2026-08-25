@@ -47,6 +47,7 @@ packages:
   - feh # image viewer
   - imv # photo viewer
   - firefox # browser
+  - mullvad-vpn
   - feishin # subsonic player
   - steam # gaming. NOTE: Needs multilib. See roles/enable_pacman_multilib
   - protontricks # proton prefix helper / manager

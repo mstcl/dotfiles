@@ -1,13 +1,16 @@
 [settings]
 color_theme = "base16"
 lockfile = true
+lockfile_platforms = ["linux-x64"]
 fetch_remote_versions_cache = "24h"
 fetch_remote_versions_timeout = "40s"
 experimental = true
 
 auto_install = false
 not_found_auto_install = false
-task_run_auto_install = false
+
+[settings.task]
+run_auto_install = false
 
 [settings.aqua]
 cosign = false
@@ -21,6 +24,11 @@ package_manager = "bun"
 [settings.github]
 github_attestations = false
 
+[tool_alias]
+emmylua_ls = "github:EmmyLuaLs/emmylua-analyzer-rust"
+emmylua_check = "github:EmmyLuaLs/emmylua-analyzer-rust"
+emmylua_format = "github:EmmyLuaLs/emmylua-analyzer-rust"
+
 [tools]
 usage = "latest"
 # :: toolchains
@@ -31,6 +39,7 @@ python = "3.14"
 rust = { version = "latest", profile = "minimal" }
 lua = "5.5"
 # :: devtools
+viddy = "latest"
 neovim = "nightly"
 uv = "latest"
 bottom = "latest"
@@ -73,7 +82,10 @@ consul = "latest"
 # :: language servers
 "go:github.com/opentofu/tofu-ls" = "latest"
 tflint = "latest"
-"github:EmmyLuaLs/emmylua-analyzer-rust" = "latest"
+rust-analyzer = "latest"
+"emmylua_ls" = {version = "latest", matching = "emmylua_ls"}
+"emmylua_check" = {version = "latest", matching = "emmylua_check"}
+"emmylua_format" = {version = "latest", matching = "luafmt"}
 "go:golang.org/x/tools/gopls" = "latest"
 ty = "latest"
 "npm:bash-language-server" = "latest"

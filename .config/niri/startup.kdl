@@ -1,2 +1,3 @@
 spawn-at-startup "~/.local/bin/,niri_dynamic_float"
 spawn-at-startup "/usr/bin/kdeconnect-indicator"
+spawn-at-startup "~/.local/bin/dcal run -d"

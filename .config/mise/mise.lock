@@ -651,6 +651,192 @@ url = "https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_windows_
 checksum = "sha256:503934be81f847d9ddb1b739834217480633435ad16515dd199e372c0b2e1afc"
 url = "https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_windows_x86_64.zip"
 
+[[tools.emmylua_check]]
+version = "0.25.1"
+backend = "github:EmmyLuaLs/emmylua-analyzer-rust"
+
+[tools.emmylua_check.options]
+matching = "emmylua_check"
+
+[tools.emmylua_check."platforms.linux-arm64"]
+checksum = "sha256:62a9a56d3ff5d0e108909332cb91582a0c1a4ebbfdce1a4422e7ae74d4a7f8b1"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-linux-aarch64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398175"
+
+[tools.emmylua_check."platforms.linux-arm64-musl"]
+checksum = "sha256:62a9a56d3ff5d0e108909332cb91582a0c1a4ebbfdce1a4422e7ae74d4a7f8b1"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-linux-aarch64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398175"
+
+[tools.emmylua_check."platforms.linux-x64"]
+checksum = "sha256:e4a700af4921e2d908e2f7299eaa86e3e1b3b265e27225ab33c7eb03ebc2187d"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-linux-x64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398186"
+
+[tools.emmylua_check."platforms.linux-x64-baseline"]
+checksum = "sha256:6ce2e19d0a82ed901c2c67a18567b340447682f843c7a0a82098e50e8d2f107e"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398182"
+
+[tools.emmylua_check."platforms.linux-x64-musl"]
+checksum = "sha256:6ce2e19d0a82ed901c2c67a18567b340447682f843c7a0a82098e50e8d2f107e"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398182"
+
+[tools.emmylua_check."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:6ce2e19d0a82ed901c2c67a18567b340447682f843c7a0a82098e50e8d2f107e"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398182"
+
+[tools.emmylua_check."platforms.macos-arm64"]
+checksum = "sha256:eeaad59d173cb8d7cb0fe778936d7b584fe114a3eb46587ef3e4aec24b605af4"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398192"
+
+[tools.emmylua_check."platforms.macos-x64"]
+checksum = "sha256:e91fe82c361d8dece8e2ce9aeb2313b8809b4714f72bbbeab5a27e754d8de2c6"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398193"
+
+[tools.emmylua_check."platforms.macos-x64-baseline"]
+checksum = "sha256:e91fe82c361d8dece8e2ce9aeb2313b8809b4714f72bbbeab5a27e754d8de2c6"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398193"
+
+[tools.emmylua_check."platforms.windows-x64"]
+checksum = "sha256:577982e68d925972d8ae35f54b5f384ad77a84a2e31e340bd663d1efd2ef5983"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-win32-x64.zip"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398153"
+
+[tools.emmylua_check."platforms.windows-x64-baseline"]
+checksum = "sha256:577982e68d925972d8ae35f54b5f384ad77a84a2e31e340bd663d1efd2ef5983"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_check-win32-x64.zip"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398153"
+
+[[tools.emmylua_format]]
+version = "0.25.1"
+backend = "github:EmmyLuaLs/emmylua-analyzer-rust"
+
+[tools.emmylua_format.options]
+matching = "luafmt"
+
+[tools.emmylua_format."platforms.linux-arm64"]
+checksum = "sha256:9a9e6dfbaa94f2b1378732b34fd9d7d553291f230eb2230defae1cff1279204e"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-linux-aarch64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398188"
+
+[tools.emmylua_format."platforms.linux-arm64-musl"]
+checksum = "sha256:9a9e6dfbaa94f2b1378732b34fd9d7d553291f230eb2230defae1cff1279204e"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-linux-aarch64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398188"
+
+[tools.emmylua_format."platforms.linux-x64"]
+checksum = "sha256:bce370647ff33d2a62a1b9b3802d87b3b177383b20785a7af2348118fb70c727"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-linux-x64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398165"
+
+[tools.emmylua_format."platforms.linux-x64-baseline"]
+checksum = "sha256:c67afb6963aa0e39d8b003f2cba755f7390fa2f6013df8f4e2dfd471506da9a5"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398168"
+
+[tools.emmylua_format."platforms.linux-x64-musl"]
+checksum = "sha256:c67afb6963aa0e39d8b003f2cba755f7390fa2f6013df8f4e2dfd471506da9a5"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398168"
+
+[tools.emmylua_format."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:c67afb6963aa0e39d8b003f2cba755f7390fa2f6013df8f4e2dfd471506da9a5"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398168"
+
+[tools.emmylua_format."platforms.macos-arm64"]
+checksum = "sha256:1637fec3d449c10d71e27a30e0cc84bd4ad46b124c5ff8de0767cab954b67a4f"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398172"
+
+[tools.emmylua_format."platforms.macos-x64"]
+checksum = "sha256:033d524551a869d0bf6ebabe00e1f4ccb697af0680d4c1c00eb0cb6f777d944f"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398195"
+
+[tools.emmylua_format."platforms.macos-x64-baseline"]
+checksum = "sha256:033d524551a869d0bf6ebabe00e1f4ccb697af0680d4c1c00eb0cb6f777d944f"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398195"
+
+[tools.emmylua_format."platforms.windows-x64"]
+checksum = "sha256:e93352405a0ebd3be412b0c43f2815165276d8ecc935e6898ca26a25e4b25eda"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-win32-x64.zip"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398151"
+
+[tools.emmylua_format."platforms.windows-x64-baseline"]
+checksum = "sha256:e93352405a0ebd3be412b0c43f2815165276d8ecc935e6898ca26a25e4b25eda"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/luafmt-win32-x64.zip"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398151"
+
+[[tools.emmylua_ls]]
+version = "0.25.1"
+backend = "github:EmmyLuaLs/emmylua-analyzer-rust"
+
+[tools.emmylua_ls.options]
+matching = "emmylua_ls"
+
+[tools.emmylua_ls."platforms.linux-arm64"]
+checksum = "sha256:210535be13c31ceefcdd0f8451eb4c0d3d430887fc2c382eaf82484a9187220d"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-linux-aarch64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398173"
+
+[tools.emmylua_ls."platforms.linux-arm64-musl"]
+checksum = "sha256:210535be13c31ceefcdd0f8451eb4c0d3d430887fc2c382eaf82484a9187220d"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-linux-aarch64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398173"
+
+[tools.emmylua_ls."platforms.linux-x64"]
+checksum = "sha256:9731ec340b1b40916555dcb31c1c539beee9fa184997962c9af250c42b316950"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-linux-x64-glibc.2.17.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398180"
+
+[tools.emmylua_ls."platforms.linux-x64-baseline"]
+checksum = "sha256:8f4096468da37654049169dc2e1283e7685348e5215cc144a27f9988befac590"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398174"
+
+[tools.emmylua_ls."platforms.linux-x64-musl"]
+checksum = "sha256:8f4096468da37654049169dc2e1283e7685348e5215cc144a27f9988befac590"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398174"
+
+[tools.emmylua_ls."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:8f4096468da37654049169dc2e1283e7685348e5215cc144a27f9988befac590"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398174"
+
+[tools.emmylua_ls."platforms.macos-arm64"]
+checksum = "sha256:335023043cbc9ad683a13b24eb79f709a370215daf53673276b9a9663df96504"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398161"
+
+[tools.emmylua_ls."platforms.macos-x64"]
+checksum = "sha256:abc9cbe2e8d28624e0d441fa55055b1196f73251b034356d717b0e58b562f182"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398163"
+
+[tools.emmylua_ls."platforms.macos-x64-baseline"]
+checksum = "sha256:abc9cbe2e8d28624e0d441fa55055b1196f73251b034356d717b0e58b562f182"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398163"
+
+[tools.emmylua_ls."platforms.windows-x64"]
+checksum = "sha256:82efa133287f67be09e1a624d8efecd8063832ec2b9bf9279c37afc5f42118bd"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-win32-x64.zip"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398152"
+
+[tools.emmylua_ls."platforms.windows-x64-baseline"]
+checksum = "sha256:82efa133287f67be09e1a624d8efecd8063832ec2b9bf9279c37afc5f42118bd"
+url = "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-win32-x64.zip"
+url_api = "https://api.github.com/repos/EmmyLuaLs/emmylua-analyzer-rust/releases/assets/514398152"
+
 [[tools.eza]]
 version = "0.23.5"
 backend = "aqua:eza-community/eza"
@@ -1003,6 +1189,65 @@ url_api = "https://api.github.com/repos/Kampfkarren/selene/releases/assets/42578
 checksum = "sha256:c5d5d087daa8e38bd71680b2202a407e5d4bc00fd584a648dec17ef9b29a2b73"
 url = "https://github.com/Kampfkarren/selene/releases/download/0.31.0/selene-0.31.0-windows.zip"
 url_api = "https://api.github.com/repos/Kampfkarren/selene/releases/assets/425780002"
+
+[[tools."github:SurgeDM/Surge"]]
+version = "0.11.2"
+backend = "github:SurgeDM/Surge"
+
+[tools."github:SurgeDM/Surge"."platforms.linux-arm64"]
+checksum = "sha256:d94d2fadde56272b5b9c964fe862dbae937951469e69e40f98848e5d1aea295c"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508391"
+
+[tools."github:SurgeDM/Surge"."platforms.linux-arm64-musl"]
+checksum = "sha256:d94d2fadde56272b5b9c964fe862dbae937951469e69e40f98848e5d1aea295c"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508391"
+
+[tools."github:SurgeDM/Surge"."platforms.linux-x64"]
+checksum = "sha256:2cddbb7bf3c2fca7336780cb4a5e44fee3e24e95c6ec77ce2fd7386a3fccf366"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508392"
+
+[tools."github:SurgeDM/Surge"."platforms.linux-x64-baseline"]
+checksum = "sha256:2cddbb7bf3c2fca7336780cb4a5e44fee3e24e95c6ec77ce2fd7386a3fccf366"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508392"
+
+[tools."github:SurgeDM/Surge"."platforms.linux-x64-musl"]
+checksum = "sha256:2cddbb7bf3c2fca7336780cb4a5e44fee3e24e95c6ec77ce2fd7386a3fccf366"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508392"
+
+[tools."github:SurgeDM/Surge"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:2cddbb7bf3c2fca7336780cb4a5e44fee3e24e95c6ec77ce2fd7386a3fccf366"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508392"
+
+[tools."github:SurgeDM/Surge"."platforms.macos-arm64"]
+checksum = "sha256:64f99955fd16d52ee36509ce7dd16eac5599361c588193544f7e3d8ba0ac02c3"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508404"
+
+[tools."github:SurgeDM/Surge"."platforms.macos-x64"]
+checksum = "sha256:1585c366b8768f18b3fe8e344170b76c502fa42b7eeaf30b2f6ab580628c87d5"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508406"
+
+[tools."github:SurgeDM/Surge"."platforms.macos-x64-baseline"]
+checksum = "sha256:1585c366b8768f18b3fe8e344170b76c502fa42b7eeaf30b2f6ab580628c87d5"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508406"
+
+[tools."github:SurgeDM/Surge"."platforms.windows-x64"]
+checksum = "sha256:cdc5f26ffcebb027437f256e9a8c1d0d6bf26f1fe9bc2cb8f21c487795934ee1"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_windows_amd64.zip"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508388"
+
+[tools."github:SurgeDM/Surge"."platforms.windows-x64-baseline"]
+checksum = "sha256:cdc5f26ffcebb027437f256e9a8c1d0d6bf26f1fe9bc2cb8f21c487795934ee1"
+url = "https://github.com/SurgeDM/Surge/releases/download/v0.11.2/Surge_0.11.2_windows_amd64.zip"
+url_api = "https://api.github.com/repos/SurgeDM/Surge/releases/assets/499508388"
 
 [[tools."github:alesbrelih/gitlab-ci-ls"]]
 version = "1.3.3"
@@ -2357,6 +2602,60 @@ backend = "core:rust"
 [tools.rust.options]
 profile = "minimal"
 
+[[tools.rust-analyzer]]
+version = "2026-08-17.4"
+backend = "aqua:rust-lang/rust-analyzer"
+
+[tools.rust-analyzer."platforms.linux-arm64"]
+checksum = "sha256:941ad31c4256eec3c8457257b0fcfb696d2b4f80c0e5a996f7375a92130c2447"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116027"
+
+[tools.rust-analyzer."platforms.linux-x64"]
+checksum = "sha256:a559eaa29920e4c12718fba101f2055f1da0ad8bc458ef9dc1a670778cc66901"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116297"
+
+[tools.rust-analyzer."platforms.linux-x64-baseline"]
+checksum = "sha256:a559eaa29920e4c12718fba101f2055f1da0ad8bc458ef9dc1a670778cc66901"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116297"
+
+[tools.rust-analyzer."platforms.linux-x64-musl"]
+checksum = "sha256:1b1aa9426883caa6a2fac24f9aa8da31556394f27779591b749b01732b6914c5"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-unknown-linux-musl.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116312"
+
+[tools.rust-analyzer."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:1b1aa9426883caa6a2fac24f9aa8da31556394f27779591b749b01732b6914c5"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-unknown-linux-musl.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116312"
+
+[tools.rust-analyzer."platforms.macos-arm64"]
+checksum = "sha256:ece932daf2f077be87bf745d2eb0a62cbc550f4b1e2e31ca76dfafdd0cc599b3"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-aarch64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518115984"
+
+[tools.rust-analyzer."platforms.macos-x64"]
+checksum = "sha256:134a7d305991de776864e43d1e6c291f60fa2888d4b9b7749864c562c5dc28b7"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116249"
+
+[tools.rust-analyzer."platforms.macos-x64-baseline"]
+checksum = "sha256:134a7d305991de776864e43d1e6c291f60fa2888d4b9b7749864c562c5dc28b7"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-apple-darwin.gz"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116249"
+
+[tools.rust-analyzer."platforms.windows-x64"]
+checksum = "sha256:3212cc9e7ab3f6b07f97be681c2a7200f73fb0463e6f8055c214ebe0b00901f2"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116262"
+
+[tools.rust-analyzer."platforms.windows-x64-baseline"]
+checksum = "sha256:3212cc9e7ab3f6b07f97be681c2a7200f73fb0463e6f8055c214ebe0b00901f2"
+url = "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-17.4/rust-analyzer-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/assets/518116262"
+
 [[tools.shellcheck]]
 version = "0.11.0"
 backend = "aqua:koalaman/shellcheck"
@@ -3035,6 +3334,65 @@ url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/497097149"
 checksum = "sha256:8fcb0cb46e1229065e344758980924e569bef5882ef45f46fada8fb24e06b74a"
 url = "https://github.com/astral-sh/uv/releases/download/0.12.1/uv-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/497097149"
+
+[[tools.viddy]]
+version = "1.3.1"
+backend = "aqua:sachaos/viddy"
+
+[tools.viddy."platforms.linux-arm64"]
+checksum = "sha256:4bf88aa5443b09a49e8af55c1e92ff6148486856703b8f886e1984b0e541af4d"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334573"
+
+[tools.viddy."platforms.linux-arm64-musl"]
+checksum = "sha256:4bf88aa5443b09a49e8af55c1e92ff6148486856703b8f886e1984b0e541af4d"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334573"
+
+[tools.viddy."platforms.linux-x64"]
+checksum = "sha256:c0406da6c19bbfbf0381a1a54cf7098a97372c15e5d64bed38e4b8be53e8455e"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334545"
+
+[tools.viddy."platforms.linux-x64-baseline"]
+checksum = "sha256:c0406da6c19bbfbf0381a1a54cf7098a97372c15e5d64bed38e4b8be53e8455e"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334545"
+
+[tools.viddy."platforms.linux-x64-musl"]
+checksum = "sha256:c0406da6c19bbfbf0381a1a54cf7098a97372c15e5d64bed38e4b8be53e8455e"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334545"
+
+[tools.viddy."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:c0406da6c19bbfbf0381a1a54cf7098a97372c15e5d64bed38e4b8be53e8455e"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334545"
+
+[tools.viddy."platforms.macos-arm64"]
+checksum = "sha256:46e9f219299e6a012075b46191fed21663bd916cea95f1e419b787a87ddd48bf"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-macos-arm64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447333781"
+
+[tools.viddy."platforms.macos-x64"]
+checksum = "sha256:fe3afac2154cdc6432449d1cf526744389f8686bd9b240f146e632aa532205ad"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-macos-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447333937"
+
+[tools.viddy."platforms.macos-x64-baseline"]
+checksum = "sha256:fe3afac2154cdc6432449d1cf526744389f8686bd9b240f146e632aa532205ad"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-macos-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447333937"
+
+[tools.viddy."platforms.windows-x64"]
+checksum = "sha256:b77c34a18d10fb3c9338ef292a59de00f3d695aa423fd3b6ff617ef6840e2a70"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-windows-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334767"
+
+[tools.viddy."platforms.windows-x64-baseline"]
+checksum = "sha256:b77c34a18d10fb3c9338ef292a59de00f3d695aa423fd3b6ff617ef6840e2a70"
+url = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-windows-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/sachaos/viddy/releases/assets/447334767"
 
 [[tools.yamlfmt]]
 version = "0.21.0"

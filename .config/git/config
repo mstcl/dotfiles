@@ -21,7 +21,6 @@
 	branch = true
 [commit]
 	gpgsign = true
-	verbose = true
 [tag]
 	sort = -version:refname
 	gpgSign = true
