@@ -1,1 +1,31 @@
-**/lazy-lock.json
+# General / Git
+.git/
+.grip
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Rust
+target/
+
+# Go
+vendor/
+bin/
+
+# Terraform / OpenTofu
+.terraform/
+
+.zconfdump
+.zcompdump
+core.*

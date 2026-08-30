@@ -1,6 +1,7 @@
 *.bak
 .old
-**/.zconfdump*
-**/.zcompdump*
+.zconfdump*
+.zcompdump*
 .config/git/mtls.ini
 .grip
+core.*
