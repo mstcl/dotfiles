@@ -200,6 +200,41 @@ url = "https://github.com/open-policy-agent/conftest/releases/download/v0.68.2/c
 checksum = "sha256:e8144c6d6d2ae0260b869caa60c7c262a1f95ac63ec1e5d2fb19be452d606347"
 url = "https://github.com/open-policy-agent/conftest/releases/download/v0.68.2/conftest_0.68.2_Linux_x86_64.tar.gz"
 
+[[tools.consul]]
+version = "2.0.2"
+backend = "aqua:hashicorp/consul"
+
+[tools.consul."platforms.linux-x64"]
+checksum = "sha256:96e56c9d06b4a15bfa316afa39af926c1b67d189f66388dc1eecbb7c26faeed4"
+url = "https://releases.hashicorp.com/consul/2.0.2/consul_2.0.2_linux_amd64.zip"
+
+[[tools.delta]]
+version = "0.19.2"
+backend = "aqua:dandavison/delta"
+
+[tools.delta."platforms.linux-x64"]
+checksum = "sha256:f1ea01ca7728ce3462debc359f39dfc7cbbc1a63224b71fefabf92042864aa1b"
+url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/383662298"
+
+[[tools.direnv]]
+version = "2.37.1"
+backend = "aqua:direnv/direnv"
+
+[tools.direnv."platforms.linux-x64"]
+checksum = "sha256:1f1b93dd6f38523fde26dfac96151ef9d31a374e3005cd3345fb93555ae0c9b5"
+url = "https://github.com/direnv/direnv/releases/download/v2.37.1/direnv.linux-amd64"
+url_api = "https://api.github.com/repos/direnv/direnv/releases/assets/274610548"
+
+[[tools.duf]]
+version = "0.9.1"
+backend = "aqua:muesli/duf"
+
+[tools.duf."platforms.linux-x64"]
+checksum = "sha256:5add851e7062c5e56939abb664705e4d14fa2d06289490aff31d51f153832de7"
+url = "https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/muesli/duf/releases/assets/291083805"
+
 [[tools.emmylua_check]]
 version = "0.25.1"
 backend = "github:EmmyLuaLs/emmylua-analyzer-rust"
@@ -1008,6 +1043,10 @@ url_api = "https://api.github.com/repos/jgm/pandoc/releases/assets/486227507"
 [[tools."pipx:ansible"]]
 version = "14.2.0"
 backend = "pipx:ansible"
+
+[[tools."pipx:ansible-core"]]
+version = "2.21.3"
+backend = "pipx:ansible-core"
 
 [[tools."pipx:ansible-lint"]]
 version = "26.6.0"
