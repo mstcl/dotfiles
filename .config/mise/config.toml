@@ -137,6 +137,8 @@ uv tool install -q --force mdformat \
 --with mdformat-deflist \
 --with mdformat-footnote \
 --with mdformat-frontmatter \
+--with mdformat-simple-breaks \
+--with mdformat-mkdocs
 """
 sources = ["{{env.HOME}}/.local/bin/mdformat"]
 

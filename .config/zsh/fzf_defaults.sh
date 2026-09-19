@@ -1,4 +1,5 @@
 FZF_HEIGHT="100%"
+export FZF_TMUX_HEIGHT="~$FZF_HEIGHT"
 export FZF_DEFAULT_OPTS="
 	--color fg:7:dim,bg:0,hl:15:bold:underline,fg+:7:regular,bg+:8,hl+:15:bold:underline
 	--color gutter:1:bold,scrollbar:15:dim,label:7:bold
@@ -6,6 +7,7 @@ export FZF_DEFAULT_OPTS="
 	--color pointer:1,marker:15:dim,separator:8,header:7
 	--color preview-bg:0,preview-border:8
 	--color preview-scrollbar:15:dim,preview-label:7:bold
+	--color header:7:bold
 	--height=~$FZF_HEIGHT
 	--gutter=' '
 	--style=minimal
@@ -18,6 +20,7 @@ export FZF_DEFAULT_OPTS="
 	--cycle
 	--info=inline-right
 	--preview-window 70%:hidden:border-rounded
+	--list-border rounded
 	--preview 'lesspipe.sh {}'
 	--preview-label=' Preview '
 	--pointer=' '

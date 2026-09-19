@@ -233,6 +233,7 @@ alias gsu='git su'     # [g]it [s]ubmodule [u]pdate
 alias gsw='git sw'     # [g]it [sw]itch
 alias gta='git ta'     # [g]it [ta]gs
 alias gun='git un'     # [g]it [un]do
+alias gwt='git wt'     # [g]it [w]ork[t]ree
 alias gs='git sync'    # [g]it [s]ync
 alias gd='git default' # [g]it [d]efault
 
@@ -362,10 +363,9 @@ _zsh_autosuggest_strategy_histdb_top() {
 	local query="
         select commands.argv from history
         left join commands on history.command_id = commands.rowid
-        left join places on history.place_id = places.rowid
         where commands.argv LIKE '$(sql_escape $1)%'
-        group by commands.argv, places.dir
-        order by places.dir != '$(sql_escape $PWD)', count(*) desc
+        group by commands.argv
+		order by count(*) desc, max(history.start_time) desc
         limit 1
     "
 	suggestion=$(_histdb_query "$query")
@@ -398,6 +398,8 @@ zstyle ':completion:*' menu no
 if command -v fzf &>/dev/null; then
 	source <(fzf --zsh)
 fi
+
+HISTDB_FZF_DEFAULT_MODE="everywhere"
 
 bindkey '^R' histdb-fzf-widget
 
